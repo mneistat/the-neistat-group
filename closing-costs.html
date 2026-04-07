@@ -517,8 +517,7 @@
   </footer>
 
   <script src="main.js"></script>
-  <!-- Google Places will be enabled once billing is set up -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gqvDCyKTmo-ze3seKvolj_U9I-lNRWs&libraries=places"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gqvDCyKTmo-ze3seKvolj_U9I-lNRWs&libraries=places"></script>
   <script>
     const fmt = n => '$' + Math.round(n).toLocaleString();
     const el = id => document.getElementById(id);
@@ -699,49 +698,46 @@
       { keys: ['elgin', '60120', '60123', '60124'], muni: 'other', county: 'kane', label: 'Elgin, Kane County' },
     ];
 
-    // --- ADDRESS DETECTION (keyword-based, upgrades to Google Places when billing is active) ---
-    function detectFromAddress(address, countySelectId, citySelectId, hintId, calcFn) {
-      const addr = address.toLowerCase().trim();
-      if (addr.length < 3) { el(hintId).textContent = ''; return; }
+    // --- GOOGLE PLACES AUTOCOMPLETE ---
+    const countyMap = {
+      'cook county': 'cook', 'dupage county': 'dupage', 'du page county': 'dupage',
+      'lake county': 'lake', 'will county': 'will', 'kane county': 'kane', 'mchenry county': 'mchenry'
+    };
 
-      // Try to match city from all dropdown options across all counties
-      let matchedCity = null, matchedCounty = null;
-      for (const [county, cities] of Object.entries(citiesByCounty)) {
-        for (const city of cities) {
-          if (city !== 'Other' && addr.includes(city.toLowerCase())) {
-            matchedCity = city;
-            matchedCounty = county;
-            break;
-          }
+    function setupAutocomplete(inputId, countySelectId, citySelectId, hintId, calcFn) {
+      const input = el(inputId);
+      const autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ['address'], componentRestrictions: { country: 'us' },
+        fields: ['address_components', 'formatted_address']
+      });
+      autocomplete.addListener('place_changed', function() {
+        const place = autocomplete.getPlace();
+        if (!place.address_components) return;
+        let city = '', county = '';
+        for (const comp of place.address_components) {
+          if (comp.types.includes('locality')) city = comp.long_name;
+          if (comp.types.includes('sublocality_level_1') && !city) city = comp.long_name;
+          if (comp.types.includes('administrative_area_level_2')) county = comp.long_name.toLowerCase();
         }
-        if (matchedCity) break;
-      }
-
-      // ZIP code fallback for Chicago
-      if (!matchedCity && /606\d{2}/.test(addr)) { matchedCity = 'Chicago'; matchedCounty = 'cook'; }
-
-      if (matchedCity && matchedCounty) {
-        el(countySelectId).value = matchedCounty;
+        const countyKey = countyMap[county] || 'other';
+        el(countySelectId).value = countyKey;
         populateCities(countySelectId, citySelectId);
-        const citySelect = el(citySelectId);
-        for (let i = 0; i < citySelect.options.length; i++) {
-          if (citySelect.options[i].value === matchedCity) { citySelect.selectedIndex = i; break; }
+        if (city) {
+          const cs = el(citySelectId);
+          let found = false;
+          for (let i = 0; i < cs.options.length; i++) { if (cs.options[i].value === city) { cs.selectedIndex = i; found = true; break; } }
+          if (!found) { const o = document.createElement('option'); o.value = city; o.textContent = city; cs.insertBefore(o, cs.lastElementChild); cs.value = city; }
         }
-        const tax = getCityTaxRate(matchedCity);
-        const rateNote = tax.rate > 0 ? ` — Municipal tax: $${tax.rate.toFixed(2)}/$500` : ' — No municipal transfer tax';
-        el(hintId).textContent = '✓ ' + matchedCity + rateNote;
-      } else {
-        el(hintId).textContent = 'Select county and city below';
-      }
-      calcFn();
+        const tax = getCityTaxRate(city);
+        const cl = county.replace(/\b\w/g, c => c.toUpperCase());
+        const rn = tax.rate > 0 ? ` — Municipal tax: $${tax.rate.toFixed(2)}/$500` : ' — No municipal transfer tax';
+        el(hintId).textContent = '✓ ' + city + ', ' + cl + rn;
+        calcFn();
+      });
     }
 
-    el('b-address').addEventListener('input', function() {
-      detectFromAddress(this.value, 'b-county', 'b-city', 'b-address-hint', calcBuyer);
-    });
-    el('s-address').addEventListener('input', function() {
-      detectFromAddress(this.value, 's-county', 's-city', 's-address-hint', calcSeller);
-    });
+    setupAutocomplete('b-address', 'b-county', 'b-city', 'b-address-hint', calcBuyer);
+    setupAutocomplete('s-address', 's-county', 's-city', 's-address-hint', calcSeller);
 
     ['b-price','b-down','b-rate','b-loan-type','b-municipality','b-county','b-tax','b-insurance','b-closing-date','b-proration-pct'].forEach(id => {
       el(id).addEventListener('input', calcBuyer);
