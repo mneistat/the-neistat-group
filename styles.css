@@ -263,7 +263,13 @@ a.contact-detail-value:hover { color: var(--blue); }
 .reveal.visible { opacity: 1; transform: none; }
 
 /* --- Responsive --- */
-@media (max-width: 1280px) {
+@media (max-width: 1400px) {
+  .nav-links { gap: 20px; }
+  .nav-link { font-size: 11px; letter-spacing: 0.06em; }
+  .nav-cta { font-size: 10px; padding: 8px 20px; }
+}
+
+@media (max-width: 1100px) {
   .nav-links, .nav-cta { display: none; }
   .nav-toggle { display: flex; }
   .split-grid { grid-template-columns: 1fr; gap: 40px; }
