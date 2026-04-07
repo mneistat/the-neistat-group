@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Properties | The Neistat Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .search-page { padding: clamp(120px,16vw,180px) 0 0; }
+    .search-header { text-align: center; margin-bottom: 32px; }
+    .search-sub { font-size: 16px; color: var(--text-light); max-width: 500px; margin: 12px auto 0; line-height: 1.7; }
+    .search-frame-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,43,92,0.06);
+      border: 1px solid rgba(0,43,92,0.06);
+      background: var(--white);
+      margin-bottom: clamp(40px,6vw,80px);
+    }
+    .search-frame {
+      width: 100%;
+      height: 85vh;
+      min-height: 600px;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav nav-dark" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="neistat-logo-white.png" alt="The Neistat Group" class="nav-logo-img nav-logo-light">
+        <img src="neistat-logo-black.png" alt="The Neistat Group" class="nav-logo-img nav-logo-dark">
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="search.html" class="nav-link active">Search Properties</a>
+        <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+        <a href="calculator.html" class="nav-link">Mortgage Calculator</a>
+        <a href="closing-costs.html" class="nav-link">Closing Costs</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Get in Touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="index.html" class="mobile-menu-link">Home</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="search.html" class="mobile-menu-link">Search Properties</a>
+      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="calculator.html" class="mobile-menu-link">Mortgage Calculator</a>
+      <a href="closing-costs.html" class="mobile-menu-link">Closing Costs</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
+    </div>
+  </div>
+
+  <section class="search-page">
+    <div class="container">
+      <div class="search-header">
+        <span class="label reveal">Properties</span>
+        <h1 class="heading-lg reveal">Search <em>Properties</em></h1>
+        <p class="search-sub reveal">Work with me to get full access to all the home inventory including coming soon listings you won't see anywhere else.</p>
+      </div>
+      <div class="search-frame-wrap reveal">
+        <iframe src="https://zenlist.com/a/matthew.neistat" class="search-frame" loading="lazy" title="Search Properties — The Neistat Group"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand"><img src="neistat-logo-white.png" alt="The Neistat Group" class="footer-logo"><img src="jsir-logo-white.png" alt="JSIR" class="footer-logo-jsir"><p class="footer-addr">425 W. North Avenue<br>Chicago, Illinois 60610</p></div>
+        <div class="footer-nav"><span class="footer-nav-title">Navigate</span><a href="index.html">Home</a><a href="about.html">About</a><a href="search.html">Search Properties</a><a href="neighborhoods.html">Neighborhoods</a><a href="contact.html">Contact</a></div>
+        <div class="footer-nav"><span class="footer-nav-title">Connect</span><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a></div>
+        <div class="footer-nav"><span class="footer-nav-title">Follow</span><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
+      </div>
+      <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>Licensed in the State of Illinois</span></div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
