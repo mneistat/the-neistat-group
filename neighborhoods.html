@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Neighborhoods | The Neistat Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Maps instead of Leaflet -->
+  <style>
+    .nh-hero { padding: clamp(160px,20vw,240px) 0 clamp(32px,4vw,60px); }
+    .nh-intro-text { font-size: clamp(17px,1.6vw,20px); font-weight: 300; color: var(--text-light); max-width: 640px; line-height: 1.8; margin-bottom: clamp(40px,6vw,72px); }
+    .map-section { padding: 0 0 clamp(60px,8vw,100px); }
+    .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,43,92,0.08); border: 1px solid rgba(0,43,92,0.06); }
+    #neighborhood-map { height: 650px; width: 100%; background: var(--cream); }
+    .map-legend { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .map-legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--text); cursor: pointer; padding: 6px 14px; border-radius: 100px; border: 1.5px solid var(--border); transition: all 0.3s; white-space: nowrap; }
+    .map-legend-item:hover { border-color: var(--navy); }
+    .map-legend-item.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .nh-detail { margin-top: 40px; display: none; background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border); }
+    .nh-detail.show { display: block; }
+    .nh-detail h3 { font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .nh-detail p { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 16px; max-width: 600px; }
+    .nh-detail-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+    .nh-detail-stat span:first-child { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); display: block; margin-bottom: 4px; }
+    .nh-detail-stat span:last-child { font-size: 16px; font-weight: 700; color: var(--navy); }
+    .nh-cta { padding: clamp(60px,8vw,100px) 0; text-align: center; }
+    .nh-cta-text { font-family: var(--serif); font-size: clamp(22px,3vw,32px); font-weight: 300; font-style: italic; color: var(--navy); max-width: 600px; margin: 0 auto 32px; line-height: 1.5; }
+    .leaflet-popup-content-wrapper { border-radius: 12px !important; font-family: 'Plus Jakarta Sans', sans-serif !important; }
+    .leaflet-popup-content { font-size: 14px !important; font-weight: 600 !important; color: #002B5C !important; margin: 12px 16px !important; }
+    @media (max-width: 768px) { #neighborhood-map { height: 450px; } .map-legend { gap: 6px; } .map-legend-item { font-size: 11px; padding: 5px 10px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav nav-dark" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="neistat-logo-white.png" alt="The Neistat Group" class="nav-logo-img nav-logo-light">
+        <img src="neistat-logo-black.png" alt="The Neistat Group" class="nav-logo-img nav-logo-dark">
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="neighborhoods.html" class="nav-link active">Neighborhoods</a>
+        <a href="calculator.html" class="nav-link">Mortgage Calculator</a>
+        <a href="closing-costs.html" class="nav-link">Closing Costs</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Get in Touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="index.html" class="mobile-menu-link">Home</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="calculator.html" class="mobile-menu-link">Mortgage Calculator</a>
+      <a href="closing-costs.html" class="mobile-menu-link">Closing Costs</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
+    </div>
+  </div>
+
+  <section class="nh-hero">
+    <div class="container">
+      <span class="label reveal">Neighborhoods</span>
+      <h1 class="page-hero-heading reveal">Chicago <em>Neighborhoods</em></h1>
+      <p class="nh-intro-text reveal">From the South Loop north to Rogers Park — and everywhere in between. Click any neighborhood to explore.</p>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <div class="container">
+      <div class="map-container reveal">
+        <div id="neighborhood-map"></div>
+      </div>
+
+      <div class="map-legend reveal" id="mapLegend"></div>
+
+      <div class="nh-detail reveal" id="nhDetail">
+        <h3 id="nhDetailName"></h3>
+        <p id="nhDetailDesc"></p>
+        <div class="nh-detail-stats" id="nhDetailStats"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nh-cta">
+    <div class="container">
+      <div class="reveal">
+        <p class="nh-cta-text">"I get to help people find a place to make memories or money — and sometimes both."</p>
+        <a href="contact.html" class="btn btn-gold">Find Your Neighborhood</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand"><img src="neistat-logo-white.png" alt="The Neistat Group" class="footer-logo"><img src="jsir-logo-white.png" alt="JSIR" class="footer-logo-jsir"><p class="footer-addr">425 W. North Avenue<br>Chicago, Illinois 60610</p></div>
+        <div class="footer-nav"><span class="footer-nav-title">Navigate</span><a href="index.html">Home</a><a href="about.html">About</a><a href="neighborhoods.html">Neighborhoods</a><a href="calculator.html">Mortgage Calculator</a><a href="closing-costs.html">Closing Costs</a><a href="contact.html">Contact</a></div>
+        <div class="footer-nav"><span class="footer-nav-title">Connect</span><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a></div>
+        <div class="footer-nav"><span class="footer-nav-title">Follow</span><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
+      </div>
+      <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>Licensed in the State of Illinois</span></div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gqvDCyKTmo-ze3seKvolj_U9I-lNRWs"></script>
+  <script>
+    const map = new google.maps.Map(document.getElementById('neighborhood-map'), {
+      center: { lat: 41.916, lng: -87.655 },
+      zoom: 12,
+      styles: [
+        { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+        { featureType: 'transit', stylers: [{ visibility: 'simplified' }] },
+        { featureType: 'water', stylers: [{ color: '#d4e8f0' }] },
+        { featureType: 'landscape', stylers: [{ color: '#f0ede8' }] },
+        { featureType: 'road.highway', stylers: [{ color: '#e0dbd3' }] },
+        { featureType: 'road.arterial', stylers: [{ color: '#eae6df' }] },
+        { featureType: 'road.local', stylers: [{ color: '#f5f2ed' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#666666' }] }
+      ],
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      gestureHandling: 'cooperative'
+    });
+
+    // Helper: convert [lat,lng] arrays to Google Maps LatLng objects
+    function toPath(arr) { return arr.map(p => ({ lat: p[0], lng: p[1] })); }
+
+    const hoods = {
+      'the-loop': {
+        color: '#1a1a1a', label: 'The Loop',
+        desc: 'The heart of downtown Chicago. Michigan Avenue, Millennium Park, the Art Institute, and the financial district. Bounded by Lake Michigan, the Chicago River, and Congress.',
+        stats: { 'Boundaries': 'Lake to Canal, Wacker to Congress', 'Character': 'Downtown, Commercial, High-Rise' },
+        coords: [[41.887,-87.621],[41.887,-87.628],[41.887,-87.634],[41.887,-87.639],[41.875,-87.639],[41.875,-87.631],[41.875,-87.625],[41.875,-87.621],[41.877,-87.619],[41.880,-87.617],[41.884,-87.616],[41.887,-87.617],[41.887,-87.621]]
+      },
+      'south-loop': {
+        color: '#2d3436', label: "South Loop / Printer's Row",
+        desc: "One of Chicago's fastest-growing neighborhoods. Steps from Grant Park, Museum Campus, and the lakefront. A mix of new construction, loft conversions, and high-rises.",
+        stats: { 'Boundaries': 'Lake to River, Congress to 18th', 'Character': 'New Construction, Lofts, High-Rises', 'ZIP': '60605, 60616' },
+        coords: [[41.875,-87.621],[41.875,-87.628],[41.875,-87.634],[41.874,-87.636],[41.864,-87.636],[41.858,-87.636],[41.858,-87.628],[41.858,-87.621],[41.858,-87.617],[41.862,-87.616],[41.867,-87.615],[41.872,-87.616],[41.875,-87.618],[41.875,-87.621]]
+      },
+      'west-loop': {
+        color: '#6c5ce7', label: 'West Loop / Fulton Market',
+        desc: "Chicago's restaurant row. Former meatpacking district turned culinary and nightlife capital. Randolph Street, Fulton Market, and rising luxury condos.",
+        stats: { 'Boundaries': 'Canal to Ogden, Van Buren to Hubbard', 'Character': 'Restaurants, Lofts, New Development' },
+        coords: [[41.890,-87.639],[41.890,-87.652],[41.885,-87.659],[41.880,-87.666],[41.877,-87.666],[41.877,-87.652],[41.877,-87.639],[41.884,-87.639],[41.887,-87.639],[41.890,-87.639]]
+      },
+      'river-north': {
+        color: '#e17055', label: 'River North',
+        desc: 'Gallery district, nightlife destination, and luxury high-rise corridor. One of the most active condo markets in the city.',
+        stats: { 'Boundaries': 'State to Kingsbury, Kinzie to Chicago Ave', 'Character': 'High-Rise Condos, Galleries, Nightlife' },
+        coords: [[41.889,-87.628],[41.889,-87.639],[41.891,-87.642],[41.897,-87.642],[41.897,-87.634],[41.897,-87.628],[41.892,-87.628],[41.889,-87.628]]
+      },
+      'streeterville': {
+        color: '#00b894', label: 'Streeterville',
+        desc: 'Luxury lakefront living east of Michigan Avenue. Navy Pier, Northwestern Hospital, and some of the tallest residential towers in the city.',
+        stats: { 'Boundaries': 'Lake to State, Kinzie to Chicago Ave', 'Character': 'Luxury High-Rise, Lakefront' },
+        coords: [[41.889,-87.628],[41.897,-87.628],[41.897,-87.620],[41.896,-87.616],[41.892,-87.612],[41.889,-87.611],[41.887,-87.613],[41.887,-87.621],[41.889,-87.623],[41.889,-87.628]]
+      },
+      'gold-coast': {
+        color: '#fdcb6e', label: 'Gold Coast',
+        desc: "Chicago's most prestigious residential neighborhood. Historic mansions, Oak Street Beach, and world-class shopping along the Mag Mile.",
+        stats: { 'Boundaries': 'Lake to Wells, North Ave to Chicago Ave', 'Character': 'Luxury, Historic Homes, High-Rise', 'ZIP': '60610, 60611' },
+        coords: [[41.897,-87.619],[41.897,-87.628],[41.897,-87.634],[41.911,-87.634],[41.911,-87.628],[41.910,-87.621],[41.907,-87.616],[41.903,-87.614],[41.898,-87.615],[41.897,-87.619]]
+      },
+      'lincoln-park': {
+        color: '#002B5C', label: 'Lincoln Park & Old Town',
+        desc: "Chicago's premier residential neighborhood. Home to the zoo, DePaul University, Second City, and some of the city's most coveted single-family homes and greystones.",
+        stats: { 'Boundaries': 'Lake to Ashland, North Ave to Diversey', 'Character': 'SFH, Greystones, Condos, Brownstones', 'ZIP': '60610, 60614' },
+        coords: [[41.91137,-87.6264],[41.91134,-87.62686],[41.91125,-87.62717],[41.9112,-87.63021],[41.91122,-87.63169],[41.9134,-87.63299],[41.9153,-87.63416],[41.91837,-87.63648],[41.91834,-87.63799],[41.9183,-87.64057],[41.91826,-87.64306],[41.91822,-87.6455],[41.91818,-87.64793],[41.91538,-87.6484],[41.91282,-87.64833],[41.91138,-87.64828],[41.91087,-87.65111],[41.91082,-87.65408],[41.91078,-87.65668],[41.91248,-87.65746],[41.91508,-87.65915],[41.91556,-87.66005],[41.91607,-87.66087],[41.91614,-87.66144],[41.91587,-87.66215],[41.91561,-87.66261],[41.91561,-87.66362],[41.91628,-87.66404],[41.9179,-87.66467],[41.919,-87.66577],[41.92047,-87.66692],[41.92203,-87.6681],[41.92239,-87.66928],[41.92255,-87.67165],[41.924,-87.67377],[41.92614,-87.67455],[41.92802,-87.67779],[41.92899,-87.68001],[41.93051,-87.68074],[41.93223,-87.68284],[41.93225,-87.68069],[41.93228,-87.67825],[41.93232,-87.6754],[41.93234,-87.67354],[41.93237,-87.67131],[41.9324,-87.66839],[41.93248,-87.66357],[41.93254,-87.65987],[41.93074,-87.65864],[41.92915,-87.65859],[41.92777,-87.65853],[41.9255,-87.65846],[41.92348,-87.65839],[41.92166,-87.65803],[41.9217,-87.65572],[41.92175,-87.65284],[41.92178,-87.65106],[41.92203,-87.64864],[41.92467,-87.64873],[41.92767,-87.64884],[41.92942,-87.6489],[41.93272,-87.64901],[41.93278,-87.64604],[41.93283,-87.64346],[41.93287,-87.64134],[41.93293,-87.63809],[41.93288,-87.63458],[41.93291,-87.63393],[41.93251,-87.63182],[41.93244,-87.63154],[41.93239,-87.63125],[41.93258,-87.63115],[41.93258,-87.63106],[41.93254,-87.63108],[41.9324,-87.63123],[41.93232,-87.63109],[41.93223,-87.63093],[41.93177,-87.63067],[41.93121,-87.63084],[41.93069,-87.63097],[41.93008,-87.63101],[41.92945,-87.63093],[41.92867,-87.63071],[41.92818,-87.63046],[41.92786,-87.63052],[41.92753,-87.63023],[41.92734,-87.63003],[41.92712,-87.62982],[41.92684,-87.62966],[41.92672,-87.62962],[41.92655,-87.6296],[41.9264,-87.6296],[41.92622,-87.62963],[41.92612,-87.6297],[41.92609,-87.62972],[41.92611,-87.62994],[41.92581,-87.63024],[41.92543,-87.63027],[41.92466,-87.63019],[41.92415,-87.63008],[41.92378,-87.63001],[41.9233,-87.62971],[41.923,-87.62927],[41.92278,-87.62904],[41.92312,-87.62838],[41.92244,-87.62949],[41.92229,-87.62943],[41.92204,-87.62926],[41.92154,-87.62887],[41.92121,-87.62863],[41.9212,-87.62818],[41.9214,-87.62774],[41.92132,-87.6278],[41.92073,-87.62892],[41.92029,-87.62868],[41.91991,-87.62834],[41.91981,-87.6282],[41.91954,-87.62798],[41.91976,-87.62733],[41.91924,-87.62837],[41.91916,-87.62842],[41.9188,-87.62815],[41.91866,-87.62801],[41.91839,-87.62772],[41.91813,-87.62744],[41.9183,-87.62683],[41.91779,-87.62759],[41.9176,-87.62791],[41.91725,-87.62762],[41.91684,-87.62708],[41.91656,-87.62685],[41.91681,-87.62613],[41.91629,-87.62681],[41.916,-87.62651],[41.91568,-87.62618],[41.91561,-87.626],[41.91553,-87.6258],[41.91542,-87.62569],[41.91527,-87.62551],[41.91483,-87.62501],[41.91462,-87.62468],[41.91452,-87.62451],[41.9143,-87.62421],[41.91412,-87.62391],[41.91385,-87.62334],[41.91372,-87.62302],[41.91356,-87.62231],[41.91353,-87.62183],[41.91356,-87.62142],[41.9136,-87.62112],[41.91374,-87.62084],[41.91379,-87.62059],[41.91364,-87.6205],[41.91346,-87.62055],[41.91344,-87.62049],[41.91366,-87.62032],[41.91391,-87.62021],[41.91441,-87.6202],[41.91463,-87.62024],[41.91474,-87.62036],[41.91482,-87.62064],[41.91477,-87.62092],[41.91484,-87.62088],[41.91487,-87.62066],[41.91485,-87.62048],[41.91473,-87.62026],[41.91459,-87.62016],[41.91422,-87.62014],[41.91392,-87.62015],[41.91375,-87.62021],[41.91345,-87.62041],[41.91319,-87.62075],[41.91303,-87.62114],[41.91292,-87.6217],[41.91287,-87.62227],[41.91272,-87.62284],[41.91247,-87.62329],[41.91146,-87.62563],[41.91137,-87.6264]]
+      },
+      'lakeview': {
+        color: '#0984e3', label: 'Lakeview / Wrigleyville',
+        desc: "Home to Wrigley Field and some of Chicago's best dining and nightlife. A diverse mix of vintage condos, new construction, and classic two-flats.",
+        stats: { 'Boundaries': 'Lake to Ashland, Diversey to Irving Park', 'Character': 'Condos, Two-Flats, Vintage', 'ZIP': '60613, 60657' },
+        coords: [[41.932,-87.618],[41.932,-87.628],[41.932,-87.644],[41.932,-87.666],[41.940,-87.666],[41.954,-87.666],[41.954,-87.644],[41.954,-87.628],[41.954,-87.617],[41.946,-87.614],[41.938,-87.614],[41.932,-87.618]]
+      },
+      'north-center': {
+        color: '#00cec9', label: 'North Center / Roscoe Village',
+        desc: 'Family-friendly with a charming main street. Top-rated schools, boutique shops, and a strong sense of community between the river and Ashland.',
+        stats: { 'Boundaries': 'River to Ashland, Belmont to Montrose', 'Character': 'Family-Friendly, SFH, Condos' },
+        coords: [[41.940,-87.666],[41.940,-87.653],[41.948,-87.654],[41.955,-87.656],[41.961,-87.658],[41.961,-87.666],[41.950,-87.666],[41.940,-87.666]]
+      },
+      'ravenswood': {
+        color: '#e84393', label: 'Ravenswood / Lincoln Square',
+        desc: "European-village feel with independent shops, the Old Town School of Folk Music, and a thriving food scene along Lincoln Avenue.",
+        stats: { 'Boundaries': 'River to Clark, Montrose to Peterson', 'Character': 'Bungalows, Two-Flats, Quiet Residential' },
+        coords: [[41.961,-87.658],[41.961,-87.648],[41.961,-87.636],[41.961,-87.631],[41.972,-87.631],[41.980,-87.631],[41.980,-87.642],[41.980,-87.658],[41.972,-87.657],[41.964,-87.657],[41.961,-87.658]]
+      },
+      'west-town': {
+        color: '#d63031', label: 'West Town',
+        desc: 'A rapidly evolving neighborhood west of Halsted. New restaurants, creative offices, and a mix of historic workers cottages and modern condos.',
+        stats: { 'Boundaries': 'Western to Halsted, Chicago Ave to Hubbard', 'Character': 'Emerging, Mixed-Use, New Development' },
+        coords: [[41.890,-87.647],[41.890,-87.670],[41.890,-87.688],[41.897,-87.688],[41.897,-87.670],[41.897,-87.647],[41.890,-87.647]]
+      },
+      'bucktown': {
+        color: '#a29bfe', label: 'Bucktown / Wicker Park',
+        desc: "Chicago's creative epicenter. Art galleries, independent boutiques, craft cocktail bars, and some of the city's most beautiful tree-lined streets.",
+        stats: { 'Boundaries': 'Western to Kennedy, Chicago Ave to Fullerton', 'Character': 'Trendy, Victorian, Condos & SFH', 'ZIP': '60622, 60647' },
+        coords: [[41.897,-87.672],[41.897,-87.688],[41.911,-87.688],[41.925,-87.688],[41.925,-87.672],[41.911,-87.672],[41.897,-87.672]]
+      },
+      'logan-square': {
+        color: '#55efc4', label: 'Logan Square',
+        desc: 'One of the hottest neighborhoods in Chicago. The iconic boulevard system, craft breweries, trendy restaurants, and a thriving arts community.',
+        stats: { 'Boundaries': 'Western to Pulaski, North Ave to Belmont', 'Character': 'Bungalows, Greystones, Up-and-Coming', 'ZIP': '60647' },
+        coords: [[41.911,-87.688],[41.911,-87.705],[41.911,-87.726],[41.925,-87.726],[41.940,-87.726],[41.940,-87.705],[41.940,-87.688],[41.925,-87.688],[41.911,-87.688]]
+      }
+    };
+
+    // Draw all neighborhoods with Google Maps Polygons
+    const polys = {};
+    const legendEl = document.getElementById('mapLegend');
+    const infoWindow = new google.maps.InfoWindow();
+
+    Object.entries(hoods).forEach(([key, nh]) => {
+      const poly = new google.maps.Polygon({
+        paths: toPath(nh.coords),
+        strokeColor: nh.color,
+        strokeOpacity: 0.9,
+        strokeWeight: 2.5,
+        fillColor: nh.color,
+        fillOpacity: 0.12,
+        map: map
+      });
+
+      poly.addListener('click', (e) => {
+        showDetail(key);
+        infoWindow.setContent(`<strong style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:#002B5C;">${nh.label}</strong>`);
+        infoWindow.setPosition(e.latLng);
+        infoWindow.open(map);
+      });
+
+      poly.addListener('mouseover', () => { poly.setOptions({ fillOpacity: 0.3, strokeWeight: 3 }); });
+      poly.addListener('mouseout', () => { poly.setOptions({ fillOpacity: 0.12, strokeWeight: 2.5 }); });
+
+      polys[key] = poly;
+
+      // Legend item
+      const item = document.createElement('div');
+      item.className = 'map-legend-item active';
+      item.dataset.hood = key;
+      item.innerHTML = `<span class="map-legend-dot" style="background:${nh.color}"></span>${nh.label}`;
+      item.addEventListener('click', () => {
+        const isActive = item.classList.toggle('active');
+        polys[key].setMap(isActive ? map : null);
+      });
+      legendEl.appendChild(item);
+    });
+
+    // Detail panel
+    function showDetail(key) {
+      const nh = hoods[key];
+      const detail = document.getElementById('nhDetail');
+      document.getElementById('nhDetailName').textContent = nh.label;
+      document.getElementById('nhDetailDesc').textContent = nh.desc;
+      const statsHtml = Object.entries(nh.stats).map(([k,v]) =>
+        `<div class="nh-detail-stat"><span>${k}</span><span>${v}</span></div>`
+      ).join('');
+      document.getElementById('nhDetailStats').innerHTML = statsHtml;
+      detail.classList.add('show');
+      detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // Fit bounds to neighborhood
+      const bounds = new google.maps.LatLngBounds();
+      nh.coords.forEach(c => bounds.extend({ lat: c[0], lng: c[1] }));
+      map.fitBounds(bounds, { top: 50, bottom: 50, left: 50, right: 50 });
+    }
+  </script>
+</body>
+</html>

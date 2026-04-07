@@ -3,35 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Matthew Neistat</title>
+  <title>Contact | Matthew Neistat — The Neistat Group</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <nav class="nav" id="nav">
+  <nav class="nav nav-dark" id="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><img src="neistat-logo-black.png" alt="The Neistat Group" class="nav-logo-img"></a>
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link">home</a>
-        <a href="about.html" class="nav-link">about</a>
-        <a href="contact.html" class="nav-link active">contact</a>
+      <a href="index.html" class="nav-logo">
+        <img src="neistat-logo-white.png" alt="The Neistat Group" class="nav-logo-img nav-logo-light">
+        <img src="neistat-logo-black.png" alt="The Neistat Group" class="nav-logo-img nav-logo-dark">
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+        <a href="calculator.html" class="nav-link">Mortgage Calculator</a>
+        <a href="closing-costs.html" class="nav-link">Closing Costs</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <a href="contact.html" class="nav-cta">Get in Touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">home</a>
-      <a href="about.html" class="mobile-menu-link">about</a>
-      <a href="contact.html" class="mobile-menu-link">contact</a>
-      <div class="mobile-menu-footer">
-        <a href="tel:+18477142913">847.714.2913</a>
-        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
-      </div>
+      <a href="index.html" class="mobile-menu-link">Home</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </div>
 
@@ -39,41 +43,23 @@
     <div class="container">
       <div class="contact-grid">
         <div class="contact-left">
-          <h1 class="contact-heading reveal">Let's talk<span class="title-asterisk" style="font-size:0.3em">&#10038;</span></h1>
-          <p class="contact-intro reveal">Whether you're considering a purchase, preparing to sell, or simply curious about the market &mdash; I welcome the opportunity to connect.</p>
+          <span class="label reveal">Contact</span>
+          <h1 class="contact-heading reveal">Let's begin a<br><em>conversation</em></h1>
+          <p class="contact-intro reveal">Whether you're considering a purchase, preparing to sell, or simply curious about the market — I welcome the opportunity to connect.</p>
           <div class="contact-details reveal">
-            <div class="contact-detail">
-              <span class="contact-detail-label">Phone</span>
-              <a href="tel:+18477142913" class="contact-detail-value">847.714.2913</a>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-label">Email</span>
-              <a href="mailto:matt@theneistatgroup.com" class="contact-detail-value">matt@theneistatgroup.com</a>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-label">Office</span>
-              <span class="contact-detail-value">425 W. North Avenue<br>Chicago, Illinois 60610</span>
-            </div>
+            <div><span class="contact-detail-label">Phone</span><a href="tel:+18477142913" class="contact-detail-value">847.714.2913</a></div>
+            <div><span class="contact-detail-label">Email</span><a href="mailto:matt@theneistatgroup.com" class="contact-detail-value">matt@theneistatgroup.com</a></div>
+            <div><span class="contact-detail-label">Office</span><span class="contact-detail-value">425 W. North Avenue<br>Chicago, Illinois 60610</span></div>
           </div>
         </div>
         <div class="contact-right reveal">
           <form class="contact-form" id="contactForm">
-            <div class="form-group">
-              <label for="name" class="form-label">Full Name</label>
-              <input type="text" id="name" name="name" class="form-input" required autocomplete="name">
-            </div>
+            <div class="form-group"><label for="name" class="form-label">Full Name</label><input type="text" id="name" name="name" class="form-input" required autocomplete="name"></div>
             <div class="form-row">
-              <div class="form-group">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" class="form-input" required autocomplete="email">
-              </div>
-              <div class="form-group">
-                <label for="phone" class="form-label">Phone</label>
-                <input type="tel" id="phone" name="phone" class="form-input" autocomplete="tel">
-              </div>
+              <div class="form-group"><label for="email" class="form-label">Email</label><input type="email" id="email" name="email" class="form-input" required autocomplete="email"></div>
+              <div class="form-group"><label for="phone" class="form-label">Phone</label><input type="tel" id="phone" name="phone" class="form-input" autocomplete="tel"></div>
             </div>
-            <div class="form-group">
-              <label for="interest" class="form-label">I'm Interested In</label>
+            <div class="form-group"><label for="interest" class="form-label">I'm Interested In</label>
               <select id="interest" name="interest" class="form-input form-select">
                 <option value="" disabled selected>Select an option</option>
                 <option value="buying">Buying a Home</option>
@@ -83,14 +69,8 @@
                 <option value="consultation">Market Consultation</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="message" class="form-label">Message</label>
-              <textarea id="message" name="message" class="form-input form-textarea" rows="4"></textarea>
-            </div>
-            <button type="submit" class="btn-submit">
-              <span>Send Message</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
+            <div class="form-group"><label for="message" class="form-label">Message</label><textarea id="message" name="message" class="form-input form-textarea" rows="4"></textarea></div>
+            <button type="submit" class="btn-submit"><span>Send Message</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </form>
           <div class="form-success" id="formSuccess">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>
@@ -104,27 +84,13 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="neistat-logo-black.png" alt="The Neistat Group" class="footer-logo">
-          <img src="jsir-logo-black.png" alt="Jameson Sotheby's International Realty" class="footer-logo-jsir">
-        </div>
-        <div class="footer-links">
-          <a href="index.html">home</a>
-          <a href="about.html">about</a>
-          <a href="contact.html">contact</a>
-          <a href="https://www.instagram.com/matt_neistat/" target="_blank">instagram</a>
-          <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">linkedin</a>
-        </div>
+      <div class="footer-main">
+        <div class="footer-brand"><img src="neistat-logo-white.png" alt="The Neistat Group" class="footer-logo"><img src="jsir-logo-white.png" alt="JSIR" class="footer-logo-jsir"><p class="footer-addr">425 W. North Avenue<br>Chicago, Illinois 60610</p></div>
+        <div class="footer-nav"><span class="footer-nav-title">Navigate</span><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+        <div class="footer-nav"><span class="footer-nav-title">Connect</span><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a></div>
+        <div class="footer-nav"><span class="footer-nav-title">Follow</span><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
       </div>
-      <div class="footer-bottom">
-        <div class="footer-contact">
-          <a href="tel:+18477142913">847.714.2913</a><span>&bull;</span>
-          <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><span>&bull;</span>
-          <span>425 W. North Avenue, Chicago IL 60610</span>
-        </div>
-        <span class="footer-copy">&copy; 2026 The Neistat Group. Licensed in the State of Illinois.</span>
-      </div>
+      <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>Licensed in the State of Illinois</span></div>
     </div>
   </footer>
 

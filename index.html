@@ -6,7 +6,7 @@
   <title>The Neistat Group | Chicago Real Estate</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
   <!-- Preloader -->
   <div class="preloader" id="preloader">
     <div class="preloader-inner">
-      <img src="neistat-logo-black.png" alt="The Neistat Group" class="preloader-logo">
+      <img src="neistat-logo-white.png" alt="The Neistat Group" class="preloader-logo">
       <div class="preloader-line"></div>
     </div>
   </div>
@@ -23,27 +23,28 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="neistat-logo-black.png" alt="The Neistat Group" class="nav-logo-img">
+        <img src="neistat-logo-white.png" alt="The Neistat Group" class="nav-logo-img nav-logo-light">
+        <img src="neistat-logo-black.png" alt="The Neistat Group" class="nav-logo-img nav-logo-dark">
       </a>
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link active">home</a>
-        <a href="about.html" class="nav-link">about</a>
-        <a href="contact.html" class="nav-link">contact</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+        <a href="calculator.html" class="nav-link">Mortgage Calculator</a>
+        <a href="closing-costs.html" class="nav-link">Closing Costs</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <a href="contact.html" class="nav-cta">Get in Touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">home</a>
-      <a href="about.html" class="mobile-menu-link">about</a>
-      <a href="contact.html" class="mobile-menu-link">contact</a>
+      <a href="index.html" class="mobile-menu-link">Home</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer">
         <a href="tel:+18477142913">847.714.2913</a>
         <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
@@ -51,155 +52,156 @@
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- Hero — Full viewport video -->
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-name reveal">
-          <span class="hero-name-line">MATTHEW</span>
-          <span class="hero-name-line">NEISTAT<span class="hero-asterisk">&#10038;</span></span>
-        </div>
-        <p class="hero-tagline reveal">chicago real estate broker helping buyers and sellers make memories and build wealth.</p>
-        <div class="hero-tags reveal">
-          <span class="tag">buying</span>
-          <span class="tag">selling</span>
-          <span class="tag">new development</span>
-          <span class="tag">south loop to rogers park</span>
-        </div>
-        <a href="contact.html" class="btn-pill reveal">Let's Get Started</a>
-      </div>
-      <div class="hero-photo reveal">
-        <img src="DSC_9797-Edit.jpg" alt="Matthew Neistat" class="hero-photo-img">
-      </div>
-    </div>
-    <div class="hero-stars" aria-hidden="true">
-      <span class="star star-1">&#10038;</span>
-      <span class="star star-2">&#10038;</span>
-      <span class="star star-3">&#10038;</span>
-      <span class="star star-4">&#8226;</span>
-      <span class="star star-5">&#8226;</span>
-      <span class="star star-6">&#10038;</span>
-      <span class="star star-7">&#10038;</span>
-    </div>
-  </section>
-
-  <!-- About Intro -->
-  <section class="about-intro-section">
-    <div class="container">
-      <div class="about-intro-content reveal">
-        <p class="about-intro-text">
-          We help first-time buyers find the <em>perfect starter home</em>. We help families upgrade to the <em>space they deserve</em>. We handle <span class="underline-accent">$10M deconversions</span> and everything in between. We believe in <em>honest conversations</em>, real relationships, and always <span class="underline-accent">putting people first</span>.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chicago Video Section -->
-  <section class="chicago-section">
-    <div class="chicago-video-wrap">
-      <video autoplay muted loop playsinline class="chicago-video">
+    <div class="hero-media">
+      <video autoplay muted loop playsinline class="hero-video">
         <source src="chicago-hero.mp4" type="video/mp4">
       </video>
-      <div class="chicago-overlay"></div>
+      <div class="hero-overlay"></div>
     </div>
+    <div class="hero-content">
+      <p class="hero-label">Jameson Sotheby's International Realty</p>
+      <h1 class="hero-heading">Inspiring the Next<br><em>Leap of Faith</em></h1>
+      <p class="hero-sub">Buying, selling & new development across Chicago's most vibrant neighborhoods — from the South Loop north to Rogers Park.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-gold">Schedule a Consultation</a>
+        <a href="about.html" class="btn btn-ghost">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section section-cream">
     <div class="container">
-      <div class="chicago-content reveal">
-        <span class="chicago-label">Based in Chicago</span>
-        <h2 class="chicago-heading">South Loop north<br>to Rogers Park</h2>
-        <p class="chicago-sub">14+ years navigating Chicago's most vibrant lakefront neighborhoods.</p>
+      <div class="split-grid">
+        <div class="split-left">
+          <span class="label reveal">The Experience</span>
+          <h2 class="heading-lg reveal">Dedication meets<br><em>attention to detail</em></h2>
+        </div>
+        <div class="split-right">
+          <p class="body-lg reveal">With over 14 years of experience and a background rooted in hospitality, Matthew Neistat brings an honest, one-on-one approach to every client relationship.</p>
+          <p class="body-text reveal">His dedication and attention to detail ensure that whether you're buying your first home, selling a property, or investing in new development, you're guided every step of the way. From the South Loop north to Rogers Park, Matthew's deep knowledge of Chicago's lakefront neighborhoods helps his clients make confident decisions — and build lasting wealth.</p>
+          <a href="about.html" class="link-arrow reveal">
+            <span>About Matthew</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Featured Properties -->
-  <section class="properties-section">
+  <section class="section section-navy">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title reveal">FEATURED SALES<span class="title-asterisk">&#10038;</span></h2>
-      </div>
-
-      <div class="property-card property-card-right reveal">
-        <div class="property-card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80" alt="1035 W Lake Street" class="property-card-img">
-        </div>
-        <div class="property-card-info">
-          <span class="property-card-neighborhood">West Loop</span>
-          <h3 class="property-card-title">1035 W. Lake Street</h3>
-          <span class="property-card-price">$9,500,000</span>
-          <p class="property-card-desc">Led the listing and sale of this major West Loop deconversion — one of the largest residential transactions in the neighborhood.</p>
-          <div class="property-card-tags">
-            <span class="tag">deconversion</span>
-            <span class="tag">multi-unit</span>
-            <span class="tag">new development</span>
+      <span class="label label-light reveal">Portfolio</span>
+      <h2 class="heading-lg heading-white reveal">Notable <em>Sales</em></h2>
+      <div class="properties-grid">
+        <div class="prop-card reveal">
+          <div class="prop-card-media">
+            <img src="properties/1035-lake-brochure.png" alt="1035 W Lake Street, West Loop">
+          </div>
+          <div class="prop-card-body">
+            <span class="prop-card-area">West Loop</span>
+            <h3 class="prop-card-title">1035 W. Lake Street</h3>
+            <span class="prop-card-price">$9,500,000</span>
+            <p class="prop-card-note">$10M deconversion — one of the largest residential transactions in the neighborhood.</p>
           </div>
         </div>
-      </div>
-
-      <div class="property-card property-card-left reveal">
-        <div class="property-card-info">
-          <span class="property-card-neighborhood">Winnetka</span>
-          <h3 class="property-card-title">1183 Elm Street</h3>
-          <span class="property-card-price">$1,265,000</span>
-          <p class="property-card-desc">Beautiful single-family home in one of the North Shore's most sought-after communities.</p>
-          <div class="property-card-tags">
-            <span class="tag">single family</span>
-            <span class="tag">residential</span>
-            <span class="tag">north shore</span>
+        <div class="prop-card reveal">
+          <div class="prop-card-media">
+            <img src="properties/1185-elm-1.jpg" alt="1183 Elm Street, Winnetka">
+          </div>
+          <div class="prop-card-body">
+            <span class="prop-card-area">Winnetka</span>
+            <h3 class="prop-card-title">1183 Elm Street</h3>
+            <span class="prop-card-price">$1,265,000</span>
+            <p class="prop-card-note">Single-family home in one of the North Shore's most coveted communities.</p>
           </div>
         </div>
-        <div class="property-card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80" alt="1183 Elm Street" class="property-card-img">
-        </div>
-      </div>
-
-      <div class="property-card property-card-right reveal">
-        <div class="property-card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80" alt="1834 Paulina Street" class="property-card-img">
-        </div>
-        <div class="property-card-info">
-          <span class="property-card-neighborhood">Lincoln Park</span>
-          <h3 class="property-card-title">1834 Paulina Street</h3>
-          <span class="property-card-price">$925,000</span>
-          <p class="property-card-desc">Fully renovated greystone with modern finishes and classic Chicago character.</p>
-          <div class="property-card-tags">
-            <span class="tag">single family</span>
-            <span class="tag">fully renovated</span>
+        <div class="prop-card reveal">
+          <div class="prop-card-media">
+            <img src="properties/1512-hudson-1.jpg" alt="1512 N Hudson, Old Town">
+          </div>
+          <div class="prop-card-body">
+            <span class="prop-card-area">Old Town</span>
+            <h3 class="prop-card-title">1512 N. Hudson</h3>
+            <span class="prop-card-price">$875,000</span>
+            <p class="prop-card-note">Classic Chicago brick three-flat in one of the city's most walkable neighborhoods.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="stats-section">
+  <!-- Stats — Sticky scroll -->
+  <section class="section section-cream stats-section">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-card reveal">
-          <span class="stat-num"><span class="stat-prefix">$</span><span class="stat-number" data-target="450">0</span><span class="stat-suffix">M+</span></span>
-          <span class="stat-label">total sales volume</span>
+      <div class="stats-layout">
+        <div class="stats-sticky">
+          <span class="label reveal">By the Numbers</span>
+          <h2 class="heading-lg reveal">Results that<br><em>speak for themselves</em></h2>
         </div>
-        <div class="stat-card reveal">
-          <span class="stat-num"><span class="stat-number" data-target="14">0</span><span class="stat-suffix">yrs</span></span>
-          <span class="stat-label">of market expertise</span>
+        <div class="stats-cards">
+          <div class="stat-card reveal">
+            <span class="stat-value"><span class="stat-prefix">$</span><span class="stat-number" data-target="130">0</span>M+</span>
+            <span class="stat-desc">Total Sales Volume</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-value"><span class="stat-number" data-target="110">0</span>%</span>
+            <span class="stat-desc">Avg. Sale-to-List Price</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-value"><span class="stat-number" data-target="5">0</span> Days</span>
+            <span class="stat-desc">Avg. Days on Market</span>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-value" style="white-space:nowrap;font-size:clamp(28px,3.5vw,44px);">Top <span class="stat-number" data-target="10">0</span>%</span>
+            <span class="stat-desc">Chicago Producer (CAR)</span>
+          </div>
         </div>
-        <div class="stat-card reveal">
-          <span class="stat-num"><span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span></span>
-          <span class="stat-label">client satisfaction</span>
-        </div>
-        <div class="stat-card reveal">
-          <span class="stat-num">Top <span class="stat-number" data-target="10">0</span><span class="stat-suffix">%</span></span>
-          <span class="stat-label">chicago producer</span>
-        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neighborhoods -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="label reveal">Neighborhoods</span>
+        <h2 class="heading-lg reveal">South Loop north<br><em>to Rogers Park</em></h2>
+      </div>
+      <div class="hood-grid">
+        <a href="#" class="hood-card reveal">
+          <img src="properties/330-diversey-1.jpg" alt="South Loop">
+          <div class="hood-card-overlay"><h3>South Loop</h3></div>
+        </a>
+        <a href="#" class="hood-card reveal">
+          <img src="properties/1126-fullerton-1.jpg" alt="Lincoln Park">
+          <div class="hood-card-overlay"><h3>Lincoln Park</h3></div>
+        </a>
+        <a href="#" class="hood-card reveal">
+          <img src="properties/1448-walton-1.jpg" alt="Lakeview">
+          <div class="hood-card-overlay"><h3>Lakeview</h3></div>
+        </a>
+        <a href="#" class="hood-card reveal">
+          <img src="properties/5715-rogers-1.jpg" alt="Rogers Park">
+          <div class="hood-card-overlay"><h3>Rogers Park</h3></div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Testimonial -->
-  <section class="testimonial-section">
+  <section class="section section-navy testimonial-section">
     <div class="container">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-quote">&ldquo;</div>
-        <p class="testimonial-text">Matt knows real estate. He did such a good job that we ended up having him sell a few more — every single one sold at, near, or above the price we were seeking. Matthew goes above and beyond. It was refreshing to have such a hands-on broker.</p>
+      <div class="testimonial reveal">
+        <span class="label label-light">Client Words</span>
+        <blockquote class="testimonial-quote">&ldquo;Matt knows real estate. He did such a good job that we ended up having him sell a few more — every single one sold at, near, or above the price we were seeking. It was refreshing to have such a hands-on broker.&rdquo;</blockquote>
         <div class="testimonial-author">
           <strong>Nicole Alfred-Napper</strong>
           <span>Chief Operating Officer, Plan Companies</span>
@@ -209,12 +211,20 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta-section">
+  <section class="section section-cream">
     <div class="container">
-      <div class="cta-inner reveal">
-        <h2 class="cta-heading">Ready to take your<br>leap of faith?</h2>
-        <p class="cta-text">Let's start a conversation about buying, selling, or investing in Chicago.</p>
-        <a href="contact.html" class="btn-pill btn-pill-dark">Schedule a Consultation</a>
+      <div class="cta-block reveal">
+        <div class="cta-media">
+          <video autoplay muted loop playsinline>
+            <source src="chicago-night.mp4" type="video/mp4">
+          </video>
+          <div class="cta-media-overlay"></div>
+        </div>
+        <div class="cta-content">
+          <h2 class="heading-lg heading-white">Ready to take your<br><em>leap of faith?</em></h2>
+          <p class="cta-text">Let's start a conversation about buying, selling, or investing in Chicago real estate.</p>
+          <a href="contact.html" class="btn btn-gold">Schedule a Consultation</a>
+        </div>
       </div>
     </div>
   </section>
@@ -222,28 +232,32 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-top">
+      <div class="footer-main">
         <div class="footer-brand">
-          <img src="neistat-logo-black.png" alt="The Neistat Group" class="footer-logo">
-          <img src="jsir-logo-black.png" alt="Jameson Sotheby's International Realty" class="footer-logo-jsir">
+          <img src="neistat-logo-white.png" alt="The Neistat Group" class="footer-logo">
+          <img src="jsir-logo-white.png" alt="Jameson Sotheby's International Realty" class="footer-logo-jsir">
+          <p class="footer-addr">425 W. North Avenue<br>Chicago, Illinois 60610</p>
         </div>
-        <div class="footer-links">
-          <a href="index.html">home</a>
-          <a href="about.html">about</a>
-          <a href="contact.html">contact</a>
-          <a href="https://www.instagram.com/matt_neistat/" target="_blank">instagram</a>
-          <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">linkedin</a>
+        <div class="footer-nav">
+          <span class="footer-nav-title">Navigate</span>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-nav">
+          <span class="footer-nav-title">Connect</span>
+          <a href="tel:+18477142913">847.714.2913</a>
+          <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
+        </div>
+        <div class="footer-nav">
+          <span class="footer-nav-title">Follow</span>
+          <a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <div class="footer-contact">
-          <a href="tel:+18477142913">847.714.2913</a>
-          <span>&bull;</span>
-          <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
-          <span>&bull;</span>
-          <span>425 W. North Avenue, Chicago IL 60610</span>
-        </div>
-        <span class="footer-copy">&copy; 2026 The Neistat Group. Licensed in the State of Illinois.</span>
+      <div class="footer-bar">
+        <span>&copy; 2026 The Neistat Group. All rights reserved.</span>
+        <span>Licensed in the State of Illinois</span>
       </div>
     </div>
   </footer>
