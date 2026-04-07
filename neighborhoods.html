@@ -114,6 +114,7 @@
 
   <script src="main.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gqvDCyKTmo-ze3seKvolj_U9I-lNRWs"></script>
+  <script src="neighborhoods-data.js"></script>
   <script>
     const map = new google.maps.Map(document.getElementById('neighborhood-map'), {
       center: { lat: 41.916, lng: -87.655 },
@@ -134,7 +135,8 @@
       gestureHandling: 'cooperative'
     });
 
-    const hoods = {
+    // Full-resolution boundaries loaded from neighborhoods-data.js
+    const hoods = HOOD_DATA || {
       'the-loop': {
         color: '#1a1a1a', label: 'The Loop',
         desc: 'The heart of downtown Chicago. Michigan Avenue, Millennium Park, the Art Institute, and the financial district.',
