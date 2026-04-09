@@ -535,8 +535,9 @@
               <div class="cc-line" id="s-transfer-row"><span class="cc-line-label" id="s-transfer-label">City/Municipal Transfer Tax</span><span class="cc-line-value" id="s-transfer">$1,500</span></div>
 
               <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Title Costs</div>
-              <div class="cc-line"><span class="cc-line-label">Escrow / Closing Fee</span><span class="cc-line-value" id="s-escrow-fee">$1,750</span></div>
+              <div class="cc-line"><span class="cc-line-label">Escrow / Closing Fee</span><span class="cc-line-value" id="s-escrow-fee">$2,500</span></div>
               <div class="cc-line"><span class="cc-line-label">Owner's Title Insurance</span><span class="cc-line-value" id="s-title">$2,500</span></div>
+              <div class="cc-line"><span class="cc-line-label">Title Fees <span style="opacity:0.5">(misc)</span></span><span class="cc-line-value" id="s-title-fees">$1,043</span></div>
               <div class="cc-line"><span class="cc-line-label">Transfer Stamp Fee</span><span class="cc-line-value" id="s-stamp">$160</span></div>
               <div class="cc-line"><span class="cc-line-label">Search & Commitment Fee</span><span class="cc-line-value" id="s-search">$290</span></div>
               <div class="cc-line"><span class="cc-line-label">Commitment Update Fee</span><span class="cc-line-value" id="s-update">$165</span></div>
@@ -932,13 +933,16 @@
       const municipalTransfer = (price / cityTax.per) * cityTax.rate;
 
       // Title costs (Proper Title rates)
-      // Escrow/closing fee: tiered by price
-      let sellerEscrowFee = 1500;
-      if (price > 750000) sellerEscrowFee = 1750;
-      if (price > 1000000) sellerEscrowFee = 2000;
-      if (price < 300000) sellerEscrowFee = 1200;
+      // Escrow/closing fee: tiered by price (matches buyer tiers)
+      let sellerEscrowFee = 2500;
+      if (price > 750000) sellerEscrowFee = 2745;
+      if (price > 1000000) sellerEscrowFee = 3000;
+      if (price < 300000) sellerEscrowFee = 1800;
 
       const titleIns = price * 0.005;                    // ~$5 per $1,000
+      // Misc title fees: e-recording, courier, email, express mail, e-doc, IPLD,
+      // tax service, package delivery, chain of title, revolving credit mortgage
+      const sellerTitleFees = 1043;
       const stampFee = 160;
       const searchFee = 290;
       const updateFee = 165;
@@ -974,7 +978,7 @@
       const misc = 495;
 
       // Title subtotal
-      const titleTotal = sellerEscrowFee + titleIns + stampFee + searchFee + updateFee + payoffWireCPL + ilPolicyFee + waterCert + survey + zoningCert;
+      const titleTotal = sellerEscrowFee + titleIns + sellerTitleFees + stampFee + searchFee + updateFee + payoffWireCPL + ilPolicyFee + waterCert + survey + zoningCert;
 
       // Grand total
       const totalClosing = listCommAmt + buyCommAmt + stateTransfer + countyTransfer + municipalTransfer + titleTotal + taxProration + hoaProration + buyerCredit + attorney + mortgage + misc;
@@ -996,6 +1000,7 @@
       }
       el('s-escrow-fee').textContent = fmt(sellerEscrowFee);
       el('s-title').textContent = fmt(titleIns);
+      el('s-title-fees').textContent = fmt(sellerTitleFees);
       el('s-stamp').textContent = fmt(stampFee);
       el('s-search').textContent = fmt(searchFee);
       el('s-update').textContent = fmt(updateFee);
