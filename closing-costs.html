@@ -308,13 +308,19 @@
                 <input type="number" class="cc-input" id="b-rate" value="6.75" step="0.05" min="0">
               </div>
             </div>
-            <div class="cc-group">
-              <label class="cc-label">Loan Type</label>
-              <select class="cc-select" id="b-loan-type">
-                <option value="conventional">Conventional</option>
-                <option value="fha">FHA</option>
-                <option value="va">VA</option>
-              </select>
+            <div class="cc-row">
+              <div class="cc-group">
+                <label class="cc-label">Loan Type</label>
+                <select class="cc-select" id="b-loan-type">
+                  <option value="conventional">Conventional</option>
+                  <option value="fha">FHA</option>
+                  <option value="va">VA</option>
+                </select>
+              </div>
+              <div class="cc-group">
+                <label class="cc-label">Origination Fee %</label>
+                <input type="number" class="cc-input" id="b-origination-pct" value="0" step="0.25" min="0" max="5">
+              </div>
             </div>
             <div class="cc-group">
               <label class="cc-label">Closing Date</label>
@@ -331,6 +337,12 @@
                 <input type="number" class="cc-input" id="b-insurance" value="1800" step="100">
               </div>
             </div>
+            <div class="cc-row">
+              <div class="cc-group">
+                <label class="cc-label">Monthly HOA Dues</label>
+                <input type="number" class="cc-input" id="b-hoa-dues" value="0" step="25" min="0">
+              </div>
+            </div>
           </div>
 
           <div class="cc-results">
@@ -339,7 +351,7 @@
               <div class="cc-total" id="b-total">$14,750</div>
               <div class="cc-total-sub" id="b-total-pct">2.95% of purchase price</div>
 
-              <div class="cc-line"><span class="cc-line-label">Loan Origination (1%)</span><span class="cc-line-value" id="b-origination">$4,000</span></div>
+              <div class="cc-line" id="b-origination-row"><span class="cc-line-label" id="b-origination-label">Loan Origination</span><span class="cc-line-value" id="b-origination">$0</span></div>
               <div class="cc-line"><span class="cc-line-label">Appraisal Fee</span><span class="cc-line-value" id="b-appraisal">$500</span></div>
               <div class="cc-line"><span class="cc-line-label">Title Insurance</span><span class="cc-line-value" id="b-title">$1,500</span></div>
               <div class="cc-line"><span class="cc-line-label">Title Search & Exam</span><span class="cc-line-value" id="b-title-search">$400</span></div>
@@ -350,6 +362,7 @@
               <div class="cc-line"><span class="cc-line-label">Prepaid Interest (15 days)</span><span class="cc-line-value" id="b-prepaid-int">$1,350</span></div>
               <div class="cc-line"><span class="cc-line-label">Escrow (Tax + Insurance)</span><span class="cc-line-value" id="b-escrow">$1,950</span></div>
               <div class="cc-line" id="b-pmi-row"><span class="cc-line-label">Mortgage Insurance (upfront)</span><span class="cc-line-value" id="b-pmi">$0</span></div>
+              <div class="cc-line" id="b-hoa-proration-row" style="display:none;"><span class="cc-line-label">HOA Proration (est.)</span><span class="cc-line-value" id="b-hoa-proration-val">$0</span></div>
               <div class="cc-line" style="color:rgba(100,200,150,0.9)"><span class="cc-line-label">Tax Proration Credit <span style="opacity:0.5" id="b-proration-detail"></span></span><span class="cc-line-value" style="color:rgba(100,200,150,0.9)" id="b-tax-proration">-$0</span></div>
               <div class="cc-line" style="border-top:2px solid rgba(255,255,255,0.12);margin-top:8px;padding-top:16px;">
                 <span class="cc-line-total-label">Total Closing Costs</span>
@@ -593,6 +606,7 @@
       const loanType = el('b-loan-type').value;
       const annualTax = +el('b-tax').value;
       const annualIns = +el('b-insurance').value;
+      const monthlyHoa = +el('b-hoa-dues').value;
       const prorationPct = +el('b-proration-pct').value / 100;
 
       // Closing date for proration & prepaid interest
@@ -611,7 +625,8 @@
       const downAmt = price * downPct;
       const loanAmt = price - downAmt;
 
-      const origination = loanAmt * 0.01;
+      const originationPct = +el('b-origination-pct').value / 100;
+      const origination = loanAmt * originationPct;
       const appraisal = 500;
       const titleIns = Math.max(800, price * 0.003);
       const titleSearch = 400;
@@ -636,9 +651,20 @@
       const daysIntoYear = closingDateVal ? 365 - daysRemaining : 113;
       const taxProrationCredit = proratedAnnualTax * (daysRemaining / 365);
 
-      const total = origination + appraisal + titleIns + titleSearch + survey + attorney + recording + inspection + prepaidInt + escrow + pmi - taxProrationCredit;
+      // HOA proration — buyer owes remaining days of the closing month
+      let hoaProration = 0;
+      if (monthlyHoa > 0 && closingDateVal) {
+        const cd = new Date(closingDateVal + 'T12:00:00');
+        const daysInMonth = new Date(cd.getFullYear(), cd.getMonth() + 1, 0).getDate();
+        const daysLeft = daysInMonth - cd.getDate();
+        hoaProration = (monthlyHoa / daysInMonth) * daysLeft;
+      }
+
+      const total = origination + appraisal + titleIns + titleSearch + survey + attorney + recording + inspection + prepaidInt + escrow + pmi + hoaProration - taxProrationCredit;
 
       el('b-origination').textContent = fmt(origination);
+      el('b-origination-row').style.display = origination > 0 ? 'flex' : 'none';
+      el('b-origination-label').textContent = 'Loan Origination (' + (originationPct * 100) + '%)';
       el('b-appraisal').textContent = fmt(appraisal);
       el('b-title').textContent = fmt(titleIns);
       el('b-title-search').textContent = fmt(titleSearch);
@@ -650,6 +676,8 @@
       el('b-escrow').textContent = fmt(escrow);
       el('b-pmi').textContent = fmt(pmi);
       el('b-pmi-row').style.display = pmi > 0 ? 'flex' : 'none';
+      el('b-hoa-proration-val').textContent = fmt(hoaProration);
+      el('b-hoa-proration-row').style.display = hoaProration > 0 ? 'flex' : 'none';
       el('b-tax-proration').textContent = '-' + fmt(taxProrationCredit);
       el('b-proration-detail').textContent = `(${daysRemaining} days remaining @ ${Math.round(prorationPct*100)}%)`;
       el('b-total').textContent = fmt(total);
@@ -741,7 +769,7 @@
     setupAutocomplete('b-address', 'b-county', 'b-city', 'b-address-hint', calcBuyer);
     setupAutocomplete('s-address', 's-county', 's-city', 's-address-hint', calcSeller);
 
-    ['b-price','b-down','b-rate','b-loan-type','b-municipality','b-county','b-tax','b-insurance','b-closing-date','b-proration-pct'].forEach(id => {
+    ['b-price','b-down','b-rate','b-loan-type','b-origination-pct','b-municipality','b-county','b-tax','b-insurance','b-hoa-dues','b-closing-date','b-proration-pct'].forEach(id => {
       el(id).addEventListener('input', calcBuyer);
     });
     calcBuyer();
