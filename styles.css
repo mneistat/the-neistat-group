@@ -199,6 +199,17 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .tc-dot.active { background: var(--gold); transform: scale(1.25); }
 @media (max-width: 1100px) { .tc-prev { left: 0; } .tc-next { right: 0; } .tc-arrow { background: rgba(0,43,92,0.6); border-color: transparent; } }
 
+/* --- Press Bar --- */
+.press-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: clamp(40px,5vw,60px) 0; }
+.press-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); display: block; margin-bottom: 28px; }
+.press-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.press-item { text-decoration: none; }
+a.press-item:hover .press-name { color: var(--blue); }
+.press-name { display: block; font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; transition: color 0.3s; }
+.press-desc { display: block; font-size: 13px; font-style: italic; color: var(--text-light); line-height: 1.5; }
+@media (max-width: 768px) { .press-items { grid-template-columns: 1fr 1fr; gap: 24px; } }
+@media (max-width: 480px) { .press-items { grid-template-columns: 1fr; } }
+
 /* --- CTA --- */
 .cta-block { position: relative; border-radius: 24px; overflow: hidden; padding: clamp(64px,10vw,140px) clamp(32px,5vw,80px); text-align: center; }
 .cta-media { position: absolute; inset: 0; }
