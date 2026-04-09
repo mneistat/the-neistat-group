@@ -531,8 +531,8 @@
 
               <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:8px 0 4px;">Transfer Taxes</div>
               <div class="cc-line"><span class="cc-line-label">Illinois Transfer Tax <span style="opacity:0.5">($0.50/$500)</span></span><span class="cc-line-value" id="s-state-transfer">$500</span></div>
-              <div class="cc-line"><span class="cc-line-label">Cook County Transfer Tax <span style="opacity:0.5">($0.25/$500)</span></span><span class="cc-line-value" id="s-county-transfer">$250</span></div>
-              <div class="cc-line"><span class="cc-line-label">City/Municipal Transfer Tax</span><span class="cc-line-value" id="s-transfer">$1,500</span></div>
+              <div class="cc-line" id="s-county-transfer-row"><span class="cc-line-label" id="s-county-transfer-label">County Transfer Tax <span style="opacity:0.5">($0.25/$500)</span></span><span class="cc-line-value" id="s-county-transfer">$250</span></div>
+              <div class="cc-line" id="s-transfer-row"><span class="cc-line-label" id="s-transfer-label">City/Municipal Transfer Tax</span><span class="cc-line-value" id="s-transfer">$1,500</span></div>
 
               <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Title Costs</div>
               <div class="cc-line"><span class="cc-line-label">Owner's Title Insurance</span><span class="cc-line-value" id="s-title">$2,500</span></div>
@@ -887,13 +887,13 @@
     // Municipal: varies by city
 
     const countyRates = {
-      cook:    { rate: 0.25, per: 500, label: 'Cook County' },      // $0.25/$500
-      dupage:  { rate: 0.25, per: 500, label: 'DuPage County' },    // $0.25/$500 (some areas)
-      lake:    { rate: 0.25, per: 500, label: 'Lake County' },
-      will:    { rate: 0.25, per: 500, label: 'Will County' },
-      kane:    { rate: 0.25, per: 500, label: 'Kane County' },
-      mchenry: { rate: 0.25, per: 500, label: 'McHenry County' },
-      other:   { rate: 0.25, per: 500, label: 'County' },
+      cook:    { rate: 0.25, per: 500, label: 'Cook County' },
+      dupage:  { rate: 0, per: 500, label: 'DuPage County' },       // no county transfer tax
+      lake:    { rate: 0, per: 500, label: 'Lake County' },          // no county transfer tax
+      will:    { rate: 0, per: 500, label: 'Will County' },          // no county transfer tax
+      kane:    { rate: 0, per: 500, label: 'Kane County' },          // no county transfer tax
+      mchenry: { rate: 0, per: 500, label: 'McHenry County' },      // no county transfer tax
+      other:   { rate: 0, per: 500, label: 'County' },
     };
 
     const muniRates = {
@@ -978,7 +978,15 @@
       el('s-buy-val').textContent = fmt(buyCommAmt);
       el('s-state-transfer').textContent = fmt(stateTransfer);
       el('s-county-transfer').textContent = fmt(countyTransfer);
+      el('s-county-transfer-row').style.display = countyTransfer > 0 ? 'flex' : 'none';
+      el('s-county-transfer-label').innerHTML = cData.label + ' Transfer Tax <span style="opacity:0.5">($' + cData.rate.toFixed(2) + '/$500)</span>';
       el('s-transfer').textContent = fmt(municipalTransfer);
+      el('s-transfer-row').style.display = municipalTransfer > 0 ? 'flex' : 'none';
+      if (cityTax.rate > 0) {
+        el('s-transfer-label').innerHTML = city + ' Transfer Tax <span style="opacity:0.5">($' + cityTax.rate.toFixed(2) + '/$500)</span>';
+      } else {
+        el('s-transfer-label').textContent = 'City/Municipal Transfer Tax';
+      }
       el('s-title').textContent = fmt(titleIns);
       el('s-stamp').textContent = fmt(stampFee);
       el('s-search').textContent = fmt(searchFee);
