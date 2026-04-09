@@ -70,7 +70,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .nav-dark .nav-link:hover, .nav-dark .nav-link.active { color: var(--navy); }
 
 .nav-dropdown { position: relative; }
-.nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 16px; background: var(--white); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,43,92,0.12); padding: 8px 0; min-width: 200px; opacity: 0; visibility: hidden; transition: all 0.3s var(--ease); pointer-events: none; }
+.nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 12px; opacity: 0; visibility: hidden; transition: all 0.3s var(--ease); pointer-events: none; }
+.nav-dropdown-menu-inner { background: var(--white); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,43,92,0.12); padding: 8px 0; min-width: 200px; }
 .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
 .nav-dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--text-light); transition: all 0.2s; white-space: nowrap; }
 .nav-dropdown-menu a:hover { color: var(--navy); background: rgba(0,43,92,0.04); }
