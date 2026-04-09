@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buyer Closing Costs | The Neistat Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .cc-page { padding: clamp(160px,20vw,240px) 0 clamp(80px,12vw,160px); }
+
+    .cc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px,6vw,80px);
+      align-items: start;
+    }
+
+    .cc-form {
+      background: var(--white);
+      padding: clamp(32px,4vw,48px);
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,43,92,0.04);
+    }
+
+    .cc-group { margin-bottom: 24px; }
+
+    .cc-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .cc-input {
+      width: 100%;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy);
+      padding: 14px 16px;
+      border: 2px solid rgba(0,43,92,0.08);
+      border-radius: 12px;
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.3s;
+      -webkit-appearance: none;
+    }
+
+    .cc-input:focus { border-color: var(--gold); }
+
+    .cc-input-prefix {
+      display: flex;
+      align-items: center;
+      border: 2px solid rgba(0,43,92,0.08);
+      border-radius: 12px;
+      background: var(--cream);
+      padding-left: 16px;
+      transition: border-color 0.3s;
+    }
+    .cc-input-prefix:focus-within { border-color: var(--gold); }
+    .cc-input-prefix span {
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-right: 4px;
+    }
+    .cc-input-prefix .cc-input { flex: 1; }
+
+    .cc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .cc-select {
+      width: 100%;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy);
+      padding: 14px 16px;
+      border: 2px solid rgba(0,43,92,0.08);
+      border-radius: 12px;
+      background: var(--cream);
+      outline: none;
+      cursor: pointer;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23C9A96E' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+
+    .cc-select:focus { border-color: var(--gold); }
+
+    /* Results */
+    .cc-results { position: sticky; top: 120px; }
+
+    .cc-results-card {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: clamp(32px,4vw,48px);
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .cc-results-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .cc-total {
+      font-family: var(--font);
+      font-size: clamp(36px,5vw,52px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .cc-total-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 32px;
+    }
+
+    .cc-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 14px;
+    }
+
+    .cc-line:last-child { border-bottom: none; }
+
+    .cc-line-label { color: rgba(255,255,255,0.6); }
+    .cc-line-value { font-weight: 600; color: var(--white); }
+    .cc-line-total { font-weight: 800; font-size: 16px; color: var(--gold); }
+    .cc-line-total-label { font-weight: 700; color: var(--white); font-size: 15px; }
+
+    .cc-net-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 1px 0 var(--border);
+      margin-bottom: 20px;
+    }
+
+    .cc-net-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .cc-net-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+
+    .cc-disclaimer {
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(0,43,92,0.02);
+      border-radius: 10px;
+    }
+
+    .cc-cta {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .cc-cta p { font-size: 15px; color: var(--text-light); margin-bottom: 20px; line-height: 1.6; }
+    .cc-cta .btn { width: 100%; justify-content: center; }
+
+    .cc-address-hint {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gold);
+      min-height: 18px;
+      transition: opacity 0.3s;
+    }
+
+    @media (max-width: 1024px) {
+      .cc-grid { grid-template-columns: 1fr; }
+      .cc-results { position: static; }
+    }
+
+    @media (max-width: 768px) {
+      .cc-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav nav-dark" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="neistat-logo-white.png" alt="The Neistat Group" class="nav-logo-img nav-logo-light">
+        <img src="neistat-logo-black.png" alt="The Neistat Group" class="nav-logo-img nav-logo-dark">
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+        <div class="nav-dropdown"><a href="calculator.html" class="nav-link active">Calculators <span class="nav-dropdown-arrow">&#9662;</span></a><div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner"><a href="calculator.html">Mortgage Calculator</a><a href="buyer-closing-costs.html">Buyer Closing Costs</a><a href="seller-closing-costs.html">Seller Closing Costs</a></div></div></div>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Get in Touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="index.html" class="mobile-menu-link">Home</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="search.html" class="mobile-menu-link">Search Properties</a>
+      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="calculator.html" class="mobile-menu-link">Calculators</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
+    </div>
+  </div>
+
+  <section class="cc-page">
+    <div class="container">
+      <span class="label reveal">Tools</span>
+      <h1 class="heading-lg reveal" style="margin-bottom:12px;">Buyer <em>Closing Costs</em></h1>
+      <p class="body-text reveal" style="max-width:560px;margin-bottom:36px;">Estimate your total closing costs as a buyer for any Illinois property, including title fees, transfer taxes, and prorations.</p>
+
+      <div class="cc-grid">
+        <div class="cc-form">
+          <div class="cc-group">
+            <label class="cc-label">Property Address</label>
+            <input type="text" class="cc-input" id="b-address" placeholder="Enter property address" autocomplete="off">
+            <span class="cc-address-hint" id="b-address-hint"></span>
+          </div>
+          <div class="cc-row">
+            <div class="cc-group">
+              <label class="cc-label">County</label>
+              <select class="cc-select" id="b-county">
+                <option value="cook">Cook County</option>
+                <option value="dupage">DuPage County</option>
+                <option value="lake">Lake County</option>
+                <option value="will">Will County</option>
+                <option value="kane">Kane County</option>
+                <option value="mchenry">McHenry County</option>
+                <option value="other">Other IL County</option>
+              </select>
+            </div>
+            <div class="cc-group">
+              <label class="cc-label">City</label>
+              <select class="cc-select" id="b-city"></select>
+            </div>
+          </div>
+          <div class="cc-group">
+            <label class="cc-label">Purchase Price</label>
+            <div class="cc-input-prefix"><span>$</span><input type="number" class="cc-input" id="b-price" value="500000" step="5000" style="border:none;padding-left:0;background:transparent;"></div>
+          </div>
+          <div class="cc-row">
+            <div class="cc-group">
+              <label class="cc-label">Down Payment %</label>
+              <input type="number" class="cc-input" id="b-down" value="20" step="1" min="0" max="100">
+            </div>
+            <div class="cc-group">
+              <label class="cc-label">Interest Rate %</label>
+              <input type="number" class="cc-input" id="b-rate" value="6.25" step="0.05" min="0">
+            </div>
+          </div>
+          <div class="cc-row">
+            <div class="cc-group">
+              <label class="cc-label">Loan Type</label>
+              <select class="cc-select" id="b-loan-type">
+                <option value="conventional">Conventional</option>
+                <option value="fha">FHA</option>
+                <option value="va">VA</option>
+              </select>
+            </div>
+            <div class="cc-group">
+              <label class="cc-label">Property Type</label>
+              <select class="cc-select" id="b-condo">
+                <option value="condo">Condo / Townhome</option>
+                <option value="house">Single Family Home</option>
+              </select>
+            </div>
+          </div>
+          <div class="cc-row">
+            <div class="cc-group">
+              <label class="cc-label">Origination / Lender Fee</label>
+              <div style="display:flex;gap:8px;">
+                <input type="number" class="cc-input" id="b-origination-val" value="0" step="0.25" min="0" style="flex:1;">
+                <select class="cc-select" id="b-origination-mode" style="width:90px;flex:none;text-align:center;padding-left:12px;padding-right:30px;">
+                  <option value="pct">%</option>
+                  <option value="flat">$</option>
+                </select>
+              </div>
+            </div>
+            <div class="cc-group">
+              <label class="cc-label">Closing Date</label>
+              <input type="date" class="cc-input" id="b-closing-date" value="">
+            </div>
+          </div>
+          <input type="hidden" id="b-proration-pct" value="105">
+          <div class="cc-row">
+            <div class="cc-group">
+              <label class="cc-label">Annual Property Tax</label>
+              <div class="cc-input-prefix"><span>$</span><input type="number" class="cc-input" id="b-tax" value="6000" step="100" style="border:none;padding-left:0;background:transparent;"></div>
+            </div>
+            <div class="cc-group">
+              <label class="cc-label">Insurance (annual)</label>
+              <div class="cc-input-prefix"><span>$</span><input type="number" class="cc-input" id="b-insurance" value="1800" step="100" style="border:none;padding-left:0;background:transparent;"></div>
+            </div>
+          </div>
+          <div class="cc-row">
+            <div class="cc-group">
+              <label class="cc-label">Monthly HOA Dues</label>
+              <div class="cc-input-prefix"><span>$</span><input type="number" class="cc-input" id="b-hoa-dues" value="0" step="25" min="0" style="border:none;padding-left:0;background:transparent;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cc-results">
+          <div class="cc-results-card">
+            <span class="cc-results-label">Estimated Buyer Closing Costs</span>
+            <div class="cc-total" id="b-total">$14,750</div>
+            <div class="cc-total-sub" id="b-total-pct">2.95% of purchase price</div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:8px 0 4px;">Lender Fees</div>
+            <div class="cc-line" id="b-origination-row"><span class="cc-line-label" id="b-origination-label">Origination / Lender Fee</span><span class="cc-line-value" id="b-origination">$0</span></div>
+            <div class="cc-line"><span class="cc-line-label">Appraisal Fee</span><span class="cc-line-value" id="b-appraisal">$600</span></div>
+            <div class="cc-line"><span class="cc-line-label" id="b-prepaid-int-label">Prepaid Interest</span><span class="cc-line-value" id="b-prepaid-int">$0</span></div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Title & Escrow</div>
+            <div class="cc-line"><span class="cc-line-label">Escrow / Closing Fee</span><span class="cc-line-value" id="b-escrow-fee">$0</span></div>
+            <div class="cc-line"><span class="cc-line-label">Lender's Title Insurance</span><span class="cc-line-value" id="b-title">$0</span></div>
+            <div class="cc-line"><span class="cc-line-label">Title Fees <span style="opacity:0.5">(misc)</span></span><span class="cc-line-value" id="b-title-fees">$0</span></div>
+            <div class="cc-line" id="b-survey-row"><span class="cc-line-label">Survey <span style="opacity:0.5">(non-condo)</span></span><span class="cc-line-value" id="b-survey">$500</span></div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Recording & Transfer</div>
+            <div class="cc-line"><span class="cc-line-label">Recording Fees <span style="opacity:0.5">(deed + mortgage)</span></span><span class="cc-line-value" id="b-recording">$214</span></div>
+            <div class="cc-line" id="b-city-transfer-row"><span class="cc-line-label" id="b-city-transfer-label">City Transfer Tax (Buyer)</span><span class="cc-line-value" id="b-city-transfer">$0</span></div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Impounds</div>
+            <div class="cc-line"><span class="cc-line-label">Homeowner's Insurance</span><span class="cc-line-value" id="b-impounds-ins">$0</span></div>
+            <div class="cc-line"><span class="cc-line-label">County Taxes <span style="opacity:0.5">(2 months)</span></span><span class="cc-line-value" id="b-impounds-tax">$0</span></div>
+            <div class="cc-line" id="b-pmi-row"><span class="cc-line-label">Mortgage Insurance (upfront)</span><span class="cc-line-value" id="b-pmi">$0</span></div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Prorations & Credits</div>
+            <div class="cc-line" id="b-hoa-proration-row" style="display:none;"><span class="cc-line-label">HOA Proration (est.)</span><span class="cc-line-value" id="b-hoa-proration-val">$0</span></div>
+            <div class="cc-line" style="color:rgba(100,200,150,0.9)"><span class="cc-line-label">Tax Proration Credit <span style="opacity:0.5" id="b-proration-detail"></span></span><span class="cc-line-value" style="color:rgba(100,200,150,0.9)" id="b-tax-proration">-$0</span></div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Other</div>
+            <div class="cc-line"><span class="cc-line-label">Attorney Fees</span><span class="cc-line-value" id="b-attorney">$850</span></div>
+            <div class="cc-line"><span class="cc-line-label">Flat Brokerage Fee</span><span class="cc-line-value" id="b-brokerage-fee">$495</span></div>
+
+            <div class="cc-line" style="border-top:2px solid rgba(255,255,255,0.12);margin-top:8px;padding-top:16px;">
+              <span class="cc-line-total-label">Total Closing Costs</span>
+              <span class="cc-line-total" id="b-total-bottom">$0</span>
+            </div>
+          </div>
+
+          <div class="cc-net-card">
+            <span class="cc-net-label">Total Cash Needed at Closing</span>
+            <span class="cc-net-value" id="b-cash-needed">$114,750</span>
+          </div>
+
+          <div class="cc-disclaimer">These are estimates only. Tax prorations are calculated at 105% of the prior year's tax bill, which is standard in most Illinois transactions but may vary by contract. Actual closing costs will depend on lender fees, title company rates, contract terms, and property-specific details. Contact Matthew for a personalized estimate.</div>
+
+          <div class="cc-cta" style="margin-top:20px;">
+            <p>Want an exact breakdown for a specific property?</p>
+            <a href="contact.html" class="btn btn-gold">Get a Custom Estimate</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand"><img src="neistat-logo-white.png" alt="The Neistat Group" class="footer-logo"><img src="jsir-logo-white.png" alt="JSIR" class="footer-logo-jsir"><p class="footer-addr">425 W. North Avenue<br>Chicago, Illinois 60610</p></div>
+        <div class="footer-nav"><span class="footer-nav-title">Navigate</span><a href="index.html">Home</a><a href="about.html">About</a><a href="calculator.html">Calculators</a><a href="contact.html">Contact</a></div>
+        <div class="footer-nav"><span class="footer-nav-title">Connect</span><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a></div>
+        <div class="footer-nav"><span class="footer-nav-title">Follow</span><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
+      </div>
+      <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>Licensed in the State of Illinois</span></div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gqvDCyKTmo-ze3seKvolj_U9I-lNRWs&libraries=places"></script>
+  <script>
+    const fmt = n => '$' + Math.round(n).toLocaleString();
+    const el = id => document.getElementById(id);
+
+    // --- CITY DATA BY COUNTY ---
+    const citiesByCounty = {
+      cook: ['Chicago','Arlington Heights','Barrington','Bedford Park','Berwyn','Blue Island','Bridgeview','Broadview','Brookfield','Buffalo Grove','Burbank','Calumet City','Chicago Heights','Cicero','Country Club Hills','Des Plaines','Dolton','Elk Grove Village','Elmwood Park','Evanston','Evergreen Park','Forest Park','Franklin Park','Glenview','Harvey','Hazel Crest','Hickory Hills','Hillside','Hoffman Estates','Homewood','Justice','La Grange','Lansing','Lyons','Markham','Matteson','Maywood','Melrose Park','Morton Grove','Mount Prospect','Niles','Norridge','Northbrook','Oak Forest','Oak Lawn','Oak Park','Olympia Fields','Orland Park','Palatine','Palos Heights','Palos Hills','Park Forest','Park Ridge','Richton Park','River Forest','River Grove','Riverside','Rolling Meadows','Rosemont','Schaumburg','Schiller Park','Skokie','South Holland','Stickney','Streamwood','Summit','Tinley Park','Wheeling','Wilmette','Winnetka','Worth','Other'],
+      dupage: ['Addison','Aurora','Bartlett','Bensenville','Bloomingdale','Bolingbrook','Burr Ridge','Carol Stream','Clarendon Hills','Darien','Downers Grove','Elmhurst','Glen Ellyn','Glendale Heights','Hanover Park','Hinsdale','Itasca','Lisle','Lombard','Naperville','Oak Brook','Roselle','Villa Park','Warrenville','Wayne','West Chicago','Westmont','Wheaton','Willowbrook','Winfield','Wood Dale','Woodridge','Other'],
+      lake: ['Antioch','Bannockburn','Barrington','Beach Park','Buffalo Grove','Deerfield','Fox Lake','Grayslake','Green Oaks','Gurnee','Hawthorn Woods','Highland Park','Highwood','Island Lake','Kildeer','Lake Bluff','Lake Forest','Lake Villa','Lake Zurich','Libertyville','Lincolnshire','Lindenhurst','Long Grove','Mundelein','North Chicago','Round Lake','Round Lake Beach','Vernon Hills','Wadsworth','Waukegan','Wauconda','Winthrop Harbor','Zion','Other'],
+      will: ['Beecher','Bolingbrook','Braidwood','Channahon','Coal City','Crest Hill','Crete','Elwood','Frankfort','Homer Glen','Joliet','Lemont','Lockport','Manhattan','Minooka','Mokena','Monee','New Lenox','Orland Park','Peotone','Plainfield','Romeoville','Shorewood','Tinley Park','University Park','Wilmington','Woodridge','Other'],
+      kane: ['Algonquin','Aurora','Batavia','Burlington','Carpentersville','East Dundee','Elburn','Elgin','Geneva','Gilberts','Hampshire','Huntley','Kaneville','Maple Park','Montgomery','North Aurora','Pingree Grove','South Elgin','St. Charles','Sugar Grove','West Dundee','Other'],
+      mchenry: ['Algonquin','Bull Valley','Cary','Crystal Lake','Fox River Grove','Harvard','Hebron','Huntley','Island Lake','Johnsburg','Lake in the Hills','Lakemoor','Lakewood','Marengo','McHenry','Oakwood Hills','Prairie Grove','Richmond','Spring Grove','Union','Wonder Lake','Woodstock','Other'],
+      other: ['Other']
+    };
+
+    // Municipal transfer tax rates for cities that have them
+    const cityTransferTax = {
+      'Chicago': { rate: 1.50, per: 500 },
+      'Evanston': { rate: 2.50, per: 500 },
+      'Oak Park': { rate: 1.50, per: 500 },
+      'Skokie': { rate: 1.50, per: 500 },
+      'Naperville': { rate: 0.75, per: 500 },
+      'Highland Park': { rate: 2.50, per: 500 },
+      'Lake Forest': { rate: 1.00, per: 500 },
+      'Elmhurst': { rate: 0.50, per: 500 },
+      'Hinsdale': { rate: 0.50, per: 500 },
+      'Joliet': { rate: 0.50, per: 500 },
+    };
+
+    // Buyer transfer tax rates by city
+    const buyerTransferTax = {
+      'Chicago': { rate: 3.75, per: 500, label: 'Chicago' },
+    };
+
+    function populateCities(countyId, cityId) {
+      const county = el(countyId).value;
+      const citySelect = el(cityId);
+      const cities = citiesByCounty[county] || ['Other'];
+      citySelect.innerHTML = cities.map(c => `<option value="${c}">${c}</option>`).join('');
+    }
+
+    function getCityTaxRate(cityName) {
+      return cityTransferTax[cityName] || { rate: 0, per: 500 };
+    }
+
+    // Initialize city dropdown
+    populateCities('b-county', 'b-city');
+
+    // Update cities when county changes
+    el('b-county').addEventListener('change', () => { populateCities('b-county', 'b-city'); calcBuyer(); });
+    el('b-city').addEventListener('change', calcBuyer);
+
+    // Set default closing date
+    const bDefaultDate = new Date(Date.now() + 30*86400000);
+    el('b-closing-date').value = bDefaultDate.toISOString().split('T')[0];
+
+    function calcBuyer() {
+      const price = +el('b-price').value;
+      const downPct = +el('b-down').value / 100;
+      const rate = +el('b-rate').value;
+      const loanType = el('b-loan-type').value;
+      const isCondo = el('b-condo').value === 'condo';
+      const city = el('b-city').value;
+      const annualTax = +el('b-tax').value;
+      const annualIns = +el('b-insurance').value;
+      const monthlyHoa = +el('b-hoa-dues').value;
+      const prorationPct = +el('b-proration-pct').value / 100;
+
+      // Closing date for proration & prepaid interest
+      const closingDateVal = el('b-closing-date').value;
+      let daysRemaining = 252;
+      let prepaidDays = 15;
+      if (closingDateVal) {
+        const cd = new Date(closingDateVal + 'T12:00:00');
+        const endOfYear = new Date(cd.getFullYear(), 11, 31);
+        daysRemaining = Math.floor((endOfYear - cd) / 86400000) + 1;
+        const daysInMonth = new Date(cd.getFullYear(), cd.getMonth() + 1, 0).getDate();
+        prepaidDays = daysInMonth - cd.getDate() + 1;
+      }
+
+      const downAmt = price * downPct;
+      const loanAmt = price - downAmt;
+
+      // --- Lender Fees ---
+      const origMode = el('b-origination-mode').value;
+      const origInput = +el('b-origination-val').value;
+      const origination = origMode === 'pct' ? loanAmt * (origInput / 100) : origInput;
+      const appraisal = 600;
+      const prepaidInt = (loanAmt * (rate / 100) / 365) * prepaidDays;
+
+      // --- Title & Escrow (Proper Title rates) ---
+      let escrowFee = 2500;
+      if (price > 750000) escrowFee = 2745;
+      if (price > 1000000) escrowFee = 3000;
+      if (price < 300000) escrowFee = 1800;
+
+      const titleIns = Math.max(500, loanAmt * 0.000875);
+      const titleFees = 1043;
+      const survey = isCondo ? 0 : 500;
+
+      // --- Recording & Transfer ---
+      const recording = 214;
+      const buyerCityTax = buyerTransferTax[city] || { rate: 0, per: 500 };
+      const cityTransfer = (price / buyerCityTax.per) * buyerCityTax.rate;
+
+      // --- Prepaid & Escrow (Impounds) ---
+      const impoundsIns = annualIns;
+      const impoundsTax = (annualTax / 12) * 2;
+      const impounds = impoundsIns + impoundsTax;
+
+      let pmi = 0;
+      if (loanType === 'fha') {
+        pmi = loanAmt * 0.0175;
+      } else if (loanType === 'conventional' && downPct < 0.20) {
+        pmi = loanAmt * 0.005;
+      }
+
+      // --- Prorations ---
+      const proratedAnnualTax = annualTax * prorationPct;
+      const taxProrationCredit = proratedAnnualTax * (daysRemaining / 365);
+
+      let hoaProration = 0;
+      if (monthlyHoa > 0 && closingDateVal) {
+        const cd = new Date(closingDateVal + 'T12:00:00');
+        const daysInMonth = new Date(cd.getFullYear(), cd.getMonth() + 1, 0).getDate();
+        const daysLeft = daysInMonth - cd.getDate();
+        hoaProration = (monthlyHoa / daysInMonth) * daysLeft;
+      }
+
+      // --- Other ---
+      const attorney = 850;
+      const brokerageFee = 495;
+
+      // --- Total ---
+      const total = origination + appraisal + prepaidInt + escrowFee + titleIns + titleFees + survey + recording + cityTransfer + impounds + pmi + hoaProration + attorney + brokerageFee - taxProrationCredit;
+
+      // --- Update display ---
+      el('b-origination').textContent = fmt(origination);
+      el('b-origination-row').style.display = origination > 0 ? 'flex' : 'none';
+      el('b-origination-label').textContent = origMode === 'pct' && origInput > 0
+        ? 'Origination / Lender Fee (' + origInput + '%)'
+        : 'Origination / Lender Fee';
+      el('b-appraisal').textContent = fmt(appraisal);
+      el('b-prepaid-int').textContent = fmt(prepaidInt);
+      el('b-prepaid-int-label').textContent = 'Prepaid Interest (' + prepaidDays + ' days)';
+
+      el('b-escrow-fee').textContent = fmt(escrowFee);
+      el('b-title').textContent = fmt(titleIns);
+      el('b-title-fees').textContent = fmt(titleFees);
+      el('b-survey').textContent = fmt(survey);
+      el('b-survey-row').style.display = isCondo ? 'none' : 'flex';
+
+      el('b-recording').textContent = fmt(recording);
+      el('b-city-transfer').textContent = fmt(cityTransfer);
+      el('b-city-transfer-row').style.display = cityTransfer > 0 ? 'flex' : 'none';
+      if (buyerCityTax.rate > 0) {
+        el('b-city-transfer-label').textContent = city + ' Transfer Tax (Buyer) ($' + buyerCityTax.rate.toFixed(2) + '/$500)';
+      }
+
+      el('b-impounds-ins').textContent = fmt(impoundsIns);
+      el('b-impounds-tax').textContent = fmt(impoundsTax);
+      el('b-pmi').textContent = fmt(pmi);
+      el('b-pmi-row').style.display = pmi > 0 ? 'flex' : 'none';
+
+      el('b-hoa-proration-val').textContent = fmt(hoaProration);
+      el('b-hoa-proration-row').style.display = hoaProration > 0 ? 'flex' : 'none';
+      el('b-tax-proration').textContent = '-' + fmt(taxProrationCredit);
+      el('b-proration-detail').textContent = '(' + daysRemaining + ' days @ ' + Math.round(prorationPct*100) + '%)';
+
+      el('b-attorney').textContent = fmt(attorney);
+      el('b-brokerage-fee').textContent = fmt(brokerageFee);
+
+      el('b-total').textContent = fmt(total);
+      el('b-total-bottom').textContent = fmt(total);
+      el('b-total-pct').textContent = (total / price * 100).toFixed(2) + '% of purchase price';
+      el('b-cash-needed').textContent = fmt(downAmt + total);
+    }
+
+    // --- ADDRESS DETECTION ---
+    const addressMap = [
+      { keys: ['chicago', '606'], muni: 'chicago', county: 'cook', label: 'Chicago, Cook County' },
+      { keys: ['evanston', '60201', '60202'], muni: 'evanston', county: 'cook', label: 'Evanston, Cook County' },
+      { keys: ['oak park', '60301', '60302', '60303', '60304'], muni: 'oak_park', county: 'cook', label: 'Oak Park, Cook County' },
+      { keys: ['skokie', '60076', '60077'], muni: 'skokie', county: 'cook', label: 'Skokie, Cook County' },
+      { keys: ['naperville', '60540', '60563', '60564', '60565'], muni: 'naperville', county: 'dupage', label: 'Naperville, DuPage County' },
+      { keys: ['wilmette', '60091'], muni: 'other', county: 'cook', label: 'Wilmette, Cook County' },
+      { keys: ['winnetka', '60093'], muni: 'other', county: 'cook', label: 'Winnetka, Cook County' },
+      { keys: ['glenview', '60025', '60026'], muni: 'other', county: 'cook', label: 'Glenview, Cook County' },
+      { keys: ['park ridge', '60068'], muni: 'other', county: 'cook', label: 'Park Ridge, Cook County' },
+      { keys: ['des plaines', '60016', '60017', '60018'], muni: 'other', county: 'cook', label: 'Des Plaines, Cook County' },
+      { keys: ['arlington heights', '60004', '60005'], muni: 'other', county: 'cook', label: 'Arlington Heights, Cook County' },
+      { keys: ['palatine', '60038', '60067', '60074'], muni: 'other', county: 'cook', label: 'Palatine, Cook County' },
+      { keys: ['schaumburg', '60173', '60194', '60195'], muni: 'other', county: 'cook', label: 'Schaumburg, Cook County' },
+      { keys: ['orland park', '60462', '60467'], muni: 'other', county: 'cook', label: 'Orland Park, Cook County' },
+      { keys: ['tinley park', '60477', '60487'], muni: 'other', county: 'cook', label: 'Tinley Park, Cook County' },
+      { keys: ['berwyn', '60402'], muni: 'other', county: 'cook', label: 'Berwyn, Cook County' },
+      { keys: ['niles', '60714'], muni: 'other', county: 'cook', label: 'Niles, Cook County' },
+      { keys: ['morton grove', '60053'], muni: 'other', county: 'cook', label: 'Morton Grove, Cook County' },
+      { keys: ['wheaton', '60187', '60189'], muni: 'other', county: 'dupage', label: 'Wheaton, DuPage County' },
+      { keys: ['downers grove', '60515', '60516'], muni: 'other', county: 'dupage', label: 'Downers Grove, DuPage County' },
+      { keys: ['elmhurst', '60126'], muni: 'other', county: 'dupage', label: 'Elmhurst, DuPage County' },
+      { keys: ['lombard', '60148'], muni: 'other', county: 'dupage', label: 'Lombard, DuPage County' },
+      { keys: ['highland park', '60035'], muni: 'other', county: 'lake', label: 'Highland Park, Lake County' },
+      { keys: ['lake forest', '60045'], muni: 'other', county: 'lake', label: 'Lake Forest, Lake County' },
+      { keys: ['libertyville', '60048'], muni: 'other', county: 'lake', label: 'Libertyville, Lake County' },
+      { keys: ['waukegan', '60085', '60087'], muni: 'other', county: 'lake', label: 'Waukegan, Lake County' },
+      { keys: ['joliet', '60431', '60432', '60433', '60434', '60435', '60436'], muni: 'other', county: 'will', label: 'Joliet, Will County' },
+      { keys: ['plainfield', '60544', '60585', '60586'], muni: 'other', county: 'will', label: 'Plainfield, Will County' },
+      { keys: ['aurora', '60502', '60503', '60504', '60505', '60506'], muni: 'other', county: 'kane', label: 'Aurora, Kane County' },
+      { keys: ['elgin', '60120', '60123', '60124'], muni: 'other', county: 'kane', label: 'Elgin, Kane County' },
+    ];
+
+    // --- GOOGLE PLACES AUTOCOMPLETE ---
+    const countyMap = {
+      'cook county': 'cook', 'dupage county': 'dupage', 'du page county': 'dupage',
+      'lake county': 'lake', 'will county': 'will', 'kane county': 'kane', 'mchenry county': 'mchenry'
+    };
+
+    function setupAutocomplete(inputId, countySelectId, citySelectId, hintId, calcFn) {
+      const input = el(inputId);
+      const autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ['address'], componentRestrictions: { country: 'us' },
+        fields: ['address_components', 'formatted_address']
+      });
+      autocomplete.addListener('place_changed', function() {
+        const place = autocomplete.getPlace();
+        if (!place.address_components) return;
+        let city = '', county = '';
+        for (const comp of place.address_components) {
+          if (comp.types.includes('locality')) city = comp.long_name;
+          if (comp.types.includes('sublocality_level_1') && !city) city = comp.long_name;
+          if (comp.types.includes('administrative_area_level_2')) county = comp.long_name.toLowerCase();
+        }
+        const countyKey = countyMap[county] || 'other';
+        el(countySelectId).value = countyKey;
+        populateCities(countySelectId, citySelectId);
+        if (city) {
+          const cs = el(citySelectId);
+          let found = false;
+          for (let i = 0; i < cs.options.length; i++) { if (cs.options[i].value === city) { cs.selectedIndex = i; found = true; break; } }
+          if (!found) { const o = document.createElement('option'); o.value = city; o.textContent = city; cs.insertBefore(o, cs.lastElementChild); cs.value = city; }
+        }
+        const tax = getCityTaxRate(city);
+        const cl = county.replace(/\b\w/g, c => c.toUpperCase());
+        const rn = tax.rate > 0 ? ` — Municipal tax: $${tax.rate.toFixed(2)}/$500` : ' — No municipal transfer tax';
+        el(hintId).textContent = '\u2713 ' + city + ', ' + cl + rn;
+        calcFn();
+      });
+    }
+
+    setupAutocomplete('b-address', 'b-county', 'b-city', 'b-address-hint', calcBuyer);
+
+    ['b-price','b-down','b-rate','b-loan-type','b-origination-val','b-origination-mode','b-condo','b-county','b-tax','b-insurance','b-hoa-dues','b-closing-date','b-proration-pct'].forEach(id => {
+      const e = el(id);
+      if (e) e.addEventListener('input', calcBuyer);
+    });
+    calcBuyer();
+  </script>
+</body>
+</html>
