@@ -33,6 +33,16 @@
       box-shadow: 0 16px 48px rgba(0,43,92,0.08);
     }
 
+    .vendor-category-wide {
+      grid-column: 1 / -1;
+    }
+
+    .vendor-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 clamp(32px,4vw,48px);
+    }
+
     .vendor-category-icon {
       width: 48px;
       height: 48px;
@@ -109,6 +119,7 @@
 
     @media (max-width: 768px) {
       .vendors-grid { grid-template-columns: 1fr; }
+      .vendor-cards-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -257,9 +268,10 @@
         </div>
 
         <!-- CONTRACTORS -->
-        <div class="vendor-category reveal">
+        <div class="vendor-category vendor-category-wide reveal">
           <div class="vendor-category-icon"><svg width="22" height="22" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-          <div class="vendor-category-title">Contractors & Handymen</div>
+          <div class="vendor-category-title">Contractors & Home Services</div>
+          <div class="vendor-cards-grid">
           <div class="vendor-card">
             <div class="vendor-name">Exterior Home Experts</div>
             <div class="vendor-company">Northbrook, IL</div>
@@ -319,6 +331,15 @@
               <a href="https://www.qualitywindowsrepair.com" target="_blank">qualitywindowsrepair.com</a>
             </div>
             <div class="vendor-note">Window repair</div>
+          </div>
+          <div class="vendor-card">
+            <div class="vendor-name">Pulse Exterior</div>
+            <div class="vendor-company"></div>
+            <div class="vendor-contact">
+              <a href="https://www.pulseexterior.com" target="_blank">pulseexterior.com</a>
+            </div>
+            <div class="vendor-note">Exterior services</div>
+          </div>
           </div>
         </div>
 
