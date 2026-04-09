@@ -381,8 +381,9 @@
               <div class="cc-line"><span class="cc-line-label">Recording Fees <span style="opacity:0.5">(deed + mortgage)</span></span><span class="cc-line-value" id="b-recording">$214</span></div>
               <div class="cc-line" id="b-city-transfer-row"><span class="cc-line-label" id="b-city-transfer-label">City Transfer Tax (Buyer)</span><span class="cc-line-value" id="b-city-transfer">$0</span></div>
 
-              <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Prepaid & Escrow</div>
-              <div class="cc-line"><span class="cc-line-label">Impounds <span style="opacity:0.5">(tax + insurance)</span></span><span class="cc-line-value" id="b-escrow">$0</span></div>
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Impounds</div>
+              <div class="cc-line"><span class="cc-line-label">Homeowner's Insurance</span><span class="cc-line-value" id="b-impounds-ins">$0</span></div>
+              <div class="cc-line"><span class="cc-line-label">County Taxes <span style="opacity:0.5">(2 months)</span></span><span class="cc-line-value" id="b-impounds-tax">$0</span></div>
               <div class="cc-line" id="b-pmi-row"><span class="cc-line-label">Mortgage Insurance (upfront)</span><span class="cc-line-value" id="b-pmi">$0</span></div>
 
               <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Prorations & Credits</div>
@@ -391,6 +392,7 @@
 
               <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:16px 0 4px;">Other</div>
               <div class="cc-line"><span class="cc-line-label">Attorney Fees</span><span class="cc-line-value" id="b-attorney">$850</span></div>
+              <div class="cc-line"><span class="cc-line-label">Flat Brokerage Fee</span><span class="cc-line-value" id="b-brokerage-fee">$495</span></div>
 
               <div class="cc-line" style="border-top:2px solid rgba(255,255,255,0.12);margin-top:8px;padding-top:16px;">
                 <span class="cc-line-total-label">Total Closing Costs</span>
@@ -653,7 +655,7 @@
         const endOfYear = new Date(cd.getFullYear(), 11, 31);
         daysRemaining = Math.floor((endOfYear - cd) / 86400000) + 1;
         const daysInMonth = new Date(cd.getFullYear(), cd.getMonth() + 1, 0).getDate();
-        prepaidDays = daysInMonth - cd.getDate();
+        prepaidDays = daysInMonth - cd.getDate() + 1;  // include closing day
       }
 
       const downAmt = price * downPct;
@@ -673,9 +675,10 @@
       if (price > 1000000) escrowFee = 3000;
       if (price < 300000) escrowFee = 1800;
 
-      const titleIns = Math.max(500, loanAmt * 0.00088);  // Lender's title insurance based on loan amount
-      // Misc title fees: chain of title, CPL, e-recording, courier, email, policy update, tax service, e-doc, IPLD, express mail, IL policy fee, etc.
-      const titleFees = 963;  // bundled misc fees
+      const titleIns = Math.max(500, loanAmt * 0.000875);  // Lender's title insurance based on loan amount
+      // Misc title fees: revolving credit mortgage, package delivery, e-recording, email, courier,
+      // policy update, tax service, e-doc, IPLD, express mail, CPL, chain of title, IL policy fee
+      const titleFees = 1043;
       const survey = isCondo ? 0 : 500;
 
       // --- Recording & Transfer ---
@@ -684,7 +687,9 @@
       const cityTransfer = (price / buyerCityTax.per) * buyerCityTax.rate;
 
       // --- Prepaid & Escrow (Impounds) ---
-      const impounds = (annualIns / 12) * 12;  // 12 months homeowner's insurance prepaid
+      const impoundsIns = annualIns;            // 12 months homeowner's insurance
+      const impoundsTax = (annualTax / 12) * 2; // 2 months property tax escrow
+      const impounds = impoundsIns + impoundsTax;
 
       let pmi = 0;
       if (loanType === 'fha') {
@@ -707,9 +712,10 @@
 
       // --- Other ---
       const attorney = 850;
+      const brokerageFee = 495;  // flat brokerage/admin fee
 
       // --- Total ---
-      const total = origination + appraisal + prepaidInt + escrowFee + titleIns + titleFees + survey + recording + cityTransfer + impounds + pmi + hoaProration + attorney - taxProrationCredit;
+      const total = origination + appraisal + prepaidInt + escrowFee + titleIns + titleFees + survey + recording + cityTransfer + impounds + pmi + hoaProration + attorney + brokerageFee - taxProrationCredit;
 
       // --- Update display ---
       el('b-origination').textContent = fmt(origination);
@@ -734,7 +740,8 @@
         el('b-city-transfer-label').textContent = city + ' Transfer Tax (Buyer) ($' + buyerCityTax.rate.toFixed(2) + '/$500)';
       }
 
-      el('b-escrow').textContent = fmt(impounds);
+      el('b-impounds-ins').textContent = fmt(impoundsIns);
+      el('b-impounds-tax').textContent = fmt(impoundsTax);
       el('b-pmi').textContent = fmt(pmi);
       el('b-pmi-row').style.display = pmi > 0 ? 'flex' : 'none';
 
@@ -744,6 +751,7 @@
       el('b-proration-detail').textContent = '(' + daysRemaining + ' days @ ' + Math.round(prorationPct*100) + '%)';
 
       el('b-attorney').textContent = fmt(attorney);
+      el('b-brokerage-fee').textContent = fmt(brokerageFee);
 
       el('b-total').textContent = fmt(total);
       el('b-total-bottom').textContent = fmt(total);
