@@ -669,7 +669,7 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
-        <a href="closing-costs.html" class="nav-link active">Calculators</a>
+        <div class="nav-dropdown"><a href="closing-costs.html" class="nav-link active">Calculators <span class="nav-dropdown-arrow">▾</span></a><div class="nav-dropdown-menu"><a href="#mortgage">Mortgage Calculator</a><a href="#buyer">Buyer Closing Costs</a><a href="#seller">Seller Closing Costs</a></div></div>
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
       <a href="contact.html" class="nav-cta">Get in Touch</a>
@@ -1181,14 +1181,26 @@
     const el = id => document.getElementById(id);
 
     // Tab switching
+    function switchTab(panelName) {
+      document.querySelectorAll('.cc-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.cc-panel').forEach(p => p.classList.remove('active'));
+      const tab = document.querySelector('.cc-tab[data-panel="' + panelName + '"]');
+      if (tab) tab.classList.add('active');
+      const panel = document.getElementById('panel-' + panelName);
+      if (panel) panel.classList.add('active');
+    }
+
     document.querySelectorAll('.cc-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.cc-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.cc-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
-      });
+      tab.addEventListener('click', () => switchTab(tab.dataset.panel));
     });
+
+    // Handle hash-based tab navigation
+    function checkHash() {
+      const hash = window.location.hash.replace('#', '');
+      if (['mortgage', 'buyer', 'seller'].includes(hash)) switchTab(hash);
+    }
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
 
     // --- BUYER CALCULATOR ---
     // --- CITY DATA BY COUNTY ---

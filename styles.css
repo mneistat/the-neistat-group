@@ -69,6 +69,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .nav-dark .nav-link { color: var(--text-light); }
 .nav-dark .nav-link:hover, .nav-dark .nav-link.active { color: var(--navy); }
 
+.nav-dropdown { position: relative; }
+.nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 16px; background: var(--white); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,43,92,0.12); padding: 8px 0; min-width: 200px; opacity: 0; visibility: hidden; transition: all 0.3s var(--ease); pointer-events: none; }
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+.nav-dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--text-light); transition: all 0.2s; white-space: nowrap; }
+.nav-dropdown-menu a:hover { color: var(--navy); background: rgba(0,43,92,0.04); }
+.nav-dropdown-arrow { display: inline-block; margin-left: 4px; font-size: 8px; opacity: 0.6; }
+
 .nav-cta { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); border: 1.5px solid rgba(255,255,255,0.35); padding: 10px 28px; border-radius: 100px; transition: all 0.3s var(--ease); flex-shrink: 0; }
 .nav-cta:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
 .nav-dark .nav-cta { color: var(--navy); border-color: var(--navy); }
