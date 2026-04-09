@@ -356,9 +356,8 @@
               <div class="cc-line"><span class="cc-line-label">Title Insurance</span><span class="cc-line-value" id="b-title">$1,500</span></div>
               <div class="cc-line"><span class="cc-line-label">Title Search & Exam</span><span class="cc-line-value" id="b-title-search">$400</span></div>
               <div class="cc-line"><span class="cc-line-label">Survey</span><span class="cc-line-value" id="b-survey">$500</span></div>
-              <div class="cc-line"><span class="cc-line-label">Attorney Fees</span><span class="cc-line-value" id="b-attorney">$1,000</span></div>
+              <div class="cc-line"><span class="cc-line-label">Attorney Fees</span><span class="cc-line-value" id="b-attorney">$850</span></div>
               <div class="cc-line"><span class="cc-line-label">Recording Fees</span><span class="cc-line-value" id="b-recording">$200</span></div>
-              <div class="cc-line"><span class="cc-line-label">Home Inspection</span><span class="cc-line-value" id="b-inspection">$450</span></div>
               <div class="cc-line"><span class="cc-line-label">Prepaid Interest (15 days)</span><span class="cc-line-value" id="b-prepaid-int">$1,350</span></div>
               <div class="cc-line"><span class="cc-line-label">Escrow (Tax + Insurance)</span><span class="cc-line-value" id="b-escrow">$1,950</span></div>
               <div class="cc-line" id="b-pmi-row"><span class="cc-line-label">Mortgage Insurance (upfront)</span><span class="cc-line-value" id="b-pmi">$0</span></div>
@@ -633,7 +632,6 @@
       const survey = 500;
       const attorney = 850;
       const recording = 200;
-      const inspection = 450;
       const prepaidInt = (loanAmt * (rate / 100) / 365) * prepaidDays;
       const escrow = (annualTax / 12 * 3) + (annualIns / 12 * 3);
 
@@ -660,7 +658,7 @@
         hoaProration = (monthlyHoa / daysInMonth) * daysLeft;
       }
 
-      const total = origination + appraisal + titleIns + titleSearch + survey + attorney + recording + inspection + prepaidInt + escrow + pmi + hoaProration - taxProrationCredit;
+      const total = origination + appraisal + titleIns + titleSearch + survey + attorney + recording + prepaidInt + escrow + pmi + hoaProration - taxProrationCredit;
 
       el('b-origination').textContent = fmt(origination);
       el('b-origination-row').style.display = origination > 0 ? 'flex' : 'none';
@@ -671,7 +669,6 @@
       el('b-survey').textContent = fmt(survey);
       el('b-attorney').textContent = fmt(attorney);
       el('b-recording').textContent = fmt(recording);
-      el('b-inspection').textContent = fmt(inspection);
       el('b-prepaid-int').textContent = fmt(prepaidInt);
       el('b-escrow').textContent = fmt(escrow);
       el('b-pmi').textContent = fmt(pmi);
