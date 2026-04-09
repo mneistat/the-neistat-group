@@ -203,9 +203,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .press-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: clamp(40px,5vw,60px) 0; }
 .press-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); display: block; margin-bottom: 28px; }
 .press-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-.press-item { text-decoration: none; }
+.press-item { text-decoration: none; display: flex; flex-direction: column; gap: 8px; }
 a.press-item:hover .press-name { color: var(--blue); }
-.press-name { display: block; font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; transition: color 0.3s; }
+.press-logo { font-size: 18px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1.2; transition: color 0.3s; }
+a.press-item:hover .press-logo { color: var(--blue); }
+.press-name { display: block; font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 2px; transition: color 0.3s; }
 .press-desc { display: block; font-size: 13px; font-style: italic; color: var(--text-light); line-height: 1.5; }
 @media (max-width: 768px) { .press-items { grid-template-columns: 1fr 1fr; gap: 24px; } }
 @media (max-width: 480px) { .press-items { grid-template-columns: 1fr; } }
