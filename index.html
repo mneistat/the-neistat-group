@@ -200,16 +200,42 @@
     </div>
   </section>
 
-  <!-- Testimonial -->
+  <!-- Testimonials Carousel -->
   <section class="section section-navy testimonial-section">
     <div class="container">
       <div class="testimonial reveal">
         <span class="label label-light">Client Words</span>
-        <blockquote class="testimonial-quote">&ldquo;Matt knows real estate. He did such a good job that we ended up having him sell a few more — every single one sold at, near, or above the price we were seeking. It was refreshing to have such a hands-on broker.&rdquo;</blockquote>
-        <div class="testimonial-author">
-          <strong>Nicole Alfred-Napper</strong>
-          <span>Chief Operating Officer, Plan Companies</span>
+        <div class="tc-wrap" id="tcWrap">
+          <div class="tc-track" id="tcTrack">
+            <div class="tc-slide">
+              <blockquote class="testimonial-quote">&ldquo;Matt was referred by some close friends and their recommendation could not have been better. I had tons of questions about the process and we worked together for about six weeks before we made an offer that was accepted on a beautiful loft unit in North Center. My home buying experience was seamless, which I can credit to Matt's professionalism, honesty, and integrity. Would highly recommend.&rdquo;</blockquote>
+              <div class="testimonial-author"><strong>Kevin Tansey</strong><span>First-Time Buyer, North Center Chicago</span></div>
+            </div>
+            <div class="tc-slide">
+              <blockquote class="testimonial-quote">&ldquo;Matt has always been a terrific resource and truly a partner to me. He does much of the upfront legwork, is very responsive, is always on my side and looking out for me. I would absolutely refer him with very, very high marks. Matt is terrific.&rdquo;</blockquote>
+              <div class="testimonial-author"><strong>Christopher Paquette</strong><span>Chief Transformation Officer, Personify Health</span></div>
+            </div>
+            <div class="tc-slide">
+              <blockquote class="testimonial-quote">&ldquo;He did such a good job that we ended up having him sell a few more &mdash; every single one sold at, near, or above the price we were seeking. It was refreshing to have such a hands-on broker &mdash; that is certainly not the norm.&rdquo;</blockquote>
+              <div class="testimonial-author"><strong>Nicole Alfred-Napper</strong><span>Chief Operating Officer, Plan Companies</span></div>
+            </div>
+            <div class="tc-slide">
+              <blockquote class="testimonial-quote">&ldquo;Matt sold four 3-flats in Tri-Taylor for me in two weeks. One broke a sales record. Matt's numbers are true-to-market and realistic. He took his time to get to the right price. I definitely would work with Matt again.&rdquo;</blockquote>
+              <div class="testimonial-author"><strong>Linda Schafer</strong><span>Private Investor</span></div>
+            </div>
+            <div class="tc-slide">
+              <blockquote class="testimonial-quote">&ldquo;Matt worked with me to market and sell all the properties faster than I expected. He did a great job solving problems and staying focused on getting the buildings sold. I would recommend Matt for this type of transaction all day long.&rdquo;</blockquote>
+              <div class="testimonial-author"><strong>Kevin Werner</strong><span>Co-Founder &amp; CEO, Renovo Financial</span></div>
+            </div>
+            <div class="tc-slide">
+              <blockquote class="testimonial-quote">&ldquo;Matt knows real estate. The review can start and end there. He was able to blend the lines between honesty, transparency, and friendliness. He knows how to negotiate, what the market dictates, and does his work with a great deal of integrity. I would not hesitate to recommend Matt to anyone.&rdquo;</blockquote>
+              <div class="testimonial-author"><strong>Nick &amp; Marina Golemis</strong><span>Bought &amp; Sold in Chicago/Glenview</span></div>
+            </div>
+          </div>
+          <button class="tc-arrow tc-prev" id="tcPrev" aria-label="Previous"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="tc-arrow tc-next" id="tcNext" aria-label="Next"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
+        <div class="tc-dots" id="tcDots"></div>
       </div>
     </div>
   </section>
@@ -267,5 +293,37 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+    (function(){
+      const track = document.getElementById('tcTrack');
+      const slides = track.children;
+      const dots = document.getElementById('tcDots');
+      const wrap = document.getElementById('tcWrap');
+      let idx = 0, timer;
+
+      for (let i = 0; i < slides.length; i++) {
+        const d = document.createElement('button');
+        d.className = 'tc-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => go(i));
+        dots.appendChild(d);
+      }
+
+      function go(n) {
+        idx = ((n % slides.length) + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+        dots.querySelectorAll('.tc-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+        resetTimer();
+      }
+
+      document.getElementById('tcPrev').addEventListener('click', () => go(idx - 1));
+      document.getElementById('tcNext').addEventListener('click', () => go(idx + 1));
+
+      function resetTimer() { clearInterval(timer); timer = setInterval(() => go(idx + 1), 5000); }
+      resetTimer();
+
+      wrap.addEventListener('mouseenter', () => clearInterval(timer));
+      wrap.addEventListener('mouseleave', resetTimer);
+    })();
+  </script>
 </body>
 </html>
