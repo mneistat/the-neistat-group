@@ -327,8 +327,14 @@
             </div>
             <div class="cc-row">
               <div class="cc-group">
-                <label class="cc-label">Origination Fee %</label>
-                <input type="number" class="cc-input" id="b-origination-pct" value="0" step="0.25" min="0" max="5">
+                <label class="cc-label">Origination / Lender Fee</label>
+                <div style="display:flex;gap:8px;">
+                  <input type="number" class="cc-input" id="b-origination-val" value="0" step="0.25" min="0" style="flex:1;">
+                  <select class="cc-select" id="b-origination-mode" style="width:70px;flex:none;text-align:center;">
+                    <option value="pct">%</option>
+                    <option value="flat">$</option>
+                  </select>
+                </div>
               </div>
               <div class="cc-group">
                 <label class="cc-label">Closing Date</label>
@@ -361,7 +367,7 @@
               <div class="cc-total-sub" id="b-total-pct">2.95% of purchase price</div>
 
               <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:8px 0 4px;">Lender Fees</div>
-              <div class="cc-line" id="b-origination-row"><span class="cc-line-label" id="b-origination-label">Loan Origination</span><span class="cc-line-value" id="b-origination">$0</span></div>
+              <div class="cc-line" id="b-origination-row"><span class="cc-line-label" id="b-origination-label">Origination / Lender Fee</span><span class="cc-line-value" id="b-origination">$0</span></div>
               <div class="cc-line"><span class="cc-line-label">Appraisal Fee</span><span class="cc-line-value" id="b-appraisal">$600</span></div>
               <div class="cc-line"><span class="cc-line-label" id="b-prepaid-int-label">Prepaid Interest</span><span class="cc-line-value" id="b-prepaid-int">$0</span></div>
 
@@ -654,8 +660,9 @@
       const loanAmt = price - downAmt;
 
       // --- Lender Fees ---
-      const originationPct = +el('b-origination-pct').value / 100;
-      const origination = loanAmt * originationPct;
+      const origMode = el('b-origination-mode').value;
+      const origInput = +el('b-origination-val').value;
+      const origination = origMode === 'pct' ? loanAmt * (origInput / 100) : origInput;
       const appraisal = 600;
       const prepaidInt = (loanAmt * (rate / 100) / 365) * prepaidDays;
 
@@ -707,7 +714,9 @@
       // --- Update display ---
       el('b-origination').textContent = fmt(origination);
       el('b-origination-row').style.display = origination > 0 ? 'flex' : 'none';
-      el('b-origination-label').textContent = 'Loan Origination (' + (originationPct * 100) + '%)';
+      el('b-origination-label').textContent = origMode === 'pct' && origInput > 0
+        ? 'Origination / Lender Fee (' + origInput + '%)'
+        : 'Origination / Lender Fee';
       el('b-appraisal').textContent = fmt(appraisal);
       el('b-prepaid-int').textContent = fmt(prepaidInt);
       el('b-prepaid-int-label').textContent = 'Prepaid Interest (' + prepaidDays + ' days)';
@@ -825,7 +834,7 @@
     setupAutocomplete('b-address', 'b-county', 'b-city', 'b-address-hint', calcBuyer);
     setupAutocomplete('s-address', 's-county', 's-city', 's-address-hint', calcSeller);
 
-    ['b-price','b-down','b-rate','b-loan-type','b-origination-pct','b-condo','b-county','b-tax','b-insurance','b-hoa-dues','b-closing-date','b-proration-pct'].forEach(id => {
+    ['b-price','b-down','b-rate','b-loan-type','b-origination-val','b-origination-mode','b-condo','b-county','b-tax','b-insurance','b-hoa-dues','b-closing-date','b-proration-pct'].forEach(id => {
       const e = el(id);
       if (e) e.addEventListener('input', calcBuyer);
     });
