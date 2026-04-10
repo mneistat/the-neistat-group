@@ -14,7 +14,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .vendors-page { padding: clamp(160px,20vw,240px) 0 clamp(80px,12vw,160px); }
+    .vendors-page { padding: clamp(160px,20vw,240px) 0 clamp(80px,12vw,160px); background: #0B0A07; }
+    .vendors-page .label { color: rgba(237,232,222,0.3); }
+    .vendors-page .heading-lg { color: #EDE8DE; }
+    .vendors-page .heading-lg em { color: #4A7A66; }
+    .vendors-page .vendors-intro p { color: rgba(237,232,222,0.45); }
 
     .vendors-intro { max-width: 600px; margin-bottom: clamp(48px,6vw,72px); }
     .vendors-intro p { font-size: clamp(17px,1.6vw,20px); font-weight: 300; color: var(--text-light); line-height: 1.8; }
@@ -26,16 +30,16 @@
     }
 
     .vendor-category {
-      background: var(--white);
-      border-radius: 20px;
+      background: #131109;
+      border-radius: 16px;
       padding: clamp(28px,3vw,40px);
-      box-shadow: 0 8px 40px rgba(0,43,92,0.04);
-      transition: transform 0.3s var(--ease), box-shadow 0.3s;
+      border: 1px solid rgba(237,232,222,0.05);
+      transition: transform 0.3s ease, border-color 0.3s;
     }
 
     .vendor-category:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,43,92,0.08);
+      border-color: rgba(74,122,102,0.2);
     }
 
     .vendor-category-wide {
@@ -92,14 +96,14 @@
     .vendor-name {
       font-size: 16px;
       font-weight: 700;
-      color: var(--navy);
+      color: #EDE8DE;
       margin-bottom: 2px;
     }
 
     .vendor-company {
       font-size: 14px;
       font-weight: 500;
-      color: var(--text-light);
+      color: rgba(237,232,222,0.4);
       margin-bottom: 8px;
     }
 
@@ -112,26 +116,42 @@
     .vendor-contact a {
       font-size: 13px;
       font-weight: 500;
-      color: var(--blue);
+      color: #4A7A66;
       transition: color 0.2s;
     }
 
-    .vendor-contact a:hover { color: var(--navy); }
+    .vendor-contact a:hover { color: #6a9a86; }
 
     .vendor-note {
       font-size: 12px;
-      color: var(--text-light);
+      color: rgba(237,232,222,0.3);
       font-style: italic;
       margin-top: 4px;
+    }
+
+    .vendor-card {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(237,232,222,0.06);
+    }
+
+    .vendor-card:last-child { border-bottom: none; }
+
+    .vendor-category-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4A7A66;
+      margin-bottom: 20px;
     }
 
     .vendors-disclaimer {
       margin-top: clamp(48px,6vw,72px);
       padding: 24px;
-      background: rgba(0,43,92,0.02);
+      background: rgba(237,232,222,0.03);
       border-radius: 12px;
       font-size: 13px;
-      color: var(--text-light);
+      color: rgba(237,232,222,0.3);
       line-height: 1.7;
     }
 
