@@ -209,3 +209,148 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* === GSAP REVEAL === */
 .reveal { opacity: 0; transform: translateY(30px); }
+
+/* === LEGACY PAGE SUPPORT === */
+/* Shared classes used by about, search, neighborhoods, calculator, vendor, contact pages */
+
+/* Layout */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 36px; }
+.section { padding: clamp(52px,8vw,80px) 0; }
+.section-cream { background: #F4F0E8; color: #0B0A07; }
+.section-white { background: #EDE8DE; color: #0B0A07; }
+.section-navy { background: #0B0A07; color: #EDE8DE; }
+
+/* Legacy nav (used by sub-pages) */
+.nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 36px; display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo-img { height: 36px; width: auto; }
+.nav-logo-dark { display: none; }
+.nav-dark { background: #0B0A07; }
+.nav-dark .nav-logo-light { display: block; }
+.nav-dark .nav-logo-dark { display: none; }
+.nav.scrolled .nav-logo-light { display: none; }
+.nav.scrolled .nav-logo-dark { display: block; }
+.nav.scrolled { background: rgba(244,240,232,0.95); backdrop-filter: blur(12px); }
+.nav.scrolled .nav-link { color: rgba(11,10,7,0.45); }
+.nav.scrolled .nav-link:hover { color: #0B0A07; }
+.nav.scrolled .nav-cta-btn { background: #0B0A07; color: #EDE8DE; }
+.nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: #4A7A66; color: #F4F0E8; padding: 10px 24px; border-radius: 2px; transition: all 0.3s; }
+.nav-cta:hover { background: #3d6655; }
+
+/* Dropdown nav (used by calculator/vendor pages) */
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 12px; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; }
+.nav-dropdown-menu-inner { background: #1a1710; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); padding: 8px 0; min-width: 200px; }
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+.nav-dropdown-menu a { display: block; padding: 10px 20px; font-size: 12px; color: rgba(237,232,222,0.5); transition: all 0.2s; }
+.nav-dropdown-menu a:hover { color: #EDE8DE; background: rgba(237,232,222,0.04); }
+.nav-dropdown-arrow { display: inline-block; margin-left: 4px; font-size: 8px; opacity: 0.4; }
+
+/* Typography */
+.heading-lg { font-family: Georgia, serif; font-size: clamp(28px,4vw,42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: #0B0A07; margin-bottom: 20px; }
+.heading-lg em { font-style: italic; color: #4A7A66; }
+.heading-white { color: #EDE8DE; }
+.heading-white em { color: #4A7A66; }
+.label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(11,10,7,0.3); margin-bottom: 16px; display: block; }
+.label-light { color: rgba(237,232,222,0.3); }
+.body-lg { font-size: 17px; color: rgba(11,10,7,0.55); line-height: 1.7; margin-bottom: 16px; }
+.body-text { font-size: 14px; color: rgba(11,10,7,0.4); line-height: 1.7; margin-bottom: 20px; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; border-radius: 2px; transition: all 0.3s; }
+.btn-gold { background: #4A7A66; color: #F4F0E8; }
+.btn-gold:hover { background: #3d6655; }
+.btn-ghost { color: rgba(237,232,222,0.4); border: 1px solid rgba(237,232,222,0.15); padding: 12px 28px; }
+
+/* Links */
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #4A7A66; transition: opacity 0.3s; }
+.link-arrow:hover { opacity: 0.7; }
+
+/* Grids */
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: start; }
+.split-left { position: sticky; top: 120px; }
+.section-header-center { text-align: center; margin-bottom: 40px; }
+
+/* Page Hero (sub-pages) */
+.page-hero { padding: clamp(140px,18vw,200px) 0 clamp(40px,5vw,60px); background: #0B0A07; }
+.page-hero-heading { font-family: Georgia, serif; font-size: clamp(32px,5vw,52px); font-weight: 400; line-height: 1.1; color: #EDE8DE; margin-bottom: 12px; }
+.page-hero-heading em { font-style: italic; color: #4A7A66; }
+.page-hero-sub { font-size: 15px; color: rgba(237,232,222,0.4); max-width: 500px; line-height: 1.6; }
+
+/* About page */
+.about-editorial { background: #EDE8DE; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: start; }
+.about-image-wrap { position: sticky; top: 100px; border-radius: 12px; overflow: hidden; }
+.about-image { width: 100%; display: block; }
+.about-image-caption { font-size: 11px; color: rgba(11,10,7,0.3); margin-top: 12px; }
+.about-lead { font-family: Georgia, serif; font-size: 20px; font-weight: 400; line-height: 1.5; color: #0B0A07; margin-bottom: 20px; }
+.about-body { font-size: 14px; color: rgba(11,10,7,0.5); line-height: 1.7; margin-bottom: 16px; }
+.about-body p { margin-bottom: 14px; }
+
+/* Philosophy */
+.philosophy-section { background: #0B0A07; text-align: center; }
+.philosophy-heading { font-family: Georgia, serif; font-size: clamp(22px,3vw,32px); font-weight: 400; font-style: italic; color: #EDE8DE; max-width: 600px; margin: 0 auto; line-height: 1.4; }
+
+/* Credentials (sub-pages) */
+.credentials-section { background: #F4F0E8; }
+.credentials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: start; }
+.credential-item { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid rgba(11,10,7,0.06); }
+.credential-year { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #4A7A66; white-space: nowrap; padding-top: 2px; }
+.credential-title { font-size: 14px; font-weight: 500; color: #0B0A07; margin-bottom: 2px; }
+.credential-source { font-size: 12px; color: rgba(11,10,7,0.4); }
+
+/* Press bar (sub-pages) */
+.press-bar { border-top: 1px solid rgba(11,10,7,0.08); border-bottom: 1px solid rgba(11,10,7,0.08); padding: clamp(32px,4vw,48px) 0; }
+.press-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.press-item { text-decoration: none; display: flex; flex-direction: column; gap: 6px; }
+a.press-item:hover .press-logo { color: #4A7A66; }
+.press-logo { display: block; font-size: 16px; font-weight: 700; color: #0B0A07; transition: color 0.3s; }
+.press-desc { display: block; font-size: 12px; font-style: italic; color: rgba(11,10,7,0.4); line-height: 1.5; }
+
+/* CTA block (sub-pages) */
+.cta-block { position: relative; border-radius: 16px; overflow: hidden; padding: clamp(52px,8vw,100px) clamp(28px,4vw,60px); text-align: center; background: #0B0A07; }
+.cta-media { position: absolute; inset: 0; z-index: 0; }
+.cta-media video { width: 100%; height: 100%; object-fit: cover; }
+.cta-media-overlay { position: absolute; inset: 0; background: #0B0A07; opacity: 0.7; }
+.cta-content { position: relative; z-index: 1; }
+.cta-text { font-family: Georgia, serif; font-size: clamp(22px,3vw,32px); font-weight: 400; font-style: italic; color: #EDE8DE; max-width: 500px; margin: 0 auto 28px; line-height: 1.4; }
+
+/* Legacy footer (sub-pages) */
+.footer-main { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 28px; margin-bottom: 28px; }
+.footer-logo { height: 32px; width: auto; margin-bottom: 12px; }
+.footer-logo-jsir { height: 24px; width: auto; margin-bottom: 12px; margin-left: 12px; }
+.footer-addr { font-size: 11px; color: rgba(237,232,222,0.2); line-height: 1.5; }
+.footer-nav-title { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.15); margin-bottom: 10px; }
+.footer-nav a { display: block; font-size: 12px; color: rgba(237,232,222,0.3); margin-bottom: 6px; transition: color 0.3s; }
+.footer-nav a:hover { color: #EDE8DE; }
+
+/* Contact page */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); }
+.contact-detail-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.3); margin-bottom: 6px; }
+.contact-detail-value { font-size: 15px; font-weight: 500; color: #0B0A07; margin-bottom: 20px; display: block; }
+a.contact-detail-value:hover { color: #4A7A66; }
+
+/* Hood grid (homepage legacy) */
+.hood-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.hood-card { position: relative; aspect-ratio: 3/4; overflow: hidden; display: block; }
+.hood-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.hood-card:hover img { transform: scale(1.05); }
+.hood-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,10,7,0.7), transparent); display: flex; align-items: flex-end; padding: 20px; }
+.hood-card-overlay h3 { font-family: Georgia, serif; font-size: 16px; color: #EDE8DE; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .split-grid, .about-grid, .credentials-grid, .contact-grid { grid-template-columns: 1fr; }
+  .split-left, .about-image-wrap { position: static; }
+  .footer-main { grid-template-columns: 1fr 1fr; }
+  .press-items { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .hood-grid { grid-template-columns: 1fr 1fr; }
+  .footer-main { grid-template-columns: 1fr; }
+  .press-items { grid-template-columns: 1fr; }
+}
+
+/* === CLOSING COST / CALCULATOR PAGE STYLES === */
+/* These pages have their own inline <style> tags so they mostly self-style,
+   but they need the shared nav, footer, container, and section classes above */
