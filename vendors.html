@@ -6,13 +6,6 @@
   <meta name="theme-color" content="#0B0A07">
   <title>Recommended Vendors | The Neistat Group</title>
   <meta name="description" content="Trusted vendor recommendations from The Neistat Group — mortgage lenders, attorneys, inspectors, contractors, and more for Chicago home buyers and sellers.">
-  <meta property="og:title" content="Recommended Vendors | The Neistat Group">
-  <meta property="og:description" content="Trusted vendor recommendations from The Neistat Group — mortgage lenders, attorneys, inspectors, contractors, and more for Chicago home buyers and sellers.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="neistat-logo-black.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=3">
   <style>
     .vendors-page { padding: clamp(160px,20vw,240px) 0 clamp(80px,12vw,160px); background: #0B0A07; }
@@ -22,7 +15,15 @@
     .vendors-page .vendors-intro p { color: rgba(237,232,222,0.65); }
 
     .vendors-intro { max-width: 600px; margin-bottom: clamp(48px,6vw,72px); }
-    .vendors-intro p { font-size: clamp(17px,1.6vw,20px); font-weight: 300; color: var(--text-light); line-height: 1.8; }
+    .vendors-intro p { font-size: clamp(17px,1.6vw,20px); font-weight: 300; color: rgba(237,232,222,0.65); line-height: 1.8; }
+
+    .heading-lg {
+      font-family: Georgia, serif;
+      font-size: clamp(32px,5vw,48px);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .heading-lg em { font-style: italic; }
 
     .vendors-grid {
       display: grid;
@@ -70,7 +71,7 @@
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      background: var(--navy);
+      background: #4A7A66;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -83,13 +84,13 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #4A7A66;
       margin-bottom: 20px;
     }
 
     .vendor-card {
       padding: 16px 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(237,232,222,0.06);
     }
 
     .vendor-card:last-child { border-bottom: none; }
@@ -130,22 +131,6 @@
       margin-top: 4px;
     }
 
-    .vendor-card {
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(237,232,222,0.06);
-    }
-
-    .vendor-card:last-child { border-bottom: none; }
-
-    .vendor-category-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #4A7A66;
-      margin-bottom: 20px;
-    }
-
     .vendors-disclaimer {
       margin-top: clamp(48px,6vw,72px);
       padding: 24px;
@@ -164,29 +149,20 @@
 </head>
 <body>
 
-  <!-- Custom Cursor -->
   <div class="cursor" id="cursor"></div>
-
-  <nav class="nav nav-dark" id="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="neistat-logo-white.png" alt="The Neistat Group" class="nav-logo-img nav-logo-light">
-        <img src="neistat-logo-black.png" alt="The Neistat Group" class="nav-logo-img nav-logo-dark">
-      </a>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="search.html" class="nav-link">Search Properties</a>
-        <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
-        <div class="nav-dropdown"><a href="calculator.html" class="nav-link">Calculators <span class="nav-dropdown-arrow">&#9662;</span></a><div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner"><a href="calculator.html">Mortgage Calculator</a><a href="buyer-closing-costs.html">Buyer Closing Costs</a><a href="seller-closing-costs.html">Seller Closing Costs</a></div></div></div>
-        <a href="vendors.html" class="nav-link active">Vendors</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </div>
-      <a href="contact.html" class="nav-cta">Get in Touch</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-brand">The Neistat Group</a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="search.html" class="nav-link">Search Properties</a>
+      <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+      <a href="calculator.html" class="nav-link">Calculators</a>
+      <a href="vendors.html" class="nav-link">Vendors</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
     </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
-
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
       <a href="index.html" class="mobile-menu-link">Home</a>
@@ -440,21 +416,60 @@
   </section>
 
   <footer class="footer">
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-brand"><img src="neistat-logo-white.png" alt="The Neistat Group" class="footer-logo"><img src="jsir-logo-white.png" alt="JSIR" class="footer-logo-jsir"><p class="footer-addr">425 W. North Avenue<br>Chicago, Illinois 60610</p></div>
-        <div class="footer-nav"><span class="footer-nav-title">Navigate</span><a href="index.html">Home</a><a href="about.html">About</a><a href="calculator.html">Calculators</a><a href="vendors.html">Vendors</a><a href="contact.html">Contact</a></div>
-        <div class="footer-nav"><span class="footer-nav-title">Connect</span><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a></div>
-        <div class="footer-nav"><span class="footer-nav-title">Follow</span><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">The Neistat Group</div>
+        <div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div>
       </div>
-      <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>Licensed in the State of Illinois</span></div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigate</div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="search.html">Search Properties</a>
+        <a href="neighborhoods.html">Neighborhoods</a>
+        <a href="calculator.html">Calculators</a>
+        <a href="vendors.html">Vendors</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Connect</div>
+        <a href="tel:+18477142913">847.714.2913</a>
+        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
+        <a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span>&copy; 2026 The Neistat Group. All rights reserved.</span>
+      <span>People First. <em>Always.</em></span>
     </div>
   </footer>
 
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    // Nav
+    window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (toggle && menu) { toggle.addEventListener('click', () => { const open = menu.classList.toggle('active'); toggle.classList.toggle('active'); document.body.style.overflow = open ? 'hidden' : ''; }); }
+    // Cursor
+    (function() {
+      const cursor = document.getElementById('cursor');
+      if (!cursor || window.innerWidth < 769) return;
+      let cx = 0, cy = 0, px = 0, py = 0;
+      document.addEventListener('mousemove', (e) => { cx = e.clientX; cy = e.clientY; cursor.classList.add('visible'); });
+      document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
+      function loop() { px += (cx - px) * 0.15; py += (cy - py) * 0.15; cursor.style.left = px + 'px'; cursor.style.top = py + 'px'; requestAnimationFrame(loop); }
+      loop();
+      document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+    })();
+    // GSAP Reveal
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.reveal').forEach(el => {
+      gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+    });
+  </script>
 
 </body>
 </html>
