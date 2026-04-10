@@ -103,37 +103,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
-  <script>
-// Custom Cursor
-(function() {
-  const cursor = document.getElementById('cursor');
-  if (!cursor) return;
-  let cursorX = 0, cursorY = 0;
-  document.addEventListener('mousemove', (e) => { cursorX = e.clientX; cursorY = e.clientY; cursor.classList.add('visible'); });
-  document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-  function updateCursor() { cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px'; requestAnimationFrame(updateCursor); }
-  updateCursor();
-  document.querySelectorAll('a, button, .prop-card, .hood-card, .press-item, .vendor-card, .stat-card').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-  });
-})();
-
-// Page Transition
-(function() {
-  gsap.registerPlugin(ScrollTrigger);
-  // Fade in page content
-  gsap.from('body', { opacity: 0, duration: 0.6, ease: 'power2.out' });
-  // Intercept internal links for fade-out transition
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      gsap.to('body', { opacity: 0, duration: 0.3, ease: 'power2.in', onComplete: () => window.location.href = href });
-    });
-  });
-})();
-</script>
+  
 </body>
 </html>
