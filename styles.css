@@ -212,8 +212,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
 .footer-brand { font-family: Georgia, serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #EDE8DE; margin-bottom: 10px; }
 .footer-address { font-size: 11px; color: rgba(237,232,222,0.5); line-height: 1.6; }
-.footer-col-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 12px; }
-.footer-col a { display: block; font-size: 12px; color: rgba(237,232,222,0.6); margin-bottom: 6px; transition: color 0.3s; }
+.footer-col-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(237,232,222,0.35); margin-bottom: 12px; }
+.footer-col a { display: block; font-size: 12px; color: rgba(237,232,222,0.5); margin-bottom: 6px; transition: color 0.3s; }
 .footer-col a:hover { color: #EDE8DE; }
 .footer-bar { margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(237,232,222,0.04); display: flex; justify-content: space-between; }
 .footer-bar span { font-size: 10px; color: rgba(237,232,222,0.65); }
