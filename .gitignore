@@ -2,3 +2,4 @@
 maya-frames/
 branding_page_*.png
 *.tmp
+.claude/
