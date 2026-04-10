@@ -14,6 +14,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=3">
+  <style>
+    .contact-page { padding: clamp(120px,16vw,180px) 0 clamp(60px,8vw,100px); background: #0B0A07; }
+    .contact-heading { font-family: Georgia, serif; font-size: clamp(32px,5vw,48px); font-weight: 400; line-height: 1.1; color: #EDE8DE; margin-bottom: 16px; }
+    .contact-heading em { font-style: italic; color: #4A7A66; }
+    .contact-intro { font-size: 14px; color: rgba(237,232,222,0.45); line-height: 1.7; max-width: 400px; margin-bottom: 32px; }
+    .contact-details > div { margin-bottom: 20px; }
+    .contact-detail-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.25); margin-bottom: 4px; display: block; }
+    .contact-detail-value { font-size: 15px; font-weight: 500; color: #EDE8DE; display: block; }
+    a.contact-detail-value:hover { color: #4A7A66; }
+    .contact-form { background: #131109; border-radius: 16px; padding: clamp(28px,3vw,40px); border: 1px solid rgba(237,232,222,0.06); }
+    .form-group { margin-bottom: 20px; }
+    .form-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(237,232,222,0.35); display: block; margin-bottom: 8px; }
+    .form-input { width: 100%; font-family: inherit; font-size: 14px; color: #EDE8DE; padding: 12px 16px; border: 1px solid rgba(237,232,222,0.08); border-radius: 6px; background: rgba(237,232,222,0.04); outline: none; transition: border-color 0.3s; }
+    .form-input:focus { border-color: #4A7A66; }
+    .form-input::placeholder { color: rgba(237,232,222,0.2); }
+    .form-select { -webkit-appearance: none; cursor: pointer; }
+    .form-textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: #4A7A66; color: #F4F0E8; padding: 14px 28px; border-radius: 6px; border: none; cursor: pointer; transition: background 0.3s; }
+    .btn-submit:hover { background: #3d6655; }
+    .form-success { text-align: center; padding: 40px 20px; }
+    .form-success svg { color: #4A7A66; margin-bottom: 16px; }
+    .form-success h3 { font-family: Georgia, serif; font-size: 20px; color: #EDE8DE; margin-bottom: 8px; }
+    .form-success p { font-size: 14px; color: rgba(237,232,222,0.45); }
+    .form-success { display: none; }
+    .form-success.show { display: block; }
+    @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -32,9 +60,10 @@
         <a href="search.html" class="nav-link">Search Properties</a>
         <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
         <div class="nav-dropdown"><a href="calculator.html" class="nav-link">Calculators <span class="nav-dropdown-arrow">&#9662;</span></a><div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner"><a href="calculator.html">Mortgage Calculator</a><a href="buyer-closing-costs.html">Buyer Closing Costs</a><a href="seller-closing-costs.html">Seller Closing Costs</a></div></div></div>
+        <a href="vendors.html" class="nav-link">Vendors</a>
         <a href="contact.html" class="nav-link active">Contact</a>
       </div>
-      <a href="contact.html" class="nav-cta">Get in Touch</a>
+      <a href="contact.html" class="nav-cta-btn">Get in Touch</a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
