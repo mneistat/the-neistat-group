@@ -16,7 +16,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #0B0A07; padding: 20px 36px; display: flex; align-items: center; justify-content: space-between; transition: padding 0.4s ease; }
 .nav.scrolled { padding: 14px 36px; }
 .nav-brand { font-family: Georgia, serif; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #EDE8DE; }
-.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: nowrap; }
 .nav-link { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.35); transition: color 0.3s; }
 .nav-link:hover { color: #EDE8DE; }
 .nav-cta-btn { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: #4A7A66; color: #F4F0E8; padding: 10px 24px; border-radius: 2px; transition: background 0.3s; }
@@ -39,7 +39,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .mobile-menu-footer { margin-top: 40px; }
 .mobile-menu-footer a { font-size: 13px; color: rgba(237,232,222,0.3); }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
 }
