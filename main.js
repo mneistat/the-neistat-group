@@ -61,20 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.3 });
 
-  document.querySelectorAll('.stat-number[data-target]').forEach(el => cio.observe(el));
+  document.querySelectorAll('.stat-card .stat-number[data-target]').forEach(el => cio.observe(el));
 
-  // Hero parallax
-  const vid = document.querySelector('.hero-video');
-  if (vid) {
-    let t = false;
-    window.addEventListener('scroll', () => {
-      if (!t) { requestAnimationFrame(() => {
-        const y = window.scrollY;
-        if (y < window.innerHeight * 1.2) vid.style.transform = `translateY(${y * 0.18}px)`;
-        t = false;
-      }); t = true; }
-    }, { passive: true });
-  }
+  // Hero parallax (disabled — GSAP ScrollTrigger handles hero zoom now)
 
   // Contact form
   const form = document.getElementById('contactForm');
