@@ -275,26 +275,29 @@
     });
 
     // Stats count-up
-    document.querySelectorAll('.stats-band .stat-number').forEach(stat => {
-      const target = parseInt(stat.dataset.target);
-      const prefix = stat.dataset.prefix || '';
-      const suffix = stat.dataset.suffix || '';
-      let counted = false;
-      function countUp() {
-        if (counted) return;
-        counted = true;
-        let obj = { val: 0 };
-        gsap.to(obj, {
-          val: target, duration: 1.8, ease: 'power2.out',
-          onUpdate: () => { stat.textContent = prefix + Math.round(obj.val) + suffix; }
+    function initCounters() {
+      document.querySelectorAll('.stats-band .stat-number').forEach(stat => {
+        const target = parseInt(stat.dataset.target);
+        const prefix = stat.dataset.prefix || '';
+        const suffix = stat.dataset.suffix || '';
+        let counted = false;
+        function countUp() {
+          if (counted) return;
+          counted = true;
+          let obj = { val: 0 };
+          gsap.to(obj, {
+            val: target, duration: 1.8, ease: 'power2.out',
+            onUpdate: () => { stat.textContent = prefix + Math.round(obj.val) + suffix; }
+          });
+        }
+        ScrollTrigger.create({
+          trigger: '#statsBand',
+          start: 'top bottom',
+          onEnter: countUp
         });
-      }
-      ScrollTrigger.create({
-        trigger: stat,
-        start: 'top 95%',
-        onEnter: countUp
       });
-    });
+    }
+    initCounters();
 
     // Reveal animations for all .reveal elements
     document.querySelectorAll('.reveal').forEach(el => {
