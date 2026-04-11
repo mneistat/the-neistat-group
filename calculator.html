@@ -8,14 +8,15 @@
   <meta name="description" content="Mortgage calculator, buyer closing costs, and seller net proceeds — free financial tools from The Neistat Group.">
   <link rel="stylesheet" href="styles.css?v=3">
   <style>
-    .tools-hero { background: #0B0A07; padding: clamp(140px,18vw,200px) 40px clamp(48px,6vw,80px); }
+    body { overflow-x: hidden; }
+    .tools-hero { background: #0B0A07; padding: clamp(140px,18vw,200px) 40px 40px; }
     .tools-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 16px; display: block; }
     .tools-heading { font-family: Georgia, serif; font-size: clamp(36px,5vw,56px); font-weight: 400; color: #EDE8DE; line-height: 1.1; }
     .tools-heading em { font-style: italic; }
     .tools-sub { font-size: 15px; color: rgba(237,232,222,0.5); margin-top: 16px; max-width: 400px; }
 
-    .tool-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 960px; margin: 60px auto; padding: 0 40px; }
-    .tool-card { background: #F4F0E8; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; padding: 32px 28px; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; gap: 14px; text-decoration: none; }
+    .tool-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 960px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; }
+    .tool-card { background: #F4F0E8; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; padding: 40px 36px; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; gap: 14px; text-decoration: none; box-sizing: border-box; }
     .tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(11,10,7,0.12); }
     .tool-card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
     .tool-card-pill { display: inline-block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; font-family: -apple-system, sans-serif; width: fit-content; }
