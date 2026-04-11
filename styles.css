@@ -82,10 +82,22 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
 @media (max-width: 768px) {
-  .hero-headline { font-size: 48px; }
+  .hero-video { display: none; }
+  .hero {
+    background-image:
+      linear-gradient(rgba(11,10,7,0.55), rgba(11,10,7,0.55)),
+      url('https://res.cloudinary.com/dpwcyrxkz/image/upload/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-headline { font-size: clamp(42px, 10vw, 90px); }
   .hero-content { padding: 28px; }
   .hero-actions { flex-direction: column; }
   .scroll-indicator { display: none; }
+  .portfolio-scroll-header { padding: 0 24px 32px 24px; }
+  .portfolio-track { padding: 0 24px; gap: 16px; }
+  .portfolio-card { width: 320px; }
+  .portfolio-card-img { height: 200px; }
 }
 
 /* === STATS BAND === */
@@ -181,13 +193,6 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .portfolio-card-info h3 { font-size: 22px; color: #EDE8DE; font-family: Georgia, serif; font-weight: 400; margin-bottom: 8px; }
 .portfolio-card-info p { font-size: 13px; color: rgba(237,232,222,0.45); line-height: 1.5; margin-bottom: 16px; }
 .portfolio-price { font-family: Georgia, serif; font-size: 28px; color: #EDE8DE; }
-
-@media (max-width: 768px) {
-  .portfolio-scroll-header { padding: 0 28px 32px; }
-  .portfolio-track { padding: 0 28px; gap: 16px; }
-  .portfolio-card { width: 320px; }
-  .portfolio-card-img { height: 200px; }
-}
 
 /* === TESTIMONIALS === */
 .testimonials { background: #F4F0E8; padding: 52px 36px; }
