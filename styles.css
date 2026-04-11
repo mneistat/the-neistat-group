@@ -224,8 +224,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 /* === GSAP REVEAL === */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: none; }
+.reveal { opacity: 0; transform: translateY(30px); transition: none; }
 
 /* === LEGACY PAGE SUPPORT === */
 /* Shared classes used by about, search, neighborhoods, calculator, vendor, contact pages */
