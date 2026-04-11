@@ -323,18 +323,10 @@
     }
     initCounters();
 
-    // Immediately show anything already in the viewport
-    document.querySelectorAll('.reveal').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        gsap.set(el, { opacity: 1, y: 0 });
-      }
-    });
-
-    // Animate everything else on scroll
-    gsap.utils.toArray('.reveal').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top >= window.innerHeight) {
+    // Reveal animations — wrapped in load event for reliability
+    window.addEventListener('load', function() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      gsap.utils.toArray('.reveal').forEach(function(el) {
         gsap.fromTo(el,
           { opacity: 0, y: 30 },
           {
@@ -349,10 +341,9 @@
             }
           }
         );
-      }
+      });
+      ScrollTrigger.refresh();
     });
-
-    ScrollTrigger.refresh();
   </script>
 
 </body>
