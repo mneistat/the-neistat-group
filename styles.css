@@ -104,14 +104,28 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .portfolio-card { width: 320px; }
   .portfolio-card-img { height: 200px; }
 
-  /* Testimonials — single column on mobile */
-  .testimonials { padding: 60px 24px; }
-  .testimonials-grid { display: flex; flex-direction: column; gap: 20px; }
-  .testimonial-card { width: 100%; padding: 28px 24px; }
+}
+
+@media screen and (max-width: 768px) {
+  .testimonials-grid,
+  .testimonials .grid,
+  .testimonials > div {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .testimonial-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .testimonials {
+    padding: 60px 20px !important;
+    overflow: hidden !important;
+  }
   .testimonial-card p, .testimonial-card blockquote { font-size: 15px; line-height: 1.7; word-wrap: break-word; overflow-wrap: break-word; }
   .testimonial-header { flex-wrap: wrap; gap: 12px; }
-  .testimonial-meta { flex: 1; min-width: 0; }
-  .testimonial-meta h4, .testimonial-meta span { white-space: normal; overflow: visible; }
 }
 
 /* === STATS BAND === */
