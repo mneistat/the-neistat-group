@@ -107,24 +107,61 @@
     <div class="credential"><div class="credential-title">Chicago Real Producers</div><div class="credential-sub">Featured Agent Profile</div></div>
   </section>
 
-  <!-- Portfolio -->
-  <section class="portfolio">
-    <div class="portfolio-header">
-      <h2 class="portfolio-heading">Notable <em>Sales</em></h2>
-      <a href="search.html" class="link-muted">View All →</a>
+  <!-- Portfolio Scroll -->
+  <section class="portfolio-scroll">
+    <div class="portfolio-scroll-header">
+      <h2>Notable <em>Sales</em></h2>
+      <span class="scroll-hint">Scroll to explore →</span>
     </div>
-    <div class="featured-sale reveal">
-      <div>
-        <div class="featured-tag">Featured · West Loop Deconversion · CoStar News</div>
-        <div class="featured-address">1035 W. Lake Street, Chicago</div>
-        <div class="featured-desc">Led the listing and sale of this multi-unit West Loop property, one of the largest deconversion transactions in the neighborhood.</div>
+    <div class="portfolio-track-wrapper">
+      <div class="portfolio-track">
+        <div class="portfolio-card">
+          <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800')"></div>
+          <div class="portfolio-card-info">
+            <span class="portfolio-tag">Featured · West Loop · CoStar News</span>
+            <h3>1035 W. Lake Street</h3>
+            <p>Multi-unit deconversion — one of the largest in the neighborhood</p>
+            <div class="portfolio-price">$9,500,000</div>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800')"></div>
+          <div class="portfolio-card-info">
+            <span class="portfolio-tag">Winnetka North Shore · Crain's</span>
+            <h3>1183 Elm Street</h3>
+            <p>Featured in Crain's Chicago Business</p>
+            <div class="portfolio-price">$1,265,000</div>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800')"></div>
+          <div class="portfolio-card-info">
+            <span class="portfolio-tag">Old Town</span>
+            <h3>1512 N. Hudson</h3>
+            <p>Single family — Old Town</p>
+            <div class="portfolio-price">$875,000</div>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800')"></div>
+          <div class="portfolio-card-info">
+            <span class="portfolio-tag">Lincoln Park</span>
+            <h3>1126 W. Fullerton</h3>
+            <p>Lincoln Park condo</p>
+            <div class="portfolio-price">$720,000</div>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-card-img" style="background-image: url('https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800')"></div>
+          <div class="portfolio-card-info">
+            <span class="portfolio-tag">South Loop</span>
+            <h3>1235 S. Prairie</h3>
+            <p>South Loop high-rise</p>
+            <div class="portfolio-price">$540,000</div>
+          </div>
+        </div>
       </div>
-      <div class="featured-price">$9,500,000</div>
     </div>
-    <div class="sale-row reveal"><span class="sale-num">02</span><div><div class="sale-address">1183 Elm Street</div><div class="sale-location">Winnetka North Shore · Crain's</div></div><span class="sale-price">$1,265,000</span></div>
-    <div class="sale-row reveal"><span class="sale-num">03</span><div><div class="sale-address">1512 N. Hudson</div><div class="sale-location">Old Town</div></div><span class="sale-price">$875,000</span></div>
-    <div class="sale-row reveal"><span class="sale-num">04</span><div><div class="sale-address">1126 W. Fullerton</div><div class="sale-location">Lincoln Park</div></div><span class="sale-price">$720,000</span></div>
-    <div class="sale-row reveal"><span class="sale-num">05</span><div><div class="sale-address">1235 S. Prairie</div><div class="sale-location">South Loop</div></div><span class="sale-price">$540,000</span></div>
   </section>
 
   <!-- Testimonials -->
@@ -297,6 +334,17 @@
       opacity: 0, ease: 'none',
       scrollTrigger: { trigger: '#hero', start: '2% top', end: '8% top', scrub: true }
     });
+
+    // Portfolio drag-to-scroll
+    (function() {
+      const wrapper = document.querySelector('.portfolio-track-wrapper');
+      if (!wrapper) return;
+      let isDown = false, startX, scrollLeft;
+      wrapper.addEventListener('mousedown', function(e) { isDown = true; startX = e.pageX - wrapper.offsetLeft; scrollLeft = wrapper.scrollLeft; });
+      wrapper.addEventListener('mouseleave', function() { isDown = false; });
+      wrapper.addEventListener('mouseup', function() { isDown = false; });
+      wrapper.addEventListener('mousemove', function(e) { if (!isDown) return; e.preventDefault(); const x = e.pageX - wrapper.offsetLeft; wrapper.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+    })();
 
     // Stats count-up
     function initCounters() {

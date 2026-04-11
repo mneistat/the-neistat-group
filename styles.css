@@ -162,27 +162,31 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .credential { border-bottom: 1px solid rgba(11,10,7,0.06); }
 }
 
-/* === PORTFOLIO === */
-.portfolio { background: #0B0A07; padding: 52px 36px; }
-.portfolio-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; }
-.portfolio-heading { font-family: Georgia, serif; font-size: 26px; color: #EDE8DE; }
-.portfolio-heading em { font-style: italic; color: #EDE8DE; }
-.link-muted { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(237,232,222,0.5); transition: color 0.3s; }
-.link-muted:hover { color: #EDE8DE; }
-.featured-sale { background: #131109; border-top: 1px solid rgba(237,232,222,0.25); padding: 26px; display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; }
-.featured-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.35); margin-bottom: 8px; }
-.featured-address { font-family: Georgia, serif; font-size: 18px; color: #EDE8DE; margin-bottom: 6px; }
-.featured-desc { font-size: 11px; color: rgba(237,232,222,0.55); max-width: 400px; line-height: 1.5; }
-.featured-price { font-family: Georgia, serif; font-size: 34px; color: #EDE8DE; white-space: nowrap; }
-.sale-row { display: grid; grid-template-columns: 40px 1fr auto; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid rgba(237,232,222,0.04); }
-.sale-num { font-family: Georgia, serif; font-size: 13px; color: rgba(237,232,222,0.4); }
-.sale-address { font-size: 13px; font-weight: 500; color: #EDE8DE; }
-.sale-location { font-size: 11px; color: rgba(237,232,222,0.55); }
-.sale-price { font-family: Georgia, serif; font-size: 15px; color: #EDE8DE; text-align: right; }
+/* === PORTFOLIO SCROLL === */
+.portfolio-scroll { background: #0B0A07; padding: 100px 0 0 0; overflow: hidden; }
+.portfolio-scroll-header { display: flex; align-items: flex-end; justify-content: space-between; padding: 0 60px 48px 60px; }
+.portfolio-scroll-header h2 { font-size: clamp(36px, 5vw, 64px); color: #EDE8DE; font-family: Georgia, serif; font-weight: 400; margin: 0; line-height: 1.1; }
+.portfolio-scroll-header h2 em { font-style: italic; }
+.scroll-hint { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(237,232,222,0.4); font-family: -apple-system, sans-serif; padding-bottom: 8px; }
+.portfolio-track-wrapper { overflow-x: auto; overflow-y: hidden; cursor: grab; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 60px; }
+.portfolio-track-wrapper::-webkit-scrollbar { display: none; }
+.portfolio-track-wrapper:active { cursor: grabbing; }
+.portfolio-track { display: flex; gap: 24px; padding: 0 60px; width: max-content; }
+.portfolio-card { width: 420px; flex-shrink: 0; background: #141210; border: 1px solid rgba(237,232,222,0.08); overflow: hidden; transition: transform 0.4s ease, border-color 0.4s ease; }
+.portfolio-card:hover { transform: translateY(-8px); border-color: rgba(237,232,222,0.2); }
+.portfolio-card-img { width: 100%; height: 280px; background-size: cover; background-position: center; transition: transform 0.6s ease; }
+.portfolio-card:hover .portfolio-card-img { transform: scale(1.04); }
+.portfolio-card-info { padding: 28px 32px 32px; }
+.portfolio-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.4); font-family: -apple-system, sans-serif; display: block; margin-bottom: 12px; }
+.portfolio-card-info h3 { font-size: 22px; color: #EDE8DE; font-family: Georgia, serif; font-weight: 400; margin-bottom: 8px; }
+.portfolio-card-info p { font-size: 13px; color: rgba(237,232,222,0.45); line-height: 1.5; margin-bottom: 16px; }
+.portfolio-price { font-family: Georgia, serif; font-size: 28px; color: #EDE8DE; }
 
 @media (max-width: 768px) {
-  .featured-sale { flex-direction: column; gap: 16px; }
-  .featured-price { font-size: 26px; }
+  .portfolio-scroll-header { padding: 0 28px 32px; }
+  .portfolio-track { padding: 0 28px; gap: 16px; }
+  .portfolio-card { width: 320px; }
+  .portfolio-card-img { height: 200px; }
 }
 
 /* === TESTIMONIALS === */
