@@ -336,38 +336,27 @@
     // GSAP Animations
     gsap.registerPlugin(ScrollTrigger);
 
-    // Cinematic hero — pinned scroll experience
-    const heroTL = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: '+=100%',
-        pin: true,
-        scrub: 0.8,
-        anticipatePin: 1
-      }
-    });
+    // Hero scroll effects — no pinning, smooth parallax
+    var heroST = { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true };
 
-    // Video zoom 1 → 1.2
-    heroTL.to('#heroVideoWrap', { scale: 1.2, ease: 'none' }, 0);
+    // Video zooms slightly as you scroll past
+    gsap.to('#heroVideoWrap', { scale: 1.15, ease: 'none', scrollTrigger: heroST });
 
     // "People First." drifts left and fades
-    heroTL.to('#heroPeople', { x: -120, opacity: 0, ease: 'none' }, 0);
+    gsap.to('#heroPeople', { x: -80, opacity: 0, ease: 'none', scrollTrigger: heroST });
 
     // "Always." drifts right and fades
-    heroTL.to('#heroAlways', { x: 120, opacity: 0, ease: 'none' }, 0);
+    gsap.to('#heroAlways', { x: 80, opacity: 0, ease: 'none', scrollTrigger: heroST });
 
-    // Eyebrow fades
-    heroTL.to('#heroEyebrow', { opacity: 0, ease: 'none' }, 0);
+    // Eyebrow, subtext, buttons fade out
+    gsap.to('#heroEyebrow', { opacity: 0, ease: 'none', scrollTrigger: heroST });
+    gsap.to('#heroSub', { y: 20, opacity: 0, ease: 'none', scrollTrigger: heroST });
+    gsap.to('#heroActions', { y: 20, opacity: 0, ease: 'none', scrollTrigger: heroST });
 
-    // Subtext and buttons fade out
-    heroTL.to('#heroSub', { y: 20, opacity: 0, ease: 'none' }, 0);
-    heroTL.to('#heroActions', { y: 20, opacity: 0, ease: 'none' }, 0);
-
-    // Scroll indicator — disappears immediately on first scroll
+    // Scroll indicator disappears on first scroll
     gsap.to('#scrollIndicator', {
       opacity: 0, ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: '2% top', end: '8% top', scrub: true }
+      scrollTrigger: { trigger: '#hero', start: '2% top', end: '10% top', scrub: true }
     });
 
     // Portfolio drag-to-scroll
