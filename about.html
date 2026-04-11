@@ -31,7 +31,7 @@
     .closing-quote blockquote { font-family: Georgia, serif; font-style: italic; font-size: 22px; color: rgba(237,232,222,0.6); max-width: 580px; margin: 0 auto; line-height: 1.5; }
     .tg6 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
     @media (max-width: 1024px) { .tg6 { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) { .tg6 { grid-template-columns: 1fr; } .press-row-item { flex-direction: column; gap: 8px; } .pr-link { margin-left: 0; } }
+    @media (max-width: 768px) { .tg6 { grid-template-columns: 1fr; } .press-row-item { flex-direction: column; gap: 8px; } .pr-link { margin-left: 0; } .about-bone[style*="grid"] { grid-template-columns: 1fr !important; } }
   </style>
 </head>
 <body>
@@ -72,11 +72,16 @@
     <h1 class="hero-headline">People First.<br><span class="hero-headline-italic">Always.</span></h1>
   </section>
 
-  <section class="about-section about-bone">
+  <section class="about-section about-bone" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;">
+    <div>
     <div class="lbl-b reveal">The Legacy</div>
     <p class="about-body about-body-b reveal">Real estate isn't what Matthew Neistat chose. It's what he was born into.</p>
     <p class="about-body about-body-b reveal">Growing up in Buffalo Grove, Matthew spent weekends walking job sites with his grandfather and uncle — both developers who built everything from single-family homes to high-rises across Chicago. His grandfather's rule: "Always put people first." His father and uncle: "Emphasize reputation above all else."</p>
     <p class="about-body about-body-b reveal">His father went further — a CFO who left security to build houses himself. Matthew visited those homes as a kid. That leap of faith stayed with him.</p>
+    </div>
+    <div class="reveal" style="position:sticky;top:100px;">
+      <img src="DSC_9797-Edit.jpg" alt="Matthew Neistat" style="width:100%;border-radius:12px;filter:grayscale(100%);">
+    </div>
   </section>
 
   <section class="about-section about-dark">
