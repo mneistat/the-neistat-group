@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
   <title>Chicago Neighborhoods | The Neistat Group</title>
-  <meta name="description" content="Explore Chicago neighborhoods from South Loop to Rogers Park with The Neistat Group's interactive map.">
+  <meta name="description" content="Explore Chicago and North Shore neighborhoods with The Neistat Group's interactive map.">
   <link rel="stylesheet" href="styles.css?v=3">
   <style>
     body { overflow: hidden; }
     .nh-layout { display: flex; height: calc(100vh - 56px); margin-top: 56px; }
-
-    /* Sidebar */
     .nh-sidebar { width: 340px; flex-shrink: 0; background: #0B0A07; display: flex; flex-direction: column; border-right: 1px solid rgba(237,232,222,0.06); }
     .nh-search { padding: 20px; border-bottom: 1px solid rgba(237,232,222,0.06); }
     .nh-search-input { width: 100%; font-family: -apple-system, sans-serif; font-size: 14px; color: #EDE8DE; background: #141210; border: 1px solid rgba(237,232,222,0.08); border-radius: 4px; padding: 12px 16px; outline: none; transition: border-color 0.3s; }
     .nh-search-input:focus { border-color: rgba(237,232,222,0.25); }
     .nh-search-input::placeholder { color: rgba(237,232,222,0.3); }
-
+    .nh-section-label { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(237,232,222,0.25); padding: 16px 20px 8px; }
     .nh-list { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(237,232,222,0.1) transparent; }
     .nh-list::-webkit-scrollbar { width: 4px; }
     .nh-list::-webkit-scrollbar-thumb { background: rgba(237,232,222,0.1); border-radius: 2px; }
@@ -27,8 +25,6 @@
     .nh-list-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .nh-list-name { font-family: Georgia, serif; font-size: 15px; color: #EDE8DE; }
     .nh-list-sub { font-size: 11px; color: rgba(237,232,222,0.35); margin-top: 2px; }
-
-    /* Detail panel */
     .nh-detail-panel { background: #0B0A07; border-top: 1px solid rgba(237,232,222,0.08); padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
     .nh-detail-panel.open { max-height: 400px; padding: 24px 20px; overflow-y: auto; }
     .nh-detail-name { font-family: Georgia, serif; font-size: 20px; color: #EDE8DE; margin-bottom: 8px; }
@@ -42,43 +38,27 @@
     .nh-btn-primary:hover { background: #fff; }
     .nh-btn-ghost { background: transparent; color: rgba(237,232,222,0.5); border: 1px solid rgba(237,232,222,0.12); }
     .nh-btn-ghost:hover { border-color: rgba(237,232,222,0.3); color: #EDE8DE; }
-
-    /* Map */
     .nh-map-wrap { flex: 1; position: relative; }
     #neighborhood-map { width: 100%; height: 100%; }
-
-    /* Mobile chips */
     .nh-chips { display: none; }
-
-    /* Mobile bottom sheet */
     .nh-bottom-sheet { display: none; }
-
     @media (max-width: 768px) {
       .nh-layout { flex-direction: column; }
       .nh-sidebar { display: none; }
       .nh-map-wrap { flex: 1; }
-
       .nh-chips { display: flex; gap: 8px; padding: 8px 12px; overflow-x: auto; background: #0B0A07; scrollbar-width: none; position: relative; z-index: 1; }
       .nh-chips::-webkit-scrollbar { display: none; }
       .nh-chip { font-size: 12px; font-weight: 500; color: rgba(237,232,222,0.6); background: #141210; border: 1px solid rgba(237,232,222,0.08); padding: 8px 16px; border-radius: 100px; white-space: nowrap; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
       .nh-chip.active { background: #EDE8DE; color: #0B0A07; border-color: #EDE8DE; }
-
       .nh-bottom-sheet { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; background: #0B0A07; border-top: 1px solid rgba(237,232,222,0.1); padding: 20px; border-radius: 16px 16px 0 0; transform: translateY(100%); transition: transform 0.3s ease; }
       .nh-bottom-sheet.open { display: block; transform: translateY(0); }
       .nh-bottom-sheet-handle { width: 32px; height: 4px; background: rgba(237,232,222,0.15); border-radius: 2px; margin: 0 auto 16px; }
     }
   </style>
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MGNGVERDHQ');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 </head>
 <body>
-
   <div class="cursor" id="cursor"></div>
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
@@ -110,7 +90,6 @@
   </div>
 
   <div class="nh-layout">
-    <!-- Sidebar -->
     <div class="nh-sidebar">
       <div class="nh-search">
         <input type="text" class="nh-search-input" id="nhSearch" placeholder="Search neighborhoods...">
@@ -126,17 +105,10 @@
         </div>
       </div>
     </div>
-
-    <!-- Mobile chips -->
     <div class="nh-chips" id="nhChips"></div>
-
-    <!-- Map -->
-    <div class="nh-map-wrap">
-      <div id="neighborhood-map"></div>
-    </div>
+    <div class="nh-map-wrap"><div id="neighborhood-map"></div></div>
   </div>
 
-  <!-- Mobile bottom sheet -->
   <div class="nh-bottom-sheet" id="nhBottomSheet">
     <div class="nh-bottom-sheet-handle"></div>
     <div class="nh-detail-name" id="bsName"></div>
@@ -149,135 +121,202 @@
   </div>
 
   <script>
-    // Nav
     window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
     const toggle = document.getElementById('navToggle');
     const mmenu = document.getElementById('mobileMenu');
-    if (toggle && mmenu) { toggle.addEventListener('click', () => { const open = mmenu.classList.toggle('active'); toggle.classList.toggle('active'); document.body.style.overflow = open ? 'hidden' : 'hidden'; }); }
-
-    // Cursor
+    if (toggle && mmenu) { toggle.addEventListener('click', () => { const open = mmenu.classList.toggle('active'); toggle.classList.toggle('active'); }); }
     (function() {
       const cursor = document.getElementById('cursor');
       if (!cursor || window.innerWidth < 769) return;
-      let cx = 0, cy = 0, px = 0, py = 0;
-      document.addEventListener('mousemove', (e) => { cx = e.clientX; cy = e.clientY; cursor.classList.add('visible'); });
+      let cx=0,cy=0,px=0,py=0;
+      document.addEventListener('mousemove', e => { cx=e.clientX; cy=e.clientY; cursor.classList.add('visible'); });
       document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-      function loop() { px += (cx - px) * 0.15; py += (cy - py) * 0.15; cursor.style.left = px + 'px'; cursor.style.top = py + 'px'; requestAnimationFrame(loop); }
+      function loop() { px+=(cx-px)*0.15; py+=(cy-py)*0.15; cursor.style.left=px+'px'; cursor.style.top=py+'px'; requestAnimationFrame(loop); }
       loop();
       document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
     })();
   </script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gqvDCyKTmo-ze3seKvolj_U9I-lNRWs"></script>
-  <script src="neighborhoods-data.js"></script>
   <script>
     const map = new google.maps.Map(document.getElementById('neighborhood-map'), {
-      center: { lat: 41.916, lng: -87.655 },
-      zoom: 12,
+      center: { lat: 42.05, lng: -87.78 },
+      zoom: 10,
       styles: [
+        { featureType: 'all', elementType: 'geometry', stylers: [{ color: '#1a1a2e' }] },
+        { featureType: 'water', stylers: [{ color: '#16213e' }] },
+        { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#0f3460' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+        { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+        { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#1a5276' }] },
         { featureType: 'poi', stylers: [{ visibility: 'off' }] },
-        { featureType: 'transit', stylers: [{ visibility: 'simplified' }] },
-        { featureType: 'water', stylers: [{ color: '#c8dce5' }] },
-        { featureType: 'landscape', stylers: [{ color: '#1a1916' }] },
-        { featureType: 'road.highway', stylers: [{ color: '#252320' }] },
-        { featureType: 'road.arterial', stylers: [{ color: '#201e1a' }] },
-        { featureType: 'road.local', stylers: [{ color: '#1c1a17' }] },
-        { elementType: 'labels.text.fill', stylers: [{ color: '#888' }] },
-        { elementType: 'labels.text.stroke', stylers: [{ color: '#0B0A07' }] }
+        { featureType: 'transit', stylers: [{ visibility: 'off' }] }
       ],
-      mapTypeControl: false,
-      streetViewControl: false,
-      fullscreenControl: false,
-      gestureHandling: 'greedy'
+      mapTypeControl: false, streetViewControl: false, fullscreenControl: false, gestureHandling: 'greedy'
     });
 
-    function toPath(arr) { return arr.map(p => ({ lat: p[0], lng: p[1] })); }
+    // Neighborhood metadata
+    const nhMeta = {
+      'LOGAN SQUARE': { desc: 'One of the hottest neighborhoods. Boulevard system, craft breweries, thriving arts.', character: 'Bungalows, Greystones, Up-and-Coming', color: '#55efc4' },
+      'LOOP': { desc: 'The heart of downtown Chicago. Michigan Avenue, Millennium Park, the Art Institute.', character: 'Downtown, Commercial, High-Rise', color: '#EDE8DE' },
+      'LAKE VIEW': { desc: "Home to Wrigley Field and some of Chicago's best dining and nightlife.", character: 'Condos, Two-Flats, Vintage', color: '#0984e3' },
+      'LINCOLN SQUARE': { desc: "European-village feel with independent shops and the Old Town School of Folk Music.", character: 'Bungalows, Two-Flats, Residential', color: '#e84393' },
+      'WEST TOWN': { desc: 'Rapidly evolving with new restaurants, creative offices, and historic workers cottages.', character: 'Emerging, Mixed-Use, New Development', color: '#d63031' },
+      'NEAR NORTH SIDE': { desc: 'Gold Coast, River North, Streeterville — luxury lakefront living and nightlife.', character: 'Luxury High-Rise, Nightlife, Lakefront', color: '#fdcb6e' },
+      'NORTH CENTER': { desc: 'Family-friendly with charming main streets and top-rated schools.', character: 'Family-Friendly, SFH, Condos', color: '#00cec9' },
+      'NEAR SOUTH SIDE': { desc: "One of Chicago's fastest-growing neighborhoods. Steps from Grant Park and Museum Campus.", character: 'New Construction, Lofts, High-Rises', color: '#636e72' },
+      'LINCOLN PARK': { desc: "Chicago's premier residential neighborhood. Home to the zoo, DePaul, Second City.", character: 'SFH, Greystones, Condos, Brownstones', color: '#EDE8DE' },
+      'ROGERS PARK': { desc: "Chicago's most diverse neighborhood. Affordable lakefront living and vibrant culture.", character: 'Diverse, Lakefront, Affordable', color: '#a29bfe' },
+      'EDGEWATER': { desc: 'Quiet lakefront neighborhood with beautiful vintage architecture and Andersonville dining.', character: 'Lakefront, Vintage, Quiet', color: '#fd79a8' },
+      'HYDE PARK': { desc: 'University of Chicago, Museum of Science & Industry, and Obama Presidential Center.', character: 'Academic, Historic, Cultural', color: '#74b9ff' },
+      'LOWER WEST SIDE': { desc: 'Pilsen — vibrant arts district with murals, galleries, and authentic Mexican cuisine.', character: 'Arts, Culture, Emerging', color: '#e17055' },
+      'HUMBOLDT PARK': { desc: 'Lush parks, Puerto Rican heritage, and rapidly appreciating real estate.', character: 'Parks, Culture, Emerging', color: '#00b894' },
+      'IRVING PARK': { desc: 'Classic Chicago bungalows, tree-lined streets, and strong community.', character: 'Bungalows, Family, Value', color: '#6c5ce7' },
+      'ALBANY PARK': { desc: 'One of the most diverse neighborhoods in the US. Incredible global dining.', character: 'Diverse, Dining, Value', color: '#ffeaa7' },
+      'AVONDALE': { desc: 'Breweries, new restaurants, and a rapidly growing creative scene.', character: 'Breweries, Creative, Emerging', color: '#dfe6e9' },
+      'PORTAGE PARK': { desc: 'Affordable, family-friendly, and full of classic Chicago charm.', character: 'Affordable, Family, Classic', color: '#b2bec3' },
+      'UPTOWN': { desc: 'Historic theaters, diverse culture, and lakefront access at accessible prices.', character: 'Historic, Diverse, Lakefront', color: '#fab1a0' },
+      'NEAR WEST SIDE': { desc: 'Fulton Market, United Center, and the hottest restaurant scene in Chicago.', character: 'Restaurants, Lofts, New Development', color: '#81ecec' },
+    };
 
-    const hoods = HOOD_DATA || {};
-    const polys = {};
+    // North Shore suburbs
+    const northShore = [
+      { name: 'Evanston', desc: 'A city unto itself. Northwestern University, lakefront parks, diverse dining, and stunning homes.', character: 'Urban Suburb, Diverse, Lakefront', bounds: [[42.0580,-87.7130],[42.0580,-87.6650],[42.0280,-87.6650],[42.0280,-87.7130]], color: '#4A7A66' },
+      { name: 'Wilmette', desc: "Top-rated schools, Bahá'í Temple, and beautiful residential streets on the North Shore.", character: 'Family, Top Schools, Lakefront', bounds: [[42.0900,-87.7400],[42.0900,-87.7000],[42.0600,-87.7000],[42.0600,-87.7400]], color: '#6c5ce7' },
+      { name: 'Winnetka', desc: 'One of the most prestigious addresses in Illinois. Exceptional schools, lakefront estates.', character: 'Luxury, Estates, Top Schools', bounds: [[42.1200,-87.7600],[42.1200,-87.7200],[42.0900,-87.7200],[42.0900,-87.7600]], color: '#e17055' },
+      { name: 'Glencoe', desc: 'Small, exclusive, and serene. Ravinia Festival, lakefront access, and architectural gems.', character: 'Exclusive, Lakefront, Arts', bounds: [[42.1450,-87.7800],[42.1450,-87.7400],[42.1200,-87.7400],[42.1200,-87.7800]], color: '#00b894' },
+      { name: 'Highland Park', desc: 'Arts, culture, and lakefront living. Ravinia, downtown dining, and gracious homes.', character: 'Arts, Culture, Lakefront', bounds: [[42.2000,-87.8300],[42.2000,-87.7700],[42.1600,-87.7700],[42.1600,-87.8300]], color: '#fdcb6e' },
+      { name: 'Highwood', desc: 'A hidden gem on the North Shore. Known for its restaurant scene and accessible price points.', character: 'Diverse, Restaurant Scene, Value', bounds: [[42.2050,-87.8150],[42.2050,-87.7950],[42.1950,-87.7950],[42.1950,-87.8150]], color: '#0984e3' },
+      { name: 'Lake Forest', desc: 'The pinnacle of North Shore living. Historic estates, elite schools, and unmatched prestige.', character: 'Ultra-Luxury, Historic Estates, Elite Schools', bounds: [[42.2800,-87.8700],[42.2800,-87.8000],[42.2200,-87.8000],[42.2200,-87.8700]], color: '#d63031' },
+      { name: 'Bannockburn', desc: 'Ultra-exclusive and rarely available. One of the smallest and most prestigious villages.', character: 'Ultra-Exclusive, Estate Lots, Private', bounds: [[42.2050,-87.8800],[42.2050,-87.8550],[42.1850,-87.8550],[42.1850,-87.8800]], color: '#00cec9' },
+      { name: 'Deerfield', desc: 'Upscale suburban living with top-rated schools and easy Metra access to the city.', character: 'Family, Top Schools, Metra Access', bounds: [[42.1900,-87.8700],[42.1900,-87.8200],[42.1550,-87.8200],[42.1550,-87.8700]], color: '#e84393' },
+      { name: 'Riverwoods', desc: 'One of the most private and serene communities on the North Shore. Heavily wooded estate lots.', character: 'Private, Wooded, Estate Lots', bounds: [[42.1900,-87.9000],[42.1900,-87.8700],[42.1550,-87.8700],[42.1550,-87.9000]], color: '#a29bfe' },
+      { name: 'Northbrook', desc: 'Family-friendly suburb with top schools, great retail, and easy access to the city.', character: 'Family, Top Schools, Shopping', bounds: [[42.1600,-87.8700],[42.1600,-87.8100],[42.1100,-87.8100],[42.1100,-87.8700]], color: '#55efc4' },
+      { name: 'Glenview', desc: 'Well-planned community with excellent schools, parks, and a strong sense of neighborhood.', character: 'Family, Parks, Top Schools', bounds: [[42.1100,-87.8700],[42.1100,-87.7900],[42.0650,-87.7900],[42.0650,-87.8700]], color: '#fd79a8' },
+      { name: 'Skokie', desc: 'Diverse, accessible, and underrated. Great value close to the city with excellent amenities.', character: 'Diverse, Value, CTA Access', bounds: [[42.0700,-87.7650],[42.0700,-87.7200],[42.0100,-87.7200],[42.0100,-87.7650]], color: '#6c5ce7' },
+    ];
+
+    const allPolys = {};
+    const allHoods = {};
     let activeKey = null;
-
     const nhList = document.getElementById('nhList');
     const nhChips = document.getElementById('nhChips');
 
-    // Build sidebar list and mobile chips
-    Object.entries(hoods).forEach(([key, nh]) => {
-      // Polygon
-      const poly = new google.maps.Polygon({
-        paths: toPath(nh.coords),
-        strokeColor: nh.color, strokeOpacity: 0.8, strokeWeight: 2,
-        fillColor: nh.color, fillOpacity: 0.12, map: map
-      });
-      poly.addListener('click', () => selectHood(key));
-      poly.addListener('mouseover', () => { if (activeKey !== key) poly.setOptions({ fillOpacity: 0.25 }); });
-      poly.addListener('mouseout', () => { if (activeKey !== key) poly.setOptions({ fillOpacity: 0.12 }); });
-      polys[key] = poly;
-
-      // Sidebar item
+    function addToUI(key, name, desc, character, color) {
+      allHoods[key] = { name, desc, character, color };
       const item = document.createElement('div');
       item.className = 'nh-list-item';
       item.dataset.key = key;
-      item.innerHTML = '<div class="nh-list-dot" style="background:' + nh.color + '"></div><div><div class="nh-list-name">' + nh.label + '</div>' + (nh.stats?.Character ? '<div class="nh-list-sub">' + nh.stats.Character + '</div>' : '') + '</div>';
+      item.innerHTML = '<div class="nh-list-dot" style="background:' + color + '"></div><div><div class="nh-list-name">' + name + '</div><div class="nh-list-sub">' + character + '</div></div>';
       item.addEventListener('click', () => selectHood(key));
       nhList.appendChild(item);
-
-      // Mobile chip
       const chip = document.createElement('div');
       chip.className = 'nh-chip';
       chip.dataset.key = key;
-      chip.textContent = nh.label;
+      chip.textContent = name;
       chip.addEventListener('click', () => selectHood(key));
       nhChips.appendChild(chip);
-    });
+    }
 
     function selectHood(key) {
-      const nh = hoods[key];
-      if (!nh) return;
-
-      // Reset previous
-      if (activeKey && polys[activeKey]) {
-        polys[activeKey].setOptions({ fillOpacity: 0.12, strokeWeight: 2 });
-      }
-
+      const nh = allHoods[key];
+      if (!nh || !allPolys[key]) return;
+      if (activeKey && allPolys[activeKey]) allPolys[activeKey].setOptions({ fillOpacity: 0.15, strokeWeight: 2 });
       activeKey = key;
-
-      // Highlight polygon
-      polys[key].setOptions({ fillOpacity: 0.45, strokeWeight: 3 });
-
-      // Fly to bounds
+      allPolys[key].setOptions({ fillOpacity: 0.45, strokeWeight: 3 });
       const bounds = new google.maps.LatLngBounds();
-      nh.coords.forEach(c => bounds.extend({ lat: c[0], lng: c[1] }));
+      allPolys[key].getPath().forEach(p => bounds.extend(p));
       map.fitBounds(bounds, { top: 40, bottom: 40, left: 40, right: 40 });
-
-      // Update sidebar active state
       document.querySelectorAll('.nh-list-item').forEach(el => el.classList.toggle('active', el.dataset.key === key));
       document.querySelectorAll('.nh-chip').forEach(el => el.classList.toggle('active', el.dataset.key === key));
-
-      // Scroll sidebar item into view
       const activeItem = nhList.querySelector('[data-key="' + key + '"]');
       if (activeItem) activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-      // Build stats HTML
-      const statsHtml = Object.entries(nh.stats || {}).map(([k, v]) =>
-        '<div><span class="nh-detail-stat-label">' + k + '</span><span class="nh-detail-stat-val">' + v + '</span></div>'
-      ).join('');
-
-      // Desktop detail panel
-      document.getElementById('dpName').textContent = nh.label;
-      document.getElementById('dpDesc').textContent = nh.desc;
-      document.getElementById('dpStats').innerHTML = statsHtml;
-      document.getElementById('dpSearchBtn').textContent = 'Search ' + nh.label;
+      const statsHtml = '<div><span class="nh-detail-stat-label">Character</span><span class="nh-detail-stat-val">' + nh.character + '</span></div>';
+      ['dpName','bsName'].forEach(id => document.getElementById(id).textContent = nh.name);
+      ['dpDesc','bsDesc'].forEach(id => document.getElementById(id).textContent = nh.desc);
+      ['dpStats','bsStats'].forEach(id => document.getElementById(id).innerHTML = statsHtml);
+      document.getElementById('dpSearchBtn').textContent = 'Search ' + nh.name;
+      document.getElementById('bsSearchBtn').textContent = 'Search ' + nh.name;
       document.getElementById('nhDetailPanel').classList.add('open');
-
-      // Mobile bottom sheet
-      document.getElementById('bsName').textContent = nh.label;
-      document.getElementById('bsDesc').textContent = nh.desc;
-      document.getElementById('bsStats').innerHTML = statsHtml;
-      document.getElementById('bsSearchBtn').textContent = 'Search ' + nh.label;
       document.getElementById('nhBottomSheet').classList.add('open');
     }
 
-    // Search filter
+    // Fetch Chicago community areas
+    fetch('https://data.cityofchicago.org/resource/igwz-8jzy.json')
+      .then(r => r.json())
+      .then(data => {
+        // Add Chicago section label
+        const chiLabel = document.createElement('div');
+        chiLabel.className = 'nh-section-label';
+        chiLabel.textContent = 'Chicago';
+        nhList.appendChild(chiLabel);
+
+        data.forEach(area => {
+          const name = area.community;
+          if (!nhMeta[name]) return;
+          const meta = nhMeta[name];
+          const key = name.toLowerCase().replace(/\s+/g, '-');
+          // Parse multipolygon from the_geom
+          const geom = area.the_geom;
+          if (!geom || !geom.coordinates) return;
+          let coords;
+          if (geom.type === 'MultiPolygon') {
+            // Use the largest ring
+            let longest = [];
+            geom.coordinates.forEach(poly => poly.forEach(ring => { if (ring.length > longest.length) longest = ring; }));
+            coords = longest.map(c => ({ lat: c[1], lng: c[0] }));
+          } else if (geom.type === 'Polygon') {
+            coords = geom.coordinates[0].map(c => ({ lat: c[1], lng: c[0] }));
+          }
+          if (!coords || coords.length < 3) return;
+
+          const poly = new google.maps.Polygon({
+            paths: coords,
+            strokeColor: meta.color, strokeOpacity: 0.8, strokeWeight: 2,
+            fillColor: meta.color, fillOpacity: 0.15, map: map
+          });
+          poly.addListener('click', () => selectHood(key));
+          poly.addListener('mouseover', () => { if (activeKey !== key) poly.setOptions({ fillOpacity: 0.25 }); });
+          poly.addListener('mouseout', () => { if (activeKey !== key) poly.setOptions({ fillOpacity: 0.15 }); });
+          allPolys[key] = poly;
+
+          // Display name mapping
+          const displayNames = {
+            'NEAR NORTH SIDE': 'Near North Side (Gold Coast / River North / Streeterville)',
+            'NEAR SOUTH SIDE': 'South Loop',
+            'LOWER WEST SIDE': 'Pilsen',
+            'NEAR WEST SIDE': 'West Loop / Fulton Market'
+          };
+          addToUI(key, displayNames[name] || name.split(' ').map(w => w[0] + w.slice(1).toLowerCase()).join(' '), meta.desc, meta.character, meta.color);
+        });
+
+        // Add North Shore section label
+        const nsLabel = document.createElement('div');
+        nsLabel.className = 'nh-section-label';
+        nsLabel.textContent = 'North Shore';
+        nhList.appendChild(nsLabel);
+
+        // Draw North Shore suburbs
+        northShore.forEach(sub => {
+          const key = sub.name.toLowerCase().replace(/\s+/g, '-');
+          const coords = sub.bounds.map(c => ({ lat: c[0], lng: c[1] }));
+          const poly = new google.maps.Polygon({
+            paths: coords,
+            strokeColor: sub.color, strokeOpacity: 0.8, strokeWeight: 2,
+            fillColor: sub.color, fillOpacity: 0.15, map: map
+          });
+          poly.addListener('click', () => selectHood(key));
+          poly.addListener('mouseover', () => { if (activeKey !== key) poly.setOptions({ fillOpacity: 0.25 }); });
+          poly.addListener('mouseout', () => { if (activeKey !== key) poly.setOptions({ fillOpacity: 0.15 }); });
+          allPolys[key] = poly;
+          addToUI(key, sub.name, sub.desc, sub.character, sub.color);
+        });
+      })
+      .catch(err => {
+        nhList.innerHTML = '<div style="padding:20px;color:rgba(237,232,222,0.4);font-size:13px;">Error loading neighborhoods. Please refresh.</div>';
+      });
+
+    // Search
     document.getElementById('nhSearch').addEventListener('input', function() {
       const q = this.value.toLowerCase();
       document.querySelectorAll('.nh-list-item').forEach(item => {
@@ -285,20 +324,15 @@
         item.style.display = name.includes(q) ? '' : 'none';
       });
     });
-
-    // Enter key in search
     document.getElementById('nhSearch').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') {
         const visible = Array.from(document.querySelectorAll('.nh-list-item')).filter(el => el.style.display !== 'none');
         if (visible.length) visible[0].click();
       }
     });
-
-    // Close bottom sheet on tap outside
     document.getElementById('nhBottomSheet').addEventListener('click', function(e) {
       if (e.target === this) this.classList.remove('open');
     });
   </script>
-
 </body>
 </html>
