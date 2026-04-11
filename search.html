@@ -1,428 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0B0A07">
-  <title>Search Properties | The Neistat Group</title>
-  <meta name="description" content="Search available Chicago properties with The Neistat Group at Jameson Sotheby's International Realty.">
-  <link rel="stylesheet" href="styles.css?v=3">
-  <style>
-    .search-page { background: #0B0A07; min-height: 100vh; padding-top: 80px; }
-
-    /* Filters */
-    .search-filters { padding: 32px 48px; border-bottom: 1px solid rgba(237,232,222,0.06); display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    .filter-group { display: flex; flex-direction: column; gap: 4px; }
-    .filter-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(237,232,222,0.35); }
-    .filter-input, .filter-select {
-      font-family: -apple-system, sans-serif; font-size: 13px; color: #EDE8DE;
-      background: #141210; border: 1px solid rgba(237,232,222,0.08); border-radius: 4px;
-      padding: 10px 14px; outline: none; transition: border-color 0.3s; min-width: 140px;
-    }
-    .filter-input:focus, .filter-select:focus { border-color: rgba(237,232,222,0.25); }
-    .filter-select { -webkit-appearance: none; cursor: pointer; padding-right: 28px;
-      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23EDE8DE' stroke-width='1.5' stroke-opacity='0.3'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 10px center;
-    }
-    .filter-btn {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      background: #EDE8DE; color: #0B0A07; padding: 10px 24px; border: none; border-radius: 4px;
-      cursor: pointer; transition: background 0.3s; align-self: flex-end;
-    }
-    .filter-btn:hover { background: #fff; }
-
-    /* Results header */
-    .results-header { padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
-    .results-count { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.4); }
-    .results-sort { font-size: 12px; color: rgba(237,232,222,0.4); background: none; border: none; cursor: pointer; }
-
-    /* Property grid */
-    .property-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 0 48px 60px; }
-
-    /* Property card */
-    .prop-card { background: #141210; overflow: hidden; cursor: pointer; transition: transform 0.3s ease; }
-    .prop-card:hover { transform: translateY(-4px); }
-    .prop-card-img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.5s ease; }
-    .prop-card:hover .prop-card-img { transform: scale(1.03); }
-    .prop-card-img-wrap { overflow: hidden; position: relative; }
-    .prop-card-status { position: absolute; top: 12px; left: 12px; font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: #EDE8DE; color: #0B0A07; padding: 4px 10px; border-radius: 2px; }
-    .prop-card-body { padding: 20px 24px 24px; }
-    .prop-card-price { font-family: Georgia, serif; font-size: 22px; color: #EDE8DE; margin-bottom: 6px; }
-    .prop-card-address { font-size: 14px; font-weight: 500; color: rgba(237,232,222,0.7); margin-bottom: 4px; }
-    .prop-card-city { font-size: 12px; color: rgba(237,232,222,0.35); margin-bottom: 12px; }
-    .prop-card-meta { display: flex; gap: 16px; font-size: 12px; color: rgba(237,232,222,0.4); }
-    .prop-card-meta span { display: flex; align-items: center; gap: 4px; }
-
-    /* Loading */
-    .loading { text-align: center; padding: 80px 0; color: rgba(237,232,222,0.3); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
-    .loading-spinner { width: 24px; height: 24px; border: 2px solid rgba(237,232,222,0.1); border-top-color: rgba(237,232,222,0.4); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* No results */
-    .no-results { text-align: center; padding: 80px 0; color: rgba(237,232,222,0.4); font-size: 15px; }
-
-    /* Detail modal */
-    .detail-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(11,10,7,0.92); display: none; overflow-y: auto; }
-    .detail-overlay.active { display: block; }
-    .detail-close { position: fixed; top: 24px; right: 32px; z-index: 2001; font-size: 28px; color: #EDE8DE; background: none; border: none; cursor: pointer; opacity: 0.6; transition: opacity 0.3s; }
-    .detail-close:hover { opacity: 1; }
-    .detail-content { max-width: 900px; margin: 80px auto; padding: 0 32px 60px; }
-    .detail-img { width: 100%; height: 400px; object-fit: cover; border-radius: 4px; margin-bottom: 32px; }
-    .detail-price { font-family: Georgia, serif; font-size: clamp(32px,5vw,48px); color: #EDE8DE; margin-bottom: 8px; }
-    .detail-address { font-size: 18px; font-weight: 500; color: rgba(237,232,222,0.7); margin-bottom: 4px; }
-    .detail-city { font-size: 14px; color: rgba(237,232,222,0.35); margin-bottom: 24px; }
-    .detail-stats { display: flex; gap: 32px; padding: 24px 0; border-top: 1px solid rgba(237,232,222,0.06); border-bottom: 1px solid rgba(237,232,222,0.06); margin-bottom: 24px; }
-    .detail-stat-num { font-family: Georgia, serif; font-size: 24px; color: #EDE8DE; }
-    .detail-stat-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(237,232,222,0.35); margin-top: 4px; }
-    .detail-desc { font-size: 15px; line-height: 1.7; color: rgba(237,232,222,0.55); margin-bottom: 32px; }
-    .detail-features { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 32px; }
-    .detail-feature { font-size: 13px; color: rgba(237,232,222,0.45); padding: 8px 0; border-bottom: 1px solid rgba(237,232,222,0.04); }
-    .detail-cta { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: #EDE8DE; color: #0B0A07; padding: 14px 32px; border-radius: 2px; text-decoration: none; transition: background 0.3s; }
-    .detail-cta:hover { background: #fff; }
-
-    @media (max-width: 1024px) { .property-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) {
-      .property-grid { grid-template-columns: 1fr; padding: 0 20px 40px; }
-      .search-filters { padding: 20px; flex-direction: column; }
-      .filter-input, .filter-select { width: 100%; min-width: auto; }
-      .results-header { padding: 16px 20px; }
-      .detail-content { margin: 60px auto; padding: 0 20px 40px; }
-      .detail-img { height: 250px; }
-      .detail-stats { flex-wrap: wrap; gap: 20px; }
-      .detail-features { grid-template-columns: 1fr; }
-    }
-  </style>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MGNGVERDHQ');
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Properties — The Neistat Group</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #0B0A07;
+  color: #EDE8DE;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(11,10,7,0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: .5px solid rgba(237,232,222,.08);
+}
+.nav-logo { font-family: Georgia, serif; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #EDE8DE; text-decoration: none; }
+.nav-logo em { font-style: italic; color: #4A7A66; }
+.drop-arrow { font-size: 9px; opacity: .5; margin-left: 2px; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { color: rgba(237,232,222,.24); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: #EDE8DE; }
+.nav-cta { background: #4A7A66; color: #0B0A07; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 8px 18px; text-decoration: none; transition: background .2s; }
+.nav-cta:hover { background: #3d6657; }
+.page-header { padding: 120px 40px 56px; border-bottom: .5px solid rgba(237,232,222,.08); }
+.header-eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: rgba(237,232,222,.2); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+.header-eyebrow::after { content: ''; flex: 1; max-width: 60px; height: .5px; background: rgba(237,232,222,.12); }
+.page-title { font-family: Georgia, serif; font-size: clamp(48px, 6vw, 80px); font-weight: 400; line-height: .92; letter-spacing: -.02em; color: #EDE8DE; }
+.page-title em { font-style: italic; color: #4A7A66; }
+.page-sub { margin-top: 18px; font-size: 13px; color: rgba(237,232,222,.3); font-weight: 300; letter-spacing: .02em; }
+.filter-bar { position: sticky; top: 61px; z-index: 90; background: rgba(11,10,7,.97); border-bottom: .5px solid rgba(237,232,222,.08); backdrop-filter: blur(10px); padding: 22px 40px; }
+.filter-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.filter-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 130px; }
+.filter-group.wide { flex: 2; min-width: 190px; }
+.filter-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(237,232,222,.22); }
+.filter-input, .filter-select {
+  background: rgba(237,232,222,.05); border: .5px solid rgba(237,232,222,.12);
+  color: #EDE8DE; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px; font-weight: 300; padding: 9px 12px; outline: none;
+  transition: border-color .2s, background .2s; appearance: none; width: 100%;
+}
+.filter-input::placeholder { color: rgba(237,232,222,.2); }
+.filter-input:focus, .filter-select:focus { border-color: #4A7A66; background: rgba(74,122,102,.07); }
+.filter-select option { background: #151310; }
+.sel-wrap { position: relative; }
+.sel-wrap::after { content: ''; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: 4px solid transparent; border-top-color: rgba(237,232,222,.3); pointer-events: none; }
+.filter-btn { background: #EDE8DE; color: #0B0A07; border: none; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: 10px 24px; cursor: pointer; transition: background .2s; align-self: flex-end; white-space: nowrap; }
+.filter-btn:hover { background: #4A7A66; color: #0B0A07; }
+.filter-btn.ghost { background: transparent; color: rgba(237,232,222,.3); border: .5px solid rgba(237,232,222,.12); }
+.filter-btn.ghost:hover { color: #EDE8DE; border-color: rgba(237,232,222,.3); background: transparent; }
+.results-bar { padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: .5px solid rgba(237,232,222,.08); }
+.results-count { font-size: 12px; color: rgba(237,232,222,.35); letter-spacing: .03em; }
+.results-count strong { color: #EDE8DE; font-weight: 500; }
+.demo-tag { margin-left: 10px; font-size: 10px; letter-spacing: .1em; color: #4A7A66; text-transform: uppercase; }
+.sort-wrap { display: flex; align-items: center; gap: 8px; }
+.sort-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(237,232,222,.22); }
+.sort-select { background: transparent; border: .5px solid rgba(237,232,222,.12); color: rgba(237,232,222,.55); font-size: 12px; font-family: -apple-system, sans-serif; padding: 6px 24px 6px 10px; outline: none; appearance: none; cursor: pointer; }
+.sort-select option { background: #151310; }
+.listings-section { padding: 0 0 80px; }
+.listings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1px; background: rgba(237,232,222,.04); }
+.listing-card { background: #0B0A07; cursor: pointer; transition: background .2s; position: relative; }
+.listing-card:hover { background: #100f0c; }
+.listing-card:hover .card-photo img { transform: scale(1.04); }
+.card-photo { position: relative; overflow: hidden; height: 230px; background: #151310; }
+.card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.no-photo { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #131210; }
+.no-photo svg { opacity: .1; }
+.card-badge { position: absolute; top: 12px; left: 12px; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; padding: 4px 9px; font-weight: 600; }
+.ba { background: #4A7A66; color: #0B0A07; }
+.bp { background: #c8a96e; color: #0B0A07; }
+.bs { background: rgba(237,232,222,.15); color: #EDE8DE; }
+.card-heart { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; background: rgba(11,10,7,.65); border: .5px solid rgba(237,232,222,.15); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; }
+.card-heart:hover { background: rgba(11,10,7,.9); }
+.card-body { padding: 18px 20px 22px; }
+.card-price { font-family: Georgia, serif; font-size: 22px; font-weight: 400; color: #EDE8DE; letter-spacing: -.01em; margin-bottom: 5px; }
+.card-address { font-size: 13px; color: rgba(237,232,222,.4); font-weight: 300; line-height: 1.4; margin-bottom: 14px; }
+.card-address strong { display: block; color: rgba(237,232,222,.75); font-weight: 400; font-size: 13px; }
+.card-specs { display: flex; gap: 16px; padding-top: 12px; border-top: .5px solid rgba(237,232,222,.07); }
+.sv { font-size: 14px; font-weight: 400; color: #EDE8DE; display: block; }
+.sl { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: rgba(237,232,222,.28); display: block; }
+.card-type { position: absolute; bottom: 22px; right: 20px; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #4A7A66; }
+.skel-card { background: #0B0A07; }
+.skel { background: linear-gradient(90deg, rgba(237,232,222,.04) 25%, rgba(237,232,222,.07) 50%, rgba(237,232,222,.04) 75%); background-size: 200% 100%; animation: shim 1.4s infinite; }
+@keyframes shim { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+.sk-photo { height: 230px; }
+.sk-body { padding: 18px 20px 22px; }
+.sk-line { height: 11px; margin-bottom: 9px; }
+.state-box { grid-column: 1/-1; padding: 80px 40px; text-align: center; }
+.state-title { font-family: Georgia, serif; font-size: 26px; font-style: italic; color: rgba(237,232,222,.25); margin-bottom: 10px; }
+.state-sub { font-size: 13px; color: rgba(237,232,222,.2); }
+.state-sub.accent { color: #4A7A66; margin-top: 6px; }
+.pagination { display: flex; justify-content: center; align-items: center; gap: 4px; padding: 40px; border-top: .5px solid rgba(237,232,222,.07); }
+.pgb { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: .5px solid rgba(237,232,222,.12); background: transparent; color: rgba(237,232,222,.35); font-size: 13px; cursor: pointer; transition: all .18s; font-family: -apple-system, sans-serif; }
+.pgb:hover:not([disabled]) { border-color: rgba(237,232,222,.3); color: #EDE8DE; }
+.pgb.on { background: #EDE8DE; color: #0B0A07; border-color: #EDE8DE; }
+.pgb[disabled] { opacity: .2; cursor: not-allowed; }
+.pgdots { color: rgba(237,232,222,.2); padding: 0 4px; align-self: center; font-size: 13px; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(11,10,7,.93); z-index: 200; overflow-y: auto; backdrop-filter: blur(10px); }
+.modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding: 40px 20px; }
+.modal { background: #0f0e0b; border: .5px solid rgba(237,232,222,.1); max-width: 840px; width: 100%; position: relative; }
+.modal-x { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; background: rgba(237,232,222,.06); border: .5px solid rgba(237,232,222,.12); color: rgba(237,232,222,.5); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background .2s; }
+.modal-x:hover { background: rgba(237,232,222,.12); color: #EDE8DE; }
+.modal-hero { width: 100%; height: 360px; object-fit: cover; display: block; background: #151310; }
+.modal-body { padding: 30px 34px 38px; }
+.modal-price { font-family: Georgia, serif; font-size: 40px; color: #EDE8DE; letter-spacing: -.02em; margin-bottom: 5px; }
+.modal-addr { font-size: 14px; color: rgba(237,232,222,.4); font-weight: 300; margin-bottom: 24px; }
+.modal-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(237,232,222,.06); margin-bottom: 26px; }
+.ms { background: #0f0e0b; padding: 16px 18px; text-align: center; }
+.msv { font-family: Georgia, serif; font-size: 24px; color: #EDE8DE; display: block; margin-bottom: 3px; }
+.msl { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(237,232,222,.28); display: block; }
+.modal-remarks { font-size: 14px; line-height: 1.78; color: rgba(237,232,222,.4); font-weight: 300; margin-bottom: 26px; }
+.modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-primary { background: #EDE8DE; color: #0B0A07; border: none; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 13px 30px; cursor: pointer; transition: background .2s; font-family: -apple-system, sans-serif; }
+.btn-primary:hover { background: #4A7A66; color: #0B0A07; }
+.btn-ghost { background: transparent; color: rgba(237,232,222,.35); border: .5px solid rgba(237,232,222,.12); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; padding: 13px 24px; cursor: pointer; transition: all .2s; font-family: -apple-system, sans-serif; }
+.btn-ghost:hover { color: #EDE8DE; border-color: rgba(237,232,222,.3); }
+footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; }
+.ft-logo { font-family: Georgia, serif; font-size: 15px; color: #EDE8DE; margin-bottom: 10px; }
+.ft-logo em { font-style: italic; color: #4A7A66; }
+.ft-info { font-size: 12px; color: rgba(237,232,222,.18); line-height: 1.7; }
+.ft-head { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(237,232,222,.15); margin-bottom: 14px; }
+.ft-list { list-style: none; }
+.ft-list li { margin-bottom: 8px; }
+.ft-list a { font-size: 13px; color: rgba(237,232,222,.28); text-decoration: none; transition: color .2s; font-weight: 300; }
+.ft-list a:hover { color: #EDE8DE; }
+.ft-bottom { border-top: .5px solid rgba(237,232,222,.06); padding: 16px 40px; display: flex; justify-content: space-between; }
+.ft-copy { font-size: 11px; color: rgba(237,232,222,.12); letter-spacing: .05em; }
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .page-header { padding: 100px 20px 40px; }
+  .filter-bar { padding: 16px 20px; top: 53px; }
+  .results-bar { padding: 14px 20px; }
+  .listings-grid { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; padding: 32px 20px; gap: 28px; }
+  .ft-bottom { padding: 14px 20px; flex-direction: column; gap: 6px; }
+  .modal-stats { grid-template-columns: repeat(2,1fr); }
+  .modal-body { padding: 20px; }
+  .modal-hero { height: 220px; }
+}
+</style>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <nav class="nav" id="nav">
-    <a href="index.html" class="nav-brand">The Neistat Group</a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="search.html" class="nav-link">Search Properties</a>
-      <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
-      <div class="nav-dropdown"><a href="calculator.html" class="nav-link">Calculators <span class="nav-dropdown-arrow">▾</span></a><div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner"><a href="calculator.html">Mortgage Calculator</a><a href="buyer-closing-costs.html">Buyer Closing Costs</a><a href="seller-closing-costs.html">Seller Closing Costs</a></div></div></div>
-      <a href="vendors.html" class="nav-link">Vendors</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">Home</a>
-      <a href="about.html" class="mobile-menu-link">About</a>
-      <a href="search.html" class="mobile-menu-link">Search Properties</a>
-      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
-      <a href="calculator.html" class="mobile-menu-link">Mortgage Calculator</a>
-      <a href="buyer-closing-costs.html" class="mobile-menu-link">Buyer Closing Costs</a>
-      <a href="seller-closing-costs.html" class="mobile-menu-link">Seller Closing Costs</a>
-      <a href="vendors.html" class="mobile-menu-link">Vendors</a>
-      <a href="contact.html" class="mobile-menu-link">Contact</a>
-      <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
-    </div>
+<nav>
+  <a href="index.html" class="nav-logo">The Neistat Group</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="search.html" class="active">Search Properties</a></li>
+    <li><a href="neighborhoods.html">Neighborhoods</a></li>
+    <li class="has-drop">
+      <a href="calculator.html">Calculators <span class="drop-arrow">↓</span></a>
+    </li>
+    <li><a href="vendors.html">Vendors</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Begin the Conversation</a>
+</nav>
+
+<div class="page-header">
+  <div class="header-eyebrow">Chicago &nbsp;·&nbsp; North Shore &nbsp;·&nbsp; Northwest Suburbs</div>
+  <h1 class="page-title">Search<br><em>Properties</em></h1>
+  <p class="page-sub">Live MLS listings across Chicagoland — updated in real time</p>
+</div>
+
+
+
+<div class="listings-section">
+  <div id="ihf-container"></div>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    var el = document.getElementById('ihf-container');
+    if (el && typeof ihfKestrel !== 'undefined' && typeof ihfKestrel.render === 'function') {
+      el.replaceWith(ihfKestrel.render());
+    }
+  });
+</script>
+
+<footer>
+  <div>
+    <div class="ft-logo">The <em>Neistat</em> Group</div>
+    <div class="ft-info">Jameson Sotheby's International Realty<br>425 W. North Avenue<br>Chicago, Illinois 60610</div>
   </div>
-
-  <section class="search-page">
-    <!-- Filters -->
-    <div class="search-filters" id="filters">
-      <div class="filter-group">
-        <span class="filter-label">City</span>
-        <input type="text" class="filter-input" id="filterCity" placeholder="Chicago" value="Chicago">
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Min Price</span>
-        <select class="filter-select" id="filterMinPrice">
-          <option value="">No Min</option>
-          <option value="200000">$200K</option>
-          <option value="300000">$300K</option>
-          <option value="400000">$400K</option>
-          <option value="500000">$500K</option>
-          <option value="750000">$750K</option>
-          <option value="1000000">$1M</option>
-          <option value="1500000">$1.5M</option>
-          <option value="2000000">$2M</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Max Price</span>
-        <select class="filter-select" id="filterMaxPrice">
-          <option value="">No Max</option>
-          <option value="300000">$300K</option>
-          <option value="500000">$500K</option>
-          <option value="750000">$750K</option>
-          <option value="1000000">$1M</option>
-          <option value="1500000">$1.5M</option>
-          <option value="2000000">$2M</option>
-          <option value="3000000">$3M</option>
-          <option value="5000000">$5M</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Beds</span>
-        <select class="filter-select" id="filterBeds">
-          <option value="">Any</option>
-          <option value="1">1+</option>
-          <option value="2">2+</option>
-          <option value="3">3+</option>
-          <option value="4">4+</option>
-          <option value="5">5+</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Baths</span>
-        <select class="filter-select" id="filterBaths">
-          <option value="">Any</option>
-          <option value="1">1+</option>
-          <option value="1.5">1.5+</option>
-          <option value="2">2+</option>
-          <option value="2.5">2.5+</option>
-          <option value="3">3+</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Type</span>
-        <select class="filter-select" id="filterType">
-          <option value="">All</option>
-          <option value="single-family">Single Family</option>
-          <option value="condo">Condo</option>
-          <option value="townhouse">Townhome</option>
-          <option value="multi-family">Multi-Family</option>
-          <option value="mixed-use">Mixed Use</option>
-          <option value="land">Land</option>
-        </select>
-      </div>
-      <button class="filter-btn" id="searchBtn">Search</button>
-    </div>
-
-    <!-- Results -->
-    <div class="results-header">
-      <span class="results-count" id="resultsCount">Loading...</span>
-    </div>
-    <div id="propertyGrid" class="property-grid">
-      <div class="loading"><div class="loading-spinner"></div>Loading properties...</div>
-    </div>
-  </section>
-
-  <!-- Detail Modal -->
-  <div class="detail-overlay" id="detailOverlay">
-    <button class="detail-close" id="detailClose">&times;</button>
-    <div class="detail-content" id="detailContent"></div>
+  <div>
+    <div class="ft-head">Navigate</div>
+    <ul class="ft-list">
+      <li><a href="about.html">About Matthew</a></li>
+      <li><a href="search.html">Search Properties</a></li>
+      <li><a href="neighborhoods.html">Neighborhoods</a></li>
+      <li><a href="calculator.html">Calculators</a></li>
+      <li><a href="vendors.html">Vendors</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
   </div>
+  <div>
+    <div class="ft-head">Connect</div>
+    <ul class="ft-list">
+      <li><a href="tel:8477142913">847.714.2913</a></li>
+      <li><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a></li>
+      <li><a href="https://www.instagram.com/matt_neistat/">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/in/matthew-neistat/">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="ft-bottom">
+  <span class="ft-copy">© 2026 The Neistat Group. All rights reserved. Licensed in the State of Illinois.</span>
+  <span class="ft-copy">Built different.</span>
+</div>
 
-  <footer class="footer">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">The Neistat Group</div>
-        <div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Navigate</div>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="search.html">Search Properties</a>
-        <a href="neighborhoods.html">Neighborhoods</a>
-        <a href="calculator.html">Calculators</a>
-        <a href="vendors.html">Vendors</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Connect</div>
-        <a href="tel:+18477142913">847.714.2913</a>
-        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
-        <a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a>
-        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a>
-      </div>
-    </div>
-    <div class="footer-bar">
-      <span>&copy; 2026 The Neistat Group. All rights reserved.</span>
-      <span>People First. <em>Always.</em></span>
-    </div>
-  </footer>
 
-  <script>
-    // Nav
-    window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('mobileMenu');
-    if (toggle && menu) { toggle.addEventListener('click', () => { const open = menu.classList.toggle('active'); toggle.classList.toggle('active'); document.body.style.overflow = open ? 'hidden' : ''; }); }
 
-    // Cursor
-    (function() {
-      const cursor = document.getElementById('cursor');
-      if (!cursor || window.innerWidth < 769) return;
-      let cx = 0, cy = 0, px = 0, py = 0;
-      document.addEventListener('mousemove', (e) => { cx = e.clientX; cy = e.clientY; cursor.classList.add('visible'); });
-      document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-      function loop() { px += (cx - px) * 0.15; py += (cy - py) * 0.15; cursor.style.left = px + 'px'; cursor.style.top = py + 'px'; requestAnimationFrame(loop); }
-      loop();
-      document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
-    })();
-
-    // SimplyRETS API
-    const CREDS = btoa('simplyrets:simplyrets');
-    const API = 'https://api.simplyrets.com';
-
-    function fmtPrice(n) {
-      if (n >= 1000000) return '$' + (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M';
-      if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
-      return '$' + n;
-    }
-
-    function fmtPriceFull(n) {
-      return '$' + n.toLocaleString();
-    }
-
-    async function fetchProperties() {
-      const grid = document.getElementById('propertyGrid');
-      const count = document.getElementById('resultsCount');
-      grid.innerHTML = '<div class="loading"><div class="loading-spinner"></div>Loading properties...</div>';
-
-      const params = new URLSearchParams();
-      const city = document.getElementById('filterCity').value;
-      if (city) params.set('q', city);
-
-      const minPrice = document.getElementById('filterMinPrice').value;
-      const maxPrice = document.getElementById('filterMaxPrice').value;
-      if (minPrice) params.set('minprice', minPrice);
-      if (maxPrice) params.set('maxprice', maxPrice);
-
-      const beds = document.getElementById('filterBeds').value;
-      const baths = document.getElementById('filterBaths').value;
-      if (beds) params.set('minbeds', beds);
-      if (baths) params.set('minbaths', baths);
-
-      const type = document.getElementById('filterType').value;
-      if (type) params.set('type', type);
-
-      params.set('limit', '24');
-      params.set('status', 'active');
-
-      try {
-        const res = await fetch(API + '/properties?' + params.toString(), {
-          headers: { 'Authorization': 'Basic ' + CREDS }
-        });
-        const data = await res.json();
-
-        if (!data.length) {
-          grid.innerHTML = '<div class="no-results">No properties found. Try adjusting your filters.</div>';
-          count.textContent = '0 Results';
-          return;
-        }
-
-        count.textContent = data.length + ' Properties';
-        grid.innerHTML = data.map(p => {
-          const img = (p.photos && p.photos.length) ? p.photos[0] : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600';
-          const addr = p.address || {};
-          return `
-            <div class="prop-card" onclick="showDetail('${p.mlsId}')">
-              <div class="prop-card-img-wrap">
-                <img src="${img}" alt="${addr.full || ''}" class="prop-card-img" loading="lazy">
-                <span class="prop-card-status">${p.mls?.status || 'Active'}</span>
-              </div>
-              <div class="prop-card-body">
-                <div class="prop-card-price">${fmtPriceFull(p.listPrice)}</div>
-                <div class="prop-card-address">${addr.full || 'Address unavailable'}</div>
-                <div class="prop-card-city">${addr.city || ''}, ${addr.state || ''} ${addr.postalCode || ''}</div>
-                <div class="prop-card-meta">
-                  <span>${p.property?.bedrooms || '—'} Beds</span>
-                  <span>${p.property?.bathsFull || '—'} Baths</span>
-                  <span>${p.property?.area ? p.property.area.toLocaleString() + ' sqft' : ''}</span>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('');
-
-        // Add cursor hover to new cards
-        document.querySelectorAll('.prop-card').forEach(el => {
-          el.addEventListener('mouseenter', () => document.getElementById('cursor')?.classList.add('hover'));
-          el.addEventListener('mouseleave', () => document.getElementById('cursor')?.classList.remove('hover'));
-        });
-
-      } catch (err) {
-        grid.innerHTML = '<div class="no-results">Error loading properties. Please try again.</div>';
-        count.textContent = 'Error';
-      }
-    }
-
-    async function showDetail(mlsId) {
-      const overlay = document.getElementById('detailOverlay');
-      const content = document.getElementById('detailContent');
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      content.innerHTML = '<div class="loading"><div class="loading-spinner"></div>Loading...</div>';
-
-      try {
-        const res = await fetch(API + '/properties/' + mlsId, {
-          headers: { 'Authorization': 'Basic ' + CREDS }
-        });
-        const p = await res.json();
-        const img = (p.photos && p.photos.length) ? p.photos[0] : '';
-        const addr = p.address || {};
-        const prop = p.property || {};
-
-        content.innerHTML = `
-          ${img ? '<img src="' + img + '" alt="" class="detail-img">' : ''}
-          <div class="detail-price">${fmtPriceFull(p.listPrice)}</div>
-          <div class="detail-address">${addr.full || ''}</div>
-          <div class="detail-city">${addr.city || ''}, ${addr.state || ''} ${addr.postalCode || ''}</div>
-          <div class="detail-stats">
-            <div><div class="detail-stat-num">${prop.bedrooms || '—'}</div><div class="detail-stat-label">Bedrooms</div></div>
-            <div><div class="detail-stat-num">${prop.bathsFull || '—'}</div><div class="detail-stat-label">Bathrooms</div></div>
-            <div><div class="detail-stat-num">${prop.area ? prop.area.toLocaleString() : '—'}</div><div class="detail-stat-label">Sq Ft</div></div>
-            <div><div class="detail-stat-num">${prop.yearBuilt || '—'}</div><div class="detail-stat-label">Year Built</div></div>
-          </div>
-          ${p.remarks ? '<p class="detail-desc">' + p.remarks + '</p>' : ''}
-          <div class="detail-features">
-            ${prop.type ? '<div class="detail-feature">Type: ' + prop.type + '</div>' : ''}
-            ${prop.style ? '<div class="detail-feature">Style: ' + prop.style + '</div>' : ''}
-            ${prop.garageSpaces ? '<div class="detail-feature">Garage: ' + prop.garageSpaces + ' spaces</div>' : ''}
-            ${prop.lotSize ? '<div class="detail-feature">Lot: ' + prop.lotSize + ' sqft</div>' : ''}
-            ${prop.stories ? '<div class="detail-feature">Stories: ' + prop.stories + '</div>' : ''}
-            ${prop.cooling ? '<div class="detail-feature">Cooling: ' + prop.cooling + '</div>' : ''}
-            ${prop.heating ? '<div class="detail-feature">Heating: ' + prop.heating + '</div>' : ''}
-          </div>
-          <a href="contact.html" class="detail-cta">Schedule a Viewing</a>
-        `;
-      } catch (err) {
-        content.innerHTML = '<div class="no-results">Error loading property details.</div>';
-      }
-    }
-
-    // Close detail
-    document.getElementById('detailClose').addEventListener('click', () => {
-      document.getElementById('detailOverlay').classList.remove('active');
-      document.body.style.overflow = '';
-    });
-    document.getElementById('detailOverlay').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) {
-        e.currentTarget.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    // Search button
-    document.getElementById('searchBtn').addEventListener('click', fetchProperties);
-
-    // Enter key on city input
-    document.getElementById('filterCity').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') fetchProperties();
-    });
-
-    // Load on page load
-    fetchProperties();
-  </script>
-
+<script>
+  window.ihfKestrel = window.ihfKestrel || {};
+  ihfKestrel.config = {
+    platform: "custom",
+    activationToken: "2aee2b63-aa3f-4e4c-b832-768fcae397d3",
+  };
+</script>
+<script src="https://kestrel.idxhome.com/ihf-kestrel.js"></script>
 </body>
 </html>
