@@ -126,6 +126,31 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   }
   .testimonial-card p, .testimonial-card blockquote { font-size: 15px; line-height: 1.7; word-wrap: break-word; overflow-wrap: break-word; }
   .testimonial-header { flex-wrap: wrap; gap: 12px; }
+
+  /* Prevent horizontal overflow on mobile */
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .hero {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100svh !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  .stats-band {
+    width: 100% !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  section, .nav, footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
 }
 
 /* === STATS BAND === */
