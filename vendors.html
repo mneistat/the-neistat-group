@@ -67,25 +67,17 @@
     .vendor-category-compact .vendor-category-icon svg { width: 18px; height: 18px; }
     .vendor-category-compact .vendor-category-title { margin-bottom: 12px; }
 
-    .vendor-category-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: #EDE8DE;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
+    .vendor-category-icon { display: none; }
 
     .vendor-category-title {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #EDE8DE;
+      color: rgba(237,232,222,0.5);
       margin-bottom: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(237,232,222,0.12);
     }
 
     .vendor-card {
@@ -189,9 +181,7 @@
       <div class="vendors-grid">
 
         <!-- MORTGAGE LENDERS -->
-        <div class="vendor-category reveal">
-          <div class="vendor-category-icon"><svg width="22" height="22" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <div class="vendor-category-title">Mortgage Lenders</div>
+        <div class="vendor-category reveal">          <div class="vendor-category-title">Mortgage Lenders</div>
           <div class="vendor-card">
             <div class="vendor-name">Kiki Calumet</div>
             <div class="vendor-company">Select Lending Services — Sr. Vice President of Lending</div>
@@ -222,9 +212,7 @@
         </div>
 
         <!-- REAL ESTATE ATTORNEYS -->
-        <div class="vendor-category reveal">
-          <div class="vendor-category-icon"><svg width="22" height="22" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 1v22M5 5h14a2 2 0 010 4H5a2 2 0 010-4z"/></svg></div>
-          <div class="vendor-category-title">Real Estate Attorneys</div>
+        <div class="vendor-category reveal">          <div class="vendor-category-title">Real Estate Attorneys</div>
           <div class="vendor-card">
             <div class="vendor-name">Bakos Law, LLC</div>
             <div class="vendor-company">Wheaton, IL</div>
@@ -253,9 +241,7 @@
         </div>
 
         <!-- HOME INSPECTORS -->
-        <div class="vendor-category vendor-category-compact reveal">
-          <div class="vendor-category-icon"><svg width="22" height="22" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-          <div class="vendor-category-title">Home Inspectors</div>
+        <div class="vendor-category vendor-category-compact reveal">          <div class="vendor-category-title">Home Inspectors</div>
           <div class="vendor-card">
             <div class="vendor-name">Jack Schubert</div>
             <div class="vendor-company">Inspection Concepts LLC</div>
@@ -267,9 +253,7 @@
         </div>
 
         <!-- INSURANCE -->
-        <div class="vendor-category vendor-category-compact reveal">
-          <div class="vendor-category-icon"><svg width="22" height="22" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div class="vendor-category-title">Insurance Agents</div>
+        <div class="vendor-category vendor-category-compact reveal">          <div class="vendor-category-title">Insurance Agents</div>
           <div class="vendor-card">
             <div class="vendor-name">Hays Featherston</div>
             <div class="vendor-company">AssuredPartners</div>
@@ -281,9 +265,7 @@
         </div>
 
         <!-- CONTRACTORS -->
-        <div class="vendor-category vendor-category-wide reveal">
-          <div class="vendor-category-icon"><svg width="22" height="22" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-          <div class="vendor-category-title">Contractors & Home Services</div>
+        <div class="vendor-category vendor-category-wide reveal">          <div class="vendor-category-title">Contractors & Home Services</div>
           <div class="vendor-cards-grid">
           <div class="vendor-card">
             <div class="vendor-name">Exterior Home Experts</div>
@@ -366,9 +348,7 @@
         </div>
 
         <!-- MOVERS -->
-        <div class="vendor-category reveal">
-          <div class="vendor-category-icon"><svg width="22" height="22" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-          <div class="vendor-category-title">Movers</div>
+        <div class="vendor-category reveal">          <div class="vendor-category-title">Movers</div>
           <div class="vendor-card">
             <div class="vendor-name">Golan's Moving & Storage</div>
             <div class="vendor-company">Skokie, IL</div>
@@ -380,9 +360,7 @@
         </div>
 
         <!-- UTILITIES -->
-        <div class="vendor-category reveal">
-          <div class="vendor-category-icon"><svg width="22" height="22" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-          <div class="vendor-category-title">Utilities — Set Up Service</div>
+        <div class="vendor-category reveal">          <div class="vendor-category-title">Utilities — Set Up Service</div>
           <div class="vendor-card">
             <div class="vendor-name">Peoples Gas</div>
             <div class="vendor-company">Natural Gas Service</div>
