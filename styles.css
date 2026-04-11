@@ -121,11 +121,6 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .stat-number { font-family: Georgia, serif; font-size: 32px; color: #EDE8DE; line-height: 1.4; }
 .stat-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.5); margin-top: 4px; }
 
-@media (max-width: 768px) {
-  .stats-band { grid-template-columns: 1fr 1fr; }
-  .stat { border-bottom: 1px solid rgba(237,232,222,0.05); }
-}
-
 /* === SAGE TICKER === */
 .ticker { background: #1A1916; padding: 11px 0; overflow: hidden; white-space: nowrap; }
 .ticker-track { display: inline-flex; animation: tickerScroll 28s linear infinite; }
