@@ -296,6 +296,40 @@
         nsLabel.textContent = 'North Shore';
         nhList.appendChild(nsLabel);
 
+        // Add South Side section label
+        const ssLabel = document.createElement('div');
+        ssLabel.className = 'nh-section-label';
+        ssLabel.textContent = 'South Side';
+        nhList.appendChild(ssLabel);
+
+        // Draw South Side neighborhoods
+        const southSide = [
+          { name: 'Bronzeville', desc: "The historic heart of Black Chicago. Rich cultural heritage, beautiful greystones, and one of the city's most exciting revival neighborhoods.", character: 'Historic, Greystones, Cultural Hub', color: '#e17055', bounds: [[41.8450,-87.6350],[41.8450,-87.6050],[41.8100,-87.6050],[41.8100,-87.6350]] },
+          { name: 'Kenwood', desc: "One of Chicago's most architecturally distinguished neighborhoods. Grand historic mansions, tree-lined streets, and proximity to Hyde Park.", character: 'Historic Mansions, Prestigious, Tree-Lined', color: '#6c5ce7', bounds: [[41.8050,-87.6150],[41.8050,-87.5900],[41.7850,-87.5900],[41.7850,-87.6150]] },
+          { name: 'Woodlawn', desc: 'A neighborhood on the rise. Adjacent to Hyde Park and the Obama Presidential Center — significant investment and appreciation underway.', character: 'Emerging, Obama Center, Investment Opportunity', color: '#00b894', bounds: [[41.7850,-87.6200],[41.7850,-87.5900],[41.7650,-87.5900],[41.7650,-87.6200]] },
+          { name: 'South Shore', desc: 'Lakefront living on the South Side. The South Shore Cultural Center, beach access, and beautiful vintage housing stock at attainable prices.', character: 'Lakefront, Cultural Center, Value', color: '#fdcb6e', bounds: [[41.7650,-87.6050],[41.7650,-87.5750],[41.7400,-87.5750],[41.7400,-87.6050]] }
+        ];
+        southSide.forEach(sub => {
+          const key = sub.name.toLowerCase().replace(/\s+/g, '-');
+          const coords = sub.bounds.map(c => ({ lat: c[0], lng: c[1] }));
+          const poly = new google.maps.Polygon({
+            paths: coords,
+            strokeColor: sub.color, strokeOpacity: 0.8, strokeWeight: 2,
+            fillColor: sub.color, fillOpacity: 0.15, map: map
+          });
+          poly.addListener('click', () => selectHood(key));
+          poly.addListener('mouseover', () => { if (activeKey !== key) poly.setOptions({ fillOpacity: 0.25 }); });
+          poly.addListener('mouseout', () => { if (activeKey !== key) poly.setOptions({ fillOpacity: 0.15 }); });
+          allPolys[key] = poly;
+          addToUI(key, sub.name, sub.desc, sub.character, sub.color);
+        });
+
+        // Add North Shore section label
+        const nsLabel = document.createElement('div');
+        nsLabel.className = 'nh-section-label';
+        nsLabel.textContent = 'North Shore';
+        nhList.appendChild(nsLabel);
+
         // Draw North Shore suburbs
         northShore.forEach(sub => {
           const key = sub.name.toLowerCase().replace(/\s+/g, '-');
