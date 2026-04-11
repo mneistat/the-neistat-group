@@ -58,10 +58,13 @@
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content" id="heroContent">
-      <div class="hero-eyebrow">Jameson Sotheby's International Realty · Chicago, Illinois</div>
-      <h1 class="hero-headline">People First.<br><span class="hero-headline-italic">Always.</span></h1>
-      <p class="hero-sub">Our sellers close at 110% of list price — in an average of 5 days.</p>
-      <div class="hero-actions">
+      <div class="hero-eyebrow" id="heroEyebrow">Jameson Sotheby's International Realty · Chicago, Illinois</div>
+      <h1 class="hero-headline">
+        <span id="heroPeople" style="display:block;">People First.</span>
+        <span class="hero-headline-italic" id="heroAlways" style="display:block;">Always.</span>
+      </h1>
+      <p class="hero-sub" id="heroSub">Our sellers close at 110% of list price — in an average of 5 days.</p>
+      <div class="hero-actions" id="heroActions">
         <a href="contact.html" class="btn-primary">Begin the Conversation</a>
         <a href="about.html" class="btn-ghost">Explore the Work →</a>
       </div>
@@ -260,18 +263,38 @@
     // GSAP Animations
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero parallax
-    gsap.to('#heroVideoWrap', {
-      scale: 1.15, ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+    // Cinematic hero — pinned scroll experience
+    const heroTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: '+=100%',
+        pin: true,
+        scrub: 0.8,
+        anticipatePin: 1
+      }
     });
-    gsap.to('#heroContent', {
-      y: -120, opacity: 0, ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: '20% top', end: '70% top', scrub: true }
-    });
+
+    // Video zoom 1 → 1.2
+    heroTL.to('#heroVideoWrap', { scale: 1.2, ease: 'none' }, 0);
+
+    // "People First." drifts left and fades
+    heroTL.to('#heroPeople', { x: -120, opacity: 0, ease: 'none' }, 0);
+
+    // "Always." drifts right and fades
+    heroTL.to('#heroAlways', { x: 120, opacity: 0, ease: 'none' }, 0);
+
+    // Eyebrow fades
+    heroTL.to('#heroEyebrow', { opacity: 0, ease: 'none' }, 0);
+
+    // Subtext and buttons fade out
+    heroTL.to('#heroSub', { y: 20, opacity: 0, ease: 'none' }, 0);
+    heroTL.to('#heroActions', { y: 20, opacity: 0, ease: 'none' }, 0);
+
+    // Scroll indicator — disappears immediately on first scroll
     gsap.to('#scrollIndicator', {
       opacity: 0, ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: '5% top', end: '20% top', scrub: true }
+      scrollTrigger: { trigger: '#hero', start: '2% top', end: '8% top', scrub: true }
     });
 
     // Stats count-up
