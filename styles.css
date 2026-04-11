@@ -3,7 +3,7 @@
   --navy: #0B0A07;
   --navy-deep: #0B0A07;
   --cream: #F4F0E8;
-  --gold: #EDE8DE;
+  --gold: #0B0A07;
   --blue: rgba(237,232,222,0.6);
   --white: #EDE8DE;
   --text: #0B0A07;
@@ -119,7 +119,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* === CREDENTIALS BAND === */
 .credentials-band { background: #EDE8DE; display: grid; grid-template-columns: repeat(4, 1fr); }
 .credential { padding: 24px 28px; border-right: 1px solid rgba(11,10,7,0.06); }
-.credential:first-child { border-left: 2px solid #EDE8DE; }
+.credential:first-child { border-left: 2px solid #0B0A07; }
 .credential:last-child { border-right: none; }
 .credential-title { font-size: 12px; font-weight: 500; color: #0B0A07; margin-bottom: 3px; }
 .credential-sub { font-size: 11px; color: rgba(11,10,7,0.55); }
@@ -155,13 +155,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* === TESTIMONIALS === */
 .testimonials { background: #F4F0E8; padding: 52px 36px; }
 .testimonials-heading { font-family: Georgia, serif; font-size: 24px; color: #0B0A07; margin-bottom: 28px; }
-.testimonials-heading em { font-style: italic; color: #EDE8DE; }
+.testimonials-heading em { font-style: italic; color: rgba(11,10,7,0.4); }
 .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 .testimonial-card { padding: 28px; }
 .testimonial-card:nth-child(odd) { background: #EDE8DE; }
 .testimonial-card:nth-child(even) { background: #E8E3D8; }
 .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-.testimonial-avatar { width: 32px; height: 32px; border-radius: 50%; background: #EDE8DE; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #F4F0E8; flex-shrink: 0; }
+.testimonial-avatar { width: 32px; height: 32px; border-radius: 50%; background: #2A2825; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #EDE8DE; flex-shrink: 0; }
 .testimonial-name { font-size: 12px; font-weight: 500; color: #0B0A07; }
 .testimonial-role { font-size: 11px; color: rgba(11,10,7,0.55); }
 .testimonial-text { font-family: Georgia, serif; font-style: italic; font-size: 13px; color: rgba(11,10,7,0.6); line-height: 1.6; }
@@ -267,7 +267,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* Typography */
 .heading-lg { font-family: Georgia, serif; font-size: clamp(28px,4vw,42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: #0B0A07; margin-bottom: 20px; }
-.heading-lg em { font-style: italic; color: #EDE8DE; }
+.heading-lg em { font-style: italic; color: rgba(11,10,7,0.4); }
 .heading-white { color: #EDE8DE; }
 .heading-white em { color: #EDE8DE; }
 .label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(11,10,7,0.3); margin-bottom: 16px; display: block; }
@@ -282,7 +282,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .btn-ghost { color: rgba(237,232,222,0.4); border: 1px solid rgba(237,232,222,0.4); padding: 12px 28px; }
 
 /* Links */
-.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #EDE8DE; transition: opacity 0.3s; }
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(11,10,7,0.5); transition: opacity 0.3s; }
 .link-arrow:hover { opacity: 0.7; }
 
 /* Grids */
@@ -308,13 +308,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* Philosophy */
 .philosophy-section { background: #0B0A07; text-align: center; }
-.philosophy-heading { font-family: Georgia, serif; font-size: clamp(22px,3vw,32px); font-weight: 400; font-style: italic; color: #EDE8DE; max-width: 600px; margin: 0 auto; line-height: 1.4; }
+.philosophy-heading { font-family: Georgia, serif; font-size: clamp(22px,3vw,32px); font-weight: 400; font-style: italic; color: #0B0A07; max-width: 600px; margin: 0 auto; line-height: 1.4; }
 
 /* Credentials (sub-pages) */
 .credentials-section { background: #F4F0E8; }
 .credentials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: start; }
 .credential-item { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid rgba(11,10,7,0.06); }
-.credential-year { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #EDE8DE; white-space: nowrap; padding-top: 2px; }
+.credential-year { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.4); white-space: nowrap; padding-top: 2px; }
 .credential-title { font-size: 14px; font-weight: 500; color: #0B0A07; margin-bottom: 2px; }
 .credential-source { font-size: 12px; color: rgba(11,10,7,0.6); }
 
