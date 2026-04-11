@@ -81,7 +81,14 @@
   </div>
   <div class="nh-layout">
     <div class="nh-sidebar">
-      <div class="nh-search"><input type="text" class="nh-search-input" id="nhSearch" placeholder="Search neighborhoods..."></div>
+      <div class="nh-search">
+        <select class="nh-search-input" id="nhRegion" style="margin-bottom:8px;cursor:pointer;-webkit-appearance:none;background:#141210 url('data:image/svg+xml,%3Csvg width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 stroke=%27%23EDE8DE%27 stroke-width=%271.5%27 stroke-opacity=%270.3%27/%3E%3C/svg%3E') no-repeat right 14px center;">
+          <option value="chicago" selected>Chicago</option>
+          <option value="north-shore" disabled>North Shore — Coming Soon</option>
+          <option value="northwest" disabled>Northwest Suburbs — Coming Soon</option>
+        </select>
+        <input type="text" class="nh-search-input" id="nhSearch" placeholder="Search neighborhoods...">
+      </div>
       <div class="nh-list" id="nhList"></div>
       <div class="nh-detail-panel" id="nhDetailPanel">
         <div class="nh-detail-name" id="dpName"></div>
@@ -115,7 +122,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gqvDCyKTmo-ze3seKvolj_U9I-lNRWs"></script>
   <script>
     const map=new google.maps.Map(document.getElementById('neighborhood-map'),{
-      center:{lat:41.95,lng:-87.80},zoom:10,
+      center:{lat:41.88,lng:-87.68},zoom:11,
       styles:[
         {featureType:'all',elementType:'geometry',stylers:[{color:'#1a1a2e'}]},
         {featureType:'water',stylers:[{color:'#16213e'}]},
@@ -132,26 +139,6 @@
     // Color palette for Chicago areas
     const palette=['#EDE8DE','#a29bfe','#55efc4','#fd79a8','#fdcb6e','#e17055','#6c5ce7','#0984e3','#00cec9','#e84393','#d63031','#00b894','#74b9ff','#636e72','#fab1a0','#dfe6e9','#b2bec3','#ffeaa7','#81ecec'];
 
-    const suburbs=[
-      {name:'Evanston',desc:'A city unto itself. Northwestern University, lakefront parks, diverse dining, and stunning homes.',character:'Urban Suburb, Diverse, Lakefront',color:'#4A7A66',bounds:[[42.0580,-87.7130],[42.0580,-87.6500],[42.0180,-87.6500],[42.0180,-87.7130]]},
-      {name:'Skokie',desc:'Diverse, accessible, and underrated. Excellent value close to the city with strong schools and CTA access.',character:'Diverse, Value, CTA Access, Family',color:'#6c5ce7',bounds:[[42.0700,-87.7650],[42.0700,-87.7100],[42.0100,-87.7100],[42.0100,-87.7650]]},
-      {name:'Wilmette',desc:"Top-rated schools, Baha'i Temple, and beautiful residential streets on the North Shore.",character:'Top Schools, Family, Lakefront',color:'#e17055',bounds:[[42.0950,-87.7450],[42.0950,-87.6900],[42.0580,-87.6900],[42.0580,-87.7450]]},
-      {name:'Kenilworth',desc:'The smallest and most exclusive village on the North Shore. Stunning homes with beach access.',character:'Ultra-Exclusive, Historic Architecture, Beach',color:'#00b894',bounds:[[42.0950,-87.7150],[42.0950,-87.6900],[42.0800,-87.6900],[42.0800,-87.7150]]},
-      {name:'Winnetka',desc:'One of the most prestigious addresses in Illinois. Exceptional schools, lakefront estates, village charm.',character:'Luxury, Estates, Top Schools, Lakefront',color:'#fdcb6e',bounds:[[42.1200,-87.7600],[42.1200,-87.7000],[42.0950,-87.7000],[42.0950,-87.7600]]},
-      {name:'Glencoe',desc:'Small, exclusive, and serene. Ravinia Festival, lakefront access, and architectural gems.',character:'Exclusive, Arts, Lakefront, Ravinia',color:'#0984e3',bounds:[[42.1450,-87.7800],[42.1450,-87.7100],[42.1200,-87.7100],[42.1200,-87.7800]]},
-      {name:'Highland Park',desc:'Arts, culture, and lakefront living. Ravinia, downtown dining, and gracious homes.',character:'Arts, Culture, Lakefront, Ravinia',color:'#d63031',bounds:[[42.2050,-87.8300],[42.2050,-87.7200],[42.1600,-87.7200],[42.1600,-87.8300]]},
-      {name:'Highwood',desc:'A hidden gem on the North Shore. Restaurant scene and accessible price points.',character:'Diverse, Restaurant Scene, Value',color:'#00cec9',bounds:[[42.2050,-87.8050],[42.2050,-87.7900],[42.1900,-87.7900],[42.1900,-87.8050]]},
-      {name:'Lake Forest',desc:'The pinnacle of North Shore living. Historic estates, elite schools, unmatched prestige.',character:'Ultra-Luxury, Historic Estates, Elite Schools',color:'#e84393',bounds:[[42.2800,-87.8800],[42.2800,-87.7900],[42.2100,-87.7900],[42.2100,-87.8800]]},
-      {name:'Lake Bluff',desc:'Charming village north of Lake Forest. Bluffs over Lake Michigan, excellent schools, walkable downtown.',character:'Village Charm, Bluffs, Family, Lakefront',color:'#a29bfe',bounds:[[42.3000,-87.8800],[42.3000,-87.8000],[42.2750,-87.8000],[42.2750,-87.8800]]},
-      {name:'Morton Grove',desc:'Well-established suburb with excellent value, strong schools, and easy Metra access.',character:'Family, Value, Good Schools, Metra',color:'#55efc4',bounds:[[42.0600,-87.8000],[42.0600,-87.7650],[42.0200,-87.7650],[42.0200,-87.8000]]},
-      {name:'Niles',desc:'Affordable North Shore-adjacent suburb. Good schools and excellent value for first-time buyers.',character:'Value, Family, Accessible',color:'#fd79a8',bounds:[[42.0200,-87.8200],[42.0200,-87.7800],[41.9800,-87.7800],[41.9800,-87.8200]]},
-      {name:'Park Ridge',desc:'Highly sought-after suburb with walkable downtown, top-rated schools, and beautiful streets.',character:'Top Schools, Walkable Downtown, Family',color:'#fdcb6e',bounds:[[42.0200,-87.8700],[42.0200,-87.8200],[41.9800,-87.8200],[41.9800,-87.8700]]},
-      {name:'Glenview',desc:'Top-rated schools, extensive parks, The Glen Town Center, and easy Metra access.',character:'Top Schools, Parks, Shopping, Metra',color:'#4A7A66',bounds:[[42.1300,-87.8700],[42.1300,-87.7900],[42.0600,-87.7900],[42.0600,-87.8700]]},
-      {name:'Northbrook',desc:'Upscale family suburb with top-rated schools and Northbrook Court shopping.',character:'Top Schools, Upscale, Family, Shopping',color:'#6c5ce7',bounds:[[42.1800,-87.8700],[42.1800,-87.8000],[42.1300,-87.8000],[42.1300,-87.8700]]},
-      {name:'Deerfield',desc:'Upscale suburban living with top-rated schools and easy Metra access.',character:'Top Schools, Upscale, Family, Metra',color:'#e17055',bounds:[[42.1900,-87.8700],[42.1900,-87.8200],[42.1600,-87.8200],[42.1600,-87.8700]]},
-      {name:'Riverwoods',desc:'Private and serene. Heavily wooded, estate-sized lots, exceptional seclusion.',character:'Private, Wooded, Estate Lots, Exclusive',color:'#00b894',bounds:[[42.2000,-87.9000],[42.2000,-87.8600],[42.1700,-87.8600],[42.1700,-87.9000]]},
-      {name:'Bannockburn',desc:'Ultra-exclusive and rarely available. One of the smallest, most prestigious villages.',character:'Ultra-Exclusive, Estate Lots, Private',color:'#fdcb6e',bounds:[[42.2100,-87.8800],[42.2100,-87.8500],[42.1900,-87.8500],[42.1900,-87.8800]]},
-                                                    ];
 
     const allPolys={},allHoods={};
     let activeKey=null;
@@ -265,17 +252,6 @@
           addToUI(key,displayName,desc,area.area_numbe?'Community Area '+area.area_numbe:'Chicago',color);
         });
 
-        // Suburbs
-        const subLabel=document.createElement('div');
-        subLabel.className='nh-section-label';subLabel.textContent='North Shore & Suburbs';
-        nhList.appendChild(subLabel);
-
-        suburbs.forEach(sub=>{
-          const key=sub.name.toLowerCase().replace(/\s+/g,'-');
-          const coords=sub.bounds.map(c=>({lat:c[0],lng:c[1]}));
-          drawPoly(key,coords,sub.color);
-          addToUI(key,sub.name,sub.desc,sub.character,sub.color);
-        });
       })
       .catch(()=>{
         nhList.innerHTML='<div style="padding:20px;color:rgba(237,232,222,0.4);font-size:13px;">Error loading neighborhoods. Please refresh.</div>';
