@@ -322,52 +322,36 @@
     }
     initCounters();
 
-    // Reveal animations — with fallback for already-visible elements
-    function initReveals() {
-      document.querySelectorAll('.reveal').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          // Already in viewport on load — show immediately
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-        } else {
-          gsap.to(el, {
-            opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-            scrollTrigger: { trigger: el, start: 'top 95%', once: true }
-          });
-        }
-      });
+    // Immediately show anything already in the viewport
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        gsap.set(el, { opacity: 1, y: 0 });
+      }
+    });
 
-      // Stagger sale rows
-      gsap.utils.toArray('.sale-row').forEach((row, i) => {
-        gsap.to(row, {
-          opacity: 1, y: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out',
-          scrollTrigger: { trigger: row, start: 'top 95%', once: true }
-        });
-      });
+    // Animate everything else on scroll
+    gsap.utils.toArray('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top >= window.innerHeight) {
+        gsap.fromTo(el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 95%',
+              once: true
+            }
+          }
+        );
+      }
+    });
 
-      // Stagger testimonial cards
-      gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
-        gsap.to(card, {
-          opacity: 1, y: 0, duration: 0.7, delay: i * 0.12, ease: 'power2.out',
-          scrollTrigger: { trigger: card, start: 'top 95%', once: true }
-        });
-      });
-
-      // Stagger neighborhood cards
-      gsap.utils.toArray('.neighborhood-card').forEach((card, i) => {
-        gsap.to(card, {
-          opacity: 1, y: 0, duration: 0.6, delay: i * 0.08, ease: 'power2.out',
-          scrollTrigger: { trigger: card, start: 'top 95%', once: true }
-        });
-      });
-
-      // Refresh ScrollTrigger after everything is set up
-      ScrollTrigger.refresh();
-    }
-
-    // Run after page is fully loaded
-    window.addEventListener('load', initReveals);
+    ScrollTrigger.refresh();
   </script>
 
 </body>
