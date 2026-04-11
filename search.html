@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://kestrel.idxhome.com/ihf-kestrel.js"></script>
+<script>
+  window.ihfKestrel = window.ihfKestrel || {};
+  ihfKestrel.config = {
+    platform: "custom",
+    activationToken: "2aee2b63-aa3f-4e4c-b832-768fcae397d3",
+  };
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search Properties — The Neistat Group</title>
@@ -97,6 +105,7 @@ nav {
 .state-box { grid-column: 1/-1; padding: 80px 40px; text-align: center; }
 .state-title { font-family: Georgia, serif; font-size: 26px; font-style: italic; color: rgba(237,232,222,.25); margin-bottom: 10px; }
 .state-sub { font-size: 13px; color: rgba(237,232,222,.2); }
+.idx-wrapper { min-height: 600px; background: #0B0A07; padding: 0; }
 .state-sub.accent { color: #EDE8DE; margin-top: 6px; }
 .pagination { display: flex; justify-content: center; align-items: center; gap: 4px; padding: 40px; border-top: .5px solid rgba(237,232,222,.07); }
 .pgb { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: .5px solid rgba(237,232,222,.12); background: transparent; color: rgba(237,232,222,.35); font-size: 13px; cursor: pointer; transition: all .18s; font-family: -apple-system, sans-serif; }
@@ -175,18 +184,11 @@ footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; 
 
 
 
-<div class="listings-section">
-  <div id="ihf-container"></div>
+<div class="idx-wrapper">
+  <script>
+    document.currentScript.replaceWith(ihfKestrel.render());
+  </script>
 </div>
-
-<script>
-  window.addEventListener('load', function() {
-    var el = document.getElementById('ihf-container');
-    if (el && typeof ihfKestrel !== 'undefined' && typeof ihfKestrel.render === 'function') {
-      el.replaceWith(ihfKestrel.render());
-    }
-  });
-</script>
 
 <footer>
   <div>
