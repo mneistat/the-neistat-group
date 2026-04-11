@@ -106,13 +106,17 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .ticker-text { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,222,0.5); padding-right: 0; }
 @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* === LIGHT SECTION TEXT FIX === */
+/* === MANIFESTO TEXT — light on dark photo === */
 .manifesto,
 .manifesto h2,
 .manifesto h3,
 .manifesto p,
 .manifesto blockquote,
-.manifesto a,
+.manifesto a {
+  color: #EDE8DE;
+}
+
+/* === LIGHT SECTION TEXT FIX === */
 .credentials-band,
 .credentials-band h3,
 .credentials-band p,
@@ -128,7 +132,15 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 /* === MANIFESTO === */
-.manifesto { background: #F4F0E8; padding: 56px 36px; }
+.manifesto {
+  background-image:
+    linear-gradient(rgba(11,10,7,0.78), rgba(11,10,7,0.78)),
+    url('https://res.cloudinary.com/dpwcyrxkz/image/upload/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 56px 36px;
+}
 .section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(11,10,7,0.6); display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
 .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(11,10,7,0.08); }
 .manifesto-quote { font-family: Georgia, serif; font-style: italic; font-size: 26px; line-height: 1.45; color: #0B0A07; max-width: 640px; margin-bottom: 24px; }
