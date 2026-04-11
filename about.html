@@ -5,245 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
   <title>About | Matthew Neistat — The Neistat Group</title>
-  <meta name="description" content="Meet Matthew Neistat — 14+ years of Chicago real estate experience with Jameson Sotheby's International Realty. Honest, one-on-one approach to buying, selling, and investing.">
-  <meta property="og:title" content="About | Matthew Neistat | The Neistat Group">
-  <meta property="og:description" content="Meet Matthew Neistat — 14+ years of Chicago real estate experience with Jameson Sotheby's International Realty. Honest, one-on-one approach to buying, selling, and investing.">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Meet Matthew Neistat — 14+ years of Chicago real estate experience. People First. Always.">
   <link rel="stylesheet" href="styles.css?v=3">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
-    .about-hero {
-      padding: clamp(140px,18vw,200px) 0 clamp(60px,8vw,100px);
-      background: #0B0A07;
-      text-align: left;
-    }
-    .about-hero .label { color: rgba(237,232,222,0.6); }
-    .about-hero-heading {
-      font-family: Georgia, serif;
-      font-size: clamp(40px,6vw,64px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: #EDE8DE;
-      margin-bottom: 12px;
-    }
-    .about-hero-heading em { font-style: italic; color: #4A7A66; }
-    .about-hero-sub {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: clamp(15px,1.4vw,17px);
-      color: rgba(237,232,222,0.55);
-      max-width: 500px;
-      line-height: 1.7;
-    }
-    .about-editorial {
-      background: #F4F0E8;
-      padding: clamp(60px,8vw,120px) 0;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(48px,6vw,80px);
-      align-items: start;
-    }
-    .about-image-wrap {
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .about-image {
-      width: 100%;
-      display: block;
-      border-radius: 16px;
-    }
-    .about-image-caption {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 16px;
-      font-size: 13px;
-      color: rgba(11,10,7,0.5);
-    }
-    .about-lead {
-      font-family: Georgia, serif;
-      font-size: clamp(18px,2vw,22px);
-      font-weight: 400;
-      line-height: 1.6;
-      color: #0B0A07;
-      margin-bottom: 24px;
-    }
-    .about-body p {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(11,10,7,0.7);
-      margin-bottom: 16px;
-    }
-    .philosophy-section {
-      background: #0B0A07;
-      padding: clamp(80px,10vw,140px) 0;
-      text-align: center;
-    }
-    .philosophy-heading {
-      font-family: Georgia, serif;
-      font-size: clamp(22px,3vw,36px);
-      font-weight: 400;
-      font-style: italic;
-      color: #EDE8DE;
-      max-width: 640px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-    .label-light { color: rgba(237,232,222,0.5) !important; }
-    .press-section {
-      background: #0B0A07;
-      padding: clamp(60px,8vw,100px) 0;
-    }
-    .press-bar { margin-bottom: 0; }
-    .press-label-about {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(237,232,222,0.4);
-      margin-bottom: 32px;
-    }
-    .press-items { display: flex; flex-direction: column; gap: 0; }
-    .press-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(237,232,222,0.06);
-      text-decoration: none;
-      transition: opacity 0.3s;
-    }
-    .press-item:hover { opacity: 0.7; }
-    .press-logo {
-      font-size: 16px;
-      font-weight: 700;
-      color: #EDE8DE;
-      white-space: nowrap;
-    }
-    .press-desc {
-      font-size: 13px;
-      color: rgba(237,232,222,0.45);
-      text-align: right;
-      max-width: 400px;
-    }
-    .credentials-section {
-      background: #F4F0E8;
-      padding: clamp(60px,8vw,120px) 0;
-    }
-    .credentials-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: clamp(48px,6vw,80px);
-    }
-    .heading-lg-about {
-      font-family: Georgia, serif;
-      font-size: clamp(28px,4vw,42px);
-      font-weight: 400;
-      line-height: 1.15;
-      color: #0B0A07;
-    }
-    .heading-lg-about em { font-style: italic; color: #4A7A66; }
-    .credential-item {
-      display: flex;
-      gap: 24px;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(11,10,7,0.06);
-    }
-    .credential-year {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #4A7A66;
-      white-space: nowrap;
-      min-width: 100px;
-      padding-top: 2px;
-    }
-    .credential-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: #0B0A07;
-      margin-bottom: 2px;
-    }
-    .credential-source {
-      font-size: 13px;
-      color: rgba(11,10,7,0.5);
-      margin: 0;
-    }
-    .cta-block-section {
-      background: #0B0A07;
-      padding: clamp(80px,10vw,140px) 0;
-    }
-    .cta-block {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      min-height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cta-media {
-      position: absolute;
-      inset: 0;
-    }
-    .cta-media video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .cta-media-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(11,10,7,0.7);
-    }
-    .cta-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 60px 32px;
-    }
-    .heading-white {
-      font-family: Georgia, serif;
-      font-size: clamp(28px,4vw,42px);
-      font-weight: 400;
-      color: #EDE8DE;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .heading-white em { font-style: italic; color: #4A7A66; }
-    .cta-text {
-      font-size: 15px;
-      color: rgba(237,232,222,0.6);
-      margin-bottom: 28px;
-      line-height: 1.7;
-    }
-    .btn-sage {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: #4A7A66;
-      color: #F4F0E8;
-      padding: 14px 32px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .btn-sage:hover { background: #3d6655; }
+    .about-hero { padding: clamp(140px,18vw,200px) 48px clamp(48px,6vw,80px); background: #0B0A07; }
+    .about-section { padding: 56px 36px; }
+    .about-section-dark { background: #0B0A07; }
+    .about-section-bone { background: #F4F0E8; }
+    .about-body { font-size: 15px; line-height: 1.75; max-width: 640px; margin-bottom: 16px; }
+    .about-body-dark { color: rgba(237,232,222,0.7); }
+    .about-body-light { color: rgba(11,10,7,0.6); }
+    .section-label-dark { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.4); display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .section-label-dark::after { content: ''; flex: 1; height: 1px; background: rgba(237,232,222,0.08); }
+    .section-label-bone { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(11,10,7,0.35); display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .section-label-bone::after { content: ''; flex: 1; height: 1px; background: rgba(11,10,7,0.08); }
+    .press-row-about { display: flex; flex-direction: column; gap: 0; }
+    .press-item-about { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid rgba(11,10,7,0.06); text-decoration: none; }
+    .press-item-about:last-child { border-bottom: none; }
+    .press-item-name { font-family: Georgia, serif; font-size: 14px; font-weight: 400; color: #0B0A07; margin-bottom: 4px; }
+    .press-item-desc { font-size: 13px; font-style: italic; color: rgba(11,10,7,0.5); max-width: 500px; line-height: 1.5; }
+    .press-item-link { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #4A7A66; white-space: nowrap; margin-left: 32px; transition: opacity 0.3s; }
+    .press-item-about:hover .press-item-link { opacity: 0.6; }
+    .closing-quote { background: #0B0A07; padding: 56px 36px; text-align: center; }
+    .closing-quote blockquote { font-family: Georgia, serif; font-style: italic; font-size: 22px; color: rgba(237,232,222,0.6); max-width: 580px; margin: 0 auto; line-height: 1.5; }
+    .testimonials-grid-6 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+    @media (max-width: 1024px) { .testimonials-grid-6 { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .credentials-grid { grid-template-columns: 1fr; }
-      .press-item { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .press-desc { text-align: left; }
+      .testimonials-grid-6 { grid-template-columns: 1fr; }
+      .press-item-about { flex-direction: column; gap: 8px; }
+      .press-item-link { margin-left: 0; }
     }
   </style>
 </head>
 <body>
 
   <div class="cursor" id="cursor"></div>
+
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
@@ -257,6 +56,7 @@
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
       <a href="index.html" class="mobile-menu-link">Home</a>
@@ -272,111 +72,112 @@
     </div>
   </div>
 
+  <!-- Hero -->
   <section class="about-hero">
-    <div class="container">
-      <span class="label reveal">About</span>
-      <h1 class="about-hero-heading reveal">About <em>Matthew</em></h1>
-      <p class="about-hero-sub reveal">14+ years. Hundreds of transactions. One honest approach.</p>
+    <div class="hero-eyebrow">About Matthew Neistat</div>
+    <h1 class="hero-headline">People First.<span class="hero-headline-italic">Always.</span></h1>
+  </section>
+
+  <!-- Legacy -->
+  <section class="about-section about-section-bone">
+    <div class="section-label-bone reveal">The Legacy</div>
+    <p class="about-body about-body-light reveal">Real estate isn't what Matthew Neistat chose. It's what he was born into.</p>
+    <p class="about-body about-body-light reveal">Growing up in Buffalo Grove, Matthew spent weekends walking job sites with his grandfather and uncle — both developers who built everything from single-family homes to high-rises across Chicago. He watched how they worked: the relationships they built, the care they took, the reputation they guarded above everything else.</p>
+    <p class="about-body about-body-light reveal">His grandfather's rule was simple: "Always put people first." His father and uncle reinforced it constantly: "Emphasize reputation above all else." These weren't slogans. They were the operating system of a family that understood real estate as a human business.</p>
+    <p class="about-body about-body-light reveal">His father went further. A CFO for a major developer, he walked away from that security to build houses himself. Matthew visited those homes as a kid — watching his father's leap of faith. That courage stayed with him.</p>
+  </section>
+
+  <!-- The Broker -->
+  <section class="about-section about-section-dark">
+    <div class="section-label-dark reveal">The Broker</div>
+    <p class="about-body about-body-dark reveal">After earning a degree in hotel and restaurant management from Le Cordon Bleu, Matthew spent nearly a decade in hospitality — learning to read a room, anticipate needs, and make people feel genuinely cared for. When an opportunity to enter real estate emerged in 2012, everything clicked. Fourteen years later, he hasn't regretted it for a second.</p>
+  </section>
+
+  <!-- Stats Band -->
+  <section class="stats-band" id="statsBand">
+    <div class="stat"><div class="stat-number" data-target="120" data-prefix="$" data-suffix="M+">$0</div><div class="stat-label">Total Sales Volume</div></div>
+    <div class="stat"><div class="stat-number" data-target="110" data-suffix="%" data-prefix="">0%</div><div class="stat-label">Sale-to-List Price</div></div>
+    <div class="stat"><div class="stat-number" data-target="5" data-prefix="" data-suffix="">0</div><div class="stat-label">Avg. Days on Market</div></div>
+    <div class="stat"><div class="stat-number" data-target="14" data-prefix="" data-suffix="+ Yrs">0</div><div class="stat-label">Experience</div></div>
+  </section>
+
+  <!-- Press -->
+  <section class="about-section about-section-bone">
+    <div class="section-label-bone reveal">As Seen In</div>
+    <div class="press-row-about">
+      <a href="https://www.costar.com/article/710741247/north-carolina-firm-buying-two-buildings-in-chicagos-fulton-market" target="_blank" class="press-item-about reveal">
+        <div><div class="press-item-name">CoStar News</div><div class="press-item-desc">"Won the listing against every major brokerage in Chicago. Closed it off-market in two weeks."</div></div>
+        <span class="press-item-link">Read →</span>
+      </a>
+      <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" class="press-item-about reveal">
+        <div><div class="press-item-name">Crain's Chicago Business</div><div class="press-item-desc">"Off-market North Shore sale closes 10% over asking price."</div></div>
+        <span class="press-item-link">Read →</span>
+      </a>
+      <a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" class="press-item-about reveal">
+        <div><div class="press-item-name">Chicago Agent Magazine — Who's Who 2022</div><div class="press-item-desc">"Named among Chicago's most notable agents."</div></div>
+        <span class="press-item-link">Read →</span>
+      </a>
+      <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" class="press-item-about reveal">
+        <div><div class="press-item-name">Chicago Real Producers</div><div class="press-item-desc">"Inspiring the Next Generation to Take a Leap of Faith."</div></div>
+        <span class="press-item-link">Read →</span>
+      </a>
     </div>
   </section>
 
-  <section class="about-editorial">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-image-col reveal">
-          <div class="about-image-wrap">
-            <img src="DSC_9797-Edit.jpg" alt="Matthew Neistat" class="about-image">
-          </div>
-          <div class="about-image-caption">
-            <span>Matthew Neistat</span>
-            <span>Broker &bull; Jameson Sotheby's International Realty</span>
-          </div>
-        </div>
-        <div class="about-text-col">
-          <div class="reveal">
-            <p class="about-lead">"Always put people first." Matthew Neistat comes from a family with deep real estate roots — continuing a legacy of developers and investors built on reputation and relationships.</p>
-          </div>
-          <div class="about-body reveal">
-            <p>Growing up in Buffalo Grove, IL, Matthew's father — a CFO turned home builder — inspired him to take his own leap of faith into real estate. After earning a degree in hospitality management and spending nearly a decade in the restaurant industry, Matthew made the leap and never looked back.</p>
-            <p>Now with over 14 years of experience, he brings the same dedication, attention to detail, and genuine care for people that defined his years in hospitality to every client relationship. Those values have helped him achieve recognition as a CAR Top 10% Producer.</p>
-            <p>Matthew handles diverse property types including single-family homes, condos, multi-unit properties, and land development — with notable achievements including leading the listing of a $10 million West Loop deconversion.</p>
-            <p>"I don't believe in burning bridges. The ripple effect of human connection is too valuable."</p>
-            <p>Featured in Chicago Agent Magazine and Chicago Real Producers, Matthew is proud to call Chicago home alongside his wife Jaclyn and their son Mason.</p>
-          </div>
-        </div>
+  <!-- Credentials Band -->
+  <section class="credentials-band">
+    <div class="credential"><div class="credential-title">CAR Top 10% Producer</div><div class="credential-sub">Chicago Association of Realtors</div></div>
+    <div class="credential"><div class="credential-title">Jameson Quarterly Best</div><div class="credential-sub">2023, 2024 & 2025</div></div>
+    <div class="credential"><div class="credential-title">Chicago Agent Magazine</div><div class="credential-sub">Who's Who 2022</div></div>
+    <div class="credential"><div class="credential-title">Chicago Real Producers</div><div class="credential-sub">Featured Agent Profile</div></div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2 class="testimonials-heading">Client <em>Words</em></h2>
+    <div class="testimonials-grid-6">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header"><div class="testimonial-avatar">NA</div><div><div class="testimonial-name">Nicole Alfred-Napper</div><div class="testimonial-role">COO, Plan Companies</div></div></div>
+        <p class="testimonial-text">"He did such a good job that we ended up having him sell a few more — every single one sold at, near, or above the price we were seeking. It was refreshing to have such a hands-on broker — that is certainly not the norm."</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header"><div class="testimonial-avatar">KW</div><div><div class="testimonial-name">Kevin Werner</div><div class="testimonial-role">Co-Founder & CEO, Renovo Financial</div></div></div>
+        <p class="testimonial-text">"Matt worked with me to market and sell all the properties faster than I expected. We hit many challenges along the way, but Matt did a great job solving the problems and staying focused on getting the buildings sold. I would recommend Matt for this type of transaction all day long."</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header"><div class="testimonial-avatar">LS</div><div><div class="testimonial-name">Linda Schafer</div><div class="testimonial-role">Private Investor</div></div></div>
+        <p class="testimonial-text">"Matt sold four 3-flats in Tri-Taylor for me in two weeks. One broke a sales record. Matt's numbers are true-to-market and realistic. He took his time to get to the right price. I definitely would work with Matt again."</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header"><div class="testimonial-avatar">CP</div><div><div class="testimonial-name">Christopher Paquette</div><div class="testimonial-role">Chief Transformation Officer, Personify Health</div></div></div>
+        <p class="testimonial-text">"Matt has always been a terrific resource and truly a partner to me. He does much of the upfront legwork, is very responsive, is always on my side and looking out for me. I would absolutely refer him with very, very high marks."</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header"><div class="testimonial-avatar">KT</div><div><div class="testimonial-name">Kevin Tansey</div><div class="testimonial-role">First-Time Buyer, North Center Chicago</div></div></div>
+        <p class="testimonial-text">"My home buying experience was seamless, which I can credit to Matt's professionalism, honesty, and integrity. Even after the offer was accepted he remained extremely communicative and responsive during the closing process."</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header"><div class="testimonial-avatar">NG</div><div><div class="testimonial-name">Nick & Marina Golemis</div><div class="testimonial-role">Bought & Sold, Chicago/Glenview</div></div></div>
+        <p class="testimonial-text">"Matt knows real estate. The review can start and end there. He was able to blend the lines between honesty, transparency, and friendliness. He knows how to negotiate, what the market dictates, and does his work with a great deal of integrity."</p>
       </div>
     </div>
   </section>
 
-  <section class="philosophy-section">
-    <div class="container">
-      <div class="reveal">
-        <span class="label label-light" style="justify-content:center;display:flex;">Philosophy</span>
-        <p class="philosophy-heading">"Inspiring the next generation to take a leap of faith."</p>
-      </div>
+  <!-- Closing Quote -->
+  <section class="closing-quote">
+    <blockquote class="reveal">"I wouldn't be where I am without the support of my wife and the love of my son. They're my heart."</blockquote>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2 class="cta-heading">Ready to put <em>people first?</em></h2>
+    <div class="cta-right">
+      <a href="contact.html" class="btn-dark">Begin the Conversation</a>
+      <div class="cta-phone"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </section>
 
-  <section class="press-section">
-    <div class="container">
-      <div class="press-bar reveal">
-        <div class="press-label-about">As Featured In</div>
-        <div class="press-items">
-          <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" class="press-item">
-            <span class="press-logo" style="font-family:Georgia,serif;font-style:italic;">Crain's Chicago Business</span>
-            <span class="press-desc">Featuring client Ron Bess — the advertising legend behind the iconic "Be Like Mike" campaign</span>
-          </a>
-          <a href="https://www.costar.com/article/710741247/north-carolina-firm-buying-two-buildings-in-chicagos-fulton-market" target="_blank" class="press-item">
-            <span class="press-logo">CoStar<sup style="font-size:10px;opacity:0.5;">TM</sup> News</span>
-            <span class="press-desc">Named in coverage of the $9.5M Fulton Market transaction at 1035 W. Lake St.</span>
-          </a>
-          <a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" class="press-item">
-            <span class="press-logo">Chicago Agent <span style="font-weight:400;">Magazine</span></span>
-            <span class="press-desc">Who's Who — 2022 Notable Agent Profile</span>
-          </a>
-          <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" class="press-item">
-            <span class="press-logo">Chicago Real Producers</span>
-            <span class="press-desc">Featured Agent Cover Story</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="credentials-section">
-    <div class="container">
-      <div class="credentials-grid">
-        <div>
-          <span class="label reveal">Credentials</span>
-          <h2 class="heading-lg-about reveal">Recognition &<br><em>Affiliations</em></h2>
-        </div>
-        <div>
-          <div class="credential-item reveal"><span class="credential-year">Recognition</span><div><h3 class="credential-title">Jameson Quarterly Best Agent</h3><p class="credential-source">2023, 2024 & 2025</p></div></div>
-          <div class="credential-item reveal"><span class="credential-year">Recognition</span><div><h3 class="credential-title">CAR Top 10% Producer</h3><p class="credential-source">Chicago Association of Realtors</p></div></div>
-          <div class="credential-item reveal"><span class="credential-year">Featured</span><div><h3 class="credential-title">Chicago Agent Magazine — Who's Who</h3><p class="credential-source">2022 Notable Agent Profile</p></div></div>
-          <div class="credential-item reveal"><span class="credential-year">Featured</span><div><h3 class="credential-title">Crain's Chicago Business</h3><p class="credential-source" style="font-style:italic;opacity:0.7;">Featuring client Ron Bess — the advertising legend behind the iconic "Be Like Mike" campaign</p></div></div>
-          <div class="credential-item reveal"><span class="credential-year">Featured</span><div><h3 class="credential-title">Chicago Real Producers Magazine</h3><p class="credential-source">Featured Agent Profile</p></div></div>
-          <div class="credential-item reveal"><span class="credential-year">Notable Sale</span><div><h3 class="credential-title">$10M West Loop Deconversion</h3><p class="credential-source">Led Listing & Sale of Multi-Unit Property</p></div></div>
-          <div class="credential-item reveal"><span class="credential-year">Specialty</span><div><h3 class="credential-title">Buying, Selling & New Development</h3><p class="credential-source">South Loop North to Rogers Park</p></div></div>
-          <div class="credential-item reveal"><span class="credential-year">14+ Years</span><div><h3 class="credential-title">Licensed Real Estate Broker</h3><p class="credential-source">Jameson Sotheby's International Realty</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-block-section">
-    <div class="container">
-      <div class="cta-block reveal">
-        <div class="cta-media"><video autoplay muted loop playsinline><source src="chicago-night.mp4" type="video/mp4"></video><div class="cta-media-overlay"></div></div>
-        <div class="cta-content">
-          <h2 class="heading-white">Let's start a<br><em>conversation</em></h2>
-          <p class="cta-text">Whether you're buying, selling, or exploring — I'd love to hear from you.</p>
-          <a href="contact.html" class="btn-sage">Get in Touch</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-grid">
       <div>
@@ -407,15 +208,11 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
-    // Nav
     window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
     const toggle = document.getElementById('navToggle');
     const menu = document.getElementById('mobileMenu');
     if (toggle && menu) { toggle.addEventListener('click', () => { const open = menu.classList.toggle('active'); toggle.classList.toggle('active'); document.body.style.overflow = open ? 'hidden' : ''; }); }
-    // Cursor
     (function() {
       const cursor = document.getElementById('cursor');
       if (!cursor || window.innerWidth < 769) return;
@@ -424,12 +221,20 @@
       document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
       function loop() { px += (cx - px) * 0.15; py += (cy - py) * 0.15; cursor.style.left = px + 'px'; cursor.style.top = py + 'px'; requestAnimationFrame(loop); }
       loop();
-      document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+      document.querySelectorAll('a, button, .stat, .testimonial-card, .press-item-about').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
     })();
-    // GSAP Reveal
     gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.stats-band .stat-number').forEach(stat => {
+      const target = parseInt(stat.dataset.target), prefix = stat.dataset.prefix || '', suffix = stat.dataset.suffix || '';
+      ScrollTrigger.create({ trigger: stat, start: 'top 85%', once: true,
+        onEnter: () => { gsap.to({ val: 0 }, { val: target, duration: 1.8, ease: 'power2.out', onUpdate: function() { stat.textContent = prefix + Math.round(this.targets()[0].val) + suffix; } }); }
+      });
+    });
     document.querySelectorAll('.reveal').forEach(el => {
       gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+    });
+    gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
+      gsap.to(card, { opacity: 1, y: 0, duration: 0.7, delay: i * 0.1, ease: 'power2.out', scrollTrigger: { trigger: card, start: 'top 90%', once: true } });
     });
   </script>
 
