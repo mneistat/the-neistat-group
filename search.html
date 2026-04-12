@@ -40,8 +40,7 @@ nav {
 .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
 .nav-links a { color: rgba(237,232,222,.24); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; transition: color .2s; }
 .nav-links a:hover, .nav-links a.active { color: #EDE8DE; }
-.nav-cta { background: #EDE8DE; color: #0B0A07; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 8px 18px; text-decoration: none; transition: background .2s; }
-.nav-cta:hover { background: #d4cfc6; }
+/* nav-cta handled by styles.css */
 .page-header { padding: 120px 40px 56px; border-bottom: .5px solid rgba(237,232,222,.08); }
 .header-eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: rgba(237,232,222,.2); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
 .header-eyebrow::after { content: ''; flex: 1; max-width: 60px; height: .5px; background: rgba(237,232,222,.12); }
@@ -109,6 +108,13 @@ nav {
 .state-title { font-family: Georgia, serif; font-size: 26px; font-style: italic; color: rgba(237,232,222,.25); margin-bottom: 10px; }
 .state-sub { font-size: 13px; color: rgba(237,232,222,.2); }
 .idx-wrapper { min-height: 600px; background: #0B0A07; padding: 0; }
+.search-tabs { display: flex; gap: 12px; margin-bottom: 48px; flex-wrap: wrap; }
+.search-tab { padding: 8px 20px; border: 1px solid rgba(237,232,222,0.25); border-radius: 999px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(237,232,222,0.5); cursor: pointer; transition: all 0.2s ease; font-family: -apple-system, sans-serif; background: transparent; }
+.search-tab.active, .search-tab:hover { border-color: #EDE8DE; color: #EDE8DE; background: rgba(237,232,222,0.08); }
+.idx-loading-state { text-align: center; padding: 80px 40px; }
+.idx-loading-icon { font-size: 32px; margin-bottom: 16px; }
+.idx-loading-state p { font-size: 15px; color: rgba(237,232,222,0.5); margin-bottom: 8px; }
+.idx-loading-sub { font-size: 12px; color: rgba(237,232,222,0.3); }
 .state-sub.accent { color: #EDE8DE; margin-top: 6px; }
 .pagination { display: flex; justify-content: center; align-items: center; gap: 4px; padding: 40px; border-top: .5px solid rgba(237,232,222,.07); }
 .pgb { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: .5px solid rgba(237,232,222,.12); background: transparent; color: rgba(237,232,222,.35); font-size: 13px; cursor: pointer; transition: all .18s; font-family: -apple-system, sans-serif; }
@@ -186,16 +192,22 @@ footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; 
 </div>
 
 <div class="page-header">
-  <div class="header-eyebrow">Chicago &nbsp;·&nbsp; North Shore &nbsp;·&nbsp; Northwest Suburbs</div>
+  <div class="search-tabs"><span class="search-tab active">Chicago</span><span class="search-tab">North Shore</span><span class="search-tab">Northwest Suburbs</span></div>
   <h1 class="page-title">Search<br><em>Properties</em></h1>
   <p class="page-sub">Live MLS listings across Chicagoland — updated in real time</p>
 </div>
 
 
 
+<div class="idx-loading-state" id="idxLoading">
+  <div class="idx-loading-icon">⌛</div>
+  <p>Live MLS listings loading...</p>
+  <p class="idx-loading-sub">Connecting to Chicago MLS — updated in real time</p>
+</div>
 <div class="idx-wrapper">
   <script>
     document.currentScript.replaceWith(ihfKestrel.render());
+    var ls=document.getElementById('idxLoading');if(ls)ls.style.display='none';
   </script>
 </div>
 

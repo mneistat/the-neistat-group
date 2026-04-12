@@ -79,7 +79,12 @@
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </div>
-  <div class="nh-layout">
+  <div style="background:#0B0A07;padding:100px 40px 24px;margin-top:56px;">
+    <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(237,232,222,0.4);display:block;margin-bottom:12px;">Explore</span>
+    <h1 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:#EDE8DE;margin:0 0 12px;">Chicago <em style="font-style:italic;">Neighborhoods</em></h1>
+    <p style="font-size:14px;color:rgba(237,232,222,0.45);max-width:520px;line-height:1.6;margin:0;">From the South Loop to the North Shore — click any neighborhood to explore its boundaries, character, and available properties.</p>
+  </div>
+  <div class="nh-layout" style="margin-top:0;height:calc(100vh - 200px)">
     <div class="nh-sidebar">
       <div class="nh-search">
         <select class="nh-search-input" id="nhRegion" style="margin-bottom:8px;cursor:pointer;-webkit-appearance:none;background:#141210 url('data:image/svg+xml,%3Csvg width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 stroke=%27%23EDE8DE%27 stroke-width=%271.5%27 stroke-opacity=%270.3%27/%3E%3C/svg%3E') no-repeat right 14px center;">
@@ -124,14 +129,15 @@
     const map=new google.maps.Map(document.getElementById('neighborhood-map'),{
       center:{lat:41.88,lng:-87.68},zoom:11,
       styles:[
-        {featureType:'all',elementType:'geometry',stylers:[{color:'#1a1a2e'}]},
-        {featureType:'water',stylers:[{color:'#16213e'}]},
-        {featureType:'road',elementType:'geometry',stylers:[{color:'#0f3460'}]},
+        {elementType:'geometry',stylers:[{color:'#1a1a2e'}]},
         {elementType:'labels.text.fill',stylers:[{color:'#746855'}]},
         {elementType:'labels.text.stroke',stylers:[{color:'#242f3e'}]},
+        {featureType:'water',elementType:'geometry',stylers:[{color:'#16213e'}]},
+        {featureType:'road',elementType:'geometry',stylers:[{color:'#2c2c44'}]},
         {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#1a5276'}]},
         {featureType:'poi',stylers:[{visibility:'off'}]},
-        {featureType:'transit',stylers:[{visibility:'off'}]}
+        {featureType:'transit',stylers:[{visibility:'off'}]},
+        {featureType:'administrative.locality',elementType:'labels.text.fill',stylers:[{color:'#d59563'}]}
       ],
       mapTypeControl:false,streetViewControl:false,fullscreenControl:false,gestureHandling:'greedy'
     });
@@ -249,7 +255,7 @@
           const desc=customDesc[name]||'Chicago community area.';
           const displayName=titleCase(name);
           drawPoly(key,coords,color);
-          addToUI(key,displayName,desc,area.area_numbe?'Community Area '+area.area_numbe:'Chicago',color);
+          addToUI(key,displayName,desc,customDesc[name]?'Chicago Neighborhood':'Chicago',color);
         });
 
       })
