@@ -12,6 +12,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search Properties — The Neistat Group</title>
+<link rel="stylesheet" href="styles.css?v=3">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -160,21 +163,27 @@ footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; 
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">The Neistat Group</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="search.html" class="active">Search Properties</a></li>
-    <li><a href="neighborhoods.html">Neighborhoods</a></li>
-    <li class="has-drop">
-      <a href="calculator.html">Calculators <span class="drop-arrow">↓</span></a>
-    </li>
-    <li><a href="vendors.html">Vendors</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <a href="contact.html" class="nav-cta">Begin the Conversation</a>
+<div class="cursor" id="cursor"></div>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-brand">The Neistat Group</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="search.html" class="nav-link">Search Properties</a>
+    <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+    <a href="calculator.html" class="nav-link">Calculators</a>
+    <a href="vendors.html" class="nav-link">Vendors</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="search.html" class="mobile-menu-link">Search Properties</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
+    <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
+  </div>
+</div>
 
 <div class="page-header">
   <div class="header-eyebrow">Chicago &nbsp;·&nbsp; North Shore &nbsp;·&nbsp; Northwest Suburbs</div>
@@ -190,46 +199,22 @@ footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; 
   </script>
 </div>
 
-<footer>
-  <div>
-    <div class="ft-logo">The <em>Neistat</em> Group</div>
-    <div class="ft-info">Jameson Sotheby's International Realty<br>425 W. North Avenue<br>Chicago, Illinois 60610</div>
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
+    <div class="footer-col"><div class="footer-col-label">Navigate</div><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="search.html">Search Properties</a><a href="neighborhoods.html">Neighborhoods</a><a href="calculator.html">Calculators</a><a href="vendors.html">Vendors</a></div>
+    <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
   </div>
-  <div>
-    <div class="ft-head">Navigate</div>
-    <ul class="ft-list">
-      <li><a href="about.html">About Matthew</a></li>
-      <li><a href="search.html">Search Properties</a></li>
-      <li><a href="neighborhoods.html">Neighborhoods</a></li>
-      <li><a href="calculator.html">Calculators</a></li>
-      <li><a href="vendors.html">Vendors</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-  <div>
-    <div class="ft-head">Connect</div>
-    <ul class="ft-list">
-      <li><a href="tel:8477142913">847.714.2913</a></li>
-      <li><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a></li>
-      <li><a href="https://www.instagram.com/matt_neistat/">Instagram</a></li>
-      <li><a href="https://www.linkedin.com/in/matthew-neistat/">LinkedIn</a></li>
-    </ul>
-  </div>
+  <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
 </footer>
-<div class="ft-bottom">
-  <span class="ft-copy">© 2026 The Neistat Group. All rights reserved. Licensed in the State of Illinois.</span>
-  <span class="ft-copy">Built different.</span>
-</div>
 
 
 
 <script>
-  window.ihfKestrel = window.ihfKestrel || {};
-  ihfKestrel.config = {
-    platform: "custom",
-    activationToken: "2aee2b63-aa3f-4e4c-b832-768fcae397d3",
-  };
+  window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+  const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
+  if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
+  (function(){const c=document.getElementById('cursor');if(!c||innerWidth<769)return;let cx=0,cy=0,px=0,py=0;document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;c.classList.add('visible')});document.addEventListener('mouseleave',()=>c.classList.remove('visible'));function l(){px+=(cx-px)*.15;py+=(cy-py)*.15;c.style.left=px+'px';c.style.top=py+'px';requestAnimationFrame(l)}l();document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('hover'));el.addEventListener('mouseleave',()=>c.classList.remove('hover'))})})();
 </script>
-<script src="https://kestrel.idxhome.com/ihf-kestrel.js"></script>
 </body>
 </html>
