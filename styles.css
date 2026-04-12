@@ -3,7 +3,7 @@
   --navy: #0B0A07;
   --navy-deep: #0B0A07;
   --cream: #F4F0E8;
-  --gold: #0B0A07;
+  --gold: #4A7A66;
   --blue: rgba(237,232,222,0.6);
   --white: #EDE8DE;
   --text: #0B0A07;
@@ -459,6 +459,44 @@ a.contact-detail-value:hover { color: #EDE8DE; }
   .footer-main { grid-template-columns: 1fr; }
   .press-items { grid-template-columns: 1fr; }
 }
+
+/* === CONTRAST RHYTHM === */
+.stats-band { background: #111009; border-top: 1px solid rgba(237,232,222,0.06); border-bottom: 1px solid rgba(237,232,222,0.06); }
+.credentials-band { background: #F4F0E8; color: #0B0A07; }
+.credentials-band h3, .credentials-band p, .credentials-band span { color: #0B0A07; }
+.portfolio-scroll { background: #0B0A07; }
+.testimonials { background: #EDE8DE; color: #0B0A07; }
+.testimonials h2, .testimonials .testimonial-card, .testimonials p, .testimonials blockquote { color: #0B0A07; }
+.testimonial-card { background: #F4F0E8; border: 1px solid rgba(11,10,7,0.08); }
+.neighborhoods { background: #111009; }
+.press { background: #F4F0E8; }
+.press, .press a, .press h2, .press p, .press span { color: #0B0A07; }
+.cta { background: #080706; color: #EDE8DE; }
+.cta h2, .cta p, .cta a { color: #EDE8DE; }
+
+/* === SAGE GREEN ACCENT #4A7A66 === */
+.nav-link:hover { color: #4A7A66; }
+.hero-headline em, .hero h1 em, .hero-headline-italic { color: #4A7A66; }
+.tools-label, .vendors-label, .section-label, .page-label { color: #4A7A66; }
+.btn-primary, a.btn-primary { background: #4A7A66; border-color: #4A7A66; color: #F4F0E8; }
+.btn-primary:hover { background: #3d6858; border-color: #3d6858; }
+.nav-cta-btn { background: #4A7A66; color: #F4F0E8; }
+.nav-cta-btn:hover { background: #3d6858; }
+.credential:first-child { border-left: 2px solid #4A7A66; }
+.portfolio-tag { color: #4A7A66; }
+.testimonials-heading em { color: #4A7A66; }
+.neighborhoods-heading em { color: #4A7A66; }
+.cta-heading em { color: #4A7A66; }
+.footer-bar em { color: #4A7A66; }
+.press-pub:hover { color: #4A7A66 !important; }
+.mobile-menu-link:hover { color: #4A7A66; }
+.link-sage { color: #4A7A66; }
+.link-sage:hover { color: #3d6858; }
+
+/* === TYPOGRAPHY SHARPNESS === */
+body { color: #EDE8DE; }
+h1, h2, h3 { color: #EDE8DE; }
+.testimonials h1, .testimonials h2, .testimonials h3, .press h1, .press h2, .credentials-band h1, .credentials-band h2, .credentials-band h3 { color: #0B0A07; }
 
 /* === CLOSING COST / CALCULATOR PAGE STYLES === */
 /* These pages have their own inline <style> tags so they mostly self-style,
