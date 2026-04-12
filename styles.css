@@ -498,6 +498,30 @@ body { color: #EDE8DE; }
 h1, h2, h3 { color: #EDE8DE; }
 .testimonials h1, .testimonials h2, .testimonials h3, .press h1, .press h2, .credentials-band h1, .credentials-band h2, .credentials-band h3 { color: #0B0A07; }
 
+/* === FORM INPUTS === */
+input[type="text"],input[type="email"],input[type="tel"],input[type="number"],input[type="password"],textarea,select {
+  background: rgba(237,232,222,0.05); border: 1px solid rgba(237,232,222,0.25); border-radius: 6px;
+  color: #EDE8DE; padding: 14px 18px; font-size: 14px; font-family: -apple-system, sans-serif;
+  width: 100%; box-sizing: border-box; transition: border-color 0.2s ease, background 0.2s ease; outline: none;
+}
+input:focus,textarea:focus,select:focus { border-color: #4A7A66; background: rgba(237,232,222,0.08); box-shadow: 0 0 0 3px rgba(74,122,102,0.15); }
+input::placeholder,textarea::placeholder { color: rgba(237,232,222,0.25); }
+select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23EDE8DE' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
+.form-label, label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(237,232,222,0.45); font-family: -apple-system, sans-serif; display: block; margin-bottom: 8px; }
+.btn-submit, button[type="submit"] { background: #4A7A66; border: none; border-radius: 6px; color: #F4F0E8; padding: 16px 32px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-family: -apple-system, sans-serif; cursor: pointer; width: 100%; transition: background 0.2s ease, transform 0.15s ease; }
+.btn-submit:hover, button[type="submit"]:hover { background: #3d6858; transform: translateY(-1px); }
+.contact-form, .form-card { background: rgba(237,232,222,0.04); border: 1px solid rgba(237,232,222,0.12); border-radius: 16px; padding: 48px; }
+
+/* === TABS === */
+.search-tabs, .region-tabs, .tab-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+.search-tab, .region-tab, .tab { padding: 9px 22px; border: 1px solid rgba(237,232,222,0.3); border-radius: 999px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,222,0.45); cursor: pointer; transition: all 0.2s ease; font-family: -apple-system, sans-serif; background: transparent; white-space: nowrap; }
+.search-tab:hover, .region-tab:hover, .tab:hover { border-color: rgba(237,232,222,0.7); color: rgba(237,232,222,0.9); background: rgba(237,232,222,0.05); }
+.search-tab.active, .region-tab.active, .tab.active { border-color: #4A7A66; color: #4A7A66; background: rgba(74,122,102,0.1); }
+
+/* === NAV CTA === */
+.nav-cta-btn { background: #4A7A66; border: 1px solid #4A7A66; color: #F4F0E8; padding: 10px 22px; border-radius: 4px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; transition: background 0.2s ease; }
+.nav-cta-btn:hover { background: #3d6858; border-color: #3d6858; }
+
 /* === CLOSING COST / CALCULATOR PAGE STYLES === */
 /* These pages have their own inline <style> tags so they mostly self-style,
    but they need the shared nav, footer, container, and section classes above */
