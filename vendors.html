@@ -5,150 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
   <title>Recommended Vendors | The Neistat Group</title>
-  <meta name="description" content="Trusted vendor recommendations from The Neistat Group — mortgage lenders, attorneys, inspectors, contractors, and more for Chicago home buyers and sellers.">
+  <meta name="description" content="Trusted vendor recommendations from The Neistat Group — mortgage lenders, attorneys, inspectors, contractors, and more.">
   <link rel="stylesheet" href="styles.css?v=3">
   <style>
-    .vendors-page { padding: clamp(160px,20vw,240px) 0 clamp(80px,12vw,160px); background: #0B0A07; }
-    .vendors-page .label { color: rgba(237,232,222,0.6); }
-    .vendors-page .heading-lg { color: #EDE8DE; }
-    .vendors-page .heading-lg em { color: #EDE8DE; }
-    .vendors-page .vendors-intro p { color: rgba(237,232,222,0.65); }
+    .vendors-hero { background: #0B0A07; padding: clamp(140px,18vw,200px) 40px 40px; }
+    .vendors-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 16px; display: block; }
+    .vendors-heading { font-family: Georgia, serif; font-size: clamp(36px,5vw,56px); font-weight: 400; color: #EDE8DE; line-height: 1.1; }
+    .vendors-heading em { font-style: italic; }
+    .vendors-sub { font-size: 14px; color: rgba(237,232,222,0.45); margin-top: 16px; max-width: 520px; line-height: 1.7; }
 
-    .vendors-intro { max-width: 600px; margin-bottom: clamp(48px,6vw,72px); }
-    .vendors-intro p { font-size: clamp(17px,1.6vw,20px); font-weight: 300; color: rgba(237,232,222,0.65); line-height: 1.8; }
-
-    .heading-lg {
-      font-family: Georgia, serif;
-      font-size: clamp(32px,5vw,48px);
-      font-weight: 400;
-      line-height: 1.15;
-    }
-    .heading-lg em { font-style: italic; }
-
-    .vendors-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px,4vw,48px);
-    }
-
-    .vendor-category {
-      background: #131109;
-      border-radius: 16px;
-      padding: clamp(28px,3vw,40px);
-      border: 1px solid rgba(237,232,222,0.05);
-      transition: transform 0.3s ease, border-color 0.3s;
-    }
-
-    .vendor-category:hover {
-      transform: translateY(-4px);
-      border-color: rgba(237,232,222,0.08);
-    }
-
-    .vendor-category-wide {
-      grid-column: 1 / -1;
-    }
-
-    .vendor-cards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 clamp(32px,4vw,48px);
-    }
-
-    .vendor-category-compact {
-      padding: clamp(20px,2.5vw,28px);
-    }
-    .vendor-category-compact .vendor-category-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      margin-bottom: 14px;
-      font-size: 16px;
-    }
-    .vendor-category-compact .vendor-category-icon svg { width: 18px; height: 18px; }
-    .vendor-category-compact .vendor-category-title { margin-bottom: 12px; }
-
-    .vendor-category-icon { display: none; }
-
-    .vendor-category-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(237,232,222,0.5);
-      margin-bottom: 20px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(237,232,222,0.12);
-    }
-
-    .vendor-card {
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(237,232,222,0.06);
-    }
-
-    .vendor-card:last-child { border-bottom: none; }
-
-    .vendor-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: #EDE8DE;
-      margin-bottom: 2px;
-    }
-
-    .vendor-company {
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(237,232,222,0.6);
-      margin-bottom: 8px;
-    }
-
-    .vendor-contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .vendor-contact a {
-      font-size: 13px;
-      font-weight: 500;
-      color: #EDE8DE;
-      transition: color 0.2s;
-    }
-
-    .vendor-contact a:hover { color: #6a9a86; }
-
-    .vendor-note {
-      font-size: 12px;
-      color: rgba(237,232,222,0.6);
-      font-style: italic;
-      margin-top: 4px;
-    }
-
-    .vendors-disclaimer {
-      margin-top: clamp(48px,6vw,72px);
-      padding: 24px;
-      background: rgba(237,232,222,0.03);
-      border-radius: 12px;
-      font-size: 13px;
-      color: rgba(237,232,222,0.6);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 768px) {
-      .vendors-grid { grid-template-columns: 1fr; }
-      .vendor-cards-grid { grid-template-columns: 1fr; }
-    }
+    .vendor-category { max-width: 960px; margin: 0 auto 80px; padding: 0 40px; }
+    .vendor-category-header { border-bottom: 1px solid rgba(237,232,222,0.15); padding-bottom: 20px; margin-bottom: 32px; }
+    .vendor-category-header h2 { font-family: Georgia, serif; font-size: clamp(28px,4vw,42px); font-weight: 400; color: #EDE8DE; margin: 0; }
+    .vendor-category-header h2 em { font-style: italic; }
+    .vendor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .vendor-card { background: rgba(237,232,222,0.04); border: 1px solid rgba(237,232,222,0.08); border-radius: 10px; padding: 24px 28px; transition: border-color 0.25s ease, background 0.25s ease; }
+    .vendor-card:hover { border-color: rgba(237,232,222,0.2); background: rgba(237,232,222,0.07); }
+    .vendor-name { font-family: Georgia, serif; font-size: 17px; font-weight: 400; color: #EDE8DE; margin-bottom: 4px; }
+    .vendor-company { font-size: 13px; color: rgba(237,232,222,0.6); line-height: 1.5; margin-bottom: 8px; }
+    .vendor-specialty { font-size: 12px; color: rgba(237,232,222,0.4); font-style: italic; margin-bottom: 16px; line-height: 1.5; }
+    .vendor-contacts { display: flex; flex-direction: column; gap: 6px; }
+    .vendor-contact { font-size: 13px; color: rgba(237,232,222,0.7); text-decoration: none; transition: color 0.2s; }
+    .vendor-contact:hover { color: #EDE8DE; }
+    .vendor-disclaimer { max-width: 960px; margin: 0 auto 80px; padding: 32px 40px; border-top: 1px solid rgba(237,232,222,0.1); font-size: 13px; color: rgba(237,232,222,0.35); line-height: 1.7; }
+    @media (max-width: 768px) { .vendor-category { padding: 0 24px; } .vendor-grid { grid-template-columns: 1fr; } .vendor-disclaimer { padding: 24px; } }
   </style>
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MGNGVERDHQ');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 </head>
 <body>
-
   <div class="cursor" id="cursor"></div>
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
@@ -157,7 +42,7 @@
       <a href="about.html" class="nav-link">About</a>
       <a href="search.html" class="nav-link">Search Properties</a>
       <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
-      <div class="nav-dropdown"><a href="calculator.html" class="nav-link">Calculators <span class="nav-dropdown-arrow">▾</span></a><div class="nav-dropdown-menu"><div class="nav-dropdown-menu-inner"><a href="calculator-mortgage.html">Mortgage Calculator</a><a href="buyer-closing-costs.html">Buyer Closing Costs</a><a href="seller-closing-costs.html">Seller Closing Costs</a></div></div></div>
+      <a href="calculator.html" class="nav-link">Calculators</a>
       <a href="vendors.html" class="nav-link">Vendors</a>
       <a href="contact.html" class="nav-link">Contact</a>
       <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
@@ -166,297 +51,144 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">Home</a>
-      <a href="about.html" class="mobile-menu-link">About</a>
-      <a href="search.html" class="mobile-menu-link">Search Properties</a>
-      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
-      <a href="calculator-mortgage.html" class="mobile-menu-link">Mortgage Calculator</a>
-      <a href="buyer-closing-costs.html" class="mobile-menu-link">Buyer Closing Costs</a>
-      <a href="seller-closing-costs.html" class="mobile-menu-link">Seller Closing Costs</a>
-      <a href="vendors.html" class="mobile-menu-link">Vendors</a>
-      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="search.html" class="mobile-menu-link">Search Properties</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </div>
 
-  <section class="vendors-page">
-    <div class="container">
-      <span class="label reveal">Resources</span>
-      <h1 class="heading-lg reveal" style="margin-bottom:12px;">Recommended <em>Vendors</em></h1>
-      <div class="vendors-intro reveal">
-        <p>Trusted professionals I work with and recommend. Each has been personally vetted through years of transactions together. I do not receive any referral fees or compensation from these vendors.</p>
-      </div>
-
-      <div class="vendors-grid">
-
-        <!-- MORTGAGE LENDERS -->
-        <div class="vendor-category reveal">          <div class="vendor-category-title">Mortgage Lenders</div>
-          <div class="vendor-card">
-            <div class="vendor-name">Kiki Calumet</div>
-            <div class="vendor-company">Select Lending Services — Sr. Vice President of Lending</div>
-            <div class="vendor-contact">
-              <a href="tel:+13129099372">312.909.9372</a>
-              <a href="mailto:k.calumet@selectlendingservices.com">k.calumet@selectlendingservices.com</a>
-            </div>
-            <div class="vendor-note">Residential, FHA, home renovation & 2-4 unit | NMLS# 185931</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Asher Motew</div>
-            <div class="vendor-company">Essex Capital Markets — Director</div>
-            <div class="vendor-contact">
-              <a href="tel:+12245456505">224.545.6505</a>
-              <a href="mailto:asher@essexcapitalmarkets.com">asher@essexcapitalmarkets.com</a>
-            </div>
-            <div class="vendor-note">Commercial loans</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Renee Stetz</div>
-            <div class="vendor-company">Huntington Bank</div>
-            <div class="vendor-contact">
-              <a href="tel:+17735509780">773.550.9780</a>
-              <a href="mailto:renee.c.stetz@huntington.com">renee.c.stetz@huntington.com</a>
-            </div>
-            <div class="vendor-note">Local commercial & SBA loans</div>
-          </div>
-        </div>
-
-        <!-- REAL ESTATE ATTORNEYS -->
-        <div class="vendor-category reveal">          <div class="vendor-category-title">Real Estate Attorneys</div>
-          <div class="vendor-card">
-            <div class="vendor-name">Bakos Law, LLC</div>
-            <div class="vendor-company">Wheaton, IL</div>
-            <div class="vendor-contact">
-              <a href="https://bakos.law" target="_blank">bakos.law</a>
-            </div>
-            <div class="vendor-note">Residential transactions</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Jennifer Goldstone</div>
-            <div class="vendor-company">HGS Legal</div>
-            <div class="vendor-contact">
-              <a href="https://www.hgslegal.com/jennifer-goldstone" target="_blank">hgslegal.com</a>
-            </div>
-            <div class="vendor-note">Commercial & residential transactions</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Tyler Manic</div>
-            <div class="vendor-company">Schain Banks Kenny & Schwartz — Partner</div>
-            <div class="vendor-contact">
-              <a href="tel:+13123455706">312.345.5706</a>
-              <a href="mailto:tmanic@schainbanks.com">tmanic@schainbanks.com</a>
-            </div>
-            <div class="vendor-note">Commercial transactions</div>
-          </div>
-        </div>
-
-        <!-- HOME INSPECTORS -->
-        <div class="vendor-category vendor-category-compact reveal">          <div class="vendor-category-title">Home Inspectors</div>
-          <div class="vendor-card">
-            <div class="vendor-name">Jack Schubert</div>
-            <div class="vendor-company">Inspection Concepts LLC</div>
-            <div class="vendor-contact">
-              <a href="tel:+17738519667">773.851.9667</a>
-              <a href="mailto:jack@inspectionconceptsllc.com">jack@inspectionconceptsllc.com</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- INSURANCE -->
-        <div class="vendor-category vendor-category-compact reveal">          <div class="vendor-category-title">Insurance Agents</div>
-          <div class="vendor-card">
-            <div class="vendor-name">Hays Featherston</div>
-            <div class="vendor-company">AssuredPartners</div>
-            <div class="vendor-contact">
-              <a href="tel:+18596856569">859.685.6569</a>
-              <a href="mailto:Hays.Featherston@assuredpartners.com">Hays.Featherston@assuredpartners.com</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTRACTORS -->
-        <div class="vendor-category vendor-category-wide reveal">          <div class="vendor-category-title">Contractors & Home Services</div>
-          <div class="vendor-cards-grid">
-          <div class="vendor-card">
-            <div class="vendor-name">Exterior Home Experts</div>
-            <div class="vendor-company">Northbrook, IL</div>
-            <div class="vendor-contact">
-              <a href="https://exteriorhomeexperts.com" target="_blank">exteriorhomeexperts.com</a>
-            </div>
-            <div class="vendor-note">Roofing & gutters</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Top Brickwork</div>
-            <div class="vendor-company"></div>
-            <div class="vendor-contact">
-              <a href="https://topbrickwork.com" target="_blank">topbrickwork.com</a>
-            </div>
-            <div class="vendor-note">Masonry</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Julian</div>
-            <div class="vendor-company">Tech PSD Inc</div>
-            <div class="vendor-contact">
-              <a href="tel:+14405320202">440.532.0202</a>
-            </div>
-            <div class="vendor-note">Plumbing</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Andrei</div>
-            <div class="vendor-company">Adicorp Electrical</div>
-            <div class="vendor-contact">
-              <a href="tel:+17735740228">773.574.0228</a>
-              <a href="mailto:adicorp.electric@gmail.com">adicorp.electric@gmail.com</a>
-            </div>
-            <div class="vendor-note">Electrician</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Rares Ratiu</div>
-            <div class="vendor-company">Ray Comfort Zone</div>
-            <div class="vendor-contact">
-              <a href="tel:+17736031005">773.603.1005</a>
-              <a href="mailto:rares86ratiu@yahoo.com">rares86ratiu@yahoo.com</a>
-            </div>
-            <div class="vendor-note">HVAC</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Oskar Home Services Inc.</div>
-            <div class="vendor-company">Highland Park, IL</div>
-            <div class="vendor-contact">
-              <a href="tel:+12242210807">224.221.0807</a>
-              <a href="mailto:oscarboxeo11@gmail.com">oscarboxeo11@gmail.com</a>
-            </div>
-            <div class="vendor-note">General handyman & home services</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Stefan</div>
-            <div class="vendor-company">Quality Windows Repair</div>
-            <div class="vendor-contact">
-              <a href="tel:+13125396152">312.539.6152</a>
-              <a href="https://www.qualitywindowsrepair.com" target="_blank">qualitywindowsrepair.com</a>
-            </div>
-            <div class="vendor-note">Window repair</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Pulse Exterior</div>
-            <div class="vendor-company"></div>
-            <div class="vendor-contact">
-              <a href="https://www.pulseexterior.com" target="_blank">pulseexterior.com</a>
-            </div>
-            <div class="vendor-note">Exterior services</div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Juan Uriostegui</div>
-            <div class="vendor-company">J.U. General Painting</div>
-            <div class="vendor-contact">
-              <a href="tel:+18474012516">847.401.2516</a>
-              <a href="mailto:juanuriostegui00@gmail.com">juanuriostegui00@gmail.com</a>
-            </div>
-            <div class="vendor-note">Paint, drywall & taping</div>
-          </div>
-          </div>
-        </div>
-
-        <!-- MOVERS -->
-        <div class="vendor-category reveal">          <div class="vendor-category-title">Movers</div>
-          <div class="vendor-card">
-            <div class="vendor-name">Golan's Moving & Storage</div>
-            <div class="vendor-company">Skokie, IL</div>
-            <div class="vendor-contact">
-              <a href="tel:+18472629778">847.262.9778</a>
-              <a href="mailto:sales@golansmoving.com">sales@golansmoving.com</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- UTILITIES -->
-        <div class="vendor-category reveal">          <div class="vendor-category-title">Utilities — Set Up Service</div>
-          <div class="vendor-card">
-            <div class="vendor-name">Peoples Gas</div>
-            <div class="vendor-company">Natural Gas Service</div>
-            <div class="vendor-contact">
-              <a href="tel:+18665566002">866.556.6002</a>
-              <a href="https://www.peoplesgasdelivery.com/services/start-stop-move-energy-service" target="_blank">Start/Stop Service</a>
-            </div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">ComEd</div>
-            <div class="vendor-company">Electric Service</div>
-            <div class="vendor-contact">
-              <a href="tel:+18003342688">800.334.7661</a>
-              <a href="https://www.comed.com/MyAccount/CustomerSupport/Pages/StartStopMove.aspx" target="_blank">Start/Stop Service</a>
-            </div>
-          </div>
-          <div class="vendor-card">
-            <div class="vendor-name">Chicago Water</div>
-            <div class="vendor-company">City of Chicago — Dept. of Water Management</div>
-            <div class="vendor-contact">
-              <a href="tel:+13127442000">312.744.2000</a>
-              <a href="https://www.chicago.gov/city/en/depts/water.html" target="_blank">chicago.gov/water</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="vendors-disclaimer">I do not receive any referral fees, commissions, or compensation of any kind from the vendors listed on this page. These are professionals I have personally worked with and recommend based solely on the quality of their work. Always do your own due diligence when selecting service providers for your transaction.</div>
-    </div>
+  <section class="vendors-hero">
+    <span class="vendors-label">Resources</span>
+    <h1 class="vendors-heading">Recommended <em>Vendors</em></h1>
+    <p class="vendors-sub">Trusted professionals I work with and recommend. Each has been personally vetted through years of transactions together. I do not receive any referral fees or compensation from these vendors.</p>
   </section>
+
+  <div class="vendor-category reveal">
+    <div class="vendor-category-header"><h2>Mortgage <em>Lenders</em></h2></div>
+    <div class="vendor-grid">
+      <div class="vendor-card">
+        <div class="vendor-name">Kiki Calumet</div>
+        <div class="vendor-company">Select Lending Services — Sr. Vice President of Lending</div>
+        <div class="vendor-specialty">Residential, FHA, home renovation & 2-4 unit | NMLS# 185931</div>
+        <div class="vendor-contacts"><a href="tel:+13129099372" class="vendor-contact">312.909.9372</a><a href="mailto:k.calumet@selectlendingservices.com" class="vendor-contact">k.calumet@selectlendingservices.com</a></div>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-name">Asher Motew</div>
+        <div class="vendor-company">Essex Capital Markets — Director</div>
+        <div class="vendor-specialty">Commercial loans</div>
+        <div class="vendor-contacts"><a href="tel:+12245456505" class="vendor-contact">224.545.6505</a><a href="mailto:asher@essexcapitalmarkets.com" class="vendor-contact">asher@essexcapitalmarkets.com</a></div>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-name">Renee Stetz</div>
+        <div class="vendor-company">Huntington Bank</div>
+        <div class="vendor-specialty">Local commercial & SBA loans</div>
+        <div class="vendor-contacts"><a href="tel:+17735509780" class="vendor-contact">773.550.9780</a><a href="mailto:renee.c.stetz@huntington.com" class="vendor-contact">renee.c.stetz@huntington.com</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vendor-category reveal">
+    <div class="vendor-category-header"><h2>Real Estate <em>Attorneys</em></h2></div>
+    <div class="vendor-grid">
+      <div class="vendor-card">
+        <div class="vendor-name">Bakos Law, LLC</div>
+        <div class="vendor-company">Wheaton, IL</div>
+        <div class="vendor-specialty">Residential transactions</div>
+        <div class="vendor-contacts"><a href="https://bakos.law" target="_blank" class="vendor-contact">bakos.law</a></div>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-name">Jennifer Goldstone</div>
+        <div class="vendor-company">HGS Legal</div>
+        <div class="vendor-specialty">Commercial & residential transactions</div>
+        <div class="vendor-contacts"><a href="https://www.hgslegal.com/jennifer-goldstone" target="_blank" class="vendor-contact">hgslegal.com</a></div>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-name">Tyler Manic</div>
+        <div class="vendor-company">Schain Banks Kenny & Schwartz — Partner</div>
+        <div class="vendor-specialty">Commercial transactions</div>
+        <div class="vendor-contacts"><a href="tel:+13123455706" class="vendor-contact">312.345.5706</a><a href="mailto:tmanic@schainbanks.com" class="vendor-contact">tmanic@schainbanks.com</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vendor-category reveal">
+    <div class="vendor-category-header"><h2>Home <em>Inspectors</em></h2></div>
+    <div class="vendor-grid">
+      <div class="vendor-card">
+        <div class="vendor-name">Jack Schubert</div>
+        <div class="vendor-company">Inspection Concepts LLC</div>
+        <div class="vendor-contacts"><a href="tel:+17738519667" class="vendor-contact">773.851.9667</a><a href="mailto:jack@inspectionconceptsllc.com" class="vendor-contact">jack@inspectionconceptsllc.com</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vendor-category reveal">
+    <div class="vendor-category-header"><h2>Insurance <em>Agents</em></h2></div>
+    <div class="vendor-grid">
+      <div class="vendor-card">
+        <div class="vendor-name">Hays Featherston</div>
+        <div class="vendor-company">AssuredPartners</div>
+        <div class="vendor-contacts"><a href="tel:+18596856569" class="vendor-contact">859.685.6569</a><a href="mailto:Hays.Featherston@assuredpartners.com" class="vendor-contact">Hays.Featherston@assuredpartners.com</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vendor-category reveal">
+    <div class="vendor-category-header"><h2>Contractors & Home <em>Services</em></h2></div>
+    <div class="vendor-grid">
+      <div class="vendor-card"><div class="vendor-name">Exterior Home Experts</div><div class="vendor-company">Northbrook, IL</div><div class="vendor-specialty">Roofing & gutters</div><div class="vendor-contacts"><a href="https://exteriorhomeexperts.com" target="_blank" class="vendor-contact">exteriorhomeexperts.com</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Top Brickwork</div><div class="vendor-specialty">Masonry</div><div class="vendor-contacts"><a href="https://topbrickwork.com" target="_blank" class="vendor-contact">topbrickwork.com</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Julian</div><div class="vendor-company">Tech PSD Inc</div><div class="vendor-specialty">Plumbing</div><div class="vendor-contacts"><a href="tel:+14405320202" class="vendor-contact">440.532.0202</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Andrei</div><div class="vendor-company">Adicorp Electrical</div><div class="vendor-specialty">Electrician</div><div class="vendor-contacts"><a href="tel:+17735740228" class="vendor-contact">773.574.0228</a><a href="mailto:adicorp.electric@gmail.com" class="vendor-contact">adicorp.electric@gmail.com</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Rares Ratiu</div><div class="vendor-company">Ray Comfort Zone</div><div class="vendor-specialty">HVAC</div><div class="vendor-contacts"><a href="tel:+17736031005" class="vendor-contact">773.603.1005</a><a href="mailto:rares86ratiu@yahoo.com" class="vendor-contact">rares86ratiu@yahoo.com</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Oskar Home Services Inc.</div><div class="vendor-company">Highland Park, IL</div><div class="vendor-specialty">General handyman & home services</div><div class="vendor-contacts"><a href="tel:+12242210807" class="vendor-contact">224.221.0807</a><a href="mailto:oscarboxeo11@gmail.com" class="vendor-contact">oscarboxeo11@gmail.com</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Stefan</div><div class="vendor-company">Quality Windows Repair</div><div class="vendor-specialty">Window repair</div><div class="vendor-contacts"><a href="tel:+13125396152" class="vendor-contact">312.539.6152</a><a href="https://www.qualitywindowsrepair.com" target="_blank" class="vendor-contact">qualitywindowsrepair.com</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Pulse Exterior</div><div class="vendor-specialty">Exterior services</div><div class="vendor-contacts"><a href="https://www.pulseexterior.com" target="_blank" class="vendor-contact">pulseexterior.com</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Juan Uriostegui</div><div class="vendor-company">J.U. General Painting</div><div class="vendor-specialty">Paint, drywall & taping</div><div class="vendor-contacts"><a href="tel:+18474012516" class="vendor-contact">847.401.2516</a><a href="mailto:juanuriostegui00@gmail.com" class="vendor-contact">juanuriostegui00@gmail.com</a></div></div>
+    </div>
+  </div>
+
+  <div class="vendor-category reveal">
+    <div class="vendor-category-header"><h2><em>Movers</em></h2></div>
+    <div class="vendor-grid">
+      <div class="vendor-card">
+        <div class="vendor-name">Golan's Moving & Storage</div>
+        <div class="vendor-company">Skokie, IL</div>
+        <div class="vendor-contacts"><a href="tel:+18472629778" class="vendor-contact">847.262.9778</a><a href="mailto:sales@golansmoving.com" class="vendor-contact">sales@golansmoving.com</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vendor-category reveal">
+    <div class="vendor-category-header"><h2>Utilities — Set Up <em>Service</em></h2></div>
+    <div class="vendor-grid">
+      <div class="vendor-card"><div class="vendor-name">Peoples Gas</div><div class="vendor-company">Natural Gas Service</div><div class="vendor-contacts"><a href="tel:+18665566002" class="vendor-contact">866.556.6002</a><a href="https://www.peoplesgasdelivery.com/services/start-stop-move-energy-service" target="_blank" class="vendor-contact">Start/Stop Service</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">ComEd</div><div class="vendor-company">Electric Service</div><div class="vendor-contacts"><a href="tel:+18003342688" class="vendor-contact">800.334.7661</a><a href="https://www.comed.com/MyAccount/CustomerSupport/Pages/StartStopMove.aspx" target="_blank" class="vendor-contact">Start/Stop Service</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Chicago Water</div><div class="vendor-company">City of Chicago — Dept. of Water Management</div><div class="vendor-contacts"><a href="tel:+13127442000" class="vendor-contact">312.744.2000</a><a href="https://www.chicago.gov/city/en/depts/water.html" target="_blank" class="vendor-contact">chicago.gov/water</a></div></div>
+    </div>
+  </div>
+
+  <div class="vendor-disclaimer">I do not receive any referral fees, commissions, or compensation of any kind from the vendors listed on this page. These are professionals I have personally worked with and recommend based solely on the quality of their work. Always do your own due diligence when selecting service providers for your transaction.</div>
 
   <footer class="footer">
     <div class="footer-grid">
-      <div>
-        <div class="footer-brand">The Neistat Group</div>
-        <div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Navigate</div>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="search.html">Search Properties</a>
-        <a href="neighborhoods.html">Neighborhoods</a>
-        <a href="calculator.html">Calculators</a>
-        <a href="vendors.html">Vendors</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Connect</div>
-        <a href="tel:+18477142913">847.714.2913</a>
-        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
-        <a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a>
-        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a>
-      </div>
+      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
+      <div class="footer-col"><div class="footer-col-label">Navigate</div><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="search.html">Search Properties</a><a href="neighborhoods.html">Neighborhoods</a><a href="calculator.html">Calculators</a><a href="vendors.html">Vendors</a></div>
+      <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
     </div>
-    <div class="footer-bar">
-      <span>&copy; 2026 The Neistat Group. All rights reserved.</span>
-      <span>People First. <em>Always.</em></span>
-    </div>
+    <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
-    // Nav
-    window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('mobileMenu');
-    if (toggle && menu) { toggle.addEventListener('click', () => { const open = menu.classList.toggle('active'); toggle.classList.toggle('active'); document.body.style.overflow = open ? 'hidden' : ''; }); }
-    // Cursor
-    (function() {
-      const cursor = document.getElementById('cursor');
-      if (!cursor || window.innerWidth < 769) return;
-      let cx = 0, cy = 0, px = 0, py = 0;
-      document.addEventListener('mousemove', (e) => { cx = e.clientX; cy = e.clientY; cursor.classList.add('visible'); });
-      document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-      function loop() { px += (cx - px) * 0.15; py += (cy - py) * 0.15; cursor.style.left = px + 'px'; cursor.style.top = py + 'px'; requestAnimationFrame(loop); }
-      loop();
-      document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
-    })();
-    // GSAP Reveal
-    gsap.registerPlugin(ScrollTrigger);
-    document.querySelectorAll('.reveal').forEach(el => {
-      gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
-    });
+    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+    const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
+    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
+    (function(){const c=document.getElementById('cursor');if(!c||innerWidth<769)return;let cx=0,cy=0,px=0,py=0;document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;c.classList.add('visible')});document.addEventListener('mouseleave',()=>c.classList.remove('visible'));function l(){px+=(cx-px)*.15;py+=(cy-py)*.15;c.style.left=px+'px';c.style.top=py+'px';requestAnimationFrame(l)}l();document.querySelectorAll('a,button,.vendor-card').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('hover'));el.addEventListener('mouseleave',()=>c.classList.remove('hover'))})})();
   </script>
-
+  <script>
+  (function(){
+    const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.style.transition='opacity 0.9s ease, transform 0.9s ease';entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';observer.unobserve(entry.target)}})},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';observer.observe(el)});
+  })();
+  </script>
 </body>
 </html>

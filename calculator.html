@@ -16,8 +16,14 @@
     .tools-sub { font-size: 15px; color: rgba(237,232,222,0.5); margin-top: 16px; max-width: 400px; }
 
     .tool-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 960px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; }
-    .tool-card { background: #F4F0E8; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; padding: 40px 36px; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; gap: 14px; text-decoration: none; box-sizing: border-box; }
+    .tool-card { background: #F4F0E8; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; padding: 40px 36px; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; display: flex; flex-direction: column; gap: 14px; text-decoration: none; box-sizing: border-box; border-bottom: 2px solid transparent; }
     .tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(11,10,7,0.12); }
+    .tool-card-mortgage:hover { border-bottom-color: #0984e3; }
+    .tool-card-buyer:hover { border-bottom-color: #00b894; }
+    .tool-card-seller:hover { border-bottom-color: #f0a500; }
+    .tool-card:hover .tool-card-cta { letter-spacing: 0.01em; }
+    .tool-card-cta span { display: inline-block; transition: transform 0.2s ease; }
+    .tool-card:hover .tool-card-cta span { transform: translateX(4px); }
     .tool-card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
     .tool-card-pill { display: inline-block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; font-family: -apple-system, sans-serif; width: fit-content; }
     .tool-card-title { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; margin: 0; }
@@ -31,7 +37,10 @@
     .tool-card-seller .tool-card-icon { background: rgba(253,203,110,0.25); }
     .tool-card-seller .tool-card-pill { background: rgba(253,203,110,0.25); color: #9A6F00; }
 
-    @media (max-width: 768px) { .tool-cards { grid-template-columns: 1fr; padding: 0 24px; margin: 40px auto; } }
+    @media (max-width: 768px) {
+      .tool-cards { grid-template-columns: 1fr; padding: 0 24px; margin: 40px auto; }
+      .tool-cards::after { content: 'Tap any card to open'; display: block; text-align: center; font-size: 12px; color: rgba(237,232,222,0.3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 20px; grid-column: 1/-1; }
+    }
   </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
@@ -54,7 +63,7 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="search.html" class="mobile-menu-link">Search Properties</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator-mortgage.html" class="mobile-menu-link">Mortgage Calculator</a><a href="buyer-closing-costs.html" class="mobile-menu-link">Buyer Closing Costs</a><a href="seller-closing-costs.html" class="mobile-menu-link">Seller Closing Costs</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="search.html" class="mobile-menu-link">Search Properties</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </div>
@@ -71,21 +80,21 @@
       <span class="tool-card-pill">Buying</span>
       <h2 class="tool-card-title">Mortgage calculator</h2>
       <p class="tool-card-desc">Estimate your monthly payment based on price, down payment, rate, and term. Includes taxes, insurance, and HOA.</p>
-      <span class="tool-card-cta">Calculate payment →</span>
+      <span class="tool-card-cta">Calculate payment <span>→</span></span>
     </a>
     <a href="buyer-closing-costs.html" class="tool-card tool-card-buyer reveal">
       <div class="tool-card-icon"><svg width="22" height="22" fill="none" stroke="#0B8A6A" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
       <span class="tool-card-pill">Buying</span>
       <h2 class="tool-card-title">Buyer closing costs</h2>
       <p class="tool-card-desc">See exactly what you'll owe at closing beyond your down payment — title, origination, attorney fees, and more.</p>
-      <span class="tool-card-cta">Estimate costs →</span>
+      <span class="tool-card-cta">Estimate costs <span>→</span></span>
     </a>
     <a href="seller-closing-costs.html" class="tool-card tool-card-seller reveal">
       <div class="tool-card-icon"><svg width="22" height="22" fill="none" stroke="#9A6F00" stroke-width="1.5" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
       <span class="tool-card-pill">Selling</span>
       <h2 class="tool-card-title">Seller net proceeds</h2>
       <p class="tool-card-desc">Find out what you'll actually walk away with after commission, transfer tax, attorney fees, and your mortgage payoff.</p>
-      <span class="tool-card-cta">Calculate net →</span>
+      <span class="tool-card-cta">Calculate net <span>→</span></span>
     </a>
   </div>
 
