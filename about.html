@@ -54,7 +54,8 @@
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot hidden" id="cursorDot"></div>
+  <div class="cursor-ring hidden" id="cursorRing"></div>
 
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
@@ -216,16 +217,7 @@
     if (toggle && menu) { toggle.addEventListener('click', () => { const open = menu.classList.toggle('active'); toggle.classList.toggle('active'); document.body.style.overflow = open ? 'hidden' : ''; }); }
 
     // Cursor
-    (function() {
-      const cursor = document.getElementById('cursor');
-      if (!cursor || window.innerWidth < 769) return;
-      let cx = 0, cy = 0, px = 0, py = 0;
-      document.addEventListener('mousemove', (e) => { cx = e.clientX; cy = e.clientY; cursor.classList.add('visible'); });
-      document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-      function loop() { px += (cx - px) * 0.15; py += (cy - py) * 0.15; cursor.style.left = px + 'px'; cursor.style.top = py + 'px'; requestAnimationFrame(loop); }
-      loop();
-      document.querySelectorAll('a, button, .stat, .testimonial-card, .press-pub').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
-    })();
+    
 
     // GSAP stats count-up
     gsap.registerPlugin(ScrollTrigger);
@@ -259,5 +251,19 @@
   })();
   </script>
 
+<script>
+    // Magnetic Cursor
+    (function(){
+      if(window.innerWidth<769)return;
+      var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
+      if(!dot||!ring)return;
+      var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
+      document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.remove('hidden');ring.classList.remove('hidden')});
+      document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
+      function loop(){dx+=(mx-dx)*.22;dy+=(my-dy)*.22;rx+=(mx-rx)*.09;ry+=(my-ry)*.09;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
+      loop();
+      document.querySelectorAll('a,button,.portfolio-card,.tool-card,.vendor-card,.testimonial-card').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
+    })();
+</script>
 </body>
 </html>
