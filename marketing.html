@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B0A07">
+  <title>How We Market Your Home | The Neistat Group</title>
+  <meta name="description" content="A proven 12-step marketing system that sells Chicago homes faster and for more money. Pre-market access through Top Agent Network, professional photography, video, drone, and targeted social advertising.">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <style>
+    .mkt-hero { background: #0B0A07; padding: clamp(140px,18vw,200px) 48px clamp(48px,6vw,80px); }
+    .mkt-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 16px; display: block; }
+    .mkt-heading { font-family: Georgia, serif; font-size: clamp(36px,5vw,64px); font-weight: 400; color: #EDE8DE; line-height: 1.08; margin-bottom: 20px; }
+    .mkt-heading em { font-style: italic; }
+    .mkt-sub { font-size: 15px; color: rgba(237,232,222,0.55); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+    .mkt-stats { display: flex; gap: 48px; }
+    .mkt-stat-num { font-family: Georgia, serif; font-size: 32px; color: #EDE8DE; }
+    .mkt-stat-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-top: 4px; }
+
+    .marketing-intro { background: #F4F0E8; padding: 64px 48px; text-align: center; }
+    .marketing-intro-quote { font-family: Georgia, serif; font-size: clamp(24px,3.5vw,36px); font-style: italic; color: #0B0A07; max-width: 600px; margin: 0 auto 24px; line-height: 1.4; }
+    .marketing-intro-body { font-size: 15px; color: rgba(11,10,7,0.55); max-width: 580px; margin: 0 auto; line-height: 1.8; }
+
+    .steps-section { background: #0B0A07; padding: 20px 0; }
+    .step-row { display: grid; grid-template-columns: 120px 1fr; gap: 0 60px; padding: 48px 80px; border-bottom: 1px solid rgba(237,232,222,0.07); align-items: start; transition: background 0.2s ease; }
+    .step-row:hover { background: rgba(237,232,222,0.03); }
+    .step-number { font-family: Georgia, serif; font-size: 64px; font-weight: 400; color: rgba(237,232,222,0.08); line-height: 1; padding-top: 4px; }
+    .step-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.3); margin-bottom: 10px; }
+    .step-title { font-family: Georgia, serif; font-size: 26px; font-weight: 400; color: #EDE8DE; margin: 0 0 14px; line-height: 1.2; }
+    .step-desc { font-size: 15px; color: rgba(237,232,222,0.55); line-height: 1.8; max-width: 680px; }
+
+    .results-band { background: #F4F0E8; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(11,10,7,0.08); border-bottom: 1px solid rgba(11,10,7,0.08); }
+    .results-stat { padding: 36px; text-align: center; border-right: 1px solid rgba(11,10,7,0.08); }
+    .results-stat:last-child { border-right: none; }
+    .results-num { font-family: Georgia, serif; font-size: 32px; color: #0B0A07; }
+    .results-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.4); margin-top: 6px; }
+
+    .pull-quote { background: #0B0A07; padding: 80px 48px; text-align: center; }
+    .pull-quote blockquote { font-family: Georgia, serif; font-size: clamp(22px,3vw,28px); font-style: italic; color: #EDE8DE; max-width: 700px; margin: 0 auto 20px; line-height: 1.5; }
+    .pull-quote cite { font-size: 13px; color: rgba(237,232,222,0.45); font-style: normal; letter-spacing: 0.05em; }
+
+    .mkt-cta { background: #F4F0E8; padding: 64px 48px; text-align: center; }
+    .mkt-cta-heading { font-family: Georgia, serif; font-size: clamp(24px,3.5vw,36px); color: #0B0A07; margin-bottom: 12px; }
+    .mkt-cta-sub { font-size: 15px; color: rgba(11,10,7,0.5); margin-bottom: 32px; }
+    .mkt-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .mkt-btn-primary { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: #0B0A07; color: #EDE8DE; padding: 14px 32px; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
+    .mkt-btn-primary:hover { background: #1a1916; }
+    .mkt-btn-ghost { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: #0B0A07; border: 1px solid rgba(11,10,7,0.2); padding: 14px 32px; border-radius: 3px; text-decoration: none; transition: all 0.2s; }
+    .mkt-btn-ghost:hover { border-color: #0B0A07; }
+
+    @media (max-width: 768px) {
+      .step-row { grid-template-columns: 1fr; padding: 36px 24px; gap: 8px; }
+      .step-number { font-size: 40px; }
+      .results-band { grid-template-columns: 1fr 1fr; }
+      .results-stat { border-bottom: 1px solid rgba(11,10,7,0.08); }
+      .mkt-stats { flex-direction: column; gap: 20px; }
+      .mkt-hero { padding: clamp(120px,16vw,180px) 28px 40px; }
+    }
+  </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
+</head>
+<body>
+  <div class="cursor-dot hidden" id="cursorDot"></div>
+  <div class="cursor-ring hidden" id="cursorRing"></div>
+
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-brand">The Neistat Group</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="marketing.html" class="nav-link">For Sellers</a>
+      <a href="search.html" class="nav-link">Search Properties</a>
+      <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+      <a href="calculator.html" class="nav-link">Calculators</a>
+      <a href="vendors.html" class="nav-link">Vendors</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="marketing.html" class="mobile-menu-link">For Sellers</a><a href="search.html" class="mobile-menu-link">Search Properties</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
+      <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
+    </div>
+  </div>
+
+  <section class="mkt-hero">
+    <span class="mkt-label">For Sellers</span>
+    <h1 class="mkt-heading">How We Sell <em>Differently</em></h1>
+    <p class="mkt-sub">A proven 12-step system that sells homes faster and for more money than the market average. Our sellers close at 110% of list price in an average of 5 days.</p>
+    <div class="mkt-stats">
+      <div><div class="mkt-stat-num">110%</div><div class="mkt-stat-label">of list price</div></div>
+      <div><div class="mkt-stat-num">5 days</div><div class="mkt-stat-label">average on market</div></div>
+    </div>
+  </section>
+
+  <div class="marketing-intro reveal">
+    <p class="marketing-intro-quote">"Most agents list your home. We launch it."</p>
+    <p class="marketing-intro-body">Every listing gets the full system — not a scaled-down version based on price point. From the $500K condo to the $9.5M commercial deconversion, the process is the same. That's why the results are consistent.</p>
+  </div>
+
+  <section class="steps-section">
+    <div class="step-row reveal"><div class="step-number">01</div><div class="step-content"><div class="step-tag">Foundation</div><h2 class="step-title">Pricing Strategy</h2><p class="step-desc">A comprehensive comparative market analysis — not just what similar homes sold for, but why. We price to generate competition, not just interest. The right price on day one is the difference between multiple offers and a price reduction.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">02</div><div class="step-content"><div class="step-tag">Preparation</div><h2 class="step-title">Pre-Market Preparation</h2><p class="step-desc">A detailed walkthrough with specific recommendations — what to fix, what to stage, what to leave alone. We connect you with trusted vendors for any work needed. Buyers pay a premium for homes that feel move-in ready.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">03</div><div class="step-content"><div class="step-tag">Preparation</div><h2 class="step-title">Staging Consultation</h2><p class="step-desc">Professional staging guidance on every listing. We work with your existing furniture or bring in pieces that photograph and show beautifully. First impressions are made in 8 seconds — online and in person.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">04</div><div class="step-content"><div class="step-tag">Content</div><h2 class="step-title">Editorial Photography</h2><p class="step-desc">Professional photography on every listing, no exceptions. We work with photographers who understand light, space, and storytelling — not just documentation. 95% of buyers start their search online. Your photos are your first showing.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">05</div><div class="step-content"><div class="step-tag">Content</div><h2 class="step-title">Cinematic Video</h2><p class="step-desc">A listing video that tells the story of the home — not just a walkthrough. Shot and edited to the same standard as the marketing materials. Used across social media, email, and digital advertising.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">06</div><div class="step-content"><div class="step-tag">Content</div><h2 class="step-title">Drone Photography & Aerial Video</h2><p class="step-desc">Aerial perspective gives buyers context no ground-level photo can — the neighborhood, proximity to the lakefront, the scale of the property. Essential for single-family homes, multi-units, and anything with outdoor space.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">07</div><div class="step-content"><div class="step-tag">Content</div><h2 class="step-title">3D Virtual Tour</h2><p class="step-desc">A Matterport 3D walkthrough lets qualified buyers experience the home from anywhere in the world. Out-of-town buyers, relocations, investors — this turns remote interest into real offers.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">08</div><div class="step-content"><div class="step-tag">Exclusive</div><h2 class="step-title">Top Agent Network — Exclusive Pre-Market Access</h2><p class="step-desc">Before your home ever hits the MLS, it goes to the Top Agent Network — an invitation-only network of the top 10% of brokers in Illinois, ranked by production. These are the agents with the most active, qualified buyers. A pre-market sale means no days on market, no open houses, and often a premium price.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">09</div><div class="step-content"><div class="step-tag">Network</div><h2 class="step-title">Jameson Network & Broker Relationships</h2><p class="step-desc">Jameson Sotheby's has over 400 agents across Chicago and the North Shore — all of whom receive direct outreach before your listing launches publicly. Combined with Matthew's personal relationships with top producing brokers across the city, your home gets in front of the right people before anyone else.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">10</div><div class="step-content"><div class="step-tag">Launch</div><h2 class="step-title">MLS Launch & Digital Syndication</h2><p class="step-desc">Strategic MLS timing — Thursday or Friday launch to maximize first-weekend traffic. Instant syndication to Zillow, Realtor.com, Redfin, Homes.com, and 100+ real estate portals nationwide. Every buyer searching in your price range and neighborhood sees your listing.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">11</div><div class="step-content"><div class="step-tag">Marketing</div><h2 class="step-title">Instagram & Targeted Social Advertising</h2><p class="step-desc">Paid advertising on Instagram and Facebook targeted by location, income, age, and buying behavior. We reach buyers who are actively looking in your neighborhood and price range — not just people who happen to scroll past.</p></div></div>
+    <div class="step-row reveal"><div class="step-number">12</div><div class="step-content"><div class="step-tag">Marketing</div><h2 class="step-title">Email Campaign & Buyer Network</h2><p class="step-desc">Direct email outreach to Matthew's active buyer network — buyers currently working with him who are searching in your price range. This is warm, qualified traffic that no portal can deliver.</p></div></div>
+  </section>
+
+  <div class="results-band">
+    <div class="results-stat"><div class="results-num">110%</div><div class="results-label">of list price</div></div>
+    <div class="results-stat"><div class="results-num">5 days</div><div class="results-label">average on market</div></div>
+    <div class="results-stat"><div class="results-num">$120M+</div><div class="results-label">in sales</div></div>
+    <div class="results-stat"><div class="results-num">14+</div><div class="results-label">years experience</div></div>
+  </div>
+
+  <section class="pull-quote">
+    <blockquote class="reveal">"Matt sold four 3-flats in Tri-Taylor for me in two weeks. One broke a sales record."</blockquote>
+    <cite>— Linda Schafer, Private Investor</cite>
+  </section>
+
+  <section class="mkt-cta">
+    <h2 class="mkt-cta-heading">Ready to put this system to work?</h2>
+    <p class="mkt-cta-sub">Every listing gets the full process. Let's talk about your home.</p>
+    <div class="mkt-cta-btns">
+      <a href="contact.html" class="mkt-btn-primary">Begin the Conversation</a>
+      <a href="index.html#portfolio" class="mkt-btn-ghost">See Notable Sales</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
+      <div class="footer-col"><div class="footer-col-label">Navigate</div><a href="index.html">Home</a><a href="about.html">About</a><a href="marketing.html">For Sellers</a><a href="contact.html">Contact</a><a href="search.html">Search Properties</a><a href="neighborhoods.html">Neighborhoods</a><a href="calculator.html">Calculators</a><a href="vendors.html">Vendors</a></div>
+      <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
+    </div>
+    <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+    const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
+    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
+  </script>
+  <script>
+  (function(){
+    const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.style.transition='opacity 0.9s ease, transform 0.9s ease';entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';observer.unobserve(entry.target)}})},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';observer.observe(el)});
+  })();
+  </script>
+  <script>
+  (function(){
+    if(window.innerWidth<769)return;
+    var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
+    if(!dot||!ring)return;
+    var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
+    document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.remove('hidden');ring.classList.remove('hidden')});
+    document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
+    function loop(){dx+=(mx-dx)*.22;dy+=(my-dy)*.22;rx+=(mx-rx)*.09;ry+=(my-ry)*.09;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
+    loop();
+    document.querySelectorAll('a,button').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
+  })();
+  </script>
+</body>
+</html>
