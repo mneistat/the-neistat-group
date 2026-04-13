@@ -210,15 +210,20 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .link-sage:hover { opacity: 0.7; }
 
 /* === CREDENTIALS BAND === */
-.credentials-band { background: #EDE8DE; display: grid; grid-template-columns: repeat(4, 1fr); }
+.credentials-band { display: grid; grid-template-columns: repeat(4, 1fr); padding: 32px 60px; background: #F4F0E8; border-top: 1px solid rgba(11,10,7,0.08); border-bottom: 1px solid rgba(11,10,7,0.08); }
+.credential-item { display: flex; align-items: center; gap: 14px; padding: 0 20px; border-right: 1px solid rgba(11,10,7,0.08); }
+.credential-item:first-child { padding-left: 0; }
+.credential-item:last-child { border-right: none; }
+.credential-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 6px; flex-shrink: 0; background: rgba(11,10,7,0.04); padding: 4px; }
+.credential-title { font-size: 13px; font-weight: 500; color: #0B0A07; font-family: -apple-system, sans-serif; line-height: 1.3; }
+.credential-sub { font-size: 11px; color: rgba(11,10,7,0.5); font-family: -apple-system, sans-serif; margin-top: 2px; }
+/* Legacy .credential class support */
 .credential { padding: 24px 28px; border-right: 1px solid rgba(11,10,7,0.06); }
-.credential:first-child { border-left: 2px solid #0B0A07; }
 .credential:last-child { border-right: none; }
-.credential-title { font-size: 12px; font-weight: 500; color: #0B0A07; margin-bottom: 3px; }
-.credential-sub { font-size: 11px; color: rgba(11,10,7,0.55); }
 
 @media (max-width: 768px) {
-  .credentials-band { grid-template-columns: 1fr 1fr; }
+  .credentials-band { grid-template-columns: repeat(2, 1fr); padding: 24px; gap: 20px; }
+  .credential-item { padding: 0; border-right: none; }
   .credential { border-bottom: 1px solid rgba(11,10,7,0.06); }
 }
 
