@@ -49,7 +49,8 @@
 <body>
 
   <!-- Custom Cursor -->
-  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot hidden" id="cursorDot"></div>
+  <div class="cursor-ring hidden" id="cursorRing"></div>
 
   <!-- Nav -->
   <nav class="nav" id="nav">
@@ -310,24 +311,42 @@
       });
     }
 
-    // Custom Cursor
+    // Magnetic Cursor + 3D Card Tilt
     (function() {
-      const cursor = document.getElementById('cursor');
-      if (!cursor || window.innerWidth < 769) return;
-      let cx = 0, cy = 0, px = 0, py = 0;
-      document.addEventListener('mousemove', (e) => { cx = e.clientX; cy = e.clientY; cursor.classList.add('visible'); });
-      document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-      function loop() {
-        px += (cx - px) * 0.15;
-        py += (cy - py) * 0.15;
-        cursor.style.left = px + 'px';
-        cursor.style.top = py + 'px';
-        requestAnimationFrame(loop);
+      if (window.innerWidth < 769) return;
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      if (!dot || !ring) return;
+      let mouseX = 0, mouseY = 0, dotX = 0, dotY = 0, ringX = 0, ringY = 0;
+      document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; dot.classList.remove('hidden'); ring.classList.remove('hidden'); });
+      document.addEventListener('mouseleave', () => { dot.classList.add('hidden'); ring.classList.add('hidden'); });
+      document.addEventListener('mouseenter', () => { dot.classList.remove('hidden'); ring.classList.remove('hidden'); });
+      function animateCursor() {
+        dotX += (mouseX - dotX) * 0.22; dotY += (mouseY - dotY) * 0.22;
+        ringX += (mouseX - ringX) * 0.09; ringY += (mouseY - ringY) * 0.09;
+        dot.style.left = dotX + 'px'; dot.style.top = dotY + 'px';
+        ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+        requestAnimationFrame(animateCursor);
       }
-      loop();
-      document.querySelectorAll('a, button, .stat, .neighborhood-card, .testimonial-card, .press-pub').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      animateCursor();
+      document.querySelectorAll('a, button, .portfolio-card, .tool-card, .nav-cta-btn, .stat, .testimonial-card, .press-pub').forEach(el => {
+        el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
+        el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
+      });
+      // 3D tilt on portfolio cards
+      document.querySelectorAll('.portfolio-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
+          const rotX = ((cy / rect.height) - 0.5) * -18;
+          const rotY = ((cx / rect.width) - 0.5) * 18;
+          card.style.transform = 'perspective(700px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale(1.03)';
+          card.style.borderColor = 'rgba(237,232,222,0.25)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) scale(1)';
+          card.style.borderColor = '';
+        });
       });
     })();
 

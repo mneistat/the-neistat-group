@@ -23,10 +23,19 @@ img, video { display: block; max-width: 100%; }
 button { border: none; background: none; cursor: pointer; font-family: inherit; }
 
 /* === CUSTOM CURSOR === */
-.cursor { position: fixed; width: 10px; height: 10px; border-radius: 50%; background: #EDE8DE; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); opacity: 0; transition: transform 0.2s ease, opacity 0.15s ease; }
-.cursor.visible { opacity: 1; }
-.cursor.hover { transform: translate(-50%, -50%) scale(2); }
-@media (max-width: 768px) { .cursor { display: none; } }
+* { cursor: none; }
+.cursor-dot { width: 8px; height: 8px; background: #EDE8DE; border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: width 0.2s ease, height 0.2s ease; }
+.cursor-ring { width: 38px; height: 38px; border: 1px solid rgba(237,232,222,0.5); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99998; transform: translate(-50%, -50%); transition: width 0.25s ease, height 0.25s ease, border-color 0.2s ease; }
+.cursor-dot.hover { width: 6px; height: 6px; }
+.cursor-ring.hover { width: 56px; height: 56px; border-color: rgba(237,232,222,0.8); }
+.cursor-dot.hidden, .cursor-ring.hidden { opacity: 0; }
+@media (max-width: 768px) { * { cursor: auto; } .cursor-dot, .cursor-ring { display: none; } }
+
+/* 3D Card Tilt */
+.portfolio-card { transform-style: preserve-3d; will-change: transform; transition: transform 0.15s ease, border-color 0.3s ease; }
+.portfolio-card-img { transform: translateZ(20px); }
+.portfolio-card-info { transform: translateZ(10px); }
+.portfolio-price { transform: translateZ(30px); }
 
 /* === NAV === */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #0B0A07; padding: 20px 36px; display: flex; align-items: center; justify-content: space-between; transition: padding 0.4s ease; }
