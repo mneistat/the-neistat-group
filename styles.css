@@ -211,7 +211,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* === CREDENTIALS BAND === */
 .credentials-band { display: grid; grid-template-columns: repeat(4, 1fr); background: #F4F0E8; border-top: 1px solid rgba(11,10,7,0.08); border-bottom: 1px solid rgba(11,10,7,0.08); }
-.credential-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 28px; border-right: 1px solid rgba(11,10,7,0.08); text-decoration: none; transition: background 0.2s ease; }
+.credential-item { display: flex; align-items: center; gap: 16px; padding: 28px; border-right: 1px solid rgba(11,10,7,0.08); text-decoration: none; transition: background 0.2s ease; justify-content: center; }
 .credential-item:last-child { border-right: none; }
 .credential-item:hover { background: rgba(11,10,7,0.04); }
 .credential-logo { height: 40px; width: auto; max-width: 60px; object-fit: contain; flex-shrink: 0; border-radius: 4px; }
