@@ -536,6 +536,40 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 
 /* === NAV CTA === */
 
+/* === INLINE CONTACT FORM === */
+.cta-form-section { background: #F4F0E8; padding: 100px 0; }
+.cta-form-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.cta-form-label { font-size: 10px; letter-spacing: 0.22em; color: rgba(11,10,7,0.35); font-family: -apple-system, sans-serif; display: block; margin-bottom: 16px; }
+.cta-form-heading { font-family: Georgia, serif; font-size: clamp(32px,4vw,48px); font-weight: 400; color: #0B0A07; line-height: 1.15; margin: 0 0 20px; }
+.cta-form-heading em { font-style: italic; }
+.cta-form-sub { font-size: 15px; color: rgba(11,10,7,0.5); line-height: 1.75; margin: 0 0 40px; max-width: 400px; }
+.cta-form-details { display: flex; flex-direction: column; gap: 20px; }
+.cta-form-detail { display: flex; flex-direction: column; gap: 4px; }
+.cta-form-detail-label { font-size: 10px; letter-spacing: 0.16em; color: rgba(11,10,7,0.3); }
+.cta-form-detail-value { font-size: 15px; color: #0B0A07; text-decoration: none; transition: color 0.2s; }
+.cta-form-detail-value:hover { color: rgba(11,10,7,0.6); }
+.cta-form-right { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 16px; padding: 40px; }
+.cta-form { display: flex; flex-direction: column; }
+.cta-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.cta-form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.cta-form-row .cta-form-group { margin-bottom: 0; }
+.cta-input-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(11,10,7,0.4); }
+.cta-input { background: #F9F7F4; border: 1px solid rgba(11,10,7,0.1); border-radius: 6px; padding: 13px 16px; font-size: 14px; color: #0B0A07; font-family: -apple-system, sans-serif; width: 100%; box-sizing: border-box; outline: none; transition: border-color 0.2s, background 0.2s; }
+.cta-input:focus { border-color: rgba(11,10,7,0.35); background: #fff; }
+.cta-input::placeholder { color: rgba(11,10,7,0.25); }
+.cta-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230B0A07' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; cursor: pointer; }
+.cta-textarea { height: 100px; resize: none; line-height: 1.6; }
+.cta-submit { width: 100%; background: #0B0A07; border: none; border-radius: 6px; color: #EDE8DE; padding: 16px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; margin-top: 4px; transition: background 0.2s, transform 0.15s; }
+.cta-submit:hover { background: #1a1815; transform: translateY(-1px); }
+.cta-submit:active { transform: translateY(0); }
+.cta-form-privacy { font-size: 11px; color: rgba(11,10,7,0.3); text-align: center; margin: 12px 0 0; }
+@media (max-width: 768px) {
+  .cta-form-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 40px; }
+  .cta-form-section { padding: 60px 0; }
+  .cta-form-row { grid-template-columns: 1fr; }
+  .cta-form-right { padding: 28px 24px; }
+}
+
 /* === CLOSING COST / CALCULATOR PAGE STYLES === */
 /* These pages have their own inline <style> tags so they mostly self-style,
    but they need the shared nav, footer, container, and section classes above */

@@ -255,12 +255,35 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2 class="cta-heading">Let's start a <em>conversation.</em></h2>
-    <div class="cta-right">
-      <a href="contact.html" class="btn-dark">Begin the Conversation</a>
-      <div class="cta-phone"><a href="tel:+18477142913">847.714.2913</a></div>
+  <!-- Contact Form -->
+  <section class="cta-form-section">
+    <div class="cta-form-inner">
+      <div class="cta-form-left reveal">
+        <span class="cta-form-label">CONTACT</span>
+        <h2 class="cta-form-heading">Let's start a<br><em>conversation.</em></h2>
+        <p class="cta-form-sub">Whether you're buying, selling, investing, or simply curious about the market — reach out. No pressure, no scripts. Just an honest conversation.</p>
+        <div class="cta-form-details">
+          <div class="cta-form-detail"><span class="cta-form-detail-label">PHONE</span><a href="tel:+18477142913" class="cta-form-detail-value">847.714.2913</a></div>
+          <div class="cta-form-detail"><span class="cta-form-detail-label">EMAIL</span><a href="mailto:matt@theneistatgroup.com" class="cta-form-detail-value">matt@theneistatgroup.com</a></div>
+          <div class="cta-form-detail"><span class="cta-form-detail-label">OFFICE</span><span class="cta-form-detail-value">425 W. North Avenue, Chicago IL 60610</span></div>
+        </div>
+      </div>
+      <div class="cta-form-right reveal">
+        <form class="cta-form" name="contact" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="cta-form-row">
+            <div class="cta-form-group"><label class="cta-input-label">First Name</label><input type="text" name="first_name" placeholder="First name" required class="cta-input"></div>
+            <div class="cta-form-group"><label class="cta-input-label">Last Name</label><input type="text" name="last_name" placeholder="Last name" required class="cta-input"></div>
+          </div>
+          <div class="cta-form-row">
+            <div class="cta-form-group"><label class="cta-input-label">Email</label><input type="email" name="email" placeholder="your@email.com" required class="cta-input"></div>
+            <div class="cta-form-group"><label class="cta-input-label">Phone</label><input type="tel" name="phone" placeholder="(312) 555-0100" class="cta-input"></div>
+          </div>
+          <div class="cta-form-group"><label class="cta-input-label">I'm looking to</label><select name="intent" required class="cta-input cta-select"><option value="" disabled selected>Select one</option><option value="buy">Buy a home</option><option value="sell">Sell my home</option><option value="both">Buy and sell</option><option value="invest">Invest in real estate</option><option value="learn">Just exploring</option></select></div>
+          <div class="cta-form-group"><label class="cta-input-label">Message (optional)</label><textarea name="message" placeholder="Tell me a little about what you're looking for..." class="cta-input cta-textarea"></textarea></div>
+          <button type="submit" class="cta-submit">Send Message →</button>
+          <p class="cta-form-privacy">Your information is never shared or sold.</p>
+        </form>
+      </div>
     </div>
   </section>
 
