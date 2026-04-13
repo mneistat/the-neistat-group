@@ -918,7 +918,7 @@
       var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
       document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.remove('hidden');ring.classList.remove('hidden')});
       document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-      function loop(){dx+=(mx-dx)*.22;dy+=(my-dy)*.22;rx+=(mx-rx)*.09;ry+=(my-ry)*.09;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
+      function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
       loop();
       document.querySelectorAll('a,button,.portfolio-card,.tool-card,.vendor-card,.testimonial-card').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
     })();

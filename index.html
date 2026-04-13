@@ -357,8 +357,8 @@
       document.addEventListener('mouseleave', () => { dot.classList.add('hidden'); ring.classList.add('hidden'); });
       document.addEventListener('mouseenter', () => { dot.classList.remove('hidden'); ring.classList.remove('hidden'); });
       function animateCursor() {
-        dotX += (mouseX - dotX) * 0.22; dotY += (mouseY - dotY) * 0.22;
-        ringX += (mouseX - ringX) * 0.09; ringY += (mouseY - ringY) * 0.09;
+        dotX += (mouseX - dotX) * 0.35; dotY += (mouseY - dotY) * 0.35;
+        ringX += (mouseX - ringX) * 0.18; ringY += (mouseY - ringY) * 0.18;
         dot.style.left = dotX + 'px'; dot.style.top = dotY + 'px';
         ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
         requestAnimationFrame(animateCursor);
