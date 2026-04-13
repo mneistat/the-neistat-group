@@ -536,6 +536,10 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 
 /* === NAV CTA === */
 
+/* === VENDOR LINKS IN STEPS === */
+.step-vendor-link { display: inline-block; margin-top: 12px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.5); text-decoration: none; font-family: -apple-system, sans-serif; border-bottom: 1px solid rgba(237,232,222,0.2); padding-bottom: 2px; transition: color 0.2s ease, border-color 0.2s ease; }
+.step-vendor-link:hover { color: #EDE8DE; border-bottom-color: rgba(237,232,222,0.6); }
+
 /* === INLINE CONTACT FORM === */
 .cta-form-section { background: #F4F0E8; padding: 100px 0; }
 .cta-form-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
