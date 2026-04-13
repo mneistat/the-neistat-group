@@ -210,21 +210,21 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .link-sage:hover { opacity: 0.7; }
 
 /* === CREDENTIALS BAND === */
-.credentials-band { display: grid; grid-template-columns: repeat(4, 1fr); padding: 32px 60px; background: #F4F0E8; border-top: 1px solid rgba(11,10,7,0.08); border-bottom: 1px solid rgba(11,10,7,0.08); }
-.credential-item { display: flex; align-items: center; gap: 14px; padding: 0 20px; border-right: 1px solid rgba(11,10,7,0.08); }
-.credential-item:first-child { padding-left: 0; }
+.credentials-band { display: grid; grid-template-columns: repeat(4, 1fr); background: #F4F0E8; border-top: 1px solid rgba(11,10,7,0.08); border-bottom: 1px solid rgba(11,10,7,0.08); }
+.credential-item { display: flex; align-items: center; gap: 16px; padding: 28px; border-right: 1px solid rgba(11,10,7,0.08); text-decoration: none; transition: background 0.2s ease; }
 .credential-item:last-child { border-right: none; }
-.credential-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 6px; flex-shrink: 0; background: rgba(11,10,7,0.04); padding: 4px; }
+.credential-item:hover { background: rgba(11,10,7,0.04); }
+.credential-logo { height: 40px; width: auto; max-width: 60px; object-fit: contain; flex-shrink: 0; border-radius: 4px; }
+.crains-logo { background: #fff; padding: 4px 6px; border-radius: 4px; max-width: 70px; }
+.rp-logo { background: #fff; padding: 4px; border-radius: 4px; max-width: 48px; }
+.jameson-logo { background: #0B0A07; padding: 6px 8px; border-radius: 4px; max-width: 55px; }
 .credential-title { font-size: 13px; font-weight: 500; color: #0B0A07; font-family: -apple-system, sans-serif; line-height: 1.3; }
-.credential-sub { font-size: 11px; color: rgba(11,10,7,0.5); font-family: -apple-system, sans-serif; margin-top: 2px; }
-/* Legacy .credential class support */
-.credential { padding: 24px 28px; border-right: 1px solid rgba(11,10,7,0.06); }
-.credential:last-child { border-right: none; }
+.credential-sub { font-size: 11px; color: rgba(11,10,7,0.45); font-family: -apple-system, sans-serif; margin-top: 3px; }
 
 @media (max-width: 768px) {
-  .credentials-band { grid-template-columns: repeat(2, 1fr); padding: 24px; gap: 20px; }
-  .credential-item { padding: 0; border-right: none; }
-  .credential { border-bottom: 1px solid rgba(11,10,7,0.06); }
+  .credentials-band { grid-template-columns: repeat(2, 1fr); }
+  .credential-item { padding: 20px 16px; border-bottom: 1px solid rgba(11,10,7,0.08); }
+  .credential-item:nth-child(2n) { border-right: none; }
 }
 
 /* === PORTFOLIO SCROLL === */
