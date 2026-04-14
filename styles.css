@@ -12,6 +12,7 @@
   --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --serif: Georgia, serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --section-gap: clamp(100px, 14vw, 180px);
 }
 
 /* === RESET & BASE === */
