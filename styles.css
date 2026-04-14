@@ -577,3 +577,8 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 /* === CLOSING COST / CALCULATOR PAGE STYLES === */
 /* These pages have their own inline <style> tags so they mostly self-style,
    but they need the shared nav, footer, container, and section classes above */
+
+/* Result cards responsive */
+@media (max-width: 768px) {
+  .result-cards { grid-template-columns: 1fr !important; }
+}
