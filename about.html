@@ -9,66 +9,102 @@
   <link rel="stylesheet" href="styles.css?v=3">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MGNGVERDHQ');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
   <style>
-    .about-hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: flex-end;
-      background-image: linear-gradient(rgba(11,10,7,0.75), rgba(11,10,7,0.75)),
-        url('https://res.cloudinary.com/dpwcyrxkz/image/upload/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .about-hero-content { padding: 48px; width: 100%; }
-    .about-hero-eyebrow { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.4); display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-    .about-hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: rgba(237,232,222,0.08); }
-    .about-hero-headline { font-family: Georgia, serif; font-size: clamp(42px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.025em; color: #EDE8DE; }
+    /* Film fade-in overlay */
+    .film-fade { position: fixed; inset: 0; background: #0B0A07; z-index: 10000; pointer-events: none; }
 
-    .bio-section { background: #F4F0E8; padding: clamp(60px,10vw,120px) 48px; }
-    .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: start; max-width: 1100px; margin: 0 auto; }
-    .bio-photo { width: 100%; border-radius: 4px; filter: grayscale(100%); }
-    .bio-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(11,10,7,0.35); display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-    .bio-label::after { content: ''; flex: 1; height: 1px; background: rgba(11,10,7,0.08); }
-    .bio-text { font-size: 15px; line-height: 1.75; color: rgba(11,10,7,0.6); margin-bottom: 16px; max-width: 520px; }
-    .bio-text:first-of-type { font-size: 18px; color: #0B0A07; font-family: Georgia, serif; line-height: 1.5; }
-    .bio-credentials { margin-top: 32px; border-top: 1px solid rgba(11,10,7,0.08); padding-top: 24px; }
-    .bio-cred { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(11,10,7,0.05); }
-    .bio-cred:last-child { border-bottom: none; }
-    .bio-cred-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.3); white-space: nowrap; min-width: 80px; padding-top: 2px; }
-    .bio-cred-title { font-size: 13px; font-weight: 500; color: #0B0A07; }
+    /* Scene system */
+    .scene { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+
+    /* Hero scene */
+    .scene-hero {
+      background-image: linear-gradient(rgba(11,10,7,0.6), rgba(11,10,7,0.75)),
+        url('https://res.cloudinary.com/dpwcyrxkz/image/upload/e_art:audrey/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
+      background-size: cover; background-position: center; background-attachment: fixed;
+      align-items: flex-end;
+    }
+    .scene-hero-content { padding: 60px; width: 100%; }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.35); margin-bottom: 24px; }
+    .hero-h1 { font-family: Georgia, serif; font-size: clamp(48px,7vw,88px); font-weight: 400; color: #EDE8DE; line-height: 0.95; letter-spacing: -0.03em; }
+    .hero-h1 em { font-style: italic; display: block; }
+    .hero-h1 .line { display: block; overflow: hidden; }
+    .hero-h1 .line-inner { display: block; }
+
+    /* Portrait scene — split */
+    .scene-portrait { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+    .scene-portrait-img { background: url('DSC_9797-Edit.jpg') center/cover; filter: grayscale(100%); }
+    .scene-portrait-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; background: #0B0A07; }
+    .portrait-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,222,0.3); margin-bottom: 28px; }
+    .portrait-lead { font-family: Georgia, serif; font-size: clamp(22px,3vw,32px); font-weight: 400; color: #EDE8DE; line-height: 1.4; margin-bottom: 24px; }
+    .portrait-body { font-size: 15px; color: rgba(237,232,222,0.55); line-height: 1.8; margin-bottom: 16px; max-width: 480px; }
+
+    /* Quote scene */
+    .scene-quote { background: #F4F0E8; justify-content: center; text-align: center; padding: 60px; }
+    .scene-quote blockquote { font-family: Georgia, serif; font-size: clamp(26px,4vw,44px); font-style: italic; color: #0B0A07; max-width: 700px; margin: 0 auto; line-height: 1.35; }
+    .scene-quote cite { display: block; font-size: 12px; color: rgba(11,10,7,0.35); font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 24px; }
+
+    /* Story scene — dark */
+    .scene-story { background: #0B0A07; padding: 0 60px; flex-direction: column; justify-content: center; }
+    .story-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,222,0.3); margin-bottom: 28px; }
+    .story-text { font-size: 16px; color: rgba(237,232,222,0.6); line-height: 1.85; max-width: 640px; margin-bottom: 20px; }
+
+    /* Stats scene */
+    .scene-stats { background: #111009; justify-content: center; }
+    .stats-inner { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; width: 100%; }
+    .stat-block { text-align: center; padding: 60px 40px; border-right: 1px solid rgba(237,232,222,0.06); }
+    .stat-block:last-child { border-right: none; }
+    .stat-block-num { font-family: Georgia, serif; font-size: clamp(36px,5vw,56px); color: #EDE8DE; }
+    .stat-block-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,222,0.35); margin-top: 8px; }
+
+    /* Press scene — cream */
+    .scene-press { background: #F4F0E8; flex-direction: column; justify-content: center; padding: 80px 60px; }
+    .press-scene-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,10,7,0.3); margin-bottom: 40px; }
+    .press-scene-row { display: flex; gap: 60px; flex-wrap: wrap; }
+    .press-scene-item { font-family: Georgia, serif; font-size: 18px; font-style: italic; color: rgba(11,10,7,0.4); text-decoration: none; transition: color 0.3s; }
+    .press-scene-item:hover { color: #0B0A07; }
+
+    /* Closing quote scene */
+    .scene-closing { background: #0B0A07; justify-content: center; text-align: center; padding: 60px; }
+    .scene-closing blockquote { font-family: Georgia, serif; font-size: clamp(20px,3vw,28px); font-style: italic; color: rgba(237,232,222,0.6); max-width: 600px; margin: 0 auto; line-height: 1.5; }
+
+    /* CTA scene */
+    .scene-cta { background: #F4F0E8; justify-content: center; text-align: center; padding: 60px; min-height: 60vh; }
+    .cta-scene-h { font-family: Georgia, serif; font-size: clamp(28px,4vw,44px); color: #0B0A07; margin-bottom: 12px; }
+    .cta-scene-h em { font-style: italic; }
+    .cta-scene-sub { font-size: 15px; color: rgba(11,10,7,0.45); margin-bottom: 32px; }
+    .cta-scene-btn { display: inline-block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; background: #0B0A07; color: #EDE8DE; padding: 16px 40px; text-decoration: none; transition: background 0.2s; }
+    .cta-scene-btn:hover { background: #1a1815; }
 
     @media (max-width: 768px) {
-      .bio-grid { grid-template-columns: 1fr; }
-      .about-hero-content { padding: 28px; }
+      .scene-portrait { grid-template-columns: 1fr; }
+      .scene-portrait-img { min-height: 50vh; }
+      .scene-portrait-text { padding: 48px 28px; }
+      .scene-hero-content { padding: 28px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-block { border-bottom: 1px solid rgba(237,232,222,0.06); }
+      .scene-story { padding: 0 28px; }
+      .scene-press { padding: 60px 28px; }
+      .press-scene-row { flex-direction: column; gap: 24px; }
     }
   </style>
-<meta property="og:title" content="The Neistat Group | Chicago Real Estate">
-<meta property="og:description" content="Chicago luxury real estate. Our sellers close at 110%% of list price in an average of 5 days. $120M+ in sales.">
-<meta property="og:url" content="https://www.theneistatgroup.com">
-<!-- Open Graph / Social Sharing -->
+<meta property="og:title" content="About | Matthew Neistat | The Neistat Group">
+<meta property="og:description" content="14+ years, $120M+ in Chicago real estate. People First. Always.">
+<meta property="og:url" content="https://www.theneistatgroup.com/about.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
-<!-- Twitter / X Card -->
 <meta name="twitter:site" content="@mattneistat">
-<!-- Mobile / Twitter card image -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
 <meta name="twitter:image:alt" content="The Neistat Group — People First. Always. Chicago Real Estate.">
-<!-- iMessage / mobile share image -->
 <meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
 <meta property="og:image:width" content="828">
 <meta property="og:image:height" content="1792">
 </head>
 <body>
+  <!-- Film fade-in -->
+  <div class="film-fade" id="filmFade"></div>
 
   <div class="cursor-dot hidden" id="cursorDot"></div>
   <div class="cursor-ring hidden" id="cursorRing"></div>
@@ -88,168 +124,131 @@
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
-
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">Home</a>
-      <a href="about.html" class="mobile-menu-link">About</a><a href="marketing.html" class="mobile-menu-link">For Sellers</a>
-      <a href="search.html" class="mobile-menu-link">Search Properties</a>
-      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
-      <a href="calculator.html" class="mobile-menu-link">Calculators</a>
-      <a href="vendors.html" class="mobile-menu-link">Vendors</a>
-      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="marketing.html" class="mobile-menu-link">For Sellers</a><a href="search.html" class="mobile-menu-link">Search Properties</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </div>
 
-  <!-- Hero -->
-  <section class="about-hero">
-    <div class="about-hero-content">
-      <div class="about-hero-eyebrow">Jameson Sotheby's International Realty · Chicago, Illinois</div>
-      <h1 class="about-hero-headline">14 Years. $120M+.<br><em>People First.</em></h1>
+  <!-- SCENE 1: Hero -->
+  <section class="scene scene-hero">
+    <div class="scene-hero-content">
+      <div class="hero-eyebrow">About Matthew Neistat</div>
+      <h1 class="hero-h1">
+        <span class="line"><span class="line-inner">14 Years. $120M+.</span></span>
+        <span class="line"><span class="line-inner"><em>People First.</em></span></span>
+      </h1>
     </div>
   </section>
 
-  <!-- Bio -->
-  <section class="bio-section">
-    <div class="bio-grid">
-      <div>
-        <img src="DSC_9797-Edit.jpg" alt="Matthew Neistat" class="bio-photo reveal">
-      </div>
-      <div>
-        <div class="bio-label reveal">The Broker</div>
-        <p class="bio-text reveal">Real estate isn't what Matthew Neistat chose. It's what he was born into.</p>
-        <p class="bio-text reveal">Growing up in Buffalo Grove, he spent weekends walking job sites with his grandfather and uncle — both developers who built everything from single-family homes to high-rises across Chicago. His grandfather's rule was simple: "Always put people first."</p>
-        <p class="bio-text reveal">After Le Cordon Bleu and nearly a decade in hospitality, Matthew entered real estate in 2012. When a competitor heard he'd won the $9.5M West Loop listing — beating every major brokerage in the city and closing it off-market in two weeks — they said: "I didn't think Matt actually had the listing." He did.</p>
-        <p class="bio-text reveal">Fourteen years and $120M+ later, he hasn't regretted the leap for a second.</p>
-
-        <div class="bio-credentials reveal">
-          <div class="bio-cred"><span class="bio-cred-tag">Recognition</span><span class="bio-cred-title">CAR Top 10% Producer — Chicago Association of Realtors</span></div>
-          <div class="bio-cred"><span class="bio-cred-tag">Award</span><span class="bio-cred-title">Jameson Quarterly Best Agent — 2023, 2024 & 2025</span></div>
-          <div class="bio-cred"><span class="bio-cred-tag">Featured</span><span class="bio-cred-title">Crain's Chicago Business — As Seen In</span></div>
-          <div class="bio-cred"><span class="bio-cred-tag">Featured</span><span class="bio-cred-title">Chicago Real Producers — Featured Agent Profile</span></div>
-        </div>
-      </div>
+  <!-- SCENE 2: Quote -->
+  <section class="scene scene-quote">
+    <div>
+      <blockquote class="reveal">"Always put people first. Real estate isn't about closing deals — it's about building lives."</blockquote>
+      <cite class="reveal">— Matthew's grandfather</cite>
     </div>
   </section>
 
-  <!-- Credentials Band -->
-  <section class="credentials-band">
-    <a href="https://chicagorealtor.com" target="_blank" class="credential-item"><img src="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776046171/CAR_color-2-768x253_1_ju6tf0.png" alt="Chicago Association of Realtors" class="credential-logo"><div class="credential-text"><div class="credential-title">CAR Top 10% Producer</div><div class="credential-sub">Chicago Association of Realtors</div></div></a>
-    <a href="https://www.jamesonsir.com" target="_blank" class="credential-item"><img src="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776046196/Jameson_Vert_White_Transparent_sfoskh.png" alt="Jameson Sotheby's" class="credential-logo jameson-logo"><div class="credential-text"><div class="credential-title">Jameson Quarterly Best</div><div class="credential-sub">2023, 2024 & 2025</div></div></a>
-    <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" class="credential-item"><img src="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776046171/340825256_2180582408804243_4574933329139692510_n_dojst2.jpg" alt="Crain's Chicago Business" class="credential-logo crains-logo"><div class="credential-text"><div class="credential-title">Crain's Chicago Business</div><div class="credential-sub">As Seen In</div></div></a>
-    <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" class="credential-item"><img src="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776046171/471299662_1247572759634002_3354417307596492180_n_pddzcb.jpg" alt="Chicago Real Producers" class="credential-logo rp-logo"><div class="credential-text"><div class="credential-title">Chicago Real Producers</div><div class="credential-sub">Featured Agent Profile</div></div></a>
-  </section>
-
-  <!-- Stats Band -->
-  <section class="stats-band" id="statsBand">
-    <div class="stat"><div class="stat-number" data-target="120" data-prefix="$" data-suffix="M+">$0</div><div class="stat-label">Total Sales Volume</div></div>
-    <div class="stat"><div class="stat-number" data-target="110" data-suffix="%" data-prefix="">0%</div><div class="stat-label">Sale-to-List Price</div></div>
-    <div class="stat"><div class="stat-number" data-target="5" data-prefix="" data-suffix="">0</div><div class="stat-label">Avg. Days on Market</div></div>
-    <div class="stat"><div class="stat-number" data-target="14" data-prefix="" data-suffix="+ Yrs">0</div><div class="stat-label">Experience</div></div>
-  </section>
-
-  <!-- Press -->
-  <section class="press">
-    <div class="press-label">As Seen In</div>
-    <div class="press-row">
-      <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" class="press-pub">Crain's Chicago Business</a>
-      <span class="press-divider"></span>
-      <a href="https://product.costar.com/home/news/710741247" target="_blank" class="press-pub">CoStar News</a>
-      <span class="press-divider"></span>
-      <a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" class="press-pub">Chicago Agent Magazine</a>
-      <span class="press-divider"></span>
-      <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" class="press-pub">Chicago Real Producers</a>
+  <!-- SCENE 3: Portrait + Bio -->
+  <section class="scene-portrait">
+    <div class="scene-portrait-img"></div>
+    <div class="scene-portrait-text">
+      <div class="portrait-label reveal">The Legacy</div>
+      <p class="portrait-lead reveal">Real estate isn't what Matthew Neistat chose. It's what he was born into.</p>
+      <p class="portrait-body reveal">Growing up in Buffalo Grove, he spent weekends walking job sites with his grandfather and uncle — both developers who built everything from single-family homes to high-rises across Chicago.</p>
+      <p class="portrait-body reveal">His grandfather's rule: "Always put people first." His father went further — a CFO who left security to build houses himself. That leap of faith stayed with Matthew.</p>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2 class="testimonials-heading" style="color:#0B0A07;">Client <em>Words</em></h2>
-    <div class="testimonials-grid" style="grid-template-columns: 1fr 1fr;">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">KW</div><div><div class="testimonial-name">Kevin Werner</div><div class="testimonial-role">Personal 15-Building Portfolio</div></div></div>
-        <p class="testimonial-text">"Matt worked with me to market and sell all the properties faster than I expected. He did a great job solving problems and staying focused on getting the buildings sold. I would recommend Matt for this type of transaction all day long."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">NA</div><div><div class="testimonial-name">Nicole Alfred-Napper</div><div class="testimonial-role">COO, Plan Companies</div></div></div>
-        <p class="testimonial-text">"He did such a good job that we ended up having him sell a few more — every single one sold at, near, or above the price we were seeking. It was refreshing to have such a hands-on broker — that is certainly not the norm."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">CP</div><div><div class="testimonial-name">Christopher Paquette</div><div class="testimonial-role">2-Building Investment Purchase</div></div></div>
-        <p class="testimonial-text">"Matt has always been a terrific resource and truly a partner to me. He does much of the upfront legwork, is very responsive, is always on my side and looking out for me. I would absolutely refer him with very, very high marks."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">NG</div><div><div class="testimonial-name">Nick & Marina Golemis</div><div class="testimonial-role">Bought & Sold, Chicago/Glenview</div></div></div>
-        <p class="testimonial-text">"Matt knows real estate. The review can start and end there. He was able to blend the lines between honesty, transparency, and friendliness. He knows how to negotiate, what the market dictates, and does his work with a great deal of integrity."</p>
-      </div>
+  <!-- SCENE 4: The Broker -->
+  <section class="scene scene-story">
+    <div class="story-label reveal">The Broker</div>
+    <p class="story-text reveal" style="font-family:Georgia,serif;font-size:clamp(20px,2.5vw,28px);color:#EDE8DE;line-height:1.45;">After Le Cordon Bleu and nearly a decade in hospitality, Matthew entered real estate in 2012.</p>
+    <p class="story-text reveal">When a competitor heard he'd won the $9.5M West Loop listing — beating every major brokerage in the city and closing it off-market in two weeks — they said: "I didn't think Matt actually had the listing."</p>
+    <p class="story-text reveal" style="color:#EDE8DE;font-family:Georgia,serif;font-size:20px;">He did. Fourteen years later he hasn't regretted the leap for a second.</p>
+  </section>
+
+  <!-- SCENE 5: Stats -->
+  <section class="scene scene-stats">
+    <div class="stats-inner">
+      <div class="stat-block reveal"><div class="stat-block-num" data-target="120" data-prefix="$" data-suffix="M+">$0</div><div class="stat-block-label">Total Sales</div></div>
+      <div class="stat-block reveal"><div class="stat-block-num" data-target="110" data-suffix="%" data-prefix="">0%</div><div class="stat-block-label">Sale-to-List</div></div>
+      <div class="stat-block reveal"><div class="stat-block-num" data-target="5" data-prefix="" data-suffix="">0</div><div class="stat-block-label">Days on Market</div></div>
+      <div class="stat-block reveal"><div class="stat-block-num" data-target="14" data-prefix="" data-suffix="+">0</div><div class="stat-block-label">Years Experience</div></div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2 class="cta-heading">Let's start a <em>conversation.</em></h2>
-    <div class="cta-right">
-      <a href="contact.html" class="btn-dark">Begin the Conversation</a>
-      <div class="cta-phone"><a href="tel:+18477142913">847.714.2913</a></div>
+  <!-- SCENE 6: Press -->
+  <section class="scene scene-press">
+    <div class="press-scene-label reveal">As Seen In</div>
+    <div class="press-scene-row">
+      <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" class="press-scene-item reveal">Crain's Chicago Business</a>
+      <a href="https://product.costar.com/home/news/710741247" target="_blank" class="press-scene-item reveal">CoStar News</a>
+      <a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" class="press-scene-item reveal">Chicago Agent Magazine</a>
+      <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" class="press-scene-item reveal">Chicago Real Producers</a>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- SCENE 7: Closing quote -->
+  <section class="scene scene-closing">
+    <blockquote class="reveal">"I wouldn't be where I am without the support of my wife and the love of my son. They're my heart."</blockquote>
+  </section>
+
+  <!-- SCENE 8: CTA -->
+  <section class="scene scene-cta">
+    <div>
+      <h2 class="cta-scene-h reveal">Let's start a <em>conversation.</em></h2>
+      <p class="cta-scene-sub reveal">No pressure. No scripts. Just an honest conversation about your goals.</p>
+      <a href="contact.html" class="cta-scene-btn reveal">Begin the Conversation</a>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="footer-grid">
-      <div>
-        <div class="footer-brand">The Neistat Group</div>
-        <div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Navigate</div>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="search.html">Search Properties</a>
-        <a href="neighborhoods.html">Neighborhoods</a>
-        <a href="calculator.html">Calculators</a>
-        <a href="vendors.html">Vendors</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Connect</div>
-        <a href="tel:+18477142913">847.714.2913</a>
-        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
-        <a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a>
-        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a>
-      </div>
+      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
+      <div class="footer-col"><div class="footer-col-label">Navigate</div><a href="index.html">Home</a><a href="about.html">About</a><a href="marketing.html">For Sellers</a><a href="contact.html">Contact</a><a href="search.html">Search Properties</a><a href="neighborhoods.html">Neighborhoods</a><a href="calculator.html">Calculators</a><a href="vendors.html">Vendors</a></div>
+      <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
     </div>
-    <div class="footer-bar">
-      <span>&copy; 2026 The Neistat Group. All rights reserved.</span>
-      <span>People First. <em style="color:#EDE8DE">Always.</em></span>
-    </div>
+    <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
 
   <script>
     // Nav
-    window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('mobileMenu');
-    if (toggle && menu) { toggle.addEventListener('click', () => { const open = menu.classList.toggle('active'); toggle.classList.toggle('active'); document.body.style.overflow = open ? 'hidden' : ''; }); }
+    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+    const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
+    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
 
-    // Cursor
-    
+    // Film fade-in from black
+    gsap.to('#filmFade', { opacity: 0, duration: 1.2, ease: 'power2.out', delay: 0.2, onComplete: () => document.getElementById('filmFade').remove() });
 
-    // GSAP stats count-up
+    // GSAP text reveal — line by line
     gsap.registerPlugin(ScrollTrigger);
-    document.querySelectorAll('.stats-band .stat-number').forEach(stat => {
+    document.querySelectorAll('.hero-h1 .line-inner').forEach((line, i) => {
+      gsap.from(line, {
+        y: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: 1.4 + i * 0.15
+      });
+    });
+
+    // Stats count-up
+    document.querySelectorAll('.stat-block-num').forEach(stat => {
       const target = parseInt(stat.dataset.target), prefix = stat.dataset.prefix || '', suffix = stat.dataset.suffix || '';
       let counted = false;
-      ScrollTrigger.create({ trigger: '#statsBand', start: 'top bottom',
+      ScrollTrigger.create({ trigger: stat, start: 'top 90%',
         onEnter: () => { if (counted) return; counted = true; let obj = { val: 0 }; gsap.to(obj, { val: target, duration: 1.8, ease: 'power2.out', onUpdate: () => { stat.textContent = prefix + Math.round(obj.val) + suffix; } }); }
       });
+    });
+
+    // Parallax on hero background
+    gsap.to('.scene-hero', {
+      backgroundPositionY: '30%', ease: 'none',
+      scrollTrigger: { trigger: '.scene-hero', start: 'top top', end: 'bottom top', scrub: true }
     });
   </script>
 
   <!-- Reveal animations -->
   <script>
-  (function() {
+  (function(){
     const observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -262,25 +261,25 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(function(el) {
       el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
+      el.style.transform = 'translateY(40px)';
       observer.observe(el);
     });
   })();
   </script>
 
-<script>
-    // Magnetic Cursor
-    (function(){
-      if(window.innerWidth<769)return;
-      var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-      if(!dot||!ring)return;
-      var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-      document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.remove('hidden');ring.classList.remove('hidden')});
-      document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-      function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
-      loop();
-      document.querySelectorAll('a,button,.portfolio-card,.tool-card,.vendor-card,.testimonial-card').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
-    })();
-</script>
+  <!-- Magnetic cursor -->
+  <script>
+  (function(){
+    if(window.innerWidth<769)return;
+    var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
+    if(!dot||!ring)return;
+    var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
+    document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.remove('hidden');ring.classList.remove('hidden')});
+    document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
+    function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
+    loop();
+    document.querySelectorAll('a,button').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
+  })();
+  </script>
 </body>
 </html>
