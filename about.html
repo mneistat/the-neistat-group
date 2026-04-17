@@ -13,7 +13,8 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
   <style>
     /* Film fade-in overlay */
-    .film-fade { position: fixed; inset: 0; background: #0B0A07; z-index: 10000; pointer-events: none; }
+    .film-fade { position: fixed; inset: 0; background: #0B0A07; z-index: 10000; pointer-events: none; animation: filmFadeOut 1.2s ease 0.3s forwards; }
+    @keyframes filmFadeOut { to { opacity: 0; visibility: hidden; } }
 
     /* Scene system */
     .scene { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
@@ -218,9 +219,6 @@
     window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
     if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
-
-    // Film fade-in from black
-    gsap.to('#filmFade', { opacity: 0, duration: 1.2, ease: 'power2.out', delay: 0.2, onComplete: () => document.getElementById('filmFade').remove() });
 
     // GSAP text reveal — line by line
     gsap.registerPlugin(ScrollTrigger);
