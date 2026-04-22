@@ -4,66 +4,223 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
-  <title>Financial Tools | The Neistat Group</title>
-  <meta name="description" content="Mortgage calculator, buyer closing costs, and seller net proceeds — free financial tools from The Neistat Group.">
+  <title>Mortgage Calculator & Closing Cost Estimates | The Neistat Group</title>
+  <meta name="description" content="Chicago mortgage calculator with pre-approval guidance. Request a personalized buyer closing cost or seller net proceeds estimate from Matthew Neistat.">
   <link rel="stylesheet" href="styles.css?v=3">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Mortgage Calculator & Closing Cost Estimates",
+    "description": "Chicago mortgage calculator with pre-approval guidance. Request a personalized buyer closing cost or seller net proceeds estimate from Matthew Neistat.",
+    "url": "https://www.theneistatgroup.com/calculator.html",
+    "provider": {
+      "@type": "RealEstateAgent",
+      "name": "The Neistat Group",
+      "url": "https://www.theneistatgroup.com",
+      "telephone": "+18477142913",
+      "email": "matt@theneistatgroup.com"
+    }
+  }
+  </script>
+
   <style>
+    /* === Page base === */
+    html, body { background: #0B0A07; }
     body { overflow-x: hidden; }
-    .tools-hero { background: #0B0A07; padding: clamp(140px,18vw,200px) 40px 40px; }
-    .tools-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #EDE8DE; margin-bottom: 16px; display: block; }
-    .tools-heading { font-family: Georgia, serif; font-size: clamp(36px,5vw,56px); font-weight: 400; color: #EDE8DE; line-height: 1.1; }
-    .tools-heading em { font-style: italic; }
-    .tools-sub { font-size: 15px; color: rgba(237,232,222,0.5); margin-top: 16px; max-width: 400px; }
 
-    .tool-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 960px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; }
-    .tool-card { background: #F4F0E8; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; padding: 40px 36px; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; display: flex; flex-direction: column; gap: 14px; text-decoration: none; box-sizing: border-box; border-bottom: 2px solid transparent; }
-    .tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(11,10,7,0.12); }
-    .tool-card-mortgage:hover { border-bottom-color: #0984e3; }
-    .tool-card-buyer:hover { border-bottom-color: #00b894; }
-    .tool-card-seller:hover { border-bottom-color: #f0a500; }
-    .tool-card:hover .tool-card-cta { letter-spacing: 0.01em; }
-    .tool-card-cta span { display: inline-block; transition: transform 0.2s ease; }
-    .tool-card:hover .tool-card-cta span { transform: translateX(4px); }
-    .tool-card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-    .tool-card-pill { display: inline-block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; font-family: -apple-system, sans-serif; width: fit-content; }
-    .tool-card-title { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; margin: 0; }
-    .tool-card-desc { font-family: -apple-system, sans-serif; font-size: 14px; line-height: 1.7; color: rgba(11,10,7,0.6); margin: 0; flex: 1; }
-    .tool-card-cta { font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 500; color: #0B0A07; margin-top: 8px; }
+    /* === HERO === */
+    .calc-hero { background: #0B0A07; padding: clamp(140px,18vw,200px) clamp(28px,6vw,80px) clamp(80px,10vw,120px); border-bottom: 1px solid rgba(237,232,222,0.06); }
+    .calc-hero-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.35); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+    .calc-hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: rgba(237,232,222,0.08); max-width: 240px; }
+    .calc-hero-h1 { font-family: Georgia, serif; font-size: clamp(40px,6.4vw,84px); font-weight: 400; color: #EDE8DE; line-height: 0.98; letter-spacing: -0.028em; max-width: 960px; }
+    .calc-hero-h1 em { font-style: italic; }
+    .calc-hero-sub { font-size: clamp(15px,1.2vw,17px); color: rgba(237,232,222,0.6); max-width: 580px; margin-top: 28px; line-height: 1.65; }
 
-    .tool-card-mortgage .tool-card-icon { background: rgba(9,132,227,0.12); }
-    .tool-card-mortgage .tool-card-pill { background: rgba(9,132,227,0.12); color: #0984e3; }
-    .tool-card-buyer .tool-card-icon { background: rgba(0,184,148,0.12); }
-    .tool-card-buyer .tool-card-pill { background: rgba(0,184,148,0.12); color: #EDE8DE; }
-    .tool-card-seller .tool-card-icon { background: rgba(253,203,110,0.25); }
-    .tool-card-seller .tool-card-pill { background: rgba(253,203,110,0.25); color: #9A6F00; }
+    /* === MORTGAGE CALCULATOR (Signal-recolored) === */
+    .calc-section { background: #F4F0E8; color: #0B0A07; padding: clamp(80px,10vw,140px) clamp(28px,6vw,80px); }
+    .calc-section-head { max-width: 1200px; margin: 0 auto clamp(48px,6vw,72px); }
+    .calc-section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,10,7,0.45); margin-bottom: 20px; display: block; }
+    .calc-section-h { font-family: Georgia, serif; font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: #0B0A07; max-width: 720px; }
+    .calc-section-h em { font-style: italic; }
+    .calc-section-sub { font-size: 15px; color: rgba(11,10,7,0.55); line-height: 1.7; max-width: 520px; margin-top: 18px; }
 
+    .calc-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px); align-items: start; }
+
+    .calc-form-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 16px; padding: clamp(28px,3.5vw,44px); }
+    .calc-group { margin-bottom: 26px; }
+    .calc-group:last-child { margin-bottom: 0; }
+    .calc-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+    .calc-label-text { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.5); }
+    .calc-label-value { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; letter-spacing: -0.01em; }
+    .calc-input, .calc-select { width: 100%; font-family: inherit; font-size: 15px; font-weight: 500; color: #0B0A07; padding: 13px 16px; border: 1px solid rgba(11,10,7,0.12); border-radius: 8px; background: #F4F0E8; outline: none; transition: border-color 0.25s; -webkit-appearance: none; appearance: none; }
+    .calc-input:focus, .calc-select:focus { border-color: #0B0A07; }
+    .calc-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230B0A07' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+    .calc-range { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: rgba(11,10,7,0.1); outline: none; margin-top: 10px; cursor: pointer; }
+    .calc-range::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #0B0A07; border: 3px solid #F4F0E8; box-shadow: 0 1px 4px rgba(11,10,7,0.2); cursor: pointer; transition: transform 0.2s; }
+    .calc-range::-webkit-slider-thumb:hover { transform: scale(1.1); }
+    .calc-range::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: #0B0A07; border: 3px solid #F4F0E8; cursor: pointer; }
+    .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .calc-results { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 16px; }
+    .calc-results-card { background: #0B0A07; color: #EDE8DE; border-radius: 16px; padding: clamp(28px,3.5vw,44px); }
+    .calc-results-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.5); margin-bottom: 10px; display: block; }
+    .calc-monthly { font-family: Georgia, serif; font-size: clamp(42px,5.5vw,64px); font-weight: 400; letter-spacing: -0.025em; line-height: 1; margin-bottom: 28px; }
+    .calc-monthly small { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: rgba(237,232,222,0.4); margin-left: 4px; font-weight: 400; }
+    .calc-breakdown { display: flex; flex-direction: column; gap: 0; }
+    .calc-breakdown-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(237,232,222,0.08); }
+    .calc-breakdown-row:last-child { border-bottom: none; }
+    .calc-breakdown-label { display: flex; align-items: center; gap: 12px; font-size: 13px; color: rgba(237,232,222,0.65); }
+    .calc-breakdown-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .calc-breakdown-value { font-weight: 500; font-size: 14px; color: #EDE8DE; font-variant-numeric: tabular-nums; }
+
+    .calc-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .calc-summary-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; padding: 18px 20px; }
+    .calc-summary-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.5); margin-bottom: 6px; display: block; }
+    .calc-summary-value { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+
+    /* Amortization */
+    .amort-section { max-width: 1200px; margin: clamp(32px,4vw,48px) auto 0; }
+    .amort-toggle { display: inline-flex; align-items: center; gap: 10px; font-family: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0B0A07; cursor: pointer; padding: 14px 28px; border: 1px solid rgba(11,10,7,0.2); border-radius: 2px; background: transparent; transition: all 0.25s; }
+    .amort-toggle:hover { background: #0B0A07; color: #EDE8DE; border-color: #0B0A07; }
+    .amort-toggle svg { transition: transform 0.25s; }
+    .amort-toggle.open svg { transform: rotate(180deg); }
+    .amort-wrap { display: none; margin-top: 28px; }
+    .amort-wrap.show { display: block; }
+    .amort-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
+    .amort-tab { font-family: inherit; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 20px; border-radius: 2px; border: 1px solid rgba(11,10,7,0.12); cursor: pointer; background: transparent; color: rgba(11,10,7,0.55); transition: all 0.25s; }
+    .amort-tab.active { background: #0B0A07; color: #EDE8DE; border-color: #0B0A07; }
+    .amort-table-wrap { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; overflow: hidden; max-height: 540px; overflow-y: auto; }
+    .amort-table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+    .amort-table thead { position: sticky; top: 0; z-index: 2; }
+    .amort-table th { background: #0B0A07; color: rgba(237,232,222,0.8); font-weight: 600; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 16px; text-align: right; white-space: nowrap; }
+    .amort-table th:first-child { text-align: left; }
+    .amort-table td { padding: 11px 16px; text-align: right; border-bottom: 1px solid rgba(11,10,7,0.05); color: rgba(11,10,7,0.75); }
+    .amort-table td:first-child { text-align: left; font-weight: 600; color: #0B0A07; }
+    .amort-year-row { background: rgba(11,10,7,0.025); cursor: pointer; }
+    .amort-year-row:hover { background: rgba(11,10,7,0.05); }
+    .amort-year-row td:first-child { font-weight: 700; }
+    .amort-month-rows { display: none; }
+    .amort-month-rows.show { display: table-row-group; }
+    .amort-month-rows td { font-size: 12px; color: rgba(11,10,7,0.55); padding: 8px 16px; }
+    .amort-month-rows td:first-child { padding-left: 32px; font-weight: 400; }
+
+    /* === PRE-APPROVAL EXPLAINER === */
+    .explainer { background: #0B0A07; color: #EDE8DE; padding: clamp(80px,10vw,140px) clamp(28px,6vw,80px); }
+    .explainer-head { max-width: 1200px; margin: 0 auto clamp(48px,6vw,80px); }
+    .explainer-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 20px; display: block; }
+    .explainer-h { font-family: Georgia, serif; font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: #EDE8DE; max-width: 720px; }
+    .explainer-h em { font-style: italic; }
+    .explainer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,5vw,72px) clamp(48px,6vw,96px); }
+    .explainer-block { position: relative; padding-top: 28px; border-top: 1px solid rgba(237,232,222,0.12); }
+    .explainer-block-num { position: absolute; top: -10px; left: 0; font-family: Georgia, serif; font-size: 14px; font-style: italic; color: rgba(237,232,222,0.35); background: #0B0A07; padding-right: 14px; }
+    .explainer-block h3 { font-family: Georgia, serif; font-size: clamp(22px,2.2vw,28px); font-weight: 400; color: #EDE8DE; margin-bottom: 16px; letter-spacing: -0.01em; line-height: 1.2; }
+    .explainer-block h3 em { font-style: italic; }
+    .explainer-block p { font-size: 15px; line-height: 1.75; color: rgba(237,232,222,0.65); margin-bottom: 12px; }
+    .explainer-block p:last-child { margin-bottom: 0; }
+    .explainer-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; margin-top: 4px; }
+    .explainer-list-item { font-size: 14px; color: rgba(237,232,222,0.65); padding-left: 18px; position: relative; line-height: 1.6; }
+    .explainer-list-item::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: rgba(237,232,222,0.4); }
+
+    /* === CTA BANDS === */
+    .cta-band { padding: clamp(80px,10vw,140px) clamp(28px,6vw,80px); }
+    .cta-band-dark { background: #0B0A07; color: #EDE8DE; }
+    .cta-band-bone { background: #F4F0E8; color: #0B0A07; }
+    .cta-band-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px,6vw,96px); align-items: start; }
+    .cta-band-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 20px; display: block; }
+    .cta-band-dark .cta-band-label { color: rgba(237,232,222,0.4); }
+    .cta-band-bone .cta-band-label { color: rgba(11,10,7,0.45); }
+    .cta-band-h { font-family: Georgia, serif; font-size: clamp(28px,3.6vw,44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 22px; }
+    .cta-band-h em { font-style: italic; }
+    .cta-band-copy { font-size: 15px; line-height: 1.75; max-width: 460px; }
+    .cta-band-dark .cta-band-copy { color: rgba(237,232,222,0.6); }
+    .cta-band-bone .cta-band-copy { color: rgba(11,10,7,0.6); }
+
+    .lead-form { display: flex; flex-direction: column; gap: 16px; }
+    .lead-form-group { display: flex; flex-direction: column; gap: 8px; }
+    .lead-form-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+    .cta-band-dark .lead-form-label { color: rgba(237,232,222,0.55); }
+    .cta-band-bone .lead-form-label { color: rgba(11,10,7,0.5); }
+    .lead-form-input { font-family: inherit; font-size: 14px; padding: 13px 16px; border-radius: 4px; outline: none; transition: border-color 0.25s; -webkit-appearance: none; appearance: none; }
+    .cta-band-dark .lead-form-input { background: rgba(237,232,222,0.04); border: 1px solid rgba(237,232,222,0.14); color: #EDE8DE; }
+    .cta-band-dark .lead-form-input:focus { border-color: #EDE8DE; }
+    .cta-band-dark .lead-form-input::placeholder { color: rgba(237,232,222,0.35); }
+    .cta-band-bone .lead-form-input { background: #fff; border: 1px solid rgba(11,10,7,0.14); color: #0B0A07; }
+    .cta-band-bone .lead-form-input:focus { border-color: #0B0A07; }
+    .cta-band-bone .lead-form-input::placeholder { color: rgba(11,10,7,0.35); }
+    .lead-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .lead-form-submit { font-family: inherit; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 15px 28px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.25s; display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-top: 8px; width: 100%; }
+    .cta-band-dark .lead-form-submit { background: #EDE8DE; color: #0B0A07; }
+    .cta-band-dark .lead-form-submit:hover { background: #fff; }
+    .cta-band-bone .lead-form-submit { background: #0B0A07; color: #EDE8DE; }
+    .cta-band-bone .lead-form-submit:hover { background: #1a1815; }
+    .lead-form-note { font-size: 12px; letter-spacing: 0.04em; margin-top: 4px; }
+    .cta-band-dark .lead-form-note { color: rgba(237,232,222,0.4); }
+    .cta-band-bone .lead-form-note { color: rgba(11,10,7,0.4); }
+    .lead-form-success { display: none; padding: 28px 24px; border-radius: 8px; text-align: center; }
+    .lead-form-success.show { display: block; }
+    .cta-band-dark .lead-form-success { background: rgba(237,232,222,0.06); border: 1px solid rgba(237,232,222,0.14); }
+    .cta-band-bone .lead-form-success { background: #fff; border: 1px solid rgba(11,10,7,0.1); }
+    .lead-form-success h4 { font-family: Georgia, serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+    .lead-form-success p { font-size: 14px; line-height: 1.65; }
+    .cta-band-dark .lead-form-success p { color: rgba(237,232,222,0.6); }
+    .cta-band-bone .lead-form-success p { color: rgba(11,10,7,0.6); }
+
+    /* === FAQ === */
+    .faq-section { background: #0B0A07; color: #EDE8DE; padding: clamp(80px,10vw,140px) clamp(28px,6vw,80px); border-top: 1px solid rgba(237,232,222,0.06); }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-head { text-align: center; margin-bottom: clamp(48px,6vw,72px); }
+    .faq-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 18px; display: block; }
+    .faq-h { font-family: Georgia, serif; font-size: clamp(28px,3.6vw,44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
+    .faq-h em { font-style: italic; }
+    .faq-item { border-bottom: 1px solid rgba(237,232,222,0.1); }
+    .faq-item:first-child { border-top: 1px solid rgba(237,232,222,0.1); }
+    .faq-q { width: 100%; background: transparent; border: none; padding: 24px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; text-align: left; font-family: Georgia, serif; font-size: clamp(17px,1.6vw,21px); font-weight: 400; color: #EDE8DE; line-height: 1.3; letter-spacing: -0.005em; }
+    .faq-q:hover { color: #fff; }
+    .faq-q-icon { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.3s ease; color: rgba(237,232,222,0.4); }
+    .faq-item.open .faq-q-icon { transform: rotate(45deg); color: #EDE8DE; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-a-inner { padding: 0 0 24px; font-size: 15px; line-height: 1.75; color: rgba(237,232,222,0.6); max-width: 720px; }
+    .faq-item.open .faq-a { max-height: 400px; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .calc-grid { grid-template-columns: 1fr; gap: 32px; }
+      .calc-results { position: static; }
+      .explainer-grid { grid-template-columns: 1fr; }
+      .cta-band-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
     @media (max-width: 768px) {
-      .tool-cards { grid-template-columns: 1fr; padding: 0 24px; margin: 40px auto; }
-      .tool-cards::after { content: 'Tap any card to open'; display: block; text-align: center; font-size: 12px; color: rgba(237,232,222,0.3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 20px; grid-column: 1/-1; }
+      .calc-row, .calc-summary, .lead-form-row, .explainer-list { grid-template-columns: 1fr; }
+      .calc-hero { padding-top: 120px; padding-bottom: 72px; }
+      .amort-table th, .amort-table td { padding: 10px 12px; font-size: 12px; }
+    }
+    @media (max-width: 480px) {
+      .calc-results-card, .calc-form-card { padding: 24px; }
+      .calc-monthly { font-size: 42px; }
     }
   </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
-<meta property="og:title" content="The Neistat Group | Chicago Real Estate">
-<meta property="og:description" content="Chicago luxury real estate. Our sellers close at 110%% of list price in an average of 5 days. $120M+ in sales.">
-<meta property="og:url" content="https://www.theneistatgroup.com">
-<!-- Open Graph / Social Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="The Neistat Group">
-<!-- Twitter / X Card -->
-<meta name="twitter:site" content="@mattneistat">
-<!-- Mobile / Twitter card image -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
-<meta name="twitter:image:alt" content="The Neistat Group — People First. Always. Chicago Real Estate.">
-<!-- iMessage / mobile share image -->
-<meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
-<meta property="og:image:width" content="828">
-<meta property="og:image:height" content="1792">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
+  <meta property="og:title" content="Mortgage Calculator & Closing Cost Estimates | The Neistat Group">
+  <meta property="og:description" content="Chicago mortgage calculator with pre-approval guidance. Request a personalized buyer closing cost or seller net proceeds estimate from Matthew Neistat.">
+  <meta property="og:url" content="https://www.theneistatgroup.com/calculator.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Neistat Group">
+  <meta name="twitter:site" content="@mattneistat">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
+  <meta name="twitter:image:alt" content="The Neistat Group — People First. Always. Chicago Real Estate.">
+  <meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
+  <meta property="og:image:width" content="828">
+  <meta property="og:image:height" content="1792">
 </head>
 <body>
   <div class="cursor-dot hidden" id="cursorDot"></div>
   <div class="cursor-ring hidden" id="cursorRing"></div>
+
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
@@ -81,63 +238,590 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="marketing.html" class="mobile-menu-link">For Sellers</a><a href="search.html" class="mobile-menu-link">Search Properties</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="index.html" class="mobile-menu-link">Home</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="marketing.html" class="mobile-menu-link">For Sellers</a>
+      <a href="search.html" class="mobile-menu-link">Search Properties</a>
+      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="calculator.html" class="mobile-menu-link">Calculators</a>
+      <a href="vendors.html" class="mobile-menu-link">Vendors</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </div>
 
-  <section class="tools-hero">
-    <span class="tools-label">Tools</span>
-    <h1 class="tools-heading">Financial <em>Tools</em></h1>
-    <p class="tools-sub">Pick the calculator that fits where you are in the process.</p>
+  <!-- HERO -->
+  <section class="calc-hero">
+    <div class="calc-hero-eyebrow reveal">Financial Tools</div>
+    <h1 class="calc-hero-h1 reveal">What Can You <em>Actually</em> Afford?</h1>
+    <p class="calc-hero-sub reveal">A mortgage calculator, pre-approval guidance, and personalized closing cost estimates — built for Chicago buyers and sellers.</p>
   </section>
 
-  <div class="tool-cards">
-    <a href="calculator-mortgage.html" class="tool-card tool-card-mortgage reveal">
-      <div class="tool-card-icon"><svg width="22" height="22" fill="none" stroke="#0984e3" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      <span class="tool-card-pill">Buying</span>
-      <h2 class="tool-card-title">Mortgage calculator</h2>
-      <p class="tool-card-desc">Estimate your monthly payment based on price, down payment, rate, and term. Includes taxes, insurance, and HOA.</p>
-      <span class="tool-card-cta">Calculate payment <span>→</span></span>
-    </a>
-    <a href="buyer-closing-costs.html" class="tool-card tool-card-buyer reveal">
-      <div class="tool-card-icon"><svg width="22" height="22" fill="none" stroke="#EDE8DE" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="tool-card-pill">Buying</span>
-      <h2 class="tool-card-title">Buyer closing costs</h2>
-      <p class="tool-card-desc">See exactly what you'll owe at closing beyond your down payment — title, origination, attorney fees, and more.</p>
-      <span class="tool-card-cta">Estimate costs <span>→</span></span>
-    </a>
-    <a href="seller-closing-costs.html" class="tool-card tool-card-seller reveal">
-      <div class="tool-card-icon"><svg width="22" height="22" fill="none" stroke="#9A6F00" stroke-width="1.5" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-      <span class="tool-card-pill">Selling</span>
-      <h2 class="tool-card-title">Seller net proceeds</h2>
-      <p class="tool-card-desc">Find out what you'll actually walk away with after commission, transfer tax, attorney fees, and your mortgage payoff.</p>
-      <span class="tool-card-cta">Calculate net <span>→</span></span>
-    </a>
-  </div>
+  <!-- MORTGAGE CALCULATOR -->
+  <section class="calc-section" id="mortgage">
+    <div class="calc-section-head">
+      <span class="calc-section-label reveal">Mortgage Calculator</span>
+      <h2 class="calc-section-h reveal">Estimate your monthly <em>payment.</em></h2>
+      <p class="calc-section-sub reveal">Adjust the inputs to see how price, down payment, rate, and term change what you'll owe each month — including taxes, insurance, and HOA.</p>
+    </div>
+
+    <div class="calc-grid">
+      <!-- Inputs -->
+      <div class="calc-form-card reveal">
+        <div class="calc-group">
+          <div class="calc-label">
+            <span class="calc-label-text">Home Price</span>
+            <span class="calc-label-value" id="priceDisplay">$500,000</span>
+          </div>
+          <input type="range" class="calc-range" id="priceRange" min="100000" max="5000000" step="10000" value="500000">
+        </div>
+
+        <div class="calc-group">
+          <div class="calc-label">
+            <span class="calc-label-text">Down Payment</span>
+            <span class="calc-label-value" id="downDisplay">20% · $100,000</span>
+          </div>
+          <input type="range" class="calc-range" id="downRange" min="0" max="50" step="1" value="20">
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-group">
+            <div class="calc-label"><span class="calc-label-text">Loan Term</span></div>
+            <select class="calc-select" id="termSelect">
+              <option value="30" selected>30 Years</option>
+              <option value="20">20 Years</option>
+              <option value="15">15 Years</option>
+              <option value="10">10 Years</option>
+            </select>
+          </div>
+          <div class="calc-group">
+            <div class="calc-label"><span class="calc-label-text">Interest Rate</span></div>
+            <input type="number" class="calc-input" id="rateInput" value="6.75" step="0.05" min="0" max="15">
+          </div>
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-group">
+            <div class="calc-label"><span class="calc-label-text">Property Tax / yr</span></div>
+            <input type="number" class="calc-input" id="taxInput" value="6000" step="100" min="0">
+          </div>
+          <div class="calc-group">
+            <div class="calc-label"><span class="calc-label-text">Insurance / yr</span></div>
+            <input type="number" class="calc-input" id="insuranceInput" value="1800" step="100" min="0">
+          </div>
+        </div>
+
+        <div class="calc-group" style="margin-bottom:0;">
+          <div class="calc-label"><span class="calc-label-text">HOA / month</span></div>
+          <input type="number" class="calc-input" id="hoaInput" value="0" step="25" min="0">
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="calc-results">
+        <div class="calc-results-card reveal">
+          <span class="calc-results-label">Estimated Monthly Payment</span>
+          <div class="calc-monthly" id="monthlyPayment">$3,244<small>/mo</small></div>
+          <div class="calc-breakdown">
+            <div class="calc-breakdown-row">
+              <span class="calc-breakdown-label"><span class="calc-breakdown-dot" style="background:#EDE8DE"></span>Principal &amp; Interest</span>
+              <span class="calc-breakdown-value" id="piDisplay">$2,594</span>
+            </div>
+            <div class="calc-breakdown-row">
+              <span class="calc-breakdown-label"><span class="calc-breakdown-dot" style="background:rgba(237,232,222,0.55)"></span>Property Tax</span>
+              <span class="calc-breakdown-value" id="taxDisplay">$500</span>
+            </div>
+            <div class="calc-breakdown-row">
+              <span class="calc-breakdown-label"><span class="calc-breakdown-dot" style="background:rgba(237,232,222,0.3)"></span>Insurance</span>
+              <span class="calc-breakdown-value" id="insuranceDisplay">$150</span>
+            </div>
+            <div class="calc-breakdown-row" id="hoaRow" style="display:none;">
+              <span class="calc-breakdown-label"><span class="calc-breakdown-dot" style="background:rgba(237,232,222,0.18)"></span>HOA</span>
+              <span class="calc-breakdown-value" id="hoaDisplay">$0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-summary reveal">
+          <div class="calc-summary-card">
+            <span class="calc-summary-label">Loan Amount</span>
+            <span class="calc-summary-value" id="loanDisplay">$400,000</span>
+          </div>
+          <div class="calc-summary-card">
+            <span class="calc-summary-label">Total Interest</span>
+            <span class="calc-summary-value" id="totalInterestDisplay">$533,804</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amortization -->
+    <div class="amort-section reveal">
+      <button class="amort-toggle" id="amortToggle" type="button">
+        <span>View Amortization Schedule</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="amort-wrap" id="amortWrap">
+        <div class="amort-tabs">
+          <button class="amort-tab active" data-view="yearly" type="button">Yearly</button>
+          <button class="amort-tab" data-view="monthly" type="button">Monthly</button>
+        </div>
+        <div class="amort-table-wrap">
+          <table class="amort-table">
+            <thead><tr><th>Period</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+            <tbody id="amortBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-APPROVAL EXPLAINER -->
+  <section class="explainer">
+    <div class="explainer-head">
+      <span class="explainer-label reveal">Pre-Approval, Explained</span>
+      <h2 class="explainer-h reveal">The four things <em>every</em> Chicago buyer should understand before they tour a single property.</h2>
+    </div>
+    <div class="explainer-grid">
+      <div class="explainer-block reveal">
+        <span class="explainer-block-num">01</span>
+        <h3>Pre-qualification <em>vs.</em> pre-approval</h3>
+        <p>A pre-qualification is a conversation — a lender eyeballs what you tell them and offers a ballpark loan amount. Nothing is verified.</p>
+        <p>A pre-approval is a document. The lender has pulled your credit, verified your income and assets, and issued a letter committing to lend up to a specific amount. In Chicago's market, only one of these wins offers.</p>
+      </div>
+
+      <div class="explainer-block reveal">
+        <span class="explainer-block-num">02</span>
+        <h3>What lenders <em>look for</em></h3>
+        <p>Four factors carry almost all of the weight. Strengthen any one of them and your rate improves.</p>
+        <div class="explainer-list">
+          <span class="explainer-list-item">Debt-to-income ratio (DTI)</span>
+          <span class="explainer-list-item">Credit score &amp; history</span>
+          <span class="explainer-list-item">Reserves &amp; liquid assets</span>
+          <span class="explainer-list-item">Two-year employment history</span>
+        </div>
+      </div>
+
+      <div class="explainer-block reveal">
+        <span class="explainer-block-num">03</span>
+        <h3>Documents to <em>have ready</em></h3>
+        <p>Pull these together before your first call with a lender — it cuts the pre-approval timeline from weeks to days.</p>
+        <div class="explainer-list">
+          <span class="explainer-list-item">W-2s (past two years)</span>
+          <span class="explainer-list-item">Federal tax returns</span>
+          <span class="explainer-list-item">Bank statements (60 days)</span>
+          <span class="explainer-list-item">Government-issued photo ID</span>
+          <span class="explainer-list-item">Recent pay stubs</span>
+          <span class="explainer-list-item">Investment &amp; retirement statements</span>
+        </div>
+      </div>
+
+      <div class="explainer-block reveal">
+        <span class="explainer-block-num">04</span>
+        <h3>Why pre-approval <em>wins</em> in Chicago</h3>
+        <p>Our sellers close at 110% of list price in an average of five days. That number only happens when listings generate multiple offers — and sellers choose the cleanest one.</p>
+        <p>A written pre-approval tells the seller your financing is real. Without it, your offer sits in the pile with every buyer who hasn't done the work.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA 1: BUYER CLOSING COST ESTIMATE -->
+  <section class="cta-band cta-band-dark" id="buyer-estimate">
+    <div class="cta-band-inner">
+      <div class="reveal">
+        <span class="cta-band-label">For Buyers</span>
+        <h2 class="cta-band-h">Get a Personalized Buyer <em>Closing Cost</em> Estimate.</h2>
+        <p class="cta-band-copy">Closing costs vary by municipality, title company, and loan type. Send me your details — I'll run a custom estimate and email it back within 24 hours.</p>
+      </div>
+      <div class="reveal">
+        <form class="lead-form" id="buyerForm" action="https://formspree.io/f/xeevjdyb" method="POST" novalidate>
+          <input type="hidden" name="form_type" value="buyer_closing_cost_estimate">
+          <input type="hidden" name="_subject" value="New Buyer Closing Cost Estimate Request">
+          <div class="lead-form-group">
+            <label class="lead-form-label" for="buyerName">Full Name *</label>
+            <input class="lead-form-input" type="text" id="buyerName" name="name" required autocomplete="name">
+          </div>
+          <div class="lead-form-row">
+            <div class="lead-form-group">
+              <label class="lead-form-label" for="buyerEmail">Email *</label>
+              <input class="lead-form-input" type="email" id="buyerEmail" name="email" required autocomplete="email">
+            </div>
+            <div class="lead-form-group">
+              <label class="lead-form-label" for="buyerPhone">Phone *</label>
+              <input class="lead-form-input" type="tel" id="buyerPhone" name="phone" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="lead-form-group">
+            <label class="lead-form-label" for="buyerPrice">Purchase Price *</label>
+            <input class="lead-form-input" type="text" id="buyerPrice" name="purchase_price" required inputmode="numeric" placeholder="$750,000">
+          </div>
+          <div class="lead-form-group">
+            <label class="lead-form-label" for="buyerAddress">Property Address or Neighborhood *</label>
+            <input class="lead-form-input" type="text" id="buyerAddress" name="property_address" required placeholder="2100 N. Lincoln Park West, or 'Lincoln Park'">
+          </div>
+          <button class="lead-form-submit" type="submit"><span>Request Estimate</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <p class="lead-form-note">Sent directly to matt@theneistatgroup.com.</p>
+        </form>
+        <div class="lead-form-success" id="buyerSuccess">
+          <h4>Request Received</h4>
+          <p>Thanks — I'll review your details and email a personalized estimate within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA 2: SELLER NET PROCEEDS ESTIMATE -->
+  <section class="cta-band cta-band-bone" id="seller-estimate">
+    <div class="cta-band-inner">
+      <div class="reveal">
+        <span class="cta-band-label">For Sellers</span>
+        <h2 class="cta-band-h">Get a Personalized Seller <em>Net Proceeds</em> Estimate.</h2>
+        <p class="cta-band-copy">Every sale is different — transfer taxes, title fees, and prorations all shift by location. Send me your details and I'll run the numbers for you.</p>
+      </div>
+      <div class="reveal">
+        <form class="lead-form" id="sellerForm" action="https://formspree.io/f/xeevjdyb" method="POST" novalidate>
+          <input type="hidden" name="form_type" value="seller_net_proceeds_estimate">
+          <input type="hidden" name="_subject" value="New Seller Net Proceeds Estimate Request">
+          <div class="lead-form-group">
+            <label class="lead-form-label" for="sellerName">Full Name *</label>
+            <input class="lead-form-input" type="text" id="sellerName" name="name" required autocomplete="name">
+          </div>
+          <div class="lead-form-row">
+            <div class="lead-form-group">
+              <label class="lead-form-label" for="sellerEmail">Email *</label>
+              <input class="lead-form-input" type="email" id="sellerEmail" name="email" required autocomplete="email">
+            </div>
+            <div class="lead-form-group">
+              <label class="lead-form-label" for="sellerPhone">Phone *</label>
+              <input class="lead-form-input" type="tel" id="sellerPhone" name="phone" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="lead-form-group">
+            <label class="lead-form-label" for="sellerPrice">Expected Sale Price *</label>
+            <input class="lead-form-input" type="text" id="sellerPrice" name="purchase_price" required inputmode="numeric" placeholder="$1,200,000">
+          </div>
+          <div class="lead-form-group">
+            <label class="lead-form-label" for="sellerAddress">Property Address or Neighborhood *</label>
+            <input class="lead-form-input" type="text" id="sellerAddress" name="property_address" required placeholder="2100 N. Lincoln Park West, or 'Lincoln Park'">
+          </div>
+          <button class="lead-form-submit" type="submit"><span>Request Estimate</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <p class="lead-form-note">Sent directly to matt@theneistatgroup.com.</p>
+        </form>
+        <div class="lead-form-success" id="sellerSuccess">
+          <h4>Request Received</h4>
+          <p>Thanks — I'll review your details and email a personalized estimate within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-head">
+        <span class="faq-label reveal">Frequently Asked</span>
+        <h2 class="faq-h reveal">The questions buyers <em>actually</em> ask.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">How much do I need for a down payment?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">Conventional loans typically require 5%–20%, FHA loans allow as little as 3.5%, and some programs go lower with strong credit. In Chicago's luxury market, 20% is the cleanest path to a competitive offer and no private mortgage insurance — but plenty of strong buyers close with less.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">What credit score do I need?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">620 is the usual floor for conventional financing; FHA loans can go to 580 or lower with a larger down payment. For the best rates — the ones that meaningfully lower your monthly payment — lenders look for 740+.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">How long does pre-approval take?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">With documents ready, most of my clients have a pre-approval letter in hand within 48–72 hours. Without them, expect one to two weeks. If you think you might buy in the next 90 days, start now.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">Do I need a pre-approval to tour homes?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">For an initial look at open houses, no. But once we're scheduling private showings — especially in the $1M+ range — listing agents expect to see a letter before they open the door. I'd rather you have it than not.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">What are typical Chicago closing costs?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">Plan on 2%–4% of the purchase price for a buyer in Cook County — title, survey, attorney, origination, escrows, and transfer taxes. Sellers see 6%–8% net of commission, driven largely by Chicago's city transfer tax ($3.75 per $500) plus Cook County and state transfer taxes. For an exact number on your specific property, request a personalized estimate above.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">Who pays what at closing?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner">In Illinois, buyers cover their own lender fees, title insurance (lender's policy), survey, attorney, inspection, and escrows. Sellers cover commission, owner's title policy, attorney, state and county transfer taxes, and — in Chicago — the city transfer tax. Property taxes are prorated at 105% through the closing date, credited to the buyer.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="footer-grid">
-      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
-      <div class="footer-col"><div class="footer-col-label">Navigate</div><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="search.html">Search Properties</a><a href="neighborhoods.html">Neighborhoods</a><a href="calculator.html">Calculators</a><a href="vendors.html">Vendors</a></div>
-      <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
+      <div>
+        <div class="footer-brand">The Neistat Group</div>
+        <div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigate</div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="search.html">Search Properties</a>
+        <a href="neighborhoods.html">Neighborhoods</a>
+        <a href="calculator.html">Calculators</a>
+        <a href="vendors.html">Vendors</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Connect</div>
+        <a href="tel:+18477142913">847.714.2913</a>
+        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
+        <a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a>
+      </div>
     </div>
-    <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
+    <div class="footer-bar">
+      <span>&copy; 2026 The Neistat Group. All rights reserved.</span>
+      <span>People First. <em>Always.</em></span>
+    </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
-    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
-    const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
-    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
-    
+    // ===== Nav & mobile menu =====
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+    (function(){
+      const toggle = document.getElementById('navToggle');
+      const menu = document.getElementById('mobileMenu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const open = menu.classList.toggle('active');
+          toggle.classList.toggle('active');
+          document.body.style.overflow = open ? 'hidden' : '';
+        });
+      }
+    })();
+
+    // ===== Reveal animations (GSAP with IntersectionObserver fallback) =====
+    (function(){
+      const els = document.querySelectorAll('.reveal');
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        els.forEach(el => {
+          gsap.set(el, { opacity: 0, y: 24 });
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+        });
+      } else {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+              e.target.style.opacity = '1';
+              e.target.style.transform = 'translateY(0)';
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        els.forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(24px)';
+          io.observe(el);
+        });
+      }
+    })();
+
+    // ===== Mortgage calculator =====
+    (function(){
+      const fmt = n => '$' + Math.round(n).toLocaleString();
+      const $ = id => document.getElementById(id);
+
+      const els = {
+        price: $('priceRange'), down: $('downRange'), term: $('termSelect'),
+        rate: $('rateInput'), tax: $('taxInput'), insurance: $('insuranceInput'), hoa: $('hoaInput'),
+        priceD: $('priceDisplay'), downD: $('downDisplay'),
+        monthly: $('monthlyPayment'), pi: $('piDisplay'), taxD: $('taxDisplay'),
+        insD: $('insuranceDisplay'), hoaD: $('hoaDisplay'), hoaRow: $('hoaRow'),
+        loan: $('loanDisplay'), totalInt: $('totalInterestDisplay')
+      };
+
+      function compute() {
+        const price = +els.price.value;
+        const downPct = +els.down.value / 100;
+        const downAmt = price * downPct;
+        const loanAmt = price - downAmt;
+        const years = +els.term.value;
+        const mRate = (+els.rate.value / 100) / 12;
+        const n = years * 12;
+        const annualTax = +els.tax.value;
+        const annualIns = +els.insurance.value;
+        const monthlyHoa = +els.hoa.value;
+
+        let pi = 0;
+        if (mRate > 0 && loanAmt > 0) {
+          pi = loanAmt * (mRate * Math.pow(1 + mRate, n)) / (Math.pow(1 + mRate, n) - 1);
+        } else if (loanAmt > 0) {
+          pi = loanAmt / n;
+        }
+
+        const monthlyTax = annualTax / 12;
+        const monthlyIns = annualIns / 12;
+        const total = pi + monthlyTax + monthlyIns + monthlyHoa;
+        const totalInterest = (pi * n) - loanAmt;
+
+        els.priceD.textContent = fmt(price);
+        els.downD.textContent = Math.round(downPct * 100) + '% · ' + fmt(downAmt);
+        els.monthly.innerHTML = fmt(total) + '<small>/mo</small>';
+        els.pi.textContent = fmt(pi);
+        els.taxD.textContent = fmt(monthlyTax);
+        els.insD.textContent = fmt(monthlyIns);
+        els.hoaD.textContent = fmt(monthlyHoa);
+        els.hoaRow.style.display = monthlyHoa > 0 ? 'flex' : 'none';
+        els.loan.textContent = fmt(loanAmt);
+        els.totalInt.textContent = fmt(Math.max(0, totalInterest));
+      }
+
+      [els.price, els.down, els.term, els.rate, els.tax, els.insurance, els.hoa].forEach(el => {
+        el.addEventListener('input', () => {
+          compute();
+          if (amortWrap && amortWrap.classList.contains('show')) buildAmort();
+        });
+      });
+
+      // ===== Amortization =====
+      const amortToggle = document.getElementById('amortToggle');
+      const amortWrap = document.getElementById('amortWrap');
+      const amortBody = document.getElementById('amortBody');
+      let amortView = 'yearly';
+
+      amortToggle.addEventListener('click', () => {
+        const open = amortWrap.classList.toggle('show');
+        amortToggle.classList.toggle('open');
+        amortToggle.querySelector('span').textContent = open ? 'Hide Amortization Schedule' : 'View Amortization Schedule';
+        if (open) buildAmort();
+      });
+
+      document.querySelectorAll('.amort-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.amort-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          amortView = tab.dataset.view;
+          buildAmort();
+        });
+      });
+
+      function buildAmort() {
+        const price = +els.price.value;
+        const downPct = +els.down.value / 100;
+        const loanAmt = price - (price * downPct);
+        const years = +els.term.value;
+        const mRate = (+els.rate.value / 100) / 12;
+        const n = years * 12;
+
+        let pi = 0;
+        if (mRate > 0 && loanAmt > 0) {
+          pi = loanAmt * (mRate * Math.pow(1 + mRate, n)) / (Math.pow(1 + mRate, n) - 1);
+        } else if (loanAmt > 0) {
+          pi = loanAmt / n;
+        }
+
+        let balance = loanAmt;
+        let html = '';
+
+        if (amortView === 'monthly') {
+          for (let m = 1; m <= n; m++) {
+            const interest = balance * mRate;
+            const principal = pi - interest;
+            balance = Math.max(0, balance - principal);
+            html += '<tr><td>Month ' + m + '</td><td>' + fmt(pi) + '</td><td>' + fmt(principal) + '</td><td>' + fmt(interest) + '</td><td>' + fmt(balance) + '</td></tr>';
+          }
+          amortBody.innerHTML = html;
+        } else {
+          // Yearly with expandable month rows — build as a fresh tbody
+          amortBody.innerHTML = '';
+          for (let y = 1; y <= years; y++) {
+            let yearPrincipal = 0, yearInterest = 0, yearPayment = 0;
+            let monthHtml = '';
+            for (let m = 1; m <= 12; m++) {
+              const month = (y - 1) * 12 + m;
+              if (month > n) break;
+              const interest = balance * mRate;
+              const principal = pi - interest;
+              balance = Math.max(0, balance - principal);
+              yearPrincipal += principal;
+              yearInterest += interest;
+              yearPayment += pi;
+              monthHtml += '<tr><td>Month ' + month + '</td><td>' + fmt(pi) + '</td><td>' + fmt(principal) + '</td><td>' + fmt(interest) + '</td><td>' + fmt(balance) + '</td></tr>';
+            }
+            const yearId = 'amort-year-' + y;
+            const yearRow = document.createElement('tr');
+            yearRow.className = 'amort-year-row';
+            yearRow.dataset.year = yearId;
+            yearRow.innerHTML = '<td>Year ' + y + ' ▸</td><td>' + fmt(yearPayment) + '</td><td>' + fmt(yearPrincipal) + '</td><td>' + fmt(yearInterest) + '</td><td>' + fmt(balance) + '</td>';
+            amortBody.appendChild(yearRow);
+
+            const monthWrap = document.createElement('tr');
+            monthWrap.className = 'amort-month-wrap';
+            monthWrap.style.display = 'none';
+            monthWrap.innerHTML = '<td colspan="5" style="padding:0;"><table class="amort-table" id="' + yearId + '" style="width:100%;"><tbody>' + monthHtml + '</tbody></table></td>';
+            amortBody.appendChild(monthWrap);
+
+            yearRow.addEventListener('click', () => {
+              const open = monthWrap.style.display !== '';
+              monthWrap.style.display = open ? '' : 'none';
+              const td = yearRow.querySelector('td');
+              td.textContent = open ? td.textContent.replace('▸', '▾') : td.textContent.replace('▾', '▸');
+            });
+          }
+        }
+      }
+
+      compute();
+    })();
+
+    // ===== FAQ accordion =====
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const btn = item.querySelector('.faq-q');
+      btn.addEventListener('click', () => item.classList.toggle('open'));
+    });
+
+    // ===== Lead form handlers (Formspree AJAX) =====
+    (function(){
+      function wire(formId, successId){
+        const form = document.getElementById(formId);
+        const success = document.getElementById(successId);
+        if (!form || !success) return;
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const submitBtn = form.querySelector('.lead-form-submit');
+          const originalLabel = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>Sending…</span>';
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              headers: { 'Accept': 'application/json' },
+              body: new FormData(form)
+            });
+            if (res.ok) {
+              form.style.display = 'none';
+              success.classList.add('show');
+              if (typeof gtag === 'function') gtag('event', 'lead_form_submit', { form_type: form.querySelector('[name=form_type]').value });
+            } else {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalLabel;
+              alert('Something went wrong. Please try again or email matt@theneistatgroup.com directly.');
+            }
+          } catch {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalLabel;
+            alert('Network error. Please try again or email matt@theneistatgroup.com directly.');
+          }
+        });
+      }
+      wire('buyerForm', 'buyerSuccess');
+      wire('sellerForm', 'sellerSuccess');
+    })();
   </script>
+
   <script>
-  (function(){
-    const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.style.transition='opacity 0.9s ease, transform 0.9s ease';entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';observer.unobserve(entry.target)}})},{threshold:0.1});
-    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';observer.observe(el)});
-  })();
-  </script>
-<script>
     // Magnetic Cursor
     (function(){
       if(window.innerWidth<769)return;
@@ -148,8 +832,8 @@
       document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
       function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
       loop();
-      document.querySelectorAll('a,button,.portfolio-card,.tool-card,.vendor-card,.testimonial-card').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
+      document.querySelectorAll('a,button,input,select,.faq-q,.amort-tab,.amort-year-row').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
     })();
-</script>
+  </script>
 </body>
 </html>
