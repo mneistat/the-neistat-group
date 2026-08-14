@@ -19,12 +19,12 @@
     .vendor-category-header h2 { font-family: Georgia, serif; font-size: clamp(28px,4vw,42px); font-weight: 400; color: #EDE8DE; margin: 0; text-align: left; }
     .vendor-category-header h2 em { font-style: italic; }
     .vendor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-    .vendor-card { background: rgba(237,232,222,0.04); border: 1px solid rgba(237,232,222,0.08); border-radius: 10px; padding: 24px 28px; transition: border-color 0.25s ease, background 0.25s ease; }
+    .vendor-card { display: flex; flex-direction: column; background: rgba(237,232,222,0.04); border: 1px solid rgba(237,232,222,0.08); border-radius: 10px; padding: 24px 28px; transition: border-color 0.25s ease, background 0.25s ease; }
     .vendor-card:hover { border-color: rgba(237,232,222,0.2); background: rgba(237,232,222,0.07); }
-    .vendor-name { font-family: Georgia, serif; font-size: 17px; font-weight: 400; color: #EDE8DE; opacity: 1; margin-bottom: 4px; }
-    .vendor-company { font-size: 13px; color: rgba(237,232,222,0.6); line-height: 1.5; margin-bottom: 8px; }
-    .vendor-specialty { font-size: 12px; color: rgba(237,232,222,0.4); font-style: italic; margin-bottom: 16px; line-height: 1.5; }
-    .vendor-contacts { display: flex; flex-direction: column; gap: 6px; }
+    .vendor-specialty { order: 1; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: rgba(237,232,222,0.75); margin-bottom: 10px; line-height: 1.4; }
+    .vendor-name { order: 2; font-family: Georgia, serif; font-size: 17px; font-weight: 400; color: #EDE8DE; opacity: 1; margin-bottom: 0; }
+    .vendor-company { order: 3; font-size: 13px; color: rgba(237,232,222,0.6); line-height: 1.5; margin-top: 4px; margin-bottom: 0; }
+    .vendor-contacts { order: 4; display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
     .vendor-contact { font-size: 13px; color: rgba(237,232,222,0.7); text-decoration: none; transition: color 0.2s; }
     .vendor-contact:hover { color: #EDE8DE; }
     .vendor-disclaimer { max-width: 960px; margin: 0 auto 80px; padding: 32px 40px; border-top: 1px solid rgba(237,232,222,0.1); font-size: 13px; color: rgba(237,232,222,0.35); line-height: 1.7; }
@@ -163,9 +163,8 @@
       <div class="vendor-card"><div class="vendor-name">Julian</div><div class="vendor-company">Tech PSD Inc</div><div class="vendor-specialty">Plumbing</div><div class="vendor-contacts"><a href="tel:+14405320202" class="vendor-contact">440.532.0202</a></div></div>
       <div class="vendor-card"><div class="vendor-name">Andrei</div><div class="vendor-company">Adicorp Electrical</div><div class="vendor-specialty">Electrician</div><div class="vendor-contacts"><a href="tel:+17735740228" class="vendor-contact">773.574.0228</a><a href="mailto:adicorp.electric@gmail.com" class="vendor-contact">adicorp.electric@gmail.com</a></div></div>
       <div class="vendor-card"><div class="vendor-name">Rares Ratiu</div><div class="vendor-company">Ray Comfort Zone</div><div class="vendor-specialty">HVAC</div><div class="vendor-contacts"><a href="tel:+17736031005" class="vendor-contact">773.603.1005</a><a href="mailto:rares86ratiu@yahoo.com" class="vendor-contact">rares86ratiu@yahoo.com</a></div></div>
-      <div class="vendor-card"><div class="vendor-name">Oskar Home Services Inc.</div><div class="vendor-company">Highland Park, IL</div><div class="vendor-specialty">General handyman & home services</div><div class="vendor-contacts"><a href="tel:+12242210807" class="vendor-contact">224.221.0807</a><a href="mailto:oscarboxeo11@gmail.com" class="vendor-contact">oscarboxeo11@gmail.com</a></div></div>
       <div class="vendor-card"><div class="vendor-name">Stefan</div><div class="vendor-company">Quality Windows Repair</div><div class="vendor-specialty">Window repair</div><div class="vendor-contacts"><a href="tel:+13125396152" class="vendor-contact">312.539.6152</a><a href="https://www.qualitywindowsrepair.com" target="_blank" class="vendor-contact">qualitywindowsrepair.com</a></div></div>
-      <div class="vendor-card"><div class="vendor-name">Pulse Exterior</div><div class="vendor-specialty">Exterior services</div><div class="vendor-contacts"><a href="https://www.pulseexterior.com" target="_blank" class="vendor-contact">pulseexterior.com</a></div></div>
+      <div class="vendor-card"><div class="vendor-name">Pulse Exterior</div><div class="vendor-specialty">Siding, decking, storm doors & more</div><div class="vendor-contacts"><a href="https://www.pulseexterior.com" target="_blank" class="vendor-contact">pulseexterior.com</a></div></div>
       <div class="vendor-card"><div class="vendor-name">Juan Uriostegui</div><div class="vendor-company">J.U. General Painting</div><div class="vendor-specialty">Paint, drywall & taping</div><div class="vendor-contacts"><a href="tel:+18474012516" class="vendor-contact">847.401.2516</a><a href="mailto:juanuriostegui00@gmail.com" class="vendor-contact">juanuriostegui00@gmail.com</a></div></div>
     </div>
   </div>
