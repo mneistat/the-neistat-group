@@ -121,10 +121,13 @@
             <div class="form-group"><label for="interest" class="form-label">I'm Interested In</label>
               <select id="interest" name="interest" class="form-input form-select">
                 <option value="" disabled selected>Select an option</option>
-                <option value="buying">Buying a Home</option>
-                <option value="selling">Selling a Home</option>
+                <option value="buying-home">Buying a Home</option>
+                <option value="selling-home">Selling a Home</option>
+                <option value="buying-investment">Buying an Investment Property</option>
+                <option value="selling-investment">Selling an Investment Property</option>
+                <option value="property-evaluation">Property Evaluation</option>
+                <option value="investment-review">Investment Property Review</option>
                 <option value="new-development">New Development</option>
-                <option value="investment">Investment Property</option>
                 <option value="consultation">Market Consultation</option>
               </select>
             </div>
@@ -219,6 +222,20 @@
     var sending = false;
 
     urlField.value = window.location.href;
+
+    // Preselect from ?intent= on the homepage pathway links.
+    // Compared against the real options, so an unknown value leaves the form untouched.
+    var requestedIntent = new URLSearchParams(window.location.search).get('intent');
+    if (interestSelect && requestedIntent) {
+      var isKnownIntent = Array.prototype.some.call(interestSelect.options, function(opt) {
+        return opt.value !== '' && opt.value === requestedIntent;
+      });
+      if (isKnownIntent) {
+        interestSelect.value = requestedIntent;
+        intentField.value = requestedIntent;
+      }
+    }
+
     if (interestSelect) {
       interestSelect.addEventListener('change', function() { intentField.value = interestSelect.value; });
     }
