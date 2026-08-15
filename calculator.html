@@ -155,6 +155,13 @@
     .cta-band-dark .lead-form-submit:hover { background: #fff; }
     .cta-band-bone .lead-form-submit { background: #0B0A07; color: #EDE8DE; }
     .cta-band-bone .lead-form-submit:hover { background: #1a1815; }
+    .lead-form-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+    .cta-band-dark .lead-form-submit:disabled:hover { background: #EDE8DE; }
+    .cta-band-bone .lead-form-submit:disabled:hover { background: #0B0A07; }
+    .lead-form-error { display: none; margin-top: 12px; padding: 12px 14px; border-radius: 4px; font-size: 13px; line-height: 1.5; }
+    .lead-form-error.show { display: block; }
+    .cta-band-dark .lead-form-error { background: rgba(214,109,109,0.08); border: 1px solid rgba(214,109,109,0.32); color: #e8a5a5; }
+    .cta-band-bone .lead-form-error { background: rgba(141,43,43,0.06); border: 1px solid rgba(141,43,43,0.25); color: #8d2b2b; }
     .lead-form-note { font-size: 12px; letter-spacing: 0.04em; margin-top: 4px; }
     .cta-band-dark .lead-form-note { color: rgba(237,232,222,0.4); }
     .cta-band-bone .lead-form-note { color: rgba(11,10,7,0.4); }
@@ -437,6 +444,9 @@
         <form class="lead-form" id="buyerForm" action="https://formspree.io/f/xeevjdyb" method="POST" novalidate>
           <input type="hidden" name="form_type" value="buyer_closing_cost_estimate">
           <input type="hidden" name="_subject" value="New Buyer Closing Cost Estimate Request">
+          <input type="hidden" name="source_page" value="calculator-page">
+          <input type="hidden" name="page_url" value="">
+          <input type="hidden" name="visitor_intent" value="buying">
           <div class="lead-form-group">
             <label class="lead-form-label" for="buyerName">Full Name *</label>
             <input class="lead-form-input" type="text" id="buyerName" name="name" required autocomplete="name">
@@ -460,6 +470,7 @@
             <input class="lead-form-input" type="text" id="buyerAddress" name="property_address" required placeholder="2100 N. Lincoln Park West, or 'Lincoln Park'">
           </div>
           <button class="lead-form-submit" type="submit"><span>Request Estimate</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <div class="lead-form-error" id="buyerError" role="alert" aria-live="polite"></div>
           <p class="lead-form-note">Sent directly to matt@theneistatgroup.com.</p>
         </form>
         <div class="lead-form-success" id="buyerSuccess">
@@ -482,6 +493,9 @@
         <form class="lead-form" id="sellerForm" action="https://formspree.io/f/xeevjdyb" method="POST" novalidate>
           <input type="hidden" name="form_type" value="seller_net_proceeds_estimate">
           <input type="hidden" name="_subject" value="New Seller Net Proceeds Estimate Request">
+          <input type="hidden" name="source_page" value="calculator-page">
+          <input type="hidden" name="page_url" value="">
+          <input type="hidden" name="visitor_intent" value="selling">
           <div class="lead-form-group">
             <label class="lead-form-label" for="sellerName">Full Name *</label>
             <input class="lead-form-input" type="text" id="sellerName" name="name" required autocomplete="name">
@@ -505,6 +519,7 @@
             <input class="lead-form-input" type="text" id="sellerAddress" name="property_address" required placeholder="2100 N. Lincoln Park West, or 'Lincoln Park'">
           </div>
           <button class="lead-form-submit" type="submit"><span>Request Estimate</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <div class="lead-form-error" id="sellerError" role="alert" aria-live="polite"></div>
           <p class="lead-form-note">Sent directly to matt@theneistatgroup.com.</p>
         </form>
         <div class="lead-form-success" id="sellerSuccess">
@@ -784,16 +799,42 @@
 
     // ===== Lead form handlers (Formspree AJAX) =====
     (function(){
-      function wire(formId, successId){
+      function wire(formId, successId, errorId){
         const form = document.getElementById(formId);
         const success = document.getElementById(successId);
-        if (!form || !success) return;
+        const errorBox = document.getElementById(errorId);
+        if (!form || !success || !errorBox) return;
+        const submitBtn = form.querySelector('.lead-form-submit');
+        const btnLabel = submitBtn.querySelector('span');
+        const urlField = form.querySelector('[name="page_url"]');
+        let sending = false;
+
+        if (urlField) urlField.value = window.location.href;
+
+        function showError(msg) {
+          errorBox.textContent = msg;
+          errorBox.classList.add('show');
+        }
+
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
-          const submitBtn = form.querySelector('.lead-form-submit');
-          const originalLabel = submitBtn.innerHTML;
+          if (sending) return;
+
+          errorBox.classList.remove('show');
+          errorBox.textContent = '';
+          if (urlField) urlField.value = window.location.href;
+
+          sending = true;
+          const originalLabel = btnLabel.textContent;
           submitBtn.disabled = true;
-          submitBtn.innerHTML = '<span>Sending…</span>';
+          btnLabel.textContent = 'Sending…';
+
+          function restore() {
+            sending = false;
+            submitBtn.disabled = false;
+            btnLabel.textContent = originalLabel;
+          }
+
           try {
             const res = await fetch(form.action, {
               method: 'POST',
@@ -805,19 +846,20 @@
               success.classList.add('show');
               if (typeof gtag === 'function') gtag('event', 'lead_form_submit', { form_type: form.querySelector('[name=form_type]').value });
             } else {
-              submitBtn.disabled = false;
-              submitBtn.innerHTML = originalLabel;
-              alert('Something went wrong. Please try again or email matt@theneistatgroup.com directly.');
+              const data = await res.json().catch(() => null);
+              let msg = 'Something went wrong. Please try again, or email matt@theneistatgroup.com directly.';
+              if (data && data.errors && data.errors.length) msg = data.errors.map(x => x.message).join(' ');
+              restore();
+              showError(msg);
             }
           } catch {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalLabel;
-            alert('Network error. Please try again or email matt@theneistatgroup.com directly.');
+            restore();
+            showError('Network error — your request was not sent. Please check your connection and try again, or email matt@theneistatgroup.com directly.');
           }
         });
       }
-      wire('buyerForm', 'buyerSuccess');
-      wire('sellerForm', 'sellerSuccess');
+      wire('buyerForm', 'buyerSuccess', 'buyerError');
+      wire('sellerForm', 'sellerSuccess', 'sellerError');
     })();
   </script>
 
