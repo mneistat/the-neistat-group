@@ -211,6 +211,7 @@
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
+<script src="analytics.js" defer></script>
   <meta property="og:title" content="Mortgage Calculator & Closing Cost Estimates | The Neistat Group">
   <meta property="og:description" content="Chicago mortgage calculator with pre-approval guidance. Request a personalized buyer closing cost or seller net proceeds estimate from Matthew Neistat.">
   <meta property="og:url" content="https://www.theneistatgroup.com/calculator.html">
@@ -844,7 +845,7 @@
             if (res.ok) {
               form.style.display = 'none';
               success.classList.add('show');
-              if (typeof gtag === 'function') gtag('event', 'lead_form_submit', { form_type: form.querySelector('[name=form_type]').value });
+              if (typeof gtag === 'function') gtag('event', 'lead_form_submit', { form_type: form.querySelector('[name=form_type]').value, visitor_intent: (form.querySelector('[name="visitor_intent"]') || {}).value || '(none)', source_page: 'calculator-page' });
             } else {
               const data = await res.json().catch(() => null);
               let msg = 'Something went wrong. Please try again, or email matt@theneistatgroup.com directly.';

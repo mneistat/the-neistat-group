@@ -44,6 +44,7 @@
   gtag('js', new Date());
   gtag('config', 'G-MGNGVERDHQ');
 </script>
+<script src="analytics.js" defer></script>
 <!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
@@ -952,7 +953,7 @@
         if (res.ok) {
           form.style.display = 'none';
           success.classList.add('show');
-          if (typeof gtag === 'function') gtag('event', 'lead_form_submit', { form_type: 'homepage' });
+          if (typeof gtag === 'function') gtag('event', 'lead_form_submit', { form_type: 'homepage', visitor_intent: intentField.value || '(none)', source_page: 'homepage' });
           return;
         }
         return res.json().catch(function() { return null; }).then(function(data) {
