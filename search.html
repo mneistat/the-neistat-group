@@ -102,6 +102,21 @@ body {
 .idx-loading-icon { font-size: 32px; margin-bottom: 16px; }
 .idx-loading-state p { font-size: 15px; color: rgba(237,232,222,0.5); margin-bottom: 8px; }
 .idx-loading-sub { font-size: 12px; color: rgba(237,232,222,0.3); }
+.idx-fallback { display: none; text-align: center; padding: 72px 40px 88px; }
+.idx-fallback.show { display: block; }
+.idx-fallback-title { font-family: Georgia, serif; font-size: clamp(22px,3vw,28px); font-weight: 400; color: #EDE8DE; margin-bottom: 14px; }
+.idx-fallback-title em { font-style: italic; }
+.idx-fallback p { font-size: 14px; color: rgba(237,232,222,0.55); line-height: 1.7; max-width: 46ch; margin: 0 auto; }
+.idx-fallback-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+.idx-fallback-action { display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(237,232,222,0.22); border-radius: 6px; padding: 13px 18px; font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #EDE8DE; text-decoration: none; white-space: nowrap; transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+.idx-fallback-action.primary { background: #EDE8DE; border-color: #EDE8DE; color: #0B0A07; }
+.idx-fallback-action:hover { background: #EDE8DE; border-color: #EDE8DE; color: #0B0A07; }
+.idx-fallback-action.primary:hover { background: #fff; border-color: #fff; }
+@media (max-width: 520px) {
+  .idx-fallback { padding: 56px 24px 72px; }
+  .idx-fallback-actions { flex-direction: column; gap: 8px; }
+  .idx-fallback-action { width: 100%; }
+}
 .state-sub.accent { color: #EDE8DE; margin-top: 6px; }
 .pagination { display: flex; justify-content: center; align-items: center; gap: 4px; padding: 40px; border-top: .5px solid rgba(237,232,222,.07); }
 .pgb { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: .5px solid rgba(237,232,222,.12); background: transparent; color: rgba(237,232,222,.35); font-size: 13px; cursor: pointer; transition: all .18s; font-family: -apple-system, sans-serif; }
@@ -208,12 +223,60 @@ footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; 
   <p>Live MLS listings loading...</p>
   <p class="idx-loading-sub">Connecting to Chicago MLS — updated in real time</p>
 </div>
-<div class="idx-wrapper">
+<div class="idx-wrapper" id="idxWrapper">
   <script>
     document.currentScript.replaceWith(ihfKestrel.render());
-    var ls=document.getElementById('idxLoading');if(ls)ls.style.display='none';
   </script>
 </div>
+
+<div class="idx-fallback" id="idxFallback">
+  <h2 class="idx-fallback-title">Listings are temporarily <em>unavailable.</em></h2>
+  <p>The MLS feed isn't loading right now. It's being looked at — in the meantime, tell me what you're looking for and I'll send matching listings directly, including off-market opportunities that never hit the public search.</p>
+  <div class="idx-fallback-actions">
+    <a href="/contact?intent=buying-home" class="idx-fallback-action primary">Tell Me What You're Looking For</a>
+    <a href="tel:+18477142913" class="idx-fallback-action">Call Matthew</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var loading  = document.getElementById('idxLoading');
+  var wrapper  = document.getElementById('idxWrapper');
+  var fallback = document.getElementById('idxFallback');
+  if (!loading || !wrapper || !fallback) return;
+
+  var settled = false, observer, timer;
+
+  // Kestrel renders into .ihf-container asynchronously. Any element content
+  // counts as a successful load — height alone is unreliable, since the widget
+  // can mount before it has laid out.
+  function hasRendered() {
+    var c = wrapper.querySelector('.ihf-container');
+    return !!c && (c.children.length > 0 || c.getBoundingClientRect().height > 40);
+  }
+  function stop() {
+    if (observer) observer.disconnect();
+    clearTimeout(timer);
+    settled = true;
+  }
+  function succeed() { if (settled) return; stop(); loading.style.display = 'none'; }
+  function fail() {
+    if (settled) return;
+    stop();
+    loading.style.display = 'none';
+    wrapper.style.display = 'none';   // drop the empty 600px reserve
+    fallback.classList.add('show');
+  }
+
+  // Event-driven, so there is no poll racing the watchdog.
+  if (window.MutationObserver) {
+    observer = new MutationObserver(function () { if (hasRendered()) succeed(); });
+    observer.observe(wrapper, { childList: true, subtree: true });
+  }
+  if (hasRendered()) return succeed();
+  timer = setTimeout(function () { hasRendered() ? succeed() : fail(); }, 12000);
+})();
+</script>
 
 <footer class="footer">
   <div class="footer-grid">
