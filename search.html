@@ -246,6 +246,14 @@ footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; 
   if (!loading || !wrapper || !fallback) return;
 
   var settled = false, observer, timer;
+  var WATCHDOG_MS = 7000;
+
+  // Wrapped so a blocked or failed GA load can never break the page.
+  function track(eventName, params) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
+    } catch (err) {}
+  }
 
   // Kestrel renders into .ihf-container asynchronously. Any element content
   // counts as a successful load — height alone is unreliable, since the widget
@@ -259,13 +267,25 @@ footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; 
     clearTimeout(timer);
     settled = true;
   }
-  function succeed() { if (settled) return; stop(); loading.style.display = 'none'; }
+  function succeed() {
+    if (settled) return;
+    stop();
+    loading.style.display = 'none';
+    track('idx_loaded', {
+      source_page: 'search-page',
+      load_seconds: Math.round(performance.now() / 1000)
+    });
+  }
   function fail() {
     if (settled) return;
     stop();
     loading.style.display = 'none';
     wrapper.style.display = 'none';   // drop the empty 600px reserve
     fallback.classList.add('show');
+    track('idx_unavailable', {
+      source_page: 'search-page',
+      waited_seconds: Math.round(WATCHDOG_MS / 1000)
+    });
   }
 
   // Event-driven, so there is no poll racing the watchdog.
@@ -274,7 +294,7 @@ footer { border-top: .5px solid rgba(237,232,222,.08); padding: 48px 40px 40px; 
     observer.observe(wrapper, { childList: true, subtree: true });
   }
   if (hasRendered()) return succeed();
-  timer = setTimeout(function () { hasRendered() ? succeed() : fail(); }, 12000);
+  timer = setTimeout(function () { hasRendered() ? succeed() : fail(); }, WATCHDOG_MS);
 })();
 </script>
 
