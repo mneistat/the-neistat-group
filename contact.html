@@ -32,9 +32,16 @@
     .form-success { text-align: center; padding: 40px 20px; }
     .form-success svg { color: #EDE8DE; margin-bottom: 16px; }
     .form-success h3 { font-family: Georgia, serif; font-size: 20px; color: #EDE8DE; margin-bottom: 8px; }
-    .form-success p { font-size: 14px; color: rgba(237,232,222,0.65); }
+    .form-success p { font-size: 14px; color: rgba(237,232,222,0.65); line-height: 1.6; margin: 0 auto; max-width: 34ch; }
     .form-success { display: none; }
     .form-success.show { display: block; }
+    .form-success-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 26px; }
+    .form-success-action { display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(237,232,222,0.22); border-radius: 6px; padding: 13px 18px; font-family: inherit; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #EDE8DE; text-decoration: none; white-space: nowrap; transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+    .form-success-action:hover { background: #EDE8DE; border-color: #EDE8DE; color: #0B0A07; }
+    @media (max-width: 520px) {
+      .form-success-actions { flex-direction: column; gap: 8px; }
+      .form-success-action { width: 100%; }
+    }
     .btn-submit:disabled { opacity: 0.55; cursor: not-allowed; }
     .btn-submit:disabled:hover { background: #EDE8DE; }
     .form-error { display: none; margin-top: 16px; padding: 12px 14px; border-radius: 6px; font-size: 13px; line-height: 1.5; background: rgba(214,109,109,0.08); border: 1px solid rgba(214,109,109,0.32); color: #e8a5a5; }
@@ -138,8 +145,12 @@
           </form>
           <div class="form-success" id="formSuccess">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>
-            <h3>Message Sent</h3>
-            <p>Thank you for reaching out. I'll be in touch within 24 hours.</p>
+            <h3>Message received.</h3>
+            <p>Thanks for reaching out. I'll review the details and follow up personally, usually within one business day.</p>
+            <div class="form-success-actions">
+              <a href="tel:+18477142913" class="form-success-action">Call Matthew</a>
+              <a href="/" class="form-success-action">Continue Exploring</a>
+            </div>
           </div>
         </div>
       </div>

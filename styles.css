@@ -579,7 +579,14 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .cta-form-success.show { display: block; }
 .cta-form-success svg { color: #0B0A07; margin-bottom: 16px; }
 .cta-form-success h3 { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; margin: 0 0 8px; }
-.cta-form-success p { font-size: 14px; color: rgba(11,10,7,0.55); line-height: 1.6; margin: 0; }
+.cta-form-success p { font-size: 14px; color: rgba(11,10,7,0.55); line-height: 1.6; margin: 0 auto; max-width: 34ch; }
+.cta-form-success-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 26px; }
+.cta-form-success-action { display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(11,10,7,0.18); border-radius: 6px; padding: 13px 18px; font-family: -apple-system, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #0B0A07; text-decoration: none; white-space: nowrap; transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+.cta-form-success-action:hover { background: #0B0A07; border-color: #0B0A07; color: #EDE8DE; }
+@media (max-width: 520px) {
+  .cta-form-success-actions { flex-direction: column; gap: 8px; }
+  .cta-form-success-action { width: 100%; }
+}
 .form-error { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 6px; font-size: 13px; line-height: 1.5; }
 .form-error.show { display: block; }
 .cta-form .form-error { background: rgba(141,43,43,0.06); border: 1px solid rgba(141,43,43,0.25); color: #8d2b2b; }
