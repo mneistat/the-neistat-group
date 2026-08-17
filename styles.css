@@ -100,7 +100,7 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
   .hero {
     background-image:
       linear-gradient(rgba(11,10,7,0.55), rgba(11,10,7,0.55)),
-      url('https://res.cloudinary.com/dpwcyrxkz/image/upload/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
+      url('https://res.cloudinary.com/dpwcyrxkz/image/upload/f_auto,q_auto,w_1600/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -141,13 +141,18 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
   .testimonial-card p, .testimonial-card blockquote { font-size: 15px; line-height: 1.7; word-wrap: break-word; overflow-wrap: break-word; }
   .testimonial-header { flex-wrap: wrap; gap: 12px; }
 
-  /* Prevent horizontal overflow on mobile */
+  /* Prevent horizontal overflow on mobile.
+     overflow-x must stay off <html>: setting overflow on the root element makes
+     it the scroll container and kills vertical scrolling — that is what made
+     /neighborhoods unscrollable on phones. body alone still clips sideways. */
   html, body {
     width: 100% !important;
     max-width: 100% !important;
-    overflow-x: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
+  }
+  body {
+    overflow-x: hidden !important;
   }
   .hero {
     width: 100% !important;
@@ -209,7 +214,7 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
 .manifesto {
   background-image:
     linear-gradient(rgba(11,10,7,0.78), rgba(11,10,7,0.78)),
-    url('https://res.cloudinary.com/dpwcyrxkz/image/upload/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
+    url('https://res.cloudinary.com/dpwcyrxkz/image/upload/f_auto,q_auto,w_1600/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

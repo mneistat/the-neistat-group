@@ -379,8 +379,10 @@
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-video-wrap" id="heroVideoWrap">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="patrick-lalonde-IqKYnIzrjh0-unsplash.jpg">
-        <source src="https://res.cloudinary.com/dpwcyrxkz/video/upload/v1775872382/1826896-hd_1920_1080_24fps_1_z6l2tu.mp4" type="video/mp4">
+      <!-- Trimmed to 12s and transcoded by Cloudinary: 57.8 MB -> 2.2 MB. The poster
+           is a frame of the same clip, so the still always matches the video. -->
+      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="https://res.cloudinary.com/dpwcyrxkz/video/upload/so_2,f_auto,q_auto,w_1920/v1775872382/1826896-hd_1920_1080_24fps_1_z6l2tu.jpg">
+        <source src="https://res.cloudinary.com/dpwcyrxkz/video/upload/f_auto,q_auto,vc_auto,w_1920,so_0,eo_12/v1775872382/1826896-hd_1920_1080_24fps_1_z6l2tu.mp4" type="video/mp4">
       </video>
     </div>
     <div class="hero-overlay"></div>

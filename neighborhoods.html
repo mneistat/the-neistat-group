@@ -8,7 +8,10 @@
   <meta name="description" content="Explore every Chicago neighborhood and North Shore suburb with The Neistat Group's interactive map.">
   <link rel="stylesheet" href="styles.css?v=3">
   <style>
-    body{overflow:hidden}
+    /* Desktop is a fixed map shell — the list scrolls inside .nh-list. Below the
+       breakpoint the layout stacks and exceeds the viewport, so the page itself
+       must scroll; locking body there made the lower content unreachable. */
+    @media(min-width:769px){body{overflow:hidden}}
     .nh-layout{display:flex;height:calc(100vh - 56px);margin-top:56px}
     .nh-sidebar{width:340px;flex-shrink:0;background:#0B0A07;display:flex;flex-direction:column;border-right:1px solid rgba(237,232,222,0.06)}
     .nh-search{padding:20px;border-bottom:1px solid rgba(237,232,222,0.06)}
