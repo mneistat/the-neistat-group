@@ -179,12 +179,6 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
 .stat-number { font-family: Georgia, serif; font-size: 32px; color: #EDE8DE; line-height: 1.4; }
 .stat-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.5); margin-top: 4px; }
 
-/* === SAGE TICKER === */
-.ticker { background: #1A1916; padding: 11px 0; overflow: hidden; white-space: nowrap; }
-.ticker-track { display: inline-flex; animation: tickerScroll 28s linear infinite; }
-.ticker-text { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,222,0.5); padding-right: 0; }
-@keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
 /* === MANIFESTO TEXT — light on dark photo === */
 .manifesto,
 .manifesto h2,
