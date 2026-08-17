@@ -1,5 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/search",
+      "destination": "/contact?intent=buying-home",
+      "permanent": false
+    },
+    {
+      "source": "/search.html",
+      "destination": "/contact?intent=buying-home",
+      "permanent": false
+    }
+  ]
 }

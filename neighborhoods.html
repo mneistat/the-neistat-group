@@ -121,8 +121,7 @@
         <div class="nh-detail-desc" id="dpDesc"></div>
         <div class="nh-detail-stats" id="dpStats"></div>
         <div class="nh-detail-btns">
-          <a href="search.html" class="nh-btn nh-btn-primary" id="dpSearchBtn">Search Properties</a>
-          <a href="contact.html" class="nh-btn nh-btn-ghost">Begin the Conversation</a>
+          <a href="contact.html" class="nh-btn nh-btn-primary">Begin the Conversation</a>
         </div>
       </div>
     </div>
@@ -135,8 +134,7 @@
     <div class="nh-detail-desc" id="bsDesc"></div>
     <div class="nh-detail-stats" id="bsStats"></div>
     <div class="nh-detail-btns">
-      <a href="search.html" class="nh-btn nh-btn-primary" id="bsSearchBtn">Search Properties</a>
-      <a href="contact.html" class="nh-btn nh-btn-ghost">Begin the Conversation</a>
+      <a href="contact.html" class="nh-btn nh-btn-primary">Begin the Conversation</a>
     </div>
   </div>
   <script>
@@ -209,8 +207,6 @@
       ['dpName','bsName'].forEach(id=>document.getElementById(id).textContent=nh.name);
       ['dpDesc','bsDesc'].forEach(id=>document.getElementById(id).textContent=nh.desc);
       ['dpStats','bsStats'].forEach(id=>document.getElementById(id).innerHTML=sh);
-      document.getElementById('dpSearchBtn').textContent='Search '+nh.name;
-      document.getElementById('bsSearchBtn').textContent='Search '+nh.name;
       document.getElementById('nhDetailPanel').classList.add('open');
       document.getElementById('nhBottomSheet').classList.add('open');
     }

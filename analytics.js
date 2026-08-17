@@ -28,7 +28,6 @@
     'about.html': 'about-page',
     'marketing.html': 'marketing-page',
     'neighborhoods.html': 'neighborhoods-page',
-    'search.html': 'search-page',
     'vendors.html': 'vendors-page'
   };
 
