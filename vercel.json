@@ -6,12 +6,12 @@
     {
       "source": "/search",
       "destination": "/contact?intent=buying-home",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/search.html",
       "destination": "/contact?intent=buying-home",
-      "permanent": false
+      "permanent": true
     }
   ]
 }

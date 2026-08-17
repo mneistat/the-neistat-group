@@ -326,7 +326,7 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
 .reveal { opacity: 0; transform: translateY(30px); }
 
 /* === LEGACY PAGE SUPPORT === */
-/* Shared classes used by about, search, neighborhoods, calculator, vendor, contact pages */
+/* Shared classes used by about, neighborhoods, calculator, vendor, contact pages */
 
 /* Layout */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 36px; }
@@ -522,10 +522,6 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .contact-form, .form-card { background: rgba(237,232,222,0.04); border: 1px solid rgba(237,232,222,0.12); border-radius: 16px; padding: 48px; }
 
 /* === TABS === */
-.search-tabs, .region-tabs, .tab-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
-.search-tab, .region-tab, .tab { padding: 9px 22px; border: 1px solid rgba(237,232,222,0.3); border-radius: 999px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,222,0.45); cursor: pointer; transition: all 0.2s ease; font-family: -apple-system, sans-serif; background: transparent; white-space: nowrap; }
-.search-tab:hover, .region-tab:hover, .tab:hover { border-color: rgba(237,232,222,0.7); color: rgba(237,232,222,0.9); background: rgba(237,232,222,0.05); }
-.search-tab.active, .region-tab.active, .tab.active { border-color: #EDE8DE; color: #EDE8DE; background: rgba(237,232,222,0.1); }
 
 /* === NAV CTA === */
 
