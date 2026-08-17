@@ -285,18 +285,8 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
 }
 
 /* === NEIGHBORHOODS === */
-.neighborhoods { background: #0B0A07; padding: 52px 36px; }
-.neighborhoods-heading { font-family: Georgia, serif; font-size: 26px; color: #EDE8DE; margin-bottom: 28px; }
-.neighborhoods-heading em { font-style: italic; color: #EDE8DE; }
-.neighborhoods-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-.neighborhood-card { background: #131109; padding: 24px; border-top: 0.5px solid rgba(237,232,222,0.08); transition: background 0.3s; }
-.neighborhood-card:first-child { border-top: 1px solid rgba(237,232,222,0.25); }
-.neighborhood-card:hover { background: #1a1710; }
-.neighborhood-name { font-family: Georgia, serif; font-size: 14px; color: #EDE8DE; margin-bottom: 4px; }
-.neighborhood-sub { font-size: 11px; color: rgba(237,232,222,0.5); }
 
 @media (max-width: 768px) {
-  .neighborhoods-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* === PRESS === */
@@ -493,7 +483,6 @@ a.contact-detail-value:hover { color: #EDE8DE; }
 .testimonials { background: #EDE8DE; color: #0B0A07; }
 .testimonials h2, .testimonials .testimonial-card, .testimonials p, .testimonials blockquote { color: #0B0A07; }
 .testimonial-card { background: #F4F0E8; border: 1px solid rgba(11,10,7,0.08); }
-.neighborhoods { background: #111009; }
 .press { background: #F4F0E8; }
 .press, .press a, .press h2, .press p, .press span { color: #0B0A07; }
 .cta { background: #080706; color: #EDE8DE; }
@@ -509,7 +498,6 @@ a.contact-detail-value:hover { color: #EDE8DE; }
 .credential:first-child { border-left: 2px solid rgba(237,232,222,0.3); }
 .portfolio-tag { color: #EDE8DE; }
 .testimonials-heading em { color: #EDE8DE; }
-.neighborhoods-heading em { color: #EDE8DE; }
 .cta-heading em { color: #EDE8DE; }
 .footer-bar em { color: #EDE8DE; }
 .press-pub:hover { color: #EDE8DE !important; }
