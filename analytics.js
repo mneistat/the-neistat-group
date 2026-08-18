@@ -27,6 +27,7 @@
     'calculator.html': 'calculator-page',
     'about.html': 'about-page',
     'marketing.html': 'marketing-page',
+    'selling-process.html': 'selling-process-page',
     'neighborhoods.html': 'neighborhoods-page',
     'vendors.html': 'vendors-page'
   };
