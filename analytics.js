@@ -37,8 +37,11 @@
   function sourcePage() {
     var hidden = document.querySelector('input[name="source_page"]');
     if (hidden && hidden.value) return hidden.value;
+    // vercel.json sets cleanUrls, so production paths arrive without the .html
+    // extension ("/about", not "/about.html"). Try the bare name first, then the
+    // .html key, so both URL forms resolve to the same slug.
     var file = window.location.pathname.split('/').pop();
-    return PAGE_SLUGS[file] || 'other';
+    return PAGE_SLUGS[file] || PAGE_SLUGS[file + '.html'] || 'other';
   }
 
   // Reuses the hidden visitor_intent (already seeded from ?intent= by the
