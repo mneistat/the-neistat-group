@@ -17,8 +17,8 @@
     .nh-search{padding:20px;border-bottom:1px solid rgba(237,232,222,0.06)}
     .nh-search-input{width:100%;font-family:-apple-system,sans-serif;font-size:14px;color:#EDE8DE;background:#141210;border:1px solid rgba(237,232,222,0.08);border-radius:4px;padding:12px 16px;outline:none;transition:border-color .3s}
     .nh-search-input:focus{border-color:rgba(237,232,222,0.25)}
-    .nh-search-input::placeholder{color:rgba(237,232,222,0.3)}
-    .nh-section-label{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,232,222,0.25);padding:16px 20px 8px}
+    .nh-search-input::placeholder{color:rgba(237,232,222,0.55)}
+    .nh-section-label{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,232,222,0.55);padding:16px 20px 8px}
     .nh-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(237,232,222,0.1) transparent}
     .nh-list::-webkit-scrollbar{width:4px}
     .nh-list::-webkit-scrollbar-thumb{background:rgba(237,232,222,0.1);border-radius:2px}
@@ -27,19 +27,19 @@
     .nh-list-item.active{background:rgba(237,232,222,0.08)}
     .nh-list-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
     .nh-list-name{font-family:Georgia,serif;font-size:14px;color:#EDE8DE}
-    .nh-list-sub{font-size:10px;color:rgba(237,232,222,0.3);margin-top:1px}
+    .nh-list-sub{font-size:10px;color:rgba(237,232,222,0.55);margin-top:1px}
     .nh-detail-panel{background:#0B0A07;border-top:1px solid rgba(237,232,222,0.08);padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
     .nh-detail-panel.open{max-height:400px;padding:24px 20px;overflow-y:auto}
     .nh-detail-name{font-family:Georgia,serif;font-size:20px;color:#EDE8DE;margin-bottom:8px}
     .nh-detail-desc{font-size:13px;color:rgba(237,232,222,0.55);line-height:1.6;margin-bottom:16px}
     .nh-detail-stats{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px}
-    .nh-detail-stat-label{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,232,222,0.3);display:block;margin-bottom:2px}
+    .nh-detail-stat-label{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,232,222,0.55);display:block;margin-bottom:2px}
     .nh-detail-stat-val{font-size:13px;font-weight:500;color:#EDE8DE}
     .nh-detail-btns{display:flex;gap:8px;flex-wrap:wrap}
     .nh-btn{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:10px 18px;border-radius:3px;text-decoration:none;transition:background .3s}
     .nh-btn-primary{background:#EDE8DE;color:#0B0A07}
     .nh-btn-primary:hover{background:#fff}
-    .nh-btn-ghost{background:transparent;color:rgba(237,232,222,0.5);border:1px solid rgba(237,232,222,0.12)}
+    .nh-btn-ghost{background:transparent;color:rgba(237,232,222,0.78);border:1px solid rgba(237,232,222,0.12)}
     .nh-btn-ghost:hover{border-color:rgba(237,232,222,0.3);color:#EDE8DE}
     .nh-map-wrap{flex:1;position:relative}
     #neighborhood-map{width:100%;height:100%}
@@ -101,9 +101,9 @@
     </div>
   </div>
   <div style="background:#0B0A07;padding:100px 40px 24px;margin-top:56px;">
-    <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(237,232,222,0.4);display:block;margin-bottom:12px;">Explore</span>
+    <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(237,232,222,0.55);display:block;margin-bottom:12px;">Explore</span>
     <h1 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:#EDE8DE;margin:0 0 12px;">Chicago <em style="font-style:italic;">Neighborhoods</em></h1>
-    <p style="font-size:14px;color:rgba(237,232,222,0.45);max-width:520px;line-height:1.6;margin:0;">From the South Loop to the North Shore — click any neighborhood to explore its boundaries, character, and available properties.</p>
+    <p style="font-size:14px;color:rgba(237,232,222,0.78);max-width:520px;line-height:1.6;margin:0;">From the South Loop to the North Shore — click any neighborhood to explore its boundaries, character, and available properties.</p>
   </div>
   <div class="nh-layout" style="margin-top:0;height:calc(100vh - 200px)">
     <div class="nh-sidebar">
@@ -276,7 +276,7 @@
 
       })
       .catch(()=>{
-        nhList.innerHTML='<div style="padding:20px;color:rgba(237,232,222,0.4);font-size:13px;">Error loading neighborhoods. Please refresh.</div>';
+        nhList.innerHTML='<div style="padding:20px;color:rgba(237,232,222,0.78);font-size:13px;">Error loading neighborhoods. Please refresh.</div>';
       });
 
     // Search
