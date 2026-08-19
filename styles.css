@@ -122,6 +122,7 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
   font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   color: rgba(237,232,222,0.78); padding: 12px 0; }
 .mobile-sub a:hover, .mobile-sub a:focus-visible { color: #EDE8DE; }
+.mobile-group-trigger:focus-visible { outline: 1px solid #EDE8DE; outline-offset: 6px; }
 
 @media (max-width: 1250px) {
   .nav-links { display: none; }

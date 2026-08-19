@@ -63,6 +63,9 @@
     });
     group.addEventListener('mouseleave', function () {
       if (!isDesktop()) return;
+      // Don't yank the panel away from a keyboard user who has tabbed into it
+      // and happens to move the mouse off the group.
+      if (group.contains(document.activeElement)) return;
       open(false);
     });
 
@@ -101,8 +104,25 @@
     else fn();
   }
 
+  // The hamburger is the sole entry point to the mobile IA — six top-level items
+  // plus three groups — but carried no state. The open/close click handler stays
+  // in each page's inline script; this only keeps ARIA in step with it.
+  function wireToggle() {
+    var toggle = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
+    if (!menu.id) return;
+    toggle.setAttribute('aria-controls', menu.id);
+    toggle.setAttribute('aria-expanded', menu.classList.contains('active') ? 'true' : 'false');
+    if (!window.MutationObserver) return;
+    new MutationObserver(function () {
+      toggle.setAttribute('aria-expanded', menu.classList.contains('active') ? 'true' : 'false');
+    }).observe(menu, { attributes: true, attributeFilter: ['class'] });
+  }
+
   ready(function () {
     Array.prototype.forEach.call(document.querySelectorAll('[data-nav-group]'), setup);
+    wireToggle();
 
     // Reset group state when crossing the breakpoint, so a panel left open on
     // one layout cannot appear stuck in the other.
