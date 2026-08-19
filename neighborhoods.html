@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0B0A07">
   <title>Chicago & North Shore Neighborhoods | The Neistat Group</title>
   <meta name="description" content="Explore every Chicago neighborhood and North Shore suburb with The Neistat Group's interactive map.">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=11">
   <style>
     /* Desktop is a fixed map shell — the list scrolls inside .nh-list. Below the
        breakpoint the layout stacks and exceeds the viewport, so the page itself
@@ -86,6 +86,7 @@
       <a href="index.html" class="nav-link">Home</a>
       <a href="about.html" class="nav-link">About</a>
       <a href="marketing.html" class="nav-link">For Sellers</a>
+      <a href="selling-process.html" class="nav-link">Selling Process</a>
       <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
       <a href="calculator.html" class="nav-link">Calculators</a>
       <a href="vendors.html" class="nav-link">Vendors</a>
@@ -96,7 +97,7 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="marketing.html" class="mobile-menu-link">For Sellers</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="marketing.html" class="mobile-menu-link">For Sellers</a><a href="selling-process.html" class="mobile-menu-link">Selling Process</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </div>
@@ -302,7 +303,28 @@
       var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
       if(!dot||!ring)return;
       var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-      document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.remove('hidden');ring.classList.remove('hidden')});
+      // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
+    // background under the pointer and invert to carbon when it is light.
+    var lastEl=null,lastLight=false;
+    function bgIsLight(el){
+      while(el && el!==document.documentElement){
+        var m=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+        if(m && (m[3]===undefined || +m[3]>0.95))
+          return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
+        el=el.parentElement;
+      }
+      return false;
+    }
+    document.addEventListener('mousemove',function(e){
+      mx=e.clientX;my=e.clientY;
+      dot.classList.remove('hidden');ring.classList.remove('hidden');
+      var el=document.elementFromPoint(mx,my);
+      if(el!==lastEl){                       // only recompute when the element changes
+        lastEl=el; lastLight=bgIsLight(el);
+        dot.classList.toggle('on-light',lastLight);
+        ring.classList.toggle('on-light',lastLight);
+      }
+    });
       document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
       function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
       loop();
