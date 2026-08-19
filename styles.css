@@ -74,9 +74,7 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
 .mobile-menu-footer { margin-top: 40px; }
 .mobile-menu-footer a { font-size: 13px; color: rgba(237,232,222,0.6); }
 
-/* Raised from 1100px when the nav went to eight items: the row is nowrap, so it
-   would otherwise overflow on narrower laptops before the hamburger took over. */
-@media (max-width: 1250px) {
+@media (max-width: 1100px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
 }
@@ -527,10 +525,6 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 /* === TABS === */
 
 /* === NAV CTA === */
-
-/* === VENDOR LINKS IN STEPS === */
-.step-vendor-link { display: inline-block; margin-top: 12px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.5); text-decoration: none; font-family: -apple-system, sans-serif; border-bottom: 1px solid rgba(237,232,222,0.2); padding-bottom: 2px; transition: color 0.2s ease, border-color 0.2s ease; }
-.step-vendor-link:hover { color: #EDE8DE; border-bottom-color: rgba(237,232,222,0.6); }
 
 /* === INLINE CONTACT FORM === */
 .cta-form-section { background: #F4F0E8; padding: 100px 0; }
