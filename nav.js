@@ -12,7 +12,10 @@
 (function () {
   'use strict';
 
-  var DESKTOP = '(min-width: 1251px)'; // matches the nav breakpoint in styles.css
+  // The exact complement of the "max-width: 1250px" rule that hides .nav-links in
+  // styles.css. Using "min-width: 1251px" would leave fractional widths such as
+  // 1250.5px matching neither, where the desktop nav shows but hover never arms.
+  var DESKTOP = 'not all and (max-width: 1250px)';
 
   function isDesktop() {
     return window.matchMedia && window.matchMedia(DESKTOP).matches;
@@ -64,8 +67,12 @@
     });
 
     // Keyboard: opening on focus means tabbing to the trigger reveals the group.
+    // Escape returns focus to the trigger, which would otherwise re-fire this
+    // handler and immediately reopen what Escape just closed.
+    var suppressFocusOpen = false;
     trigger.addEventListener('focus', function () {
       if (!isDesktop()) return;
+      if (suppressFocusOpen) { suppressFocusOpen = false; return; }
       closeSiblings();
       open(true);
     });
@@ -78,8 +85,11 @@
 
     group.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+        suppressFocusOpen = true;
         open(false);
         trigger.focus();
+        // Clear the guard once the focus event has had its chance to fire.
+        setTimeout(function () { suppressFocusOpen = false; }, 0);
       }
     });
 

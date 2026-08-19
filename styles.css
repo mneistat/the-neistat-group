@@ -82,8 +82,10 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
    in step with aria-expanded for both pointer and keyboard. Nothing here opens a
    panel that the accessibility tree still reports as closed. */
 .nav-group { position: relative; display: flex; align-items: center; }
-.nav-group-trigger { font: inherit; background: none; border: 0; padding: 0; cursor: pointer;
-  display: inline-flex; align-items: center; gap: 7px; }
+.nav-group-trigger { background: none; border: 0; padding: 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px;
+  /* font-family only — the `font` shorthand would reset .nav-link's 11px/500. */
+  font-family: inherit; }
 /* Chevron drawn from borders — no icon font, no new asset. */
 .nav-group-trigger::after { content: ''; width: 5px; height: 5px; margin-top: -3px;
   border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
@@ -107,8 +109,9 @@ body:has(.cursor-dot) a, body:has(.cursor-dot) button { cursor: none; }
 /* Mobile: the same groups as click-only disclosures. No hover dependency. */
 .mobile-menu { overflow-y: auto; }
 .mobile-menu-inner { margin: auto; padding: 96px 24px 56px; }
-.mobile-group-trigger { font: inherit; background: none; border: 0; cursor: pointer;
-  display: inline-flex; align-items: center; gap: 12px; }
+.mobile-group-trigger { background: none; border: 0; padding: 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 12px; text-align: left;
+  /* No font reset: .mobile-menu-link already supplies Georgia 28px. */ }
 .mobile-group-trigger::after { content: ''; width: 7px; height: 7px; margin-top: -4px;
   border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
   transform: rotate(45deg); transition: transform 0.25s ease; }
