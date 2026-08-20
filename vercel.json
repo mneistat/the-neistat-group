@@ -4,6 +4,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/selling-process",
+      "destination": "/marketing",
+      "permanent": true
+    },
+    {
+      "source": "/selling-process.html",
+      "destination": "/marketing",
+      "permanent": true
+    },
+    {
       "source": "/search",
       "destination": "/contact?intent=buying-home",
       "permanent": true

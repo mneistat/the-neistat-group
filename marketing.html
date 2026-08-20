@@ -4,19 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
-  <title>How We Market Your Home | The Neistat Group</title>
-  <meta name="description" content="A proven 12-step marketing system that sells Chicago homes faster and for more money. Pre-market access through Top Agent Network, professional photography, video, drone, and targeted social advertising.">
-  <link rel="stylesheet" href="styles.css?v=11">
+  <title>For Sellers | The Neistat Group</title>
+  <meta name="description" content="The full selling process, start to finish — nine steps from first conversation to closing, and the twelve-part marketing system that runs inside them. Backed by $130M+ in Chicago sales.">
+  <link rel="stylesheet" href="styles.css?v=12">
+  <!-- styles.css hides .reveal and depends on JS to show it. With scripting off,
+       cancel the rule so the page is fully readable rather than blank. -->
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
   <style>
+    /* ===== FOR SELLERS — page-scoped.
+       This page merges what were two separate seller tabs: the nine-step selling
+       process (the chronological spine) and the twelve-part marketing system
+       (which is what actually happens inside steps 03, 04 and 05). They were
+       never two subjects — nine of the twelve marketing services are all one
+       step of the process — so they are now one page with one nav entry.
+
+       Colour tiers follow the sitewide system:
+         on carbon  PRIMARY #EDE8DE   BODY rgba(237,232,222,0.78)  META rgba(237,232,222,0.55)
+         on cream   PRIMARY #0B0A07   BODY rgba(11,10,7,0.78)      META rgba(11,10,7,0.62)
+
+       Headings ALWAYS declare their own colour. styles.css has a global
+       "h1, h2, h3 { color: #EDE8DE }" that beats inherited colour, so a heading
+       on a cream section without an explicit colour renders ivory-on-cream and
+       disappears. h4 is not in that global rule, but the service titles below
+       declare their colour anyway so adding h4 to it later cannot break them. ===== */
+
+    /* ---------- Hero ---------- */
     .mkt-hero { background: #0B0A07; padding: clamp(140px,18vw,200px) 48px clamp(48px,6vw,80px); }
     .mkt-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-bottom: 16px; display: block; }
     .mkt-heading { font-family: Georgia, serif; font-size: clamp(36px,5vw,64px); font-weight: 400; color: #EDE8DE; line-height: 1.08; margin-bottom: 20px; }
     .mkt-heading em { font-style: italic; }
-    .mkt-sub { font-size: 15px; color: rgba(237,232,222,0.55); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+    .mkt-sub { font-size: 15px; color: rgba(237,232,222,0.78); max-width: 620px; line-height: 1.7; margin-bottom: 32px; }
     .mkt-stats { display: flex; gap: 48px; }
-    .mkt-process-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,222,0.78); border-bottom: 1px solid rgba(237,232,222,0.28); padding-bottom: 5px; transition: color 0.25s ease, border-color 0.25s ease; }
-    .mkt-process-link:hover { color: #EDE8DE; border-color: #EDE8DE; }
-    .mkt-process-link:focus-visible { outline: 2px solid #EDE8DE; outline-offset: 4px; }
     .mkt-stat-num { font-family: Georgia, serif; font-size: 32px; color: #EDE8DE; }
     .mkt-stat-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-top: 4px; }
 
@@ -24,26 +42,130 @@
     .marketing-intro-quote { font-family: Georgia, serif; font-size: clamp(24px,3.5vw,36px); font-style: italic; color: #0B0A07; max-width: 600px; margin: 0 auto 24px; line-height: 1.4; }
     .marketing-intro-body { font-size: 15px; color: rgba(11,10,7,0.78); max-width: 580px; margin: 0 auto; line-height: 1.8; }
 
-    .steps-section { background: #0B0A07; padding: 20px 0; }
-    .step-row { display: grid; grid-template-columns: 120px 1fr; gap: 0 60px; padding: 48px 80px; border-bottom: 1px solid rgba(237,232,222,0.07); align-items: start; transition: background 0.2s ease; }
-    .step-row:hover { background: rgba(237,232,222,0.03); }
-    /* Ghosted process numeral. 64px counts as large text, so AA needs 3:1, not 4.5:1;
-       0.40 clears that while staying well below body copy (0.78) as a background device. */
-    .step-number { font-family: Georgia, serif; font-size: 64px; font-weight: 400; color: rgba(237,232,222,0.40); line-height: 1; padding-top: 4px; }
-    .step-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-bottom: 10px; }
-    .step-title { font-family: Georgia, serif; font-size: 26px; font-weight: 400; color: #EDE8DE; margin: 0 0 14px; line-height: 1.2; }
-    .step-desc { font-size: 15px; color: rgba(237,232,222,0.55); line-height: 1.8; max-width: 680px; }
+    /* ---------- Pull quotes between sections ---------- */
+    .sp-quote { background: #F4F0E8; padding: clamp(48px,6vw,64px) clamp(24px,6vw,48px); text-align: center; }
+    .sp-quote blockquote { font-family: Georgia, serif; font-size: clamp(18px,2.5vw,24px); font-style: italic; color: #0B0A07; max-width: 700px; margin: 0 auto 16px; line-height: 1.5; }
+    .sp-quote cite { font-size: 12px; color: rgba(11,10,7,0.62); font-style: normal; letter-spacing: 0.05em; }
 
+    /* ---------- Timeline ---------- */
+    .sp-timeline { background: #F4F0E8; padding: clamp(64px,8vw,110px) clamp(24px,6vw,48px); }
+    .sp-timeline-inner { max-width: 900px; margin: 0 auto;
+      /* Fixed column widths so the summary and panel indents can be computed
+         exactly, keeping them flush with the step title. */
+      --sp-gap: clamp(14px,2.2vw,26px); --sp-num-w: clamp(40px,4.8vw,58px); --sp-icon-w: 26px;
+      --sp-indent: calc(var(--sp-num-w) + var(--sp-icon-w) + var(--sp-gap) * 2); }
+    .sp-timeline-head { margin-bottom: clamp(40px,5vw,64px); }
+    .sp-timeline-eyebrow { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-bottom: 16px; display: block; }
+    .sp-timeline-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(28px,4vw,46px); line-height: 1.1; letter-spacing: -0.02em; color: #0B0A07; margin: 0 0 18px; }
+    .sp-timeline-h2 em { font-style: italic; }
+    .sp-timeline-intro { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.75; color: rgba(11,10,7,0.78); max-width: 56ch; margin: 0; }
+
+    .sp-step { border-top: 1px solid rgba(11,10,7,0.14); }
+    .sp-step:last-of-type { border-bottom: 1px solid rgba(11,10,7,0.14); }
+
+    /* Standard accordion semantics: <h3><button>. The button holds only phrasing
+       content, so its accessible name is just the number and the step title — the
+       summary sits outside it and is always visible, keeping the page skimmable. */
+    .sp-step-h { margin: 0; font-weight: 400; font-size: inherit; }
+    .sp-step-btn { display: grid; grid-template-columns: var(--sp-num-w) var(--sp-icon-w) 1fr auto; align-items: center; gap: var(--sp-gap);
+      width: 100%; text-align: left; background: none; border: 0; padding: clamp(26px,3.4vw,34px) 0 clamp(10px,1.2vw,14px); cursor: pointer;
+      font-family: inherit; color: inherit; }
+    .sp-step-num { font-family: Georgia, serif; font-size: clamp(26px,3.6vw,40px); font-weight: 400; line-height: 1; color: rgba(11,10,7,0.62); font-variant-numeric: tabular-nums; }
+    .sp-step-icon { width: 26px; height: 26px; flex-shrink: 0; color: rgba(11,10,7,0.62); }
+    .sp-step-icon svg { display: block; width: 100%; height: 100%; }
+    .sp-step-title { font-family: Georgia, serif; font-weight: 400; font-size: clamp(19px,2.3vw,26px); line-height: 1.25; letter-spacing: -0.012em; color: #0B0A07; }
+    /* Aligned under the title: number column + icon column + both gaps. */
+    .sp-step-summary { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.7; color: rgba(11,10,7,0.78); margin: 0 0 clamp(26px,3.4vw,34px); max-width: 58ch; padding-left: var(--sp-indent); }
+
+    /* Steps carrying marketing detail get a quiet count, so a visitor can see
+       there is something behind the "+" without opening every step. */
+    .sp-step-tally { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(11,10,7,0.62); display: block; margin-top: 8px; }
+
+    /* "+" affordance — rotates to an "x" when open. */
+    .sp-step-plus { position: relative; width: 26px; height: 26px; flex-shrink: 0; border: 1px solid rgba(11,10,7,0.28); border-radius: 50%; transition: border-color 0.25s ease, background 0.25s ease, transform 0.3s ease; }
+    .sp-step-plus::before, .sp-step-plus::after { content: ''; position: absolute; top: 50%; left: 50%; background: rgba(11,10,7,0.7); transition: background 0.25s ease, opacity 0.25s ease; }
+    .sp-step-plus::before { width: 10px; height: 1px; transform: translate(-50%,-50%); }
+    .sp-step-plus::after { width: 1px; height: 10px; transform: translate(-50%,-50%); }
+    .sp-step-btn:hover .sp-step-plus { border-color: rgba(11,10,7,0.55); background: rgba(11,10,7,0.04); }
+    .sp-step-btn[aria-expanded="true"] .sp-step-plus { transform: rotate(135deg); border-color: rgba(11,10,7,0.55); }
+    .sp-step-btn:focus-visible { outline: 2px solid #0B0A07; outline-offset: 4px; }
+
+    /* Panel. [hidden] keeps it out of the a11y tree and out of the tab order when closed. */
+    .sp-step-panel[hidden] { display: none; }
+    .sp-step-panel { padding: 0 0 clamp(26px,3.4vw,38px); }
+    .sp-step-panel-inner { padding-left: var(--sp-indent); }
+    .sp-detail-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin: 0 0 14px; }
+    .sp-detail-list { list-style: none; margin: 0; padding: 0; column-gap: 40px; }
+    .sp-detail-list li { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.6; color: rgba(11,10,7,0.78); padding: 7px 0 7px 20px; position: relative; break-inside: avoid; }
+    .sp-detail-list li::before { content: ''; position: absolute; left: 0; top: 15px; width: 8px; height: 1px; background: rgba(11,10,7,0.42); }
+
+    /* ---------- Marketing services, nested inside the process steps ----------
+       These are the former "12 steps" of the marketing page. They are not a
+       parallel process — each one belongs to a step of the sale, which is why
+       they live in the panels rather than in a section of their own. */
+    .sp-services { margin-top: 30px; padding-top: 26px; border-top: 1px solid rgba(11,10,7,0.14); }
+    .sp-services-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin: 0 0 18px; }
+    .sp-services-label + .sp-service { margin-top: 0; }
+    .sp-services-label.sp-group-next { margin-top: 34px; padding-top: 22px; border-top: 1px solid rgba(11,10,7,0.10); }
+    .sp-service { margin-top: 24px; }
+    /* h4 is outside the global "h1, h2, h3" colour rule, but declare the colour
+       anyway — this sits on cream, and an inherited ivory would be invisible. */
+    .sp-service-title { font-family: Georgia, serif; font-weight: 400; font-size: clamp(16px,1.8vw,19px); line-height: 1.3; color: #0B0A07; margin: 0 0 8px; }
+    .sp-service-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.7; color: rgba(11,10,7,0.78); margin: 0; max-width: 62ch; }
+    .sp-service-means { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; font-style: italic; line-height: 1.6; color: rgba(11,10,7,0.78); margin: 10px 0 0; padding-left: 14px; border-left: 1px solid rgba(11,10,7,0.28); max-width: 58ch; }
+    /* Vendor links sit on cream here, so they take the carbon tier. The old
+       ivory .step-vendor-link rule went with the dark step rows it was built for. */
+    .sp-service-link { display: inline-block; margin-top: 10px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.78); border-bottom: 1px solid rgba(11,10,7,0.28); padding-bottom: 3px; transition: color 0.2s ease, border-color 0.2s ease; }
+    .sp-service-link:hover { color: #0B0A07; border-bottom-color: #0B0A07; }
+    .sp-service-link:focus-visible { outline: 2px solid #0B0A07; outline-offset: 3px; }
+    .sp-service-also { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(11,10,7,0.62); margin: 26px 0 0; padding-top: 18px; border-top: 1px solid rgba(11,10,7,0.10); }
+
+    /* ---------- Preparation checklist ---------- */
+    .sp-check { background: #EDE8DE; padding: clamp(64px,8vw,110px) clamp(24px,6vw,48px); border-top: 1px solid rgba(11,10,7,0.10); }
+    .sp-check-inner { max-width: 1000px; margin: 0 auto; }
+    .sp-check-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(28px,3.8vw,44px); line-height: 1.1; letter-spacing: -0.02em; color: #0B0A07; margin: 0 0 18px; }
+    .sp-check-h2 em { font-style: italic; }
+    .sp-check-copy { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.75; color: rgba(11,10,7,0.78); max-width: 56ch; margin: 0 0 34px; }
+
+    /* Progress + controls */
+    .sp-check-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; padding: 0 0 26px; border-bottom: 1px solid rgba(11,10,7,0.14); margin-bottom: 8px; }
+    .sp-check-count { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin: 0; }
+    .sp-check-track { flex: 1 1 200px; height: 2px; background: rgba(11,10,7,0.14); position: relative; overflow: hidden; }
+    .sp-check-fill { position: absolute; inset: 0 auto 0 0; width: 0%; background: #0B0A07; transition: width 0.35s ease; }
+    .sp-check-actions { display: flex; gap: 10px; }
+    .sp-check-btn { background: none; border: 1px solid rgba(11,10,7,0.28); border-radius: 2px; padding: 9px 16px; cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(11,10,7,0.78);
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+    .sp-check-btn:hover { background: #0B0A07; border-color: #0B0A07; color: #EDE8DE; }
+    .sp-check-btn:focus-visible { outline: 2px solid #0B0A07; outline-offset: 3px; }
+
+    .sp-check-groups { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(28px,3.4vw,52px); margin-top: 34px; }
+    .sp-check-group { border: 0; padding: 0; margin: 0; min-width: 0; }
+    .sp-check-legend { padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-bottom: 6px; }
+    .sp-check-groupname { font-family: Georgia, serif; font-size: clamp(17px,1.9vw,21px); line-height: 1.3; color: #0B0A07; margin: 0 0 16px; }
+    .sp-check-item { display: flex; align-items: flex-start; gap: 12px; padding: 9px 0; cursor: pointer; }
+    .sp-check-item input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .sp-check-box { flex-shrink: 0; width: 17px; height: 17px; margin-top: 2px; border: 1px solid rgba(11,10,7,0.38); border-radius: 2px; position: relative; transition: background 0.18s ease, border-color 0.18s ease; }
+    .sp-check-box::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid #EDE8DE; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg) scale(0); transition: transform 0.18s ease; }
+    .sp-check-item:hover .sp-check-box { border-color: #0B0A07; }
+    .sp-check-item input:checked + .sp-check-box { background: #0B0A07; border-color: #0B0A07; }
+    .sp-check-item input:checked + .sp-check-box::after { transform: rotate(45deg) scale(1); }
+    .sp-check-item input:focus-visible + .sp-check-box { outline: 2px solid #0B0A07; outline-offset: 3px; }
+    .sp-check-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.55; color: rgba(11,10,7,0.78); transition: color 0.18s ease; }
+    /* Completed items recede, but the strike-through carries the meaning — the colour
+       must stay above the AA floor, so this sits at the META tier, not below it. */
+    .sp-check-item input:checked ~ .sp-check-text { color: rgba(11,10,7,0.62); text-decoration: line-through; }
+
+    .sp-check-note { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; line-height: 1.65; color: rgba(11,10,7,0.62); margin: 34px 0 0; padding-top: 22px; border-top: 1px solid rgba(11,10,7,0.14); max-width: 62ch; }
+
+    /* ---------- Results band ---------- */
     .results-band { background: #F4F0E8; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(11,10,7,0.08); border-bottom: 1px solid rgba(11,10,7,0.08); }
     .results-stat { padding: 36px; text-align: center; border-right: 1px solid rgba(11,10,7,0.08); }
     .results-stat:last-child { border-right: none; }
     .results-num { font-family: Georgia, serif; font-size: 32px; color: #0B0A07; }
     .results-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-top: 6px; }
 
-    .pull-quote { background: #0B0A07; padding: 80px 48px; text-align: center; }
-    .pull-quote blockquote { font-family: Georgia, serif; font-size: clamp(22px,3vw,28px); font-style: italic; color: #EDE8DE; max-width: 700px; margin: 0 auto 20px; line-height: 1.5; }
-    .pull-quote cite { font-size: 13px; color: rgba(237,232,222,0.45); font-style: normal; letter-spacing: 0.05em; }
-
+    /* ---------- Closing CTA ---------- */
     .mkt-cta { background: #F4F0E8; padding: 64px 48px; text-align: center; }
     .mkt-cta-heading { font-family: Georgia, serif; font-size: clamp(24px,3.5vw,36px); color: #0B0A07; margin-bottom: 12px; }
     .mkt-cta-sub { font-size: 15px; color: rgba(11,10,7,0.78); margin-bottom: 32px; }
@@ -53,34 +175,78 @@
     .mkt-btn-ghost { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: #0B0A07; border: 1px solid rgba(11,10,7,0.2); padding: 14px 32px; border-radius: 3px; text-decoration: none; transition: all 0.2s; }
     .mkt-btn-ghost:hover { border-color: #0B0A07; }
 
+    /* ---------- Mobile ---------- */
+    @media (max-width: 900px) {
+      .sp-check-groups { grid-template-columns: 1fr; gap: 34px; }
+    }
     @media (max-width: 768px) {
-      .step-row { grid-template-columns: 1fr; padding: 36px 24px; gap: 8px; }
-      .step-number { font-size: 40px; }
       .results-band { grid-template-columns: 1fr 1fr; }
       .results-stat { border-bottom: 1px solid rgba(11,10,7,0.08); }
       .mkt-stats { flex-direction: column; gap: 20px; }
       .mkt-hero { padding: clamp(120px,16vw,180px) 28px 40px; }
     }
+    @media (max-width: 640px) {
+      .sp-step-btn { grid-template-columns: var(--sp-num-w) 1fr auto; gap: 14px; }
+      /* Icon is decorative; drop it rather than crowd the title. */
+      .sp-step-icon { display: none; }
+      .sp-timeline-inner { --sp-indent: calc(var(--sp-num-w) + 14px); }
+      .sp-detail-list { columns: 1 !important; }
+    }
+
+    /* ---------- Cursor fail-safe ----------
+       styles.css hides the native pointer on any page containing .cursor-dot.
+       If the custom cursor never starts — script blocked, an early throw, or
+       requestAnimationFrame paused — that leaves no pointer at all. Keep the
+       native one until the loop confirms it is actually running. */
+    body:not(.sp-cursor-live) { cursor: auto !important; }
+    body:not(.sp-cursor-live) a,
+    body:not(.sp-cursor-live) button,
+    body:not(.sp-cursor-live) label,
+    body:not(.sp-cursor-live) input { cursor: pointer !important; }
+
+    /* ---------- Print: the checklist is the handout ---------- */
+    @media print {
+      .nav, .mobile-menu, .footer, .cursor-dot, .cursor-ring,
+      .mkt-hero, .mkt-proof, .marketing-intro, .mkt-results, .sp-quote,
+      .sp-timeline, .results-band, .mkt-cta { display: none !important; }
+      .sp-check { background: #fff; padding: 0; border: 0; }
+      .sp-check-bar, .sp-check-actions { display: none !important; }
+      .sp-check-h2, .sp-check-groupname { color: #000; }
+      .sp-check-copy, .sp-check-text, .sp-check-note, .sp-check-legend { color: #222; }
+      .sp-check-groups { display: block; }
+      .sp-check-group { break-inside: avoid; margin-bottom: 20px; }
+      .sp-check-box { border-color: #000; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      @page { margin: 18mm; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sp-step-plus, .sp-step-btn[aria-expanded="true"] .sp-step-plus { transition: none; transform: none; }
+      .sp-step-btn[aria-expanded="true"] .sp-step-plus::after { opacity: 0; }
+      /* styles.css sets ".reveal { opacity: 0 }" globally and relies on JS to undo it.
+         Cancel that here so reduced-motion users see the page even if the script
+         never runs. Content visible, no animation. */
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
   </style>
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<meta property="og:title" content="The Neistat Group | Chicago Real Estate">
-<meta property="og:description" content="Chicago real estate strategy backed by $130M+ in sales, 14+ years of experience, and CAR Top 10% recognition.">
-<meta property="og:url" content="https://www.theneistatgroup.com">
 <!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
-<!-- Twitter / X Card -->
-<meta name="twitter:site" content="@mattneistat">
-<!-- Mobile / Twitter card image -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
-<meta name="twitter:image:alt" content="The Neistat Group — People First. Always. Chicago Real Estate.">
-<!-- iMessage / mobile share image -->
+<meta property="og:title" content="For Sellers | The Neistat Group">
+<meta property="og:description" content="The full selling process, start to finish — nine steps from first conversation to closing, and the marketing system that runs inside them.">
+<meta property="og:url" content="https://www.theneistatgroup.com/marketing">
 <meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
 <meta property="og:image:width" content="828">
 <meta property="og:image:height" content="1792">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mattneistat">
+<meta name="twitter:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
+<meta name="twitter:image:alt" content="The Neistat Group — People First. Always. Chicago Real Estate.">
 </head>
 <body>
   <div class="cursor-dot hidden" id="cursorDot"></div>
@@ -92,7 +258,6 @@
       <a href="index.html" class="nav-link">Home</a>
       <a href="about.html" class="nav-link">About</a>
       <a href="marketing.html" class="nav-link">For Sellers</a>
-      <a href="selling-process.html" class="nav-link">Selling Process</a>
       <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
       <a href="calculator.html" class="nav-link">Calculators</a>
       <a href="vendors.html" class="nav-link">Vendors</a>
@@ -103,7 +268,7 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="marketing.html" class="mobile-menu-link">For Sellers</a><a href="selling-process.html" class="mobile-menu-link">Selling Process</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="index.html" class="mobile-menu-link">Home</a><a href="about.html" class="mobile-menu-link">About</a><a href="marketing.html" class="mobile-menu-link">For Sellers</a><a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a><a href="calculator.html" class="mobile-menu-link">Calculators</a><a href="vendors.html" class="mobile-menu-link">Vendors</a><a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
   </div>
@@ -112,16 +277,15 @@
   <section class="mkt-hero">
     <span class="mkt-label">For Sellers</span>
     <h1 class="mkt-heading">How We Sell <em>Differently</em></h1>
-    <p class="mkt-sub">A proven 12-step system that sells homes faster and for more money than the market average. Backed by $130M+ in sales and 14+ years in Chicago real estate.</p>
+    <p class="mkt-sub">Nine steps from the first conversation to closing — and a twelve-part marketing system that runs inside them. Every listing gets the whole thing. Backed by $130M+ in sales and 14+ years in Chicago real estate.</p>
     <div class="mkt-stats">
       <div><div class="mkt-stat-num">$130M+</div><div class="mkt-stat-label">in sales</div></div>
       <div><div class="mkt-stat-num">Top 10%</div><div class="mkt-stat-label">CAR producer</div></div>
     </div>
-    <a class="mkt-process-link" href="selling-process.html">Explore the Selling Process <span aria-hidden="true">&rarr;</span></a>
   </section>
 
   <!-- Proof Bar -->
-  <div style="background:#0B0A07;padding:20px 48px;border-top:1px solid rgba(237,232,222,0.06);border-bottom:1px solid rgba(237,232,222,0.06);text-align:center;">
+  <div class="mkt-proof" style="background:#0B0A07;padding:20px 48px;border-top:1px solid rgba(237,232,222,0.06);border-bottom:1px solid rgba(237,232,222,0.06);text-align:center;">
     <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(237,232,222,0.55);">Our work has been featured in: &nbsp;&nbsp; CRAIN'S CHICAGO BUSINESS &nbsp;·&nbsp; COSTAR NEWS &nbsp;·&nbsp; CHICAGO AGENT MAGAZINE</span>
   </div>
 
@@ -131,8 +295,8 @@
     <p class="marketing-intro-body">Every listing gets the full system — not a scaled-down version based on price point. From the $500K condo to the $9.5M commercial deconversion, the process is the same. That's why the results are consistent.</p>
   </div>
 
-  <!-- Results Section -->
-  <section style="background:#0B0A07;padding:80px 48px;">
+  <!-- Results -->
+  <section class="mkt-results" style="background:#0B0A07;padding:80px 48px;">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="margin-bottom:48px;" class="reveal">
         <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(237,232,222,0.55);display:block;margin-bottom:12px;">Track Record</span>
@@ -160,43 +324,444 @@
     </div>
   </section>
 
-  <!-- 12 Steps -->
-  <section class="steps-section">
-    <div class="step-row reveal" style="background:#0B0A07;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">01</div><div class="step-content"><div class="step-tag">Foundation</div><h2 class="step-title">Pricing Strategy</h2><p class="step-desc">A comprehensive comparative market analysis — not just what similar homes sold for, but why. We price to generate competition, not just interest. The right price on day one is the difference between multiple offers and a price reduction.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Your home enters the market positioned to attract multiple offers — not sit and stale.</p></div></div>
+  <!-- Testimonial break -->
+  <div class="sp-quote reveal">
+    <blockquote>"Matt worked with me to market and sell all the properties faster than I expected... I would recommend Matt for this type of transaction all day long."</blockquote>
+    <cite>— Kevin Werner, Co-Founder &amp; CEO, Renovo Financial</cite>
+  </div>
 
-    <div class="step-row reveal" style="background:#111109;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">02</div><div class="step-content"><div class="step-tag">Preparation</div><h2 class="step-title">Pre-Market Preparation</h2><p class="step-desc">A detailed walkthrough with specific recommendations — what to fix, what to stage, what to leave alone. We connect you with trusted vendors for any work needed. Buyers pay a premium for homes that feel move-in ready.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Every dollar you spend preparing returns 3-5x at closing.</p></div></div>
+  <!-- ===== PROCESS TIMELINE =====
+       The spine of the page. Steps 03, 04 and 05 carry the marketing system in
+       their panels: pricing under Position & Price, prep and staging under
+       Prepare the Property, and the nine content, network and launch services
+       under Launch & Market — which is where they actually happen. -->
+  <section class="sp-timeline" aria-labelledby="sp-timeline-heading">
+    <div class="sp-timeline-inner">
+      <div class="sp-timeline-head reveal">
+        <span class="sp-timeline-eyebrow">Nine Steps</span>
+        <h2 class="sp-timeline-h2" id="sp-timeline-heading">From first conversation to <em>closing.</em></h2>
+        <p class="sp-timeline-intro">Every sale follows the same arc. Knowing the shape of it in advance is what keeps the process calm. Select any step to see what it involves — including exactly what we produce and where your home gets marketed.</p>
+      </div>
 
-    <!-- Testimonial break -->
-    <div style="background:#F4F0E8;padding:56px 48px;text-align:center;" class="reveal">
-      <blockquote style="font-family:Georgia,serif;font-size:clamp(18px,2.5vw,24px);font-style:italic;color:#0B0A07;max-width:700px;margin:0 auto 16px;line-height:1.5;">"Matt worked with me to market and sell all the properties faster than I expected... I would recommend Matt for this type of transaction all day long."</blockquote>
-      <cite style="font-size:12px;color:rgba(11,10,7,0.62);font-style:normal;letter-spacing:0.05em;">— Kevin Werner, Co-Founder & CEO, Renovo Financial</cite>
+      <!-- 01 -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-1" id="sp-btn-1">
+            <span class="sp-step-num">01</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></span>
+            <span class="sp-step-title">Define the Goal</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Establish what a successful sale actually looks like for you — timing, relocation plans, and financial objectives.</p>
+        <div class="sp-step-panel" id="sp-panel-1" aria-labelledby="sp-btn-1" hidden>
+          <div class="sp-step-panel-inner">
+            <p class="sp-detail-label">What we cover</p>
+            <ul class="sp-detail-list">
+              <li>Time constraints</li>
+              <li>Relocation</li>
+              <li>Financial goals</li>
+              <li>Other goals</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-2" id="sp-btn-2">
+            <span class="sp-step-num">02</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 20h18"/><path d="M6 20V11"/><path d="M11 20V6"/><path d="M16 20v-6"/><path d="M21 20V9"/></svg></span>
+            <span class="sp-step-title">Understand the Property &amp; Market</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Review the property's condition alongside current competition, recent comparable sales, absorption, and how buyers are behaving right now.</p>
+        <div class="sp-step-panel" id="sp-panel-2" aria-labelledby="sp-btn-2" hidden>
+          <div class="sp-step-panel-inner">
+            <p class="sp-detail-label">What we cover</p>
+            <ul class="sp-detail-list">
+              <li>Competing properties currently for sale</li>
+              <li>Competing properties recently sold</li>
+              <li>Subject property condition</li>
+              <li>Absorption rate</li>
+              <li>Odds of selling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 — carries the pricing service -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-3" id="sp-btn-3">
+            <span class="sp-step-num">03</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 4v16"/><path d="M8 20h8"/><path d="M4 8h16"/><path d="M4 8l-2.5 5.5a3.5 3.5 0 005 0z"/><path d="M20 8l2.5 5.5a3.5 3.5 0 01-5 0z"/></svg></span>
+            <span class="sp-step-title">Position &amp; Price</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Determine how the property should be positioned in the market and set an asking-price strategy built on the property, the competition, recent sales, and current demand.<span class="sp-step-tally">Includes 1 service</span></p>
+        <div class="sp-step-panel" id="sp-panel-3" aria-labelledby="sp-btn-3" hidden>
+          <div class="sp-step-panel-inner">
+            <p class="sp-detail-label">What we cover</p>
+            <ul class="sp-detail-list">
+              <li>Market positioning</li>
+              <li>Asking-price strategy</li>
+              <li>Comparable recent sales</li>
+              <li>Current competition</li>
+              <li>Present level of demand</li>
+            </ul>
+            <div class="sp-services">
+              <p class="sp-services-label">What we do</p>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Pricing Strategy</h4>
+                <p class="sp-service-desc">A comprehensive comparative market analysis — not just what similar homes sold for, but why. We price to generate competition, not just interest. The right price on day one is the difference between multiple offers and a price reduction.</p>
+                <p class="sp-service-means">What this means: Your home enters the market positioned to attract multiple offers — not sit and stale.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 — deliberately AFTER Position & Price: preparation serves the strategy.
+           Carries the prep and staging services. -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-4" id="sp-btn-4">
+            <span class="sp-step-num">04</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 10.5L12 4l9 6.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/></svg></span>
+            <span class="sp-step-title">Prepare the Property</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Identify the repairs, improvements, staging, and cosmetic work that improve presentation and support the positioning strategy already set.<span class="sp-step-tally">Includes 2 services</span></p>
+        <div class="sp-step-panel" id="sp-panel-4" aria-labelledby="sp-btn-4" hidden>
+          <div class="sp-step-panel-inner">
+            <p class="sp-detail-label">What we cover</p>
+            <ul class="sp-detail-list">
+              <li>Necessary repairs and improvements</li>
+              <li>Staging</li>
+              <li>De-clutter</li>
+              <li>De-personalize</li>
+              <li>Cosmetic interior enhancements</li>
+              <li>Cosmetic exterior enhancements</li>
+            </ul>
+            <div class="sp-services">
+              <p class="sp-services-label">What we do</p>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Pre-Market Preparation</h4>
+                <p class="sp-service-desc">A detailed walkthrough with specific recommendations — what to fix, what to stage, what to leave alone. We connect you with trusted vendors for any work needed. Buyers pay a premium for homes that feel move-in ready.</p>
+                <p class="sp-service-means">What this means: Every dollar you spend preparing returns 3-5x at closing.</p>
+              </div>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Staging Consultation</h4>
+                <p class="sp-service-desc">Professional staging guidance on every listing. We work with your existing furniture or bring in pieces that photograph and show beautifully. First impressions are made in 8 seconds — online and in person.</p>
+                <p class="sp-service-means">What this means: Your home photographs like a magazine spread.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 — the marketing system. Nine of the twelve services live here, which
+           is precisely why this page and the old marketing page were one subject. -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-5" id="sp-btn-5">
+            <span class="sp-step-num">05</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 9v6h4l6 4V5L8 9z"/><path d="M17.5 9.5a4 4 0 010 5"/><path d="M20 7a7.5 7.5 0 010 10"/></svg></span>
+            <span class="sp-step-title">Launch &amp; Market</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Take the property to market across the appropriate channels, from private listing networks and the MLS through digital, social, and direct outreach.<span class="sp-step-tally">Includes 9 services</span></p>
+        <div class="sp-step-panel" id="sp-panel-5" aria-labelledby="sp-btn-5" hidden>
+          <div class="sp-step-panel-inner">
+            <div class="sp-services" style="margin-top:0;padding-top:0;border-top:0;">
+              <p class="sp-services-label">Content we produce</p>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Editorial Photography</h4>
+                <p class="sp-service-desc">Professional photography on every listing, no exceptions. We work exclusively with Chicago RE Photography — specialists in architectural and real estate imagery whose work consistently elevates listings above the competition. 95% of buyers start their search online. Your photos are your first showing, and they need to stop the scroll.</p>
+                <a href="https://www.instagram.com/chicagorephotography/" target="_blank" rel="noopener" class="sp-service-link">View their work &rarr;</a>
+                <p class="sp-service-means">What this means: Your listing stops the scroll on every platform.</p>
+              </div>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Cinematic Video</h4>
+                <p class="sp-service-desc">A listing video that tells the story of the home — not just a walkthrough. Shot and edited to the same standard as the marketing materials. Used across social media, email, and digital advertising.</p>
+                <p class="sp-service-means">What this means: Your home has a story buyers can share.</p>
+              </div>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Drone Photography &amp; Aerial Video</h4>
+                <p class="sp-service-desc">Aerial perspective gives buyers context no ground-level photo can — the neighborhood, proximity to the lakefront, the scale of the property. Essential for single-family homes, multi-units, and anything with outdoor space.</p>
+                <p class="sp-service-means">What this means: Buyers see the full picture — not just four walls.</p>
+              </div>
+              <div class="sp-service">
+                <h4 class="sp-service-title">3D Virtual Tour</h4>
+                <p class="sp-service-desc">A Matterport 3D walkthrough lets qualified buyers experience the home from anywhere in the world. We use ViewMySpace for all virtual tours — delivering interactive floor plans and immersive walkthroughs that let serious buyers fall in love before they ever step inside. Out-of-town buyers, relocations, investors — this turns remote interest into real offers.</p>
+                <a href="https://www.viewmyspace.com/" target="_blank" rel="noopener" class="sp-service-link">See an example tour &rarr;</a>
+                <p class="sp-service-means">What this means: Serious buyers show up ready to make an offer.</p>
+              </div>
+
+              <p class="sp-services-label sp-group-next">Pre-market exposure</p>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Top Agent Network — Exclusive Pre-Market Access</h4>
+                <p class="sp-service-desc">Before your home ever hits the MLS, it goes to the Top Agent Network — an invitation-only private listing network of the top 10% of brokers in Illinois, ranked by production. These are the agents with the most active, qualified buyers. A pre-market sale means no days on market, no open houses, and often a premium price.</p>
+                <p class="sp-service-means">What this means: Your home may sell before anyone else even knows it's available.</p>
+              </div>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Jameson Network &amp; Broker Relationships</h4>
+                <p class="sp-service-desc">Jameson Sotheby's has over 400 agents across Chicago and the North Shore — all of whom receive direct outreach before your listing launches publicly. Combined with Matthew's personal relationships with top producing brokers across the city, your home gets in front of the right people before anyone else.</p>
+                <p class="sp-service-means">What this means: 400+ agents know about your home before it hits Zillow.</p>
+              </div>
+
+              <p class="sp-services-label sp-group-next">Public launch</p>
+              <div class="sp-service">
+                <h4 class="sp-service-title">MLS Launch &amp; Digital Syndication</h4>
+                <p class="sp-service-desc">Strategic MLS timing — Thursday or Friday launch to maximize first-weekend traffic. Instant syndication to the Sotheby's International Realty website, Zillow, Realtor.com, Redfin, Homes.com, and 100+ real estate portals nationwide. Every buyer searching in your price range and neighborhood sees your listing.</p>
+                <p class="sp-service-means">What this means: Maximum eyeballs in the first 72 hours — when it matters most.</p>
+              </div>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Instagram &amp; Targeted Social Advertising</h4>
+                <p class="sp-service-desc">Paid advertising on Instagram and Facebook targeted by location, income, age, and buying behavior. We reach buyers who are actively looking in your neighborhood and price range — not just people who happen to scroll past.</p>
+                <p class="sp-service-means">What this means: Your listing finds buyers — not the other way around.</p>
+              </div>
+              <div class="sp-service">
+                <h4 class="sp-service-title">Email Campaign &amp; Buyer Network</h4>
+                <p class="sp-service-desc">Direct email outreach to Matthew's active buyer network — buyers currently working with him who are searching in your price range. This is warm, qualified traffic that no portal can deliver.</p>
+                <p class="sp-service-means">What this means: Your home reaches people who are ready to buy — today.</p>
+              </div>
+
+              <p class="sp-service-also">Also part of the launch: direct mail campaigns and open houses, scheduled to suit the property and your circumstances.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-6" id="sp-btn-6">
+            <span class="sp-step-num">06</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+            <span class="sp-step-title">Showings &amp; Feedback</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Coordinate qualified buyer showings, gather feedback, monitor how the market is responding, and keep you updated throughout.</p>
+        <div class="sp-step-panel" id="sp-panel-6" aria-labelledby="sp-btn-6" hidden>
+          <div class="sp-step-panel-inner">
+            <p class="sp-detail-label">What we cover</p>
+            <ul class="sp-detail-list">
+              <li>Showing feedback</li>
+              <li>Weekly updates</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-7" id="sp-btn-7">
+            <span class="sp-step-num">07</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 4v16"/><path d="M5 8h14"/><path d="M8 8L5 15h6z"/><path d="M16 8l-3 7h6z"/></svg></span>
+            <span class="sp-step-title">Offer &amp; Negotiation</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Evaluate offers on more than price — terms, buyer strength, and contingencies — and negotiate toward the strongest overall outcome.</p>
+        <div class="sp-step-panel" id="sp-panel-7" aria-labelledby="sp-btn-7" hidden>
+          <div class="sp-step-panel-inner">
+            <p class="sp-detail-label">What we cover</p>
+            <ul class="sp-detail-list">
+              <li>Offer to purchase</li>
+              <li>Counteroffers</li>
+              <li>Negotiation</li>
+              <li>Offer accepted</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-8" id="sp-btn-8">
+            <span class="sp-step-num">08</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6"/><path d="M9 16h6"/></svg></span>
+            <span class="sp-step-title">Contract &amp; Contingencies</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Guide the transaction through attorney review, inspection, earnest money, appraisal, financing, and the other contractual contingencies.</p>
+        <div class="sp-step-panel" id="sp-panel-8" aria-labelledby="sp-btn-8" hidden>
+          <div class="sp-step-panel-inner">
+            <p class="sp-detail-label">What we cover</p>
+            <ul class="sp-detail-list sp-detail-cols">
+              <li>Attorney review</li>
+              <li>Inspection</li>
+              <li>Initial earnest money</li>
+              <li>Balance earnest money</li>
+              <li>Financing</li>
+              <li>Appraisal</li>
+              <li>Inspection-item resolution</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 09 -->
+      <div class="sp-step reveal">
+        <h3 class="sp-step-h">
+          <button class="sp-step-btn" type="button" aria-expanded="false" aria-controls="sp-panel-9" id="sp-btn-9">
+            <span class="sp-step-num">09</span>
+            <span class="sp-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
+            <span class="sp-step-title">Closing</span>
+            <span class="sp-step-plus" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <p class="sp-step-summary">Coordinate the final walkthrough, remaining documentation, move logistics, recording, disbursement, and your proceeds.</p>
+        <div class="sp-step-panel" id="sp-panel-9" aria-labelledby="sp-btn-9" hidden>
+          <div class="sp-step-panel-inner">
+            <p class="sp-detail-label">What we cover</p>
+            <ul class="sp-detail-list sp-detail-cols">
+              <li>Final walkthrough</li>
+              <li>Seller documentation</li>
+              <li>Buyer and mortgage documentation</li>
+              <li>Recording</li>
+              <li>Seller paid</li>
+              <li>Final clean, movers, and utilities</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="step-row reveal" style="background:#0B0A07;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">03</div><div class="step-content"><div class="step-tag">Preparation</div><h2 class="step-title">Staging Consultation</h2><p class="step-desc">Professional staging guidance on every listing. We work with your existing furniture or bring in pieces that photograph and show beautifully. First impressions are made in 8 seconds — online and in person.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Your home photographs like a magazine spread.</p></div></div>
+  <!-- Testimonial break -->
+  <div class="sp-quote reveal" style="border-top:1px solid rgba(11,10,7,0.10);">
+    <blockquote>"Matt sold four 3-flats in Tri-Taylor for me in two weeks. One broke a sales record. Matt's numbers are true-to-market and realistic. He took his time to get to the right price. I definitely would work with Matt again."</blockquote>
+    <cite>— Linda Schafer, Private Investor, Tri-Taylor Portfolio</cite>
+  </div>
 
-    <div class="step-row reveal" style="background:#111109;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">04</div><div class="step-content"><div class="step-tag">Content</div><h2 class="step-title">Editorial Photography</h2><p class="step-desc">Professional photography on every listing, no exceptions. We work exclusively with Chicago RE Photography — specialists in architectural and real estate imagery whose work consistently elevates listings above the competition. 95% of buyers start their search online. Your photos are your first showing, and they need to stop the scroll.</p><a href="https://www.instagram.com/chicagorephotography/" target="_blank" class="step-vendor-link">View their work →</a><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Your listing stops the scroll on every platform.</p></div></div>
+  <!-- ===== PREPARATION CHECKLIST =====
+       Every item below is drawn from the nine-step process above — steps 01, 04
+       and 09, which are the stages the SELLER acts on. Steps 05-08 (marketing,
+       showings, negotiation, contract) are the broker's work and deliberately do
+       not appear here as client tasks.
+       Progress is stored in the visitor's own browser only; nothing is transmitted. -->
+  <section class="sp-check" aria-labelledby="sp-check-heading" id="checklist">
+    <div class="sp-check-inner">
+      <div class="reveal">
+        <span class="sp-timeline-eyebrow">Your Preparation Checklist</span>
+        <h2 class="sp-check-h2" id="sp-check-heading">What you can start on <em>now.</em></h2>
+        <p class="sp-check-copy">The parts of the process you control, pulled out of the nine steps above. Tick items off as you go — your progress is saved in this browser, so it will be here when you come back.</p>
 
-    <div class="step-row reveal" style="background:#0B0A07;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">05</div><div class="step-content"><div class="step-tag">Content</div><h2 class="step-title">Cinematic Video</h2><p class="step-desc">A listing video that tells the story of the home — not just a walkthrough. Shot and edited to the same standard as the marketing materials. Used across social media, email, and digital advertising.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Your home has a story buyers can share.</p></div></div>
+        <div class="sp-check-bar">
+          <p class="sp-check-count" id="sp-check-count" role="status" aria-live="polite">0 of 15 complete</p>
+          <div class="sp-check-track" role="presentation"><div class="sp-check-fill" id="sp-check-fill"></div></div>
+          <div class="sp-check-actions">
+            <button class="sp-check-btn" type="button" id="sp-check-print">Print</button>
+            <button class="sp-check-btn" type="button" id="sp-check-reset">Reset</button>
+          </div>
+        </div>
 
-    <div class="step-row reveal" style="background:#111109;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">06</div><div class="step-content"><div class="step-tag">Content</div><h2 class="step-title">Drone Photography & Aerial Video</h2><p class="step-desc">Aerial perspective gives buyers context no ground-level photo can — the neighborhood, proximity to the lakefront, the scale of the property. Essential for single-family homes, multi-units, and anything with outdoor space.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Buyers see the full picture — not just four walls.</p></div></div>
+        <div class="sp-check-groups">
+          <fieldset class="sp-check-group">
+            <legend class="sp-check-legend">Step 01</legend>
+            <p class="sp-check-groupname">Define the goal</p>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="g1">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Settle your timing and any date constraints</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="g2">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Note relocation plans, if any</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="g3">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Set your financial goals for the sale</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="g4">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Write down any other goals that matter to you</span>
+            </label>
+          </fieldset>
+          <fieldset class="sp-check-group">
+            <legend class="sp-check-legend">Step 04</legend>
+            <p class="sp-check-groupname">Prepare the property</p>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="p1">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Complete necessary repairs and improvements</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="p2">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Stage the property</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="p3">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">De-clutter</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="p4">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">De-personalize</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="p5">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Cosmetic interior enhancements</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="p6">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Cosmetic exterior enhancements</span>
+            </label>
+          </fieldset>
+          <fieldset class="sp-check-group">
+            <legend class="sp-check-legend">Step 09</legend>
+            <p class="sp-check-groupname">Through closing</p>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="c1">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Gather your seller documentation</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="c2">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Attend the final walkthrough</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="c3">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Arrange the final clean</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="c4">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Book movers</span>
+            </label>
+            <label class="sp-check-item">
+              <input type="checkbox" data-check="c5">
+              <span class="sp-check-box" aria-hidden="true"></span>
+              <span class="sp-check-text">Transfer or close out utilities</span>
+            </label>
+          </fieldset>
+        </div>
 
-    <div class="step-row reveal" style="background:#0B0A07;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">07</div><div class="step-content"><div class="step-tag">Content</div><h2 class="step-title">3D Virtual Tour</h2><p class="step-desc">A Matterport 3D walkthrough lets qualified buyers experience the home from anywhere in the world. We use ViewMySpace for all virtual tours — delivering interactive floor plans and immersive walkthroughs that let serious buyers fall in love before they ever step inside. Out-of-town buyers, relocations, investors — this turns remote interest into real offers.</p><a href="https://www.viewmyspace.com/" target="_blank" class="step-vendor-link">See an example tour →</a><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Serious buyers show up ready to make an offer.</p></div></div>
-
-    <div class="step-row reveal" style="background:#111109;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">08</div><div class="step-content"><div class="step-tag">Exclusive</div><h2 class="step-title">Top Agent Network — Exclusive Pre-Market Access</h2><p class="step-desc">Before your home ever hits the MLS, it goes to the Top Agent Network — an invitation-only network of the top 10% of brokers in Illinois, ranked by production. These are the agents with the most active, qualified buyers. A pre-market sale means no days on market, no open houses, and often a premium price.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Your home may sell before anyone else even knows it's available.</p></div></div>
-
-    <div class="step-row reveal" style="background:#0B0A07;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">09</div><div class="step-content"><div class="step-tag">Network</div><h2 class="step-title">Jameson Network & Broker Relationships</h2><p class="step-desc">Jameson Sotheby's has over 400 agents across Chicago and the North Shore — all of whom receive direct outreach before your listing launches publicly. Combined with Matthew's personal relationships with top producing brokers across the city, your home gets in front of the right people before anyone else.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: 400+ agents know about your home before it hits Zillow.</p></div></div>
-
-    <div class="step-row reveal" style="background:#111109;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">10</div><div class="step-content"><div class="step-tag">Launch</div><h2 class="step-title">MLS Launch & Digital Syndication</h2><p class="step-desc">Strategic MLS timing — Thursday or Friday launch to maximize first-weekend traffic. Instant syndication to Zillow, Realtor.com, Redfin, Homes.com, and 100+ real estate portals nationwide. Every buyer searching in your price range and neighborhood sees your listing.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Maximum eyeballs in the first 72 hours — when it matters most.</p></div></div>
-
-    <!-- Testimonial break -->
-    <div style="background:#F4F0E8;padding:56px 48px;text-align:center;" class="reveal">
-      <blockquote style="font-family:Georgia,serif;font-size:clamp(18px,2.5vw,24px);font-style:italic;color:#0B0A07;max-width:700px;margin:0 auto 16px;line-height:1.5;">"Matt sold four 3-flats in Tri-Taylor for me in two weeks. One broke a sales record. Matt's numbers are true-to-market and realistic. He took his time to get to the right price. I definitely would work with Matt again."</blockquote>
-      <cite style="font-size:12px;color:rgba(11,10,7,0.62);font-style:normal;letter-spacing:0.05em;">— Linda Schafer, Private Investor, Tri-Taylor Portfolio</cite>
+        <p class="sp-check-note">This checklist mirrors the process above and is a starting point for conversation, not a substitute for advice on your specific property. Every sale is different — we will work through yours together.</p>
+      </div>
     </div>
-
-    <div class="step-row reveal" style="background:#0B0A07;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">11</div><div class="step-content"><div class="step-tag">Marketing</div><h2 class="step-title">Instagram & Targeted Social Advertising</h2><p class="step-desc">Paid advertising on Instagram and Facebook targeted by location, income, age, and buying behavior. We reach buyers who are actively looking in your neighborhood and price range — not just people who happen to scroll past.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Your listing finds buyers — not the other way around.</p></div></div>
-
-    <div class="step-row reveal" style="background:#111109;"><div class="step-number" style="border-left:1px solid rgba(237,232,222,0.12);padding-left:20px;">12</div><div class="step-content"><div class="step-tag">Marketing</div><h2 class="step-title">Email Campaign & Buyer Network</h2><p class="step-desc">Direct email outreach to Matthew's active buyer network — buyers currently working with him who are searching in your price range. This is warm, qualified traffic that no portal can deliver.</p><p style="font-size:13px;font-style:italic;color:rgba(237,232,222,0.78);margin-top:12px;">What this means: Your home reaches people who are ready to buy — today.</p></div></div>
   </section>
 
   <!-- Results Band -->
@@ -212,7 +777,7 @@
     <h2 class="mkt-cta-heading">Ready to see what your home is worth?</h2>
     <p class="mkt-cta-sub">Every listing gets the full process. Let's talk about your home.</p>
     <div class="mkt-cta-btns">
-      <a href="contact.html" class="mkt-btn-primary">Begin the Conversation</a>
+      <a href="contact.html?intent=selling-home" class="mkt-btn-primary">Begin the Conversation</a>
       <a href="index.html#portfolio" class="mkt-btn-ghost">See Notable Sales</a>
     </div>
   </section>
@@ -220,7 +785,7 @@
   <footer class="footer">
     <div class="footer-grid">
       <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
-      <div class="footer-col"><div class="footer-col-label">Navigate</div><a href="index.html">Home</a><a href="about.html">About</a><a href="marketing.html">For Sellers</a><a href="selling-process.html">Selling Process</a><a href="contact.html">Contact</a><a href="neighborhoods.html">Neighborhoods</a><a href="calculator.html">Calculators</a><a href="vendors.html">Vendors</a></div>
+      <div class="footer-col"><div class="footer-col-label">Navigate</div><a href="index.html">Home</a><a href="about.html">About</a><a href="marketing.html">For Sellers</a><a href="contact.html">Contact</a><a href="neighborhoods.html">Neighborhoods</a><a href="calculator.html">Calculators</a><a href="vendors.html">Vendors</a></div>
       <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
     </div>
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
@@ -231,12 +796,115 @@
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
     if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
   </script>
+
   <script>
+  /* Expandable steps. The button carries aria-expanded; the panel uses the
+     [hidden] attribute so closed content stays out of the tab order and the
+     accessibility tree. Multiple steps may be open at once. */
   (function(){
-    const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.style.transition='opacity 0.9s ease, transform 0.9s ease';entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';observer.unobserve(entry.target)}})},{threshold:0.1});
-    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';observer.observe(el)});
+    document.querySelectorAll('.sp-step-btn').forEach(function(btn){
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if(!panel) return;
+      btn.addEventListener('click', function(){
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        panel.hidden = open;
+      });
+    });
   })();
   </script>
+
+  <script>
+  /* Preparation checklist: progress, persistence, print, reset.
+     State lives in this visitor's own localStorage under one key. Nothing is sent
+     anywhere and no analytics event is fired — it is a private tool. Every storage
+     call is wrapped because Safari private mode throws on setItem.
+     The key is unchanged from the old selling-process page so anyone who already
+     ticked items off keeps their progress after the merge. */
+  (function(){
+    var KEY = 'ng-selling-checklist';
+    var boxes = [].slice.call(document.querySelectorAll('[data-check]'));
+    if(!boxes.length) return;
+    var countEl = document.getElementById('sp-check-count');
+    var fillEl  = document.getElementById('sp-check-fill');
+    var total   = boxes.length;
+
+    function load(){
+      try { return JSON.parse(localStorage.getItem(KEY)) || {}; }
+      catch(err){ return {}; }
+    }
+    function save(state){
+      try { localStorage.setItem(KEY, JSON.stringify(state)); }
+      catch(err){ /* private mode — the checklist still works for this session */ }
+    }
+    function render(){
+      var done = boxes.filter(function(b){ return b.checked; }).length;
+      countEl.textContent = done + ' of ' + total + ' complete';
+      fillEl.style.width = (total ? (done / total) * 100 : 0) + '%';
+    }
+
+    var state = load();
+    boxes.forEach(function(box){
+      if(state[box.getAttribute('data-check')]) box.checked = true;
+      box.addEventListener('change', function(){
+        var s = load();
+        if(box.checked) s[box.getAttribute('data-check')] = 1;
+        else delete s[box.getAttribute('data-check')];
+        save(s);
+        render();
+      });
+    });
+    render();
+
+    document.getElementById('sp-check-reset').addEventListener('click', function(){
+      boxes.forEach(function(b){ b.checked = false; });
+      save({});
+      render();
+      boxes[0].focus();
+    });
+    document.getElementById('sp-check-print').addEventListener('click', function(){
+      window.print();
+    });
+  })();
+  </script>
+
+  <script>
+  /* Two-column detail lists only where a list is long enough to warrant it. */
+  (function(){
+    document.querySelectorAll('.sp-detail-cols').forEach(function(el){
+      el.style.columns = '2';
+    });
+  })();
+  </script>
+
+  <script>
+  /* Scroll reveal.
+     styles.css already sets ".reveal { opacity: 0 }", so this script is what
+     makes revealed content visible. Under prefers-reduced-motion — or with no
+     IntersectionObserver — we must therefore SHOW everything immediately rather
+     than return early, or the whole page stays blank for those users. */
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    function show(el){ el.style.opacity = '1'; el.style.transform = 'none'; }
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce || !('IntersectionObserver' in window)){
+      Array.prototype.forEach.call(els, show);
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.style.transition='opacity 0.9s ease, transform 0.9s ease';
+          entry.target.style.opacity='1';
+          entry.target.style.transform='translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.1});
+    Array.prototype.forEach.call(els, function(el){ observer.observe(el); });
+  })();
+  </script>
+
   <script>
   (function(){
     if(window.innerWidth<769)return;
@@ -266,7 +934,13 @@
       }
     });
     document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-    function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
+    // Only now is it safe to hide the native pointer: the loop is genuinely running.
+    function loop(){
+      if(!document.body.classList.contains('sp-cursor-live')) document.body.classList.add('sp-cursor-live');
+      dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
+      dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';
+      requestAnimationFrame(loop);
+    }
     loop();
     document.querySelectorAll('a,button').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
   })();
