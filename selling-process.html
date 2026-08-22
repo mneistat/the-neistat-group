@@ -10,7 +10,7 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selling Process | The Neistat Group">
   <meta property="og:description" content="A clear guide to the home selling process with Matthew Neistat and The Neistat Group — from strategy and pricing through marketing, negotiation, and closing.">
-  <link rel="stylesheet" href="styles.css?v=14">
+  <link rel="stylesheet" href="styles.css?v=15">
   <!-- styles.css hides .reveal and depends on JS to show it. With scripting off,
        cancel the rule so the page is fully readable rather than blank. -->
   <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
@@ -48,10 +48,10 @@
 
     /* ---------- Timeline ---------- */
     .sp-timeline { background: #F4F0E8; padding: clamp(64px,8vw,110px) clamp(24px,6vw,48px); }
-    .sp-timeline-inner { max-width: 900px; margin: 0 auto;
+    .sp-timeline-inner { max-width: 1120px; margin: 0 auto;
       /* Fixed column widths so the summary and panel indents can be computed
          exactly, keeping them flush with the step title. */
-      --sp-gap: clamp(14px,2.2vw,26px); --sp-num-w: clamp(40px,4.8vw,58px); --sp-icon-w: 26px;
+      --sp-gap: clamp(14px,2.2vw,26px); --sp-num-w: clamp(34px,3.2vw,44px); --sp-icon-w: 26px;
       --sp-indent: calc(var(--sp-num-w) + var(--sp-icon-w) + var(--sp-gap) * 2); }
     .sp-timeline-head { margin-bottom: clamp(40px,5vw,64px); }
     .sp-timeline-eyebrow { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-bottom: 16px; display: block; }
@@ -59,8 +59,12 @@
     .sp-timeline-h2 em { font-style: italic; }
     .sp-timeline-intro { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.75; color: rgba(11,10,7,0.78); max-width: 56ch; margin: 0; }
 
-    .sp-step { border-top: 1px solid rgba(11,10,7,0.14); }
-    .sp-step:last-of-type { border-bottom: 1px solid rgba(11,10,7,0.14); }
+    /* Paired two-across: steps 01/02 sit side by side, and so on down. Halves the
+       section's height without changing any of the content. */
+    .sp-steps { display: grid; grid-template-columns: 1fr 1fr;
+      column-gap: clamp(32px,4vw,64px); align-items: start;
+      border-bottom: 1px solid rgba(11,10,7,0.14); }
+    .sp-step { border-top: 1px solid rgba(11,10,7,0.14); min-width: 0; }
 
     /* Standard accordion semantics: <h3><button>. The button holds only phrasing
        content, so its accessible name is just the number and the step title — the
@@ -69,10 +73,10 @@
     .sp-step-btn { display: grid; grid-template-columns: var(--sp-num-w) var(--sp-icon-w) 1fr auto; align-items: center; gap: var(--sp-gap);
       width: 100%; text-align: left; background: none; border: 0; padding: clamp(26px,3.4vw,34px) 0 clamp(10px,1.2vw,14px); cursor: pointer;
       font-family: inherit; color: inherit; }
-    .sp-step-num { font-family: Georgia, serif; font-size: clamp(26px,3.6vw,40px); font-weight: 400; line-height: 1; color: rgba(11,10,7,0.62); font-variant-numeric: tabular-nums; }
+    .sp-step-num { font-family: Georgia, serif; font-size: clamp(24px,2.6vw,32px); font-weight: 400; line-height: 1; color: rgba(11,10,7,0.62); font-variant-numeric: tabular-nums; }
     .sp-step-icon { width: 26px; height: 26px; flex-shrink: 0; color: rgba(11,10,7,0.62); }
     .sp-step-icon svg { display: block; width: 100%; height: 100%; }
-    .sp-step-title { font-family: Georgia, serif; font-weight: 400; font-size: clamp(19px,2.3vw,26px); line-height: 1.25; letter-spacing: -0.012em; color: #0B0A07; }
+    .sp-step-title { font-family: Georgia, serif; font-weight: 400; font-size: clamp(18px,1.7vw,22px); line-height: 1.25; letter-spacing: -0.012em; color: #0B0A07; }
     /* Aligned under the title: number column + icon column + both gaps. */
     .sp-step-summary { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.7; color: rgba(11,10,7,0.78); margin: 0 0 clamp(26px,3.4vw,34px); max-width: 58ch; padding-left: var(--sp-indent); }
 
@@ -145,6 +149,9 @@
     .sp-btn-light:focus-visible { outline: 2px solid #EDE8DE; outline-offset: 4px; }
 
     /* ---------- Mobile ---------- */
+    @media (max-width: 820px) {
+      .sp-steps { grid-template-columns: 1fr; }
+    }
     @media (max-width: 900px) {
       .sp-hero-inner, .sp-cta-inner { grid-template-columns: 1fr; gap: 40px; }
       .sp-check-groups { grid-template-columns: 1fr; gap: 34px; }
@@ -154,6 +161,7 @@
       .sp-hero-figure, .sp-cta-figure { order: 2; }
     }
     @media (max-width: 640px) {
+      .sp-steps { grid-template-columns: 1fr; column-gap: 0; }
       .sp-step-btn { grid-template-columns: var(--sp-num-w) 1fr auto; gap: 14px; }
       /* Icon is decorative; drop it rather than crowd the title. */
       .sp-step-icon { display: none; }
@@ -223,14 +231,13 @@
         <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-buyers">For Buyers</button>
         <div class="nav-drop" id="nav-drop-buyers">
           <a href="buying-process.html">Buying Process</a>
-          <a href="neighborhoods.html">Neighborhoods</a>
           <a href="contact.html?intent=buying-home">Buyer Strategy</a>
         </div>
       </div>
       <div class="nav-group" data-nav-group data-open="false">
         <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-resources">Resources</button>
         <div class="nav-drop" id="nav-drop-resources">
-          <a href="calculator.html">Calculators</a>
+          <a href="calculator.html">Mortgage Calculator</a>
           <a href="vendors.html">Vendor Directory</a>
         </div>
       </div>
@@ -256,14 +263,13 @@
         <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-buyers">For Buyers</button>
         <div class="mobile-sub" id="m-drop-buyers" hidden>
           <a href="buying-process.html">Buying Process</a>
-          <a href="neighborhoods.html">Neighborhoods</a>
           <a href="contact.html?intent=buying-home">Buyer Strategy</a>
         </div>
       </div>
       <div class="mobile-group" data-nav-group data-open="false">
         <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-resources">Resources</button>
         <div class="mobile-sub" id="m-drop-resources" hidden>
-          <a href="calculator.html">Calculators</a>
+          <a href="calculator.html">Mortgage Calculator</a>
           <a href="vendors.html">Vendor Directory</a>
         </div>
       </div>
@@ -299,6 +305,7 @@
         <p class="sp-timeline-intro">Every sale follows the same arc. Knowing the shape of it in advance is what keeps the process calm. Select any step to see what it involves in more detail.</p>
       </div>
 
+      <div class="sp-steps">
       <!-- 01 -->
       <div class="sp-step reveal">
         <h3 class="sp-step-h">
@@ -526,6 +533,7 @@
         </div>
       </div>
 
+      </div>
     </div>
   </section>
 
@@ -674,8 +682,7 @@
         <a href="selling-process.html">Selling Process</a>
         <a href="marketing.html">Marketing Your Property</a>
         <a href="buying-process.html">Buying Process</a>
-        <a href="neighborhoods.html">Neighborhoods</a>
-        <a href="calculator.html">Calculators</a>
+        <a href="calculator.html">Mortgage Calculator</a>
         <a href="vendors.html">Vendor Directory</a>
         <a href="contact.html">Contact</a>
       </div>
