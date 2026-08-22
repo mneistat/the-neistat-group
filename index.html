@@ -8,7 +8,7 @@
   <meta name="description" content="Chicago real estate strategy for homeowners, investors, and developers, backed by $130M+ in sales, 14+ years of experience, and CAR Top 10% recognition.">
   <meta property="og:title" content="The Neistat Group | Chicago Real Estate">
   <meta property="og:description" content="Chicago real estate strategy backed by $130M+ in sales, 14+ years of experience, and four years of Jameson Quarterly Best recognition.">
-    <link rel="stylesheet" href="styles.css?v=18">
+    <link rel="stylesheet" href="styles.css?v=19">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -257,7 +257,8 @@
   /* Five equal bordered cards. No hover, no selection, no JS — every transaction
      is visible at once, which is what a portfolio scan needs. Adding a sixth is a
      markup change only. */
-  .sw-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(16px,1.6vw,24px); }
+  .sw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+    gap: clamp(16px,1.6vw,24px); }
   .sw-card { border: 1px solid rgba(237,232,222,0.14); display: flex; flex-direction: column;
     transition: border-color 0.25s ease; }
   .sw-card:hover { border-color: rgba(237,232,222,0.3); }
@@ -280,8 +281,17 @@
   .sw-card-cta:hover { color: #EDE8DE; border-color: #EDE8DE; }
   .sw-card-cta:focus-visible { outline: 1px solid #EDE8DE; outline-offset: 4px; }
 
-  @media (max-width: 1400px) { .sw-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 900px)  { .sw-grid { grid-template-columns: repeat(2, 1fr); } }
+  /* Placeholder cards — visually distinct so they cannot be mistaken for a
+     completed, verified transaction. */
+  .sw-card-pending { border-style: dashed; border-color: rgba(237,232,222,0.22); }
+  .sw-card-ph { aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
+    text-align: center; background:
+      repeating-linear-gradient(135deg, rgba(237,232,222,0.035) 0 12px, transparent 12px 24px), #14120E; }
+  .sw-card-ph span { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.9; color: rgba(237,232,222,0.55); }
+  .sw-card-pendingnote { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px;
+    letter-spacing: 0.04em; color: rgba(237,232,222,0.55); font-style: italic; margin: 0 0 20px; }
+
   @media (max-width: 560px)  { .sw-grid { grid-template-columns: 1fr; } }
 
   .sw-footer { margin-top: clamp(28px,3vw,40px); }
@@ -508,6 +518,35 @@
             <h3 class="sw-card-address">1126 W. Fullerton</h3>
             <p class="sw-card-price">$720,000</p>
             <!-- TODO: CASE STUDY URL — no per-transaction case-study page exists yet. -->
+            <a class="sw-card-cta" href="#">View the Work <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+        <!-- ================= PLACEHOLDER CARD =================
+             Layout mock only. 3801 N. Clark Street appears in the design comp but
+             no verified figures exist in the repository. To make it real:
+               1. replace .sw-card-ph with <div class="sw-card-img"><img ...></div>
+               2. replace the pending line with <p class="sw-card-price">$…</p>
+               3. add the representation line if verified
+             Do not publish with the pending line still present. -->
+        <article class="sw-card sw-card-pending">
+          <div class="sw-card-ph" role="presentation"><span>Image<br>To be added</span></div>
+          <div class="sw-card-body">
+            <p class="sw-card-meta">Investment · Lakeview</p>
+            <h3 class="sw-card-address">3801 N. Clark Street</h3>
+            <p class="sw-card-pendingnote">Figures to be confirmed</p>
+            <!-- TODO: CASE STUDY URL -->
+            <a class="sw-card-cta" href="#">View the Work <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+        <!-- ================= PLACEHOLDER CARD =================
+             Same as above — Athen / Werner Portfolio has no verified figures. -->
+        <article class="sw-card sw-card-pending">
+          <div class="sw-card-ph" role="presentation"><span>Image<br>To be added</span></div>
+          <div class="sw-card-body">
+            <p class="sw-card-meta">Portfolio · Chicago</p>
+            <h3 class="sw-card-address">Athen / Werner Portfolio</h3>
+            <p class="sw-card-pendingnote">Figures to be confirmed</p>
+            <!-- TODO: CASE STUDY URL -->
             <a class="sw-card-cta" href="#">View the Work <span aria-hidden="true">&rarr;</span></a>
           </div>
         </article>
