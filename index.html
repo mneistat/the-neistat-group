@@ -8,7 +8,7 @@
   <meta name="description" content="Chicago real estate strategy for homeowners, investors, and developers, backed by $130M+ in sales, 14+ years of experience, and CAR Top 10% recognition.">
   <meta property="og:title" content="The Neistat Group | Chicago Real Estate">
   <meta property="og:description" content="Chicago real estate strategy backed by $130M+ in sales, 14+ years of experience, and four years of Jameson Quarterly Best recognition.">
-    <link rel="stylesheet" href="styles.css?v=15">
+    <link rel="stylesheet" href="styles.css?v=17">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -237,6 +237,106 @@
     .start-here { grid-template-columns: 1fr; gap: 36px; }
     .start-here-body { max-width: none; }
   }
+
+  /* ===== SELECTED WORK — editorial split module =====
+     Left information panel / centre feature image / right project index, read as
+     one bordered composition. Every fact rendered here already existed in the
+     repository; nothing is invented. Thin rules, no shadows, no radius. */
+  .sw { background: #0B0A07; padding: clamp(64px,8vw,110px) clamp(24px,5vw,56px); }
+  .sw-inner { max-width: 1400px; margin: 0 auto; }
+  .sw-head { margin-bottom: clamp(32px,4vw,52px); }
+  .sw-eyebrow { display: block; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(237,232,222,0.55); margin-bottom: 16px; }
+  .sw-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(30px,4vw,50px);
+    line-height: 1.05; letter-spacing: -0.02em; color: #EDE8DE; margin: 0 0 16px; }
+  .sw-h2 em { font-style: italic; }
+  .sw-intro { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px;
+    line-height: 1.7; color: rgba(237,232,222,0.78); max-width: 58ch; margin: 0; }
+
+  .sw-module { display: grid; grid-template-columns: 27% 48% 25%;
+    border: 1px solid rgba(237,232,222,0.14); }
+
+  .sw-info { padding: clamp(28px,2.6vw,40px); display: flex; flex-direction: column;
+    border-right: 1px solid rgba(237,232,222,0.14); }
+  .sw-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
+    font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(237,232,222,0.55); margin: 0 0 18px; }
+  .sw-address { font-family: Georgia, serif; font-weight: 400; font-size: clamp(24px,2.3vw,34px);
+    line-height: 1.15; letter-spacing: -0.02em; color: #EDE8DE; margin: 0 0 16px; }
+  .sw-rep { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px;
+    letter-spacing: 0.04em; color: rgba(237,232,222,0.78); margin: 0 0 20px; }
+  .sw-price { font-family: Georgia, serif; font-size: clamp(19px,1.6vw,23px);
+    color: #EDE8DE; margin: 0 0 18px; }
+  .sw-note { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
+    line-height: 1.65; color: rgba(237,232,222,0.78); margin: 0 0 28px; max-width: 34ch; }
+  .sw-rep[hidden], .sw-note[hidden] { display: none; }
+  .sw-view { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: rgba(237,232,222,0.78);
+    border-bottom: 1px solid rgba(237,232,222,0.28); padding-bottom: 5px;
+    transition: color 0.25s ease, border-color 0.25s ease; }
+  .sw-view:hover { color: #EDE8DE; border-color: #EDE8DE; }
+  .sw-view:focus-visible { outline: 1px solid #EDE8DE; outline-offset: 5px; }
+
+  /* Frames are stacked and crossfaded, so switching never reflows the module. */
+  .sw-figure { position: relative; overflow: hidden; aspect-ratio: 4 / 3;
+    border-right: 1px solid rgba(237,232,222,0.14); background: #14120E; }
+  .sw-figure img { position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0; transition: opacity 0.32s ease; }
+  .sw-figure img.is-active { opacity: 1; }
+
+  .sw-index { display: flex; flex-direction: column; }
+  .sw-item { display: grid; grid-template-columns: 54px 1fr auto; gap: 14px;
+    align-items: center; width: 100%; text-align: left; background: none; border: 0;
+    border-bottom: 1px solid rgba(237,232,222,0.10); padding: 14px clamp(14px,1.2vw,18px);
+    cursor: pointer; font-family: inherit; color: #EDE8DE; flex: 1;
+    transition: background 0.2s ease; }
+  .sw-item:last-child { border-bottom: 0; }
+  .sw-item:hover { background: rgba(237,232,222,0.04); }
+  .sw-item:focus-visible { outline: 1px solid #EDE8DE; outline-offset: -3px; }
+  .sw-item[aria-current="true"] { background: rgba(237,232,222,0.07); }
+  .sw-thumb { width: 54px; height: 40px; object-fit: cover; display: block; }
+  .sw-item-address { font-family: Georgia, serif; font-size: 14px; line-height: 1.25;
+    color: #EDE8DE; display: block; }
+  .sw-item-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,222,0.55);
+    display: block; margin-top: 4px; }
+  .sw-item-price { font-family: Georgia, serif; font-size: 12px; color: rgba(237,232,222,0.78);
+    display: block; margin-top: 4px; }
+  .sw-item-arrow { font-family: Georgia, serif; font-size: 15px; color: rgba(237,232,222,0.55);
+    transition: transform 0.2s ease, color 0.2s ease; }
+  .sw-item:hover .sw-item-arrow { color: #EDE8DE; transform: translateX(3px); }
+
+  .sw-footer { margin-top: clamp(28px,3vw,40px); }
+  .sw-all { display: inline-flex; align-items: center; gap: 9px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: rgba(237,232,222,0.78);
+    border-bottom: 1px solid rgba(237,232,222,0.28); padding-bottom: 5px;
+    transition: color 0.25s ease, border-color 0.25s ease; }
+  .sw-all:hover { color: #EDE8DE; border-color: #EDE8DE; }
+  .sw-all:focus-visible { outline: 1px solid #EDE8DE; outline-offset: 5px; }
+
+  /* Tablet — image spans the top, information and index beneath it. */
+  @media (max-width: 1100px) {
+    .sw-module { grid-template-columns: 1fr 1fr; }
+    .sw-figure { grid-column: 1 / -1; aspect-ratio: 16 / 9;
+      border-right: 0; border-bottom: 1px solid rgba(237,232,222,0.14); }
+  }
+  /* Mobile — feature, then the rest stacked. Nothing depends on hover. */
+  @media (max-width: 768px) {
+    .sw-module { grid-template-columns: 1fr; }
+    .sw-figure { aspect-ratio: 4 / 3; }
+    .sw-info { border-right: 0; border-bottom: 1px solid rgba(237,232,222,0.14); }
+    .sw-index::before { content: 'Other Selected Work'; display: block;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,222,0.55);
+      padding: 20px clamp(14px,1.2vw,18px) 10px; }
+    .sw-item { padding: 15px clamp(14px,1.2vw,18px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sw-figure img, .sw-item-arrow { transition: none; }
+  }
 </style>
 </head>
 <body>
@@ -387,59 +487,99 @@
   </section>
 
   <!-- Portfolio Scroll -->
-  <section class="portfolio-scroll" id="work">
-    <div class="portfolio-scroll-header">
-      <h2>Selected <em>Work</em></h2>
-      <span class="scroll-hint">Scroll to explore →</span>
-    </div>
-    <div class="portfolio-track-wrapper">
-      <div class="portfolio-track">
-        <div class="portfolio-card">
-          <div class="portfolio-card-img" style="background-image: url('properties/1035-lake-listing.jpg')"></div>
-          <div class="portfolio-card-info">
-            <span class="portfolio-tag">Featured · West Loop</span>
-            <h3>1035 W. Lake Street</h3>
-            <p>Multi-unit deconversion — one of the largest in the neighborhood · CoStar News</p>
-            <div class="portfolio-price">$9,500,000</div>
-          </div>
+  <!-- ===== SELECTED WORK =====
+       Every value below already existed in the repository. No prices, addresses,
+       neighbourhoods, representation or outcomes were invented. Where a field is not
+       verified for a transaction it is left empty and hidden, rather than guessed. -->
+  <section class="sw" id="work" aria-labelledby="sw-heading">
+    <div class="sw-inner">
+      <div class="sw-head">
+        <span class="sw-eyebrow">Selected Work</span>
+        <h2 class="sw-h2" id="sw-heading">Selected <em>Work</em></h2>
+        <p class="sw-intro">A curated collection of residential, investment, development, and commercial transactions across Chicago.</p>
+      </div>
+
+      <div class="sw-module">
+        <div class="sw-info" aria-live="polite">
+          <p class="sw-meta" id="swMeta">Deconversion · West Loop</p>
+          <h3 class="sw-address" id="swAddress">1035 W. Lake Street</h3>
+          <p class="sw-rep" id="swRep"></p>
+          <p class="sw-price" id="swPrice">$9,500,000</p>
+          <p class="sw-note" id="swNote">Multi-unit deconversion — one of the largest in the neighborhood · CoStar News</p>
+          <!-- TODO: CASE STUDY URL — no per-transaction case-study page exists yet. -->
+          <a class="sw-view" id="swView" href="#">View the Work <span aria-hidden="true">&rarr;</span></a>
         </div>
-        <div class="portfolio-card">
-          <div class="portfolio-card-img" style="background-image: url('properties/1185-elm-listing.jpg')"></div>
-          <div class="portfolio-card-info">
-            <span class="portfolio-tag">Winnetka North Shore</span>
-            <h3>1185 Elm Street</h3>
-            <p>Featured in Crain's Chicago Business</p>
-            <div class="portfolio-price">$1,265,000</div>
-          </div>
+
+        <div class="sw-figure">
+        <img src="properties/1035-lake-listing.jpg" alt="1035 W. Lake Street, West Loop — multi-unit deconversion" class="sw-frame is-active" data-frame="lake">
+        <img src="properties/1185-elm-listing.jpg" alt="1185 Elm Street, Winnetka" class="sw-frame" data-frame="elm">
+        <img src="properties/2636-lincoln-listing.jpg" alt="2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property" class="sw-frame" data-frame="lincoln">
+        <img src="properties/1126-fullerton-listing.jpg" alt="1126 W. Fullerton, Lincoln Park" class="sw-frame" data-frame="fullerton">
+        <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" class="sw-frame" data-frame="wellington">
         </div>
-        <div class="portfolio-card">
-          <div class="portfolio-card-img" style="background-image: url('properties/2636-lincoln-listing.jpg')"></div>
-          <div class="portfolio-card-info">
-            <span class="portfolio-tag">Lincoln Park</span>
-            <p style="font-size:11px;color:rgba(237,232,222,0.5);margin-bottom:8px;">Represented Seller — Bayview LTD</p>
-            <h3>2636 N. Lincoln Ave</h3>
-            <p>4-unit investment property</p>
-            <div class="portfolio-price">$2,300,000</div>
-          </div>
+
+        <div class="sw-index">
+        <button type="button" class="sw-item" data-tx="lake" aria-current="true"
+          data-meta="Deconversion · West Loop" data-addr="1035 W. Lake Street" data-rep=""
+          data-price="$9,500,000" data-note="Multi-unit deconversion — one of the largest in the neighborhood · CoStar News">
+          <img class="sw-thumb" src="properties/1035-lake-listing.jpg" alt="">
+          <span>
+            <span class="sw-item-address">1035 W. Lake Street</span>
+            <span class="sw-item-meta">Deconversion · West Loop</span>
+            <span class="sw-item-price">$9,500,000</span>
+          </span>
+          <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+        <button type="button" class="sw-item" data-tx="elm" aria-current="false"
+          data-meta="Winnetka · North Shore" data-addr="1185 Elm Street" data-rep=""
+          data-price="$1,265,000" data-note="Featured in Crain’s Chicago Business">
+          <img class="sw-thumb" src="properties/1185-elm-listing.jpg" alt="">
+          <span>
+            <span class="sw-item-address">1185 Elm Street</span>
+            <span class="sw-item-meta">Winnetka · North Shore</span>
+            <span class="sw-item-price">$1,265,000</span>
+          </span>
+          <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+        <button type="button" class="sw-item" data-tx="lincoln" aria-current="false"
+          data-meta="4-Unit Investment · Lincoln Park" data-addr="2636 N. Lincoln Avenue" data-rep="Represented Seller — Bayview LTD"
+          data-price="$2,300,000" data-note="">
+          <img class="sw-thumb" src="properties/2636-lincoln-listing.jpg" alt="">
+          <span>
+            <span class="sw-item-address">2636 N. Lincoln Avenue</span>
+            <span class="sw-item-meta">4-Unit Investment · Lincoln Park</span>
+            <span class="sw-item-price">$2,300,000</span>
+          </span>
+          <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+        <button type="button" class="sw-item" data-tx="fullerton" aria-current="false"
+          data-meta="Condo · Lincoln Park" data-addr="1126 W. Fullerton" data-rep=""
+          data-price="$720,000" data-note="">
+          <img class="sw-thumb" src="properties/1126-fullerton-listing.jpg" alt="">
+          <span>
+            <span class="sw-item-address">1126 W. Fullerton</span>
+            <span class="sw-item-meta">Condo · Lincoln Park</span>
+            <span class="sw-item-price">$720,000</span>
+          </span>
+          <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+        <button type="button" class="sw-item" data-tx="wellington" aria-current="false"
+          data-meta="Lakeview" data-addr="702 W. Wellington Avenue" data-rep="Represented Developer"
+          data-price="$709K – $985K" data-note="4-Condo Sellout">
+          <img class="sw-thumb" src="properties/702-wellington-listing.jpg" alt="">
+          <span>
+            <span class="sw-item-address">702 W. Wellington Avenue</span>
+            <span class="sw-item-meta">Lakeview</span>
+            <span class="sw-item-price">$709K – $985K</span>
+          </span>
+          <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
+        </button>
         </div>
-        <div class="portfolio-card">
-          <div class="portfolio-card-img" style="background-image: url('properties/1126-fullerton-listing.jpg')"></div>
-          <div class="portfolio-card-info">
-            <span class="portfolio-tag">Lincoln Park</span>
-            <h3>1126 W. Fullerton</h3>
-            <p>Lincoln Park condo</p>
-            <div class="portfolio-price">$720,000</div>
-          </div>
-        </div>
-        <div class="portfolio-card">
-          <div class="portfolio-card-img" style="background-image: url('properties/702-wellington-listing.jpg')"></div>
-          <div class="portfolio-card-info">
-            <span class="portfolio-tag">Lakeview</span>
-            <p style="font-size:11px;color:rgba(237,232,222,0.5);margin-bottom:8px;">Represented Developer — 4-Condo Sellout</p>
-            <h3>702 W. Wellington Ave</h3>
-            <div class="portfolio-price">$709K – $985K</div>
-          </div>
-        </div>
+      </div>
+
+      <div class="sw-footer">
+        <!-- TODO: selected-work.html does not exist yet and was not built as part of this task. -->
+        <a class="sw-all" href="#">Explore All Selected Work <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -677,25 +817,11 @@
         requestAnimationFrame(animateCursor);
       }
       animateCursor();
-      document.querySelectorAll('a, button, .portfolio-card, .tool-card, .nav-cta-btn, .stat, .testimonial-card, .press-pub').forEach(el => {
+      document.querySelectorAll('a, button, .sw-item, .tool-card, .nav-cta-btn, .stat, .testimonial-card, .press-pub').forEach(el => {
         el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
         el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
       });
-      // 3D tilt on portfolio cards
-      document.querySelectorAll('.portfolio-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
-          const rotX = ((cy / rect.height) - 0.5) * -18;
-          const rotY = ((cx / rect.width) - 0.5) * 18;
-          card.style.transform = 'perspective(700px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale(1.03)';
-          card.style.borderColor = 'rgba(237,232,222,0.25)';
-        });
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) scale(1)';
-          card.style.borderColor = '';
-          card.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1)';
-        });
+      // (3D card tilt removed with the Selected Work carousel.)
       });
     })();
 
@@ -725,16 +851,7 @@
       scrollTrigger: { trigger: '#hero', start: '2% top', end: '10% top', scrub: true }
     });
 
-    // Portfolio drag-to-scroll
-    (function() {
-      const wrapper = document.querySelector('.portfolio-track-wrapper');
-      if (!wrapper) return;
-      let isDown = false, startX, scrollLeft;
-      wrapper.addEventListener('mousedown', function(e) { isDown = true; startX = e.pageX - wrapper.offsetLeft; scrollLeft = wrapper.scrollLeft; });
-      wrapper.addEventListener('mouseleave', function() { isDown = false; });
-      wrapper.addEventListener('mouseup', function() { isDown = false; });
-      wrapper.addEventListener('mousemove', function(e) { if (!isDown) return; e.preventDefault(); const x = e.pageX - wrapper.offsetLeft; wrapper.scrollLeft = scrollLeft - (x - startX) * 1.5; });
-    })();
+    // (Portfolio drag-to-scroll removed with the Selected Work carousel.)
 
     // Stats count-up
     function initCounters() {
@@ -868,6 +985,67 @@
         showError('Network error — your message was not sent. Please check your connection and try again, or email matt@theneistatgroup.com directly.');
       });
     });
+  })();
+  </script>
+
+  <script>
+  /* Selected Work — switch the featured transaction.
+     Frames are pre-rendered and crossfaded, so nothing reflows. All copy comes
+     from data attributes written from repository-verified values; this script
+     introduces no facts of its own. */
+  (function () {
+    var items = [].slice.call(document.querySelectorAll('.sw-item'));
+    if (!items.length) return;
+    var frames = [].slice.call(document.querySelectorAll('.sw-frame'));
+    var info = {
+      meta: document.getElementById('swMeta'),
+      addr: document.getElementById('swAddress'),
+      rep: document.getElementById('swRep'),
+      price: document.getElementById('swPrice'),
+      note: document.getElementById('swNote')
+    };
+    var panel = document.querySelector('.sw-info');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setOptional(el, value) {
+      var v = (value || '').trim();
+      el.textContent = v;
+      el.hidden = !v;
+    }
+
+    function select(btn) {
+      if (btn.getAttribute('aria-current') === 'true') return;
+      items.forEach(function (b) { b.setAttribute('aria-current', 'false'); });
+      btn.setAttribute('aria-current', 'true');
+
+      var id = btn.getAttribute('data-tx');
+      frames.forEach(function (f) {
+        f.classList.toggle('is-active', f.getAttribute('data-frame') === id);
+      });
+
+      function write() {
+        info.meta.textContent  = btn.getAttribute('data-meta')  || '';
+        info.addr.textContent  = btn.getAttribute('data-addr')  || '';
+        info.price.textContent = btn.getAttribute('data-price') || '';
+        // Representation and context are not verified for every transaction.
+        // Hide the field outright rather than leaving an empty line.
+        setOptional(info.rep,  btn.getAttribute('data-rep'));
+        setOptional(info.note, btn.getAttribute('data-note'));
+      }
+
+      if (reduce) { write(); return; }
+      panel.style.transition = 'opacity 0.16s ease';
+      panel.style.opacity = '0';
+      setTimeout(function () { write(); panel.style.opacity = '1'; }, 160);
+    }
+
+    items.forEach(function (btn) {
+      btn.addEventListener('click', function () { select(btn); });
+    });
+
+    // Initial state: 1035 W. Lake has no verified representation line.
+    setOptional(info.rep, info.rep.textContent);
+    setOptional(info.note, info.note.textContent);
   })();
   </script>
 
