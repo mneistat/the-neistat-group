@@ -8,7 +8,7 @@
   <meta name="description" content="Chicago real estate strategy for homeowners, investors, and developers, backed by $130M+ in sales, 14+ years of experience, and CAR Top 10% recognition.">
   <meta property="og:title" content="The Neistat Group | Chicago Real Estate">
   <meta property="og:description" content="Chicago real estate strategy backed by $130M+ in sales, 14+ years of experience, and four years of Jameson Quarterly Best recognition.">
-    <link rel="stylesheet" href="styles.css?v=19">
+    <link rel="stylesheet" href="styles.css?v=21">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,7 +45,7 @@
   gtag('config', 'G-MGNGVERDHQ');
 </script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=4" defer></script>
+<script src="nav.js?v=6" defer></script>
 <!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
@@ -257,8 +257,9 @@
   /* Five equal bordered cards. No hover, no selection, no JS — every transaction
      is visible at once, which is what a portfolio scan needs. Adding a sixth is a
      markup change only. */
-  .sw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
-    gap: clamp(16px,1.6vw,24px); }
+  /* Four across, so seven cards read as 4 + 3 rather than 5 + 2 orphans, and each
+     card is wide enough for a 4:3 image to hold up. */
+  .sw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px,1.6vw,24px); }
   .sw-card { border: 1px solid rgba(237,232,222,0.14); display: flex; flex-direction: column;
     transition: border-color 0.25s ease; }
   .sw-card:hover { border-color: rgba(237,232,222,0.3); }
@@ -292,6 +293,8 @@
   .sw-card-pendingnote { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px;
     letter-spacing: 0.04em; color: rgba(237,232,222,0.55); font-style: italic; margin: 0 0 20px; }
 
+  @media (max-width: 1200px) { .sw-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 900px)  { .sw-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px)  { .sw-grid { grid-template-columns: 1fr; } }
 
   .sw-footer { margin-top: clamp(28px,3vw,40px); }

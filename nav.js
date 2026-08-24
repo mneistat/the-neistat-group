@@ -107,6 +107,27 @@
   // The hamburger is the sole entry point to the mobile IA — six top-level items
   // plus three groups — but carried no state. The open/close click handler stays
   // in each page's inline script; this only keeps ARIA in step with it.
+
+  /* Cursor safety net, sitewide.
+     styles.css hides the native pointer only while body.cursor-live is set. Rather
+     than polling, wait for the first real mouse movement and check on the next
+     frame whether the page's own cursor script actually moved the dot. If it did,
+     hand over. If it never does, the visitor simply keeps their normal pointer. */
+  function watchCursor() {
+    var dot = document.getElementById('cursorDot');
+    if (!dot || window.innerWidth < 769) return;
+    function check() {
+      document.removeEventListener('mousemove', check);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          var moved = dot.style.left && dot.style.left !== '0px';
+          document.body.classList.toggle('cursor-live', !!moved);
+        });
+      });
+    }
+    document.addEventListener('mousemove', check, { once: true });
+  }
+
   function wireToggle() {
     var toggle = document.getElementById('navToggle');
     var menu = document.getElementById('mobileMenu');
@@ -123,6 +144,7 @@
   ready(function () {
     Array.prototype.forEach.call(document.querySelectorAll('[data-nav-group]'), setup);
     wireToggle();
+    watchCursor();
 
     // Reset group state when crossing the breakpoint, so a panel left open on
     // one layout cannot appear stuck in the other.
