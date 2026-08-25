@@ -8,7 +8,7 @@
   <meta name="description" content="Chicago real estate strategy for homeowners, investors, and developers, backed by $130M+ in sales, 14+ years of experience, and CAR Top 10% recognition.">
   <meta property="og:title" content="The Neistat Group | Chicago Real Estate">
   <meta property="og:description" content="Chicago real estate strategy backed by $130M+ in sales, 14+ years of experience, and four years of Jameson Quarterly Best recognition.">
-    <link rel="stylesheet" href="styles.css?v=24">
+    <link rel="stylesheet" href="styles.css?v=25">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,6 +46,7 @@
 </script>
 <script src="analytics.js" defer></script>
 <script src="nav.js?v=6" defer></script>
+<script src="selected-work-data.js?v=1"></script>
 <!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
@@ -285,7 +286,10 @@
     color: #0B0A07; margin: 0 0 20px; }
   .sw-note { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
     line-height: 1.7; color: rgba(11,10,7,0.78); margin: 0 0 30px; max-width: 32ch; }
-  .sw-rep[hidden], .sw-note[hidden] { display: none; }
+  .sw-press { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
+    font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(11,10,7,0.62); margin: 0 0 26px; }
+  .sw-rep[hidden], .sw-note[hidden], .sw-press[hidden] { display: none; }
   .sw-view { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 9px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
     letter-spacing: 0.16em; text-transform: uppercase; color: #0B0A07;
@@ -372,7 +376,7 @@
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
       <a href="about.html" class="nav-link">About</a>
-      <a href="index.html#work" class="nav-link">Selected Work</a>
+      <a href="selected-work.html" class="nav-link">Selected Work</a>
       <div class="nav-group" data-nav-group data-open="false">
         <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-sellers">For Sellers</button>
         <div class="nav-drop" id="nav-drop-sellers">
@@ -385,13 +389,13 @@
         <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-buyers">For Buyers</button>
         <div class="nav-drop" id="nav-drop-buyers">
           <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Mortgage Calculator</a>
+          <a href="calculator.html">Affordability</a>
         </div>
       </div>
       <div class="nav-group" data-nav-group data-open="false">
         <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-resources">Resources</button>
         <div class="nav-drop" id="nav-drop-resources">
-          <a href="calculator.html">Mortgage Calculator</a>
+          <a href="calculator.html">Affordability</a>
           <a href="vendors.html">Vendor Directory</a>
         </div>
       </div>
@@ -405,7 +409,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
       <a href="about.html" class="mobile-menu-link">About</a>
-      <a href="index.html#work" class="mobile-menu-link">Selected Work</a>
+      <a href="selected-work.html" class="mobile-menu-link">Selected Work</a>
       <div class="mobile-group" data-nav-group data-open="false">
         <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-sellers">For Sellers</button>
         <div class="mobile-sub" id="m-drop-sellers" hidden>
@@ -418,13 +422,13 @@
         <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-buyers">For Buyers</button>
         <div class="mobile-sub" id="m-drop-buyers" hidden>
           <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Mortgage Calculator</a>
+          <a href="calculator.html">Affordability</a>
         </div>
       </div>
       <div class="mobile-group" data-nav-group data-open="false">
         <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-resources">Resources</button>
         <div class="mobile-sub" id="m-drop-resources" hidden>
-          <a href="calculator.html">Mortgage Calculator</a>
+          <a href="calculator.html">Affordability</a>
           <a href="vendors.html">Vendor Directory</a>
         </div>
       </div>
@@ -511,10 +515,9 @@
   <!-- Portfolio Scroll -->
   <!-- ===== SELECTED WORK =====
        Split editorial module: information panel, dominant photograph, project index.
-       Every value already existed in the repository — no prices, addresses,
-       neighbourhoods, representation or outcomes were invented. Unverified fields are
-       hidden rather than guessed, and the two transactions without verified figures
-       are marked placeholders. -->
+       Content is rendered from selected-work-data.js — no transaction facts are
+       hardcoded here. Entries marked publishStatus "internal" are never rendered, so
+       incomplete transactions cannot leak placeholder text to the public page. -->
   <section class="sw" id="work" aria-labelledby="sw-heading">
     <div class="sw-inner">
       <div class="sw-head">
@@ -526,103 +529,23 @@
 
       <div class="sw-module">
         <div class="sw-info" aria-live="polite">
-          <p class="sw-meta" id="swMeta">Deconversion · West Loop</p>
-          <h3 class="sw-address" id="swAddress">1035 W. Lake Street</h3>
+          <p class="sw-meta" id="swMeta"></p>
+          <h3 class="sw-address" id="swAddress"></h3>
           <p class="sw-rep" id="swRep"></p>
           <div class="sw-divider"></div>
-          <p class="sw-price" id="swPrice">$9,500,000</p>
-          <p class="sw-note" id="swNote">Multi-unit deconversion — one of the largest in the neighborhood · CoStar News</p>
-          <!-- TODO: CASE STUDY URL — no per-transaction case-study page exists yet. -->
+          <p class="sw-price" id="swPrice"></p>
+          <p class="sw-note" id="swNote"></p>
+          <p class="sw-press" id="swPress"></p>
+          <!-- TODO: CASE STUDY PAGE NEEDED — caseStudyUrl is empty for every
+               transaction, so this stays at "#" until those pages exist. -->
           <a class="sw-view" id="swView" href="#">View the Work <span aria-hidden="true">&rarr;</span></a>
         </div>
-
-        <div class="sw-figure">
-          <img src="properties/1035-lake-listing.jpg" alt="1035 W. Lake Street, West Loop — multi-unit deconversion" class="sw-frame is-active" data-frame="lake">
-          <img src="properties/1185-elm-listing.jpg" alt="1185 Elm Street, Winnetka" class="sw-frame" data-frame="elm">
-          <img src="properties/2636-lincoln-listing.jpg" alt="2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property" class="sw-frame" data-frame="lincoln">
-          <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" class="sw-frame" data-frame="wellington">
-          <img src="properties/1126-fullerton-listing.jpg" alt="1126 W. Fullerton, Lincoln Park" class="sw-frame" data-frame="fullerton">
-          <div class="sw-frame sw-frame-ph" data-frame="clark" role="presentation"></div>
-          <div class="sw-frame sw-frame-ph" data-frame="athen" role="presentation"></div>
-        </div>
-
-        <div class="sw-index">
-          <button type="button" class="sw-item" data-tx="lake" aria-current="true"
-            data-meta="Deconversion · West Loop" data-addr="1035 W. Lake Street" data-rep="" data-price="$9,500,000" data-note="Multi-unit deconversion — one of the largest in the neighborhood · CoStar News">
-            <img class="sw-thumb" src="properties/1035-lake-listing.jpg" alt="" loading="lazy">
-            <span>
-              <span class="sw-item-address">1035 W. Lake Street</span>
-              <span class="sw-item-meta">Deconversion · West Loop</span>
-              <span class="sw-item-price">$9,500,000</span>
-            </span>
-            <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
-          </button>
-          <button type="button" class="sw-item" data-tx="elm" aria-current="false"
-            data-meta="Winnetka · North Shore" data-addr="1185 Elm Street" data-rep="" data-price="$1,265,000" data-note="Featured in Crain’s Chicago Business">
-            <img class="sw-thumb" src="properties/1185-elm-listing.jpg" alt="" loading="lazy">
-            <span>
-              <span class="sw-item-address">1185 Elm Street</span>
-              <span class="sw-item-meta">Winnetka · North Shore</span>
-              <span class="sw-item-price">$1,265,000</span>
-            </span>
-            <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
-          </button>
-          <button type="button" class="sw-item" data-tx="lincoln" aria-current="false"
-            data-meta="4-Unit Investment · Lincoln Park" data-addr="2636 N. Lincoln Avenue" data-rep="Represented Seller — Bayview LTD" data-price="$2,300,000" data-note="">
-            <img class="sw-thumb" src="properties/2636-lincoln-listing.jpg" alt="" loading="lazy">
-            <span>
-              <span class="sw-item-address">2636 N. Lincoln Avenue</span>
-              <span class="sw-item-meta">4-Unit Investment · Lincoln Park</span>
-              <span class="sw-item-price">$2,300,000</span>
-            </span>
-            <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
-          </button>
-          <button type="button" class="sw-item" data-tx="wellington" aria-current="false"
-            data-meta="Development · Lakeview" data-addr="702 W. Wellington Avenue" data-rep="Represented Developer" data-price="$709K – $985K" data-note="4-Condo Sellout">
-            <img class="sw-thumb" src="properties/702-wellington-listing.jpg" alt="" loading="lazy">
-            <span>
-              <span class="sw-item-address">702 W. Wellington Avenue</span>
-              <span class="sw-item-meta">Development · Lakeview</span>
-              <span class="sw-item-price">$709K – $985K</span>
-            </span>
-            <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
-          </button>
-          <button type="button" class="sw-item" data-tx="fullerton" aria-current="false"
-            data-meta="Condo · Lincoln Park" data-addr="1126 W. Fullerton" data-rep="" data-price="$720,000" data-note="">
-            <img class="sw-thumb" src="properties/1126-fullerton-listing.jpg" alt="" loading="lazy">
-            <span>
-              <span class="sw-item-address">1126 W. Fullerton</span>
-              <span class="sw-item-meta">Condo · Lincoln Park</span>
-              <span class="sw-item-price">$720,000</span>
-            </span>
-            <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
-          </button>
-          <button type="button" class="sw-item" data-tx="clark" aria-current="false"
-            data-meta="Investment · Lakeview" data-addr="3801 N. Clark Street" data-rep="" data-price="Figures to be confirmed" data-note="">
-            <span class="sw-thumb-ph" aria-hidden="true"></span>
-            <span>
-              <span class="sw-item-address">3801 N. Clark Street</span>
-              <span class="sw-item-meta">Investment · Lakeview</span>
-              <span class="sw-item-price">Figures to be confirmed</span>
-            </span>
-            <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
-          </button>
-          <button type="button" class="sw-item" data-tx="athen" aria-current="false"
-            data-meta="Portfolio · Chicago" data-addr="Athen / Werner Portfolio" data-rep="" data-price="Figures to be confirmed" data-note="">
-            <span class="sw-thumb-ph" aria-hidden="true"></span>
-            <span>
-              <span class="sw-item-address">Athen / Werner Portfolio</span>
-              <span class="sw-item-meta">Portfolio · Chicago</span>
-              <span class="sw-item-price">Figures to be confirmed</span>
-            </span>
-            <span class="sw-item-arrow" aria-hidden="true">&rarr;</span>
-          </button>
-        </div>
+        <div class="sw-figure" id="swFigure"></div>
+        <div class="sw-index" id="swIndex"></div>
       </div>
 
       <div class="sw-footer">
-        <!-- TODO: selected-work.html does not exist yet. -->
-        <a class="sw-all" href="#">Explore All Selected Work <span aria-hidden="true">&rarr;</span></a>
+        <a class="sw-all" href="selected-work.html">Explore All Selected Work <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -781,11 +704,11 @@
         <div class="footer-col-label">Navigate</div>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="index.html#work">Selected Work</a>
+        <a href="selected-work.html">Selected Work</a>
         <a href="selling-process.html">Selling Process</a>
         <a href="marketing.html">Marketing Your Property</a>
         <a href="buying-process.html">Buying Process</a>
-        <a href="calculator.html">Mortgage Calculator</a>
+        <a href="calculator.html">Affordability</a>
         <a href="vendors.html">Vendor Directory</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -1033,44 +956,92 @@
 
 
   <script>
-  /* Selected Work — switch the featured transaction. Frames are pre-rendered and
-     crossfaded so nothing reflows. All copy comes from data attributes written from
-     repository-verified values; this script introduces no facts of its own. */
+  /* Selected Work — render and switch, driven entirely by selected-work-data.js.
+     Frames are pre-rendered and crossfaded so switching never reflows. Any field
+     left empty in the data file is hidden rather than printed. */
   (function () {
-    var items = [].slice.call(document.querySelectorAll('.sw-item'));
-    if (!items.length) return;
-    var frames = [].slice.call(document.querySelectorAll('.sw-frame'));
+    var data = (window.SELECTED_WORK || []).filter(function (t) {
+      return t.publishStatus === 'public';
+    }).slice(0, 7);
+    if (!data.length) return;
+
+    var figure = document.getElementById('swFigure');
+    var index = document.getElementById('swIndex');
     var panel = document.querySelector('.sw-info');
-    var el = { meta: document.getElementById('swMeta'), addr: document.getElementById('swAddress'),
-               rep: document.getElementById('swRep'), price: document.getElementById('swPrice'),
-               note: document.getElementById('swNote') };
+    var el = {
+      meta: document.getElementById('swMeta'), addr: document.getElementById('swAddress'),
+      rep: document.getElementById('swRep'), price: document.getElementById('swPrice'),
+      note: document.getElementById('swNote'), press: document.getElementById('swPress')
+    };
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    function metaLine(t) {
+      return [t.assetType, t.cityOrNeighborhood].filter(Boolean).join(' \u00b7 ');
+    }
     function setOptional(node, value) {
       var v = (value || '').trim();
-      node.textContent = v; node.hidden = !v;
+      node.textContent = v;
+      node.hidden = !v;
     }
-    function select(btn) {
+
+    // Frames
+    data.forEach(function (t, i) {
+      var img = document.createElement('img');
+      img.src = t.image; img.alt = t.imageAlt || '';
+      img.className = 'sw-frame' + (i === 0 ? ' is-active' : '');
+      img.setAttribute('data-frame', t.id);
+      figure.appendChild(img);
+    });
+
+    // Index rows
+    data.forEach(function (t, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'sw-item';
+      btn.setAttribute('data-tx', t.id);
+      btn.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+      var thumb = document.createElement('img');
+      thumb.className = 'sw-thumb'; thumb.src = t.image; thumb.alt = ''; thumb.loading = 'lazy';
+      var body = document.createElement('span');
+      var a = document.createElement('span'); a.className = 'sw-item-address'; a.textContent = t.address;
+      var m = document.createElement('span'); m.className = 'sw-item-meta'; m.textContent = metaLine(t);
+      body.appendChild(a); body.appendChild(m);
+      if (t.priceOrResult) {
+        var pr = document.createElement('span'); pr.className = 'sw-item-price';
+        pr.textContent = t.priceOrResult; body.appendChild(pr);
+      }
+      var arrow = document.createElement('span');
+      arrow.className = 'sw-item-arrow'; arrow.setAttribute('aria-hidden', 'true');
+      arrow.innerHTML = '&rarr;';
+      btn.appendChild(thumb); btn.appendChild(body); btn.appendChild(arrow);
+      btn.addEventListener('click', function () { select(t, btn); });
+      index.appendChild(btn);
+    });
+
+    var frames = [].slice.call(figure.querySelectorAll('.sw-frame'));
+    var items = [].slice.call(index.querySelectorAll('.sw-item'));
+
+    function write(t) {
+      el.meta.textContent = metaLine(t);
+      el.addr.textContent = t.address;
+      el.price.textContent = t.priceOrResult || '';
+      setOptional(el.rep, t.representation);
+      setOptional(el.note, t.outcomeLine);
+      setOptional(el.press, t.pressMention);
+    }
+
+    function select(t, btn) {
       if (btn.getAttribute('aria-current') === 'true') return;
       items.forEach(function (b) { b.setAttribute('aria-current', 'false'); });
       btn.setAttribute('aria-current', 'true');
-      var id = btn.getAttribute('data-tx');
-      frames.forEach(function (f) { f.classList.toggle('is-active', f.getAttribute('data-frame') === id); });
-      function write() {
-        el.meta.textContent = btn.getAttribute('data-meta') || '';
-        el.addr.textContent = btn.getAttribute('data-addr') || '';
-        el.price.textContent = btn.getAttribute('data-price') || '';
-        setOptional(el.rep, btn.getAttribute('data-rep'));
-        setOptional(el.note, btn.getAttribute('data-note'));
-      }
-      if (reduce) { write(); return; }
+      frames.forEach(function (f) { f.classList.toggle('is-active', f.getAttribute('data-frame') === t.id); });
+      if (reduce) { write(t); return; }
       panel.style.transition = 'opacity 0.16s ease';
       panel.style.opacity = '0';
-      setTimeout(function () { write(); panel.style.opacity = '1'; }, 160);
+      setTimeout(function () { write(t); panel.style.opacity = '1'; }, 160);
     }
-    items.forEach(function (btn) { btn.addEventListener('click', function () { select(btn); }); });
-    setOptional(el.rep, el.rep.textContent);
-    setOptional(el.note, el.note.textContent);
+
+    write(data[0]);
   })();
   </script>
 
