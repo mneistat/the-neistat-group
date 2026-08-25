@@ -22,7 +22,7 @@ window.SELECTED_WORK = [
   {
     id: 'lake',
     address: '1035 W. Lake Street',
-    cityOrNeighborhood: 'West Loop',
+    neighborhood: 'West Loop',
     market: 'Chicago',
     assetType: 'Deconversion',
     representation: '',                     // not verified — deliberately blank
@@ -37,18 +37,20 @@ window.SELECTED_WORK = [
   },
   {
     id: 'elm',
-    address: '1185 Elm Street',
-    cityOrNeighborhood: 'Winnetka',
+    address: '1183 Elm Street',
+    neighborhood: 'Winnetka',
     market: 'North Shore',
     assetType: 'Residential',
-    // Crain's Chicago Business names Matthew Neistat as the listing agent.
+    // Address per Matthew, who represented the seller. Note for the record: public
+    // MLS listings (11734843) and the Crain's piece index this sale under 1185 Elm.
+    // Matthew's instruction takes precedence — he transacted it.
     representation: 'Represented Seller',
     priceOrResult: '$1,265,000',
     // Asked $1.15M, sold $1,265,000 — 10% over — and never reached the open market.
     outcomeLine: 'Off-market sale, 10% over asking.',
     pressMention: 'Crain’s Chicago Business',
     image: 'properties/1185-elm-listing.jpg',
-    imageAlt: '1185 Elm Street, Winnetka — North Shore residence',
+    imageAlt: '1183 Elm Street, Winnetka — North Shore residence',
     caseStudyUrl: '',                       // TODO: CASE STUDY PAGE NEEDED
     publishStatus: 'public',
     needsVerification: false
@@ -56,7 +58,7 @@ window.SELECTED_WORK = [
   {
     id: 'lincoln',
     address: '2636 N. Lincoln Avenue',
-    cityOrNeighborhood: 'Lincoln Park',
+    neighborhood: 'Lincoln Park',
     market: 'Chicago',
     assetType: '4-Unit Investment',
     representation: 'Represented Seller — Bayview LTD',
@@ -72,7 +74,7 @@ window.SELECTED_WORK = [
   {
     id: 'wellington',
     address: '702 W. Wellington Avenue',
-    cityOrNeighborhood: 'Lakeview',
+    neighborhood: 'Lakeview',
     market: 'Chicago',
     assetType: 'Development',
     representation: 'Represented Developer',
@@ -88,7 +90,7 @@ window.SELECTED_WORK = [
   {
     id: 'fullerton',
     address: '1126 W. Fullerton Avenue',
-    cityOrNeighborhood: 'Lincoln Park',
+    neighborhood: 'Lincoln Park',
     market: 'Chicago',
     assetType: 'Condominium',
     representation: '',                     // not verified — deliberately blank
@@ -106,7 +108,7 @@ window.SELECTED_WORK = [
   {
     id: 'clark',
     address: '3801 N. Clark Street',
-    cityOrNeighborhood: 'Lakeview',
+    neighborhood: 'Lakeview',
     market: 'Chicago',
     assetType: 'Investment',
     representation: '',
@@ -122,7 +124,7 @@ window.SELECTED_WORK = [
   {
     id: 'athen',
     address: 'Athen / Werner Portfolio',
-    cityOrNeighborhood: 'Chicago',
+    neighborhood: 'Chicago',
     market: 'Chicago',
     assetType: 'Portfolio',
     representation: '',

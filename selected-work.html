@@ -10,7 +10,7 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selected Work | The Neistat Group">
   <meta property="og:description" content="Selected residential, investment, development, and commercial transactions across Chicago and the North Shore.">
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=27">
   <style>
     /* Page-scoped, swp- prefixed. Headings declare their own colour: the global
        "h1, h2, h3 { color:#EDE8DE }" beats inherited colour and would otherwise
@@ -199,7 +199,7 @@
 
       var body = document.createElement('div');
       var meta = document.createElement('p'); meta.className = 'swp-meta';
-      meta.textContent = [t.assetType, t.cityOrNeighborhood].filter(Boolean).join(' \u00b7 ');
+      meta.textContent = [t.neighborhood, t.assetType].filter(Boolean).join(' \u00b7 ');
       var h3 = document.createElement('h3'); h3.className = 'swp-address'; h3.textContent = t.address;
       body.appendChild(meta); body.appendChild(h3);
       [['swp-rep', t.representation], ['swp-note', t.outcomeLine], ['swp-press', t.pressMention]]

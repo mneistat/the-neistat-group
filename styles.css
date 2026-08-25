@@ -64,10 +64,14 @@ body.cursor-live a, body.cursor-live button { cursor: none; }
 .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(3px, -4px); }
 
 /* Mobile menu */
-.mobile-menu { position: fixed; inset: 0; z-index: 999; background: #0B0A07; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
-.mobile-menu.active { opacity: 1; visibility: visible; }
+.mobile-menu { position: fixed; inset: 0; z-index: 999; background: #0B0A07; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden;
+  /* Never transition `all` across `visibility` — iOS Safari can leave the panel
+     stuck hidden. Fade opacity, and flip visibility instantly on open / after the
+     fade on close. */
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s; }
+.mobile-menu.active { opacity: 1; visibility: visible; transition: opacity 0.4s ease, visibility 0s linear 0s; }
 .mobile-menu-inner { text-align: center; }
-.mobile-menu-link { display: block; font-family: Georgia, serif; font-size: 28px; color: #EDE8DE; margin-bottom: 16px; opacity: 0; transform: translateY(16px); transition: all 0.4s ease; }
+.mobile-menu-link { display: block; font-family: Georgia, serif; font-size: 28px; color: #EDE8DE; margin-bottom: 16px; opacity: 0; transform: translateY(16px); transition: opacity 0.4s ease, transform 0.4s ease; }
 .mobile-menu.active .mobile-menu-link { opacity: 1; transform: none; }
 .mobile-menu-link:hover { color: #EDE8DE; }
 .mobile-menu-footer { margin-top: 40px; }
