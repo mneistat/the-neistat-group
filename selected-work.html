@@ -10,7 +10,7 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selected Work | The Neistat Group">
   <meta property="og:description" content="Selected residential, investment, development, and commercial transactions across Chicago and the North Shore.">
-  <link rel="stylesheet" href="styles.css?v=27">
+  <link rel="stylesheet" href="styles.css?v=31">
   <style>
     /* Page-scoped, swp- prefixed. Headings declare their own colour: the global
        "h1, h2, h3 { color:#EDE8DE }" beats inherited colour and would otherwise
@@ -25,27 +25,59 @@
     .swp-sub { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: clamp(15px,1.5vw,17px);
       line-height: 1.72; color: rgba(237,232,222,0.78); max-width: 52ch; margin: 0; }
 
-    .swp-list { background: #F4F0E8; padding: clamp(56px,7vw,96px) clamp(24px,5vw,56px); }
-    .swp-inner { max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(11,10,7,0.16); }
-    .swp-row { display: grid; grid-template-columns: 300px 1fr auto; gap: clamp(24px,3vw,48px);
-      align-items: center; padding: clamp(24px,3vw,36px) 0;
-      border-bottom: 1px solid rgba(11,10,7,0.16); }
-    .swp-row img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
-    .swp-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
+    /* Edge-to-edge image cards, per the comp: the photograph fills the card and the
+       transaction sits over its lower third. A bottom scrim carries the type —
+       required for legibility over photography, not decoration. */
+    .swp-list { background: #F4F0E8; padding: clamp(48px,6vw,88px) clamp(24px,5vw,56px) clamp(64px,8vw,110px); }
+    /* Five across on a wide screen, as in the comp — five transactions, one row,
+       no orphan. Steps down cleanly as the viewport narrows. */
+    .swp-inner { max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(14px,1.4vw,20px); }
+    @media (max-width: 1240px) { .swp-inner { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px)  { .swp-inner { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px)  { .swp-inner { grid-template-columns: 1fr; } }
+
+    .swp-card { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden;
+      background: #14120E; }
+    .swp-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .swp-card:hover img { transform: scale(1.03); }
+    /* Scrim: legibility for the overlaid type. */
+    .swp-card::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+      /* The type block begins ~47% down the card, so the scrim must already be
+         substantial by then — his photography is bright daylight, not the dusk
+         shots the comp used. */
+      background: linear-gradient(to bottom,
+        rgba(11,10,7,0) 20%, rgba(11,10,7,0.42) 40%, rgba(11,10,7,0.80) 56%,
+        rgba(11,10,7,0.93) 74%, rgba(11,10,7,0.97) 100%); }
+    .swp-card-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+      padding: clamp(20px,1.8vw,26px); }
+    .swp-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px;
       font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin: 0 0 12px; }
-    .swp-address { font-family: Georgia, serif; font-weight: 400; font-size: clamp(22px,2.2vw,30px);
-      line-height: 1.15; letter-spacing: -0.02em; color: #0B0A07; margin: 0 0 12px; }
-    .swp-rep { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
-      color: rgba(11,10,7,0.78); margin: 0 0 10px; }
-    .swp-note { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
-      line-height: 1.65; color: rgba(11,10,7,0.78); margin: 0 0 10px; max-width: 52ch; }
-    .swp-press { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
+      color: rgba(237,232,222,0.78); margin: 0 0 10px; }
+    .swp-address { font-family: Georgia, serif; font-weight: 400; font-size: clamp(19px,1.6vw,23px);
+      line-height: 1.15; letter-spacing: -0.015em; color: #EDE8DE; margin: 0 0 8px; }
+    .swp-rep { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px;
+      line-height: 1.5; color: rgba(237,232,222,0.78); margin: 0 0 6px; }
+    .swp-note { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px;
+      line-height: 1.55; color: rgba(237,232,222,0.78); margin: 0 0 6px; }
+    .swp-press { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px;
       font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin: 0; }
-    .swp-price { font-family: Georgia, serif; font-size: clamp(18px,1.6vw,24px); color: #0B0A07;
-      white-space: nowrap; }
+      color: rgba(237,232,222,0.78); margin: 0; }
     .swp-rep[hidden], .swp-note[hidden], .swp-press[hidden] { display: none; }
+    /* Price sits on a hairline with the arrow, as in the comp. */
+    .swp-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(237,232,222,0.28); }
+    .swp-price { font-family: Georgia, serif; font-size: clamp(16px,1.3vw,19px); color: #EDE8DE; }
+    .swp-arrow { font-family: Georgia, serif; font-size: 17px; color: rgba(237,232,222,0.78);
+      transition: transform 0.25s ease, color 0.25s ease; }
+    .swp-card:hover .swp-arrow { color: #EDE8DE; transform: translateX(4px); }
+    .swp-card:focus-visible { outline: 2px solid #0B0A07; outline-offset: 4px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .swp-card img, .swp-arrow { transition: none; }
+      .swp-card:hover img { transform: none; }
+    }
 
     .swp-cta { background: #0B0A07; padding: clamp(56px,7vw,90px) clamp(24px,5vw,56px); text-align: center; }
     .swp-cta-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(26px,3.4vw,40px);
@@ -186,34 +218,52 @@
     var list = document.getElementById('swpList');
     var data = (window.SELECTED_WORK || []).filter(function (t) { return t.publishStatus === 'public'; });
     if (!list || !data.length) return;
-    data.forEach(function (t) {
-      var row = document.createElement('article');
-      row.className = 'swp-row';
 
-      var fig = document.createElement('div');
+    data.forEach(function (t) {
+      // TODO: CASE STUDY PAGE NEEDED — caseStudyUrl is empty for every transaction.
+      var card = document.createElement(t.caseStudyUrl ? 'a' : 'article');
+      card.className = 'swp-card';
+      if (t.caseStudyUrl) card.href = t.caseStudyUrl;
+
       if (t.image) {
         var img = document.createElement('img');
         img.src = t.image; img.alt = t.imageAlt || ''; img.loading = 'lazy';
-        fig.appendChild(img);
+        card.appendChild(img);
       }
 
       var body = document.createElement('div');
-      var meta = document.createElement('p'); meta.className = 'swp-meta';
+      body.className = 'swp-card-body';
+
+      var meta = document.createElement('p');
+      meta.className = 'swp-meta';
       meta.textContent = [t.neighborhood, t.assetType].filter(Boolean).join(' \u00b7 ');
-      var h3 = document.createElement('h3'); h3.className = 'swp-address'; h3.textContent = t.address;
+
+      var h3 = document.createElement('h3');
+      h3.className = 'swp-address'; h3.textContent = t.address;
+
       body.appendChild(meta); body.appendChild(h3);
-      [['swp-rep', t.representation], ['swp-note', t.outcomeLine], ['swp-press', t.pressMention]]
-        .forEach(function (pair) {
-          var n = document.createElement('p'); n.className = pair[0];
-          var v = (pair[1] || '').trim();
-          n.textContent = v; n.hidden = !v; body.appendChild(n);
-        });
 
-      var price = document.createElement('div');
+      // Comp shows metadata / address / representation / price only. The outcome
+      // line and press mention stay in the data for the case-study pages — putting
+      // them on the card pushes type up out of the scrim and onto bright sky.
+      var rep = document.createElement('p');
+      rep.className = 'swp-rep';
+      var repVal = (t.representation || '').trim();
+      rep.textContent = repVal; rep.hidden = !repVal;
+      body.appendChild(rep);
+
+      var foot = document.createElement('div');
+      foot.className = 'swp-foot';
+      var price = document.createElement('span');
       price.className = 'swp-price'; price.textContent = t.priceOrResult || '';
+      var arrow = document.createElement('span');
+      arrow.className = 'swp-arrow'; arrow.setAttribute('aria-hidden', 'true');
+      arrow.innerHTML = '&rarr;';
+      foot.appendChild(price); foot.appendChild(arrow);
+      body.appendChild(foot);
 
-      row.appendChild(fig); row.appendChild(body); row.appendChild(price);
-      list.appendChild(row);
+      card.appendChild(body);
+      list.appendChild(card);
     });
   })();
   </script>
