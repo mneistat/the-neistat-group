@@ -12,16 +12,6 @@
       "source": "/search.html",
       "destination": "/contact?intent=buying-home",
       "permanent": true
-    },
-    {
-      "source": "/buying-process",
-      "destination": "/contact?intent=buying-home",
-      "permanent": false
-    },
-    {
-      "source": "/buying-process.html",
-      "destination": "/contact?intent=buying-home",
-      "permanent": false
     }
   ]
 }
