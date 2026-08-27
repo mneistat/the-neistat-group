@@ -11,6 +11,10 @@
  * it as an empty string — the renderers hide empty fields rather than printing a
  * placeholder. Never ship user-visible text such as "Figures to be confirmed".
  *
+ * tenants
+ *   Current occupants, stated as a fact about the building. Do NOT phrase this as
+ *   work Matthew performed unless he actually handled the leasing.
+ *
  * publishStatus
  *   "public"   — rendered on the site
  *   "internal" — kept here for reference, never rendered
@@ -28,12 +32,16 @@ window.SELECTED_WORK = [
     representation: '',                     // not verified — deliberately blank
     priceOrResult: '$9,500,000',
     outcomeLine: 'Won the listing against major brokerages and brought it under contract off-market in two weeks.',
+    // Occupancy, not Matthew's work — he represented the seller on the sale.
+    // BODYBAR confirms 1035 W. Lake Suite 100A on its own site; The Athletic Club
+    // per Matthew, who transacted the building.
+    tenants: 'Now home to BODYBAR Pilates and The Athletic Club.',
     pressMention: 'CoStar News',
     // Cropped from the leasing rendering to remove the "1035 WEST LAKE" badge.
     // The building still carries placeholder LOGO / COMPANY LOGO signage — a real
     // photograph would replace this.
     image: 'properties/1035-lake-feature.jpg',
-    imageAlt: '1035 W. Lake Street, West Loop — multi-unit deconversion',
+    imageAlt: '1035 W. Lake Street — three-storey brick building with ground-floor retail',
     caseStudyUrl: '',                       // TODO: CASE STUDY PAGE NEEDED
     publishStatus: 'public',
     needsVerification: false
