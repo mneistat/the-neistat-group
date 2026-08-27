@@ -29,7 +29,10 @@ window.SELECTED_WORK = [
     priceOrResult: '$9,500,000',
     outcomeLine: 'Won the listing against major brokerages and brought it under contract off-market in two weeks.',
     pressMention: 'CoStar News',
-    image: 'properties/1035-lake-listing.jpg',
+    // Cropped from the leasing rendering to remove the "1035 WEST LAKE" badge.
+    // The building still carries placeholder LOGO / COMPANY LOGO signage — a real
+    // photograph would replace this.
+    image: 'properties/1035-lake-feature.jpg',
     imageAlt: '1035 W. Lake Street, West Loop — multi-unit deconversion',
     caseStudyUrl: '',                       // TODO: CASE STUDY PAGE NEEDED
     publishStatus: 'public',
