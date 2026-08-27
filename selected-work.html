@@ -10,7 +10,7 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selected Work | The Neistat Group">
   <meta property="og:description" content="Selected residential, investment, development, and commercial transactions across Chicago and the North Shore.">
-  <link rel="stylesheet" href="styles.css?v=31">
+  <link rel="stylesheet" href="styles.css?v=33">
   <style>
     /* Page-scoped, swp- prefixed. Headings declare their own colour: the global
        "h1, h2, h3 { color:#EDE8DE }" beats inherited colour and would otherwise
@@ -25,57 +25,87 @@
     .swp-sub { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: clamp(15px,1.5vw,17px);
       line-height: 1.72; color: rgba(237,232,222,0.78); max-width: 52ch; margin: 0; }
 
-    /* Edge-to-edge image cards, per the comp: the photograph fills the card and the
-       transaction sits over its lower third. A bottom scrim carries the type —
-       required for legibility over photography, not decoration. */
-    .swp-list { background: #F4F0E8; padding: clamp(48px,6vw,88px) clamp(24px,5vw,56px) clamp(64px,8vw,110px); }
-    /* Five across on a wide screen, as in the comp — five transactions, one row,
-       no orphan. Steps down cleanly as the viewport narrows. */
-    .swp-inner { max-width: 1400px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(14px,1.4vw,20px); }
-    @media (max-width: 1240px) { .swp-inner { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 900px)  { .swp-inner { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 620px)  { .swp-inner { grid-template-columns: 1fr; } }
+    /* Genuinely hidden headings — the previous class had no rule at all, so the
+       "Transactions" heading rendered as visible stray text. */
+    .swp-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-    .swp-card { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden;
-      background: #14120E; }
+    .swp-inner-wide { max-width: 1400px; margin: 0 auto; }
+    .swp-section-label { display: block; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(11,10,7,0.62); margin-bottom: clamp(24px,2.6vw,36px); }
+
+    /* ---------- Featured ---------- */
+    .swp-feature-section { background: #F4F0E8; padding: clamp(48px,6vw,84px) clamp(24px,5vw,56px) clamp(32px,4vw,52px); }
+    .swp-feature { display: grid; grid-template-columns: 1.35fr 1fr;
+      border: 1px solid rgba(11,10,7,0.16); background: #EDE8DE; align-items: stretch; }
+    .swp-feature-media { position: relative; overflow: hidden; min-height: 380px; background: #E4DFD5; }
+    .swp-feature-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .swp-feature-body { padding: clamp(28px,3vw,52px); display: flex; flex-direction: column; }
+    .swp-feature-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
+      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(11,10,7,0.62); margin: 0 0 18px; }
+    .swp-feature-address { font-family: Georgia, serif; font-weight: 400;
+      font-size: clamp(26px,2.8vw,40px); line-height: 1.1; letter-spacing: -0.022em;
+      color: #0B0A07; margin: 0 0 16px; }
+    .swp-feature-rep { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
+      color: rgba(11,10,7,0.78); margin: 0 0 20px; }
+    .swp-feature-rule { width: 34px; height: 1px; background: rgba(11,10,7,0.28); margin: 0 0 20px; }
+    .swp-feature-price { font-family: Georgia, serif; font-size: clamp(20px,1.7vw,26px);
+      color: #0B0A07; margin: 0 0 18px; }
+    .swp-feature-note { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px;
+      line-height: 1.7; color: rgba(11,10,7,0.78); margin: 0 0 14px; max-width: 40ch; }
+    .swp-feature-press { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
+      font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(11,10,7,0.62); margin: 0 0 28px; }
+    .swp-feature-cta { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 9px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase; color: #0B0A07;
+      border-bottom: 1px solid rgba(11,10,7,0.3); padding-bottom: 5px; transition: border-color 0.25s ease; }
+    .swp-feature-cta:hover { border-color: #0B0A07; }
+    .swp-feature-cta:focus-visible { outline: 2px solid #0B0A07; outline-offset: 4px; }
+
+    /* ---------- Index ---------- */
+    .swp-list { background: #F4F0E8; padding: clamp(20px,2.4vw,36px) clamp(24px,5vw,56px) clamp(64px,8vw,110px); }
+    .swp-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(14px,1.4vw,20px); }
+    @media (max-width: 1240px) { .swp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px)  { .swp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px)  { .swp-grid { grid-template-columns: 1fr; } }
+
+    .swp-card { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #14120E; }
     .swp-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
       transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
     .swp-card:hover img { transform: scale(1.03); }
-    /* Scrim: legibility for the overlaid type. */
+    /* Scrim carries the overlaid type. The photography is bright daylight, so it has
+       to be substantial by the time the metadata line starts, ~45% down. */
     .swp-card::after { content: ''; position: absolute; inset: 0; pointer-events: none;
-      /* The type block begins ~47% down the card, so the scrim must already be
-         substantial by then — his photography is bright daylight, not the dusk
-         shots the comp used. */
       background: linear-gradient(to bottom,
         rgba(11,10,7,0) 20%, rgba(11,10,7,0.42) 40%, rgba(11,10,7,0.80) 56%,
         rgba(11,10,7,0.93) 74%, rgba(11,10,7,0.97) 100%); }
-    .swp-card-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
-      padding: clamp(20px,1.8vw,26px); }
+    .swp-card-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: clamp(18px,1.6vw,24px); }
     .swp-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px;
       font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
       color: rgba(237,232,222,0.78); margin: 0 0 10px; }
-    .swp-address { font-family: Georgia, serif; font-weight: 400; font-size: clamp(19px,1.6vw,23px);
+    .swp-address { font-family: Georgia, serif; font-weight: 400; font-size: clamp(18px,1.5vw,22px);
       line-height: 1.15; letter-spacing: -0.015em; color: #EDE8DE; margin: 0 0 8px; }
     .swp-rep { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px;
-      line-height: 1.5; color: rgba(237,232,222,0.78); margin: 0 0 6px; }
-    .swp-note { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px;
-      line-height: 1.55; color: rgba(237,232,222,0.78); margin: 0 0 6px; }
-    .swp-press { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px;
-      font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(237,232,222,0.78); margin: 0; }
-    .swp-rep[hidden], .swp-note[hidden], .swp-press[hidden] { display: none; }
-    /* Price sits on a hairline with the arrow, as in the comp. */
-    .swp-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(237,232,222,0.28); }
-    .swp-price { font-family: Georgia, serif; font-size: clamp(16px,1.3vw,19px); color: #EDE8DE; }
-    .swp-arrow { font-family: Georgia, serif; font-size: 17px; color: rgba(237,232,222,0.78);
-      transition: transform 0.25s ease, color 0.25s ease; }
-    .swp-card:hover .swp-arrow { color: #EDE8DE; transform: translateX(4px); }
-    .swp-card:focus-visible { outline: 2px solid #0B0A07; outline-offset: 4px; }
+      line-height: 1.5; color: rgba(237,232,222,0.78); margin: 0; }
+    .swp-foot { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(237,232,222,0.28); }
+    .swp-price { display: block; font-family: Georgia, serif; font-size: clamp(16px,1.3vw,19px);
+      color: #EDE8DE; margin-bottom: 10px; }
+    .swp-card-link { display: inline-flex; align-items: center; gap: 7px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,222,0.78);
+      border-bottom: 1px solid rgba(237,232,222,0.3); padding-bottom: 3px; transition: color 0.25s ease, border-color 0.25s ease; }
+    .swp-card-link:hover { color: #EDE8DE; border-color: #EDE8DE; }
+    .swp-card-link:focus-visible { outline: 2px solid #EDE8DE; outline-offset: 3px; }
 
+    @media (max-width: 900px) {
+      .swp-feature { grid-template-columns: 1fr; }
+      .swp-feature-media { min-height: 260px; aspect-ratio: 4 / 3; }
+    }
     @media (prefers-reduced-motion: reduce) {
-      .swp-card img, .swp-arrow { transition: none; }
+      .swp-card img { transition: none; }
       .swp-card:hover img { transform: none; }
     }
 
@@ -125,13 +155,13 @@
         <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-buyers">For Buyers</button>
         <div class="nav-drop" id="nav-drop-buyers">
           <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Mortgage Calculator</a>
+          <a href="calculator.html">Affordability</a>
         </div>
       </div>
       <div class="nav-group" data-nav-group data-open="false">
         <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-resources">Resources</button>
         <div class="nav-drop" id="nav-drop-resources">
-          <a href="calculator.html">Mortgage Calculator</a>
+          <a href="calculator.html">Affordability</a>
           <a href="vendors.html">Vendor Directory</a>
         </div>
       </div>
@@ -157,13 +187,13 @@
         <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-buyers">For Buyers</button>
         <div class="mobile-sub" id="m-drop-buyers" hidden>
           <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Mortgage Calculator</a>
+          <a href="calculator.html">Affordability</a>
         </div>
       </div>
       <div class="mobile-group" data-nav-group data-open="false">
         <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-resources">Resources</button>
         <div class="mobile-sub" id="m-drop-resources" hidden>
-          <a href="calculator.html">Mortgage Calculator</a>
+          <a href="calculator.html">Affordability</a>
           <a href="vendors.html">Vendor Directory</a>
         </div>
       </div>
@@ -181,9 +211,98 @@
     </div>
   </section>
 
-  <section class="swp-list" aria-labelledby="swp-list-heading">
-    <h2 class="swp-sr" id="swp-list-heading">Transactions</h2>
-    <div class="swp-inner" id="swpList"></div>
+  <section class="swp-feature-section" aria-labelledby="swp-feature-heading">
+    <div class="swp-inner-wide">
+      <span class="swp-section-label">Featured Work</span>
+      <h2 class="swp-sr-only" id="swp-feature-heading">Featured transaction</h2>
+      <div class="swp-feature">
+        <div class="swp-feature-media">
+          <img src="properties/1035-lake-listing.jpg" alt="1035 W. Lake Street, West Loop — multi-unit deconversion" width="840" height="472">
+        </div>
+        <div class="swp-feature-body">
+          <p class="swp-feature-meta">West Loop · Deconversion</p>
+          <h2 class="swp-feature-address">1035 W. Lake Street</h2>
+          <div class="swp-feature-rule"></div>
+          <p class="swp-feature-price">$9,500,000</p>
+            <p class="swp-feature-note">Won the listing against major brokerages and brought it under contract off-market in two weeks.</p>
+            <p class="swp-feature-press">CoStar News</p>
+          <!-- TODO: CASE STUDY PAGE NEEDED -->
+          <a class="swp-feature-cta" href="#">View the Work <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="swp-list" aria-labelledby="swp-index-heading">
+    <div class="swp-inner-wide">
+      <span class="swp-section-label">Transaction Index</span>
+      <h2 class="swp-sr-only" id="swp-index-heading">All selected transactions</h2>
+      <div class="swp-grid">
+        <article class="swp-card">
+          <img src="properties/1035-lake-listing.jpg" alt="1035 W. Lake Street, West Loop — multi-unit deconversion" loading="lazy" width="840" height="560">
+          <div class="swp-card-body">
+            <p class="swp-meta">West Loop · Deconversion</p>
+            <h3 class="swp-address">1035 W. Lake Street</h3>
+            <div class="swp-foot">
+              <span class="swp-price">$9,500,000</span>
+              <!-- TODO: CASE STUDY PAGE NEEDED -->
+              <a class="swp-card-link" href="#" aria-label="View the work: 1035 W. Lake Street">View the Work <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="swp-card">
+          <img src="properties/1185-elm-listing.jpg" alt="1183 Elm Street, Winnetka — North Shore residence" loading="lazy" width="840" height="560">
+          <div class="swp-card-body">
+            <p class="swp-meta">Winnetka · Residential</p>
+            <h3 class="swp-address">1183 Elm Street</h3>
+            <p class="swp-rep">Represented Seller</p>
+            <div class="swp-foot">
+              <span class="swp-price">$1,265,000</span>
+              <!-- TODO: CASE STUDY PAGE NEEDED -->
+              <a class="swp-card-link" href="#" aria-label="View the work: 1183 Elm Street">View the Work <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="swp-card">
+          <img src="properties/2636-lincoln-listing.jpg" alt="2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property" loading="lazy" width="840" height="560">
+          <div class="swp-card-body">
+            <p class="swp-meta">Lincoln Park · 4-Unit Investment</p>
+            <h3 class="swp-address">2636 N. Lincoln Avenue</h3>
+            <p class="swp-rep">Represented Seller — Bayview LTD</p>
+            <div class="swp-foot">
+              <span class="swp-price">$2,300,000</span>
+              <!-- TODO: CASE STUDY PAGE NEEDED -->
+              <a class="swp-card-link" href="#" aria-label="View the work: 2636 N. Lincoln Avenue">View the Work <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="swp-card">
+          <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" loading="lazy" width="840" height="560">
+          <div class="swp-card-body">
+            <p class="swp-meta">Lakeview · Development</p>
+            <h3 class="swp-address">702 W. Wellington Avenue</h3>
+            <p class="swp-rep">Represented Developer</p>
+            <div class="swp-foot">
+              <span class="swp-price">$709K – $985K</span>
+              <!-- TODO: CASE STUDY PAGE NEEDED -->
+              <a class="swp-card-link" href="#" aria-label="View the work: 702 W. Wellington Avenue">View the Work <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="swp-card">
+          <img src="properties/1126-fullerton-listing.jpg" alt="1126 W. Fullerton Avenue, Lincoln Park" loading="lazy" width="840" height="560">
+          <div class="swp-card-body">
+            <p class="swp-meta">Lincoln Park · Condominium</p>
+            <h3 class="swp-address">1126 W. Fullerton Avenue</h3>
+            <div class="swp-foot">
+              <span class="swp-price">$720,000</span>
+              <!-- TODO: CASE STUDY PAGE NEEDED -->
+              <a class="swp-card-link" href="#" aria-label="View the work: 1126 W. Fullerton Avenue">View the Work <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
   <section class="swp-cta">
@@ -202,7 +321,7 @@
         <a href="selling-process.html">Selling Process</a>
         <a href="marketing.html">Marketing Your Property</a>
         <a href="buying-process.html">Buying Process</a>
-        <a href="calculator.html">Mortgage Calculator</a>
+        <a href="calculator.html">Affordability</a>
         <a href="vendors.html">Vendor Directory</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -211,62 +330,6 @@
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
 
-  <script>
-  /* Rendered from selected-work-data.js. Entries marked "internal" never appear,
-     and empty fields are hidden rather than printed. */
-  (function () {
-    var list = document.getElementById('swpList');
-    var data = (window.SELECTED_WORK || []).filter(function (t) { return t.publishStatus === 'public'; });
-    if (!list || !data.length) return;
-
-    data.forEach(function (t) {
-      // TODO: CASE STUDY PAGE NEEDED — caseStudyUrl is empty for every transaction.
-      var card = document.createElement(t.caseStudyUrl ? 'a' : 'article');
-      card.className = 'swp-card';
-      if (t.caseStudyUrl) card.href = t.caseStudyUrl;
-
-      if (t.image) {
-        var img = document.createElement('img');
-        img.src = t.image; img.alt = t.imageAlt || ''; img.loading = 'lazy';
-        card.appendChild(img);
-      }
-
-      var body = document.createElement('div');
-      body.className = 'swp-card-body';
-
-      var meta = document.createElement('p');
-      meta.className = 'swp-meta';
-      meta.textContent = [t.neighborhood, t.assetType].filter(Boolean).join(' \u00b7 ');
-
-      var h3 = document.createElement('h3');
-      h3.className = 'swp-address'; h3.textContent = t.address;
-
-      body.appendChild(meta); body.appendChild(h3);
-
-      // Comp shows metadata / address / representation / price only. The outcome
-      // line and press mention stay in the data for the case-study pages — putting
-      // them on the card pushes type up out of the scrim and onto bright sky.
-      var rep = document.createElement('p');
-      rep.className = 'swp-rep';
-      var repVal = (t.representation || '').trim();
-      rep.textContent = repVal; rep.hidden = !repVal;
-      body.appendChild(rep);
-
-      var foot = document.createElement('div');
-      foot.className = 'swp-foot';
-      var price = document.createElement('span');
-      price.className = 'swp-price'; price.textContent = t.priceOrResult || '';
-      var arrow = document.createElement('span');
-      arrow.className = 'swp-arrow'; arrow.setAttribute('aria-hidden', 'true');
-      arrow.innerHTML = '&rarr;';
-      foot.appendChild(price); foot.appendChild(arrow);
-      body.appendChild(foot);
-
-      card.appendChild(body);
-      list.appendChild(card);
-    });
-  })();
-  </script>
 
   <script>
     window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
