@@ -6,14 +6,20 @@
   <meta name="theme-color" content="#0B0A07">
   <title>Selling Process | The Neistat Group</title>
   <meta name="description" content="A clear guide to the home selling process with Matthew Neistat and The Neistat Group — from strategy and pricing through marketing, negotiation, and closing.">
+  <link rel="canonical" href="https://www.theneistatgroup.com/selling-process">
+  <meta property="og:url" content="https://www.theneistatgroup.com/selling-process">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selling Process | The Neistat Group">
   <meta property="og:description" content="A clear guide to the home selling process with Matthew Neistat and The Neistat Group — from strategy and pricing through marketing, negotiation, and closing.">
-  <link rel="stylesheet" href="styles.css?v=35">
+  <link rel="stylesheet" href="styles.css?v=36">
   <!-- styles.css hides .reveal and depends on JS to show it. With scripting off,
        cancel the rule so the page is fully readable rather than blank. -->
-  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}    /* Breadcrumb back to the parent pillar. Selling Process is no longer in the
+       main nav; it is reached from Seller Strategy. */
+    .sp-eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(237,232,222,0.35); transition: border-color 0.3s; }
+    .sp-eyebrow a:hover, .sp-eyebrow a:focus-visible { border-bottom-color: #EDE8DE; }
+  </style></noscript>
   <style>
     /* ===== SELLING PROCESS — page-scoped. All classes are sp- prefixed so nothing
        here can collide with, or be shadowed by, the global stylesheet.
@@ -29,7 +35,7 @@
 
     /* ---------- Hero ---------- */
     .sp-hero { background: #0B0A07; padding: clamp(130px,17vw,190px) clamp(28px,6vw,48px) clamp(56px,7vw,90px); }
-    .sp-hero-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(40px,5vw,80px); align-items: center; }
+    .sp-hero-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: clamp(40px,5vw,80px); align-items: center; }
     .sp-eyebrow { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-bottom: 24px; display: block; }
     .sp-hero-h1 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(38px,6vw,72px); line-height: 1.03; letter-spacing: -0.025em; color: #EDE8DE; margin: 0 0 24px; }
     .sp-hero-h1 em { font-style: italic; }
@@ -139,7 +145,7 @@
 
     /* ---------- Closing CTA ---------- */
     .sp-cta { background: #0B0A07; padding: clamp(64px,8vw,110px) clamp(24px,6vw,48px); }
-    .sp-cta-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px,5vw,80px); align-items: center; }
+    .sp-cta-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: clamp(40px,5vw,80px); align-items: center; }
     .sp-cta-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(28px,4vw,46px); line-height: 1.1; letter-spacing: -0.02em; color: #EDE8DE; margin: 0 0 18px; }
     .sp-cta-h2 em { font-style: italic; }
     .sp-cta-copy { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.75; color: rgba(237,232,222,0.78); max-width: 48ch; margin: 0 0 32px; }
@@ -217,62 +223,25 @@
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html" class="nav-link">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-sellers">For Sellers</button>
-        <div class="nav-drop" id="nav-drop-sellers">
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-buyers">For Buyers</button>
-        <div class="nav-drop" id="nav-drop-buyers">
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-resources">Resources</button>
-        <div class="nav-drop" id="nav-drop-resources">
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
-      </div>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
+      <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+      <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
+      <a href="calculator.html" class="nav-link">Affordability</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-cta-btn">Contact</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="index.html" class="mobile-menu-link">Home</a>
       <a href="selected-work.html" class="mobile-menu-link">Selected Work</a>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-sellers">For Sellers</button>
-        <div class="mobile-sub" id="m-drop-sellers" hidden>
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
-        </div>
-      </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-buyers">For Buyers</button>
-        <div class="mobile-sub" id="m-drop-buyers" hidden>
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
-      </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-resources">Resources</button>
-        <div class="mobile-sub" id="m-drop-resources" hidden>
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
-      </div>
+      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="seller-strategy.html" class="mobile-menu-link">Seller Strategy</a>
+      <a href="calculator.html" class="mobile-menu-link">Affordability</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
       <a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
@@ -282,16 +251,9 @@
   <section class="sp-hero">
     <div class="sp-hero-inner">
       <div class="reveal">
-        <span class="sp-eyebrow">Resources / Selling Process</span>
+        <span class="sp-eyebrow"><a href="seller-strategy.html">Seller Strategy</a> / Selling Process</span>
         <h1 class="sp-hero-h1">The Selling <em>Process</em></h1>
         <p class="sp-hero-copy">A clear process designed to position your property, attract the right buyers, and navigate the transaction from strategy through closing.</p>
-      </div>
-      <!-- PLACEHOLDER IMAGE AREA #1 — hero.
-           Replace this entire <div class="sp-figure"> with an <img> when art is chosen. -->
-      <div class="sp-hero-figure reveal">
-        <div class="sp-figure" role="presentation">
-          <span class="sp-figure-note">Image area<br>To be added</span>
-        </div>
       </div>
     </div>
   </section>
@@ -662,13 +624,6 @@
         <p class="sp-cta-copy">Let's talk about your goals, the property, and the strategy that gives you the strongest position in the market.</p>
         <a class="sp-btn-light" href="contact.html?intent=selling-home">Start a Conversation</a>
       </div>
-      <!-- PLACEHOLDER IMAGE AREA #3 — closing CTA.
-           Replace this entire <div class="sp-figure"> with an <img> when art is chosen. -->
-      <div class="sp-cta-figure reveal">
-        <div class="sp-figure sp-figure-wide" role="presentation">
-          <span class="sp-figure-note">Image area<br>To be added</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -677,16 +632,25 @@
       <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
       <div class="footer-col"><div class="footer-col-label">Navigate</div>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="selected-work.html">Selected Work</a>
-        <a href="selling-process.html">Selling Process</a>
-        <a href="marketing.html">Marketing Your Property</a>
-        <a href="buying-process.html">Buying Process</a>
+        <a href="neighborhoods.html">Neighborhoods</a>
+        <a href="seller-strategy.html">Seller Strategy</a>
         <a href="calculator.html">Affordability</a>
-        <a href="vendors.html">Vendor Directory</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
+      <div class="footer-col"><div class="footer-col-label">Advisory</div>
+        <a href="contact.html?intent=selling-home">Sell a Property</a>
+        <a href="contact.html?intent=buying-home">Buy a Property</a>
+        <a href="contact.html?intent=property-evaluation">Evaluate a Property</a>
+        <a href="contact.html?intent=investment-review">Investment Property Strategy</a>
+      </div>
+      <div class="footer-col"><div class="footer-col-label">Connect</div>
+        <a href="tel:+18477142913">847.714.2913</a>
+        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
+        <a href="https://www.instagram.com/matt_neistat/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>

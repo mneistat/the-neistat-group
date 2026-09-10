@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
-  <title>About | Matthew Neistat — The Neistat Group</title>
+  <title>About Matthew Neistat | The Neistat Group</title>
   <meta name="description" content="Meet Matthew Neistat — 14+ years, $130M+ in Chicago real estate. People First. Always.">
-  <link rel="stylesheet" href="styles.css?v=35">
+  <link rel="canonical" href="https://www.theneistatgroup.com/about">
+  <link rel="stylesheet" href="styles.css?v=36">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
@@ -106,10 +107,19 @@
       .scene-press { padding: 60px 28px; }
       .press-scene-row { flex-direction: column; gap: 24px; }
     }
+      /* Client voice scene (pillar reframe). Reuses .scene-quote; the higher
+       specificity sizes it for a longer quote than the grandfather's. */
+    .scene.scene-quote.scene-voice blockquote { font-size: clamp(20px, 2.4vw, 30px); line-height: 1.55; max-width: 36em; margin-left: auto; margin-right: auto; }
+    /* Reduced motion: no film fade, and reveals show immediately. !important beats
+       the observer's inline opacity:0. */
+    @media (prefers-reduced-motion: reduce) {
+      .film-fade { display: none; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
   </style>
-<meta property="og:title" content="About | Matthew Neistat | The Neistat Group">
+<meta property="og:title" content="About Matthew Neistat | The Neistat Group">
 <meta property="og:description" content="14+ years, $130M+ in Chicago real estate. People First. Always.">
-<meta property="og:url" content="https://www.theneistatgroup.com/about.html">
+<meta property="og:url" content="https://www.theneistatgroup.com/about">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
 <meta name="twitter:site" content="@mattneistat">
@@ -130,61 +140,24 @@
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html" class="nav-link">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-sellers">For Sellers</button>
-        <div class="nav-drop" id="nav-drop-sellers">
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-buyers">For Buyers</button>
-        <div class="nav-drop" id="nav-drop-buyers">
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-resources">Resources</button>
-        <div class="nav-drop" id="nav-drop-resources">
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
-      </div>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
+      <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+      <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
+      <a href="calculator.html" class="nav-link">Affordability</a>
+      <a href="about.html" class="nav-link" aria-current="page">About</a>
+      <a href="contact.html" class="nav-cta-btn">Contact</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="index.html" class="mobile-menu-link">Home</a>
       <a href="selected-work.html" class="mobile-menu-link">Selected Work</a>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-sellers">For Sellers</button>
-        <div class="mobile-sub" id="m-drop-sellers" hidden>
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
-        </div>
-      </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-buyers">For Buyers</button>
-        <div class="mobile-sub" id="m-drop-buyers" hidden>
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
-      </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-resources">Resources</button>
-        <div class="mobile-sub" id="m-drop-resources" hidden>
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
-      </div>
+      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="seller-strategy.html" class="mobile-menu-link">Seller Strategy</a>
+      <a href="calculator.html" class="mobile-menu-link">Affordability</a>
+      <a href="about.html" class="mobile-menu-link" aria-current="page">About</a>
       <a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
@@ -225,7 +198,7 @@
     <div class="story-label reveal">The Broker</div>
     <p class="story-text reveal" style="font-family:Georgia,serif;font-size:clamp(20px,2.5vw,28px);color:#EDE8DE;line-height:1.45;">After Le Cordon Bleu and nearly a decade in hospitality, Matthew entered real estate in 2012.</p>
     <p class="story-range reveal">Today he works out of <strong>Jameson Sotheby's International Realty</strong>, across <strong>residential sales, multifamily, mixed-use, investment property, and development</strong> — representing both sellers and buyers throughout Chicago.</p>
-    <p class="story-text reveal">When a competitor heard he'd won a competitive listing assignment in the West Loop — a $9.5M building he closed off-market in two weeks — they said: "I didn't think Matt actually had the listing."</p>
+    <p class="story-text reveal">When a competitor heard he'd won a competitive listing assignment in the West Loop — a $9.5M building he brought under contract off-market in two weeks — they said: "I didn't think Matt actually had the listing."</p>
     <p class="story-text reveal" style="color:#EDE8DE;font-family:Georgia,serif;font-size:20px;">He did. Fourteen years later he hasn't regretted the leap for a second.</p>
   </section>
 
@@ -250,6 +223,14 @@
     </div>
   </section>
 
+  <!-- SCENE 6b: Client voice -->
+  <section class="scene scene-quote scene-voice">
+    <div>
+      <blockquote class="reveal">"Matt knows real estate. The review can start and end there. He was able to blend the lines between honesty, transparency, and friendliness. He knows how to negotiate, what the market dictates, and does his work with a great deal of integrity."</blockquote>
+      <cite class="reveal">&mdash; Nick &amp; Marina Golemis, Bought &amp; Sold, Chicago/Glenview</cite>
+    </div>
+  </section>
+
   <!-- SCENE 7: Personal closing + CTA -->
   <section class="scene scene-cta">
     <div>
@@ -266,16 +247,25 @@
       <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
       <div class="footer-col"><div class="footer-col-label">Navigate</div>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="selected-work.html">Selected Work</a>
-        <a href="selling-process.html">Selling Process</a>
-        <a href="marketing.html">Marketing Your Property</a>
-        <a href="buying-process.html">Buying Process</a>
+        <a href="neighborhoods.html">Neighborhoods</a>
+        <a href="seller-strategy.html">Seller Strategy</a>
         <a href="calculator.html">Affordability</a>
-        <a href="vendors.html">Vendor Directory</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
+      <div class="footer-col"><div class="footer-col-label">Advisory</div>
+        <a href="contact.html?intent=selling-home">Sell a Property</a>
+        <a href="contact.html?intent=buying-home">Buy a Property</a>
+        <a href="contact.html?intent=property-evaluation">Evaluate a Property</a>
+        <a href="contact.html?intent=investment-review">Investment Property Strategy</a>
+      </div>
+      <div class="footer-col"><div class="footer-col-label">Connect</div>
+        <a href="tel:+18477142913">847.714.2913</a>
+        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
+        <a href="https://www.instagram.com/matt_neistat/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
@@ -287,6 +277,11 @@
     if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
 
     // GSAP text reveal — line by line
+    // Motion is skipped for reduced-motion visitors, and if GSAP failed to load
+    // from the CDN: the hero lines then simply show, and the stats keep the final
+    // values already in the HTML.
+    const aboutReduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (window.gsap && window.ScrollTrigger && !aboutReduceMotion) {
     gsap.registerPlugin(ScrollTrigger);
     document.querySelectorAll('.hero-h1 .line-inner').forEach((line, i) => {
       gsap.from(line, {
@@ -308,6 +303,7 @@
       backgroundPositionY: '30%', ease: 'none',
       scrollTrigger: { trigger: '.scene-hero', start: 'top top', end: 'bottom top', scrub: true }
     });
+    } // end motion guard
   </script>
 
   <!-- Reveal animations -->

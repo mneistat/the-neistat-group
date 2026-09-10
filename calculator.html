@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
-  <title>Mortgage Calculator & Closing Cost Estimates | The Neistat Group</title>
-  <meta name="description" content="Chicago mortgage calculator with pre-approval guidance. Request a personalized buyer closing cost or seller net proceeds estimate from Matthew Neistat.">
-  <link rel="stylesheet" href="styles.css?v=35">
+  <title>Affordability | The Neistat Group</title>
+  <meta name="description" content="Estimate a monthly payment, understand debt-to-income and pre-approval, and request a buyer closing-cost or seller net-proceeds estimate.">
+  <link rel="canonical" href="https://www.theneistatgroup.com/calculator">
+  <link rel="stylesheet" href="styles.css?v=36">
 
   <script type="application/ld+json">
   {
@@ -212,15 +213,46 @@
       .calc-results-card, .calc-form-card { padding: 24px; }
       .calc-monthly { font-size: 42px; }
     }
+      /* === DEBT-TO-INCOME (pillar reframe) === */
+    .dti-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1.15fr; gap: clamp(28px,4vw,56px); }
+    .dti-block { padding-top: 24px; border-top: 1px solid rgba(11,10,7,0.16); }
+    .dti-block h3 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(20px,2vw,25px); line-height: 1.2; color: #0B0A07; margin: 0 0 12px; }
+    .dti-block p { font-size: 15px; line-height: 1.72; color: rgba(11,10,7,0.72); margin: 0; }
+    .dti-rows { margin: 0; }
+    .dti-rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid rgba(11,10,7,0.10); font-size: 14px; }
+    .dti-rows dt { color: rgba(11,10,7,0.66); }
+    .dti-rows dd { margin: 0; color: #0B0A07; font-variant-numeric: tabular-nums; }
+    .dti-rows .dti-result dt, .dti-rows .dti-result dd { color: #0B0A07; font-weight: 600; }
+    .dti-foot { max-width: 1200px; margin: clamp(32px,4vw,48px) auto 0; }
+    .dti-note { max-width: 74ch; font-size: 13.5px; line-height: 1.7; color: rgba(11,10,7,0.66); margin: 0; }
+    .explainer-list-item a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(237,232,222,0.3); }
+    .explainer-list-item a:hover, .explainer-list-item a:focus-visible { border-bottom-color: #EDE8DE; }
+    /* === ADVISORY CTA === */
+    .aff-cta { background: #F4F0E8; color: #0B0A07; padding: clamp(80px,10vw,140px) clamp(28px,6vw,80px); text-align: center; }
+    .aff-cta-inner { max-width: 760px; margin: 0 auto; }
+    .aff-cta-label { display: block; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-bottom: 20px; }
+    .aff-cta-h { font-family: Georgia, serif; font-weight: 400; font-size: clamp(30px,4.2vw,52px); line-height: 1.1; letter-spacing: -0.02em; color: #0B0A07; margin: 0 0 20px; }
+    .aff-cta-h em { font-style: italic; }
+    .aff-cta-sub { font-size: 15.5px; line-height: 1.75; color: rgba(11,10,7,0.72); margin: 0 auto 38px; max-width: 54ch; }
+    .aff-cta-btns { display: flex; flex-wrap: wrap; gap: 18px 34px; justify-content: center; align-items: center; }
+    .aff-btn { display: inline-block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; color: #F4F0E8; background: #0B0A07; padding: 17px 38px; border: 1px solid #0B0A07; transition: background 0.4s, color 0.4s; }
+    .aff-btn:hover, .aff-btn:focus-visible { background: transparent; color: #0B0A07; }
+    .aff-link { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; color: #0B0A07; padding-bottom: 7px; border-bottom: 1px solid rgba(11,10,7,0.35); }
+    .aff-link:hover, .aff-link:focus-visible { border-bottom-color: #0B0A07; }
+    .aff-btn:focus-visible, .aff-link:focus-visible { outline: 2px solid #0B0A07; outline-offset: 4px; }
+    @media (max-width: 900px) { .dti-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
   </style>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
 <script src="nav.js?v=6" defer></script>
-  <meta property="og:title" content="Mortgage Calculator & Closing Cost Estimates | The Neistat Group">
-  <meta property="og:description" content="Chicago mortgage calculator with pre-approval guidance. Request a personalized buyer closing cost or seller net proceeds estimate from Matthew Neistat.">
-  <meta property="og:url" content="https://www.theneistatgroup.com/calculator.html">
+  <meta property="og:title" content="Affordability | The Neistat Group">
+  <meta property="og:description" content="Estimate a monthly payment, understand debt-to-income and pre-approval, and request a buyer closing-cost or seller net-proceeds estimate.">
+  <meta property="og:url" content="https://www.theneistatgroup.com/calculator">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Neistat Group">
   <meta name="twitter:site" content="@mattneistat">
@@ -238,61 +270,24 @@
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html" class="nav-link">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-sellers">For Sellers</button>
-        <div class="nav-drop" id="nav-drop-sellers">
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-buyers">For Buyers</button>
-        <div class="nav-drop" id="nav-drop-buyers">
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-resources">Resources</button>
-        <div class="nav-drop" id="nav-drop-resources">
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
-      </div>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
+      <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+      <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
+      <a href="calculator.html" class="nav-link" aria-current="page">Affordability</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-cta-btn">Contact</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="index.html" class="mobile-menu-link">Home</a>
       <a href="selected-work.html" class="mobile-menu-link">Selected Work</a>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-sellers">For Sellers</button>
-        <div class="mobile-sub" id="m-drop-sellers" hidden>
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
-        </div>
-      </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-buyers">For Buyers</button>
-        <div class="mobile-sub" id="m-drop-buyers" hidden>
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
-      </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-resources">Resources</button>
-        <div class="mobile-sub" id="m-drop-resources" hidden>
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
-      </div>
+      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="seller-strategy.html" class="mobile-menu-link">Seller Strategy</a>
+      <a href="calculator.html" class="mobile-menu-link" aria-current="page">Affordability</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
       <a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
@@ -300,9 +295,9 @@
 
   <!-- HERO -->
   <section class="calc-hero">
-    <div class="calc-hero-eyebrow reveal">Financial Tools</div>
+    <div class="calc-hero-eyebrow reveal">Affordability</div>
     <h1 class="calc-hero-h1 reveal">What Can You <em>Actually</em> Afford?</h1>
-    <p class="calc-hero-sub reveal">A mortgage calculator, pre-approval guidance, and personalized closing cost estimates — built for Chicago buyers and sellers.</p>
+    <p class="calc-hero-sub reveal">A mortgage calculator, debt-to-income and pre-approval guidance, and personalized closing cost estimates — built for Chicago buyers and sellers.</p>
   </section>
 
   <!-- MORTGAGE CALCULATOR -->
@@ -443,7 +438,7 @@
         <h3>What lenders <em>look for</em></h3>
         <p>Four factors carry almost all of the weight. Strengthen any one of them and your rate improves.</p>
         <div class="explainer-list">
-          <span class="explainer-list-item">Debt-to-income ratio (DTI)</span>
+          <span class="explainer-list-item"><a href="#dti">Debt-to-income ratio (DTI)</a></span>
           <span class="explainer-list-item">Credit score &amp; history</span>
           <span class="explainer-list-item">Reserves &amp; liquid assets</span>
           <span class="explainer-list-item">Two-year employment history</span>
@@ -470,6 +465,38 @@
         <p>Chicago's strongest listings generate multiple offers — and when they do, sellers choose the cleanest one, not simply the highest.</p>
         <p>A written pre-approval tells the seller your financing is real. Without it, your offer sits in the pile with every buyer who hasn't done the work.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- DEBT-TO-INCOME, EXPLAINED -->
+  <section class="calc-section dti" id="dti" aria-labelledby="dti-h">
+    <div class="calc-section-head">
+      <span class="calc-section-label reveal">Debt-to-Income, Explained</span>
+      <h2 class="calc-section-h reveal" id="dti-h">The ratio that decides <em>how much</em> a lender will approve.</h2>
+      <p class="calc-section-sub reveal">Debt-to-income (DTI) compares your monthly debt payments to your gross monthly income. Lenders use it to judge how large a housing payment you can carry.</p>
+    </div>
+    <div class="dti-grid">
+      <div class="dti-block reveal">
+        <h3>Front-end ratio</h3>
+        <p>Housing costs only &mdash; principal, interest, property tax, insurance, and any HOA dues &mdash; divided by gross monthly income.</p>
+      </div>
+      <div class="dti-block reveal">
+        <h3>Back-end ratio</h3>
+        <p>Housing costs plus every other monthly debt payment: car loans, student loans, and minimum credit card payments.</p>
+      </div>
+      <div class="dti-block reveal">
+        <h3>A worked example</h3>
+        <dl class="dti-rows">
+          <div><dt>Gross monthly income</dt><dd>$12,000</dd></div>
+          <div><dt>Housing payment</dt><dd>$3,000</dd></div>
+          <div><dt>Other monthly debts</dt><dd>$900</dd></div>
+          <div class="dti-result"><dt>Front-end ratio</dt><dd>25%</dd></div>
+          <div class="dti-result"><dt>Back-end ratio</dt><dd>32.5%</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="dti-foot">
+      <p class="dti-note reveal">A common guideline is a front-end ratio near 28% and a back-end ratio near 36%. Many lenders approve higher ratios for borrowers with strong credit or reserves, and every loan program sets its own limits &mdash; confirm yours with a lender.</p>
     </div>
   </section>
 
@@ -607,36 +634,45 @@
     </div>
   </section>
 
+  <!-- ADVISORY CTA -->
+  <section class="aff-cta" aria-labelledby="aff-cta-h">
+    <div class="aff-cta-inner">
+      <span class="aff-cta-label reveal">Advisory</span>
+      <h2 class="aff-cta-h reveal" id="aff-cta-h">Talk through <em>your</em> numbers.</h2>
+      <p class="aff-cta-sub reveal">A calculator gives you a range. A conversation turns it into a plan &mdash; what to offer, what to keep in reserve, and what to ask your lender.</p>
+      <div class="aff-cta-btns reveal">
+        <a class="aff-btn" href="contact.html?intent=buying-home">Start the Conversation &rarr;</a>
+        <a class="aff-link" href="buying-process.html">Read the Buying Process &rarr;</a>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="footer-grid">
-      <div>
-        <div class="footer-brand">The Neistat Group</div>
-        <div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Navigate</div>
+      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
+      <div class="footer-col"><div class="footer-col-label">Navigate</div>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="selected-work.html">Selected Work</a>
-        <a href="selling-process.html">Selling Process</a>
-        <a href="marketing.html">Marketing Your Property</a>
-        <a href="buying-process.html">Buying Process</a>
+        <a href="neighborhoods.html">Neighborhoods</a>
+        <a href="seller-strategy.html">Seller Strategy</a>
         <a href="calculator.html">Affordability</a>
-        <a href="vendors.html">Vendor Directory</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Connect</div>
+      <div class="footer-col"><div class="footer-col-label">Advisory</div>
+        <a href="contact.html?intent=selling-home">Sell a Property</a>
+        <a href="contact.html?intent=buying-home">Buy a Property</a>
+        <a href="contact.html?intent=property-evaluation">Evaluate a Property</a>
+        <a href="contact.html?intent=investment-review">Investment Property Strategy</a>
+      </div>
+      <div class="footer-col"><div class="footer-col-label">Connect</div>
         <a href="tel:+18477142913">847.714.2913</a>
         <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
-        <a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a>
-        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/matt_neistat/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-    <div class="footer-bar">
-      <span>&copy; 2026 The Neistat Group. All rights reserved.</span>
-      <span>People First. <em>Always.</em></span>
-    </div>
+    <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -661,7 +697,10 @@
     // ===== Reveal animations (GSAP with IntersectionObserver fallback) =====
     (function(){
       const els = document.querySelectorAll('.reveal');
-      if (window.gsap && window.ScrollTrigger) {
+      const calcReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (calcReduce) {
+        els.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
+      } else if (window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
         els.forEach(el => {
           gsap.set(el, { opacity: 0, y: 24 });
@@ -941,5 +980,6 @@
       document.querySelectorAll('a,button,input,select,.faq-q,.amort-tab,.amort-year-row').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
     })();
   </script>
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </body>
 </html>

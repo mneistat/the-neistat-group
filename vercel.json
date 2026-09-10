@@ -12,6 +12,16 @@
       "source": "/search.html",
       "destination": "/contact?intent=buying-home",
       "permanent": true
+    },
+    {
+      "source": "/marketing",
+      "destination": "/seller-strategy",
+      "permanent": true
+    },
+    {
+      "source": "/marketing.html",
+      "destination": "/seller-strategy",
+      "permanent": true
     }
   ]
 }

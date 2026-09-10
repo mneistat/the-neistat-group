@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
-  <title>The Neistat Group | Chicago Real Estate</title>
-  <meta name="description" content="Chicago real estate strategy for homeowners, investors, and developers, backed by $130M+ in sales, 14+ years of experience, and CAR Top 10% recognition.">
-  <meta property="og:title" content="The Neistat Group | Chicago Real Estate">
-  <meta property="og:description" content="Chicago real estate strategy backed by $130M+ in sales, 14+ years of experience, and four years of Jameson Quarterly Best recognition.">
-    <link rel="stylesheet" href="styles.css?v=35">
+  <title>The Neistat Group | Chicago Real Estate Advisory</title>
+  <meta name="description" content="Chicago real estate advisory from Matthew Neistat at Jameson Sotheby's International Realty. Selected work, neighborhood intelligence, and seller strategy.">
+  <link rel="canonical" href="https://www.theneistatgroup.com/">
+  <meta property="og:url" content="https://www.theneistatgroup.com/">
+  <meta property="og:title" content="The Neistat Group | Chicago Real Estate Advisory">
+  <meta property="og:description" content="Chicago real estate advisory from Matthew Neistat at Jameson Sotheby's International Realty. Selected work, neighborhood intelligence, and seller strategy.">
+    <link rel="stylesheet" href="styles.css?v=36">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -363,7 +365,79 @@
   @media (prefers-reduced-motion: reduce) {
     .sw-figure img, .sw-item-arrow { transition: none; }
   }
-</style>
+    /* ===== Pillar sections (namespaced hp-). Every heading declares its colour:
+       styles.css sets h1, h2, h3 { color: #EDE8DE } globally, which would render
+       ivory-on-cream on the light sections. ===== */
+    .hp-wrap { max-width: 1240px; margin: 0 auto; }
+    .hp-eyebrow { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10.5px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 22px; }
+    .hp-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(28px, 3.8vw, 48px); line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 22px; text-wrap: balance; }
+    .hp-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15.5px; line-height: 1.78; margin: 0 0 30px; max-width: 52ch; }
+    .hp-link { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid currentColor; transition: opacity 0.35s; }
+    .hp-link:hover, .hp-link:focus-visible { opacity: 0.7; }
+    .hp-link:focus-visible, .hp-hood-now a:focus-visible, .hp-press a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+    .hp-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+    /* Neighborhood Intelligence: dark, image-led, echoing the hub */
+    .hp-hood { background: #0B0A07; color: #EDE8DE; display: grid; grid-template-columns: 1fr 1fr; min-height: clamp(460px, 44vw, 640px); }
+    .hp-hood-media { position: relative; overflow: hidden; }
+    .hp-hood-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.55) contrast(1.05) brightness(0.7); }
+    .hp-hood-copy { padding: clamp(56px,7vw,110px) clamp(24px,5vw,72px); display: flex; flex-direction: column; justify-content: center; }
+    .hp-hood .hp-eyebrow { color: rgba(237,232,222,0.55); }
+    .hp-hood .hp-h2 { color: #EDE8DE; }
+    .hp-hood .hp-body { color: rgba(237,232,222,0.78); }
+    .hp-hood-now { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13.5px; color: rgba(237,232,222,0.78); margin: 0 0 30px; }
+    .hp-hood-now span { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-right: 12px; }
+    .hp-hood-now a { color: #EDE8DE; text-decoration: none; border-bottom: 1px solid rgba(237,232,222,0.35); }
+    .hp-hood .hp-link { color: #EDE8DE; align-self: flex-start; }
+
+    /* Seller Strategy: cream, a tone apart from the bone Method section below it */
+    .hp-seller { background: #F4F0E8; color: #0B0A07; padding: clamp(72px,9vw,130px) clamp(24px,5vw,56px); }
+    .hp-seller .hp-eyebrow { color: rgba(11,10,7,0.62); }
+    .hp-seller .hp-h2 { color: #0B0A07; max-width: 24ch; }
+    .hp-pillars { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 1px solid rgba(11,10,7,0.18); margin: clamp(34px,4vw,52px) 0 clamp(34px,4vw,48px); }
+    .hp-pillars > div { padding: 26px 28px 8px 0; }
+    .hp-pillars > div + div { padding-left: 28px; border-left: 1px solid rgba(11,10,7,0.12); }
+    .hp-pillars h3 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(20px,1.9vw,26px); color: #0B0A07; margin: 0 0 10px; }
+    .hp-pillars p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14.5px; line-height: 1.7; color: rgba(11,10,7,0.74); margin: 0; }
+    .hp-seller .hp-link { color: #0B0A07; }
+    .hp-seller + .method-section { border-top: 1px solid rgba(11,10,7,0.10); }
+
+    /* People First: dark */
+    .hp-principle { background: #14120E; color: #EDE8DE; padding: clamp(80px,10vw,150px) clamp(24px,5vw,56px); text-align: center; }
+    .hp-principle-inner { max-width: 880px; }
+    .hp-principle .hp-eyebrow { color: rgba(237,232,222,0.55); }
+    .hp-principle-quote { font-family: Georgia, serif; font-style: italic; font-size: clamp(26px,3.6vw,46px); line-height: 1.34; letter-spacing: -0.012em; color: #EDE8DE; margin: 0 auto 22px; text-wrap: balance; }
+    .hp-principle-cite { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin: 0 0 40px; }
+    .hp-principle .hp-body { color: rgba(237,232,222,0.76); margin-left: auto; margin-right: auto; }
+    .hp-principle .hp-link { color: #EDE8DE; }
+
+    /* Recognition: dark */
+    .hp-recog { background: #0B0A07; color: #EDE8DE; padding: clamp(64px,8vw,110px) clamp(24px,5vw,56px); }
+    .hp-recog-label { color: rgba(237,232,222,0.55); }
+    .hp-stats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 1px solid rgba(237,232,222,0.16); margin-bottom: 30px; }
+    .hp-stats > div { padding: 30px 24px 30px 0; }
+    .hp-stats > div + div { padding-left: 24px; border-left: 1px solid rgba(237,232,222,0.10); }
+    .hp-stat-num { display: block; font-family: Georgia, serif; font-size: clamp(36px,4.4vw,60px); line-height: 1; letter-spacing: -0.02em; color: #EDE8DE; margin-bottom: 12px; font-variant-numeric: lining-nums; }
+    .hp-stat-label { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; line-height: 1.5; color: rgba(237,232,222,0.62); }
+    .hp-press { list-style: none; margin: 0; padding: 22px 0 0; border-top: 1px solid rgba(237,232,222,0.16); display: flex; flex-wrap: wrap; gap: 12px 34px; }
+    .hp-press li { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.72); }
+    .hp-press a { color: rgba(237,232,222,0.84); text-decoration: none; border-bottom: 1px solid rgba(237,232,222,0.25); transition: color 0.3s, border-color 0.3s; }
+    .hp-press a:hover, .hp-press a:focus-visible { color: #EDE8DE; border-bottom-color: #EDE8DE; }
+
+    /* Reveal: namespaced, because this page's .reveal and .fade-up handlers have no
+       reduced-motion path and no failsafe. */
+    .hp-reveal { opacity: 0; transform: translateY(22px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+    .hp-reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .hp-reveal { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 900px) {
+      .hp-hood { grid-template-columns: 1fr; }
+      .hp-hood-media { min-height: 280px; }
+      .hp-pillars, .hp-stats { grid-template-columns: 1fr; }
+      .hp-pillars > div, .hp-pillars > div + div { padding: 22px 0; border-left: 0; border-bottom: 1px solid rgba(11,10,7,0.12); }
+      .hp-stats > div, .hp-stats > div + div { padding: 24px 0; border-left: 0; border-bottom: 1px solid rgba(237,232,222,0.10); }
+    }
+  </style>
 </head>
 <body>
 
@@ -375,32 +449,13 @@
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html" class="nav-link" aria-current="page">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-sellers">For Sellers</button>
-        <div class="nav-drop" id="nav-drop-sellers">
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-buyers">For Buyers</button>
-        <div class="nav-drop" id="nav-drop-buyers">
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group data-open="false">
-        <button class="nav-link nav-group-trigger" type="button" aria-expanded="false" aria-controls="nav-drop-resources">Resources</button>
-        <div class="nav-drop" id="nav-drop-resources">
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
-      </div>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <a href="contact.html" class="nav-cta-btn">Begin the Conversation</a>
+      <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+      <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
+      <a href="calculator.html" class="nav-link">Affordability</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-cta-btn">Contact</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
@@ -408,30 +463,12 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="about.html" class="mobile-menu-link">About</a>
+      <a href="index.html" class="mobile-menu-link" aria-current="page">Home</a>
       <a href="selected-work.html" class="mobile-menu-link">Selected Work</a>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-sellers">For Sellers</button>
-        <div class="mobile-sub" id="m-drop-sellers" hidden>
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
-        </div>
-      </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-buyers">For Buyers</button>
-        <div class="mobile-sub" id="m-drop-buyers" hidden>
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
-      </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-resources">Resources</button>
-        <div class="mobile-sub" id="m-drop-resources" hidden>
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
-      </div>
+      <a href="neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="seller-strategy.html" class="mobile-menu-link">Seller Strategy</a>
+      <a href="calculator.html" class="mobile-menu-link">Affordability</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
       <a href="contact.html" class="mobile-menu-link">Contact</a>
       <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
     </div>
@@ -448,7 +485,7 @@
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content" id="heroContent">
-      <div class="hero-pill-eyebrow" id="heroEyebrow">People First &middot; Always</div>
+      <div class="hero-pill-eyebrow" id="heroEyebrow">Chicago Real Estate Advisory</div>
       <h1 class="hero-headline">
         <span id="heroPeople" style="display:block;">Make better real estate</span>
         <span class="hero-headline-italic" id="heroAlways" style="display:block;">decisions.</span>
@@ -465,25 +502,6 @@
     </div>
   </section>
 
-  <!-- Stats Band -->
-  <section class="stats-band" id="statsBand">
-  <div class="stat">
-    <div class="stat-number" data-target="130" data-prefix="$" data-suffix="M+">$130M+</div>
-    <div class="stat-label">Total Sales Volume</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number" data-target="14" data-prefix="" data-suffix="+ Yrs">14+ Yrs</div>
-    <div class="stat-label">Experience</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number" data-target="10" data-prefix="Top " data-suffix="%">Top 10%</div>
-    <div class="stat-label">CAR Producer</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number" data-target="4" data-prefix="" data-suffix=" Years">4 Years</div>
-    <div class="stat-label">Jameson Quarterly Best</div>
-  </div>
-</section>
 
   <!-- ===== STRATEGIC HOMEPAGE SECTIONS ===== -->
 
@@ -495,22 +513,15 @@
       <p class="start-here-body">Choose the path that fits your situation. The goal is not to push a transaction. The goal is to understand the property, the market, and the best move.</p>
     </div>
     <div class="start-here-paths">
-      <a href="marketing.html" class="start-here-path"><span class="start-here-path-text">Sell a property</span><span class="start-here-path-arrow">&rarr;</span></a>
+      <a href="seller-strategy.html" class="start-here-path"><span class="start-here-path-text">Sell a property</span><span class="start-here-path-arrow">&rarr;</span></a>
       <a href="contact.html?intent=buying-home" class="start-here-path"><span class="start-here-path-text">Buy a property</span><span class="start-here-path-arrow">&rarr;</span></a>
       <a href="contact.html?intent=property-evaluation" class="start-here-path"><span class="start-here-path-text">Evaluate a property I own</span><span class="start-here-path-arrow">&rarr;</span></a>
       <a href="contact.html?intent=investment-review" class="start-here-path"><span class="start-here-path-text">Buy or sell an investment property</span><span class="start-here-path-arrow">&rarr;</span></a>
-      <a href="marketing.html" class="start-here-path"><span class="start-here-path-text">Renovate or reposition before selling</span><span class="start-here-path-arrow">&rarr;</span></a>
+      <a href="seller-strategy.html" class="start-here-path"><span class="start-here-path-text">Renovate or reposition before selling</span><span class="start-here-path-arrow">&rarr;</span></a>
       <a href="contact.html?intent=consultation" class="start-here-path"><span class="start-here-path-text">Talk strategy</span><span class="start-here-path-arrow">&rarr;</span></a>
     </div>
   </section>
 
-  <!-- Credentials Band -->
-  <section class="credentials-band">
-    <a href="https://chicagorealtor.com" target="_blank" class="credential-item"><img src="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776046171/CAR_color-2-768x253_1_ju6tf0.png" alt="Chicago Association of Realtors" class="credential-logo"><div class="credential-text"><div class="credential-title">CAR Top 10% Producer</div><div class="credential-sub">Chicago Association of Realtors</div></div></a>
-    <a href="https://www.jamesonsir.com" target="_blank" class="credential-item"><img src="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776046196/Jameson_Vert_White_Transparent_sfoskh.png" alt="Jameson Sotheby's" class="credential-logo jameson-logo"><div class="credential-text"><div class="credential-title">Jameson Quarterly Best</div><div class="credential-sub">2023–2026 · Two Consecutive Quarters</div></div></a>
-    <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" class="credential-item"><img src="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776046171/340825256_2180582408804243_4574933329139692510_n_dojst2.jpg" alt="Crain's Chicago Business" class="credential-logo crains-logo"><div class="credential-text"><div class="credential-title">Crain's Chicago Business</div><div class="credential-sub">As Seen In</div></div></a>
-    <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" class="credential-item"><img src="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776046171/471299662_1247572759634002_3354417307596492180_n_pddzcb.jpg" alt="Chicago Real Producers" class="credential-logo rp-logo"><div class="credential-text"><div class="credential-title">Chicago Real Producers</div><div class="credential-sub">Featured Agent Profile</div></div></a>
-  </section>
 
   <!-- Portfolio Scroll -->
   <!-- ===== SELECTED WORK =====
@@ -536,9 +547,7 @@
           <p class="sw-price" id="swPrice"></p>
           <p class="sw-note" id="swNote"></p>
           <p class="sw-press" id="swPress"></p>
-          <!-- TODO: CASE STUDY PAGE NEEDED — caseStudyUrl is empty for every
-               transaction, so this stays at "#" until those pages exist. -->
-          <a class="sw-view" id="swView" href="#">View the Work <span aria-hidden="true">&rarr;</span></a>
+          <a class="sw-view" id="swView" href="selected-work.html">View the Work <span aria-hidden="true">&rarr;</span></a>
         </div>
         <div class="sw-figure" id="swFigure"></div>
         <div class="sw-index" id="swIndex"></div>
@@ -550,7 +559,37 @@
     </div>
   </section>
 
-  <!-- Section 2: The Neistat Method -->
+  <!-- ===== NEIGHBORHOOD INTELLIGENCE (preview) ===== -->
+  <section class="hp-hood" aria-labelledby="hp-hood-h">
+    <div class="hp-hood-media">
+      <img src="properties/3521-cortland-aerial.jpg" alt="Aerial view looking straight down on a Chicago residential block, showing rooftops, alleys, garages and tree-lined streets." width="5464" height="3640" loading="lazy">
+    </div>
+    <div class="hp-hood-copy hp-reveal">
+      <p class="hp-eyebrow">Neighborhood Intelligence</p>
+      <h2 class="hp-h2" id="hp-hood-h">Chicago, read block by block.</h2>
+      <p class="hp-body">Practical, block-by-block perspective on Chicago neighborhoods where architecture, lifestyle, access, and long-term real estate decisions intersect.</p>
+      <p class="hp-hood-now"><span>Now available</span><a href="neighborhoods/lincoln-park.html">Lincoln Park &rarr;</a></p>
+      <a class="hp-link" href="neighborhoods.html">Explore Neighborhood Intelligence &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ===== SELLER STRATEGY (preview) ===== -->
+  <section class="hp-seller" aria-labelledby="hp-seller-h">
+    <div class="hp-wrap">
+      <div class="hp-reveal">
+        <p class="hp-eyebrow">Seller Strategy</p>
+        <h2 class="hp-h2" id="hp-seller-h">Before your home hits the market, it should already be in front of the right buyers.</h2>
+      </div>
+      <div class="hp-pillars hp-reveal">
+        <div><h3>Access</h3><p>The Top Agent Network and 400+ Jameson agents see it before launch.</p></div>
+        <div><h3>Presentation</h3><p>A pre-market walkthrough and editorial photography on every listing.</p></div>
+        <div><h3>Partnership</h3><p>Priced to create competition, and handled hands-on through closing.</p></div>
+      </div>
+      <a class="hp-link" href="seller-strategy.html">Explore Seller Strategy &rarr;</a>
+    </div>
+  </section>
+
+  <!-- The Neistat Method -->
   <section class="method-section fade-up">
     <div>
       <div class="method-eyebrow">The Neistat Method</div>
@@ -581,24 +620,16 @@
   </section>
 
 
-  <!-- Section 5: Family Legacy -->
-  <section class="family-legacy fade-up">
-    <div class="family-legacy-inner">
-      <div class="family-legacy-eyebrow">A Family Operating Principle</div>
-      <p class="family-legacy-quote">"Three generations of Chicago developers. One operating principle: people first."</p>
-      <div class="family-legacy-attribution">Matthew Neistat &middot; Founder</div>
+  <!-- ===== ABOUT / PEOPLE FIRST ===== -->
+  <section class="hp-principle" aria-labelledby="hp-principle-h">
+    <div class="hp-wrap hp-principle-inner hp-reveal">
+      <p class="hp-eyebrow">A Family Operating Principle</p>
+      <h2 class="hp-sr" id="hp-principle-h">People first</h2>
+      <blockquote class="hp-principle-quote">&ldquo;Always put people first. Real estate isn&rsquo;t about closing deals &mdash; it&rsquo;s about building lives.&rdquo;</blockquote>
+      <p class="hp-principle-cite">Matthew&rsquo;s grandfather</p>
+      <p class="hp-body">Three generations of Chicago developers and a background in hospitality shape an honest, one-on-one approach to every client relationship.</p>
+      <a class="hp-link" href="about.html">About Matthew &rarr;</a>
     </div>
-  </section>
-
-  <!-- ===== END STRATEGIC HOMEPAGE SECTIONS ===== -->
-
-
-  <!-- Manifesto -->
-  <section class="manifesto reveal">
-    <div class="section-label">The Experience</div>
-    <blockquote class="manifesto-quote">"Always put people first. Real estate isn't about closing deals — it's about <span class="sage">building lives</span> and accomplishing dreams."</blockquote>
-    <p class="manifesto-bio">With over 14 years of experience and a background rooted in hospitality, Matthew Neistat brings an honest, one-on-one approach to every client relationship. From first-time buyers to seasoned investors, his dedication and attention to detail ensure you're guided every step of the way.</p>
-    <a href="about.html" class="link-sage">About Matthew →</a>
   </section>
 
 
@@ -634,17 +665,22 @@
   </section>
 
 
-  <!-- Press -->
-  <section class="press">
-    <div class="press-label">As Seen In</div>
-    <div class="press-row">
-      <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" class="press-pub"><img src="https://logo.clearbit.com/chicagobusiness.com" alt="" class="press-logo" onerror="this.style.display='none'">Crain's Chicago Business</a>
-      <span class="press-divider"></span>
-      <a href="https://product.costar.com/home/news/710741247" target="_blank" class="press-pub"><img src="https://logo.clearbit.com/costar.com" alt="" class="press-logo" onerror="this.style.display='none'">CoStar News</a>
-      <span class="press-divider"></span>
-      <a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" class="press-pub"><img src="https://logo.clearbit.com/chicagoagentmagazine.com" alt="" class="press-logo" onerror="this.style.display='none'">Chicago Agent Magazine</a>
-      <span class="press-divider"></span>
-      <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" class="press-pub"><img src="https://logo.clearbit.com/realproducersmag.com" alt="" class="press-logo" onerror="this.style.display='none'">Chicago Real Producers</a>
+  <!-- ===== PRESS / RECOGNITION ===== -->
+  <section class="hp-recog" aria-labelledby="hp-recog-h">
+    <div class="hp-wrap">
+      <h2 class="hp-eyebrow hp-recog-label" id="hp-recog-h">Recognition</h2>
+      <div class="hp-stats hp-reveal">
+        <div><span class="hp-stat-num">$130M+</span><span class="hp-stat-label">Total sales volume</span></div>
+        <div><span class="hp-stat-num">14+</span><span class="hp-stat-label">Years of experience</span></div>
+        <div><span class="hp-stat-num">Top 10%</span><span class="hp-stat-label">CAR Producer &middot; Chicago Association of Realtors</span></div>
+      </div>
+      <ul class="hp-press hp-reveal" aria-label="Recognition and press">
+        <li>Jameson Quarterly Best</li>
+        <li><a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" rel="noopener">Crain&rsquo;s Chicago Business</a></li>
+        <li><a href="https://product.costar.com/home/news/710741247" target="_blank" rel="noopener">CoStar News</a></li>
+        <li><a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" rel="noopener">Chicago Agent Magazine</a></li>
+        <li><a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" rel="noopener">Chicago Real Producers</a></li>
+      </ul>
     </div>
   </section>
 
@@ -696,34 +732,30 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-grid">
-      <div>
-        <div class="footer-brand">The Neistat Group</div>
-        <div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Navigate</div>
+      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
+      <div class="footer-col"><div class="footer-col-label">Navigate</div>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="selected-work.html">Selected Work</a>
-        <a href="selling-process.html">Selling Process</a>
-        <a href="marketing.html">Marketing Your Property</a>
-        <a href="buying-process.html">Buying Process</a>
+        <a href="neighborhoods.html">Neighborhoods</a>
+        <a href="seller-strategy.html">Seller Strategy</a>
         <a href="calculator.html">Affordability</a>
-        <a href="vendors.html">Vendor Directory</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Connect</div>
+      <div class="footer-col"><div class="footer-col-label">Advisory</div>
+        <a href="contact.html?intent=selling-home">Sell a Property</a>
+        <a href="contact.html?intent=buying-home">Buy a Property</a>
+        <a href="contact.html?intent=property-evaluation">Evaluate a Property</a>
+        <a href="contact.html?intent=investment-review">Investment Property Strategy</a>
+      </div>
+      <div class="footer-col"><div class="footer-col-label">Connect</div>
         <a href="tel:+18477142913">847.714.2913</a>
         <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
-        <a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a>
-        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/matt_neistat/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-    <div class="footer-bar">
-      <span>&copy; 2026 The Neistat Group. All rights reserved.</span>
-      <span>People First. <em>Always.</em></span>
-    </div>
+    <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
 
   <script>
@@ -967,6 +999,7 @@
     var figure = document.getElementById('swFigure');
     var index = document.getElementById('swIndex');
     var panel = document.querySelector('.sw-info');
+    var view = document.getElementById('swView');
     var el = {
       meta: document.getElementById('swMeta'), addr: document.getElementById('swAddress'),
       rep: document.getElementById('swRep'), price: document.getElementById('swPrice'),
@@ -1027,6 +1060,9 @@
       setOptional(el.rep, t.representation);
       setOptional(el.note, t.outcomeLine);
       setOptional(el.press, t.pressMention);
+      // Deep-links to this deal's card on the Selected Work page. No case-study
+      // pages exist yet, so this is the deepest real destination, never a \"#\".
+      if (view) view.href = 'selected-work.html#' + t.id;
     }
 
     function select(t, btn) {
@@ -1044,5 +1080,29 @@
   })();
   </script>
 
+  <script>
+  // Pillar-section reveals. Namespaced so they cannot collide with this page's
+  // .reveal / .fade-up handlers. Reduced motion and a missing observer both SHOW,
+  // and a load-time failsafe means the fold can never be left blank.
+  (function () {
+    var els = document.querySelectorAll('.hp-reveal');
+    if (!els.length) return;
+    function show(el) { el.classList.add('is-in'); }
+    var reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (reduce || !('IntersectionObserver' in window)) { Array.prototype.forEach.call(els, show); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        if (document.querySelector('.hp-reveal.is-in')) return;
+        Array.prototype.forEach.call(els, function (el) { if (el.getBoundingClientRect().top < window.innerHeight) show(el); });
+      }, 1200);
+    });
+  })();
+  </script>
+  <noscript><style>.hp-reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </body>
 </html>
