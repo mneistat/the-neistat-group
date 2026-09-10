@@ -3,84 +3,375 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0B0A07">
-  <title>Chicago & North Shore Neighborhoods | The Neistat Group</title>
-  <meta name="description" content="Explore every Chicago neighborhood and North Shore suburb with The Neistat Group's interactive map.">
+  <title>Neighborhood Intelligence | The Neistat Group</title>
+  <meta name="description" content="Practical, block-by-block perspective on Chicago neighborhoods where architecture, lifestyle, access, and long-term real estate decisions intersect.">
+  <link rel="canonical" href="https://www.theneistatgroup.com/neighborhoods">
+  <meta property="og:title" content="Neighborhood Intelligence | The Neistat Group">
+  <meta property="og:description" content="Practical, block-by-block perspective on Chicago neighborhoods where architecture, lifestyle, access, and long-term real estate decisions intersect.">
+  <meta property="og:url" content="https://www.theneistatgroup.com/neighborhoods">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.theneistatgroup.com/properties/3521-cortland-aerial.jpg">
   <link rel="stylesheet" href="styles.css?v=35">
+  <script src="analytics.js" defer></script>
+  <script src="nav.js?v=6" defer></script>
+
   <style>
-    /* Desktop is a fixed map shell — the list scrolls inside .nh-list. Below the
-       breakpoint the layout stacks and exceeds the viewport, so the page itself
-       must scroll; locking body there made the lower content unreachable. */
-    @media(min-width:769px){body{overflow:hidden}}
-    .nh-layout{display:flex;height:calc(100vh - 56px);margin-top:56px}
-    .nh-sidebar{width:340px;flex-shrink:0;background:#0B0A07;display:flex;flex-direction:column;border-right:1px solid rgba(237,232,222,0.06)}
-    .nh-search{padding:20px;border-bottom:1px solid rgba(237,232,222,0.06)}
-    .nh-search-input{width:100%;font-family:-apple-system,sans-serif;font-size:14px;color:#EDE8DE;background:#141210;border:1px solid rgba(237,232,222,0.08);border-radius:4px;padding:12px 16px;outline:none;transition:border-color .3s}
-    .nh-search-input:focus{border-color:rgba(237,232,222,0.25)}
-    .nh-search-input::placeholder{color:rgba(237,232,222,0.55)}
-    .nh-section-label{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,232,222,0.55);padding:16px 20px 8px}
-    .nh-list{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(237,232,222,0.1) transparent}
-    .nh-list::-webkit-scrollbar{width:4px}
-    .nh-list::-webkit-scrollbar-thumb{background:rgba(237,232,222,0.1);border-radius:2px}
-    .nh-list-item{padding:12px 20px;cursor:pointer;border-bottom:1px solid rgba(237,232,222,0.04);transition:background .2s;display:flex;align-items:center;gap:12px}
-    .nh-list-item:hover{background:rgba(237,232,222,0.04)}
-    .nh-list-item.active{background:rgba(237,232,222,0.08)}
-    .nh-list-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-    .nh-list-name{font-family:Georgia,serif;font-size:14px;color:#EDE8DE}
-    .nh-list-sub{font-size:10px;color:rgba(237,232,222,0.55);margin-top:1px}
-    .nh-detail-panel{background:#0B0A07;border-top:1px solid rgba(237,232,222,0.08);padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
-    .nh-detail-panel.open{max-height:400px;padding:24px 20px;overflow-y:auto}
-    .nh-detail-name{font-family:Georgia,serif;font-size:20px;color:#EDE8DE;margin-bottom:8px}
-    .nh-detail-desc{font-size:13px;color:rgba(237,232,222,0.55);line-height:1.6;margin-bottom:16px}
-    .nh-detail-stats{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px}
-    .nh-detail-stat-label{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,232,222,0.55);display:block;margin-bottom:2px}
-    .nh-detail-stat-val{font-size:13px;font-weight:500;color:#EDE8DE}
-    .nh-detail-btns{display:flex;gap:8px;flex-wrap:wrap}
-    .nh-btn{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:10px 18px;border-radius:3px;text-decoration:none;transition:background .3s}
-    .nh-btn-primary{background:#EDE8DE;color:#0B0A07}
-    .nh-btn-primary:hover{background:#fff}
-    .nh-btn-ghost{background:transparent;color:rgba(237,232,222,0.78);border:1px solid rgba(237,232,222,0.12)}
-    .nh-btn-ghost:hover{border-color:rgba(237,232,222,0.3);color:#EDE8DE}
-    .nh-map-wrap{flex:1;position:relative}
-    #neighborhood-map{width:100%;height:100%}
-    .nh-chips{display:none}
-    .nh-bottom-sheet{display:none}
-    @media(max-width:768px){
-      .nh-layout{flex-direction:column}
-      .nh-sidebar{display:none}
-      .nh-chips{display:flex;gap:8px;padding:8px 12px;overflow-x:auto;background:#0B0A07;scrollbar-width:none;z-index:1}
-      .nh-chips::-webkit-scrollbar{display:none}
-      .nh-chip{font-size:11px;font-weight:500;color:rgba(237,232,222,0.6);background:#141210;border:1px solid rgba(237,232,222,0.08);padding:7px 14px;border-radius:100px;white-space:nowrap;cursor:pointer;flex-shrink:0}
-      .nh-chip.active{background:#EDE8DE;color:#0B0A07;border-color:#EDE8DE}
-      .nh-bottom-sheet{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:#0B0A07;border-top:1px solid rgba(237,232,222,0.1);padding:20px;border-radius:16px 16px 0 0;transform:translateY(100%);transition:transform .3s ease}
-      .nh-bottom-sheet.open{display:block;transform:translateY(0)}
-      .nh-bottom-sheet-handle{width:32px;height:4px;background:rgba(237,232,222,0.15);border-radius:2px;margin:0 auto 16px}
+    /* ==========================================================================
+       Neighborhood Intelligence — hub
+       All selectors namespaced `ni-` on purpose. styles.css carries broad rules
+       (and a global `.reveal { opacity: 0 }` with NO paired visible state), so
+       anything unnamespaced here risks either being flattened by a compound
+       selector or being hidden permanently. Do not reuse `.reveal` on this page.
+       ========================================================================== */
+
+    .ni-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+    .ni-reveal.is-in { opacity: 1; transform: none; }
+    /* Reduced motion and no-JS must SHOW, never hide. */
+    @media (prefers-reduced-motion: reduce) {
+      .ni-reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ---------------- hero ---------------- */
+    .ni-hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      background: var(--navy);
+      overflow: hidden;
+      padding: 0 0 clamp(56px, 8vw, 110px);
+    }
+    .ni-hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.55) contrast(1.05) brightness(0.62);
+    }
+    .ni-hero-veil {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(11,10,7,0.62) 0%, rgba(11,10,7,0.40) 38%, rgba(11,10,7,0.88) 100%),
+        linear-gradient(to right, rgba(11,10,7,0.70) 0%, rgba(11,10,7,0.10) 62%);
+    }
+    .ni-hero-inner {
+      position: relative;
+      width: 100%;
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(22px, 5vw, 72px);
+    }
+    .ni-eyebrow {
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(237,232,222,0.62);
+      margin: 0 0 26px;
+    }
+    .ni-hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(46px, 8.4vw, 108px);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      color: #EDE8DE;
+      margin: 0 0 30px;
+      max-width: 15ch;
+    }
+    .ni-hero-sub {
+      font-family: var(--font);
+      font-size: clamp(15px, 1.35vw, 18px);
+      line-height: 1.72;
+      color: rgba(237,232,222,0.78);
+      max-width: 56ch;
+      margin: 0 0 42px;
+    }
+    .ni-hero-cta {
+      display: inline-block;
+      font-family: var(--font);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #EDE8DE;
+      text-decoration: none;
+      padding: 0 0 10px;
+      border-bottom: 1px solid rgba(237,232,222,0.42);
+      transition: border-color 0.4s var(--ease), color 0.4s var(--ease);
+    }
+    .ni-hero-cta:hover,
+    .ni-hero-cta:focus-visible { border-bottom-color: #EDE8DE; color: #EDE8DE; }
+
+    /* ---------------- intro ---------------- */
+    .ni-intro {
+      background: var(--cream);
+      color: var(--navy);
+      padding: clamp(74px, 10vw, 148px) clamp(22px, 5vw, 72px);
+    }
+    .ni-intro-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+      gap: clamp(30px, 6vw, 96px);
+      align-items: start;
+    }
+    .ni-intro-label {
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(11,10,7,0.62);
+      line-height: 1.7;
+      margin: 0;
+      padding-top: 10px;
+      border-top: 1px solid rgba(11,10,7,0.18);
+    }
+    .ni-intro-copy {
+      font-family: var(--serif);
+      font-size: clamp(21px, 2.5vw, 32px);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: rgba(11,10,7,0.88);
+      margin: 0;
+      max-width: 30ch;
+    }
+
+    /* ---------------- featured grid ---------------- */
+    .ni-featured {
+      background: var(--navy);
+      padding: clamp(74px, 10vw, 140px) clamp(22px, 5vw, 72px) clamp(84px, 11vw, 160px);
+    }
+    .ni-featured-inner { max-width: 1360px; margin: 0 auto; }
+
+    .ni-sect-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      padding-bottom: 22px;
+      margin-bottom: clamp(34px, 5vw, 58px);
+      border-bottom: 1px solid rgba(237,232,222,0.16);
+    }
+    .ni-sect-head h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(28px, 3.6vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: #EDE8DE;
+      margin: 0;
+    }
+    .ni-cluster {
+      font-family: var(--font);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(237,232,222,0.55);
+      margin: 0;
+      text-align: right;
+    }
+
+    .ni-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(12px, 1.5vw, 22px);
+    }
+    /* Magazine rhythm: two large, four supporting. Not six equal boxes. */
+    .ni-card--lead    { grid-column: span 7; min-height: clamp(420px, 46vw, 660px); }
+    .ni-card--second  { grid-column: span 5; min-height: clamp(420px, 46vw, 660px); }
+    .ni-card--minor   { grid-column: span 3; min-height: clamp(280px, 26vw, 400px); }
+
+    .ni-card {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      background: #14120D;
+      text-decoration: none;
+      color: #EDE8DE;
+      border: 1px solid rgba(237,232,222,0.10);
+    }
+    .ni-card-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.32) brightness(0.74);
+      transform: scale(1.02);
+      transition: transform 1.4s var(--ease), filter 1.4s var(--ease);
+    }
+    a.ni-card:hover .ni-card-img,
+    a.ni-card:focus-visible .ni-card-img {
+      transform: scale(1.06);
+      filter: grayscale(0.1) brightness(0.82);
+    }
+    .ni-card-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(11,10,7,0) 26%,
+        rgba(11,10,7,0.46) 50%,
+        rgba(11,10,7,0.84) 74%,
+        rgba(11,10,7,0.95) 100%);
+    }
+    .ni-card-body {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(20px, 2.4vw, 34px);
+    }
+    .ni-card h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(24px, 2.7vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #EDE8DE;
+      margin: 0 0 10px;
+    }
+    .ni-card--minor h3 { font-size: clamp(21px, 2vw, 27px); }
+    .ni-card-line {
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.66;
+      color: rgba(237,232,222,0.76);
+      margin: 0 0 20px;
+      max-width: 34ch;
+    }
+    .ni-card--minor .ni-card-line { font-size: 13.5px; margin-bottom: 16px; }
+    .ni-card-go {
+      font-family: var(--font);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #EDE8DE;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid rgba(237,232,222,0.34);
+      align-self: flex-start;
+      transition: border-color 0.4s var(--ease), gap 0.4s var(--ease);
+    }
+    a.ni-card:hover .ni-card-go,
+    a.ni-card:focus-visible .ni-card-go { border-bottom-color: #EDE8DE; gap: 15px; }
+
+    /* Cards without a published page are NOT links and NOT href="#".
+       A styled control that goes nowhere is the single worst pattern on a
+       proof site — it is deliberately inert markup instead. */
+    .ni-card--pending { cursor: default; }
+    .ni-card-status {
+      font-family: var(--font);
+      font-size: 10.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(237,232,222,0.46);
+      align-self: flex-start;
+      padding-top: 12px;
+      border-top: 1px solid rgba(237,232,222,0.16);
+    }
+
+    /* Texture panel for neighborhoods with no honest photograph on hand.
+       Survey-plot grid + ghosted letterform: reads as intentional, and does
+       not misrepresent one neighborhood with another's streetscape. */
+    .ni-plot {
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, rgba(237,232,222,0.055) 0 1px, transparent 1px 34px),
+        repeating-linear-gradient(90deg, rgba(237,232,222,0.055) 0 1px, transparent 1px 34px),
+        radial-gradient(120% 90% at 30% 12%, rgba(237,232,222,0.09) 0%, transparent 62%),
+        #14120D;
+    }
+    .ni-plot-mark {
+      position: absolute;
+      right: -0.06em;
+      top: 44%;
+      transform: translateY(-50%);
+      font-family: var(--serif);
+      font-size: clamp(150px, 20vw, 250px);
+      line-height: 0.7;
+      color: rgba(237,232,222,0.055);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ---------------- closing CTA ---------------- */
+    .ni-cta {
+      position: relative;
+      min-height: 66vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #100E0A;
+      overflow: hidden;
+      padding: clamp(72px, 10vw, 130px) clamp(22px, 5vw, 72px);
+    }
+    .ni-cta-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.7) brightness(0.42);
+    }
+    .ni-cta-veil { position: absolute; inset: 0; background: rgba(11,10,7,0.62); }
+    .ni-cta-inner { position: relative; max-width: 760px; }
+    .ni-cta h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(32px, 5.2vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #EDE8DE;
+      margin: 0 0 38px;
+      text-wrap: balance;
+    }
+    .ni-btn {
+      display: inline-block;
+      font-family: var(--font);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #EDE8DE;
+      text-decoration: none;
+      padding: 17px 42px;
+      border: 1px solid rgba(237,232,222,0.42);
+      transition: background 0.45s var(--ease), color 0.45s var(--ease), border-color 0.45s var(--ease);
+    }
+    .ni-btn:hover,
+    .ni-btn:focus-visible { background: #EDE8DE; color: var(--navy); border-color: #EDE8DE; }
+
+    /* ---------------- focus ---------------- */
+    .ni-card:focus-visible,
+    .ni-hero-cta:focus-visible,
+    .ni-btn:focus-visible {
+      outline: 2px solid #EDE8DE;
+      outline-offset: 4px;
+    }
+
+    /* ---------------- responsive ---------------- */
+    @media (max-width: 1000px) {
+      .ni-card--lead, .ni-card--second { grid-column: span 12; min-height: 440px; }
+      .ni-card--minor { grid-column: span 6; min-height: 320px; }
+      .ni-intro-inner { grid-template-columns: 1fr; }
+      .ni-intro-copy { max-width: 44ch; }
+    }
+    @media (max-width: 620px) {
+      .ni-hero { min-height: 88vh; }
+      .ni-card--minor { grid-column: span 12; min-height: 300px; }
+      .ni-sect-head { flex-direction: column; align-items: flex-start; }
+      .ni-cluster { text-align: left; }
+      .ni-plot-mark { font-size: 128px; }
     }
   </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
-<script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
-<meta property="og:title" content="The Neistat Group | Chicago Real Estate">
-<meta property="og:description" content="Chicago real estate strategy backed by $130M+ in sales, 14+ years of experience, and CAR Top 10% recognition.">
-<meta property="og:url" content="https://www.theneistatgroup.com">
-<!-- Open Graph / Social Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="The Neistat Group">
-<!-- Twitter / X Card -->
-<meta name="twitter:site" content="@mattneistat">
-<!-- Mobile / Twitter card image -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
-<meta name="twitter:image:alt" content="The Neistat Group — People First. Always. Chicago Real Estate.">
-<!-- iMessage / mobile share image -->
-<meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
-<meta property="og:image:width" content="828">
-<meta property="og:image:height" content="1792">
 </head>
 <body>
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
+
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
@@ -113,265 +404,191 @@
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-inner">
-      <a href="about.html" class="mobile-menu-link">About</a>
-      <a href="selected-work.html" class="mobile-menu-link">Selected Work</a>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-sellers">For Sellers</button>
-        <div class="mobile-sub" id="m-drop-sellers" hidden>
-          <a href="selling-process.html">Selling Process</a>
-          <a href="marketing.html">Marketing Your Property</a>
-          <a href="contact.html?intent=selling-home">Seller Strategy</a>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <header class="ni-hero">
+      <img class="ni-hero-img" src="properties/3521-cortland-aerial.jpg"
+           alt="Aerial view looking straight down on a Chicago residential block, showing rooftops, alleys, garages and tree-lined streets."
+           width="5464" height="3640">
+      <div class="ni-hero-veil"></div>
+      <div class="ni-hero-inner">
+        <p class="ni-eyebrow">Chicago</p>
+        <h1>Neighborhood Intelligence</h1>
+        <p class="ni-hero-sub">Practical, block-by-block perspective on Chicago neighborhoods where architecture, lifestyle, access, and long-term real estate decisions intersect.</p>
+        <a class="ni-hero-cta" href="#featured">Explore the Neighborhoods &rarr;</a>
+      </div>
+    </header>
+
+    <!-- ============ INTRO ============ -->
+    <section class="ni-intro">
+      <div class="ni-intro-inner">
+        <p class="ni-intro-label ni-reveal">A More Thoughtful Look at Chicago</p>
+        <p class="ni-intro-copy ni-reveal">Each neighborhood has its own rhythm, architecture, and market dynamics. These guides go beyond listings to help you understand what it is like to live, buy, sell, or invest there.</p>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED ============ -->
+    <section class="ni-featured" id="featured">
+      <div class="ni-featured-inner">
+
+        <div class="ni-sect-head ni-reveal">
+          <h2>Featured Neighborhoods</h2>
+          <p class="ni-cluster">North Avenue to Irving Park Road, east of the highway</p>
+        </div>
+
+        <div class="ni-grid">
+
+          <a class="ni-card ni-card--lead ni-reveal" href="neighborhoods/lincoln-park.html">
+            <img class="ni-card-img" src="properties/2636-lincoln-listing.jpg"
+                 alt="A row of brick and greystone mixed-use buildings with ground-floor storefronts along North Lincoln Avenue."
+                 width="840" height="560" loading="lazy">
+            <div class="ni-card-veil"></div>
+            <div class="ni-card-body">
+              <h3>Lincoln Park</h3>
+              <p class="ni-card-line">Historic homes, lakefront access, parks, and enduring demand.</p>
+              <span class="ni-card-go">Explore &rarr;</span>
+            </div>
+          </a>
+
+          <div class="ni-card ni-card--second ni-card--pending ni-reveal">
+            <img class="ni-card-img" src="properties/702-wellington-listing.jpg"
+                 alt="A contemporary dark-brick three-flat beside a vintage greystone on West Wellington Avenue."
+                 width="840" height="561" loading="lazy">
+            <div class="ni-card-veil"></div>
+            <div class="ni-card-body">
+              <h3>Lakeview</h3>
+              <p class="ni-card-line">Vintage courtyard buildings, new construction, and quick access to the lakefront.</p>
+              <span class="ni-card-status">Guide in development</span>
+            </div>
+          </div>
+
+          <div class="ni-card ni-card--minor ni-card--pending ni-reveal">
+            <div class="ni-plot"><span class="ni-plot-mark" aria-hidden="true">OT</span></div>
+            <div class="ni-card-veil"></div>
+            <div class="ni-card-body">
+              <h3>Old Town</h3>
+              <p class="ni-card-line">Narrow streets, early Chicago frame houses, and a compact, walkable core.</p>
+              <span class="ni-card-status">Guide in development</span>
+            </div>
+          </div>
+
+          <div class="ni-card ni-card--minor ni-card--pending ni-reveal">
+            <div class="ni-plot"><span class="ni-plot-mark" aria-hidden="true">WV</span></div>
+            <div class="ni-card-veil"></div>
+            <div class="ni-card-body">
+              <h3>Wrigleyville</h3>
+              <p class="ni-card-line">Two- and three-flats, rooftop decks, and a calendar that shapes the block.</p>
+              <span class="ni-card-status">Guide in development</span>
+            </div>
+          </div>
+
+          <div class="ni-card ni-card--minor ni-card--pending ni-reveal">
+            <div class="ni-plot"><span class="ni-plot-mark" aria-hidden="true">NC</span></div>
+            <div class="ni-card-veil"></div>
+            <div class="ni-card-body">
+              <h3>North Center</h3>
+              <p class="ni-card-line">Brick bungalows, wide lots, and steady single-family turnover.</p>
+              <span class="ni-card-status">Guide in development</span>
+            </div>
+          </div>
+
+          <div class="ni-card ni-card--minor ni-card--pending ni-reveal">
+            <div class="ni-plot"><span class="ni-plot-mark" aria-hidden="true">RV</span></div>
+            <div class="ni-card-veil"></div>
+            <div class="ni-card-body">
+              <h3>Roscoe Village</h3>
+              <p class="ni-card-line">A small commercial spine, workers' cottages, and low-rise residential streets.</p>
+              <span class="ni-card-status">Guide in development</span>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-buyers">For Buyers</button>
-        <div class="mobile-sub" id="m-drop-buyers" hidden>
-          <a href="buying-process.html">Buying Process</a>
-          <a href="calculator.html">Affordability</a>
-        </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="ni-cta">
+      <img class="ni-cta-img" src="properties/1126-fullerton-listing.jpg"
+           alt="Red brick facade with limestone lintels and juliet balconies, framed by autumn foliage."
+           width="720" height="480" loading="lazy">
+      <div class="ni-cta-veil"></div>
+      <div class="ni-cta-inner">
+        <h2 class="ni-reveal">The right neighborhood changes everything.</h2>
+        <a class="ni-btn ni-reveal" href="contact.html">Let&rsquo;s Talk</a>
       </div>
-      <div class="mobile-group" data-nav-group data-open="false">
-        <button class="mobile-menu-link mobile-group-trigger" type="button" aria-expanded="false" aria-controls="m-drop-resources">Resources</button>
-        <div class="mobile-sub" id="m-drop-resources" hidden>
-          <a href="calculator.html">Affordability</a>
-          <a href="vendors.html">Vendor Directory</a>
-        </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
+      <div class="footer-col"><div class="footer-col-label">Navigate</div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="selected-work.html">Selected Work</a>
+        <a href="selling-process.html">Selling Process</a>
+        <a href="marketing.html">Marketing Your Property</a>
+        <a href="buying-process.html">Buying Process</a>
+        <a href="calculator.html">Affordability</a>
+        <a href="vendors.html">Vendor Directory</a>
+        <a href="contact.html">Contact</a>
       </div>
-      <a href="contact.html" class="mobile-menu-link">Contact</a>
-      <div class="mobile-menu-footer"><a href="tel:+18477142913">847.714.2913</a></div>
+      <div class="footer-col"><div class="footer-col-label">Connect</div><a href="tel:+18477142913">847.714.2913</a><a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a><a href="https://www.instagram.com/matt_neistat/" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank">LinkedIn</a></div>
     </div>
-  </div>
-  <div style="background:#0B0A07;padding:100px 40px 24px;margin-top:56px;">
-    <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(237,232,222,0.55);display:block;margin-bottom:12px;">Explore</span>
-    <h1 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:#EDE8DE;margin:0 0 12px;">Chicago <em style="font-style:italic;">Neighborhoods</em></h1>
-    <p style="font-size:14px;color:rgba(237,232,222,0.78);max-width:520px;line-height:1.6;margin:0;">From the South Loop to the North Shore — click any neighborhood to explore its boundaries, character, and available properties.</p>
-  </div>
-  <div class="nh-layout" style="margin-top:0;height:calc(100vh - 200px)">
-    <div class="nh-sidebar">
-      <div class="nh-search">
-        <select class="nh-search-input" id="nhRegion" style="margin-bottom:8px;cursor:pointer;-webkit-appearance:none;background:#141210 url('data:image/svg+xml,%3Csvg width=%2710%27 height=%276%27 viewBox=%270 0 10 6%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 stroke=%27%23EDE8DE%27 stroke-width=%271.5%27 stroke-opacity=%270.3%27/%3E%3C/svg%3E') no-repeat right 14px center;">
-          <option value="chicago" selected>Chicago</option>
-          <option value="north-shore" disabled>North Shore — Coming Soon</option>
-          <option value="northwest" disabled>Northwest Suburbs — Coming Soon</option>
-        </select>
-        <input type="text" class="nh-search-input" id="nhSearch" placeholder="Search neighborhoods...">
-      </div>
-      <div class="nh-list" id="nhList"></div>
-      <div class="nh-detail-panel" id="nhDetailPanel">
-        <div class="nh-detail-name" id="dpName"></div>
-        <div class="nh-detail-desc" id="dpDesc"></div>
-        <div class="nh-detail-stats" id="dpStats"></div>
-        <div class="nh-detail-btns">
-          <a href="contact.html" class="nh-btn nh-btn-primary">Begin the Conversation</a>
-        </div>
-      </div>
-    </div>
-    <div class="nh-chips" id="nhChips"></div>
-    <div class="nh-map-wrap"><div id="neighborhood-map"></div></div>
-  </div>
-  <div class="nh-bottom-sheet" id="nhBottomSheet">
-    <div class="nh-bottom-sheet-handle"></div>
-    <div class="nh-detail-name" id="bsName"></div>
-    <div class="nh-detail-desc" id="bsDesc"></div>
-    <div class="nh-detail-stats" id="bsStats"></div>
-    <div class="nh-detail-btns">
-      <a href="contact.html" class="nh-btn nh-btn-primary">Begin the Conversation</a>
-    </div>
-  </div>
+    <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
+  </footer>
+
+  <noscript>
+    <style>.ni-reveal { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
+
   <script>
-    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
-    const toggle=document.getElementById('navToggle'),mmenu=document.getElementById('mobileMenu');
-    if(toggle&&mmenu){toggle.addEventListener('click',()=>{mmenu.classList.toggle('active');toggle.classList.toggle('active')});}
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1gqvDCyKTmo-ze3seKvolj_U9I-lNRWs"></script>
-  <script>
-    const map=new google.maps.Map(document.getElementById('neighborhood-map'),{
-      center:{lat:41.88,lng:-87.68},zoom:11,
-      styles:[
-        {elementType:'geometry',stylers:[{color:'#1a1a2e'}]},
-        {elementType:'labels.text.fill',stylers:[{color:'#746855'}]},
-        {elementType:'labels.text.stroke',stylers:[{color:'#242f3e'}]},
-        {featureType:'water',elementType:'geometry',stylers:[{color:'#16213e'}]},
-        {featureType:'road',elementType:'geometry',stylers:[{color:'#2c2c44'}]},
-        {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#1a5276'}]},
-        {featureType:'poi',stylers:[{visibility:'off'}]},
-        {featureType:'transit',stylers:[{visibility:'off'}]},
-        {featureType:'administrative.locality',elementType:'labels.text.fill',stylers:[{color:'#d59563'}]}
-      ],
-      mapTypeControl:false,streetViewControl:false,fullscreenControl:false,gestureHandling:'greedy'
-    });
+    (function () {
+      var els = document.querySelectorAll('.ni-reveal');
+      if (!els.length) { return; }
 
-    // Color palette for Chicago areas
-    const palette=['#EDE8DE','#a29bfe','#55efc4','#fd79a8','#fdcb6e','#e17055','#6c5ce7','#0984e3','#00cec9','#e84393','#d63031','#00b894','#74b9ff','#636e72','#fab1a0','#dfe6e9','#b2bec3','#ffeaa7','#81ecec'];
+      function show(el) { el.classList.add('is-in'); }
 
+      var reduce = false;
+      try {
+        reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      } catch (e) { reduce = false; }
 
-    const allPolys={},allHoods={};
-    let activeKey=null;
-    const nhList=document.getElementById('nhList'),nhChips=document.getElementById('nhChips');
+      // Reduced motion or no IntersectionObserver: reveal everything immediately.
+      // This path must SHOW, never return early — .ni-reveal starts at opacity 0.
+      if (reduce || !('IntersectionObserver' in window)) {
+        Array.prototype.forEach.call(els, show);
+        return;
+      }
 
-    function titleCase(s){return s.split(' ').map(w=>w[0]+w.slice(1).toLowerCase()).join(' ');}
-
-    function addToUI(key,name,desc,character,color){
-      allHoods[key]={name,desc,character,color};
-      const item=document.createElement('div');
-      item.className='nh-list-item';item.dataset.key=key;
-      item.innerHTML='<div class="nh-list-dot" style="background:'+color+'"></div><div><div class="nh-list-name">'+name+'</div><div class="nh-list-sub">'+character+'</div></div>';
-      item.addEventListener('click',()=>selectHood(key));
-      nhList.appendChild(item);
-      const chip=document.createElement('div');
-      chip.className='nh-chip';chip.dataset.key=key;chip.textContent=name;
-      chip.addEventListener('click',()=>selectHood(key));
-      nhChips.appendChild(chip);
-    }
-
-    function drawPoly(key,coords,color){
-      const poly=new google.maps.Polygon({paths:coords,strokeColor:color,strokeOpacity:0.8,strokeWeight:2,fillColor:color,fillOpacity:0.15,map:map});
-      poly.addListener('click',()=>selectHood(key));
-      poly.addListener('mouseover',()=>{if(activeKey!==key)poly.setOptions({fillOpacity:0.35})});
-      poly.addListener('mouseout',()=>{if(activeKey!==key)poly.setOptions({fillOpacity:0.15})});
-      allPolys[key]=poly;
-    }
-
-    function selectHood(key){
-      const nh=allHoods[key];if(!nh||!allPolys[key])return;
-      if(activeKey&&allPolys[activeKey])allPolys[activeKey].setOptions({fillOpacity:0.15,strokeWeight:2});
-      activeKey=key;
-      allPolys[key].setOptions({fillOpacity:0.5,strokeWeight:3});
-      const bounds=new google.maps.LatLngBounds();
-      allPolys[key].getPath().forEach(p=>bounds.extend(p));
-      map.fitBounds(bounds,{top:40,bottom:40,left:40,right:40});
-      document.querySelectorAll('.nh-list-item').forEach(el=>el.classList.toggle('active',el.dataset.key===key));
-      document.querySelectorAll('.nh-chip').forEach(el=>el.classList.toggle('active',el.dataset.key===key));
-      const ai=nhList.querySelector('[data-key="'+key+'"]');
-      if(ai)ai.scrollIntoView({behavior:'smooth',block:'nearest'});
-      const sh='<div><span class="nh-detail-stat-label">Character</span><span class="nh-detail-stat-val">'+nh.character+'</span></div>';
-      ['dpName','bsName'].forEach(id=>document.getElementById(id).textContent=nh.name);
-      ['dpDesc','bsDesc'].forEach(id=>document.getElementById(id).textContent=nh.desc);
-      ['dpStats','bsStats'].forEach(id=>document.getElementById(id).innerHTML=sh);
-      document.getElementById('nhDetailPanel').classList.add('open');
-      document.getElementById('nhBottomSheet').classList.add('open');
-    }
-
-    // Fetch ALL 77 Chicago community areas
-    fetch('https://data.cityofchicago.org/resource/igwz-8jzy.json?$limit=100')
-      .then(r=>r.json())
-      .then(data=>{
-        const chiLabel=document.createElement('div');
-        chiLabel.className='nh-section-label';chiLabel.textContent='Chicago Neighborhoods';
-        nhList.appendChild(chiLabel);
-
-        // Custom descriptions for key neighborhoods
-        const customDesc={
-          'LOGAN SQUARE':'Boulevard system, craft breweries, thriving arts scene.',
-          'LOOP':'Michigan Avenue, Millennium Park, the Art Institute.',
-          'LAKE VIEW':'Home to Wrigley Field and some of the best dining and nightlife.',
-          'LINCOLN SQUARE':'European-village feel with independent shops.',
-          'WEST TOWN':'New restaurants, creative offices, historic workers cottages.',
-          'NEAR NORTH SIDE':'Gold Coast, River North, Streeterville — luxury lakefront.',
-          'NORTH CENTER':'Family-friendly with charming main streets and top schools.',
-          'NEAR SOUTH SIDE':'South Loop — fast-growing, steps from Grant Park.',
-          'LINCOLN PARK':'Premier residential. Zoo, DePaul, Second City.',
-          'ROGERS PARK':'Most diverse neighborhood. Affordable lakefront living.',
-          'EDGEWATER':'Quiet lakefront neighborhood with vintage architecture.',
-          'HYDE PARK':'University of Chicago, Museum of Science & Industry.',
-          'LOWER WEST SIDE':'Pilsen — vibrant arts district with murals and galleries.',
-          'HUMBOLDT PARK':'Lush parks, Puerto Rican heritage, appreciating real estate.',
-          'IRVING PARK':'Classic bungalows, tree-lined streets, strong community.',
-          'ALBANY PARK':'One of the most diverse neighborhoods in the US.',
-          'AVONDALE':'Breweries, new restaurants, growing creative scene.',
-          'PORTAGE PARK':'Affordable, family-friendly, classic Chicago charm.',
-          'UPTOWN':'Historic theaters, diverse culture, lakefront access.',
-          'NEAR WEST SIDE':'Fulton Market, United Center, hottest restaurant scene.',
-          'BRIDGEPORT':'Historic South Side neighborhood, White Sox territory.',
-          'BEVERLY':'Beverly Hills of Chicago. Beautiful homes, Irish heritage.',
-          'BRONZEVILLE':'Historic heart of Black Chicago. Beautiful greystones.',
-          'KENWOOD':'Architecturally distinguished. Grand historic mansions.',
-          'WOODLAWN':'On the rise. Adjacent to Obama Presidential Center.',
-          'SOUTH SHORE':'Lakefront living on the South Side. Cultural Center.',
-          'BUCKTOWN':'Creative epicenter. Art galleries, boutiques, cocktail bars.',
-          'WICKER PARK':'Indie culture, restaurants, nightlife around six corners.',
-          'UKRAINIAN VILLAGE':'Charming residential streets, growing dining scene.',
-          'OLD TOWN':'Second City, boutique shopping, tree-lined streets.',
-        };
-
-        data.sort((a,b)=>(a.community||'').localeCompare(b.community||''));
-        data.forEach((area,i)=>{
-          const name=area.community;if(!name)return;
-          const geom=area.the_geom;if(!geom||!geom.coordinates)return;
-          let coords;
-          if(geom.type==='MultiPolygon'){
-            let longest=[];
-            geom.coordinates.forEach(poly=>poly.forEach(ring=>{if(ring.length>longest.length)longest=ring}));
-            coords=longest.map(c=>({lat:c[1],lng:c[0]}));
-          }else if(geom.type==='Polygon'){
-            coords=geom.coordinates[0].map(c=>({lat:c[1],lng:c[0]}));
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            show(entry.target);
+            io.unobserve(entry.target);
           }
-          if(!coords||coords.length<3)return;
-          const key=name.toLowerCase().replace(/\s+/g,'-');
-          const color=palette[i%palette.length];
-          const desc=customDesc[name]||'Chicago community area.';
-          const displayName=titleCase(name);
-          drawPoly(key,coords,color);
-          addToUI(key,displayName,desc,customDesc[name]?'Chicago Neighborhood':'Chicago',color);
         });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
-      })
-      .catch(()=>{
-        nhList.innerHTML='<div style="padding:20px;color:rgba(237,232,222,0.78);font-size:13px;">Error loading neighborhoods. Please refresh.</div>';
-      });
+      Array.prototype.forEach.call(els, function (el) { io.observe(el); });
 
-    // Search
-    document.getElementById('nhSearch').addEventListener('input',function(){
-      const q=this.value.toLowerCase();
-      document.querySelectorAll('.nh-list-item').forEach(item=>{
-        const name=item.querySelector('.nh-list-name').textContent.toLowerCase();
-        item.style.display=name.includes(q)?'':'none';
+      // Failsafe. If the observer never delivers a single callback, everything
+      // above the fold would sit at opacity 0 forever — which is exactly how a
+      // page on this site once shipped blank. This only fires when nothing at
+      // all has been revealed, so ordinary scroll reveals are left alone.
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          if (document.querySelector('.ni-reveal.is-in')) { return; }
+          Array.prototype.forEach.call(els, function (el) {
+            if (el.getBoundingClientRect().top < window.innerHeight) { show(el); }
+          });
+        }, 1200);
       });
-    });
-    document.getElementById('nhSearch').addEventListener('keydown',function(e){
-      if(e.key==='Enter'){
-        const v=Array.from(document.querySelectorAll('.nh-list-item')).filter(el=>el.style.display!=='none');
-        if(v.length)v[0].click();
-      }
-    });
-    document.getElementById('nhBottomSheet').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
-  </script>
-<script>
-    // Magnetic Cursor
-    (function(){
-      if(window.innerWidth<769)return;
-      var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-      if(!dot||!ring)return;
-      var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-      // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-    // background under the pointer and invert to carbon when it is light.
-    var lastEl=null,lastLight=false;
-    function bgIsLight(el){
-      while(el && el!==document.documentElement){
-        var m=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-        if(m && (m[3]===undefined || +m[3]>0.95))
-          return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-        el=el.parentElement;
-      }
-      return false;
-    }
-    document.addEventListener('mousemove',function(e){
-      mx=e.clientX;my=e.clientY;
-      dot.classList.remove('hidden');ring.classList.remove('hidden');
-      var el=document.elementFromPoint(mx,my);
-      if(el!==lastEl){                       // only recompute when the element changes
-        lastEl=el; lastLight=bgIsLight(el);
-        dot.classList.toggle('on-light',lastLight);
-        ring.classList.toggle('on-light',lastLight);
-      }
-    });
-      document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-      function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
-      loop();
-      document.querySelectorAll('a,button,.portfolio-card,.tool-card,.vendor-card,.testimonial-card').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
     })();
-</script>
+  </script>
+
 </body>
 </html>
