@@ -45,12 +45,12 @@
     /* ---------------- hero ---------------- */
     .ni-hero {
       position: relative;
-      min-height: 92vh;
+      min-height: 72vh;
       display: flex;
       align-items: flex-end;
       background: var(--navy);
       overflow: hidden;
-      padding: 0 0 clamp(56px, 8vw, 110px);
+      padding: 0 0 clamp(48px, 6vw, 84px);
     }
     .ni-hero-img {
       position: absolute; inset: 0;
@@ -117,7 +117,7 @@
     .ni-intro {
       background: var(--cream);
       color: var(--navy);
-      padding: clamp(74px, 10vw, 148px) clamp(22px, 5vw, 72px);
+      padding: clamp(52px, 6vw, 92px) clamp(22px, 5vw, 72px);
     }
     .ni-intro-inner {
       max-width: 1360px;
@@ -152,7 +152,7 @@
     /* ---------------- featured grid ---------------- */
     .ni-featured {
       background: var(--navy);
-      padding: clamp(74px, 10vw, 140px) clamp(22px, 5vw, 72px) clamp(84px, 11vw, 160px);
+      padding: clamp(52px, 6vw, 92px) clamp(22px, 5vw, 72px) clamp(60px, 7vw, 108px);
     }
     .ni-featured-inner { max-width: 1360px; margin: 0 auto; }
 
@@ -311,14 +311,14 @@
     /* ---------------- closing CTA ---------------- */
     .ni-cta {
       position: relative;
-      min-height: 66vh;
+      min-height: 46vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       background: #100E0A;
       overflow: hidden;
-      padding: clamp(72px, 10vw, 130px) clamp(22px, 5vw, 72px);
+      padding: clamp(56px, 7vw, 96px) clamp(22px, 5vw, 72px);
     }
     .ni-cta-img {
       position: absolute; inset: 0;
@@ -369,7 +369,7 @@
       .ni-intro-copy { max-width: 44ch; }
     }
     @media (max-width: 620px) {
-      .ni-hero { min-height: 88vh; }
+      .ni-hero { min-height: 74vh; }
       .ni-card--minor { grid-column: span 12; min-height: 300px; }
       .ni-sect-head { flex-direction: column; align-items: flex-start; }
       .ni-cluster { text-align: left; }

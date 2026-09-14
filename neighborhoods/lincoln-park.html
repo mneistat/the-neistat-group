@@ -109,7 +109,7 @@
     }
 
     /* ---------------- generic bands ---------------- */
-    .np-band { padding: clamp(72px, 9.5vw, 150px) 0; }
+    .np-band { padding: clamp(56px, 7vw, 104px) 0; }
     .np-band--cream { background: var(--cream); color: var(--navy); }
     .np-band--dark  { background: var(--navy); color: #EDE8DE; }
     .np-band--cream .np-sect-label { color: rgba(11,10,7,0.6); border-top: 1px solid rgba(11,10,7,0.18); }
@@ -164,58 +164,55 @@
       line-height: 1.58; color: rgba(11,10,7,0.86); margin: 0;
     }
 
-    /* ---------------- boundaries ---------------- */
-    .np-bounds-grid {
+    /* ---------------- map ----------------
+       Static, hand-placed SVG: an approximate outline, the lake edge and a
+       street-grid texture. No tiles, no API calls, no runtime data. SVG text is
+       sized in viewBox units, so it scales with the map; the 620px query below
+       enlarges it to stay legible on phones. */
+    .np-band--map { padding: clamp(56px, 6.5vw, 96px) 0; }
+    .np-map-grid {
       display: grid;
-      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-      gap: clamp(30px, 5vw, 84px);
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: clamp(28px, 4vw, 64px);
       align-items: center;
     }
-    .np-bounds-list { list-style: none; margin: 0; padding: 0; }
-    .np-bounds-list li {
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: 20px; padding: 20px 0;
-      border-bottom: 1px solid rgba(237,232,222,0.14);
-    }
-    .np-bounds-list li:first-child { border-top: 1px solid rgba(237,232,222,0.14); }
-    .np-bounds-k {
-      font-family: var(--font); font-size: 11px; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(237,232,222,0.55); flex: none;
-    }
-    .np-bounds-v {
+    .np-map-lede {
       font-family: var(--serif);
-      font-size: clamp(17px, 1.7vw, 23px);
-      color: #EDE8DE; text-align: right;
+      font-size: clamp(20px, 2vw, 27px);
+      line-height: 1.4; letter-spacing: -0.01em;
+      color: #EDE8DE; margin: 0 0 18px; max-width: 18ch;
     }
-
-    .np-plot {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      background:
-        repeating-linear-gradient(0deg, rgba(237,232,222,0.05) 0 1px, transparent 1px 32px),
-        repeating-linear-gradient(90deg, rgba(237,232,222,0.05) 0 1px, transparent 1px 32px),
-        #14120D;
-      border: 1px solid rgba(237,232,222,0.14);
-      display: grid; place-items: center;
-    }
-    .np-plot svg { width: 76%; height: 76%; display: block; }
-    .np-plot-label {
-      position: absolute; left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-    .np-plot-label span {
-      display: block;
-      font-family: var(--font); font-size: 11px; font-weight: 500;
-      letter-spacing: 0.26em; text-transform: uppercase;
-      color: rgba(237,232,222,0.72);
-    }
-    .np-plot-note {
+    .np-map-note {
       font-family: var(--font); font-size: 11px;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(237,232,222,0.55);
-      margin: 16px 0 0;
+      color: rgba(237,232,222,0.55); margin: 0;
+    }
+    .np-map { margin: 0; }
+    .np-map svg { display: block; width: 100%; height: auto; border: 1px solid rgba(237,232,222,0.12); }
+    .np-map-land { fill: #14120D; }
+    .np-map-gridline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
+    .np-map-gridline--lp { stroke: rgba(237,232,222,0.1); }
+    .np-map-lp { fill: #1D1A14; }
+    .np-map-park { fill: #2B2E1F; }
+    .np-map-street { fill: none; stroke: rgba(237,232,222,0.18); stroke-width: 1.2; }
+    .np-map-street--lp { stroke: rgba(237,232,222,0.36); }
+    .np-map-lake { fill: #0F1317; }
+    .np-map-waterline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
+    .np-map-shore { fill: none; stroke: rgba(237,232,222,0.3); stroke-width: 1.2; }
+    .np-map-edge { fill: none; stroke: #EDE8DE; stroke-width: 1.6; stroke-linejoin: round; }
+    .np-map-name {
+      font-family: var(--serif); font-size: 44px; letter-spacing: -0.01em;
+      fill: #EDE8DE; paint-order: stroke; stroke: #1D1A14; stroke-width: 6px;
+    }
+    .np-map-k {
+      font-family: var(--font); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.24em; fill: rgba(237,232,222,0.55);
+    }
+    .np-map-v { font-family: var(--serif); font-style: italic; font-size: 22px; letter-spacing: 0; fill: rgba(237,232,222,0.88); }
+    .np-map-ctx {
+      font-family: var(--font); font-size: 14px; font-weight: 500;
+      letter-spacing: 0.2em; fill: rgba(237,232,222,0.64);
+      paint-order: stroke; stroke: #1D1A14; stroke-width: 5px;
     }
 
     /* ---------------- housing stock ---------------- */
@@ -392,7 +389,8 @@
 
     /* ---------------- responsive ---------------- */
     @media (max-width: 1000px) {
-      .np-essence-grid, .np-bounds-grid, .np-note-grid { grid-template-columns: 1fr; }
+      .np-essence-grid, .np-map-grid, .np-note-grid { grid-template-columns: 1fr; }
+      .np-map-lede { max-width: 32ch; }
       .np-glance { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .np-glance > div:nth-child(2n) { border-right: 0; }
       .np-glance > div:nth-child(n+3) { border-top: 1px solid rgba(11,10,7,0.12); }
@@ -406,8 +404,9 @@
       .np-glance > div:first-child { border-top: 0; }
       .np-stock { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .np-work { grid-template-columns: 1fr; }
-      .np-bounds-list li { flex-direction: column; gap: 6px; }
-      .np-bounds-v { text-align: left; }
+      .np-map-k, .np-map-ctx { font-size: 26px; }
+      .np-map-v { font-size: 34px; }
+      .np-map-name { font-size: 56px; }
       .np-places > div { flex-direction: column; gap: 8px; }
     }
   </style>
@@ -468,8 +467,56 @@
       </div>
     </section>
 
-    <!-- ============ 3. AT A GLANCE ============ -->
-    <section class="np-band np-band--cream" style="padding-top: 0;">
+    <!-- ============ 3. MAP ============ -->
+    <!-- Editorial map, drawn by hand as static SVG. The outline is approximate and
+         was traced once from the City of Chicago community-area boundary; nothing
+         is fetched at runtime. Keep labels to the few named below. -->
+    <section class="np-band np-band--dark np-band--map">
+      <div class="np-wrap np-map-grid">
+        <div class="np-reveal">
+          <h2 class="np-sect-label">The Map</h2>
+          <p class="np-map-lede">Diversey to North Avenue, the river corridor to the lake.</p>
+          <p class="np-map-note">Boundaries approximate.</p>
+        </div>
+        <figure class="np-map np-reveal">
+          <svg viewBox="0 0 1200 635" role="img" aria-labelledby="np-map-title np-map-desc">
+            <title id="np-map-title">Map of Lincoln Park</title>
+            <desc id="np-map-desc">Stylized map of Lincoln Park, bounded by Diversey to the north, North Avenue to the south, Lake Michigan to the east and the river corridor to the west. Fullerton and Armitage cross the neighborhood, the lakefront park runs along its eastern edge, and Oz Park sits near the center.</desc>
+            <defs>
+              <pattern id="np-map-grid" width="22" height="37" patternUnits="userSpaceOnUse"><path class="np-map-gridline" d="M22 0V37M0 37H22"/></pattern>
+              <pattern id="np-map-grid-lp" width="22" height="37" patternUnits="userSpaceOnUse"><path class="np-map-gridline np-map-gridline--lp" d="M22 0V37M0 37H22"/></pattern>
+              <pattern id="np-map-water" width="12" height="9" patternUnits="userSpaceOnUse"><path class="np-map-waterline" d="M0 8.5H12"/></pattern>
+              <clipPath id="np-map-lp-clip"><path d="M110,104 L862,89 907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1032,508 1008,530 976,536 513,546 494,484 482,465 444,435 415,449 404,445 392,403 337,314 274,298 242,265 232,218 207,199 158,181 141,136Z"/></clipPath>
+            </defs>
+            <rect class="np-map-land" width="1200" height="635"/>
+            <rect width="1200" height="635" fill="url(#np-map-grid)"/>
+            <path class="np-map-lp" d="M110,104 L862,89 907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1032,508 1008,530 976,536 513,546 494,484 482,465 444,435 415,449 404,445 392,403 337,314 274,298 242,265 232,218 207,199 158,181 141,136Z"/>
+            <rect width="1200" height="635" fill="url(#np-map-grid-lp)" clip-path="url(#np-map-lp-clip)"/>
+            <path class="np-map-park" d="M800,92 L862,89 907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1032,508 1008,530 976,536 897,532 862,470 836,400 830,300 832,244 815,170 800,120Z"/>
+            <rect class="np-map-park" x="672" y="326" width="26" height="36" rx="2"/>
+            <path class="np-map-street" d="M0,244H930 M0,397H836 M0,105H110 M0,547H513"/>
+            <path class="np-map-street np-map-street--lp" clip-path="url(#np-map-lp-clip)" d="M0,244H930 M0,397H836"/>
+            <path class="np-map-lake" d="M893,0 L907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1040,522 1012,560 997,600 992,635 L1200,635 1200,0Z"/>
+            <path d="M893,0 L907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1040,522 1012,560 997,600 992,635 L1200,635 1200,0Z" fill="url(#np-map-water)"/>
+            <path class="np-map-shore" d="M893,0 L907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1040,522 1012,560 997,600 992,635"/>
+            <path class="np-map-edge" d="M110,104 L862,89 907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1032,508 1008,530 976,536 513,546 494,484 482,465 444,435 415,449 404,445 392,403 337,314 274,298 242,265 232,218 207,199 158,181 141,136Z"/>
+
+            <text class="np-map-name" x="500" y="322" text-anchor="middle">Lincoln Park</text>
+            <text class="np-map-ctx" x="270" y="232">FULLERTON</text>
+            <text class="np-map-ctx" x="410" y="385">ARMITAGE</text>
+            <text class="np-map-ctx" x="708" y="350">OZ PARK</text>
+
+            <text x="486" y="38" text-anchor="middle"><tspan class="np-map-k">NORTH</tspan><tspan class="np-map-v" x="486" dy="1.3em">Diversey</tspan></text>
+            <text x="745" y="575" text-anchor="middle"><tspan class="np-map-k">SOUTH</tspan><tspan class="np-map-v" x="745" dy="1.3em">North Avenue</tspan></text>
+            <text x="28" y="318"><tspan class="np-map-k">WEST</tspan><tspan class="np-map-v" x="28" dy="1.3em">River corridor</tspan></text>
+            <text x="1176" y="290" text-anchor="end"><tspan class="np-map-k">EAST</tspan><tspan class="np-map-v" x="1176" dy="1.3em">Lake Michigan</tspan></text>
+          </svg>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ 4. AT A GLANCE ============ -->
+    <section class="np-band np-band--cream">
       <div class="np-wrap">
         <h2 class="np-sect-label np-reveal">At a Glance</h2>
         <div class="np-glance np-reveal">
@@ -488,40 +535,6 @@
           <div>
             <h3>Typical Buyer Questions</h3>
             <p>Parking, outdoor space, school boundaries, building quality, and block-by-block value.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 4. BOUNDARIES ============ -->
-    <section class="np-band np-band--dark">
-      <div class="np-wrap">
-        <h2 class="np-sect-label np-reveal">Boundaries</h2>
-        <div class="np-bounds-grid">
-          <div class="np-reveal">
-            <ul class="np-bounds-list">
-              <li><span class="np-bounds-k">North</span><span class="np-bounds-v">Diversey</span></li>
-              <li><span class="np-bounds-k">South</span><span class="np-bounds-v">North Avenue</span></li>
-              <li><span class="np-bounds-k">East</span><span class="np-bounds-v">Lake Michigan</span></li>
-              <li><span class="np-bounds-k">West</span><span class="np-bounds-v">Clybourn / river corridor, approximate</span></li>
-            </ul>
-          </div>
-          <div class="np-reveal">
-            <div class="np-plot">
-              <svg viewBox="0 0 400 300" role="img" aria-label="Abstract diagram of the Lincoln Park boundary: a four-sided shape with an angled western edge.">
-                <polygon points="70,34 344,34 344,266 128,266 70,196"
-                         fill="none"
-                         stroke="rgba(237,232,222,0.42)"
-                         stroke-width="1.25"
-                         stroke-dasharray="7 6"
-                         vector-effect="non-scaling-stroke" />
-                <line x1="344" y1="34" x2="344" y2="266"
-                      stroke="rgba(237,232,222,0.75)" stroke-width="2"
-                      vector-effect="non-scaling-stroke" />
-              </svg>
-              <div class="np-plot-label"><span>Lincoln Park</span></div>
-            </div>
-            <p class="np-plot-note">Boundary graphic approximate.</p>
           </div>
         </div>
       </div>
