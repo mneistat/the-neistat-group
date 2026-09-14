@@ -29,7 +29,7 @@
       "addressCountry": "US"
     },
     "areaServed": ["Chicago", "Lincoln Park", "West Loop", "South Loop", "Lakeview", "Winnetka", "Gold Coast"],
-    "description": "Chicago real estate strategy at Jameson Sotheby's International Realty. $130M+ in sales, 14+ years of experience, CAR Top 10% recognition, and Jameson Quarterly Best honors in four years.",
+    "description": "Chicago real estate strategy at Jameson Sotheby's International Realty. $130M+ in sales, 14+ years of experience, CAR Top 10% recognition, and Jameson Quarterly Best honors.",
     "sameAs": [
       "https://www.instagram.com/matt_neistat/",
       "https://www.linkedin.com/in/matthew-neistat/"
@@ -428,7 +428,7 @@
        reduced-motion path and no failsafe. */
     .hp-reveal { opacity: 0; transform: translateY(22px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
     .hp-reveal.is-in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .hp-reveal { opacity: 1; transform: none; transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .hp-reveal { opacity: 1; transform: none; transition: none; } .scroll-indicator-line { animation: none; } }
 
     @media (max-width: 900px) {
       .hp-hood { grid-template-columns: 1fr; }
@@ -533,7 +533,7 @@
     <div class="sw-inner">
       <div class="sw-head">
         <span class="sw-eyebrow">Selected Work</span>
-        <h2 class="sw-h2" id="sw-heading">Selected Work</h2>
+        <h2 class="sw-h2" id="sw-heading">Recent transactions.</h2>
         <div class="sw-rule"></div>
         <p class="sw-intro">A curated collection of residential, investment, development, and commercial transactions across Chicago.</p>
       </div>
@@ -627,7 +627,7 @@
       <h2 class="hp-sr" id="hp-principle-h">People first</h2>
       <blockquote class="hp-principle-quote">&ldquo;Always put people first. Real estate isn&rsquo;t about closing deals &mdash; it&rsquo;s about building lives.&rdquo;</blockquote>
       <p class="hp-principle-cite">Matthew&rsquo;s grandfather</p>
-      <p class="hp-body">Three generations of Chicago developers and a background in hospitality shape an honest, one-on-one approach to every client relationship.</p>
+      <p class="hp-body">Three generations in Chicago-area real estate and a background in hospitality shape an honest, one-on-one approach to every client relationship.</p>
       <a class="hp-link" href="about.html">About Matthew &rarr;</a>
     </div>
   </section>
@@ -825,6 +825,10 @@
     // GSAP Animations
     gsap.registerPlugin(ScrollTrigger);
 
+    // Reduced motion: the hero stays still and fully visible, so none of the
+    // scroll-linked zoom, drift or fade below runs.
+    var heroReduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!heroReduceMotion) {
     // Hero scroll effects — no pinning, smooth parallax
     var heroST = { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true };
 
@@ -847,6 +851,7 @@
       opacity: 0, ease: 'none',
       scrollTrigger: { trigger: '#hero', start: '2% top', end: '10% top', scrub: true }
     });
+    } // end reduced-motion guard
 
     // (Portfolio drag-to-scroll removed with the Selected Work carousel.)
 

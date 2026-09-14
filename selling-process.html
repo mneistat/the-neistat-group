@@ -15,11 +15,7 @@
   <link rel="stylesheet" href="styles.css?v=36">
   <!-- styles.css hides .reveal and depends on JS to show it. With scripting off,
        cancel the rule so the page is fully readable rather than blank. -->
-  <noscript><style>.reveal{opacity:1 !important;transform:none !important}    /* Breadcrumb back to the parent pillar. Selling Process is no longer in the
-       main nav; it is reached from Seller Strategy. */
-    .sp-eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(237,232,222,0.35); transition: border-color 0.3s; }
-    .sp-eyebrow a:hover, .sp-eyebrow a:focus-visible { border-bottom-color: #EDE8DE; }
-  </style></noscript>
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
   <style>
     /* ===== SELLING PROCESS — page-scoped. All classes are sp- prefixed so nothing
        here can collide with, or be shadowed by, the global stylesheet.
@@ -209,6 +205,10 @@
          never runs. Content visible, no animation. */
       .reveal { opacity: 1 !important; transform: none !important; }
     }
+      /* Breadcrumb back to the parent pillar. Selling Process is no longer in the
+       main nav; it is reached from Seller Strategy. */
+    .sp-eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(237,232,222,0.35); transition: border-color 0.3s; }
+    .sp-eyebrow a:hover, .sp-eyebrow a:focus-visible { border-bottom-color: #EDE8DE; }
   </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>

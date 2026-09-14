@@ -1,8 +1,10 @@
 /* THE NEISTAT GROUP — Selected Work transaction data.
  *
- * Single source of truth for the portfolio. Consumed by the homepage module and
- * selected-work.html, and intended for future case-study pages and the seller /
- * neighborhood proof sections.
+ * Single source of truth for the portfolio. Only the homepage module renders from
+ * it at runtime. selected-work.html, seller-strategy.html and
+ * neighborhoods/lincoln-park.html carry the same facts as static HTML so they read
+ * without JavaScript: any change here must be made on those pages by hand too.
+ * caseStudyUrl is empty everywhere because no case-study pages exist yet.
  *
  * RULES FOR EDITING
  * -----------------
@@ -42,7 +44,7 @@ window.SELECTED_WORK = [
     // photograph would replace this.
     image: 'properties/1035-lake-feature.jpg',
     imageAlt: '1035 W. Lake Street — three-storey brick building with ground-floor retail',
-    caseStudyUrl: '',                       // TODO: CASE STUDY PAGE NEEDED
+    caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false
   },
@@ -62,7 +64,7 @@ window.SELECTED_WORK = [
     pressMention: 'Crain’s Chicago Business',
     image: 'properties/1185-elm-listing.jpg',
     imageAlt: '1183 Elm Street, Winnetka — North Shore residence',
-    caseStudyUrl: '',                       // TODO: CASE STUDY PAGE NEEDED
+    caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false
   },
@@ -78,7 +80,7 @@ window.SELECTED_WORK = [
     pressMention: '',
     image: 'properties/2636-lincoln-listing.jpg',
     imageAlt: '2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property',
-    caseStudyUrl: '',                       // TODO: CASE STUDY PAGE NEEDED
+    caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false
   },
@@ -94,7 +96,7 @@ window.SELECTED_WORK = [
     pressMention: '',
     image: 'properties/702-wellington-listing.jpg',
     imageAlt: '702 W. Wellington Avenue, Lakeview — four-condo sellout',
-    caseStudyUrl: '',                       // TODO: CASE STUDY PAGE NEEDED
+    caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false
   },
@@ -110,7 +112,7 @@ window.SELECTED_WORK = [
     pressMention: '',
     image: 'properties/1126-fullerton-listing.jpg',
     imageAlt: '1126 W. Fullerton Avenue, Lincoln Park',
-    caseStudyUrl: '',                       // TODO: CASE STUDY PAGE NEEDED
+    caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false
   },
