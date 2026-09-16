@@ -163,6 +163,17 @@
       font-size: clamp(16px, 1.4vw, 19px);
       line-height: 1.58; color: rgba(11,10,7,0.86); margin: 0;
     }
+    /* At a Glance as short lists: one item per line, hairline dash markers. */
+    .np-glance-list { list-style: none; margin: 0; padding: 0; }
+    .np-glance-list li {
+      position: relative; padding: 6px 0 6px 22px;
+      font-family: var(--serif); font-size: clamp(16px, 1.35vw, 18.5px);
+      line-height: 1.4; color: rgba(11,10,7,0.86);
+    }
+    .np-glance-list li::before {
+      content: ''; position: absolute; left: 0; top: calc(6px + 0.72em);
+      width: 11px; height: 1px; background: rgba(11,10,7,0.5);
+    }
 
     /* ---------------- map ----------------
        Static, hand-placed SVG: an approximate outline, the lake edge and a
@@ -550,19 +561,41 @@
         <div class="np-glance np-reveal">
           <div>
             <h3>Housing Stock</h3>
-            <p>Two- and three-flats, greystones, frame houses, courtyard buildings, and tall apartment buildings near the lake.</p>
+            <ul class="np-glance-list">
+              <li>Two- and three-flats</li>
+              <li>Greystones</li>
+              <li>Frame houses</li>
+              <li>Courtyard buildings</li>
+              <li>Tall apartment buildings near the lake</li>
+            </ul>
           </div>
           <div>
             <h3>Transit &amp; Access</h3>
-            <p>CTA Red, Brown, and Purple Line Express stations, bus routes, and DuSable Lake Shore Drive ramps at Belmont and Irving Park.</p>
+            <ul class="np-glance-list">
+              <li>CTA Red, Brown &amp; Purple Line Express stations</li>
+              <li>Bus routes</li>
+              <li>DuSable Lake Shore Drive at Belmont &amp; Irving Park</li>
+            </ul>
           </div>
           <div>
             <h3>Parks</h3>
-            <p>Lincoln Park&rsquo;s lakefront, Belmont Harbor, the Marovitz golf course, and neighborhood parks such as Gill Park.</p>
+            <ul class="np-glance-list">
+              <li>Lincoln Park&rsquo;s lakefront</li>
+              <li>Belmont Harbor</li>
+              <li>Marovitz Golf Course</li>
+              <li>Neighborhood parks, including Gill Park</li>
+            </ul>
           </div>
           <div>
             <h3>Landmark Districts</h3>
-            <p>Six Chicago Landmark districts, including Alta Vista Terrace, Newport Avenue, and Surf-Pine Grove.</p>
+            <ul class="np-glance-list">
+              <li>Alta Vista Terrace</li>
+              <li>Hawthorne Place</li>
+              <li>Newport Avenue</li>
+              <li>Oakdale Avenue</li>
+              <li>Surf-Pine Grove</li>
+              <li>Terra Cotta Row</li>
+            </ul>
           </div>
         </div>
       </div>
