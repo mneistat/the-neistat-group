@@ -49,6 +49,7 @@ for (const [file, id] of [['index.html', 'ctaForm'], ['contact.html', 'contactFo
   test(file + ' / ' + id + ': invalid, duplicate, failure, retry and success flows', async () => {
     const dom = page(file), w = dom.window, d = w.document;
     const form = d.getElementById(id); assert.ok(form);
+    assert.notEqual(form.getAttribute('role'), 'status', 'The whole form must not be a live region');
     let calls = 0, resolveRequest, events = 0;
     w.fetch = () => { calls++; return new Promise(resolve => { resolveRequest = resolve; }); };
     w.gtag = () => { events++; };
