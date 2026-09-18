@@ -29,7 +29,12 @@
     'marketing.html': 'marketing-page',
     'selling-process.html': 'selling-process-page',
     'neighborhoods.html': 'neighborhoods-page',
-    'vendors.html': 'vendors-page'
+    'vendors.html': 'vendors-page',
+    'selected-work.html': 'selected-work-page',
+    'seller-strategy.html': 'seller-strategy-page',
+    'buying-process.html': 'buying-process-page',
+    'lincoln-park.html': 'lincoln-park-guide',
+    'lakeview.html': 'lakeview-guide'
   };
 
   // Reuses the form's hidden source_page when the page has one, so the value
@@ -139,7 +144,7 @@
     }, true);
 
     // 2 — first interaction with the homepage or contact-page form, once each.
-    [['ctaForm', 'homepage'], ['contactForm', 'contact-page']].forEach(function (pair) {
+    [['ctaForm', 'homepage'], ['contactForm', 'contact-page'], ['buyerForm', 'buyer-estimate'], ['sellerForm', 'seller-estimate']].forEach(function (pair) {
       var form = document.getElementById(pair[0]);
       if (!form) return;
       var started = false;

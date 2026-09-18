@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://www.theneistatgroup.com/seller-strategy">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.theneistatgroup.com/properties/2636-lincoln-listing.jpg">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=37">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,29 +20,10 @@
     gtag('config', 'G-MGNGVERDHQ');
   </script>
   <script src="analytics.js" defer></script>
-  <script src="nav.js?v=6" defer></script>
+  <script src="nav.js?v=7" defer></script>
 
   <style>
-    /* ==========================================================================
-       Seller Strategy
-       Namespaced `ss-`. styles.css defines a global `.reveal { opacity: 0 }` with
-       no paired visible state, so this page ships its own reveal class.
 
-       SOURCING. Every claim on this page traces to copy already published on the
-       site or to selected-work-data.js. Do not add figures without a source:
-         - Access layers ............ marketing.html (see git main), steps 08, 09 and 12
-         - Presentation practices ... marketing.html intro and steps 02-07
-         - Pricing line ............. marketing.html step 01
-         - 1035 W. Lake / 1183 Elm .. selected-work-data.js (public, verified)
-         - Tri-Taylor ............... Linda Schafer's attributed testimonial
-       Deliberately NOT carried over from the old 12-step page: the "3-5x return
-       on preparation" promise, "faster and for more than the market average",
-       and the unsourced "95%" and "8 seconds" statistics.
-
-       Proof is typographic on purpose. The 1183 Elm photographs show "1185"
-       painted on the house, and the 1035 W. Lake image is a leasing rendering
-       with placeholder signage. Neither belongs large on this page.
-       ========================================================================== */
 
     .ss-reveal { opacity: 0; transform: translateY(24px);
       transition: opacity 1s var(--ease), transform 1s var(--ease); }
@@ -282,6 +263,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
@@ -310,7 +292,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main-content" tabindex="-1">
 
     <!-- ============ 1. HERO ============ -->
     <header class="ss-hero">
@@ -330,24 +312,26 @@
       <div class="ss-wrap">
         <div class="ss-proof-head">
           <p class="ss-label ss-reveal">Proof First</p>
-          <h2 class="ss-h2 ss-reveal">Three recent outcomes.</h2>
+          <h2 class="ss-h2 ss-reveal">Selected outcomes.</h2>
         </div>
 
         <div class="ss-proof-grid ss-reveal">
-          <article class="ss-deal">
-            <p class="ss-deal-type">Deconversion &middot; Chicago</p>
-            <h3>1035 W. Lake Street</h3>
+          <!-- GENERATED: seller-proof START -->
+<article class="ss-deal">
+            <p class="ss-deal-type">Deconversion · West Loop</p>
+            <h3><a href="selected-work.html#lake">1035 W. Lake Street</a></h3>
             <p class="ss-deal-fig">$9,500,000</p>
-            <p class="ss-deal-out">Won against major brokerages. Under contract off-market in two weeks.</p>
-            <p class="ss-deal-src">Reported in CoStar News</p>
+            <p class="ss-deal-out">Won the listing against major brokerages and brought it under contract off-market in two weeks.</p>
+            <p class="ss-deal-src"><a href="https://product.costar.com/home/news/710741247">Reported in CoStar News ↗</a></p>
           </article>
           <article class="ss-deal">
-            <p class="ss-deal-type">Residential &middot; Winnetka</p>
-            <h3>1183 Elm Street</h3>
-            <p class="ss-deal-fig">$1,265,000</p>
-            <p class="ss-deal-out">Off-market sale, 10% over asking.</p>
-            <p class="ss-deal-src">Reported in Crain&rsquo;s Chicago Business</p>
+            <p class="ss-deal-type">Development · Lakeview</p>
+            <h3><a href="selected-work.html#wellington">702 W. Wellington Avenue</a></h3>
+            <p class="ss-deal-fig">$709K – $985K</p>
+            <p class="ss-deal-out">4-condo sellout.</p>
+            <p class="ss-deal-src">Represented Developer</p>
           </article>
+  <!-- GENERATED: seller-proof END -->
           <article class="ss-deal">
             <p class="ss-deal-type">Multifamily &middot; Tri-Taylor</p>
             <h3>Tri-Taylor Portfolio</h3>
@@ -569,13 +553,6 @@
     (function () {
       var toggle = document.getElementById('navToggle');
       var menu = document.getElementById('mobileMenu');
-      if (toggle && menu) {
-        toggle.addEventListener('click', function () {
-          var open = menu.classList.toggle('active');
-          toggle.classList.toggle('active');
-          document.body.style.overflow = open ? 'hidden' : '';
-        });
-      }
     })();
 
     // Reveals.

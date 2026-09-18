@@ -10,8 +10,8 @@
   <meta property="og:description" content="A practical guide to Lincoln Park real estate, housing stock, boundaries, parks, schools, local places, and broker insight from The Neistat Group.">
   <meta property="og:url" content="https://www.theneistatgroup.com/neighborhoods/lincoln-park">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://www.theneistatgroup.com/properties/2636-lincoln-listing.jpg">
-  <link rel="stylesheet" href="/styles.css?v=36">
+  <meta property="og:image" content="https://www.theneistatgroup.com/images/neighborhoods/lincoln-park.jpg">
+  <link rel="stylesheet" href="/styles.css?v=37">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,409 +20,12 @@
     gtag('config', 'G-MGNGVERDHQ');
   </script>
   <script src="/analytics.js" defer></script>
-  <script src="/nav.js?v=6" defer></script>
+  <script src="/nav.js?v=7" defer></script>
 
-  <style>
-    /* ==========================================================================
-       Lincoln Park — neighborhood guide
-       Namespaced `np-`. See the note in neighborhoods.html: styles.css defines
-       a global `.reveal { opacity: 0 }` with no paired visible state, so this
-       page ships its own reveal class and its own reduced-motion override.
-       All asset and page links are root-relative because this file sits one
-       directory down; `../` would break if trailing-slash behaviour ever changed.
-       ========================================================================== */
-
-    .np-reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 1s var(--ease), transform 1s var(--ease);
-    }
-    .np-reveal.is-in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .np-reveal { opacity: 1; transform: none; transition: none; }
-    }
-
-    .np-wrap { max-width: 1360px; margin: 0 auto; padding: 0 clamp(22px, 5vw, 72px); }
-
-    .np-eyebrow {
-      font-family: var(--font);
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.3em; text-transform: uppercase;
-      margin: 0 0 24px;
-    }
-    .np-sect-label {
-      font-family: var(--font);
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.24em; text-transform: uppercase;
-      margin: 0 0 34px;
-      padding-top: 12px;
-    }
-
-    /* ---------------- hero ---------------- */
-    .np-hero {
-      position: relative;
-      min-height: 86vh;
-      display: flex; align-items: flex-end;
-      background: var(--navy);
-      overflow: hidden;
-      padding: 0 0 clamp(52px, 8vw, 104px);
-    }
-    .np-hero-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: grayscale(0.5) contrast(1.04) brightness(0.6);
-    }
-    .np-hero-veil {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(11,10,7,0.60) 0%, rgba(11,10,7,0.34) 40%, rgba(11,10,7,0.90) 100%),
-        linear-gradient(to right, rgba(11,10,7,0.68) 0%, rgba(11,10,7,0.08) 60%);
-    }
-    .np-hero-inner { position: relative; width: 100%; }
-    .np-hero .np-eyebrow { color: rgba(237,232,222,0.62); }
-    .np-hero h1 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(48px, 9vw, 120px);
-      line-height: 0.96; letter-spacing: -0.025em;
-      color: #EDE8DE; margin: 0 0 28px;
-    }
-    .np-hero-sub {
-      font-family: var(--font);
-      font-size: clamp(15px, 1.3vw, 18px);
-      line-height: 1.72;
-      color: rgba(237,232,222,0.78);
-      max-width: 54ch; margin: 0;
-    }
-    .np-back {
-      display: inline-block;
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(237,232,222,0.62);
-      text-decoration: none; margin: 0 0 30px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid transparent;
-      transition: color 0.35s var(--ease), border-color 0.35s var(--ease);
-    }
-    .np-back:hover, .np-back:focus-visible {
-      color: #EDE8DE; border-bottom-color: rgba(237,232,222,0.5);
-    }
-
-    /* ---------------- generic bands ---------------- */
-    .np-band { padding: clamp(56px, 7vw, 104px) 0; }
-    .np-band--cream { background: var(--cream); color: var(--navy); }
-    .np-band--dark  { background: var(--navy); color: #EDE8DE; }
-    .np-band--cream .np-sect-label { color: rgba(11,10,7,0.6); border-top: 1px solid rgba(11,10,7,0.18); }
-    .np-band--dark  .np-sect-label { color: rgba(237,232,222,0.55); border-top: 1px solid rgba(237,232,222,0.18); }
-
-    .np-h2 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(28px, 4vw, 54px);
-      line-height: 1.1; letter-spacing: -0.02em;
-      margin: 0 0 28px; text-wrap: balance;
-    }
-    .np-band--cream .np-h2 { color: var(--navy); }
-    .np-band--dark  .np-h2 { color: #EDE8DE; }
-
-    .np-body {
-      font-family: var(--font);
-      font-size: clamp(15px, 1.25vw, 17.5px);
-      line-height: 1.78;
-      max-width: 62ch; margin: 0;
-    }
-    .np-band--cream .np-body { color: rgba(11,10,7,0.78); }
-    .np-band--dark  .np-body { color: rgba(237,232,222,0.78); }
-
-    /* ---------------- essence ---------------- */
-    .np-essence-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-      gap: clamp(28px, 5vw, 90px);
-      align-items: start;
-    }
-
-    /* ---------------- at a glance ---------------- */
-    .np-glance {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0;
-      border-top: 1px solid rgba(11,10,7,0.16);
-    }
-    .np-glance > div {
-      padding: clamp(24px, 2.6vw, 38px) clamp(18px, 2vw, 30px) clamp(24px, 2.6vw, 38px) 0;
-      border-right: 1px solid rgba(11,10,7,0.12);
-    }
-    .np-glance > div:last-child { border-right: 0; }
-    .np-glance h3 {
-      font-family: var(--font); font-size: 11px; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin: 0 0 16px;
-    }
-    .np-glance p {
-      font-family: var(--serif);
-      font-size: clamp(16px, 1.4vw, 19px);
-      line-height: 1.58; color: rgba(11,10,7,0.86); margin: 0;
-    }
-    /* At a Glance as short lists: one item per line, hairline dash markers. */
-    .np-glance-list { list-style: none; margin: 0; padding: 0; }
-    .np-glance-list li {
-      position: relative; padding: 6px 0 6px 22px;
-      font-family: var(--serif); font-size: clamp(16px, 1.35vw, 18.5px);
-      line-height: 1.4; color: rgba(11,10,7,0.86);
-    }
-    .np-glance-list li::before {
-      content: ''; position: absolute; left: 0; top: calc(6px + 0.72em);
-      width: 11px; height: 1px; background: rgba(11,10,7,0.5);
-    }
-
-    /* ---------------- map ----------------
-       Static, hand-placed SVG: an approximate outline, the lake edge and a
-       street-grid texture. No tiles, no API calls, no runtime data. SVG text is
-       sized in viewBox units, so it scales with the map; the 620px query below
-       enlarges it to stay legible on phones. */
-    .np-band--map { padding: clamp(56px, 6.5vw, 96px) 0; }
-    .np-map-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-      gap: clamp(28px, 4vw, 64px);
-      align-items: center;
-    }
-    .np-map-lede {
-      font-family: var(--serif);
-      font-size: clamp(20px, 2vw, 27px);
-      line-height: 1.4; letter-spacing: -0.01em;
-      color: #EDE8DE; margin: 0 0 18px; max-width: 18ch;
-    }
-    .np-map-note {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(237,232,222,0.55); margin: 0;
-    }
-    .np-map { margin: 0; }
-    .np-map svg { display: block; width: 100%; height: auto; border: 1px solid rgba(237,232,222,0.12); }
-    .np-map-land { fill: #14120D; }
-    .np-map-gridline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
-    .np-map-gridline--lp { stroke: rgba(237,232,222,0.1); }
-    .np-map-lp { fill: #1D1A14; }
-    .np-map-park { fill: #2B2E1F; }
-    .np-map-street { fill: none; stroke: rgba(237,232,222,0.18); stroke-width: 1.2; }
-    .np-map-street--lp { stroke: rgba(237,232,222,0.36); }
-    .np-map-lake { fill: #0F1317; }
-    .np-map-waterline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
-    .np-map-shore { fill: none; stroke: rgba(237,232,222,0.3); stroke-width: 1.2; }
-    .np-map-edge { fill: none; stroke: #EDE8DE; stroke-width: 1.6; stroke-linejoin: round; }
-    .np-map-name {
-      font-family: var(--serif); font-size: 44px; letter-spacing: -0.01em;
-      fill: #EDE8DE; paint-order: stroke; stroke: #1D1A14; stroke-width: 6px;
-    }
-    .np-map-k {
-      font-family: var(--font); font-size: 13px; font-weight: 500;
-      letter-spacing: 0.24em; fill: rgba(237,232,222,0.55);
-    }
-    .np-map-v { font-family: var(--serif); font-style: italic; font-size: 22px; letter-spacing: 0; fill: rgba(237,232,222,0.88); }
-    .np-map-ctx {
-      font-family: var(--font); font-size: 14px; font-weight: 500;
-      letter-spacing: 0.2em; fill: rgba(237,232,222,0.64);
-      paint-order: stroke; stroke: #1D1A14; stroke-width: 5px;
-    }
-
-    /* ---------------- housing stock ---------------- */
-    .np-stock {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: clamp(12px, 1.4vw, 20px);
-    }
-    .np-stock article { display: flex; flex-direction: column; }
-    .np-stock-fig {
-      position: relative; aspect-ratio: 3 / 4;
-      overflow: hidden; background: #E4DFD4;
-      margin-bottom: 20px;
-    }
-    .np-stock-fig img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: grayscale(0.28) brightness(0.96);
-    }
-    .np-stock-fig--plot {
-      background:
-        repeating-linear-gradient(0deg, rgba(11,10,7,0.05) 0 1px, transparent 1px 26px),
-        repeating-linear-gradient(90deg, rgba(11,10,7,0.05) 0 1px, transparent 1px 26px),
-        #E7E2D7;
-    }
-    .np-stock h3 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(18px, 1.6vw, 22px);
-      line-height: 1.2; color: var(--navy);
-      margin: 0 0 10px;
-    }
-    .np-stock p {
-      font-family: var(--font); font-size: 14px; line-height: 1.68;
-      color: rgba(11,10,7,0.72); margin: 0;
-    }
-
-    /* ---------------- places ---------------- */
-    .np-places { border-top: 1px solid rgba(237,232,222,0.16); }
-    .np-places > div {
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: 24px; padding: clamp(20px, 2.2vw, 30px) 0;
-      border-bottom: 1px solid rgba(237,232,222,0.16);
-    }
-    .np-places h3 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(20px, 2vw, 28px);
-      color: #EDE8DE; margin: 0;
-    }
-    .np-places span {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(237,232,222,0.55); flex: none;
-    }
-
-    /* ---------------- resource links ---------------- */
-    .np-links { display: flex; flex-wrap: wrap; gap: 14px 36px; margin: 34px 0 0; }
-    .np-link {
-      font-family: var(--font); font-size: 12px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      text-decoration: none; padding-bottom: 8px;
-      border-bottom: 1px solid rgba(11,10,7,0.28);
-      color: var(--navy);
-      transition: border-color 0.35s var(--ease);
-    }
-    .np-link:hover, .np-link:focus-visible { border-bottom-color: var(--navy); }
-
-    /* ---------------- broker note ---------------- */
-    .np-note { background: #100E0A; padding: clamp(74px, 10vw, 156px) 0; }
-    .np-note-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-      gap: clamp(32px, 6vw, 96px);
-      align-items: center;
-    }
-    .np-note-portrait {
-      position: relative; aspect-ratio: 3 / 4; overflow: hidden;
-      background: #1A1710;
-    }
-    .np-note-portrait img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: 50% 22%;
-      filter: grayscale(1) contrast(1.06) brightness(0.9);
-    }
-    .np-note blockquote {
-      margin: 0;
-      font-family: var(--serif); font-style: italic; font-weight: 400;
-      font-size: clamp(24px, 3.4vw, 46px);
-      line-height: 1.34; letter-spacing: -0.015em;
-      color: #EDE8DE; text-wrap: balance;
-    }
-    .np-note-attr {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(237,232,222,0.5);
-      margin: 34px 0 0; padding-top: 20px;
-      border-top: 1px solid rgba(237,232,222,0.18);
-      display: inline-block;
-    }
-
-    /* ---------------- selected work nearby ---------------- */
-    .np-work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2vw, 30px); }
-    .np-work figure { margin: 0; }
-    .np-work-fig { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #E4DFD4; margin-bottom: 20px; }
-    .np-work-fig img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.2); }
-    .np-work h3 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(20px, 2vw, 28px); line-height: 1.2;
-      color: var(--navy); margin: 0 0 12px;
-    }
-    .np-work-meta {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin: 0 0 8px;
-    }
-    .np-work-price {
-      font-family: var(--serif); font-size: clamp(17px, 1.5vw, 21px);
-      color: rgba(11,10,7,0.86); margin: 0;
-    }
-
-    /* ---------------- advisory CTA ---------------- */
-    .np-cta {
-      position: relative; min-height: 62vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; background: #100E0A; overflow: hidden;
-      padding: clamp(72px, 10vw, 130px) clamp(22px, 5vw, 72px);
-    }
-    .np-cta-img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; filter: grayscale(0.7) brightness(0.4);
-    }
-    .np-cta-veil { position: absolute; inset: 0; background: rgba(11,10,7,0.6); }
-    .np-cta-inner { position: relative; max-width: 720px; }
-    .np-cta h2 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(30px, 4.6vw, 58px);
-      line-height: 1.1; letter-spacing: -0.02em;
-      color: #EDE8DE; margin: 0 0 26px; text-wrap: balance;
-    }
-    .np-cta p {
-      font-family: var(--font);
-      font-size: clamp(15px, 1.25vw, 17px);
-      line-height: 1.76; color: rgba(237,232,222,0.78);
-      margin: 0 auto 40px; max-width: 54ch;
-    }
-    .np-btn {
-      display: inline-block;
-      font-family: var(--font); font-size: 12px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: #EDE8DE; text-decoration: none;
-      padding: 17px 42px; border: 1px solid rgba(237,232,222,0.42);
-      transition: background 0.45s var(--ease), color 0.45s var(--ease), border-color 0.45s var(--ease);
-    }
-    .np-btn:hover, .np-btn:focus-visible { background: #EDE8DE; color: var(--navy); border-color: #EDE8DE; }
-
-    /* ---------------- return band ---------------- */
-    .np-return {
-      background: var(--cream);
-      border-top: 1px solid rgba(11,10,7,0.12);
-      padding: clamp(30px, 4vw, 52px) 0;
-    }
-    .np-return a {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(11,10,7,0.7); text-decoration: none;
-      padding-bottom: 7px; border-bottom: 1px solid rgba(11,10,7,0.24);
-      transition: color 0.35s var(--ease), border-color 0.35s var(--ease);
-    }
-    .np-return a:hover, .np-return a:focus-visible { color: var(--navy); border-bottom-color: var(--navy); }
-
-    /* ---------------- focus ---------------- */
-    .np-btn:focus-visible, .np-link:focus-visible,
-    .np-back:focus-visible, .np-return a:focus-visible {
-      outline: 2px solid currentColor; outline-offset: 4px;
-    }
-
-    /* ---------------- responsive ---------------- */
-    @media (max-width: 1000px) {
-      .np-essence-grid, .np-map-grid, .np-note-grid { grid-template-columns: 1fr; }
-      .np-map-lede { max-width: 32ch; }
-      .np-glance { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .np-glance > div:nth-child(2n) { border-right: 0; }
-      .np-glance > div:nth-child(n+3) { border-top: 1px solid rgba(11,10,7,0.12); }
-      .np-stock { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .np-note-portrait { max-width: 320px; }
-    }
-    @media (max-width: 620px) {
-      .np-hero { min-height: 78vh; }
-      .np-glance { grid-template-columns: 1fr; }
-      .np-glance > div { border-right: 0; border-top: 1px solid rgba(11,10,7,0.12); padding-right: 0; }
-      .np-glance > div:first-child { border-top: 0; }
-      .np-stock { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .np-work { grid-template-columns: 1fr; }
-      .np-map-k, .np-map-ctx { font-size: 26px; }
-      .np-map-v { font-size: 34px; }
-      .np-map-name { font-size: 56px; }
-      .np-places > div { flex-direction: column; gap: 8px; }
-    }
-  </style>
+  <link rel="stylesheet" href="/neighborhoods/guide.css?v=1">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
     <a href="/index.html" class="nav-brand">The Neistat Group</a>
@@ -451,13 +54,11 @@
     </div>
   </div>
 
-  <main>
+  <main id="main-content" tabindex="-1">
 
     <!-- ============ 1. HERO ============ -->
     <header class="np-hero">
-      <img class="np-hero-img" src="/properties/2636-lincoln-listing.jpg"
-           alt="A row of brick and greystone mixed-use buildings with ground-floor storefronts along North Lincoln Avenue."
-           width="840" height="560">
+      <img class="np-hero-img" src="/images/neighborhoods/lincoln-park.jpg" alt="South Pond and the Nature Boardwalk in Lincoln Park, with the Chicago skyline beyond." width="1920" height="1280" fetchpriority="high">
       <div class="np-hero-veil"></div>
       <div class="np-wrap np-hero-inner">
         <a class="np-back" href="/neighborhoods.html">&larr; All Neighborhoods</a>
@@ -466,6 +67,8 @@
         <p class="np-hero-sub">Historic homes, lakefront access, parks, and block-by-block pricing dynamics on Chicago&rsquo;s North Side.</p>
       </div>
     </header>
+    <p class="np-photo-credit">South Pond &amp; Nature Boardwalk · Photo: <a href="https://commons.wikimedia.org/wiki/File:View_at_Lincoln_Park_Zoo_Nature_Boardwalk_(15198500880).jpg">Daniel X. O&#x27;Neil from USA</a> / <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>. Display cropped to fit.</p>
+    <nav class="section-nav np-section-nav" aria-label="Guide sections"><a href="#context">Boundaries</a><a href="#housing">Housing</a><a href="#resources">Public resources</a><a href="#parks">Parks</a><a href="#nearby-work">Selected work</a></nav>
 
     <!-- ============ 2. THE ESSENCE ============ -->
     <section class="np-band np-band--cream">
@@ -482,7 +85,7 @@
     <!-- Editorial map, drawn by hand as static SVG. The outline is approximate and
          was traced once from the City of Chicago community-area boundary; nothing
          is fetched at runtime. Keep labels to the few named below. -->
-    <section class="np-band np-band--dark np-band--map">
+    <section id="context" class="np-band np-band--dark np-band--map">
       <div class="np-wrap np-map-grid">
         <div class="np-reveal">
           <h2 class="np-sect-label">The Map</h2>
@@ -573,40 +176,32 @@
     </section>
 
     <!-- ============ 5. HOUSING STOCK ============ -->
-    <section class="np-band np-band--cream">
+    <section id="housing" class="np-band np-band--cream">
       <div class="np-wrap">
         <h2 class="np-sect-label np-reveal">Housing Stock</h2>
         <div class="np-stock np-reveal">
           <article>
-            <div class="np-stock-fig">
-              <img src="/properties/1126-fullerton-listing.jpg"
-                   alt="Red brick facade with limestone lintels and juliet balconies on West Fullerton Avenue."
-                   width="720" height="480" loading="lazy">
-            </div>
+
             <h3>Greystones</h3>
             <p>Limestone-fronted rowhouses from the turn of the last century, often with original interior detail.</p>
           </article>
           <article>
-            <div class="np-stock-fig np-stock-fig--plot" aria-hidden="true"></div>
+
             <h3>Single-Family Homes</h3>
             <p>Restored vintage houses and full gut rehabs, concentrated on interior residential streets.</p>
           </article>
           <article>
-            <div class="np-stock-fig">
-              <img src="/properties/2636-lincoln-listing.jpg"
-                   alt="Brick and greystone buildings with ground-floor storefronts on North Lincoln Avenue."
-                   width="840" height="560" loading="lazy">
-            </div>
+
             <h3>2&ndash;4 Flats</h3>
             <p>Small multi-unit brick buildings, bought both as owner-occupied homes and as long-term holds.</p>
           </article>
           <article>
-            <div class="np-stock-fig np-stock-fig--plot" aria-hidden="true"></div>
+
             <h3>Condos</h3>
             <p>Conversions in vintage buildings alongside units in newer boutique elevator buildings.</p>
           </article>
           <article>
-            <div class="np-stock-fig np-stock-fig--plot" aria-hidden="true"></div>
+
             <h3>New Construction</h3>
             <p>Infill single-family homes and small-scale developments, typically on individual lots.</p>
           </article>
@@ -614,24 +209,8 @@
       </div>
     </section>
 
-    <!-- ============ 6. PLACES I'D SEND YOU ============ -->
-    <!-- TODO: Matthew to provide approved Lincoln Park places. -->
-    <section class="np-band np-band--dark">
-      <div class="np-wrap">
-        <p class="np-sect-label np-reveal">Local Knowledge</p>
-        <h2 class="np-h2 np-reveal">Places I&rsquo;d Send You</h2>
-        <div class="np-places np-reveal">
-          <div><h3>Coffee</h3><span>Coming soon</span></div>
-          <div><h3>Lunch</h3><span>Coming soon</span></div>
-          <div><h3>Dinner</h3><span>Coming soon</span></div>
-          <div><h3>Shopping</h3><span>Coming soon</span></div>
-          <div><h3>Hidden Gem</h3><span>Coming soon</span></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ 7. SCHOOLS & PUBLIC RESOURCES ============ -->
-    <section class="np-band np-band--cream">
+    <section id="resources" class="np-band np-band--cream">
       <div class="np-wrap np-essence-grid">
         <p class="np-sect-label np-reveal">Public Resources</p>
         <div class="np-reveal">
@@ -646,7 +225,7 @@
     </section>
 
     <!-- ============ 8. PARKS & OPEN SPACE ============ -->
-    <section class="np-band np-band--cream" style="padding-top: 0;">
+    <section id="parks" class="np-band np-band--cream" style="padding-top: 0;">
       <div class="np-wrap np-essence-grid">
         <p class="np-sect-label np-reveal">Open Space</p>
         <div class="np-reveal">
@@ -677,37 +256,33 @@
          selected-work-data.js. 1126 W. Fullerton carries an intentionally blank
          `representation` field, so no representation line is rendered for it.
          Do not add one without verifying. -->
-    <section class="np-band np-band--cream">
+    <!-- GENERATED: nearby-work START -->
+<section id="nearby-work" class="np-band np-band--cream">
       <div class="np-wrap">
         <h2 class="np-sect-label np-reveal">Selected Work Nearby</h2>
         <div class="np-work np-reveal">
           <figure>
-            <div class="np-work-fig">
-              <img src="/properties/2636-lincoln-listing.jpg"
-                   alt="2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property"
-                   width="840" height="560" loading="lazy">
-            </div>
+            <div class="np-work-fig"><img src="/properties/2636-lincoln-listing.jpg" alt="2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property" loading="lazy" width="840" height="560"></div>
             <figcaption>
-              <h3>2636 N. Lincoln Avenue</h3>
-              <p class="np-work-meta">4-Unit Investment &middot; Represented Seller &mdash; Bayview LTD</p>
+              <h3><a href="/selected-work.html#lincoln">2636 N. Lincoln Avenue ↗</a></h3>
+              <p class="np-work-meta">4-Unit Investment · Represented Seller — Bayview LTD</p>
               <p class="np-work-price">$2,300,000</p>
+
             </figcaption>
           </figure>
           <figure>
-            <div class="np-work-fig">
-              <img src="/properties/1126-fullerton-listing.jpg"
-                   alt="1126 W. Fullerton Avenue, Lincoln Park"
-                   width="720" height="480" loading="lazy">
-            </div>
+            <div class="np-work-fig"><img src="/properties/1126-fullerton-listing.jpg" alt="1126 W. Fullerton Avenue, Lincoln Park" loading="lazy" width="840" height="560"></div>
             <figcaption>
-              <h3>1126 W. Fullerton Avenue</h3>
+              <h3><a href="/selected-work.html#fullerton">1126 W. Fullerton Avenue ↗</a></h3>
               <p class="np-work-meta">Condominium</p>
               <p class="np-work-price">$720,000</p>
+
             </figcaption>
           </figure>
         </div>
       </div>
     </section>
+  <!-- GENERATED: nearby-work END -->
 
     <!-- ============ 11. ADVISORY CTA ============ -->
     <!-- Replaces the Active Listings / IDX section. This site does not use IDX. -->
@@ -718,7 +293,7 @@
       <div class="np-cta-inner">
         <h2 class="np-reveal">Explore the Market With Matthew</h2>
         <p class="np-reveal">Inventory changes constantly. If you are thinking about buying, selling, or evaluating property in this neighborhood, start with a real conversation about timing, value, and strategy.</p>
-        <a class="np-btn np-reveal" href="/contact.html">Start the Conversation &rarr;</a>
+        <a class="np-btn np-reveal" href="/contact.html?neighborhood=lincoln-park">Start the Conversation &rarr;</a>
       </div>
     </section>
 
@@ -811,13 +386,6 @@
     (function () {
       var toggle = document.getElementById('navToggle');
       var menu = document.getElementById('mobileMenu');
-      if (toggle && menu) {
-        toggle.addEventListener('click', function () {
-          var open = menu.classList.toggle('active');
-          toggle.classList.toggle('active');
-          document.body.style.overflow = open ? 'hidden' : '';
-        });
-      }
     })();
   </script>
 </body>

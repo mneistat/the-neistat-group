@@ -1,0 +1,19 @@
+/* Editorial assignments: one property at a time, with room for the evidence. */
+.swp-assignment { background: #F4F0E8; color: #0B0A07; padding: clamp(56px,7vw,104px) clamp(24px,5vw,64px); scroll-margin-top: 88px; }
+.swp-assignment + .swp-assignment { border-top: 1px solid #d6d0c5; }
+.swp-assignment-inner { max-width: 1400px; margin: auto; display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); align-items: center; gap: clamp(32px,6vw,90px); }
+.swp-assignment-media { margin: 0; min-width: 0; }
+.swp-assignment-media img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.swp-assignment-media--contain img { object-fit: contain; background: #fff; }
+.swp-assignment-media figcaption { margin-top: 12px; color: #5e584e; font: 11px/1.6 var(--font); letter-spacing: .06em; }
+.swp-assignment-body { min-width: 0; padding: 12px 0; }
+.swp-assignment-rep { color: #5e584e; font: 13px/1.65 var(--font); margin: 20px 0; }
+.swp-assignment .swp-feature-address { font-size: clamp(30px,3.6vw,56px); margin-bottom: 28px; }
+.swp-assignment .swp-feature-price { border-top: 1px solid #ccc5b8; padding-top: 22px; }
+.swp-assignment .swp-feature-press { display: inline-block; text-decoration: underline; text-underline-offset: 5px; line-height: 1.9; }
+.swp-assignment:nth-of-type(even):not(.swp-assignment--lead) .swp-assignment-media { order: 2; }
+.sw-image-caption { position: absolute; z-index: 3; bottom: 10px; left: 12px; margin: 0; padding: 5px 8px; color: #0B0A07; background: #F4F0E8; font: 10px/1.5 var(--font); }
+@media (max-width: 760px) {
+  .swp-assignment-inner { grid-template-columns: 1fr; gap: 30px; }
+  .swp-assignment:nth-of-type(even):not(.swp-assignment--lead) .swp-assignment-media { order: initial; }
+}

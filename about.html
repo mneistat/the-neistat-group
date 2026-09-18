@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
   <title>About Matthew Neistat | The Neistat Group</title>
-  <meta name="description" content="Meet Matthew Neistat — 14+ years, $130M+ in Chicago real estate. People First. Always.">
+  <meta name="description" content="Meet Matthew Neistat — 14+ years, $120M+ in Chicago real estate. People First. Always.">
   <link rel="canonical" href="https://www.theneistatgroup.com/about">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=37">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
+<script src="nav.js?v=7" defer></script>
   <style>
     /* Film fade-in overlay */
     .film-fade { position: fixed; inset: 0; background: #0B0A07; z-index: 10000; pointer-events: none; animation: filmFadeOut 1.2s ease 0.3s forwards; }
@@ -118,7 +118,7 @@
     }
   </style>
 <meta property="og:title" content="About Matthew Neistat | The Neistat Group">
-<meta property="og:description" content="14+ years, $130M+ in Chicago real estate. People First. Always.">
+<meta property="og:description" content="14+ years, $120M+ in Chicago real estate. People First. Always.">
 <meta property="og:url" content="https://www.theneistatgroup.com/about">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
@@ -131,6 +131,7 @@
 <meta property="og:image:height" content="1792">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <!-- Film fade-in -->
   <div class="film-fade" id="filmFade"></div>
 
@@ -164,11 +165,12 @@
   </div>
 
   <!-- SCENE 1: Hero -->
+  <main id="main-content" tabindex="-1">
   <section class="scene scene-full scene-hero">
     <div class="scene-hero-content">
       <div class="hero-eyebrow">About Matthew Neistat</div>
       <h1 class="hero-h1">
-        <span class="line"><span class="line-inner">14 Years. $130M+.</span></span>
+        <span class="line"><span class="line-inner">14 Years. $120M+.</span></span>
         <span class="line"><span class="line-inner"><em>People First.</em></span></span>
       </h1>
     </div>
@@ -205,7 +207,7 @@
   <!-- SCENE 5: Stats -->
   <section class="scene scene-stats">
     <div class="stats-inner">
-      <div class="stat-block reveal"><div class="stat-block-num" data-target="130" data-prefix="$" data-suffix="M+">$130M+</div><div class="stat-block-label">Total Sales</div></div>
+      <div class="stat-block reveal"><div class="stat-block-num" data-target="120" data-prefix="$" data-suffix="M+">$120M+</div><div class="stat-block-label">Total Sales</div></div>
       <div class="stat-block reveal"><div class="stat-block-num" data-target="14" data-prefix="" data-suffix="+">14+</div><div class="stat-block-label">Years Experience</div></div>
       <div class="stat-block reveal"><div class="stat-block-num" data-target="10" data-prefix="Top " data-suffix="%">Top 10%</div><div class="stat-block-label">CAR Producer</div></div>
       <div class="stat-block reveal"><div class="stat-block-num" data-target="4" data-prefix="" data-suffix=" Years">4 Years</div><div class="stat-block-label">Jameson Quarterly Best</div></div>
@@ -242,6 +244,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="footer">
     <div class="footer-grid">
       <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
@@ -274,7 +278,6 @@
     // Nav
     window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
-    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
 
     // GSAP text reveal — line by line
     // Motion is skipped for reduced-motion visitors, and if GSAP failed to load
@@ -330,7 +333,7 @@
   <!-- Magnetic cursor -->
   <script>
   (function(){
-    if(window.innerWidth<769)return;
+    if(window.innerWidth<769 || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches)return;
     var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
     if(!dot||!ring)return;
     var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;

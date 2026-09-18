@@ -12,7 +12,8 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selected Work | The Neistat Group">
   <meta property="og:description" content="Selected residential, investment, development, and commercial transactions across Chicago and the North Shore.">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="selected-work.css?v=1">
   <style>
     /* Page-scoped, swp- prefixed. Headings declare their own colour: the global
        "h1, h2, h3 { color:#EDE8DE }" beats inherited colour and would otherwise
@@ -69,52 +70,6 @@
     .swp-feature-cta:hover { border-color: #0B0A07; }
     .swp-feature-cta:focus-visible { outline: 2px solid #0B0A07; outline-offset: 4px; }
 
-    /* ---------- Index ---------- */
-    .swp-list { background: #F4F0E8; padding: clamp(20px,2.4vw,36px) clamp(24px,5vw,56px) clamp(64px,8vw,110px); }
-    .swp-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(14px,1.4vw,20px); }
-    @media (max-width: 1240px) { .swp-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 900px)  { .swp-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 620px)  { .swp-grid { grid-template-columns: 1fr; } }
-
-    .swp-card { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #14120E; scroll-margin-top: 110px; }
-    .swp-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-    .swp-card:hover img { transform: scale(1.03); }
-    /* Scrim carries the overlaid type. The photography is bright daylight, so it has
-       to be substantial by the time the metadata line starts, ~45% down. */
-    .swp-card::after { content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(to bottom,
-        rgba(11,10,7,0) 20%, rgba(11,10,7,0.42) 40%, rgba(11,10,7,0.80) 56%,
-        rgba(11,10,7,0.93) 74%, rgba(11,10,7,0.97) 100%); }
-    .swp-card-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: clamp(18px,1.6vw,24px); }
-    .swp-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px;
-      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(237,232,222,0.78); margin: 0 0 10px; }
-    .swp-address { font-family: Georgia, serif; font-weight: 400; font-size: clamp(18px,1.5vw,22px);
-      line-height: 1.15; letter-spacing: -0.015em; color: #EDE8DE; margin: 0 0 8px; }
-    .swp-rep { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px;
-      line-height: 1.5; color: rgba(237,232,222,0.78); margin: 0; }
-    /* Verified outcome line, verbatim from selected-work-data.js (spec section 5). */
-    .swp-outcome { font-family: Georgia, serif; font-style: italic; font-size: 13px; line-height: 1.45; color: rgba(237,232,222,0.88); margin: 8px 0 0; }
-    .swp-foot { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(237,232,222,0.28); }
-    .swp-price { display: block; font-family: Georgia, serif; font-size: clamp(16px,1.3vw,19px);
-      color: #EDE8DE; margin-bottom: 10px; }
-    .swp-card-link { display: inline-flex; align-items: center; gap: 7px;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,222,0.78);
-      border-bottom: 1px solid rgba(237,232,222,0.3); padding-bottom: 3px; transition: color 0.25s ease, border-color 0.25s ease; }
-    .swp-card-link:hover { color: #EDE8DE; border-color: #EDE8DE; }
-    .swp-card-link:focus-visible { outline: 2px solid #EDE8DE; outline-offset: 3px; }
-
-    @media (max-width: 900px) {
-      .swp-feature { grid-template-columns: 1fr; }
-      .swp-feature-media { min-height: 260px; aspect-ratio: 4 / 3; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .swp-card img { transition: none; }
-      .swp-card:hover img { transform: none; }
-    }
-
     .swp-cta { background: #0B0A07; padding: clamp(56px,7vw,90px) clamp(24px,5vw,56px); text-align: center; }
     .swp-cta-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(26px,3.4vw,40px);
       color: #EDE8DE; margin: 0 0 16px; }
@@ -137,10 +92,11 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
-<script src="selected-work-data.js?v=3"></script>
+<script src="nav.js?v=7" defer></script>
+
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="cursor-dot hidden" id="cursorDot"></div>
   <div class="cursor-ring hidden" id="cursorRing"></div>
 
@@ -172,6 +128,7 @@
   </div>
 
 
+  <main id="main-content" tabindex="-1">
   <section class="swp-hero">
     <div class="swp-hero-inner">
       <span class="swp-eyebrow">Selected Work</span>
@@ -180,97 +137,87 @@
     </div>
   </section>
 
-  <section class="swp-feature-section" aria-labelledby="swp-feature-heading">
-    <div class="swp-inner-wide">
-      <span class="swp-section-label">Featured Work</span>
-      <h2 class="swp-sr-only" id="swp-feature-heading">Featured transaction</h2>
-      <div class="swp-feature">
-        <div class="swp-feature-media">
-          <img src="properties/1035-lake-feature.jpg" alt="1035 W. Lake Street — three-storey brick building with ground-floor retail" width="840" height="472">
-        </div>
-        <div class="swp-feature-body">
-          <p class="swp-feature-meta">West Loop · Deconversion</p>
-          <h2 class="swp-feature-address">1035 W. Lake Street</h2>
-          <div class="swp-feature-rule"></div>
-          <p class="swp-feature-price">$9,500,000</p>
-            <p class="swp-feature-note">Won the listing against major brokerages and brought it under contract off-market in two weeks.</p>
-            <p class="swp-feature-tenants">Now home to BODYBAR Pilates and The Athletic Club.</p>
-          <p class="swp-feature-press">CoStar News</p>
-        </div>
+  <!-- GENERATED: portfolio START -->
+<section class="swp-assignment swp-assignment--lead" id="lake" aria-labelledby="heading-lake">
+    <div class="swp-assignment-inner">
+      <figure class="swp-assignment-media swp-assignment-media--contain">
+        <img src="properties/1035-lake-layout.jpg" alt="Illustrative floor plan for 1035 W. Lake Street" fetchpriority="high">
+        <figcaption>Floor plan · illustrative</figcaption>
+      </figure>
+      <div class="swp-assignment-body">
+        <p class="swp-feature-meta">West Loop · Deconversion</p>
+        <h2 class="swp-feature-address" id="heading-lake">1035 W. Lake Street</h2>
+
+        <p class="swp-feature-price">$9,500,000</p>
+        <p class="swp-feature-note">Won the listing against major brokerages and brought it under contract off-market in two weeks.</p>
+        <p class="swp-feature-tenants">Now home to BODYBAR Pilates and The Athletic Club.</p>
+        <a class="swp-feature-press" href="https://product.costar.com/home/news/710741247">Read the coverage in CoStar News ↗</a>
       </div>
     </div>
   </section>
 
-  <section class="swp-list" aria-labelledby="swp-index-heading">
-    <div class="swp-inner-wide">
-      <span class="swp-section-label">Transaction Index</span>
-      <h2 class="swp-sr-only" id="swp-index-heading">All selected transactions</h2>
-      <div class="swp-grid">
-        <article class="swp-card" id="lake">
-          <img src="properties/1035-lake-feature.jpg" alt="1035 W. Lake Street — three-storey brick building with ground-floor retail" loading="lazy" width="840" height="560">
-          <div class="swp-card-body">
-            <p class="swp-meta">West Loop · Deconversion</p>
-            <h3 class="swp-address">1035 W. Lake Street</h3>
-            <p class="swp-outcome">Won the listing against major brokerages and brought it under contract off-market in two weeks.</p>
-            <div class="swp-foot">
-              <span class="swp-price">$9,500,000</span>
-            </div>
-          </div>
-        </article>
-        <article class="swp-card" id="elm">
-          <img src="properties/1185-elm-listing.jpg" alt="1183 Elm Street, Winnetka — North Shore residence" loading="lazy" width="840" height="560">
-          <div class="swp-card-body">
-            <p class="swp-meta">Winnetka · Residential</p>
-            <h3 class="swp-address">1183 Elm Street</h3>
-            <p class="swp-rep">Represented Seller</p>
-            <p class="swp-outcome">Off-market sale, 10% over asking.</p>
-            <div class="swp-foot">
-              <span class="swp-price">$1,265,000</span>
-            </div>
-          </div>
-        </article>
-        <article class="swp-card" id="lincoln">
-          <img src="properties/2636-lincoln-listing.jpg" alt="2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property" loading="lazy" width="840" height="560">
-          <div class="swp-card-body">
-            <p class="swp-meta">Lincoln Park · 4-Unit Investment</p>
-            <h3 class="swp-address">2636 N. Lincoln Avenue</h3>
-            <p class="swp-rep">Represented Seller — Bayview LTD</p>
-            <div class="swp-foot">
-              <span class="swp-price">$2,300,000</span>
-            </div>
-          </div>
-        </article>
-        <article class="swp-card" id="wellington">
-          <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" loading="lazy" width="840" height="560">
-          <div class="swp-card-body">
-            <p class="swp-meta">Lakeview · Development</p>
-            <h3 class="swp-address">702 W. Wellington Avenue</h3>
-            <p class="swp-rep">Represented Developer</p>
-            <p class="swp-outcome">4-condo sellout.</p>
-            <div class="swp-foot">
-              <span class="swp-price">$709K – $985K</span>
-            </div>
-          </div>
-        </article>
-        <article class="swp-card" id="fullerton">
-          <img src="properties/1126-fullerton-listing.jpg" alt="1126 W. Fullerton Avenue, Lincoln Park" loading="lazy" width="840" height="560">
-          <div class="swp-card-body">
-            <p class="swp-meta">Lincoln Park · Condominium</p>
-            <h3 class="swp-address">1126 W. Fullerton Avenue</h3>
-            <div class="swp-foot">
-              <span class="swp-price">$720,000</span>
-            </div>
-          </div>
-        </article>
+<section class="swp-assignment " id="lincoln" aria-labelledby="heading-lincoln">
+    <div class="swp-assignment-inner">
+      <figure class="swp-assignment-media">
+        <img src="properties/2636-lincoln-listing.jpg" alt="2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property" loading="lazy">
+
+      </figure>
+      <div class="swp-assignment-body">
+        <p class="swp-feature-meta">Lincoln Park · 4-Unit Investment</p>
+        <h2 class="swp-feature-address" id="heading-lincoln">2636 N. Lincoln Avenue</h2>
+        <p class="swp-assignment-rep">Represented Seller — Bayview LTD</p>
+        <p class="swp-feature-price">$2,300,000</p>
+
+
+
       </div>
     </div>
   </section>
+
+<section class="swp-assignment " id="wellington" aria-labelledby="heading-wellington">
+    <div class="swp-assignment-inner">
+      <figure class="swp-assignment-media">
+        <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" loading="lazy">
+
+      </figure>
+      <div class="swp-assignment-body">
+        <p class="swp-feature-meta">Lakeview · Development</p>
+        <h2 class="swp-feature-address" id="heading-wellington">702 W. Wellington Avenue</h2>
+        <p class="swp-assignment-rep">Represented Developer</p>
+        <p class="swp-feature-price">$709K – $985K</p>
+        <p class="swp-feature-note">4-condo sellout.</p>
+
+
+      </div>
+    </div>
+  </section>
+
+<section class="swp-assignment " id="fullerton" aria-labelledby="heading-fullerton">
+    <div class="swp-assignment-inner">
+      <figure class="swp-assignment-media">
+        <img src="properties/1126-fullerton-listing.jpg" alt="1126 W. Fullerton Avenue, Lincoln Park" loading="lazy">
+
+      </figure>
+      <div class="swp-assignment-body">
+        <p class="swp-feature-meta">Lincoln Park · Condominium</p>
+        <h2 class="swp-feature-address" id="heading-fullerton">1126 W. Fullerton Avenue</h2>
+
+        <p class="swp-feature-price">$720,000</p>
+
+
+
+      </div>
+    </div>
+  </section>
+  <!-- GENERATED: portfolio END -->
 
   <section class="swp-cta">
     <h2 class="swp-cta-h2">Considering a move of your own?</h2>
     <p class="swp-cta-copy">An honest conversation about the property, the market, and the strategy that gives you the strongest position.</p>
     <a class="swp-btn" href="contact.html">Begin the Conversation</a>
   </section>
+
+  </main>
 
   <footer class="footer">
     <div class="footer-grid">
@@ -304,12 +251,11 @@
   <script>
     window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
-    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
   </script>
 
   <script>
   (function(){
-    if(window.innerWidth<769)return;
+    if(window.innerWidth<769 || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches)return;
     var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
     if(!dot||!ring)return;
     var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
