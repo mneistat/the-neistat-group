@@ -7,7 +7,7 @@
   <title>Recommended Vendors | The Neistat Group</title>
   <meta name="description" content="Trusted vendor recommendations from The Neistat Group — mortgage lenders, attorneys, inspectors, contractors, and more.">
   <link rel="canonical" href="https://www.theneistatgroup.com/vendors">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=37">
   <style>
     .vendors-hero { background: #0B0A07; padding: 120px 60px 60px; }
     .vendors-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-bottom: 16px; display: block; }
@@ -34,7 +34,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
+<script src="nav.js?v=7" defer></script>
 <meta property="og:title" content="Recommended Vendors | The Neistat Group">
 <meta property="og:description" content="Trusted vendor recommendations from The Neistat Group — mortgage lenders, attorneys, inspectors, contractors, and more.">
 <meta property="og:url" content="https://www.theneistatgroup.com/vendors">
@@ -53,6 +53,7 @@
 <meta property="og:image:height" content="1792">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="cursor-dot hidden" id="cursorDot"></div>
   <div class="cursor-ring hidden" id="cursorRing"></div>
   <nav class="nav" id="nav">
@@ -81,6 +82,7 @@
     </div>
   </div>
 
+  <main id="main-content" tabindex="-1">
   <section class="vendors-hero">
     <span class="vendors-label">Resources</span>
     <h1 class="vendors-heading">Recommended <em>Vendors</em></h1>
@@ -193,6 +195,8 @@
 
   <div class="vendor-disclaimer">I do not receive any referral fees, commissions, or compensation of any kind from the vendors listed on this page. These are professionals I have personally worked with and recommend based solely on the quality of their work. Always do your own due diligence when selecting service providers for your transaction.</div>
 
+  </main>
+
   <footer class="footer">
     <div class="footer-grid">
       <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
@@ -224,7 +228,6 @@
   <script>
     window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
-    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
   </script>
   <script>
   (function(){
@@ -235,7 +238,7 @@
 <script>
     // Magnetic Cursor
     (function(){
-      if(window.innerWidth<769)return;
+      if(window.innerWidth<769 || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches)return;
       var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
       if(!dot||!ring)return;
       var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;

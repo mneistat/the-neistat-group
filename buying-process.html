@@ -12,7 +12,7 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Buying Process | The Neistat Group">
   <meta property="og:description" content="A clear guide to buying a home in Chicago — from budget and pre-approval through offer strategy, inspection, financing, and closing.">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=37">
   <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
   <style>
     /* Page-scoped, bp- prefixed. Headings declare their own colour: the global
@@ -73,9 +73,10 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
+<script src="nav.js?v=7" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="cursor-dot hidden" id="cursorDot"></div>
   <div class="cursor-ring hidden" id="cursorRing"></div>
 
@@ -107,6 +108,7 @@
   </div>
 
 
+  <main id="main-content" tabindex="-1">
   <section class="bp-hero">
     <div class="bp-hero-inner">
       <span class="bp-eyebrow">For Buyers / Buying Process</span>
@@ -176,6 +178,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="footer">
     <div class="footer-grid">
       <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
@@ -227,12 +231,11 @@
   <script>
     window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
-    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
   </script>
 
   <script>
   (function(){
-    if(window.innerWidth<769)return;
+    if(window.innerWidth<769 || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches)return;
     var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
     if(!dot||!ring)return;
     var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
