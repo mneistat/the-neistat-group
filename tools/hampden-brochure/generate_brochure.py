@@ -106,8 +106,31 @@ for x,val,desc in [(M,'67*','Reported units'),(231,'34','Deeded parking spaces')
 p('Reported figures are unverified. *Confirm the 66-parcel / 67-unit discrepancy against the declaration.',M,727,CW,size=7.7,lead=10.5,color=MUTED)
 c.showPage()
 
+# OPTIONS: compare once; shared approval notes avoid repetition.
+base(2,'The options')
+heading('YOUR OPTIONS','Five paths forward.','Compare the tradeoffs. Choose what fits the owners\' priorities.')
+label('PATH',M,184)
+label('MAIN CONSIDERATION',314,184)
+line(204)
+options=[
+('A','Existing offer','Continue with the identified buyer.','The price has not been tested competitively.'),
+('B','Targeted outreach','Approach selected buyers privately.','Fewer buyers may limit competition.'),
+('C','Broad campaign','Reach more buyers with a public summary and protected financials.','Wider exposure requires more coordination.'),
+('D','Voluntary group sale','Willing owners sell their units together.','Value depends on the units included; sellers agree on exposure.'),
+('E','Retain ownership','Continue ownership and rental income.','Ongoing expenses and capital needs remain.')]
+t=222
+for letter,title,desc,trade in options:
+    p(letter,M,t,20,size=17,lead=20,font='Cormorant',color=ACCENT)
+    p(title,72,t,220,size=12,lead=16,font='Inter-Semi')
+    p(desc,72,t+23,216,size=10.2,lead=14.5,color=MUTED)
+    p(trade,314,t+2,254,size=11,lead=15.5)
+    line(t+(88 if letter=='E' else 76))
+    t+=92
+p('<b>Approval:</b> The first three paths require full-building sale approval. A voluntary group sale involves participating owners, with counsel reviewing restrictions. Retaining ownership requires no sale approval; funding decisions remain.',M,691,CW,size=9.3,lead=13,color=MUTED)
+c.showPage()
+
 # VALUATION: two-column layout separates the short request from its purpose.
-base(2,'The valuation')
+base(3,'The valuation')
 heading('THE VALUATION','A clear place to start.','Send what you have. Approximate dates are fine; we can fill in gaps together.')
 # Quiet architectural inset, reused from the actual facade.
 photo(M,185,156,220,focus=.52)
@@ -131,29 +154,6 @@ for i,(h,b) in enumerate(items,1):
 rect(M,664,CW,69,PAPER)
 label('WHAT YOU WILL RECEIVE',M+18,678,color=ACCENT)
 p('A supported value range and comparison with the offer, informed by market evidence and capital needs.',M+18,696,CW-36,size=10.6,lead=15)
-c.showPage()
-
-# OPTIONS: compare once; shared approval notes avoid repetition.
-base(3,'The options')
-heading('YOUR OPTIONS','Five paths forward.','Compare the tradeoffs. Choose what fits the owners\' priorities.')
-label('PATH',M,184)
-label('MAIN CONSIDERATION',314,184)
-line(204)
-options=[
-('A','Existing offer','Continue with the identified buyer.','The price has not been tested competitively.'),
-('B','Targeted outreach','Approach selected buyers privately.','Fewer buyers may limit competition.'),
-('C','Broad campaign','Reach more buyers with a public summary and protected financials.','Wider exposure requires more coordination.'),
-('D','Voluntary group sale','Willing owners sell their units together.','Value depends on the units included; sellers agree on exposure.'),
-('E','Retain ownership','Continue ownership and rental income.','Ongoing expenses and capital needs remain.')]
-t=222
-for letter,title,desc,trade in options:
-    p(letter,M,t,20,size=17,lead=20,font='Cormorant',color=ACCENT)
-    p(title,72,t,220,size=12,lead=16,font='Inter-Semi')
-    p(desc,72,t+23,216,size=10.2,lead=14.5,color=MUTED)
-    p(trade,314,t+2,254,size=11,lead=15.5)
-    line(t+(88 if letter=='E' else 76))
-    t+=92
-p('<b>Approval:</b> The first three paths require full-building sale approval. A voluntary group sale involves participating owners, with counsel reviewing restrictions. Retaining ownership requires no sale approval; funding decisions remain.',M,691,CW,size=9.3,lead=13,color=MUTED)
 c.showPage()
 
 # TERMS: give representation and advice equal weight; detailed lending notes live online.
