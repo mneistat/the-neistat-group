@@ -8,6 +8,13 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   var inertNodes = [];
   var previousOverflow = '';
+  var page = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/index';
+  document.querySelectorAll('.nav-links a, .mobile-menu-link').forEach(function (link) {
+    var target = new URL(link.href).pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/index';
+    var active = page === target || (target === '/neighborhoods' && page.indexOf('/neighborhoods/') === 0);
+    if (active) link.setAttribute('aria-current', page === target ? 'page' : 'location');
+    else link.removeAttribute('aria-current');
+  });
   if (nav && toggle && menu) {
     menu.hidden = true;
     menu.setAttribute('aria-label', 'Mobile navigation');
@@ -67,13 +74,5 @@
     mobileVideo.addEventListener('change', function () { if (mobileVideo.matches) video.pause(); });
     if (!reduce.matches && !mobileVideo.matches) video.play().catch(labelVideo);
     labelVideo();
-  }
-  var dot = document.getElementById('cursorDot');
-  if (dot && !reduce.matches && window.matchMedia('(pointer: fine)').matches && window.innerWidth > 768) {
-    document.addEventListener('mousemove', function () {
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () { document.body.classList.toggle('cursor-live', !!dot.style.left); });
-      });
-    }, { once: true });
   }
 })();

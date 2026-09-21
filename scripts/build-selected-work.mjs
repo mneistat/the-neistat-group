@@ -29,7 +29,7 @@ function replace(file, marker, body) {
     if (before !== after) throw new Error('Generated content is stale: ' + file);
   } else fs.writeFileSync(filename, after);
 }
-const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 0 ? 'swp-assignment--lead' : ''}" id="${escape(t.id)}" aria-labelledby="heading-${escape(t.id)}">
+const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 0 ? 'swp-assignment--lead' : i % 2 ? 'swp-assignment--reverse' : ''}" id="${escape(t.id)}" aria-labelledby="heading-${escape(t.id)}">
     <div class="swp-assignment-inner">
       <figure class="swp-assignment-media${t.imageFit === 'contain' ? ' swp-assignment-media--contain' : ''}">
         <img src="${escape(t.image)}" alt="${escape(t.imageAlt)}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}>
@@ -62,7 +62,7 @@ for (const [slug, name] of [['lincoln-park', 'Lincoln Park'], ['lakeview', 'Lake
   const body = `<section id="nearby-work" class="np-band np-band--cream">
       <div class="np-wrap">
         <h2 class="np-sect-label np-reveal">Selected Work Nearby</h2>
-        <div class="np-work np-reveal">
+        <div class="np-work${nearby.length === 1 ? ' np-work--single' : ''} np-reveal">
           ${nearby.map(t => `<figure>
             <div class="np-work-fig"><img src="/${escape(t.image)}" alt="${escape(t.imageAlt)}" loading="lazy" width="840" height="560"></div>
             <figcaption>

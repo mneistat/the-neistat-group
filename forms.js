@@ -13,6 +13,9 @@
     var choice = form.querySelector('[name="interest"], [name="intent"]');
     var pageUrl = form.querySelector('[name="page_url"]');
     var sending = false;
+    // Center the first invalid field so its label clears the fixed navigation.
+    // Native validation remains available when JavaScript is disabled.
+    form.noValidate = true;
     if (pageUrl) pageUrl.value = window.location.href;
     if (choice && Array.from(choice.options).some(function (opt) { return opt.value && opt.value === query.get('intent'); })) choice.value = query.get('intent');
     function syncIntent() { if (choice && intent) intent.value = choice.value; }
@@ -27,7 +30,16 @@
       event.preventDefault();
       if (sending) return;
       form.querySelectorAll('input[type="text"][required], input[type="email"][required]').forEach(function (field) { field.value = field.value.trim(); });
-      if (!form.reportValidity()) return;
+      if (!form.checkValidity()) {
+        var invalid = form.querySelector(':invalid');
+        if (invalid) {
+          invalid.focus({ preventScroll: true });
+          var group = invalid.closest('.form-group, .cta-form-group, .lead-form-group') || invalid;
+          if (group.scrollIntoView) group.scrollIntoView({ block: 'center', behavior: 'instant' });
+          invalid.reportValidity();
+        }
+        return;
+      }
       error.textContent = '';
       error.classList.remove('show');
       if (pageUrl) pageUrl.value = window.location.href;

@@ -26,11 +26,27 @@
  */
 window.SELECTED_WORK = [
   {
+    id: 'wellington',
+    address: '702 W. Wellington Avenue',
+    neighborhood: 'Lakeview',
+    market: 'Chicago',
+    assetType: 'Development',
+    representation: 'Represented Developer',
+    priceOrResult: '$709K – $985K',
+    outcomeLine: '4-condo sellout.',
+    pressMention: '',
+    image: 'properties/702-wellington-listing.jpg',
+    imageAlt: '702 W. Wellington Avenue, Lakeview — four-condo sellout',
+    caseStudyUrl: '',
+    publishStatus: 'public',
+    needsVerification: false
+  },
+  {
     id: 'lake',
     address: '1035 W. Lake Street',
     neighborhood: 'West Loop',
     market: 'Chicago',
-    assetType: 'Deconversion',
+    assetType: 'Commercial',
     representation: '',                     // not verified — deliberately blank
     priceOrResult: '$9,500,000',
     outcomeLine: 'Won the listing against major brokerages and brought it under contract off-market in two weeks.',
@@ -60,22 +76,6 @@ window.SELECTED_WORK = [
     pressMention: '',
     image: 'properties/2636-lincoln-listing.jpg',
     imageAlt: '2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property',
-    caseStudyUrl: '',
-    publishStatus: 'public',
-    needsVerification: false
-  },
-  {
-    id: 'wellington',
-    address: '702 W. Wellington Avenue',
-    neighborhood: 'Lakeview',
-    market: 'Chicago',
-    assetType: 'Development',
-    representation: 'Represented Developer',
-    priceOrResult: '$709K – $985K',
-    outcomeLine: '4-condo sellout.',
-    pressMention: '',
-    image: 'properties/702-wellington-listing.jpg',
-    imageAlt: '702 W. Wellington Avenue, Lakeview — four-condo sellout',
     caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false

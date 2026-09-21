@@ -23,29 +23,6 @@ a { text-decoration: none; color: inherit; }
 img, video { display: block; max-width: 100%; }
 button { border: none; background: none; cursor: pointer; font-family: inherit; }
 
-/* === CUSTOM CURSOR === */
-/* cursor: none applied only where magnetic cursor is active */
-/* Hide the native pointer ONLY once the custom cursor has proven it is running.
-   nav.js adds .cursor-live after the dot actually moves. Without this guard a
-   blocked or failed script leaves the visitor with no pointer at all. */
-body.cursor-live { cursor: none; }
-body.cursor-live a, body.cursor-live button { cursor: none; }
-.cursor-dot { width: 8px; height: 8px; background: #EDE8DE; border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: width 0.2s ease, height 0.2s ease; }
-.cursor-ring { width: 38px; height: 38px; border: 1px solid rgba(237,232,222,0.5); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99998; transform: translate(-50%, -50%); transition: width 0.25s ease, height 0.25s ease, border-color 0.2s ease; }
-.cursor-dot.hover { width: 6px; height: 6px; }
-.cursor-ring.hover { width: 56px; height: 56px; border-color: rgba(237,232,222,0.8); }
-.cursor-dot.visible { opacity: 1; }
-.cursor-ring.visible { opacity: 1; }
-.cursor-dot.hidden, .cursor-ring.hidden { opacity: 0; }
-/* The cursor is ivory, which disappears on the cream and bone sections. Invert it
-   to carbon whenever it is over a light background — set by the per-page script. */
-.cursor-dot.on-light { background: #0B0A07; }
-.cursor-ring.on-light { border-color: rgba(11,10,7,0.45); }
-.cursor-ring.on-light.hover { border-color: rgba(11,10,7,0.75); }
-@media (max-width: 768px) { * { cursor: auto; } .cursor-dot, .cursor-ring { display: none; } }
-
-/* 3D Card Tilt */
-
 /* === NAV === */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #0B0A07; padding: 20px 36px; display: flex; align-items: center; justify-content: space-between; transition: padding 0.4s ease; }
 .nav.scrolled { padding: 14px 36px; }
@@ -142,7 +119,7 @@ body.cursor-live a, body.cursor-live button { cursor: none; }
 .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: rgba(237,232,222,0.08); }
 .hero-headline { font-family: Georgia, serif; font-size: 88px; line-height: 0.92; letter-spacing: -0.025em; color: #EDE8DE; margin-bottom: 20px; }
 .hero-headline-italic { font-style: italic; color: #EDE8DE; display: block; }
-.hero-sub { font-size: 14px; color: rgba(237,232,222,0.78); max-width: 240px; line-height: 1.55; margin-bottom: 28px; }
+.hero-sub { font-size: 14px; color: rgba(237,232,222,0.78); max-width: 44ch; line-height: 1.65; margin-bottom: 28px; }
 .hero-actions { display: flex; gap: 12px; }
 .btn-primary { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: #EDE8DE; color: #0B0A07; padding: 12px 28px; border-radius: 2px; transition: background 0.3s; }
 .btn-primary:hover { background: #fff; }
@@ -643,7 +620,7 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .calc-validation { border-left: 2px solid currentColor; padding: 12px; margin-bottom: 20px; }
 [aria-invalid="true"] { outline: 2px solid currentColor; outline-offset: 3px; }
 .amort-table-wrap { overflow-x: auto; }
-.amort-table th[scope="row"] { color: inherit; font: inherit; text-transform: none; letter-spacing: normal; text-align: left; padding: 14px 18px; }
+.amort-table th[scope="row"] { color: #0B0A07; background: transparent; font: inherit; text-transform: none; letter-spacing: normal; text-align: left; padding: 14px 18px; }
 .amort-year-button { color: inherit; font: inherit; text-align: left; padding: 8px 0; min-height: 44px; }
 .amort-year-row { cursor: default; }
 .faq-a a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
@@ -660,8 +637,17 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
   html { scroll-behavior: auto !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal, .fade-up, .hp-reveal, .ni-reveal, .np-reveal, .ss-reveal { opacity: 1 !important; transform: none !important; }
-  body.cursor-live, body.cursor-live * { cursor: auto !important; }
-  .cursor-dot, .cursor-ring { display: none !important; }
 }
 
 .sw-image-caption { position: absolute; z-index: 3; bottom: 10px; left: 12px; margin: 0; padding: 5px 8px; color: #0B0A07; background: #F4F0E8; font: 10px/1.5 var(--font); }
+
+/* Consistent navigation, touch targets, and form geometry. */
+.nav-link[aria-current], .mobile-menu-link[aria-current] { color: #EDE8DE; text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 1px; }
+.nav-cta-btn[aria-current] { outline: 1px solid #EDE8DE; outline-offset: 4px; }
+.footer-col a, .footer-nav a { min-height: 32px; display: flex; align-items: center; line-height: 1.5; margin-bottom: 2px; }
+.form-group, .cta-form-group, .lead-form-group, input, select, textarea { scroll-margin-block: 120px; }
+form[class] :is(input, select, textarea, button), .cta-form-right, .contact-form { border-radius: 2px; }
+@media (max-width: 1024px) {
+  .footer-col a, .footer-nav a { min-height: 44px; }
+  form[class] :is(input, select, textarea) { font-size: 16px; }
+}

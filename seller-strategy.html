@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://www.theneistatgroup.com/seller-strategy">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.theneistatgroup.com/properties/2636-lincoln-listing.jpg">
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="styles.css?v=38">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,7 +20,7 @@
     gtag('config', 'G-MGNGVERDHQ');
   </script>
   <script src="analytics.js" defer></script>
-  <script src="nav.js?v=7" defer></script>
+  <script src="nav.js?v=8" defer></script>
 
   <style>
 
@@ -63,7 +63,7 @@
     .ss-dark  .ss-body { color: rgba(237,232,222,0.78); }
     .ss-cream .ss-body { color: rgba(11,10,7,0.78); }
 
-    .ss-band { padding: clamp(76px, 10vw, 156px) 0; }
+    .ss-band { padding: clamp(64px, 8vw, 112px) 0; }
 
     /* ---------------- hero ---------------- */
     .ss-hero {
@@ -178,28 +178,6 @@
     .ss-cream .ss-list p { color: rgba(11,10,7,0.74); }
     .ss-pillar-foot { margin-top: 30px; }
 
-    /* ---------------- comparison ---------------- */
-    .ss-compare-head { margin-bottom: clamp(34px, 4vw, 52px); }
-    .ss-table { width: 100%; border-collapse: collapse; }
-    .ss-table th, .ss-table td {
-      text-align: left; vertical-align: top;
-      padding: clamp(18px, 2vw, 26px) clamp(14px, 2vw, 28px) clamp(18px, 2vw, 26px) 0;
-      border-bottom: 1px solid rgba(11,10,7,0.12);
-    }
-    .ss-table thead th {
-      font-family: var(--font); font-size: 10.5px; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,10,7,0.62);
-      border-bottom: 1px solid rgba(11,10,7,0.3);
-    }
-    .ss-table thead th.ss-col-us { color: var(--navy); }
-    .ss-table tbody th {
-      font-family: var(--serif); font-weight: 400; font-size: clamp(17px, 1.5vw, 21px);
-      color: var(--navy); width: 22%;
-    }
-    .ss-table td { font-family: var(--font); font-size: 15px; line-height: 1.62; width: 39%; }
-    .ss-table td.ss-them { color: rgba(11,10,7,0.62); }
-    .ss-table td.ss-us   { color: rgba(11,10,7,0.9); }
-
     /* ---------------- testimonials ---------------- */
     .ss-quotes { display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
       gap: clamp(40px, 5vw, 80px) clamp(30px, 5vw, 80px); }
@@ -260,6 +238,11 @@
         color: rgba(11,10,7,0.62);
       }
     }
+    .ss-presentation-image { margin-top: clamp(36px,5vw,64px); }
+    .ss-presentation-image img { width: 100%; max-height: 680px; object-fit: cover; object-position: center; }
+    .ss-presentation-image figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font: 12px/1.6 var(--font); color: #655f55; padding-top: 16px; }
+    .ss-presentation-image a { text-decoration: underline; text-underline-offset: 4px; min-height: 32px; }
+    @media (max-width: 620px) { .ss-presentation-image img { aspect-ratio: 3/2; } }
   </style>
 </head>
 <body>
@@ -318,7 +301,7 @@
         <div class="ss-proof-grid ss-reveal">
           <!-- GENERATED: seller-proof START -->
 <article class="ss-deal">
-            <p class="ss-deal-type">Deconversion · West Loop</p>
+            <p class="ss-deal-type">Commercial · West Loop</p>
             <h3><a href="selected-work.html#lake">1035 W. Lake Street</a></h3>
             <p class="ss-deal-fig">$9,500,000</p>
             <p class="ss-deal-out">Won the listing against major brokerages and brought it under contract off-market in two weeks.</p>
@@ -410,6 +393,10 @@
           </li>
         </ul>
       </div>
+      <figure class="ss-presentation-image ss-wrap ss-reveal">
+        <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, showing the building’s facade and its place on the block." width="840" height="560" loading="lazy">
+        <figcaption><span>702 W. Wellington Avenue · Listing photography</span><a href="selected-work.html#wellington">Explore the assignment ↗</a></figcaption>
+      </figure>
     </section>
 
     <!-- ============ 5. PARTNERSHIP ============ -->
@@ -423,52 +410,6 @@
           <p class="ss-body">Pricing is set to generate competition, not just interest &mdash; grounded in what comparable homes sold for, and why. The right price on day one is the difference between multiple offers and a price reduction.</p>
           <p class="ss-body">From the first walkthrough through closing, the work is hands-on.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ 6. COMPARISON ============ -->
-    <section class="ss-band ss-cream">
-      <div class="ss-wrap">
-        <div class="ss-compare-head ss-reveal">
-          <p class="ss-label">The Difference</p>
-          <h2 class="ss-h2">A standard listing, and ours.</h2>
-        </div>
-        <table class="ss-table ss-reveal">
-          <thead>
-            <tr>
-              <th scope="col"><span class="ss-sr">Stage</span></th>
-              <th scope="col">A Standard Listing</th>
-              <th scope="col" class="ss-col-us">The Neistat Group</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">First exposure</th>
-              <td class="ss-them" data-label="A Standard Listing">Buyers first see it the day it goes public.</td>
-              <td class="ss-us" data-label="The Neistat Group">The Top Agent Network and 400+ Jameson agents see it before launch.</td>
-            </tr>
-            <tr>
-              <th scope="row">Pricing</th>
-              <td class="ss-them" data-label="A Standard Listing">Priced from recent comparable sales.</td>
-              <td class="ss-us" data-label="The Neistat Group">Priced to generate competition &mdash; what sold, and why.</td>
-            </tr>
-            <tr>
-              <th scope="row">Preparation</th>
-              <td class="ss-them" data-label="A Standard Listing">General preparation advice.</td>
-              <td class="ss-us" data-label="The Neistat Group">A walkthrough on what to fix, stage, and leave alone.</td>
-            </tr>
-            <tr>
-              <th scope="row">Presentation</th>
-              <td class="ss-them" data-label="A Standard Listing">Listing photography.</td>
-              <td class="ss-us" data-label="The Neistat Group">Editorial photography, film, aerial, and a 3D tour on every listing.</td>
-            </tr>
-            <tr>
-              <th scope="row">Buyer reach</th>
-              <td class="ss-them" data-label="A Standard Listing">Listed on the public portals.</td>
-              <td class="ss-us" data-label="The Neistat Group">The public portals, plus direct outreach to active buyers and brokers.</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </section>
 

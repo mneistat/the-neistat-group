@@ -12,7 +12,7 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selling Process | The Neistat Group">
   <meta property="og:description" content="A clear guide to the home selling process with Matthew Neistat and The Neistat Group — from strategy and pricing through marketing, negotiation, and closing.">
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="styles.css?v=38">
   <!-- styles.css hides .reveal and depends on JS to show it. With scripting off,
        cancel the rule so the page is fully readable rather than blank. -->
   <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
@@ -214,12 +214,10 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=7" defer></script>
+<script src="nav.js?v=8" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
 
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
@@ -767,47 +765,6 @@
       });
     },{threshold:0.1});
     Array.prototype.forEach.call(els, function(el){ observer.observe(el); });
-  })();
-  </script>
-
-  <script>
-  (function(){
-    if(window.innerWidth<769 || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches)return;
-    var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-    if(!dot||!ring)return;
-    var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-    // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-    // background under the pointer and invert to carbon when it is light.
-    var lastEl=null,lastLight=false;
-    function bgIsLight(el){
-      while(el && el!==document.documentElement){
-        var m=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-        if(m && (m[3]===undefined || +m[3]>0.95))
-          return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-        el=el.parentElement;
-      }
-      return false;
-    }
-    document.addEventListener('mousemove',function(e){
-      mx=e.clientX;my=e.clientY;
-      dot.classList.remove('hidden');ring.classList.remove('hidden');
-      var el=document.elementFromPoint(mx,my);
-      if(el!==lastEl){                       // only recompute when the element changes
-        lastEl=el; lastLight=bgIsLight(el);
-        dot.classList.toggle('on-light',lastLight);
-        ring.classList.toggle('on-light',lastLight);
-      }
-    });
-    document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-    // Only now is it safe to hide the native pointer: the loop is genuinely running.
-    function loop(){
-      if(!document.body.classList.contains('sp-cursor-live')) document.body.classList.add('sp-cursor-live');
-      dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
-      dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';
-      requestAnimationFrame(loop);
-    }
-    loop();
-    document.querySelectorAll('a,button').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
   })();
   </script>
 </body>

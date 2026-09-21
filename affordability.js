@@ -44,6 +44,7 @@
     });
     if (invalid.length) {
       $('calcError').textContent = 'Showing the last valid estimate. Check: ' + invalid.join(', ') + '.';
+      $('compactEstimateLabel').textContent = 'Last valid estimate · check inputs';
       return;
     }
     try { lastResult = window.NeistatMortgage.calculate(input); }
@@ -54,6 +55,8 @@
     $('priceRange').setAttribute('aria-valuetext', money(input.price));
     $('downRange').setAttribute('aria-valuetext', input.down + ' percent');
     $('monthlyPayment').innerHTML = money(lastResult.monthly) + '<small>/mo</small>';
+    $('compactPayment').textContent = money(lastResult.monthly) + '/mo';
+    $('compactEstimateLabel').textContent = 'Estimated payment · excludes mortgage insurance';
     $('piDisplay').textContent = money(lastResult.pi);
     $('taxDisplay').textContent = money(input.tax / 12);
     $('insuranceDisplay').textContent = money(input.insurance / 12);

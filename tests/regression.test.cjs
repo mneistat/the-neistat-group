@@ -83,21 +83,47 @@ test('guide inquiry context and recognized intent reach the contact form', () =>
   assert.equal(d.querySelector('[name="visitor_intent"]').value, 'buying-home');
   dom.window.close();
 });
+test('invalid inquiry focuses the first field and centers its label without sending', () => {
+  const dom = page('index.html'), w = dom.window, d = w.document;
+  const name = d.getElementById('homeName');
+  let scrolled = false;
+  name.closest('.cta-form-group').scrollIntoView = options => { scrolled = options.block === 'center'; };
+  w.fetch = () => { throw new Error('Invalid forms must not submit'); };
+  w.eval(read('forms.js'));
+  d.getElementById('ctaForm').dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));
+  assert.equal(d.activeElement, name);
+  assert.equal(scrolled, true);
+  dom.window.close();
+});
+test('optional intent can be cleared after a contextual link preselects it', () => {
+  const dom = page('contact.html', '?intent=investment-review'), w = dom.window, d = w.document;
+  w.eval(read('forms.js'));
+  const choice = d.getElementById('interest');
+  assert.equal(choice.querySelector('option[value=""]').disabled, false);
+  choice.value = '';
+  choice.dispatchEvent(new w.Event('change', { bubbles: true }));
+  assert.equal(d.querySelector('[name="visitor_intent"]').value, '');
+  dom.window.close();
+});
 test('calculator preserves the last valid result, supports exact input and keyboard disclosures', () => {
   const dom = page('calculator.html'), w = dom.window, d = w.document;
   w.eval(read('mortgage.js')); w.eval(read('affordability.js'));
   const input = (id, value) => { const field = d.getElementById(id); field.value = value; field.dispatchEvent(new w.Event('input', { bubbles: true })); };
   const before = d.getElementById('monthlyPayment').textContent;
+  assert.equal(d.getElementById('compactPayment').textContent, before);
   input('taxInput', '-1000');
   assert.equal(d.getElementById('taxInput').getAttribute('aria-invalid'), 'true');
   assert.equal(d.getElementById('monthlyPayment').textContent, before);
   assert.match(d.getElementById('calcError').textContent, /last valid/);
+  assert.match(d.getElementById('compactEstimateLabel').textContent, /Last valid/);
+  assert.equal(d.getElementById('compactPayment').textContent, before);
   input('taxInput', '6000'); input('priceInput', '812345');
   assert.equal(d.getElementById('buyerPrice').value, '812345');
   input('buyerPrice', '900000'); input('priceInput', '820000');
   assert.equal(d.getElementById('buyerPrice').value, '900000');
   input('downInput', '100'); input('rateInput', '0');
   assert.equal(d.getElementById('loanDisplay').textContent, '$0');
+  assert.equal(d.getElementById('compactPayment').textContent, d.getElementById('monthlyPayment').textContent);
   d.getElementById('amortToggle').click();
   assert.equal(d.getElementById('amortToggle').getAttribute('aria-expanded'), 'true');
   const year = d.querySelector('.amort-year-button'); year.click();
@@ -106,6 +132,18 @@ test('calculator preserves the last valid result, supports exact input and keybo
   const faq = d.querySelector('.faq-q'); faq.click();
   assert.equal(faq.getAttribute('aria-expanded'), 'true');
   assert.equal(d.getElementById(faq.getAttribute('aria-controls')).hidden, false);
+  dom.window.close();
+});
+test('neighborhood guides identify their parent in desktop and mobile navigation', () => {
+  const dom = page('neighborhoods/lakeview.html'), w = dom.window, d = w.document;
+  w.matchMedia = () => ({ matches: false, addEventListener() {} });
+  w.eval(read('nav.js'));
+  const current = [...d.querySelectorAll('.nav-links [aria-current], .mobile-menu-link[aria-current]')];
+  assert.equal(current.length, 2);
+  for (const link of current) {
+    assert.equal(link.textContent, 'Neighborhoods');
+    assert.equal(link.getAttribute('aria-current'), 'location');
+  }
   dom.window.close();
 });
 test('mobile menu isolates the page, contains focus and restores focus on Escape', () => {

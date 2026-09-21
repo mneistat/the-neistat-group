@@ -120,13 +120,13 @@
     /* ---------------- at a glance ---------------- */
     .np-glance {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0;
-      border-top: 1px solid rgba(11,10,7,0.16);
+
     }
     .np-glance > div {
       padding: clamp(24px, 2.6vw, 38px) clamp(18px, 2vw, 30px) clamp(24px, 2.6vw, 38px) 0;
-      border-right: 1px solid rgba(11,10,7,0.12);
+
     }
     .np-glance > div:last-child { border-right: 0; }
     .np-glance h3 {
@@ -234,7 +234,7 @@
     .np-link:hover, .np-link:focus-visible { border-bottom-color: var(--navy); }
 
     /* ---------------- broker note ---------------- */
-    .np-note { background: #100E0A; padding: clamp(74px, 10vw, 156px) 0; }
+    .np-note { background: #100E0A; padding: clamp(56px, 7vw, 96px) 0; }
     .np-note-grid {
       display: grid;
       grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
@@ -270,7 +270,7 @@
     .np-work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2vw, 30px); }
     .np-work figure { margin: 0; }
     .np-work-fig { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #E4DFD4; margin-bottom: 20px; }
-    .np-work-fig img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.2); }
+    .np-work-fig img { width: 100%; height: 100%; object-fit: cover; }
     .np-work h3 {
       font-family: var(--serif); font-weight: 400;
       font-size: clamp(20px, 2vw, 28px); line-height: 1.2;
@@ -371,3 +371,24 @@
 .np-section-nav a { color: inherit; }
 .np-work a { color: inherit; text-decoration: underline; text-underline-offset: 5px; }
 @media (max-width: 640px) { .np-stock { grid-template-columns: 1fr; } }
+
+/* Architecture supplies a second scale of place beyond the lakefront hero. */
+.np-band--cream + .np-band--cream { padding-top: 24px; }
+.np-housing-layout { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: clamp(32px,5vw,72px); align-items: start; }
+.np-housing-photo { margin: 0; }
+.np-housing-photo img { width: 100%; height: auto; }
+.np-housing-photo figcaption { font: 12px/1.65 var(--font); color: #655f55; padding-top: 14px; max-width: 50ch; }
+.np-stock { grid-template-columns: 1fr; gap: 0; }
+.np-stock article:first-child { padding-top: 0; border-top: 0; }
+.np-work--single { display: block; }
+.np-work--single figure { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: clamp(28px,5vw,72px); align-items: center; }
+.np-work--single .np-work-fig { margin-bottom: 0; }
+@media (max-width: 900px) {
+  .np-housing-layout { grid-template-columns: 1fr; }
+  .np-stock { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 28px; }
+  .np-stock article:first-child { padding-top: 24px; border-top: 1px solid rgba(11,10,7,.22); }
+}
+@media (max-width: 620px) {
+  .np-stock { grid-template-columns: 1fr; }
+  .np-work--single figure { grid-template-columns: 1fr; }
+}

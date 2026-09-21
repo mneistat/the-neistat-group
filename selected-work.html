@@ -12,8 +12,8 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selected Work | The Neistat Group">
   <meta property="og:description" content="Selected residential, investment, development, and commercial transactions across Chicago and the North Shore.">
-  <link rel="stylesheet" href="styles.css?v=37">
-  <link rel="stylesheet" href="selected-work.css?v=1">
+  <link rel="stylesheet" href="styles.css?v=38">
+  <link rel="stylesheet" href="selected-work.css?v=2">
   <style>
     /* Page-scoped, swp- prefixed. Headings declare their own colour: the global
        "h1, h2, h3 { color:#EDE8DE }" beats inherited colour and would otherwise
@@ -92,13 +92,11 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=7" defer></script>
+<script src="nav.js?v=8" defer></script>
 
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
 
 <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
@@ -138,14 +136,32 @@
   </section>
 
   <!-- GENERATED: portfolio START -->
-<section class="swp-assignment swp-assignment--lead" id="lake" aria-labelledby="heading-lake">
+<section class="swp-assignment swp-assignment--lead" id="wellington" aria-labelledby="heading-wellington">
+    <div class="swp-assignment-inner">
+      <figure class="swp-assignment-media">
+        <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" fetchpriority="high">
+
+      </figure>
+      <div class="swp-assignment-body">
+        <p class="swp-feature-meta">Lakeview · Development</p>
+        <h2 class="swp-feature-address" id="heading-wellington">702 W. Wellington Avenue</h2>
+        <p class="swp-assignment-rep">Represented Developer</p>
+        <p class="swp-feature-price">$709K – $985K</p>
+        <p class="swp-feature-note">4-condo sellout.</p>
+
+
+      </div>
+    </div>
+  </section>
+
+<section class="swp-assignment swp-assignment--reverse" id="lake" aria-labelledby="heading-lake">
     <div class="swp-assignment-inner">
       <figure class="swp-assignment-media swp-assignment-media--contain">
-        <img src="properties/1035-lake-layout.jpg" alt="Illustrative floor plan for 1035 W. Lake Street" fetchpriority="high">
+        <img src="properties/1035-lake-layout.jpg" alt="Illustrative floor plan for 1035 W. Lake Street" loading="lazy">
         <figcaption>Floor plan · illustrative</figcaption>
       </figure>
       <div class="swp-assignment-body">
-        <p class="swp-feature-meta">West Loop · Deconversion</p>
+        <p class="swp-feature-meta">West Loop · Commercial</p>
         <h2 class="swp-feature-address" id="heading-lake">1035 W. Lake Street</h2>
 
         <p class="swp-feature-price">$9,500,000</p>
@@ -174,25 +190,7 @@
     </div>
   </section>
 
-<section class="swp-assignment " id="wellington" aria-labelledby="heading-wellington">
-    <div class="swp-assignment-inner">
-      <figure class="swp-assignment-media">
-        <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" loading="lazy">
-
-      </figure>
-      <div class="swp-assignment-body">
-        <p class="swp-feature-meta">Lakeview · Development</p>
-        <h2 class="swp-feature-address" id="heading-wellington">702 W. Wellington Avenue</h2>
-        <p class="swp-assignment-rep">Represented Developer</p>
-        <p class="swp-feature-price">$709K – $985K</p>
-        <p class="swp-feature-note">4-condo sellout.</p>
-
-
-      </div>
-    </div>
-  </section>
-
-<section class="swp-assignment " id="fullerton" aria-labelledby="heading-fullerton">
+<section class="swp-assignment swp-assignment--reverse" id="fullerton" aria-labelledby="heading-fullerton">
     <div class="swp-assignment-inner">
       <figure class="swp-assignment-media">
         <img src="properties/1126-fullerton-listing.jpg" alt="1126 W. Fullerton Avenue, Lincoln Park" loading="lazy">
@@ -251,47 +249,6 @@
   <script>
     window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
-  </script>
-
-  <script>
-  (function(){
-    if(window.innerWidth<769 || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches)return;
-    var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-    if(!dot||!ring)return;
-    var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-    // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-    // background under the pointer and invert to carbon when it is light.
-    var lastEl=null,lastLight=false;
-    function bgIsLight(el){
-      while(el && el!==document.documentElement){
-        var m=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-        if(m && (m[3]===undefined || +m[3]>0.95))
-          return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-        el=el.parentElement;
-      }
-      return false;
-    }
-    document.addEventListener('mousemove',function(e){
-      mx=e.clientX;my=e.clientY;
-      dot.classList.remove('hidden');ring.classList.remove('hidden');
-      var el=document.elementFromPoint(mx,my);
-      if(el!==lastEl){                       // only recompute when the element changes
-        lastEl=el; lastLight=bgIsLight(el);
-        dot.classList.toggle('on-light',lastLight);
-        ring.classList.toggle('on-light',lastLight);
-      }
-    });
-    document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-    // Only now is it safe to hide the native pointer: the loop is genuinely running.
-    function loop(){
-      if(!document.body.classList.contains('sp-cursor-live')) document.body.classList.add('sp-cursor-live');
-      dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
-      dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';
-      requestAnimationFrame(loop);
-    }
-    loop();
-    document.querySelectorAll('a,button').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
-  })();
   </script>
 </body>
 </html>

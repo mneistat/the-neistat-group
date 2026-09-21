@@ -7,7 +7,7 @@
   <title>Affordability | The Neistat Group</title>
   <meta name="description" content="Estimate a monthly payment, understand debt-to-income and pre-approval, and request a buyer closing-cost or seller net-proceeds estimate.">
   <link rel="canonical" href="https://www.theneistatgroup.com/calculator">
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="styles.css?v=38">
 
   <script type="application/ld+json">
   {
@@ -45,17 +45,17 @@
     .calc-section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-bottom: 20px; display: block; }
     .calc-section-h { font-family: Georgia, serif; font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: #0B0A07; max-width: 720px; }
     .calc-section-h em { font-style: italic; }
-    .calc-section-sub { font-size: 15px; color: rgba(11,10,7,0.55); line-height: 1.7; max-width: 520px; margin-top: 18px; }
+    .calc-section-sub { font-size: 15px; color: #655f55; line-height: 1.7; max-width: 520px; margin-top: 18px; }
 
     .calc-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px); align-items: start; }
 
-    .calc-form-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 16px; padding: clamp(28px,3.5vw,44px); }
+    .calc-form-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 2px; padding: clamp(28px,3.5vw,44px); }
     .calc-group { margin-bottom: 26px; }
     .calc-group:last-child { margin-bottom: 0; }
     .calc-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
     .calc-label-text { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.62); }
     .calc-label-value { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; letter-spacing: -0.01em; }
-    .calc-input, .calc-select { width: 100%; font-family: inherit; font-size: 15px; font-weight: 500; color: #0B0A07; padding: 13px 16px; border: 1px solid rgba(11,10,7,0.12); border-radius: 8px; background: #F4F0E8; outline: none; transition: border-color 0.25s; -webkit-appearance: none; appearance: none; }
+    .calc-input, .calc-select { width: 100%; font-family: inherit; font-size: 15px; font-weight: 500; color: #0B0A07; padding: 13px 16px; border: 1px solid rgba(11,10,7,0.12); border-radius: 2px; background: #F4F0E8; outline: none; transition: border-color 0.25s; -webkit-appearance: none; appearance: none; }
     .calc-input:focus, .calc-select:focus { border-color: #0B0A07; }
     .calc-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230B0A07' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
     .calc-range { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: rgba(11,10,7,0.1); outline: none; margin-top: 10px; cursor: pointer; }
@@ -65,8 +65,8 @@
     .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
     .calc-results { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 16px; }
-    .calc-results-card { background: #0B0A07; color: #EDE8DE; border-radius: 16px; padding: clamp(28px,3.5vw,44px); }
-    .calc-results-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.5); margin-bottom: 10px; display: block; }
+    .calc-results-card { background: #0B0A07; color: #EDE8DE; border-radius: 2px; padding: clamp(28px,3.5vw,44px); }
+    .calc-results-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #bdb7ac; margin-bottom: 10px; display: block; }
     .calc-monthly { font-family: Georgia, serif; font-size: clamp(42px,5.5vw,64px); font-weight: 400; letter-spacing: -0.025em; line-height: 1; margin-bottom: 28px; }
     .calc-monthly small { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: rgba(237,232,222,0.55); margin-left: 4px; font-weight: 400; }
     .calc-breakdown { display: flex; flex-direction: column; gap: 0; }
@@ -77,7 +77,7 @@
     .calc-breakdown-value { font-weight: 500; font-size: 14px; color: #EDE8DE; font-variant-numeric: tabular-nums; }
 
     .calc-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .calc-summary-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; padding: 18px 20px; }
+    .calc-summary-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 2px; padding: 18px 20px; }
     .calc-summary-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-bottom: 6px; display: block; }
     .calc-summary-value { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
 
@@ -90,12 +90,12 @@
     .amort-wrap { display: none; margin-top: 28px; }
     .amort-wrap.show { display: block; }
     .amort-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
-    .amort-tab { font-family: inherit; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 20px; border-radius: 2px; border: 1px solid rgba(11,10,7,0.12); cursor: pointer; background: transparent; color: rgba(11,10,7,0.55); transition: all 0.25s; }
+    .amort-tab { font-family: inherit; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 20px; border-radius: 2px; border: 1px solid rgba(11,10,7,0.12); cursor: pointer; background: transparent; color: #655f55; transition: all 0.25s; }
     .amort-tab.active { background: #0B0A07; color: #EDE8DE; border-color: #0B0A07; }
-    .amort-table-wrap { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; overflow: hidden; max-height: 540px; overflow-y: auto; }
-    .amort-table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+    .amort-table-wrap { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 2px; overflow: auto; max-height: 540px; overscroll-behavior: contain; }
+    .amort-table { min-width: 600px; width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
     .amort-table thead { position: sticky; top: 0; z-index: 2; }
-    .amort-table th { background: #0B0A07; color: rgba(237,232,222,0.8); font-weight: 600; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 16px; text-align: right; white-space: nowrap; }
+    .amort-table thead th { background: #0B0A07; color: rgba(237,232,222,0.8); font-weight: 600; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 16px; text-align: right; white-space: nowrap; }
     .amort-table th:first-child { text-align: left; }
     .amort-table td { padding: 11px 16px; text-align: right; border-bottom: 1px solid rgba(11,10,7,0.05); color: rgba(11,10,7,0.75); }
     .amort-table td:first-child { text-align: left; font-weight: 600; color: #0B0A07; }
@@ -104,13 +104,13 @@
     .amort-year-row td:first-child { font-weight: 700; }
     .amort-month-rows { display: none; }
     .amort-month-rows.show { display: table-row-group; }
-    .amort-month-rows td { font-size: 12px; color: rgba(11,10,7,0.55); padding: 8px 16px; }
+    .amort-month-rows td { font-size: 12px; color: #655f55; padding: 8px 16px; }
     .amort-month-rows td:first-child { padding-left: 32px; font-weight: 400; }
 
     /* === PRE-APPROVAL EXPLAINER === */
     .explainer { background: #0B0A07; color: #EDE8DE; padding: clamp(80px,10vw,140px) clamp(28px,6vw,80px); }
     .explainer-head { max-width: 1200px; margin: 0 auto clamp(48px,6vw,80px); }
-    .explainer-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 20px; display: block; }
+    .explainer-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #bdb7ac; margin-bottom: 20px; display: block; }
     .explainer-h { font-family: Georgia, serif; font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: #EDE8DE; max-width: 720px; }
     .explainer-h em { font-style: italic; }
     .explainer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,5vw,72px) clamp(48px,6vw,96px); }
@@ -171,7 +171,7 @@
     .lead-form-note { font-size: 12px; letter-spacing: 0.04em; margin-top: 4px; }
     .cta-band-dark .lead-form-note { color: rgba(237,232,222,0.55); }
     .cta-band-bone .lead-form-note { color: rgba(11,10,7,0.62); }
-    .lead-form-success { display: none; padding: 28px 24px; border-radius: 8px; text-align: center; }
+    .lead-form-success { display: none; padding: 28px 24px; border-radius: 2px; text-align: center; }
     .lead-form-success.show { display: block; }
     .cta-band-dark .lead-form-success { background: rgba(237,232,222,0.06); border: 1px solid rgba(237,232,222,0.14); }
     .cta-band-bone .lead-form-success { background: #fff; border: 1px solid rgba(11,10,7,0.1); }
@@ -191,12 +191,21 @@
     .faq-item:first-child { border-top: 1px solid rgba(237,232,222,0.1); }
     .faq-q { width: 100%; background: transparent; border: none; padding: 24px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; text-align: left; font-family: Georgia, serif; font-size: clamp(17px,1.6vw,21px); font-weight: 400; color: #EDE8DE; line-height: 1.3; letter-spacing: -0.005em; }
     .faq-q:hover { color: #fff; }
-    .faq-q-icon { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.3s ease; color: rgba(237,232,222,0.4); }
+    .faq-q-icon { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.3s ease; color: #bdb7ac; }
     .faq-item.open .faq-q-icon { transform: rotate(45deg); color: #EDE8DE; }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
     .faq-a-inner { padding: 0 0 24px; font-size: 15px; line-height: 1.75; color: rgba(237,232,222,0.6); max-width: 720px; }
     .faq-item.open .faq-a { max-height: none; }
 
+    .calc-compact { display: none; }
+    #payment-breakdown { scroll-margin-top: 180px; }
+    @media (max-width: 1024px) {
+      .calc-compact { display: flex; justify-content: space-between; align-items: center; gap: 14px; position: sticky; top: 82px; z-index: 4; background: #0B0A07; color: #EDE8DE; padding: 14px 18px; }
+      .calc-compact span { display: block; font-size: 11px; line-height: 1.5; max-width: 28ch; color: #d2ccc2; }
+      .calc-compact strong { display: block; font: 25px/1.3 Georgia, serif; margin-top: 4px; }
+      .calc-compact a { flex-shrink: 0; font-size: 12px; padding: 14px 0; text-decoration: underline; text-underline-offset: 4px; }
+      .calc-input, .calc-select { font-size: 16px; }
+    }
     /* === RESPONSIVE === */
     @media (max-width: 1024px) {
       .calc-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -249,7 +258,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=7" defer></script>
+<script src="nav.js?v=8" defer></script>
   <meta property="og:title" content="Affordability | The Neistat Group">
   <meta property="og:description" content="Estimate a monthly payment, understand debt-to-income and pre-approval, and request a buyer closing-cost or seller net-proceeds estimate.">
   <meta property="og:url" content="https://www.theneistatgroup.com/calculator">
@@ -262,15 +271,13 @@
   <meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
   <meta property="og:image:width" content="828">
   <meta property="og:image:height" content="1792">
-  <script src="/forms.js?v=1" defer></script>
+  <script src="/forms.js?v=2" defer></script>
   <script src="/mortgage.js?v=1" defer></script>
-  <script src="/affordability.js?v=1" defer></script>
+  <script src="/affordability.js?v=2" defer></script>
   <noscript><style>.faq-a { max-height: none; }</style></noscript>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
 
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
@@ -316,6 +323,10 @@
     </div>
 
     <div class="calc-grid">
+      <div class="calc-compact">
+        <div><span id="compactEstimateLabel">Estimated payment · excludes mortgage insurance</span><strong id="compactPayment"></strong></div>
+        <a href="#payment-breakdown">Breakdown ↓</a>
+      </div>
       <!-- Inputs -->
       <div class="calc-form-card reveal">
         <div class="calc-group">
@@ -370,7 +381,7 @@
       </div>
 
       <!-- Results -->
-      <div class="calc-results">
+      <div class="calc-results" id="payment-breakdown">
         <p class="calc-validation" id="calcError" role="status"></p>
         <div class="calc-results-card reveal">
           <span class="calc-results-label">Estimated Monthly Payment</span>
@@ -733,42 +744,6 @@
       }
     })();
 
-  </script>
-
-  <script>
-    // Magnetic Cursor
-    (function(){
-      if(window.innerWidth<769 || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches)return;
-      var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-      if(!dot||!ring)return;
-      var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-      // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-    // background under the pointer and invert to carbon when it is light.
-    var lastEl=null,lastLight=false;
-    function bgIsLight(el){
-      while(el && el!==document.documentElement){
-        var m=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-        if(m && (m[3]===undefined || +m[3]>0.95))
-          return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-        el=el.parentElement;
-      }
-      return false;
-    }
-    document.addEventListener('mousemove',function(e){
-      mx=e.clientX;my=e.clientY;
-      dot.classList.remove('hidden');ring.classList.remove('hidden');
-      var el=document.elementFromPoint(mx,my);
-      if(el!==lastEl){                       // only recompute when the element changes
-        lastEl=el; lastLight=bgIsLight(el);
-        dot.classList.toggle('on-light',lastLight);
-        ring.classList.toggle('on-light',lastLight);
-      }
-    });
-      document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-      function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
-      loop();
-      document.querySelectorAll('a,button,input,select,.faq-q,.amort-tab,.amort-year-row').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
-    })();
   </script>
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </body>

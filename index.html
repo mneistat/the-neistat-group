@@ -10,7 +10,7 @@
   <meta property="og:url" content="https://www.theneistatgroup.com/">
   <meta property="og:title" content="The Neistat Group | Chicago Real Estate Advisory">
   <meta property="og:description" content="Chicago real estate advisory from Matthew Neistat at Jameson Sotheby's International Realty. Selected work, neighborhood intelligence, and seller strategy.">
-    <link rel="stylesheet" href="styles.css?v=37">
+    <link rel="stylesheet" href="styles.css?v=38">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,7 +45,7 @@
   gtag('config', 'G-MGNGVERDHQ');
 </script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=7" defer></script>
+<script src="nav.js?v=8" defer></script>
 <script src="selected-work-data.js?v=4"></script>
 <!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website">
@@ -354,7 +354,7 @@
     .sw-index { order: 3; }
     .sw-info { border-right: 0; border-bottom: 1px solid rgba(11,10,7,0.16); }
     .sw-index { border-left: 0; }
-    .sw-index::before { content: 'Other Selected Work'; display: block;
+    .sw-index::before { content: 'Choose an Assignment'; display: block;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 500;
       letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,10,7,0.62);
       padding: 22px clamp(14px,1.2vw,18px) 12px; }
@@ -399,7 +399,7 @@
     .hp-pillars h3 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(20px,1.9vw,26px); color: #0B0A07; margin: 0 0 10px; }
     .hp-pillars p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14.5px; line-height: 1.7; color: rgba(11,10,7,0.74); margin: 0; }
     .hp-seller .hp-link { color: #0B0A07; }
-    .hp-seller + .method-section { border-top: 1px solid rgba(11,10,7,0.10); }
+    .hp-seller + .method-section { padding-top: 24px; }
 
     /* People First: dark */
     .hp-principle { background: #14120E; color: #EDE8DE; padding: clamp(80px,10vw,150px) clamp(24px,5vw,56px); text-align: center; }
@@ -436,15 +436,28 @@
       .hp-pillars > div, .hp-pillars > div + div { padding: 22px 0; border-left: 0; border-bottom: 1px solid rgba(11,10,7,0.12); }
       .hp-stats > div, .hp-stats > div + div { padding: 24px 0; border-left: 0; border-bottom: 1px solid rgba(237,232,222,0.10); }
     }
+    .sw-figure { scroll-margin-top: 96px; }
+    .testimonials { padding: clamp(52px,7vw,96px) clamp(24px,5vw,64px); }
+    .testimonials-heading { max-width: 1280px; margin: 0 auto 36px; font-size: clamp(30px,3.5vw,44px); }
+    .testimonials-grid { max-width: 1280px; margin: auto; grid-template-columns: 1.15fr 1fr; gap: 32px 64px; }
+    .testimonial-card:nth-child(n) { background: transparent; padding: 0; }
+    .testimonial-card:first-child { grid-row: span 2; }
+    .testimonial-card { display: flex; flex-direction: column; }
+    .testimonial-header { order: 2; margin: 20px 0 0; }
+    .testimonial-text { font-size: 18px; line-height: 1.65; }
+    .testimonial-card:first-child .testimonial-text { font-size: clamp(23px,2.5vw,32px); line-height: 1.5; }
+    .testimonial-role { margin-top: 4px; line-height: 1.5; }
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr; gap: 36px; }
+      .testimonial-card:first-child { grid-row: auto; }
+    }
   </style>
-  <script src="/forms.js?v=1" defer></script>
+  <script src="/forms.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- Custom Cursor -->
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
 
   <!-- Nav -->
   <nav class="nav" id="nav">
@@ -492,7 +505,7 @@
         <span id="heroPeople" style="display:block;">Make better real estate</span>
         <span class="hero-headline-italic" id="heroAlways" style="display:block;">decisions.</span>
       </h1>
-      <p class="hero-sub" id="heroSub">For homeowners, investors, and developers who want more than a broker — they want strategy.</p>
+      <p class="hero-sub" id="heroSub">For buyers, homeowners, investors, and developers making their next real estate decision.</p>
       <div class="hero-actions" id="heroActions">
         <a href="contact.html" class="btn-primary btn-pill-fill">Begin the Conversation</a>
         <a href="#work" class="btn-bordered-pill">See the Work</a>
@@ -517,7 +530,7 @@
     </div>
     <div class="start-here-paths">
       <a href="seller-strategy.html" class="start-here-path"><span class="start-here-path-text">Sell a property</span><span class="start-here-path-arrow">&rarr;</span></a>
-      <a href="contact.html?intent=buying-home" class="start-here-path"><span class="start-here-path-text">Buy a property</span><span class="start-here-path-arrow">&rarr;</span></a>
+      <a href="buying-process.html" class="start-here-path"><span class="start-here-path-text">Buy a property</span><span class="start-here-path-arrow">&rarr;</span></a>
       <a href="contact.html?intent=property-evaluation" class="start-here-path"><span class="start-here-path-text">Evaluate a property I own</span><span class="start-here-path-arrow">&rarr;</span></a>
       <a href="contact.html?intent=investment-review" class="start-here-path"><span class="start-here-path-text">Buy or sell an investment property</span><span class="start-here-path-arrow">&rarr;</span></a>
       <a href="seller-strategy.html" class="start-here-path"><span class="start-here-path-text">Renovate or reposition before selling</span><span class="start-here-path-arrow">&rarr;</span></a>
@@ -544,13 +557,13 @@
       <div class="sw-module">
         <div class="sw-info" aria-live="polite">
           <p class="sw-meta" id="swMeta"></p>
-          <h3 class="sw-address" id="swAddress"></h3>
+          <h3 class="sw-address" id="swAddress" tabindex="-1"></h3>
           <p class="sw-rep" id="swRep"></p>
           <div class="sw-divider"></div>
           <p class="sw-price" id="swPrice"></p>
           <p class="sw-note" id="swNote"></p>
           <p class="sw-press" id="swPress"></p>
-          <a class="sw-view" id="swView" href="selected-work.html">View the Work <span aria-hidden="true">&rarr;</span></a>
+          <a class="sw-view" id="swView" href="selected-work.html">Explore the Assignment <span aria-hidden="true">&rarr;</span></a>
         </div>
         <div class="sw-figure" id="swFigure"><p class="sw-image-caption" id="swCaption"></p></div>
         <div class="sw-index" id="swIndex"></div>
@@ -628,7 +641,7 @@
     <div class="hp-wrap hp-principle-inner hp-reveal">
       <p class="hp-eyebrow">A Family Operating Principle</p>
       <h2 class="hp-sr" id="hp-principle-h">People first</h2>
-      <blockquote class="hp-principle-quote">&ldquo;Always put people first. Real estate isn&rsquo;t about closing deals &mdash; it&rsquo;s about building lives.&rdquo;</blockquote>
+      <blockquote class="hp-principle-quote">&ldquo;Always put people first.&rdquo;</blockquote>
       <p class="hp-principle-cite">Matthew&rsquo;s grandfather</p>
       <p class="hp-body">Three generations in Chicago-area real estate and a background in hospitality shape an honest, one-on-one approach to every client relationship.</p>
       <a class="hp-link" href="about.html">About Matthew &rarr;</a>
@@ -639,29 +652,17 @@
   <!-- Testimonials -->
   <section class="testimonials">
     <h2 class="testimonials-heading">Client <em>Words</em></h2>
-    <div class="testimonials-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="testimonials-grid">
       <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">KW</div><div><div class="testimonial-name">Kevin Werner</div><div class="testimonial-role">Personal 15-Building Portfolio</div></div></div>
+        <div class="testimonial-header"><div><div class="testimonial-name">Kevin Werner</div><div class="testimonial-role">Personal 15-Building Portfolio</div></div></div>
         <p class="testimonial-text">"Matt worked with me to market and sell all the properties faster than I expected. He did a great job solving problems and staying focused on getting the buildings sold. I would recommend Matt for this type of transaction all day long."</p>
       </div>
       <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">NA</div><div><div class="testimonial-name">Nicole Alfred-Napper</div><div class="testimonial-role">COO, Plan Companies</div></div></div>
+        <div class="testimonial-header"><div><div class="testimonial-name">Nicole Alfred-Napper</div><div class="testimonial-role">COO, Plan Companies</div></div></div>
         <p class="testimonial-text">"He did such a good job that we ended up having him sell a few more — every single one sold at, near, or above the price we were seeking. It was refreshing to have such a hands-on broker — that is certainly not the norm."</p>
       </div>
       <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">NG</div><div><div class="testimonial-name">Nick & Marina Golemis</div><div class="testimonial-role">Bought & Sold, Chicago/Glenview</div></div></div>
-        <p class="testimonial-text">"Matt knows real estate. The review can start and end there. He was able to blend the lines between honesty, transparency, and friendliness. He knows how to negotiate, what the market dictates, and does his work with a great deal of integrity."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">CP</div><div><div class="testimonial-name">Christopher Paquette</div><div class="testimonial-role">2-Building Investment Purchase</div></div></div>
-        <p class="testimonial-text">"Matt has always been a terrific resource and truly a partner to me. He does much of the upfront legwork, is very responsive, is always on my side and looking out for me. I would absolutely refer him with very, very high marks."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">LS</div><div><div class="testimonial-name">Linda Schafer</div><div class="testimonial-role">Private Investor, Tri-Taylor Portfolio</div></div></div>
-        <p class="testimonial-text">"Matt sold four 3-flats in Tri-Taylor for me in two weeks. One broke a sales record. Matt's numbers are true-to-market and realistic. He took his time to get to the right price. I definitely would work with Matt again."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">KT</div><div><div class="testimonial-name">Kevin Tansey</div><div class="testimonial-role">First-Time Buyer, North Center Chicago</div></div></div>
+        <div class="testimonial-header"><div><div class="testimonial-name">Kevin Tansey</div><div class="testimonial-role">First-Time Buyer, North Center Chicago</div></div></div>
         <p class="testimonial-text">"My home buying experience was seamless, which I can credit to Matt's professionalism, honesty, and integrity. Even after the offer was accepted he remained extremely communicative and responsive during the closing process."</p>
       </div>
     </div>
@@ -679,10 +680,10 @@
       </div>
       <ul class="hp-press hp-reveal" aria-label="Recognition and press">
         <li>Jameson Quarterly Best</li>
-        <li><a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" rel="noopener">Crain&rsquo;s Chicago Business</a></li>
-        <li><a href="https://product.costar.com/home/news/710741247" target="_blank" rel="noopener">CoStar News</a></li>
-        <li><a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" rel="noopener">Chicago Agent Magazine</a></li>
-        <li><a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" rel="noopener">Chicago Real Producers</a></li>
+        <li><a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" rel="noopener">Crain&rsquo;s · Winnetka sale ↗</a></li>
+        <li><a href="https://product.costar.com/home/news/710741247" target="_blank" rel="noopener">CoStar · West Loop assignment ↗</a></li>
+        <li><a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" rel="noopener">Chicago Agent · Matthew’s profile ↗</a></li>
+        <li><a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" rel="noopener">Real Producers · June 2020 profile ↗</a></li>
       </ul>
     </div>
   </section>
@@ -710,7 +711,7 @@
             <div class="cta-form-group"><label class="cta-input-label" for="homeEmail">Email *</label><input type="email" id="homeEmail" autocomplete="email" name="email" placeholder="your@email.com" required class="cta-input"></div>
             <div class="cta-form-group"><label class="cta-input-label" for="homePhone">Phone (optional)</label><input type="tel" id="homePhone" autocomplete="tel" name="phone" placeholder="(312) 555-0100" class="cta-input"></div>
           </div>
-          <div class="cta-form-group"><label class="cta-input-label" for="homeIntent">I’m looking to (optional)</label><select id="homeIntent" name="intent" class="cta-input cta-select"><option value="" disabled selected>Select one</option><option value="buy">Buy a home</option><option value="sell">Sell my home</option><option value="both">Buy and sell</option><option value="invest">Invest in real estate</option><option value="learn">Just exploring</option></select></div>
+          <div class="cta-form-group"><label class="cta-input-label" for="homeIntent">I’m looking to (optional)</label><select id="homeIntent" name="intent" class="cta-input cta-select"><option value="" selected>No preference</option><option value="buy">Buy a home</option><option value="sell">Sell my home</option><option value="both">Buy and sell</option><option value="invest">Invest in real estate</option><option value="learn">Just exploring</option></select></div>
           <div class="cta-form-group"><label class="cta-input-label" for="homeMessage">Message (optional)</label><textarea id="homeMessage" name="message" placeholder="Tell me a little about what you're looking for..." class="cta-input cta-textarea"></textarea></div>
           <button type="submit" class="cta-submit">Send Message →</button>
           <div class="form-error" id="ctaFormError" role="alert" aria-live="polite"></div>
@@ -770,53 +771,6 @@
     const toggle = document.getElementById('navToggle');
     const menu = document.getElementById('mobileMenu');
 
-    // Magnetic Cursor + 3D Card Tilt
-    (function() {
-      if (window.innerWidth < 769 || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
-      const dot = document.getElementById('cursorDot');
-      const ring = document.getElementById('cursorRing');
-      if (!dot || !ring) return;
-      let mouseX = 0, mouseY = 0, dotX = 0, dotY = 0, ringX = 0, ringY = 0;
-      // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-      // background under the pointer and invert to carbon when it is light.
-      let lastEl = null;
-      const bgIsLight = (el) => {
-        while (el && el !== document.documentElement) {
-          const m = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-          if (m && (m[3] === undefined || +m[3] > 0.95))
-            return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-          el = el.parentElement;
-        }
-        return false;
-      };
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX; mouseY = e.clientY;
-        dot.classList.remove('hidden'); ring.classList.remove('hidden');
-        const el = document.elementFromPoint(mouseX, mouseY);
-        if (el !== lastEl) {
-          lastEl = el;
-          const light = bgIsLight(el);
-          dot.classList.toggle('on-light', light);
-          ring.classList.toggle('on-light', light);
-        }
-      });
-      document.addEventListener('mouseleave', () => { dot.classList.add('hidden'); ring.classList.add('hidden'); });
-      document.addEventListener('mouseenter', () => { dot.classList.remove('hidden'); ring.classList.remove('hidden'); });
-      function animateCursor() {
-        dotX += (mouseX - dotX) * 0.35; dotY += (mouseY - dotY) * 0.35;
-        ringX += (mouseX - ringX) * 0.18; ringY += (mouseY - ringY) * 0.18;
-        dot.style.left = dotX + 'px'; dot.style.top = dotY + 'px';
-        ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
-        requestAnimationFrame(animateCursor);
-      }
-      animateCursor();
-      document.querySelectorAll('a, button, .sw-item, .tool-card, .nav-cta-btn, .stat, .testimonial-card, .press-pub').forEach(el => {
-        el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
-        el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
-      });
-      // (3D card tilt removed with the Selected Work carousel.)
-    })();
-
   </script>
 
   <script>
@@ -872,7 +826,6 @@
 
     var figure = document.getElementById('swFigure');
     var index = document.getElementById('swIndex');
-    var panel = document.querySelector('.sw-info');
     var view = document.getElementById('swView');
     var el = {
       meta: document.getElementById('swMeta'), addr: document.getElementById('swAddress'),
@@ -941,17 +894,14 @@
       if (view) view.href = 'selected-work.html#' + t.id;
     }
 
-    var selectionTimer;
     function select(t, btn) {
-      if (btn.getAttribute('aria-current') === 'true') return;
-      items.forEach(function (b) { b.setAttribute('aria-current', 'false'); });
-      btn.setAttribute('aria-current', 'true');
+      items.forEach(function (b) { b.setAttribute('aria-current', String(b === btn)); });
       frames.forEach(function (f) { var active = f.getAttribute('data-frame') === t.id; f.classList.toggle('is-active', active); f.setAttribute('aria-hidden', String(!active)); });
-      clearTimeout(selectionTimer);
-      if (reduce) { write(t); return; }
-      panel.style.transition = 'opacity 0.16s ease';
-      panel.style.opacity = '0';
-      selectionTimer = setTimeout(function () { write(t); panel.style.opacity = '1'; }, 160);
+      write(t);
+      if (window.matchMedia('(max-width: 1100px)').matches) {
+        el.addr.focus({ preventScroll: true });
+        figure.scrollIntoView({ block: 'start', behavior: reduce ? 'instant' : 'smooth' });
+      }
     }
 
     write(data[0]);
