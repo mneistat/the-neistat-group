@@ -98,7 +98,7 @@ p('2629 North<br/>Hampden Court',M,121,420,size=45,lead=42,font='Cormorant')
 photo(M,227,CW,317,focus=.68)
 p('<link href="https://www.zillow.com/homedetails/2629-N-Hampden-Ct-APT-204-Chicago-IL-60614/3726053_zpid/" color="#696269">Property photo: Zillow</link>',M,550,230,size=6.8,lead=9,color=MUTED)
 p('Know the value.<br/>Then decide.',M,576,230,size=29,lead=29,font='Cormorant')
-p('Start with a complimentary valuation. Compare the offer with the building\'s income, expenses, condition, and market evidence.',323,578,245,size=10.5,lead=15.5)
+p('Start with a complimentary valuation. Understand the building\'s value, then choose the sale strategy that fits the owners\' priorities.',323,578,245,size=10.5,lead=15.5)
 line(653)
 for x,val,desc in [(M,'67*','Reported units'),(231,'34','Deeded parking spaces'),(425,'1970','Reported year built')]:
     p(val,x,665,150,size=24,lead=25,font='Cormorant')
@@ -106,27 +106,31 @@ for x,val,desc in [(M,'67*','Reported units'),(231,'34','Deeded parking spaces')
 p('Reported figures are unverified. *Confirm the 66-parcel / 67-unit discrepancy against the declaration.',M,727,CW,size=7.7,lead=10.5,color=MUTED)
 c.showPage()
 
-# OPTIONS: compare once; shared approval notes avoid repetition.
+# OPTIONS: two sale choices, with two marketing methods under the full-building sale.
 base(2,'The options')
-heading('YOUR OPTIONS','Five paths forward.','Compare the tradeoffs. Choose what fits the owners\' priorities.')
-label('PATH',M,184)
-label('MAIN CONSIDERATION',314,184)
-line(204)
-options=[
-('A','Existing offer','Continue with the identified buyer.','The price has not been tested competitively.'),
-('B','Targeted outreach','Approach selected buyers privately.','Fewer buyers may limit competition.'),
-('C','Broad campaign','Reach more buyers with a public summary and protected financials.','Wider exposure requires more coordination.'),
-('D','Voluntary group sale','Willing owners sell their units together.','Value depends on the units included; sellers agree on exposure.'),
-('E','Retain ownership','Continue ownership and rental income.','Ongoing expenses and capital needs remain.')]
-t=222
-for letter,title,desc,trade in options:
-    p(letter,M,t,20,size=17,lead=20,font='Cormorant',color=ACCENT)
-    p(title,72,t,220,size=12,lead=16,font='Inter-Semi')
-    p(desc,72,t+23,216,size=10.2,lead=14.5,color=MUTED)
-    p(trade,314,t+2,254,size=11,lead=15.5)
-    line(t+(88 if letter=='E' else 76))
-    t+=92
-p('<b>Approval:</b> The first three paths require full-building sale approval. A voluntary group sale involves participating owners, with counsel reviewing restrictions. Retaining ownership requires no sale approval; funding decisions remain.',M,691,CW,size=9.3,lead=13,color=MUTED)
+heading('YOUR OPTIONS','Two ways to move forward.','Sell the full building, or package the units of willing owners.')
+line(179)
+p('01',M,195,35,size=26,lead=29,font='Cormorant',color=ACCENT)
+p('Sell the full building',94,195,474,size=23,lead=28,font='Cormorant')
+p('Market the entire property as one transaction, using one of two approaches.',94,231,474,size=10.5,lead=15,color=MUTED)
+label('TWO MARKETING APPROACHES',M,266,color=ACCENT)
+p('Full public marketing',M,289,246,size=12,lead=16,font='Inter-Semi')
+p('List the property publicly, market it broadly, respond to inquiries, and arrange building showings.',M,315,246,size=10.5,lead=15,color=MUTED)
+p('Confidential targeted outreach',322,289,246,size=12,lead=16,font='Inter-Semi')
+p('Approach selected brokers, buyers, and institutions. Require every participant to sign an NDA/confidentiality agreement before receiving confidential materials. Arrange showings only after confirming serious interest and the buyer\'s ability to proceed.',322,315,246,size=10.5,lead=15,color=MUTED)
+for x,adv,trade in [
+    (M,'Wider exposure and buyer competition.','More public exposure and showing activity.'),
+    (322,'A quieter process with controlled access.','A smaller buyer pool may limit competition.')]:
+    label('ADVANTAGE',x,458,color=ACCENT)
+    p(adv,x,474,246,size=10.4,lead=14.5)
+    label('TRADEOFF',x,513,color=ACCENT)
+    p(trade,x,529,246,size=10.4,lead=14.5,color=MUTED)
+line(577)
+p('02',M,591,35,size=26,lead=29,font='Cormorant',color=ACCENT)
+p('Voluntary group sale',94,591,474,size=23,lead=28,font='Cormorant')
+p('Package only the units of owners who choose to sell together and market them as one offering. Participation is voluntary; pricing depends on the units included.',94,627,474,size=10.5,lead=15,color=MUTED)
+p('<b>Marketing:</b> Participating sellers agree on public or targeted outreach.',94,681,474,size=10.2,lead=14.5)
+p('<b>Approval:</b> A full-building sale requires applicable owner approval. A group sale involves participating owners, with counsel reviewing restrictions.',M,718,CW,size=9,lead=12.5,color=MUTED)
 c.showPage()
 
 # VALUATION: two-column layout separates the short request from its purpose.
@@ -136,7 +140,7 @@ heading('THE VALUATION','A clear place to start.','Send what you have. Approxima
 photo(M,185,156,220,focus=.52)
 p('The building, in context.',M,412,156,size=7.7,lead=11,color=MUTED)
 p('Start with<br/>the valuation.',M,449,157,size=24,lead=25,font='Cormorant')
-p('I will prepare a Broker Opinion of Value to help the board assess the offer and its options.',M,511,157,size=10.3,lead=15)
+p('I will prepare a Broker Opinion of Value to help the board assess the building\'s value and sale options.',M,511,157,size=10.3,lead=15)
 p('No listing agreement.<br/>No obligation to sell.',M,592,158,size=10.3,lead=15,font='Inter-Semi',color=ACCENT)
 items=[
 ('Expenses','2025 operating expenses and, ideally, <nobr>Jan 1-Sept 1, 2026</nobr> expenses.'),
@@ -153,7 +157,7 @@ for i,(h,b) in enumerate(items,1):
     t=y+37
 rect(M,664,CW,69,PAPER)
 label('WHAT YOU WILL RECEIVE',M+18,678,color=ACCENT)
-p('A supported value range and comparison with the offer, informed by market evidence and capital needs.',M+18,696,CW-36,size=10.6,lead=15)
+p('A supported value range to guide the sale strategy, informed by market evidence and capital needs.',M+18,696,CW-36,size=10.6,lead=15)
 c.showPage()
 
 # TERMS: give representation and advice equal weight; detailed lending notes live online.
