@@ -23,9 +23,9 @@ Shared changes: active page/parent navigation, larger footer link targets, nativ
 - 17 Node/jsdom regression checks cover mortgage mathematics, schedule reconciliation, all four form flows with mocked delivery, optional intent reset, invalid-field focus/scroll, calculator estimate synchronization, selected-assignment focus/scroll, navigation, publication gates, scripts, landmarks, unique IDs, and local links.
 - Generated proof content and `git diff --check` pass.
 - The Vercel branch preview was inspected at 1363 × 936. All nine requested pages were opened. Live interaction checks confirmed invalid inquiry focus below the header, intent reset, active navigation, and keyboard-operated yearly/monthly amortization.
-- Tablet and phone visual sign-off remains open: this browser exposes no viewport resize. Responsive behavior was checked in source and DOM regression tests, not represented as a device or narrow-viewport visual test.
-- No successful live inquiry was sent. Delivery/error paths use mocked responses; actual inbox delivery remains an owner check.
+- Matthew subsequently reported that everything is working on September 21, 2026. This is owner-reported acceptance; the browser still exposes no viewport resize, so agent verification remains desktop inspection plus responsive source and DOM checks.
+- No successful live inquiry was sent by the agent. Delivery/error paths were checked with mocked responses.
 
 ## Content still held
 
-See `content-holds.md`: approved Lake Street photography, reconciled transaction/case-study proof and Elm address, dated market notes, Matthew's Lakeview broker note, and personal recommendations. Existing photography was reused with honest assignment captions; new local expertise was not invented.
+See `content-holds.md`: approved Lake Street photography, reconciled transaction/case-study proof and Elm address, Matthew's Lakeview broker note, and personal recommendations. Dated market notes were added in the subsequent neighborhood pass documented in `neighborhood-pilot-status.md`. Existing photography was reused with honest assignment captions; new personal experience was not invented.

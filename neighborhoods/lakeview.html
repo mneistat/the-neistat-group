@@ -22,7 +22,7 @@
   <script src="/analytics.js" defer></script>
   <script src="/nav.js?v=8" defer></script>
 
-  <link rel="stylesheet" href="/neighborhoods/guide.css?v=2">
+  <link rel="stylesheet" href="/neighborhoods/guide.css?v=3">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -68,7 +68,7 @@
       </div>
     </header>
     <p class="np-photo-credit">Belmont Harbor · Photo: <a href="https://commons.wikimedia.org/wiki/File:Chicago_Skyline_viewed_from_Belmont_Harbor.jpg">TheWxResearcher</a> / <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>. Display cropped to fit.</p>
-    <nav class="section-nav np-section-nav" aria-label="Guide sections"><a href="#context">Boundaries</a><a href="#housing">Housing</a><a href="#resources">Public resources</a><a href="#parks">Parks</a><a href="#nearby-work">Selected work</a></nav>
+    <nav class="section-nav np-section-nav" aria-label="Guide sections"><a href="#context">Boundaries</a><a href="#housing">Housing</a><a href="#market">Market notes</a><a href="#parks">Parks</a><a href="#resources">Public resources</a><a href="#nearby-work">Selected work</a></nav>
 
     <!-- ============ 2. THE ESSENCE ============ -->
     <section class="np-band np-band--cream">
@@ -92,6 +92,7 @@
           <h2 class="np-sect-label">The Map</h2>
           <p class="np-map-lede">Diversey to Irving Park, Ravenswood to the lake &mdash; and north to Montrose west of Clark.</p>
           <p class="np-map-note">Boundaries approximate.</p>
+          <p class="np-map-source">Based on <a href="https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas/igwz-8jzy">Chicago&rsquo;s community-area boundary</a>. Neighborhood usage can vary; school attendance areas are separate.</p>
         </div>
         <figure class="np-map np-reveal">
           <svg viewBox="0 0 1200 826" role="img" aria-labelledby="np-map-title np-map-desc">
@@ -162,22 +163,10 @@
         <div class="np-glance np-reveal">
           <div>
             <h3>Transit &amp; Access</h3>
-            <ul class="np-glance-list">
-              <li>CTA Red, Brown &amp; Purple Line Express stations</li>
-              <li>Bus routes</li>
-              <li>DuSable Lake Shore Drive at Belmont &amp; Irving Park</li>
-            </ul>
+            <ul class="np-glance-list"><li><a href="https://www.transitchicago.com/station/belm/">Belmont</a> &mdash; Red, Brown &amp; Purple Line Express</li><li><a href="https://www.transitchicago.com/station/sprt/">Southport</a> &mdash; Brown Line</li><li>Purple Line Express runs during weekday rush periods. Station pages include bus connections and accessibility notices.</li></ul>
           </div>
           <div>
-            <h3>Landmark Districts</h3>
-            <ul class="np-glance-list">
-              <li>Alta Vista Terrace</li>
-              <li>Hawthorne Place</li>
-              <li>Newport Avenue</li>
-              <li>Oakdale Avenue</li>
-              <li>Surf-Pine Grove</li>
-              <li>Terra Cotta Row</li>
-            </ul>
+            <h3>Alta Vista Terrace</h3><p>On the 3800 block, townhouses built between 1900 and 1904 repeat their designs at diagonally opposite ends of the street. The compact scale gives this landmark district its distinctive composition.</p><a class="np-link" href="https://webapps1.chicago.gov/landmarksweb/web/districtdetails.htm?disId=1">Explore the landmark district &rarr;</a>
           </div>
         </div>
       </div>
@@ -223,28 +212,74 @@
       </div>
     </section>
 
-    <!-- ============ 7. SCHOOLS & PUBLIC RESOURCES ============ -->
-    <section id="resources" class="np-band np-band--cream">
-      <div class="np-wrap np-essence-grid">
-        <p class="np-sect-label np-reveal">Public Resources</p>
-        <div class="np-reveal">
-          <h2 class="np-h2">Schools &amp; Public Resources</h2>
-          <p class="np-body">School options, attendance boundaries, and programs can change. Use official district resources to verify current information.</p>
-          <div class="np-links">
-            <a class="np-link" href="https://www.cps.edu/" target="_blank" rel="noopener">Chicago Public Schools &rarr;</a>
-            <a class="np-link" href="https://schoolinfo.cps.edu/schoollocator/" target="_blank" rel="noopener">School Boundary Map &rarr;</a>
+    <!-- Annual community-area sales; source and period travel with the figures. -->
+    <section id="market" class="np-band np-band--dark">
+      <div class="np-wrap">
+        <p class="np-sect-label np-reveal">Market Notes</p>
+        <div class="np-market-grid">
+          <div class="np-reveal">
+            <p class="np-market-period">Calendar year 2025 · Lake View community area</p>
+            <h2 class="np-h2">A market led by condominium sales.</h2>
+            <p class="np-body">Condominiums represented most recorded residential sales in the Lake View community area in 2025. That broad category spans different building sizes and ownership costs. For a specific condo, narrow the comparison by building type, unit size, condition, and parking; review the association&rsquo;s finances separately.</p>
           </div>
+          <div class="np-reveal">
+            <p class="np-market-total"><strong>1,731</strong>Recorded residential property sales in 2025</p>
+            <dl class="np-market-mix" aria-label="2025 recorded sales by property type">
+              <div><dt>Condominium units</dt><dd>1,375</dd></div>
+              <div><dt>Single-family properties</dt><dd>196</dd></div>
+              <div><dt>Buildings with 2–4 units</dt><dd>124</dd></div>
+              <div><dt>Buildings with 5+ units</dt><dd>36</dd></div>
+            </dl>
+          </div>
+        </div>
+        <p class="np-source np-reveal">Source: <a href="https://www.housingstudies.org/data-portal/geography/lake-view/">DePaul Institute for Housing Studies, Lake View</a>. Annual property-sale records; multifamily figures count building sales, not individual apartments. Historical context, not a current price estimate. Source checked <time datetime="2026-09-21">September 21, 2026</time>.</p>
+      </div>
+    </section>
+
+    <section id="parks" class="np-band np-band--cream">
+      <div class="np-wrap">
+        <p class="np-sect-label np-reveal">Parks &amp; Open Space</p>
+        <h2 class="np-h2 np-reveal">The harbor, the trail, and an indoor pool.</h2>
+        <div class="np-places np-reveal">
+          <article>
+            <h3>Belmont Harbor</h3>
+            <span class="np-place-address">3600 N. Recreation Drive</span>
+            <p>The harbor sits within Lincoln Park&rsquo;s lakefront landscape. The Park District&rsquo;s harbor information is a starting point for understanding this stretch of shoreline.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/parks-facilities/belmont-harbor">Explore the harbor &rarr;</a>
+          </article>
+          <article>
+            <h3>Lakefront Trail</h3>
+            <span class="np-place-address">Along Lake Michigan</span>
+            <p>Separate pedestrian and bicycle trails follow the lake. Use the Park District&rsquo;s segment maps and current maintenance notices to plan the route from the neighborhood to the waterfront.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/lakefront-trail">Trail maps &amp; conditions &rarr;</a>
+          </article>
+          <article>
+            <h3>Gill Park</h3>
+            <span class="np-place-address">825 W. Sheridan Road</span>
+            <p>The fieldhouse contains an indoor pool, gymnasium, and fitness center. A playground and t-ball field sit outside; check the Park District for current programs and pool schedules.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/parks-facilities/gill-joseph-park">Programs &amp; pool schedules &rarr;</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ 8. PARKS & OPEN SPACE ============ -->
-    <section id="parks" class="np-band np-band--cream" style="padding-top: 0;">
+    <section id="resources" class="np-band np-band--cream">
       <div class="np-wrap np-essence-grid">
-        <p class="np-sect-label np-reveal">Open Space</p>
         <div class="np-reveal">
-          <h2 class="np-h2">Parks &amp; Open Space</h2>
-          <p class="np-body">Lake View&rsquo;s entire shoreline is Lincoln Park parkland, with Belmont Harbor, the Sydney R. Marovitz Golf Course, the Waveland tennis courts, and the Diversey Driving Range along it. Inland, the neighborhood parks are small &mdash; most under an acre &mdash; and Gill Park, on Sheridan Road, has a fieldhouse with an indoor pool and gymnasium.</p>
+          <p class="np-sect-label">Public Resources</p>
+          <h2 class="np-h2">Start with the address.</h2>
+        </div>
+        <div class="np-resources np-reveal">
+          <article>
+            <h3>Schools &amp; attendance boundaries</h3>
+            <p>Look up the exact property address in CPS&rsquo;s School Locator, then confirm attendance boundaries and enrollment requirements with the district. A neighborhood name alone does not establish school assignment.</p>
+            <a class="np-link" href="https://schoolinfo.cps.edu/schoollocator/">CPS School Locator &rarr;</a>
+          </article>
+          <article>
+            <h3>Libraries &amp; public programs</h3>
+            <p>Merlo Branch at 644 W. Belmont Avenue and Lincoln Belmont Branch at 1659 W. Melrose Street offer study rooms, computers, Wi-Fi, and public programs.</p>
+            <div class="np-resource-links"><a class="np-link" href="https://www.chipublib.org/locations/51/">Merlo Branch &rarr;</a><a class="np-link" href="https://www.chipublib.org/locations/43/">Lincoln Belmont Branch &rarr;</a></div>
+          </article>
         </div>
       </div>
     </section>
@@ -279,6 +314,7 @@
     <section class="np-cta">
       <div class="np-cta-veil"></div>
       <div class="np-cta-inner">
+        <p class="np-eyebrow np-reveal">Explore the Market With Matthew</p>
         <h2 class="np-reveal">Thinking about property in Lakeview?</h2>
         <p class="np-reveal">Start with the address and your goals. We can discuss buying, selling, holding, or repositioning a property.</p>
         <a class="np-btn np-reveal" href="/contact.html?neighborhood=lakeview">Start the Conversation &rarr;</a>
@@ -289,6 +325,7 @@
     <section class="np-return">
       <div class="np-wrap">
         <a href="/neighborhoods.html">&larr; All Neighborhoods</a>
+        <a href="/neighborhoods/lincoln-park.html">Continue to Lincoln Park &rarr;</a>
       </div>
     </section>
 

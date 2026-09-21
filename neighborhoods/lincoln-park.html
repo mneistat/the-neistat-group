@@ -22,7 +22,7 @@
   <script src="/analytics.js" defer></script>
   <script src="/nav.js?v=8" defer></script>
 
-  <link rel="stylesheet" href="/neighborhoods/guide.css?v=2">
+  <link rel="stylesheet" href="/neighborhoods/guide.css?v=3">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -68,7 +68,7 @@
       </div>
     </header>
     <p class="np-photo-credit">South Pond &amp; Nature Boardwalk · Photo: <a href="https://commons.wikimedia.org/wiki/File:View_at_Lincoln_Park_Zoo_Nature_Boardwalk_(15198500880).jpg">Daniel X. O&#x27;Neil from USA</a> / <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>. Display cropped to fit.</p>
-    <nav class="section-nav np-section-nav" aria-label="Guide sections"><a href="#context">Boundaries</a><a href="#housing">Housing</a><a href="#resources">Public resources</a><a href="#parks">Parks</a><a href="#broker-note">Matt’s note</a><a href="#nearby-work">Selected work</a></nav>
+    <nav class="section-nav np-section-nav" aria-label="Guide sections"><a href="#context">Boundaries</a><a href="#housing">Housing</a><a href="#market">Market notes</a><a href="#parks">Parks</a><a href="#resources">Public resources</a><a href="#broker-note">Matt’s note</a><a href="#nearby-work">Selected work</a></nav>
 
     <!-- ============ 2. THE ESSENCE ============ -->
     <section class="np-band np-band--cream">
@@ -91,6 +91,7 @@
           <h2 class="np-sect-label">The Map</h2>
           <p class="np-map-lede">Diversey to North Avenue, the river corridor to the lake.</p>
           <p class="np-map-note">Boundaries approximate.</p>
+          <p class="np-map-source">Based on <a href="https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas/igwz-8jzy">Chicago&rsquo;s community-area boundary</a>. Neighborhood usage can vary; school attendance areas are separate.</p>
         </div>
         <figure class="np-map np-reveal">
           <svg viewBox="0 0 1200 635" role="img" aria-labelledby="np-map-title np-map-desc">
@@ -136,21 +137,10 @@
         <div class="np-glance np-reveal">
           <div>
             <h3>Transit &amp; Access</h3>
-            <ul class="np-glance-list">
-              <li>CTA Red, Brown &amp; Purple lines</li>
-              <li>Bus routes</li>
-              <li>Lakefront connections</li>
-            </ul>
+            <ul class="np-glance-list"><li><a href="https://www.transitchicago.com/station/full/">Fullerton</a> &mdash; Red, Brown &amp; Purple Line Express</li><li><a href="https://www.transitchicago.com/station/armi/">Armitage</a> &mdash; Brown &amp; Purple Line Express</li><li>Purple Line Express runs during weekday rush periods. Station pages include bus connections and accessibility notices.</li></ul>
           </div>
           <div>
-            <h3>Typical Buyer Questions</h3>
-            <ul class="np-glance-list">
-              <li>Parking</li>
-              <li>Outdoor space</li>
-              <li>School boundaries</li>
-              <li>Building quality</li>
-              <li>Block-by-block value</li>
-            </ul>
+            <h3>Armitage &amp; Halsted</h3><p>Above the storefronts, pressed-metal bays, cornices, and corner turrets distinguish the Armitage-Halsted landmark district. Its streets mix small residences with taller mixed-use buildings.</p><a class="np-link" href="https://webapps1.chicago.gov/landmarksweb/web/districtdetails.htm?disId=3">Explore the landmark district &rarr;</a>
           </div>
         </div>
       </div>
@@ -196,28 +186,74 @@
       </div>
     </section>
 
-    <!-- ============ 7. SCHOOLS & PUBLIC RESOURCES ============ -->
-    <section id="resources" class="np-band np-band--cream">
-      <div class="np-wrap np-essence-grid">
-        <p class="np-sect-label np-reveal">Public Resources</p>
-        <div class="np-reveal">
-          <h2 class="np-h2">Schools &amp; Public Resources</h2>
-          <p class="np-body">School options, attendance boundaries, and programs can change. Use official district resources to verify current information.</p>
-          <div class="np-links">
-            <a class="np-link" href="https://www.cps.edu/" target="_blank" rel="noopener">Chicago Public Schools &rarr;</a>
-            <a class="np-link" href="https://schoolinfo.cps.edu/schoollocator/" target="_blank" rel="noopener">School Boundary Map &rarr;</a>
+    <!-- Annual community-area sales; source and period travel with the figures. -->
+    <section id="market" class="np-band np-band--dark">
+      <div class="np-wrap">
+        <p class="np-sect-label np-reveal">Market Notes</p>
+        <div class="np-market-grid">
+          <div class="np-reveal">
+            <p class="np-market-period">Calendar year 2025 · Lincoln Park community area</p>
+            <h2 class="np-h2">The housing type changes the comparison.</h2>
+            <p class="np-body">Condominiums accounted for most recorded residential sales in Lincoln Park in 2025. Single-family properties and entire apartment buildings made up smaller, distinct parts of the market. A useful comparison starts with the same property type, then narrows to the block, condition, parking, and outdoor space.</p>
           </div>
+          <div class="np-reveal">
+            <p class="np-market-total"><strong>1,355</strong>Recorded residential property sales in 2025</p>
+            <dl class="np-market-mix" aria-label="2025 recorded sales by property type">
+              <div><dt>Condominium units</dt><dd>963</dd></div>
+              <div><dt>Single-family properties</dt><dd>252</dd></div>
+              <div><dt>Buildings with 2–4 units</dt><dd>113</dd></div>
+              <div><dt>Buildings with 5+ units</dt><dd>27</dd></div>
+            </dl>
+          </div>
+        </div>
+        <p class="np-source np-reveal">Source: <a href="https://www.housingstudies.org/data-portal/geography/lincoln-park/">DePaul Institute for Housing Studies, Lincoln Park</a>. Annual property-sale records; multifamily figures count building sales, not individual apartments. Historical context, not a current price estimate. Source checked <time datetime="2026-09-21">September 21, 2026</time>.</p>
+      </div>
+    </section>
+
+    <section id="parks" class="np-band np-band--cream">
+      <div class="np-wrap">
+        <p class="np-sect-label np-reveal">Parks &amp; Open Space</p>
+        <h2 class="np-h2 np-reveal">From South Pond to the neighborhood interior.</h2>
+        <div class="np-places np-reveal">
+          <article>
+            <h3>Nature Boardwalk</h3>
+            <span class="np-place-address">South Pond at Lincoln Park Zoo</span>
+            <p>Native planting around South Pond brings prairie, wetland, and savanna habitats into the park. The boardwalk is also a research site for the zoo&rsquo;s Urban Wildlife Institute.</p>
+            <a class="np-link" href="https://www.lpzoo.org/exhibits/nature-boardwalk/">Explore the boardwalk &rarr;</a>
+          </article>
+          <article>
+            <h3>Oz Park</h3>
+            <span class="np-place-address">2021 N. Burling Street</span>
+            <p>Tennis courts, ball fields, basketball, a community garden, and Dorothy&rsquo;s Playground sit among sculptures of the Oz characters.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/parks-facilities/oz-park">Park details &amp; programs &rarr;</a>
+          </article>
+          <article>
+            <h3>Alfred Caldwell Lily Pool</h3>
+            <span class="np-place-address">125 W. Fullerton Parkway</span>
+            <p>Limestone paths, a pavilion, and native planting frame Caldwell&rsquo;s 1930s landscape. Check seasonal access before planning a visit.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/parks-facilities/lincoln-park-alfred-caldwell-lily-pool">Plan a visit &rarr;</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ 8. PARKS & OPEN SPACE ============ -->
-    <section id="parks" class="np-band np-band--cream" style="padding-top: 0;">
+    <section id="resources" class="np-band np-band--cream">
       <div class="np-wrap np-essence-grid">
-        <p class="np-sect-label np-reveal">Open Space</p>
         <div class="np-reveal">
-          <h2 class="np-h2">Parks &amp; Open Space</h2>
-          <p class="np-body">Lincoln Park, Oz Park, lakefront access, playgrounds, sport fields, and trails help shape the neighborhood&rsquo;s daily rhythm.</p>
+          <p class="np-sect-label">Public Resources</p>
+          <h2 class="np-h2">Start with the address.</h2>
+        </div>
+        <div class="np-resources np-reveal">
+          <article>
+            <h3>Schools &amp; attendance boundaries</h3>
+            <p>Look up the exact property address in CPS&rsquo;s School Locator, then confirm attendance boundaries and enrollment requirements with the district. A neighborhood name alone does not establish school assignment.</p>
+            <a class="np-link" href="https://schoolinfo.cps.edu/schoollocator/">CPS School Locator &rarr;</a>
+          </article>
+          <article>
+            <h3>Libraries &amp; public programs</h3>
+            <p>Lincoln Park Branch at 1150 W. Fullerton Avenue provides study rooms, computers, Wi-Fi, and public programs.</p>
+            <div class="np-resource-links"><a class="np-link" href="https://www.chipublib.org/locations/44/">Lincoln Park Branch &rarr;</a></div>
+          </article>
         </div>
       </div>
     </section>
@@ -278,6 +314,7 @@
            alt="" aria-hidden="true" width="720" height="480" loading="lazy">
       <div class="np-cta-veil"></div>
       <div class="np-cta-inner">
+        <p class="np-eyebrow np-reveal">Explore the Market With Matthew</p>
         <h2 class="np-reveal">Thinking about property in Lincoln Park?</h2>
         <p class="np-reveal">Start with the address and your goals. We can discuss buying, selling, holding, or repositioning a property.</p>
         <a class="np-btn np-reveal" href="/contact.html?neighborhood=lincoln-park">Start the Conversation &rarr;</a>
@@ -288,6 +325,7 @@
     <section class="np-return">
       <div class="np-wrap">
         <a href="/neighborhoods.html">&larr; All Neighborhoods</a>
+        <a href="/neighborhoods/lakeview.html">Continue to Lakeview &rarr;</a>
       </div>
     </section>
 

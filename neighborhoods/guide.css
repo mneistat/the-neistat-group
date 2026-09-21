@@ -392,3 +392,34 @@
   .np-stock { grid-template-columns: 1fr; }
   .np-work--single figure { grid-template-columns: 1fr; }
 }
+
+/* Sourced guide content: open editorial columns, with no card containers. */
+.np-section-nav { margin-top: 0; }
+.np-section-nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.np-map-source { font: 13px/1.7 var(--font); color: #c8c2b8; margin: 18px 0 0; max-width: 38ch; }
+.np-map-source a, .np-glance a, .np-source a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
+.np-glance a { display: inline-block; padding: 4px 0; }
+.np-market-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(32px,6vw,90px); align-items: start; }
+.np-market-period { font: 12px/1.7 var(--font); letter-spacing: .08em; color: #c8c2b8; margin: 0 0 22px; }
+.np-market-total { margin: 0 0 28px; font: 18px/1.5 var(--serif); color: #EDE8DE; }
+.np-market-total strong { display: block; font: 400 clamp(56px,7vw,88px)/1.1 var(--serif); letter-spacing: -.03em; margin-bottom: 8px; }
+.np-market-mix { margin: 0; color: #EDE8DE; }
+.np-market-mix > div { display: flex; justify-content: space-between; gap: 24px; padding: 14px 0; border-top: 1px solid rgba(237,232,222,.2); font: 15px/1.5 var(--font); }
+.np-market-mix dd { margin: 0; font-variant-numeric: tabular-nums; }
+.np-source { font: 13px/1.7 var(--font); color: #655f55; margin: 28px 0 0; max-width: 86ch; }
+.np-band--dark .np-source { color: #c8c2b8; }
+.np-places { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(28px,4vw,60px); margin-top: 38px; }
+.np-places h3, .np-resources h3 { font: 400 clamp(22px,2vw,28px)/1.25 var(--serif); margin: 0 0 14px; }
+.np-places p, .np-resources p { font: 15px/1.75 var(--font); color: rgba(11,10,7,.78); margin: 0; }
+.np-place-address { display: block; font: 12px/1.6 var(--font); color: #655f55; margin-bottom: 12px; }
+.np-places .np-link, .np-resources .np-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 14px; padding: 10px 0; font-size: 11px; letter-spacing: .1em; }
+.np-resources { display: grid; gap: 32px; }
+.np-resource-links { display: flex; flex-wrap: wrap; gap: 0 28px; }
+.np-return .np-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; }
+.np-return a { display: inline-flex; align-items: center; min-height: 44px; }
+.np-cta .np-eyebrow { font-size: 11px; margin-bottom: 24px; color: #c8c2b8; }
+@media (max-width: 900px) {
+  .np-market-grid { grid-template-columns: 1fr; }
+  .np-places { grid-template-columns: 1fr; gap: 32px; }
+  .np-places article { max-width: 64ch; }
+}

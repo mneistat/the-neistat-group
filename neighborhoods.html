@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neighborhood Intelligence | The Neistat Group</title>
-  <meta name="description" content="Practical, block-by-block perspective on Chicago neighborhoods where architecture, lifestyle, access, and long-term real estate decisions intersect.">
+  <meta name="description" content="Explore Lincoln Park and Lakeview through housing, dated market notes, parks, transit, and the details that shape a Chicago property decision.">
   <link rel="canonical" href="https://www.theneistatgroup.com/neighborhoods">
   <meta property="og:title" content="Neighborhood Intelligence | The Neistat Group">
-  <meta property="og:description" content="Practical, block-by-block perspective on Chicago neighborhoods where architecture, lifestyle, access, and long-term real estate decisions intersect.">
+  <meta property="og:description" content="Explore Lincoln Park and Lakeview through housing, dated market notes, parks, transit, and the details that shape a Chicago property decision.">
   <meta property="og:url" content="https://www.theneistatgroup.com/neighborhoods">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.theneistatgroup.com/properties/3521-cortland-aerial.jpg">
+  <meta property="og:image" content="https://www.theneistatgroup.com/images/neighborhoods/lakeview.jpg">
   <link rel="stylesheet" href="styles.css?v=38">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>
@@ -192,7 +192,7 @@
       grid-template-columns: repeat(12, 1fr);
       gap: clamp(12px, 1.5vw, 22px);
     }
-    /* Magazine rhythm: two large, four supporting. Not six equal boxes. */
+    /* Unequal image widths keep the two-guide collection editorial. */
     .ni-card--lead    { grid-column: span 7; min-height: clamp(420px, 46vw, 660px); }
     .ni-card--second  { grid-column: span 5; min-height: clamp(420px, 46vw, 660px); }
     .ni-card--minor   { grid-column: span 3; min-height: clamp(280px, 26vw, 400px); }
@@ -270,6 +270,39 @@
     }
     a.ni-card:hover .ni-card-go,
     a.ni-card:focus-visible .ni-card-go { border-bottom-color: #EDE8DE; gap: 15px; }
+
+    .ni-guide-links {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: clamp(12px, 1.5vw, 22px);
+      margin-top: 26px;
+    }
+    .ni-guide-links p {
+      margin: 0 0 6px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: rgba(237,232,222,0.72);
+    }
+    .ni-guide-links ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .ni-guide-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+      color: #EDE8DE;
+      text-decoration-line: underline;
+      text-underline-offset: 5px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: rgba(237,232,222,0.42);
+    }
+    .ni-guide-links a:hover { text-decoration-color: #EDE8DE; }
 
     /* Cards without a published page are NOT links and NOT empty hash anchors.
        A styled control that goes nowhere is the single worst pattern on a
@@ -357,6 +390,7 @@
 
     /* ---------------- focus ---------------- */
     .ni-card:focus-visible,
+    .ni-guide-links a:focus-visible,
     .ni-hero-cta:focus-visible,
     .ni-btn:focus-visible {
       outline: 2px solid #EDE8DE;
@@ -369,6 +403,7 @@
       .ni-card--minor { grid-column: span 6; min-height: 320px; }
       .ni-intro-inner { grid-template-columns: 1fr; }
       .ni-intro-copy { max-width: 44ch; }
+      .ni-guide-links { grid-template-columns: 1fr 1fr; gap: 24px; }
     }
     @media (max-width: 620px) {
       .ni-hero { min-height: 74vh; }
@@ -376,6 +411,7 @@
       .ni-sect-head { flex-direction: column; align-items: flex-start; }
       .ni-cluster { text-align: left; }
       .ni-plot-mark { font-size: 128px; }
+      .ni-guide-links { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -418,7 +454,7 @@
       <div class="ni-hero-inner">
         <p class="ni-eyebrow">Chicago</p>
         <h1>Neighborhood Intelligence</h1>
-        <p class="ni-hero-sub">Practical, block-by-block perspective on Chicago neighborhoods where architecture, lifestyle, access, and long-term real estate decisions intersect.</p>
+        <p class="ni-hero-sub">Architecture, housing, and the details that shape a property decision. Begin with Lincoln Park and Lakeview.</p>
         <a class="ni-hero-cta" href="#featured">Explore the Neighborhoods &rarr;</a>
       </div>
     </header>
@@ -429,8 +465,8 @@
     <!-- ============ INTRO ============ -->
     <section class="ni-intro">
       <div class="ni-intro-inner">
-        <p class="ni-intro-label ni-reveal">A More Thoughtful Look at Chicago</p>
-        <p class="ni-intro-copy ni-reveal">Each neighborhood has its own rhythm, architecture, and market dynamics. These guides go beyond listings to help you understand what it is like to live, buy, sell, or invest there.</p>
+        <p class="ni-intro-label ni-reveal">Read the Neighborhood.<br>Understand the Property.</p>
+        <p class="ni-intro-copy ni-reveal">Start with the streets and buildings. Then look closer: housing types, dated market notes, transit, parks, and the questions to ask about an individual address.</p>
       </div>
     </section>
 
@@ -450,7 +486,7 @@
             <div class="ni-card-veil"></div>
             <div class="ni-card-body">
               <h3>Lincoln Park</h3>
-              <p class="ni-card-line">Historic homes, Lincoln Park, and connections to the lakefront.</p>
+              <p class="ni-card-line">Greystones, two-flats, and new construction. Read the housing mix, market notes, and Matthew&rsquo;s perspective on the block.</p>
               <span class="ni-card-go">Explore &rarr;</span>
             </div>
           </a>
@@ -460,12 +496,30 @@
             <div class="ni-card-veil"></div>
             <div class="ni-card-body">
               <h3>Lakeview</h3>
-              <p class="ni-card-line">Three-flats, courtyard buildings, lakefront parkland, and Wrigley Field.</p>
+              <p class="ni-card-line">Courtyard buildings, three-flats, and the lakefront. Explore housing, market notes, and connections from Belmont Harbor to the &lsquo;L&rsquo;.</p>
               <span class="ni-card-go">Explore &rarr;</span>
             </div>
           </a>
 
 
+        </div>
+
+        <nav class="ni-guide-links ni-reveal" aria-label="Go deeper in the neighborhood guides">
+          <div>
+            <p>Lincoln Park</p>
+            <ul>
+              <li><a href="neighborhoods/lincoln-park.html#housing" aria-label="Lincoln Park housing">Housing</a></li>
+              <li><a href="neighborhoods/lincoln-park.html#market" aria-label="Lincoln Park market notes">Market notes</a></li>
+            </ul>
+          </div>
+          <div>
+            <p>Lakeview</p>
+            <ul>
+              <li><a href="neighborhoods/lakeview.html#housing" aria-label="Lakeview housing">Housing</a></li>
+              <li><a href="neighborhoods/lakeview.html#market" aria-label="Lakeview market notes">Market notes</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </section>
 
