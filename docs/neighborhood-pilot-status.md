@@ -50,3 +50,7 @@ The guides are not editorially complete against the master brief until Matthew s
 Keep these sections absent until approved copy exists. The factual parks and architectural resources are not presented as Matthew's endorsements. Preserve the approved Lincoln Park note exactly.
 
 No new neighborhood pages, IDX, active listings, transaction claims, or case studies were added.
+
+## Verification
+
+All 17 existing Node/jsdom regression checks pass, including local links and fragment targets, generated proof, and contextual inquiries. The generated-content and whitespace checks also pass. Desktop preview inspection covered the new market sections, parks/resources, and hub; it caught an inherited light heading color on the new cream sections, corrected in this pass. Responsive grid rules were reviewed in source; this browser cannot resize, so no new mobile visual test is claimed.

@@ -409,7 +409,7 @@
 .np-source { font: 13px/1.7 var(--font); color: #655f55; margin: 28px 0 0; max-width: 86ch; }
 .np-band--dark .np-source { color: #c8c2b8; }
 .np-places { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(28px,4vw,60px); margin-top: 38px; }
-.np-places h3, .np-resources h3 { font: 400 clamp(22px,2vw,28px)/1.25 var(--serif); margin: 0 0 14px; }
+.np-places h3, .np-resources h3 { font: 400 clamp(22px,2vw,28px)/1.25 var(--serif); color: var(--navy); margin: 0 0 14px; }
 .np-places p, .np-resources p { font: 15px/1.75 var(--font); color: rgba(11,10,7,.78); margin: 0; }
 .np-place-address { display: block; font: 12px/1.6 var(--font); color: #655f55; margin-bottom: 12px; }
 .np-places .np-link, .np-resources .np-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 14px; padding: 10px 0; font-size: 11px; letter-spacing: .1em; }
