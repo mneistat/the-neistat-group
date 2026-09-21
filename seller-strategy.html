@@ -239,10 +239,10 @@
       }
     }
     .ss-presentation-image { margin-top: clamp(36px,5vw,64px); }
-    .ss-presentation-image img { width: 100%; max-height: 680px; object-fit: cover; object-position: center; }
-    .ss-presentation-image figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font: 12px/1.6 var(--font); color: #655f55; padding-top: 16px; }
+    .ss-presentation-image img { width: 100%; max-width: 840px; height: auto; margin: 0 auto; }
+    .ss-presentation-image figcaption { max-width: 840px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font: 12px/1.6 var(--font); color: #655f55; padding-top: 16px; }
     .ss-presentation-image a { text-decoration: underline; text-underline-offset: 4px; min-height: 32px; }
-    @media (max-width: 620px) { .ss-presentation-image img { aspect-ratio: 3/2; } }
+    .ss-dark + .ss-dark { padding-top: 24px; }
   </style>
 </head>
 <body>

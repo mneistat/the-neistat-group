@@ -1,0 +1,31 @@
+# Approved visual and UX audit fixes
+
+Implemented on `codex/website-audit-fixes` after Matthew approved the audit recommendations. Keep PR #2 in draft. No merge or production promotion is authorized.
+
+## Page changes
+
+| Page | Changes |
+| --- | --- |
+| Homepage | Wider supporting copy includes buyers; buying path leads to the process guide; photographic Selected Work lead; smaller-screen selections reveal and focus the selected assignment; three original testimonials in an editorial composition; exact approved grandfather quote; less repeated section spacing; contextual press links. |
+| Selected Work | Wellington photography leads; Lake Street remains labeled illustrative supporting material and is classified Commercial; alternating image widths are consistent; all published figures and publication gates remain intact. |
+| Neighborhood hub | Belmont Harbor lead varies the opening from Lincoln Park; image credits follow the relevant imagery; stronger text overlay. |
+| Lincoln Park | Architectural photograph accompanies housing descriptions; redundant housing/parks lists removed from At a Glance; broker-note section link; tighter adjoining light sections; contextual closing question. |
+| Lakeview | Same guide refinements; the single nearby assignment spans an intentional image-and-text composition. |
+| Seller Strategy | Approved listing photograph demonstrates presentation at its native scale; repetitive comparison table removed; less spacing between adjoining dark sections. |
+| Affordability | Readable amortization row headers; horizontal table scrolling; clearer secondary text; consistent control geometry; compact sticky estimate at tablet/phone widths, including the last-valid-result warning. |
+| About | People First opening; portrait immediately follows a shorter hero; exact grandfather quotation; hospitality context; entry blackout, counters, and background parallax removed; portrait crop preserves the head. |
+| Contact | Optional intent can return to No preference; native select indicator; more specific invitation; consistent form geometry. |
+
+Shared changes: active page/parent navigation, larger footer link targets, native pointer, invalid form field and label centered clear of the fixed header, and mobile input sizing. The cursor removal and shared asset version updates also apply to the existing supporting pages.
+
+## Verification
+
+- 17 Node/jsdom regression checks cover mortgage mathematics, schedule reconciliation, all four form flows with mocked delivery, optional intent reset, invalid-field focus/scroll, calculator estimate synchronization, selected-assignment focus/scroll, navigation, publication gates, scripts, landmarks, unique IDs, and local links.
+- Generated proof content and `git diff --check` pass.
+- The Vercel branch preview was inspected at 1363 × 936. All nine requested pages were opened. Live interaction checks confirmed invalid inquiry focus below the header, intent reset, active navigation, and keyboard-operated yearly/monthly amortization.
+- Tablet and phone visual sign-off remains open: this browser exposes no viewport resize. Responsive behavior was checked in source and DOM regression tests, not represented as a device or narrow-viewport visual test.
+- No successful live inquiry was sent. Delivery/error paths use mocked responses; actual inbox delivery remains an owner check.
+
+## Content still held
+
+See `content-holds.md`: approved Lake Street photography, reconciled transaction/case-study proof and Elm address, dated market notes, Matthew's Lakeview broker note, and personal recommendations. Existing photography was reused with honest assignment captions; new local expertise was not invented.

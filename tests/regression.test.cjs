@@ -146,6 +146,23 @@ test('neighborhood guides identify their parent in desktop and mobile navigation
   }
   dom.window.close();
 });
+test('a compact Selected Work selection reveals and focuses the matching assignment', () => {
+  const dom = page('index.html'), w = dom.window, d = w.document;
+  w.matchMedia = query => ({ matches: query.includes('max-width: 1100px'), addEventListener() {} });
+  w.eval(read('selected-work-data.js'));
+  let revealed = false;
+  d.getElementById('swFigure').scrollIntoView = options => { revealed = options.block === 'start'; };
+  const script = [...d.querySelectorAll('script:not([src])')].find(s => s.textContent.includes('Selected Work — render and switch'));
+  w.eval(script.textContent);
+  d.querySelector('[data-tx="lake"]').click();
+  assert.equal(d.getElementById('swAddress').textContent, '1035 W. Lake Street');
+  assert.equal(d.activeElement.id, 'swAddress');
+  assert.equal(revealed, true);
+  assert.equal(d.querySelector('.sw-frame.is-active').dataset.frame, 'lake');
+  assert.equal(d.querySelectorAll('.sw-item[aria-current="true"]').length, 1);
+  assert.equal(d.getElementById('swView').getAttribute('href'), 'selected-work.html#lake');
+  dom.window.close();
+});
 test('mobile menu isolates the page, contains focus and restores focus on Escape', () => {
   const dom = page('contact.html'), w = dom.window, d = w.document;
   w.matchMedia = () => ({ matches: false, addEventListener() {} });
