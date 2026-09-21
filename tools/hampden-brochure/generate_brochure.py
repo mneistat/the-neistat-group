@@ -1,263 +1,192 @@
 #!/usr/bin/env python3
-"""Build the print edition of the Hampden board brief.
-
-Requires reportlab, svglib and Pillow. All text is editorially condensed from
-the September 21, 2026 board website; do not update underlying claims without
-updating the source website and its verification date.
+"""Hampden board brochure: editorial print edition, September 21, 2026.
+Run python3 generate.py --output path/to/brochure.pdf.
+Requires reportlab, svglib and Pillow. Assets and fonts are bundled.
 """
 from pathlib import Path
-import argparse
-import base64
-from html.parser import HTMLParser
 from io import BytesIO
-import re
-
+import argparse, base64, re
+from PIL import Image
 from reportlab.pdfgen import canvas
-from reportlab.lib.colors import HexColor, Color, white
+from reportlab.lib.colors import HexColor, white
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import Paragraph
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.graphics import renderPDF
 from reportlab.lib.utils import ImageReader
+from reportlab.graphics import renderPDF
 from svglib.svglib import svg2rlg
-from PIL import Image
 
-HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
-ap = argparse.ArgumentParser()
-default_root = HERE.parents[1] if HERE.parent.name == 'tools' else ROOT
-ap.add_argument('--source', type=Path, default=default_root/'hampden-board-site/index.html')
-ap.add_argument('--assets', type=Path, help='Optional folder containing reference-0.svg and reference-1.jpg; otherwise extract embedded images from the source HTML.')
-ap.add_argument('--font-dir', type=Path, default=Path('/usr/share/fonts/truetype/dejavu'))
-ap.add_argument('--output', type=Path, default=default_root/'hampden-board-site/Hampden-Board-Brochure.pdf')
-args = ap.parse_args()
-args.output.parent.mkdir(parents=True, exist_ok=True)
-
-class EmbeddedImages(HTMLParser):
-    def __init__(self):
-        super().__init__(); self.images=[]
-    def handle_starttag(self, tag, attrs):
-        a=dict(attrs)
-        if tag=='img' and a.get('src','').startswith('data:image/'):
-            header,data=a['src'].split(',',1)
-            if ';base64' in header:
-                self.images.append((header.split(';')[0][5:],base64.b64decode(data)))
-
-assets={}
-if args.assets:
-    for name in ['reference-0.svg','reference-1.jpg','reference-2.svg']:
-        assets[name]=(args.assets/name).read_bytes()
-else:
-    parser=EmbeddedImages();parser.feed(args.source.read_text())
-    svgs=[data for mime,data in parser.images if mime=='image/svg+xml']
-    photos=[data for mime,data in parser.images if mime in ('image/jpeg','image/jpg')]
-    if len(svgs)<2 or not photos: raise ValueError('Expected header logo, building photo, and footer logo embedded in source HTML.')
-    assets={'reference-0.svg':svgs[0],'reference-1.jpg':photos[0],'reference-2.svg':svgs[-1]}
-
-fonts = args.font_dir
-for name, fn in [('Sans','DejaVuSans.ttf'),('Sans-Bold','DejaVuSans-Bold.ttf'),('Serif','DejaVuSerif.ttf'),('Serif-Bold','DejaVuSerif-Bold.ttf')]:
-    pdfmetrics.registerFont(TTFont(name, str(fonts/fn)))
-pdfmetrics.registerFontFamily('Sans', normal='Sans', bold='Sans-Bold', italic='Sans', boldItalic='Sans-Bold')
-pdfmetrics.registerFontFamily('Serif', normal='Serif', bold='Serif-Bold', italic='Serif', boldItalic='Serif-Bold')
-
-INK = HexColor('#282523')
-MUTED = HexColor('#66615b')
-ACCENT = HexColor('#934b40')
-CREAM = HexColor('#f8f6f1')
-PANEL = HexColor('#eeeae2')
-RULE = HexColor('#d5cec2')
-W, H = 612, 792
-M, CW = 44, 524
+ROOT=Path(__file__).resolve().parent
+ap=argparse.ArgumentParser(); ap.add_argument('--output',type=Path,default=ROOT/'Hampden-Board-Brochure.pdf'); args=ap.parse_args()
+args.output.parent.mkdir(parents=True,exist_ok=True)
+for name,fn in [('Inter','Inter-Regular.ttf'),('Inter-Semi','Inter-SemiBold.ttf'),('Cormorant','CormorantGaramond-SemiBold.ttf')]:
+    pdfmetrics.registerFont(TTFont(name,str(ROOT/'fonts'/fn)))
+pdfmetrics.registerFontFamily('Inter',normal='Inter',bold='Inter-Semi',italic='Inter',boldItalic='Inter-Semi')
+W,H=612,792; M=44; CW=524
+INK=HexColor('#29242A'); MUTED=HexColor('#696269'); ACCENT=HexColor('#8C554A'); PAPER=HexColor('#F5F2ED'); LINE=HexColor('#DCD5CC')
 SITE='https://hampden-board-site.vercel.app/'
-CHICAGO='https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2658975'
 FANNIE='https://singlefamily.fanniemae.com/media/document/pdf/lender-letter-ll-2026-03-updates-project-standards-property-insurance-requirements'
-
-c = canvas.Canvas(str(args.output), pagesize=(W,H), pageCompression=1)
+CHICAGO='https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2658975'
+c=canvas.Canvas(str(args.output),pagesize=(W,H),pageCompression=1)
 c.setTitle('2629 North Hampden Court | Board Brochure')
 c.setAuthor('Matthew Neistat | The Neistat Group')
-c.setSubject('Board discussion: complimentary valuation, records, sale strategies and commission')
-checks=[]
+c.setSubject('A clear place to start: valuation, options and representation')
+checks=[];page=0
 
-def para(text,x,top,width=CW,size=10.6,leading=14.9,color=INK,font='Sans',space=0):
-    p=Paragraph(text,ParagraphStyle('p',fontName=font,fontSize=size,leading=leading,textColor=color,spaceAfter=0))
-    _,height=p.wrap(width,1000)
-    p.drawOn(c,x,H-top-height)
-    checks.append((page_no, re.sub('<[^>]+>','',text)[:55], top, top+height))
-    return top+height+space
+def rect(x,t,w,h,color):
+    c.setFillColor(color);c.rect(x,H-t-h,w,h,stroke=0,fill=1)
+def line(t,x=M,w=CW):
+    c.setStrokeColor(LINE);c.setLineWidth(.55);c.line(x,H-t,x+w,H-t)
+def p(txt,x,t,w=CW,size=10.8,lead=15.2,font='Inter',color=INK):
+    q=Paragraph(txt,ParagraphStyle('x',fontName=font,fontSize=size,leading=lead,textColor=color))
+    _,h=q.wrap(w,1000);q.drawOn(c,x,H-t-h)
+    checks.append((page,re.sub('<[^>]+>','',txt)[:55],t,t+h))
+    return t+h
 
-def line(top,x=M,width=CW,color=RULE):
-    c.setStrokeColor(color);c.setLineWidth(.6);c.line(x,H-top,x+width,H-top)
+def label(txt,x,t,color=MUTED,size=7.2,space=1.25):
+    c.saveState();c.setFillColor(color);c.setFont('Inter-Semi',size)
+    q=c.beginText(x,H-t-size);q.setCharSpace(space);q.textOut(txt.upper());c.drawText(q);c.restoreState()
 
-def label(text,x,top,color=ACCENT,size=8.2):
-    c.saveState()
-    c.setFillColor(color);c.setFont('Sans-Bold',size)
-    t=c.beginText(x,H-top-size);t.setCharSpace(1.15);t.textOut(text.upper());c.drawText(t)
-    c.restoreState()
-
-def rect(x,top,width,height,fill):
-    c.setFillColor(fill);c.rect(x,H-top-height,width,height,fill=1,stroke=0)
-
-def logo(fn,x,top,width):
-    source=assets[fn]
-    embedded=None
+def logo(fn,x,t,w):
+    source=(ROOT/'assets'/fn).read_bytes();embedded=None
     if fn=='reference-2.svg':
-        # svglib's PDF renderer drops the alpha mask of nested SVG raster images.
-        # Keep the original SVG geometry and embed its original RGBA logo directly.
-        match=re.search(rb'<image[^>]+data:image/png;base64,([^\"]+)"[^>]*/>',source)
-        if match:
-            embedded=base64.b64decode(match.group(1))
-            source=source[:match.start()]+source[match.end():]
-    d=svg2rlg(BytesIO(source));scale=width/d.width;d.scale(scale,scale)
-    renderPDF.draw(d,c,x,H-top-d.height*scale)
+        m=re.search(rb'<image[^>]+data:image/png;base64,([^\"]+)"[^>]*/>',source)
+        if m:embedded=base64.b64decode(m.group(1));source=source[:m.start()]+source[m.end():]
+    d=svg2rlg(BytesIO(source));s=w/d.width;d.scale(s,s);renderPDF.draw(d,c,x,H-t-d.height*s)
     if embedded:
-        svgscale=width/1490.92  # SVG source coordinates; svglib converts CSS px to points.
-        c.drawImage(ImageReader(BytesIO(embedded)),x+(944-67.081)*svgscale,H-top-(97-29+88)*svgscale,542*svgscale,88*svgscale,mask='auto')
+        q=w/1490.92
+        c.drawImage(ImageReader(BytesIO(embedded)),x+(944-67.081)*q,H-t-(97-29+88)*q,542*q,88*q,mask='auto')
 
-def base(n,section):
-    global page_no
-    page_no=n
-    rect(0,0,W,H,CREAM)
+def photo(x,t,w,h,focus=.48):
+    im=Image.open(ROOT/'assets/reference-1.jpg').convert('RGB')
+    ratio=w/h
+    if im.width/im.height>ratio:
+        cropw=im.height*ratio;left=(im.width-cropw)*focus;box=(left,0,left+cropw,im.height)
+    else:
+        croph=im.width/ratio;top=(im.height-croph)*focus;box=(0,top,im.width,top+croph)
+    im=im.crop(box)
+    b=BytesIO();im.save(b,format='JPEG',quality=94,optimize=True);b.seek(0)
+    c.drawImage(ImageReader(b),x,H-t-h,w,h)
+
+def base(n,title):
+    global page
+    page=n
+    rect(0,0,W,H,white)
     if n>1:
-        label('2629 NORTH HAMPDEN COURT',M,28,color=MUTED,size=7.2)
-        c.setFont('Sans',7.3);c.setFillColor(MUTED);c.drawRightString(W-M,H-35,section.upper())
-        line(47)
-    line(745)
-    c.setFont('Sans',7.3);c.setFillColor(MUTED)
-    c.drawString(M,H-762,'THE NEISTAT GROUP  /  BOARD DISCUSSION  /  SEPTEMBER 21, 2026')
-    c.drawRightString(W-M,H-762,f'{n:02d} / 04')
-    c.setFont('Sans',7.3);c.drawString(M,H-775,'hampden-board-site.vercel.app')
-    c.linkURL(SITE,(M,12,M+170,25),relative=0)
+        label('2629 NORTH HAMPDEN COURT',M,31,size=7,space=1)
+        c.setFont('Inter',7.3);c.setFillColor(MUTED);c.drawRightString(W-M,H-38,title)
+        line(53)
+    line(754)
+    c.setFont('Inter',7.2);c.setFillColor(MUTED)
+    c.drawString(M,22,'THE NEISTAT GROUP')
+    c.drawRightString(W-M,22,f'{n:02d} / 04')
 
-def title(kicker,heading,sub=None):
-    label(kicker,M,68)
-    t=para(heading,M,88,size=27,leading=32,font='Serif',space=10)
-    if sub:t=para(sub,M,t,size=11,leading=15.5,color=MUTED,space=16)
+def heading(kicker,title,sub=None):
+    label(kicker,M,84,color=ACCENT)
+    t=p(title,M,101,CW,size=35,lead=36,font='Cormorant')
+    if sub:t=p(sub,M,t+10,CW,size=11,lead=15.5,color=MUTED)
     return t
 
-def bullet(text,x,top,width,size=10.6):
-    c.setFillColor(ACCENT);c.circle(x+2,H-top-6,1.6,fill=1,stroke=0)
-    return para(text,x+12,top,width-12,size=size,leading=14.5,space=5)
-
-# PAGE ONE / property and the first decision
-base(1,'Overview')
-logo('reference-0.svg',M,31,195)
-label('BOARD DISCUSSION',397,40,color=MUTED,size=7.1)
-label('LINCOLN PARK, CHICAGO',M,100)
-para('2629 North<br/>Hampden Court.',M,119,size=33,leading=37,font='Serif')
-para('Know the value. Then decide.',M,206,size=18,leading=22,font='Serif',color=ACCENT)
-
-# Crop the source photograph to a panoramic facade view without distorting it.
-im=Image.open(BytesIO(assets['reference-1.jpg']))
-crop_h=im.width*194/CW
-im=im.crop((0,245,im.width,245+crop_h))
-photo=BytesIO()
-im.convert('RGB').save(photo,format='JPEG',quality=92,optimize=True)
-photo.seek(0)
-c.drawImage(ImageReader(photo),M,H-449,CW,194,mask='auto',preserveAspectRatio=False)
-label('THE PROPERTY',M,458,color=MUTED,size=7)
-para('<link href="https://www.zillow.com/homedetails/2629-N-Hampden-Ct-APT-204-Chicago-IL-60614/3726053_zpid/" color="#66615b">Photo: property listing on Zillow</link>',404,457,164,size=7.1,leading=9)
-for x,big,small in [(M,'67*','Residential units'),(M+135,'34','Deeded parking spaces'),(M+306,'1970','Reported year built')]:
-    para(big,x,478,140,size=22,leading=26,font='Serif')
-    para(small,x,507,160,size=8.5,leading=11,color=MUTED)
-para('Reported figures are unverified. *Confirm the 66-parcel / 67-unit discrepancy against the declaration.',M,528,CW,size=8.5,leading=12,color=MUTED)
-line(565)
-label('MY RECOMMENDATION',M,582)
-para('Start with a clear valuation.',M,603,size=23,leading=28,font='Serif')
-t=para('An offer is the starting point. I will prepare a <b>complimentary Broker Opinion of Value</b> using income, expenses, condition, and market evidence. Then we can compare it with the offer.',M,643,CW,size=11,leading=15.8)
-para('<b>No listing agreement is required. You are not obligated to sell.</b>',M,t+12,CW,size=10.7,leading=15,color=ACCENT)
-para('Prepared for the association\'s board. For discussion only; not an appraisal or commitment to sell. Timing depends on record availability, strategy, buyer diligence, and approvals. Consult your legal, tax, and lending advisors.',M,706,CW,size=8.2,leading=11,color=MUTED)
+# COVER: one large image, clear title, restrained supporting information.
+base(1,'Board advisory')
+logo('reference-0.svg',M,35,154)
+label('BOARD ADVISORY',412,39,size=7,space=1)
+p('September 2026',412,52,156,size=8.5,lead=12,color=MUTED)
+label('LINCOLN PARK / CHICAGO',M,105,color=ACCENT)
+p('2629 North<br/>Hampden Court',M,121,420,size=45,lead=42,font='Cormorant')
+photo(M,227,CW,317,focus=.68)
+p('<link href="https://www.zillow.com/homedetails/2629-N-Hampden-Ct-APT-204-Chicago-IL-60614/3726053_zpid/" color="#696269">Property photo: Zillow</link>',M,550,230,size=6.8,lead=9,color=MUTED)
+p('Know the value.<br/>Then decide.',M,576,230,size=29,lead=29,font='Cormorant')
+p('Start with a complimentary valuation. Compare the offer with the building\'s income, expenses, condition, and market evidence.',323,578,245,size=10.5,lead=15.5)
+line(653)
+for x,val,desc in [(M,'67*','Reported units'),(231,'34','Deeded parking spaces'),(425,'1970','Reported year built')]:
+    p(val,x,665,150,size=24,lead=25,font='Cormorant')
+    p(desc,x,694,160,size=8.2,lead=11,color=MUTED)
+p('Reported figures are unverified. *Confirm the 66-parcel / 67-unit discrepancy against the declaration.',M,727,CW,size=7.7,lead=10.5,color=MUTED)
 c.showPage()
 
-# PAGE TWO / record checklist
-base(2,'The information')
-t=title('01 / THE INFORMATION','What I need to get started.','Send what you have. Approximate dates are fine; we can fill in gaps together.')
-
-def checklist_item(num,heading,body,top):
-    label(num,M,top+1,size=9)
-    y=para(heading,M+33,top,CW-33,size=13.1,leading=17,font='Sans-Bold',space=5)
-    y=para(body,M+33,y,CW-33,size=11.2,leading=16)
-    return y+20
-
-t=checklist_item('01','Expenses',
-    '2025 operating expenses and, ideally, January 1-September 1, 2026 expenses.',t)
-line(t-5);t+=8
-t=checklist_item('02','Capital improvements',
-    'Work completed in the last five years and anything planned or needed, with costs if available.',t)
-line(t-5);t+=8
-t=checklist_item('03','Building ages',
-    'Approximate ages of the roof, elevator, masonry, windows, and boiler.',t)
-line(t-5);t+=8
-t=checklist_item('04','Maintenance',
-    'Any sprinkler updates needed and when the driveway was last paved.',t)
-line(t-5);t+=8
-t=checklist_item('05','Current rents',
-    'Unit numbers and monthly rents from owners willing to share. No tenant names needed.',t)
-
-rect(M,650,CW,77,PANEL)
-label('WHAT YOU WILL RECEIVE',M+16,662,size=7.5)
-para('A complimentary written valuation and comparison with the offer. No listing agreement or obligation to sell.',M+16,679,CW-32,size=10.5,leading=14.5)
+# VALUATION: two-column layout separates the short request from its purpose.
+base(2,'The valuation')
+heading('THE VALUATION','A clear place to start.','Send what you have. Approximate dates are fine; we can fill in gaps together.')
+# Quiet architectural inset, reused from the actual facade.
+photo(M,185,156,220,focus=.52)
+p('The building, in context.',M,412,156,size=7.7,lead=11,color=MUTED)
+p('Start with<br/>the valuation.',M,449,157,size=24,lead=25,font='Cormorant')
+p('I will prepare a Broker Opinion of Value to help the board assess the offer and its options.',M,511,157,size=10.3,lead=15)
+p('No listing agreement.<br/>No obligation to sell.',M,592,158,size=10.3,lead=15,font='Inter-Semi',color=ACCENT)
+items=[
+('Expenses','2025 operating expenses and, ideally, <nobr>Jan 1-Sept 1, 2026</nobr> expenses.'),
+('Capital improvements','Work completed in the last five years and anything planned or needed, with costs if available.'),
+('Building ages','Approximate ages of the roof, elevator, masonry, windows, and boiler.'),
+('Maintenance','Any sprinkler updates needed and when the driveway was last paved.'),
+('Current rents','Unit numbers and monthly rents from owners willing to share. No tenant names needed.')]
+t=185
+for i,(h,b) in enumerate(items,1):
+    label(f'0{i}',234,t+3,color=ACCENT,size=8,space=0)
+    p(h,262,t,306,size=11.7,lead=15.5,font='Inter-Semi')
+    y=p(b,262,t+23,306,size=10.5,lead=15,color=MUTED)
+    if i<5:line(y+17,234,334)
+    t=y+37
+rect(M,664,CW,69,PAPER)
+label('WHAT YOU WILL RECEIVE',M+18,678,color=ACCENT)
+p('A supported value range and comparison with the offer, informed by market evidence and capital needs.',M+18,696,CW-36,size=10.6,lead=15)
 c.showPage()
 
-# PAGE THREE / options and process
-base(3,'Options and process')
-t=title('02 / YOUR OPTIONS','Five paths forward.','Compare the tradeoffs. Choose what fits the owners\' priorities.')
-
-def path(letter,heading,desc,trade,approval,top):
-    rect(M,top+2,23,23,ACCENT)
-    c.setFillColor(white);c.setFont('Sans-Bold',10.5);c.drawCentredString(M+11.5,H-top-18,letter)
-    y=para(heading,M+35,top,CW-35,size=12.6,leading=16.5,font='Sans-Bold',space=4)
-    y=para(desc+' <b>Tradeoff:</b> '+trade,M+35,y,CW-35,size=10.5,leading=14.5,space=4)
-    y=para('<b>Approval:</b> '+approval,M+35,y,CW-35,size=9.4,leading=13,color=MUTED)
-    line(y+11,M+35,CW-35)
-    return y+22
-
-t=path('A','Negotiate the existing offer','Continue with the identified buyer.','The price has not been tested competitively.','Full-building sale approval.*',t)
-t=path('B','Confidential targeted outreach','Approach selected buyers with confidential financials.','Fewer buyers may limit competition.','Full-building sale approval.*',t)
-t=path('C','Broad marketed campaign','Seek wider competition with a public summary and protected financials.','Greater exposure and coordination.','Full-building sale approval.*',t)
-t=path('D','Voluntary group sale','Willing owners sell together; sellers agree on exposure.','Price depends on the units included.','Participating owners; counsel reviews restrictions.',t)
-t=path('E','Retain ownership','Continue ownership and rental income; no sale marketing.','Ongoing expenses and capital needs.','No sale approval; funding decisions remain.',t)
-para('*Counsel must confirm the applicable owner approval. See page 4.',M,t-3,CW,size=8.5,leading=12,color=MUTED)
-
-line(608)
-label('03 / THE PROCESS',M,621,size=7.8)
-steps=[('01  Gather','Expenses, rents, capital improvements, and building details.'),('02  Review','Compare the offer with value, assumptions, and capital needs.'),('03  Choose','Agree on scope, representation, fees, and outreach.'),('04  Evaluate','Review price and terms. Counsel guides approvals and sale.')]
-for i,(h,b) in enumerate(steps):
-    x=M+(i%2)*270;top=637+(i//2)*50
-    para(h,x,top,250,size=10.3,leading=13,font='Sans-Bold')
-    para(b,x,top+15,250,size=10.5,leading=14.5,color=MUTED)
+# OPTIONS: compare once; shared approval notes avoid repetition.
+base(3,'The options')
+heading('YOUR OPTIONS','Five paths forward.','Compare the tradeoffs. Choose what fits the owners\' priorities.')
+label('PATH',M,184)
+label('MAIN CONSIDERATION',314,184)
+line(204)
+options=[
+('A','Existing offer','Continue with the identified buyer.','The price has not been tested competitively.'),
+('B','Targeted outreach','Approach selected buyers privately.','Fewer buyers may limit competition.'),
+('C','Broad campaign','Reach more buyers with a public summary and protected financials.','Wider exposure requires more coordination.'),
+('D','Voluntary group sale','Willing owners sell their units together.','Value depends on the units included; sellers agree on exposure.'),
+('E','Retain ownership','Continue ownership and rental income.','Ongoing expenses and capital needs remain.')]
+t=222
+for letter,title,desc,trade in options:
+    p(letter,M,t,20,size=17,lead=20,font='Cormorant',color=ACCENT)
+    p(title,72,t,220,size=12,lead=16,font='Inter-Semi')
+    p(desc,72,t+23,216,size=10.2,lead=14.5,color=MUTED)
+    p(trade,314,t+2,254,size=11,lead=15.5)
+    line(t+(88 if letter=='E' else 76))
+    t+=92
+p('<b>Approval:</b> The first three paths require full-building sale approval. A voluntary group sale involves participating owners, with counsel reviewing restrictions. Retaining ownership requires no sale approval; funding decisions remain.',M,691,CW,size=9.3,lead=13,color=MUTED)
 c.showPage()
 
-# PAGE FOUR / compensation and board background
-base(4,'Commission and board background')
-label('04 / COMMISSION',M,66)
-para('1.25%',M,83,150,size=40,leading=46,font='Serif',color=ACCENT)
-para('of the final sale price',M,133,190,size=10.5,leading=14.5,font='Sans-Bold')
-para('My proposed fee, payable to my brokerage at closing. All brokerage compensation is negotiable and subject to written agreement.',247,88,321,size=10.5,leading=14.5)
-t=para('<b>Buyer-broker compensation is additional.</b> Buyer brokers should state their requested compensation separately in the offer. The board can negotiate it with the other terms. Any seller-paid buyer-broker fee requires written agreement.',M,164,CW,size=10.5,leading=14.5,space=9)
-t=para('<b>Other closing costs are separate.</b> Transfer taxes follow governing rates and transaction terms; title and legal fees require quotes. A title company may offer reduced pricing for a coordinated multi-unit transaction. No closing-cost estimate is included.',M,t,CW,size=10.5,leading=14.2,space=13)
-line(t);t+=15
-label('FOR THE BOARD',M,t);t+=20
-t=para('Approval and owner rights',M,t,CW,size=15,leading=19,font='Serif',space=6)
-t=para('Chicago requires at least <b>85% approval</b> for a full-building sale unless the declaration or bylaws require more. Counsel must confirm voting interests, procedures, and owner protections. Resolve the <b>66-parcel / 67-unit discrepancy</b> before calculating votes or allocating proceeds. A qualifying sale can bind dissenting owners; counsel should explain objection deadlines and applicable appraisal, debt, and relocation protections. <link href="'+CHICAGO+'" color="#934b40">Chicago Municipal Code 13-72-085</link>.',M,t,CW,size=10.5,leading=14.2,space=12)
-t=para('Condominium financing changes',M,t,CW,size=15,leading=19,font='Serif',space=6)
-t=para('Fannie Mae\'s standards apply to covered loans. A lender must assess this building\'s eligibility.',M,t,CW,size=10.5,leading=14.2,space=6)
-for txt in [
-    '<b>March 18, 2026:</b> The 50% investment-property concentration limit was removed for established projects using Full Review on investor loans.',
-    '<b>July 1, 2026:</b> Covered applications must meet a $50,000 maximum per-unit master-policy deductible for required perils.',
-    '<b>August 3, 2026:</b> Limited Review is retired for applications from this date. Reserve-study flexibility requires the highest recommended allocation; baseline funding is not accepted.',
-    '<b>January 4, 2027:</b> Full Review\'s standard replacement-reserve allocation rises from 10% to 15%. A qualifying reserve study may support an alternative.'
-]:
-    t=bullet(txt,M,t,CW,size=10.5)
-t=para('<link href="'+FANNIE+'" color="#934b40">Fannie Mae LL-2026-03</link> · Reviewed September 21, 2026. Confirm applicable current requirements with the lender.',M,t,CW,size=8.1,leading=11,space=10)
-t=para('<b>Reported figures remain unverified.</b> Prior board materials report $85,000 in reserves, eight owner-occupied units, and $270-$350 monthly assessments; confirm with management. They cite 2025 cash studio sales (MRED/MLS): unit 503 at $142,000; unit 204 at $145,000. Individual unit sales do not establish building value.',M,t,CW,size=10.5,leading=14.2,space=10)
-line(t);t+=10
-logo('reference-2.svg',M,t+3,200)
-para('<b>Matthew Neistat</b> · Investment Sales<br/><link href="mailto:matt@theneistatgroup.com" color="#934b40">matt@theneistatgroup.com</link>',M+230,t,CW-230,size=10.5,leading=14.5)
-
+# TERMS: give representation and advice equal weight; detailed lending notes live online.
+base(4,'Representation & next steps')
+heading('REPRESENTATION','Clear terms. A measured process.')
+rect(M,160,CW,113,PAPER)
+label('PROPOSED COMMISSION',M+18,176,color=ACCENT)
+p('1.25%',M+18,192,170,size=38,lead=40,font='Cormorant')
+p('of the final sale price',M+18,238,190,size=9.5,lead=13,font='Inter-Semi')
+p('Payable to my brokerage at closing. All brokerage compensation is negotiable and subject to written agreement.',286,181,260,size=11,lead=16)
+# Two side-by-side fee notes.
+p('Buyer-broker compensation',M,297,250,size=11.5,lead=15,font='Inter-Semi')
+p('Additional to my fee. Buyer brokers should state their requested compensation separately in the offer. The board can negotiate it with the other terms. Any seller-paid fee requires written agreement.',M,321,247,size=10.3,lead=14.5,color=MUTED)
+p('Other closing costs',322,297,246,size=11.5,lead=15,font='Inter-Semi')
+p('Separate from commission. Transfer taxes follow governing rates and transaction terms; title and legal fees require quotes. A title company may offer reduced pricing for a coordinated multi-unit transaction.',322,321,246,size=10.3,lead=14.5,color=MUTED)
+line(422)
+p('Before the board decides.',M,438,CW,size=24,lead=26,font='Cormorant')
+p('Approval & ownership',M,481,247,size=11.2,lead=15,font='Inter-Semi')
+p('Chicago requires at least 85% approval for a full-building sale unless the governing documents require more. Counsel must confirm voting interests, procedures, and owner protections, including the rights of dissenting owners.',M,504,247,size=10.1,lead=14.2,color=MUTED)
+p('Resolve the 66-parcel / 67-unit discrepancy before calculating votes or allocating proceeds.',M,600,247,size=9.9,lead=14,color=MUTED)
+p('Financing & verification',322,481,246,size=11.2,lead=15,font='Inter-Semi')
+p('A lender must assess this building\'s eligibility under applicable condominium lending standards. Fannie Mae issued changes in 2026 affecting project review, reserves, and insurance.',322,504,246,size=10.1,lead=14.2,color=MUTED)
+p('Building figures remain unverified. Individual unit sales do not establish the value of the entire building.',322,586,246,size=9.9,lead=14,color=MUTED)
+p('<link href="'+CHICAGO+'" color="#8C554A">Chicago Code 13-72-085</link>  /  <link href="'+FANNIE+'" color="#8C554A">Fannie Mae LL-2026-03</link>  /  <link href="'+SITE+'#governance" color="#8C554A">Full background online</link>',M,645,CW,size=7.5,lead=10)
+line(666)
+logo('reference-2.svg',M,689,219)
+p('Matthew Neistat',319,681,249,size=16.5,lead=19,font='Cormorant')
+p('Investment Sales',319,704,249,size=8,lead=11,color=MUTED)
+p('<link href="mailto:matt@theneistatgroup.com" color="#8C554A">matt@theneistatgroup.com</link>',319,720,249,size=9.3,lead=13)
+p('Board discussion only; not an appraisal or commitment to sell. Consult legal, tax, and lending advisors.',M,740,CW,size=6.6,lead=8,color=MUTED)
+c.showPage()
 c.save()
-for page,text,start,end in checks:
-    if end>735:
-        raise RuntimeError(f'Page {page} content exceeds body area ({end:.1f}): {text}')
+for pn,txt,start,end in checks:
+    if end>750:raise RuntimeError(f'Page {pn} text extends too low ({end:.1f}): {txt}')
 print(args.output)
-print('4 pages generated. Text extent checks passed.')
+print('4 pages. Layout bounds passed.')
