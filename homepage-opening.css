@@ -1,0 +1,144 @@
+/* Homepage opening only. Shared navigation behavior stays in nav.js. */
+.home-page .nav {
+  padding: 22px clamp(24px, 4vw, 72px);
+  gap: 32px;
+  border-bottom: 1px solid rgba(244, 240, 232, .14);
+}
+.home-page .nav.scrolled { padding-block: 14px; }
+.home-page .nav-brand {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: .14em;
+}
+.home-page .nav-links { gap: clamp(20px, 2vw, 32px); }
+.home-page .nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .02em;
+  text-transform: none;
+  color: #ded9ce;
+}
+.home-page .nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  font-size: 13px;
+  letter-spacing: .02em;
+  text-transform: none;
+  padding: 12px 26px;
+}
+.home-page .hero {
+  height: auto;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+.home-page .hero-overlay {
+  opacity: 1;
+  background:
+    linear-gradient(0deg, rgba(11, 10, 7, .76) 0%, rgba(11, 10, 7, .18) 62%, rgba(11, 10, 7, .06) 100%),
+    linear-gradient(90deg, rgba(11, 10, 7, .62) 0%, rgba(11, 10, 7, .4) 43%, rgba(11, 10, 7, .04) 80%);
+}
+.home-page .hero-content {
+  padding: clamp(160px, 21vh, 240px) clamp(24px, 4vw, 72px) clamp(76px, 9vh, 112px);
+}
+.home-page .hero-pill-eyebrow {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 26px;
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: #e4dfd4;
+}
+.home-page .hero-headline {
+  max-width: 1050px;
+  font-size: clamp(52px, 6.3vw, 100px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -.035em;
+  margin-bottom: 26px;
+  color: #f4f0e8;
+}
+.home-page .hero-headline-italic { color: inherit; }
+.home-page .hero-sub {
+  max-width: 51ch;
+  font-size: 18px;
+  line-height: 1.65;
+  color: #eee9df;
+  margin-bottom: 32px;
+  text-wrap: pretty;
+}
+.home-page .hero-actions { align-items: center; gap: 28px; }
+.home-page .hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  text-transform: none;
+}
+.home-page .hero-actions .btn-pill-fill {
+  padding: 15px 28px;
+  border-radius: 2px;
+}
+.home-page .hero-actions .btn-bordered-pill {
+  padding: 12px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #f4f0e8;
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  text-decoration-thickness: 1px;
+}
+.home-page .hero-actions .btn-bordered-pill:hover {
+  color: #fff;
+  text-underline-offset: 10px;
+}
+.home-page .video-control {
+  right: clamp(24px, 4vw, 72px);
+  bottom: 28px;
+  background: rgba(11, 10, 7, .65);
+  border-color: rgba(244, 240, 232, .45);
+  border-radius: 2px;
+}
+.home-page .scroll-indicator { right: clamp(24px, 4vw, 72px); bottom: 96px; }
+.home-page #work { scroll-margin-top: 96px; }
+
+@media (max-width: 1250px) {
+  .home-page .nav { padding-block: 16px; }
+  .home-page .nav.scrolled { padding-block: 12px; }
+}
+@media (max-width: 768px) {
+  .home-page .nav-brand { font-size: 17px; letter-spacing: .11em; }
+  .home-page .nav { gap: 16px; }
+  /* One overlay only; avoid darkening the existing mobile still twice. */
+  .home-page .hero {
+    background-image: url('https://res.cloudinary.com/dpwcyrxkz/image/upload/f_auto,q_auto,w_1600/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
+  }
+  .home-page .hero-overlay {
+    background: linear-gradient(0deg, rgba(11, 10, 7, .88) 0%, rgba(11, 10, 7, .68) 48%, rgba(11, 10, 7, .12) 100%);
+  }
+  .home-page .hero-content { padding: 144px 24px 48px; }
+  .home-page .hero-pill-eyebrow { font-size: 10px; letter-spacing: .16em; margin-bottom: 22px; }
+  .home-page .hero-headline { font-size: clamp(42px, 8.5vw, 62px); line-height: 1.06; margin-bottom: 24px; }
+  .home-page .hero-sub { font-size: 16px; line-height: 1.6; margin-bottom: 28px; max-width: 48ch; }
+  .home-page .hero-actions { align-items: stretch; gap: 8px; }
+  .home-page .hero-actions a { min-height: 48px; }
+  .home-page .hero-actions .btn-pill-fill { padding: 15px 20px; }
+}
+@media (max-width: 360px) {
+  .home-page .nav { padding-inline: 20px; gap: 10px; }
+  .home-page .nav-brand { font-size: 15px; }
+  .home-page .hero-content { padding-inline: 20px; }
+}
