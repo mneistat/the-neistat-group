@@ -2,6 +2,13 @@
 (function () {
   'use strict';
   var nav = document.getElementById('nav');
+  // Keep secondary sticky navigation below the header at every viewport/text size.
+  if (nav && 'ResizeObserver' in window) {
+    var headerObserver = new ResizeObserver(function () {
+      document.documentElement.style.setProperty('--site-header-height', nav.getBoundingClientRect().height + 'px');
+    });
+    headerObserver.observe(nav);
+  }
   var toggle = document.getElementById('navToggle');
   var menu = document.getElementById('mobileMenu');
   var desktop = window.matchMedia('not all and (max-width: 1250px)');

@@ -366,9 +366,9 @@
       .np-places > div { flex-direction: column; gap: 8px; }
     }
 
-.np-band[id], .np-note[id] { scroll-margin-top: 100px; }
+.np-band[id], .np-note[id] { scroll-margin-top: calc(var(--site-header-height, 94px) + 88px); }
 .np-section-nav {
-  position: sticky; top: 66px; z-index: 90;
+  position: sticky; top: var(--site-header-height, 94px); z-index: 90;
   background: rgba(244,240,232,.96); color: #0B0A07;
   padding: 10px clamp(22px,5vw,72px);
   border-bottom: 1px solid rgba(11,10,7,.15);
@@ -475,7 +475,6 @@
   .np-school-note .np-links { justify-content: flex-start; }
 }
 @media (max-width: 620px) {
-  .np-section-nav { top: 61px; }
   .np-school-list li { grid-template-columns: 32px 1fr; gap: 4px 12px; }
   .np-school-list li::before { grid-row: 1 / 4; }
   .np-school-list li > * { grid-column: 2; }

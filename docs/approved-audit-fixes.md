@@ -29,3 +29,14 @@ Shared changes: active page/parent navigation, larger footer link targets, nativ
 ## Content still held
 
 See `content-holds.md`: approved Lake Street photography, reconciled transaction/case-study proof and Elm address, Matthew's Lakeview broker note, and personal recommendations. Dated market notes were added in the subsequent neighborhood pass documented in `neighborhood-pilot-status.md`. Existing photography was reused with honest assignment captions; new personal experience was not invented.
+
+## Shared header — September 22, 2026
+
+Matt approved extending the refined homepage header across all 12 pages. This implements the reference-led direction (Aman restraint, Moncler editorial hierarchy, and SOM clarity), not a separate temporary redesign.
+
+- Shared serif wordmark, sentence-case navigation, spacing, outlined Contact action, and 44px minimum targets now live in `styles.css`; homepage-only header overrides are removed.
+- The wordmark links home. The redundant desktop Home link is removed consistently; mobile Home remains. Existing active-page/parent states, focus handling, and menu controls are preserved.
+- Neighborhood section navigation and the compact affordability estimate follow the measured header height. Guide anchors account for both navigation bars.
+- All 12 main-content blocks are byte-for-byte unchanged, including the approved Mason photograph. No figures, copy, imagery, forms, or housing-stock content changed.
+- Local verification: all 19 regression checks pass, including two new header checks; generated Selected Work content, JavaScript syntax, and whitespace checks pass. Responsive source and simulated mobile-menu behavior are covered; a phone-sized visual browser check remains unavailable.
+- Preview branch only. Keep PR #2 in draft; no merge or production publication.

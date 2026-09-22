@@ -1,40 +1,4 @@
-/* Homepage opening only. Shared navigation behavior stays in nav.js. */
-.home-page .nav {
-  padding: 22px clamp(24px, 4vw, 72px);
-  gap: 32px;
-  border-bottom: 1px solid rgba(244, 240, 232, .14);
-}
-.home-page .nav.scrolled { padding-block: 14px; }
-.home-page .nav-brand {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: .14em;
-}
-.home-page .nav-links { gap: clamp(20px, 2vw, 32px); }
-.home-page .nav-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: .02em;
-  text-transform: none;
-  color: #ded9ce;
-}
-.home-page .nav-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  font-size: 13px;
-  letter-spacing: .02em;
-  text-transform: none;
-  padding: 12px 26px;
-}
+/* Homepage opening only. Shared header styles live in styles.css. */
 .home-page .hero {
   height: auto;
   min-height: 100vh;
@@ -115,13 +79,7 @@
 .home-page .scroll-indicator { right: clamp(24px, 4vw, 72px); bottom: 96px; }
 .home-page #work { scroll-margin-top: 96px; }
 
-@media (max-width: 1250px) {
-  .home-page .nav { padding-block: 16px; }
-  .home-page .nav.scrolled { padding-block: 12px; }
-}
 @media (max-width: 768px) {
-  .home-page .nav-brand { font-size: 17px; letter-spacing: .11em; }
-  .home-page .nav { gap: 16px; }
   /* One overlay only; avoid darkening the existing mobile still twice. */
   .home-page .hero {
     background-image: url('https://res.cloudinary.com/dpwcyrxkz/image/upload/f_auto,q_auto,w_1600/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
@@ -138,7 +96,5 @@
   .home-page .hero-actions .btn-pill-fill { padding: 15px 20px; }
 }
 @media (max-width: 360px) {
-  .home-page .nav { padding-inline: 20px; gap: 10px; }
-  .home-page .nav-brand { font-size: 15px; }
   .home-page .hero-content { padding-inline: 20px; }
 }

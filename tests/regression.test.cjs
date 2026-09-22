@@ -146,6 +146,37 @@ test('neighborhood guides identify their parent in desktop and mobile navigation
   }
   dom.window.close();
 });
+test('every page shares the refined header, with Home retained in the mobile menu', () => {
+  const files = fs.readdirSync(root).filter(file => file.endsWith('.html'))
+    .concat(['neighborhoods/lincoln-park.html', 'neighborhoods/lakeview.html']);
+  const labels = ['Selected Work', 'Neighborhoods', 'Seller Strategy', 'Affordability', 'About', 'Contact'];
+  for (const file of files) {
+    const dom = page(file), d = dom.window.document;
+    assert.deepEqual([...d.querySelectorAll('.nav-links a')].map(link => link.textContent.trim()), labels, file);
+    assert.equal(d.querySelector('.nav-brand').getAttribute('href').replace(/^\//, ''), 'index.html', file);
+    assert.equal(d.querySelector('.mobile-menu-link').textContent.trim(), 'Home', file);
+    assert.ok(d.querySelector('link[href$="styles.css?v=39"]'), file);
+    assert.ok(d.querySelector('script[src$="nav.js?v=9"]'), file);
+    dom.window.close();
+  }
+  assert.doesNotMatch(read('homepage-opening.css'), /\.home-page \.nav/);
+});
+test('sticky header offset follows the measured header height', () => {
+  const dom = page('contact.html'), w = dom.window, d = w.document;
+  w.matchMedia = () => ({ matches: false, addEventListener() {} });
+  let notify, observed;
+  w.ResizeObserver = class { constructor(callback) { notify = callback; } observe(element) { observed = element; } };
+  const nav = d.getElementById('nav');
+  let height = 94;
+  nav.getBoundingClientRect = () => ({ height });
+  w.eval(read('nav.js'));
+  assert.equal(observed, nav);
+  notify();
+  assert.equal(d.documentElement.style.getPropertyValue('--site-header-height'), '94px');
+  height = 69; notify();
+  assert.equal(d.documentElement.style.getPropertyValue('--site-header-height'), '69px');
+  dom.window.close();
+});
 test('a compact Selected Work selection reveals and focuses the matching assignment', () => {
   const dom = page('index.html'), w = dom.window, d = w.document;
   w.matchMedia = query => ({ matches: query.includes('max-width: 1100px'), addEventListener() {} });
