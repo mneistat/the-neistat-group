@@ -7,4 +7,4 @@
 - Lakeview broker note and personal recommendations for both guides require Matthew’s own approved copy. Incomplete sections are omitted.
 - Both guides now include calendar-year 2025 recorded residential sales from DePaul's Institute for Housing Studies, with property types, geography, source links, and a September 21, 2026 verification date. These are historical community-area records, not current prices or MLS market-time figures. See `neighborhood-pilot-status.md` for sources and remaining personal content.
 - Old Town, Wrigleyville, North Center, and Roscoe Village remain unpublished until the two pilots are approved.
-- $120M+ follows WEBSITE_MASTER_BRIEF.md. Update this figure only after the canonical brief is amended with verified data.
+- Do not display cumulative career sales volume anywhere on the site, including search/social descriptions and structured data. Matt removed this metric sitewide on September 22, 2026; this supersedes the older Master Brief. Individual transaction prices remain unchanged.
