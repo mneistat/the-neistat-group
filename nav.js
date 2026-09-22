@@ -12,7 +12,7 @@
     var headerObserver = new ResizeObserver(function () {
       document.documentElement.style.setProperty('--site-header-height', nav.getBoundingClientRect().height + 'px');
     });
-    headerObserver.observe(nav);
+    headerObserver.observe(nav, { box: 'border-box' });
   }
   var toggle = document.getElementById('navToggle');
   var menu = document.getElementById('mobileMenu');

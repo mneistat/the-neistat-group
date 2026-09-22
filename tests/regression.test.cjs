@@ -156,7 +156,7 @@ test('every page shares the refined header, with Home retained in the mobile men
     assert.equal(d.querySelector('.nav-brand').getAttribute('href').replace(/^\//, ''), 'index.html', file);
     assert.equal(d.querySelector('.mobile-menu-link').textContent.trim(), 'Home', file);
     assert.ok(d.querySelector('link[href$="styles.css?v=39"]'), file);
-    assert.ok(d.querySelector('script[src$="nav.js?v=10"]'), file);
+    assert.ok(d.querySelector('script[src$="nav.js?v=11"]'), file);
     dom.window.close();
   }
   assert.doesNotMatch(read('homepage-opening.css'), /\.home-page \.nav/);
@@ -164,13 +164,14 @@ test('every page shares the refined header, with Home retained in the mobile men
 test('sticky header offset follows the measured header height', () => {
   const dom = page('contact.html'), w = dom.window, d = w.document;
   w.matchMedia = () => ({ matches: false, addEventListener() {} });
-  let notify, observed;
-  w.ResizeObserver = class { constructor(callback) { notify = callback; } observe(element) { observed = element; } };
+  let notify, observed, observationOptions;
+  w.ResizeObserver = class { constructor(callback) { notify = callback; } observe(element, options) { observed = element; observationOptions = options; } };
   const nav = d.getElementById('nav');
   let height = 94;
   nav.getBoundingClientRect = () => ({ height });
   w.eval(read('nav.js'));
   assert.equal(observed, nav);
+  assert.equal(observationOptions.box, 'border-box');
   assert.equal(nav.classList.contains('scrolled'), false);
   w.scrollY = 120; w.dispatchEvent(new w.Event('scroll'));
   assert.equal(nav.classList.contains('scrolled'), true);
