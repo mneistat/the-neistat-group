@@ -46,6 +46,14 @@
     .scene-quote blockquote { font-family: Georgia, serif; font-size: clamp(26px,4vw,44px); font-style: italic; color: #0B0A07; max-width: 700px; margin: 0 auto; line-height: 1.35; }
     .scene-quote cite { display: block; font-size: 12px; color: rgba(11,10,7,0.62); font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 24px; }
 
+    /* Family story — the original photograph, paired with the family principle. */
+    .scene-family { scroll-margin-top: 96px; }
+    .family-story-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); align-items: center; gap: clamp(40px, 7vw, 100px); width: 100%; max-width: 1040px; }
+    .family-story-label { margin: 0 0 28px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(11,10,7,0.62); }
+    .family-story-photo { margin: 0; width: 100%; }
+    .family-story-photo img { display: block; width: 100%; height: auto; }
+    .family-story-photo figcaption { margin-top: 14px; font-size: 13px; line-height: 1.6; color: rgba(11,10,7,0.72); text-align: left; }
+
     /* Story scene — dark */
     .scene-story { background: #0B0A07; padding: clamp(72px,8vw,104px) 60px; flex-direction: column; justify-content: center;
       border-top: 1px solid rgba(237,232,222,0.10); }
@@ -89,6 +97,8 @@
       .scene, .scene-full { min-height: 0; }
       .scene-hero { min-height: 60vh; }
       .scene-quote { min-height: 0; padding: 56px 28px; }
+      .family-story-inner { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+      .family-story-photo { max-width: 340px; justify-self: center; }
       .scene-stats { padding: 0; }
       .stats-inner { grid-template-columns: 1fr 1fr; }
       .scene-portrait { grid-template-columns: 1fr; }
@@ -177,11 +187,18 @@
     </div>
   </section>
 
-  <!-- SCENE 2: Quote -->
-  <section class="scene scene-quote">
-    <div>
-      <blockquote class="reveal">&ldquo;Always put people first.&rdquo;</blockquote>
-      <cite class="reveal">— Matthew's grandfather</cite>
+  <!-- Family story -->
+  <section class="scene scene-quote scene-family" id="family-story" aria-label="A family tradition">
+    <div class="family-story-inner">
+      <div>
+        <p class="family-story-label">A family tradition</p>
+        <blockquote class="reveal">&ldquo;Always put people first.&rdquo;</blockquote>
+        <cite class="reveal">— Matthew's grandfather</cite>
+      </div>
+      <figure class="family-story-photo">
+        <img src="images/mason-site-visit.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="Mason looking up as he walks through a home under construction.">
+        <figcaption>Matthew's son, Mason, on a site visit.</figcaption>
+      </figure>
     </div>
   </section>
 
