@@ -54,12 +54,10 @@
       overflow: hidden;
       padding: 0 0 clamp(48px, 6vw, 84px);
     }
-    .ni-hero-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: grayscale(0.55) contrast(1.05) brightness(0.62);
-    }
+    .ni-hero-media { position: absolute; inset: 0; display: grid; grid-template-columns: 58fr 42fr; gap: 2px; background: #0B0A07; }
+    .ni-hero-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.48) contrast(1.05) brightness(0.64); }
+    .ni-hero-img:first-child { object-position: 52% center; }
+    .ni-hero-img:last-child { object-position: 58% center; }
     .ni-hero-veil {
       position: absolute; inset: 0;
       background:
@@ -235,6 +233,10 @@
       justify-content: flex-end;
       padding: clamp(20px, 2.4vw, 34px);
     }
+    .ni-card-index { position: absolute; top: clamp(20px,2.4vw,34px); left: clamp(20px,2.4vw,34px); font: 11px/1 var(--font); letter-spacing: .2em; color: rgba(237,232,222,.72); }
+    .ni-card-topics { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 18px; padding: 0; list-style: none; font: 10px/1.4 var(--font); letter-spacing: .16em; text-transform: uppercase; color: rgba(237,232,222,.68); }
+    .ni-card-topics li { position: relative; }
+    .ni-card-topics li + li::before { content: '/'; position: absolute; left: -12px; color: rgba(237,232,222,.34); }
     .ni-card h3 {
       font-family: var(--serif);
       font-weight: 400;
@@ -407,6 +409,8 @@
     }
     @media (max-width: 620px) {
       .ni-hero { min-height: 74vh; }
+      .ni-hero-media { grid-template-columns: 1fr; }
+      .ni-hero-img:first-child { display: none; }
       .ni-card--minor { grid-column: span 12; min-height: 300px; }
       .ni-sect-head { flex-direction: column; align-items: flex-start; }
       .ni-cluster { text-align: left; }
@@ -449,7 +453,10 @@
 
     <!-- ============ HERO ============ -->
     <header class="ni-hero">
-      <img class="ni-hero-img" src="/images/neighborhoods/lakeview.jpg" alt="Chicago skyline from Belmont Harbor, with the lakefront in the foreground." width="1920" height="1440" fetchpriority="high">
+      <div class="ni-hero-media" aria-hidden="true">
+        <img class="ni-hero-img" src="/images/neighborhoods/lincoln-park.jpg" alt="" width="1920" height="1280" fetchpriority="high">
+        <img class="ni-hero-img" src="/images/neighborhoods/lakeview.jpg" alt="" width="1920" height="1440" fetchpriority="high">
+      </div>
       <div class="ni-hero-veil"></div>
       <div class="ni-hero-inner">
         <p class="ni-eyebrow">Chicago</p>
@@ -458,7 +465,7 @@
         <a class="ni-hero-cta" href="#featured">Explore the Neighborhoods &rarr;</a>
       </div>
     </header>
-    <p class="np-photo-credit">Belmont Harbor · Photo: <a href="https://commons.wikimedia.org/wiki/File:Chicago_Skyline_viewed_from_Belmont_Harbor.jpg">TheWxResearcher</a> / <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>. Display cropped to fit.</p>
+    <p class="np-photo-credit">Left: South Pond &amp; Nature Boardwalk · <a href="https://commons.wikimedia.org/wiki/File:View_at_Lincoln_Park_Zoo_Nature_Boardwalk_(15198500880).jpg">Daniel X. O&#x27;Neil</a> / <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>. Right: Belmont Harbor · <a href="https://commons.wikimedia.org/wiki/File:Chicago_Skyline_viewed_from_Belmont_Harbor.jpg">TheWxResearcher</a> / <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>. Display cropped to fit.</p>
 
 
 
@@ -485,6 +492,8 @@
             <img class="ni-card-img" src="/images/neighborhoods/lincoln-park.jpg" alt="South Pond and the Nature Boardwalk in Lincoln Park, with the Chicago skyline beyond." width="1920" height="1280" loading="lazy">
             <div class="ni-card-veil"></div>
             <div class="ni-card-body">
+              <span class="ni-card-index">01</span>
+              <ul class="ni-card-topics" aria-hidden="true"><li>Parks</li><li>Schools</li><li>Local places</li></ul>
               <h3>Lincoln Park</h3>
               <p class="ni-card-line">South Pond and the Nature Boardwalk set the scene. Explore parks, school resources, and local amenities across Lincoln Park.</p>
               <span class="ni-card-go">Explore &rarr;</span>
@@ -495,6 +504,8 @@
             <img class="ni-card-img" src="/images/neighborhoods/lakeview.jpg" alt="Boats at Belmont Harbor beside Lakeview’s lakefront parkland." width="1920" height="1440" loading="lazy">
             <div class="ni-card-veil"></div>
             <div class="ni-card-body">
+              <span class="ni-card-index">02</span>
+              <ul class="ni-card-topics" aria-hidden="true"><li>Parks</li><li>Schools</li><li>Local places</li></ul>
               <h3>Lakeview</h3>
               <p class="ni-card-line">From Belmont Harbor to neighborhood parks. Find school resources, libraries, and local amenities in Lakeview.</p>
               <span class="ni-card-go">Explore &rarr;</span>

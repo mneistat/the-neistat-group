@@ -69,3 +69,14 @@ No new neighborhood pages, IDX, active listings, transaction claims, or case stu
 ## Verification
 
 All 17 existing Node/jsdom regression checks pass, including local links and fragment targets, generated proof, and contextual inquiries. The generated-content and whitespace checks also pass. Desktop preview inspection covered the new market sections, parks/resources, and hub; it caught an inherited light heading color on the new cream sections, corrected in this pass. Responsive grid rules were reviewed in source; this browser cannot resize, so no new mobile visual test is claimed.
+
+## Visual presentation pass — September 22, 2026
+
+- The hub hero now opens as a Lincoln Park/Lakeview photographic diptych, so the collection is represented by both pilots rather than a single neighborhood image. The two guide entries retain their unequal editorial scale and now carry chapter numbers and concise content cues.
+- The guide section rail is compact and sticky, with horizontal overflow on narrow screens. It keeps parks, schools, and local amenities immediately available without changing page content or anchor targets.
+- Parks are presented as a photographic field-guide feature: one place-defining image beside a numbered, open editorial index. Existing place copy, links, and source credits are preserved.
+- School information remains factual and unranked, but now reads as a numbered reference ledger. The existing CPS locator and GoCPS links have been brought forward into an address-first callout.
+- Local amenities use numbered entries and restrained rules rather than card containers. Boundary maps now include a visible key for the community area, parkland, and Lake Michigan.
+- Housing-stock language and markup are unchanged.
+
+Verification for this visual pass: all three HTML files parse cleanly; IDs remain unique; local links resolve; both guides retain four parks, five schools, four local destinations, and one school-resource callout; generated Selected Work proof and `git diff --check` pass. The full Node/jsdom suite could not be rerun in the fresh workspace because its temporary dependency was unavailable; the edited files do not alter forms, calculators, navigation JavaScript, generated proof, or publication gates.
