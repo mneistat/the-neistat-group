@@ -13,7 +13,9 @@ Scope: the hub, Lincoln Park, and Lakeview on `codex/website-audit-fixes`. Previ
 
 ## Main tagline — latest user direction
 
-Matt requested “Real Estate decisions made better (or something like that).” The preview now uses **“Real estate decisions, made better.”** in the homepage hero and description/social metadata. This supersedes the older “Make better real estate decisions” wording for the current preview implementation. **People First. Always.** remains the brand principle; the grandfather quotation remains exact.
+Matt approved **“Real estate decisions made better.”** (without a comma) on September 22, 2026. The homepage hero and description/social metadata use that wording. **People First. Always.** remains the brand principle; the grandfather quotation remains exact.
+
+Approved homepage supporting sentence: **“Local knowledge, honest advice, and a clear strategy for buying, selling, or investing in Chicago real estate.”** This supersedes the earlier positioning and hero supporting copy. This focused copy update remains preview-only.
 
 ## Market source record
 
