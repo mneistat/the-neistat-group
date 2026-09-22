@@ -258,7 +258,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=9" defer></script>
+<script src="nav.js?v=10" defer></script>
   <meta property="og:title" content="Affordability | The Neistat Group">
   <meta property="og:description" content="Estimate a monthly payment, understand debt-to-income and pre-approval, and request a buyer closing-cost or seller net-proceeds estimate.">
   <meta property="og:url" content="https://www.theneistatgroup.com/calculator">
@@ -704,9 +704,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
     // ===== Nav & mobile menu =====
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
     (function(){
       const toggle = document.getElementById('navToggle');
       const menu = document.getElementById('mobileMenu');

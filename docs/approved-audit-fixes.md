@@ -36,6 +36,7 @@ Matt approved extending the refined homepage header across all 12 pages. This im
 
 - Shared serif wordmark, sentence-case navigation, spacing, outlined Contact action, and 44px minimum targets now live in `styles.css`; homepage-only header overrides are removed.
 - The wordmark links home. The redundant desktop Home link is removed consistently; mobile Home remains. Existing active-page/parent states, focus handling, and menu controls are preserved.
+- Header shrinking on scroll is shared by every page, including neighborhood guides; page-specific duplicate scroll listeners are removed.
 - Neighborhood section navigation and the compact affordability estimate follow the measured header height. Guide anchors account for both navigation bars.
 - All 12 main-content blocks are byte-for-byte unchanged, including the approved Mason photograph. No figures, copy, imagery, forms, or housing-stock content changed.
 - Local verification: all 19 regression checks pass, including two new header checks; generated Selected Work content, JavaScript syntax, and whitespace checks pass. Responsive source and simulated mobile-menu behavior are covered; a phone-sized visual browser check remains unavailable.

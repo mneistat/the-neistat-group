@@ -156,7 +156,7 @@ test('every page shares the refined header, with Home retained in the mobile men
     assert.equal(d.querySelector('.nav-brand').getAttribute('href').replace(/^\//, ''), 'index.html', file);
     assert.equal(d.querySelector('.mobile-menu-link').textContent.trim(), 'Home', file);
     assert.ok(d.querySelector('link[href$="styles.css?v=39"]'), file);
-    assert.ok(d.querySelector('script[src$="nav.js?v=9"]'), file);
+    assert.ok(d.querySelector('script[src$="nav.js?v=10"]'), file);
     dom.window.close();
   }
   assert.doesNotMatch(read('homepage-opening.css'), /\.home-page \.nav/);
@@ -171,6 +171,11 @@ test('sticky header offset follows the measured header height', () => {
   nav.getBoundingClientRect = () => ({ height });
   w.eval(read('nav.js'));
   assert.equal(observed, nav);
+  assert.equal(nav.classList.contains('scrolled'), false);
+  w.scrollY = 120; w.dispatchEvent(new w.Event('scroll'));
+  assert.equal(nav.classList.contains('scrolled'), true);
+  w.scrollY = 0; w.dispatchEvent(new w.Event('scroll'));
+  assert.equal(nav.classList.contains('scrolled'), false);
   notify();
   assert.equal(d.documentElement.style.getPropertyValue('--site-header-height'), '94px');
   height = 69; notify();

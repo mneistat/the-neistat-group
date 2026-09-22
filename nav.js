@@ -2,6 +2,11 @@
 (function () {
   'use strict';
   var nav = document.getElementById('nav');
+  if (nav) {
+    function syncHeaderScroll() { nav.classList.toggle('scrolled', window.scrollY > 60); }
+    window.addEventListener('scroll', syncHeaderScroll, { passive: true });
+    syncHeaderScroll();
+  }
   // Keep secondary sticky navigation below the header at every viewport/text size.
   if (nav && 'ResizeObserver' in window) {
     var headerObserver = new ResizeObserver(function () {
