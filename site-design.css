@@ -11,7 +11,8 @@
   --rule-ink: rgba(11,10,7,.2);
   --rule-paper: rgba(244,240,232,.22);
 }
-html { scroll-padding-top: calc(var(--site-header-height, 94px) + 24px); }
+/* Each destination owns its header offset; do not add it twice on the root. */
+html { scroll-padding-top: 0; scroll-behavior: auto; }
 body { font-size: 16px; line-height: 1.6; }
 ::selection { color: var(--paper); background: #554e43; }
 h1, h2, h3 { text-wrap: balance; }
@@ -247,6 +248,8 @@ button, input, select, textarea { font: inherit; }
 .ni-card-body { padding: 32px; }
 .ni-quicklinks a { min-height: 44px; }
 .np-hero { min-height: 78svh; padding-top: calc(var(--site-header-height, 94px) + 60px); }
+.np-hero-veil { background: linear-gradient(90deg,rgba(11,10,7,.48),rgba(11,10,7,.02) 75%), linear-gradient(0deg,rgba(11,10,7,.92),rgba(11,10,7,.4) 45%,rgba(11,10,7,.08)); }
+.np-hero .np-eyebrow { color: #e6e0d6; }
 .np-hero h1 { font-size: clamp(58px, 8vw, 116px); line-height: 1.03; }
 .np-back { font-size: 13px; color: var(--bone); min-height: 44px; }
 .np-band { padding-block: var(--section-space); }

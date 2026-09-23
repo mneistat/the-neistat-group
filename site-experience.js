@@ -41,8 +41,12 @@
     scheduled = false;
     var edge = guideNav.getBoundingClientRect().bottom + 32;
     var active = null;
+    var closestTop = -Infinity;
     sections.forEach(function (item) {
-      if (item.section.getBoundingClientRect().top <= edge) active = item;
+      // The quick-link order prioritizes parks and schools, while the map appears
+      // earlier in the page. Follow actual geometry, never the menu's order.
+      var top = item.section.getBoundingClientRect().top;
+      if (top <= edge && top > closestTop) { active = item; closestTop = top; }
     });
     sections.forEach(function (item) {
       if (item === active) item.link.setAttribute('aria-current', 'location');

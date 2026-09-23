@@ -57,6 +57,7 @@ test('guide section indicator follows reading position without moving focus or h
   d.querySelector('.np-section-nav').getBoundingClientRect = () => ({ bottom: 150 });
   const links = [...d.querySelectorAll('.np-section-nav a')];
   links.forEach(link => { d.getElementById(link.hash.slice(1)).getBoundingClientRect = () => ({ top: 2000 }); });
+  d.getElementById('context').getBoundingClientRect = () => ({ top: -1000 });
   d.getElementById('parks').getBoundingClientRect = () => ({ top: 120 });
   links[0].focus();
   w.eval(read('site-experience.js'));
