@@ -244,8 +244,10 @@
     .ss-presentation-image a { text-decoration: underline; text-underline-offset: 4px; min-height: 32px; }
     .ss-dark + .ss-dark { padding-top: 24px; }
   </style>
+  <link rel="stylesheet" href="/site-design.css?v=1">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
+<body class="site-design page-seller-strategy">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
@@ -286,11 +288,12 @@
           <p class="ss-hero-sub">A stronger sale starts before the public launch.</p>
           <a class="ss-textlink" href="contact.html?intent=selling-home">Talk Strategy &rarr;</a>
         </div>
+        <nav class="section-nav" aria-label="Seller strategy sections"><a href="#outcomes">Selected outcomes</a><a href="#access">Access</a><a href="#presentation">Presentation</a><a href="#partnership">Partnership</a></nav>
       </div>
     </header>
 
     <!-- ============ 2. PROOF FIRST ============ -->
-    <section class="ss-band ss-cream">
+    <section id="outcomes" class="ss-band ss-cream">
       <div class="ss-wrap">
         <div class="ss-proof-head">
           <p class="ss-label ss-reveal">Proof First</p>
@@ -330,7 +333,7 @@
     </section>
 
     <!-- ============ 3. ACCESS ============ -->
-    <section class="ss-band ss-dark">
+    <section id="access" class="ss-band ss-dark">
       <div class="ss-wrap ss-pillar-grid">
         <div class="ss-reveal">
           <p class="ss-label">Access</p>
@@ -359,7 +362,7 @@
     </section>
 
     <!-- ============ 4. PRESENTATION ============ -->
-    <section class="ss-band ss-cream">
+    <section id="presentation" class="ss-band ss-cream">
       <div class="ss-wrap ss-pillar-grid">
         <div class="ss-reveal">
           <p class="ss-label">Presentation</p>
@@ -399,7 +402,7 @@
     </section>
 
     <!-- ============ 5. PARTNERSHIP ============ -->
-    <section class="ss-band ss-dark">
+    <section id="partnership" class="ss-band ss-dark">
       <div class="ss-wrap ss-pillar-grid">
         <div class="ss-reveal">
           <p class="ss-label">Partnership</p>
@@ -487,47 +490,7 @@
     <style>.ss-reveal { opacity: 1 !important; transform: none !important; }</style>
   </noscript>
 
-  <script>
-    // Mobile menu. The open/close handler lives inline on every page by design;
-    // nav.js only keeps aria-expanded in step with it.
-    (function () {
-      var toggle = document.getElementById('navToggle');
-      var menu = document.getElementById('mobileMenu');
-    })();
 
-    // Reveals.
-    (function () {
-      var els = document.querySelectorAll('.ss-reveal');
-      if (!els.length) { return; }
-      function show(el) { el.classList.add('is-in'); }
-
-      var reduce = false;
-      try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-
-      // Must SHOW on this path. .ss-reveal starts at opacity 0.
-      if (reduce || !('IntersectionObserver' in window)) {
-        Array.prototype.forEach.call(els, show);
-        return;
-      }
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { show(entry.target); io.unobserve(entry.target); }
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-      Array.prototype.forEach.call(els, function (el) { io.observe(el); });
-
-      // Failsafe: if the observer never fires at all, never leave the fold blank.
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          if (document.querySelector('.ss-reveal.is-in')) { return; }
-          Array.prototype.forEach.call(els, function (el) {
-            if (el.getBoundingClientRect().top < window.innerHeight) { show(el); }
-          });
-        }, 1200);
-      });
-    })();
-  </script>
 
 </body>
 </html>

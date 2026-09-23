@@ -53,6 +53,9 @@ const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 
     </div>
   </section>`).join('\n\n');
 replace('selected-work.html', 'portfolio', portfolio);
+replace('selected-work.html', 'portfolio-index', records.map(t =>
+  `      <a href="#${escape(t.id)}">${escape(t.address)}<span>${join([t.neighborhood, t.assetType])}</span></a>`
+).join('\n'));
 
 const proof = ['lake', 'wellington'].map(id => records.find(t => t.id === id)).filter(Boolean).map(t => `<article class="ss-deal">
             <p class="ss-deal-type">${join([t.assetType, t.neighborhood])}</p>

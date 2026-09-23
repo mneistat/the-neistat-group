@@ -275,8 +275,10 @@
   <script src="/mortgage.js?v=1" defer></script>
   <script src="/affordability.js?v=2" defer></script>
   <noscript><style>.faq-a { max-height: none; }</style></noscript>
+  <link rel="stylesheet" href="/site-design.css?v=1">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
+<body class="site-design page-calculator">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
@@ -700,47 +702,6 @@
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script>
-    // ===== Nav & mobile menu =====
-    (function(){
-      const toggle = document.getElementById('navToggle');
-      const menu = document.getElementById('mobileMenu');
-    })();
-
-    // ===== Reveal animations (GSAP with IntersectionObserver fallback) =====
-    (function(){
-      const els = document.querySelectorAll('.reveal');
-      const calcReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (calcReduce) {
-        els.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
-      } else if (window.gsap && window.ScrollTrigger) {
-        gsap.registerPlugin(ScrollTrigger);
-        els.forEach(el => {
-          gsap.set(el, { opacity: 0, y: 24 });
-          gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
-        });
-      } else {
-        const io = new IntersectionObserver(entries => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              e.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-              e.target.style.opacity = '1';
-              e.target.style.transform = 'translateY(0)';
-              io.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        els.forEach(el => {
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(24px)';
-          io.observe(el);
-        });
-      }
-    })();
-
-  </script>
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </body>
 </html>

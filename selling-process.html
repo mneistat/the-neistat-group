@@ -215,8 +215,10 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
 <script src="nav.js?v=11" defer></script>
+  <link rel="stylesheet" href="/site-design.css?v=1">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
+<body class="site-design page-selling-process">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
@@ -738,32 +740,6 @@
   })();
   </script>
 
-  <script>
-  /* Scroll reveal.
-     styles.css:325 already sets ".reveal { opacity: 0 }", so this script is what
-     makes revealed content visible. Under prefers-reduced-motion — or with no
-     IntersectionObserver — we must therefore SHOW everything immediately rather
-     than return early, or the whole page stays blank for those users. */
-  (function(){
-    var els = document.querySelectorAll('.reveal');
-    function show(el){ el.style.opacity = '1'; el.style.transform = 'none'; }
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduce || !('IntersectionObserver' in window)){
-      Array.prototype.forEach.call(els, show);
-      return;
-    }
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.style.transition='opacity 0.9s ease, transform 0.9s ease';
-          entry.target.style.opacity='1';
-          entry.target.style.transform='translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    },{threshold:0.1});
-    Array.prototype.forEach.call(els, function(el){ observer.observe(el); });
-  })();
-  </script>
+
 </body>
 </html>

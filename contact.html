@@ -74,8 +74,10 @@
 <meta property="og:image:width" content="828">
 <meta property="og:image:height" content="1792">
   <script src="/forms.js?v=2" defer></script>
+  <link rel="stylesheet" href="/site-design.css?v=1">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
+<body class="site-design page-contact">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
@@ -188,29 +190,6 @@
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script>
-    // Nav
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('mobileMenu');
-    // Cursor
-    // GSAP Reveal. .reveal starts at opacity 0 (styles.css), and this form is the
-    // conversion endpoint for the whole site. If GSAP fails to load from the CDN, or
-    // the visitor prefers reduced motion, show everything at once instead of never.
-    var revealAll = function () {
-      document.querySelectorAll('.reveal').forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
-    };
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (window.gsap && window.ScrollTrigger && !reduceMotion) {
-      gsap.registerPlugin(ScrollTrigger);
-      document.querySelectorAll('.reveal').forEach(el => {
-        gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
-      });
-    } else {
-      revealAll();
-    }
-  </script>
 
 
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>

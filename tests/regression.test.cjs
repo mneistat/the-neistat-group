@@ -15,6 +15,62 @@ function page(file, query = '') {
   return new JSDOM(read(file), { url: 'https://www.theneistatgroup.com/' + file + query, runScripts: 'outside-only', pretendToBeVisual: true });
 }
 
+test('optional motion is safe without browser animation support', () => {
+  const dom = page('about.html'), w = dom.window;
+  w.matchMedia = () => ({ matches: false, addEventListener() {} });
+  delete w.IntersectionObserver;
+  assert.doesNotThrow(() => w.eval(read('site-experience.js')));
+  assert.equal(w.document.querySelector('.portrait-lead').hidden, false);
+  assert.equal(w.document.querySelector('.portrait-lead').style.opacity, '');
+  dom.window.close();
+});
+
+test('motion stops immediately when the visitor requests reduced motion', () => {
+  const dom = page('about.html'), w = dom.window;
+  let change, callback, observed = [], cancelled = 0, disconnected = false;
+  const preference = { matches: false, addEventListener(type, fn) { change = fn; } };
+  w.matchMedia = () => preference;
+  w.Element.prototype.getBoundingClientRect = () => ({ top: 2000 });
+  w.Element.prototype.animate = () => ({ finished: new Promise(() => {}), cancel() { cancelled++; } });
+  w.IntersectionObserver = class {
+    constructor(fn) { callback = fn; }
+    observe(el) { observed.push(el); }
+    unobserve() {}
+    disconnect() { disconnected = true; }
+  };
+  w.eval(read('site-experience.js'));
+  assert.ok(observed.length > 0);
+  callback([{ target: observed[0], isIntersecting: true }]);
+  preference.matches = true; change();
+  assert.equal(cancelled, 1);
+  assert.equal(disconnected, true);
+  assert.equal(observed[0].style.opacity, '');
+  callback([{ target: observed[1], isIntersecting: true }]);
+  assert.equal(cancelled, 1);
+  dom.window.close();
+});
+
+test('guide section indicator follows reading position without moving focus or history', () => {
+  const dom = page('neighborhoods/lincoln-park.html'), w = dom.window, d = w.document;
+  w.matchMedia = () => ({ matches: true, addEventListener() {} });
+  w.requestAnimationFrame = fn => fn();
+  d.querySelector('.np-section-nav').getBoundingClientRect = () => ({ bottom: 150 });
+  const links = [...d.querySelectorAll('.np-section-nav a')];
+  links.forEach(link => { d.getElementById(link.hash.slice(1)).getBoundingClientRect = () => ({ top: 2000 }); });
+  d.getElementById('parks').getBoundingClientRect = () => ({ top: 120 });
+  links[0].focus();
+  w.eval(read('site-experience.js'));
+  assert.equal(links[0].getAttribute('aria-current'), 'location');
+  d.getElementById('parks').getBoundingClientRect = () => ({ top: -500 });
+  d.getElementById('resources').getBoundingClientRect = () => ({ top: 100 });
+  w.dispatchEvent(new w.Event('scroll'));
+  assert.equal(links[0].hasAttribute('aria-current'), false);
+  assert.equal(links[1].getAttribute('aria-current'), 'location');
+  assert.equal(d.activeElement, links[0]);
+  assert.equal(w.location.hash, '');
+  dom.window.close();
+});
+
 test('fixed-rate estimate has known payment and explicit non-loan costs', () => {
   const result = calculate(scenario);
   assert.ok(Math.abs(result.pi - 2528.2721) < 0.001);

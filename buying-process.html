@@ -74,8 +74,10 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
 <script src="nav.js?v=11" defer></script>
+  <link rel="stylesheet" href="/site-design.css?v=1">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
+<body class="site-design page-buying-process">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
 <nav class="nav" id="nav">
@@ -205,25 +207,7 @@
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
   </footer>
 
-  <script>
-  /* Reveal on scroll. styles.css hides .reveal and relies on JS to show it, so
-     reduced-motion and missing-observer paths must SHOW rather than return. */
-  (function () {
-    var els = document.querySelectorAll('.reveal');
-    function show(el){ el.style.opacity='1'; el.style.transform='none'; }
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || !('IntersectionObserver' in window)) { Array.prototype.forEach.call(els, show); return; }
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-          show(e.target); obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    Array.prototype.forEach.call(els, function (el) { obs.observe(el); });
-  })();
-  </script>
+
 
   <script>
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
