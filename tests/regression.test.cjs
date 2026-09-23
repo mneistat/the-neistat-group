@@ -198,6 +198,17 @@ test('a compact Selected Work selection reveals and focuses the matching assignm
   assert.equal(d.querySelector('.sw-frame.is-active').dataset.frame, 'lake');
   assert.equal(d.querySelectorAll('.sw-item[aria-current="true"]').length, 1);
   assert.equal(d.getElementById('swView').getAttribute('href'), 'selected-work.html#lake');
+  const story = d.getElementById('swStory');
+  assert.equal(story.hidden, false);
+  assert.deepEqual([...story.querySelectorAll('dt')].map(el => el.textContent), ['The challenge', 'The strategy', 'The outcome']);
+  assert.equal(story.querySelectorAll('dd').length, 3);
+  assert.match(story.textContent, /Under contract in two weeks/);
+  assert.equal(d.getElementById('swNote').textContent, 'Under contract in two weeks.');
+  d.querySelector('[data-tx="wellington"]').click();
+  assert.equal(story.hidden, true, 'Lake Street narrative must not leak onto another assignment');
+  assert.equal(story.textContent, '');
+  assert.equal(d.getElementById('swNote').textContent, '4-condo sellout.');
+  assert.equal(d.getElementById('swNote').classList.contains('sw-note--highlight'), false);
   dom.window.close();
 });
 test('mobile menu isolates the page, contains focus and restores focus on Escape', () => {
@@ -225,6 +236,9 @@ test('publication gates and static portfolio stay aligned', () => {
     assert.equal(!!dom.window.document.getElementById(record.id), expected);
   }
   assert.equal(dom.window.document.getElementById('elm'), null);
+  const lake = context.window.SELECTED_WORK.find(record => record.id === 'lake');
+  assert.deepEqual([...dom.window.document.querySelectorAll('#lake .sw-story dd')].map(el => el.textContent), Object.values(lake.story));
+  assert.equal(dom.window.document.querySelectorAll('.sw-story').length, 1);
   dom.window.close();
 });
 

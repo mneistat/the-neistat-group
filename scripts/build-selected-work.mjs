@@ -11,6 +11,12 @@ const escape = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&a
 const join = values => values.filter(Boolean).map(escape).join(' · ');
 const paragraph = (className, value) => value ? `<p class="${className}">${escape(value)}</p>` : '';
 const press = t => t.pressMention && t.pressUrl ? `<a class="swp-feature-press" href="${escape(t.pressUrl)}">Read the coverage in ${escape(t.pressMention)} ↗</a>` : '';
+const story = t => {
+  const beats = [['challenge', 'The challenge'], ['strategy', 'The strategy'], ['outcome', 'The outcome']]
+    .filter(([field]) => t.story?.[field]?.trim())
+    .map(([field, label]) => `<div><dt>${label}</dt><dd>${escape(t.story[field])}</dd></div>`);
+  return beats.length ? `\n      <dl class="sw-story sw-story--portfolio" aria-label="${escape('The story behind ' + t.address)}">${beats.join('')}</dl>` : '';
+};
 const ids = new Set();
 for (const t of records) {
   if (!t.id || ids.has(t.id) || !t.address || !t.image || !t.imageAlt || !t.priceOrResult) throw new Error('Incomplete or duplicate public record: ' + t.id);
@@ -40,10 +46,10 @@ const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 
         <h2 class="swp-feature-address" id="heading-${escape(t.id)}">${escape(t.address)}</h2>
         ${paragraph('swp-assignment-rep', t.representation)}
         <p class="swp-feature-price">${escape(t.priceOrResult)}</p>
-        ${paragraph('swp-feature-note', t.outcomeLine)}
+        ${paragraph('swp-feature-note', t.resultHighlight || t.outcomeLine)}
         ${paragraph('swp-feature-tenants', t.tenants)}
         ${press(t)}
-      </div>
+      </div>${story(t)}
     </div>
   </section>`).join('\n\n');
 replace('selected-work.html', 'portfolio', portfolio);

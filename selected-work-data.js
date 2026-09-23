@@ -50,6 +50,14 @@ window.SELECTED_WORK = [
     representation: '',                     // not verified — deliberately blank
     priceOrResult: '$9,500,000',
     outcomeLine: 'Won the listing against major brokerages and brought it under contract off-market in two weeks.',
+    resultHighlight: 'Under contract in two weeks.',
+    // All three beats restate the approved outcome above. No client motivation,
+    // outreach tactics, pricing result, or completed-sale claim is inferred.
+    story: {
+      challenge: 'Win a West Loop commercial listing against major brokerages.',
+      strategy: 'An off-market approach.',
+      outcome: 'Listing secured. Under contract in two weeks.'
+    },
     // Occupancy, not Matthew's work — he represented the seller on the sale.
     // BODYBAR confirms 1035 W. Lake Suite 100A on its own site; The Athletic Club
     // per Matthew, who transacted the building.
