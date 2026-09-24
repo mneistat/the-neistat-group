@@ -30,3 +30,7 @@ Career sales totals remain excluded everywhere. Individual property prices are p
 ## Delivery
 
 Work stays on the preview branch. Production publication requires Matt's separate instruction. Browser verification and the final commit are recorded in PR #2.
+
+## Source-credit standard — September 24, 2026
+
+Matt approved the small bottom-of-page footnote treatment for photography and information sources throughout the site. Use the shared `.footer-credits` block after the footer bar whenever a page needs attribution; keep source and license links, photo subjects, crop notes, and original verification dates. Do not add empty credit blocks or invent photographers. The neighborhood guides, hub, Selected Work, Seller Strategy and Affordability use this treatment. Generated transaction sources follow the same public-record gate as their assignments. Practical resource links, press/recognition features, illustrative-image labels, and explanations needed to interpret the numbers remain with the relevant content. Apply this standard to new pages and sources as they are added.

@@ -10,7 +10,8 @@ const records = context.window.SELECTED_WORK.filter(t => t.publishStatus === 'pu
 const escape = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const join = values => values.filter(Boolean).map(escape).join(' · ');
 const paragraph = (className, value) => value ? `<p class="${className}">${escape(value)}</p>` : '';
-const press = t => t.pressMention && t.pressUrl ? `<a class="swp-feature-press" href="${escape(t.pressUrl)}">Read the coverage in ${escape(t.pressMention)} ↗</a>` : '';
+const sourceNotes = items => items.filter(t => t.pressMention && t.pressUrl)
+  .map(t => `      <p>${escape(t.address)} · <a href="${escape(t.pressUrl)}">${escape(t.pressMention)}</a>.</p>`).join('\n');
 const story = t => {
   const beats = [['challenge', 'The challenge'], ['strategy', 'The strategy'], ['outcome', 'The outcome']]
     .filter(([field]) => t.story?.[field]?.trim())
@@ -48,11 +49,11 @@ const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 
         <p class="swp-feature-price">${escape(t.priceOrResult)}</p>
         ${paragraph('swp-feature-note', t.resultHighlight || t.outcomeLine)}
         ${paragraph('swp-feature-tenants', t.tenants)}
-        ${press(t)}
       </div>${story(t)}
     </div>
   </section>`).join('\n\n');
 replace('selected-work.html', 'portfolio', portfolio);
+replace('selected-work.html', 'portfolio-sources', sourceNotes(records));
 replace('selected-work.html', 'portfolio-index', records.map(t =>
   `      <a href="#${escape(t.id)}">${escape(t.address)}<span>${join([t.neighborhood, t.assetType])}</span></a>`
 ).join('\n'));
@@ -62,9 +63,10 @@ const proof = ['lake', 'wellington'].map(id => records.find(t => t.id === id)).f
             <h3><a href="selected-work.html#${escape(t.id)}">${escape(t.address)}</a></h3>
             <p class="ss-deal-fig">${escape(t.priceOrResult)}</p>
             ${paragraph('ss-deal-out', t.outcomeLine)}
-            ${t.pressMention && t.pressUrl ? `<p class="ss-deal-src"><a href="${escape(t.pressUrl)}">Reported in ${escape(t.pressMention)} ↗</a></p>` : paragraph('ss-deal-src', t.representation)}
+            ${paragraph('ss-deal-src', t.representation)}
           </article>`).join('\n          ');
 replace('seller-strategy.html', 'seller-proof', proof);
+replace('seller-strategy.html', 'seller-sources', sourceNotes(['lake', 'wellington'].map(id => records.find(t => t.id === id)).filter(Boolean)));
 
 for (const [slug, name] of [['lincoln-park', 'Lincoln Park'], ['lakeview', 'Lakeview']]) {
   const nearby = records.filter(t => t.neighborhood === name);
