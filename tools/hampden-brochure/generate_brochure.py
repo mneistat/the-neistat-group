@@ -113,7 +113,7 @@ c.showPage()
 
 # OPTIONS: two sale choices, with two marketing methods under the full-building sale.
 base(2,'The options')
-heading('YOUR OPTIONS','Two ways to move forward.','Sell the full building, or package the units of willing owners.')
+heading('YOUR OPTIONS','Full-building sale first.','Begin with the valuation. If the board later chooses to market the property, a voluntary group sale remains a secondary option.')
 line(179)
 p('01',M,195,35,size=26,lead=29,font='Cormorant',color=ACCENT)
 p('Sell the full building',94,195,474,size=23,lead=28,font='Cormorant')
@@ -132,10 +132,10 @@ for x,adv,trade in [
     p(trade,x,529,246,size=10.4,lead=14.5,color=MUTED)
 line(577)
 p('02',M,591,35,size=26,lead=29,font='Cormorant',color=ACCENT)
-p('Voluntary group sale',94,591,474,size=23,lead=28,font='Cormorant')
-p('Package only the units of owners who choose to sell together and market them as one offering. Participation is voluntary; pricing depends on the units included.',94,627,474,size=10.5,lead=15,color=MUTED)
+p('Secondary option: group sale',94,591,474,size=20,lead=24,font='Cormorant')
+p('Package only the units of owners who choose to sell together and market them as one offering. This should be considered after the full-building valuation, not as an equal starting point.',94,627,474,size=10.5,lead=15,color=MUTED)
 p('<b>Marketing:</b> Participating sellers agree on public or targeted outreach.',94,681,474,size=10.2,lead=14.5)
-p('<b>Approval:</b> A full-building sale requires applicable owner approval. A group sale involves participating owners, with counsel reviewing restrictions.',M,718,CW,size=9,lead=12.5,color=MUTED)
+p('<b>Approval:</b> Marketing tests the market; it does not itself approve a sale. A full-building sale requires applicable owner approval. A group sale involves participating owners, with counsel reviewing restrictions and governance implications.',M,718,CW,size=8.7,lead=12,color=MUTED)
 c.showPage()
 
 # VALUE AND FINANCING: concise decision context, with details available online.
@@ -186,7 +186,7 @@ for i,(title,body) in enumerate(items,1):
     y=p('<b>'+title+':</b> '+body,M+28,t,CW-28,size=10.2,lead=14)
     t=y+9
 p('For lender review: budgets, reserve studies, insurance, minutes, assessment information, inspections, and ownership documents. Full checklist and lending background online.',M,588,CW,size=9.3,lead=13,color=MUTED)
-p('<b>Approval:</b> Chicago generally requires at least 85% approval for a full-building sale unless governing documents require more. A qualifying sale can bind dissenting owners. Counsel must confirm procedures and owner protections.',M,625,CW,size=9.2,lead=12.5,color=MUTED)
+p('<b>Before owner distribution:</b> Confirm the current reserve balance, assessment range, ownership and voting schedule, the 66-parcel / 67-unit discrepancy, and financing requirements. Chicago generally requires at least 85% approval for a full-building sale unless governing documents require more. Management, counsel, and a lender should verify the applicable requirements.',M,625,CW,size=8.8,lead=11.8,color=MUTED)
 line(675)
 logo('reference-2.svg',M,691,219)
 p('Matthew Neistat',319,687,249,size=16.5,lead=19,font='Cormorant')
