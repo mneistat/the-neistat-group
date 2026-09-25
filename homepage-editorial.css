@@ -2,7 +2,7 @@
 .editorial-home { background: var(--paper); color: var(--ink); }
 .home-main { padding-top: var(--site-header-height, 94px); }
 .home-main h1, .home-main h2, .home-main h3 {
-  font-family: var(--serif); font-weight: 400; letter-spacing: -.04em;
+  font-family: var(--serif); font-weight: 400; letter-spacing: -.04em; color: inherit;
 }
 .home-main h2 { font-size: clamp(36px, 4.65vw, 68px); line-height: 1.06; }
 .home-eyebrow {
@@ -26,7 +26,7 @@
 .home-footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
 
 /* Paper and photograph, composed as one opening. */
-.home-opening { display: grid; grid-template-columns: 1.08fr 1fr; min-height: min(780px, calc(100svh - var(--site-header-height, 94px))); }
+.home-opening { display: grid; grid-template-columns: 1.5fr 1fr; min-height: min(780px, calc(100svh - var(--site-header-height, 94px))); }
 .home-opening-copy { padding: clamp(64px, 7vw, 104px) var(--page-gutter) 70px; align-self: center; }
 .home-opening h1 { font-size: clamp(60px, 7.05vw, 110px); line-height: .99; text-wrap: initial; }
 .home-opening h1 span { display: block; }
@@ -110,7 +110,7 @@
 .home-footer .footer-credits { margin-top: 20px; }
 
 @media (min-width: 1700px) {
-  .home-opening { grid-template-columns: 1.15fr 1fr; }
+  .home-opening { grid-template-columns: 1.5fr 1fr; }
   .home-opening-copy { padding-left: var(--page-gutter); }
 }
 @media (max-width: 1000px) {
