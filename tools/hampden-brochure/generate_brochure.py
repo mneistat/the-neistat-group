@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hampden board brochure: editorial print edition, September 21, 2026.
+"""Hampden board brochure: editorial print edition, September 25, 2026.
 Run python3 generate.py --output path/to/brochure.pdf.
 Requires reportlab, svglib and Pillow. Assets and fonts are bundled.
 """
@@ -18,14 +18,16 @@ from reportlab.graphics import renderPDF
 from svglib.svglib import svg2rlg
 
 ROOT=Path(__file__).resolve().parent
-ap=argparse.ArgumentParser(); ap.add_argument('--output',type=Path,default=ROOT/'Hampden-Board-Brochure.pdf'); args=ap.parse_args()
+ap=argparse.ArgumentParser(); ap.add_argument('--output',type=Path,default=ROOT/'Hampden-Board-Brochure.pdf'); ap.add_argument('--site-url',default='https://hampden-board-site.vercel.app/'); args=ap.parse_args()
 args.output.parent.mkdir(parents=True,exist_ok=True)
 for name,fn in [('Inter','Inter-Regular.ttf'),('Inter-Semi','Inter-SemiBold.ttf'),('Cormorant','CormorantGaramond-SemiBold.ttf')]:
     pdfmetrics.registerFont(TTFont(name,str(ROOT/'fonts'/fn)))
 pdfmetrics.registerFontFamily('Inter',normal='Inter',bold='Inter-Semi',italic='Inter',boldItalic='Inter-Semi')
 W,H=612,792; M=44; CW=524
 INK=HexColor('#29242A'); MUTED=HexColor('#696269'); ACCENT=HexColor('#8C554A'); PAPER=HexColor('#F5F2ED'); LINE=HexColor('#DCD5CC')
-SITE='https://hampden-board-site.vercel.app/'
+SITE=args.site_url.rstrip('/')+'/'
+FREDDIE='https://guide.freddiemac.com/app/guide/bulletin/2026-C'
+ELIGIBILITY='https://selling-guide.fanniemae.com/sel/b4-2.1-03/ineligible-projects'
 FANNIE='https://singlefamily.fanniemae.com/media/document/pdf/lender-letter-ll-2026-03-updates-project-standards-property-insurance-requirements'
 CHICAGO='https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2658975'
 c=canvas.Canvas(str(args.output),pagesize=(W,H),pageCompression=1)
@@ -88,22 +90,25 @@ def heading(kicker,title,sub=None):
     if sub:t=p(sub,M,t+10,CW,size=11,lead=15.5,color=MUTED)
     return t
 
-# COVER: one large image, clear title, restrained supporting information.
+# COVER: original artwork and property photo, with the personal approach up front.
 base(1,'Board advisory')
-logo('reference-0.svg',M,35,154)
-label('BOARD ADVISORY',412,39,size=7,space=1)
-p('September 2026',412,52,156,size=8.5,lead=12,color=MUTED)
-label('LINCOLN PARK / CHICAGO',M,105,color=ACCENT)
-p('2629 North<br/>Hampden Court',M,121,420,size=45,lead=42,font='Cormorant')
-photo(M,227,CW,317,focus=.68)
-p('<link href="https://www.zillow.com/homedetails/2629-N-Hampden-Ct-APT-204-Chicago-IL-60614/3726053_zpid/" color="#696269">Property photo: Zillow</link>',M,550,230,size=6.8,lead=9,color=MUTED)
-p('Know the value.<br/>Then decide.',M,576,230,size=29,lead=29,font='Cormorant')
-p('Start with a complimentary valuation. Understand the building\'s value, then choose the sale strategy that fits the owners\' priorities.',323,578,245,size=10.5,lead=15.5)
-line(653)
-for x,val,desc in [(M,'67*','Reported units'),(231,'34','Deeded parking spaces'),(425,'1970','Reported year built')]:
-    p(val,x,665,150,size=24,lead=25,font='Cormorant')
-    p(desc,x,694,160,size=8.2,lead=11,color=MUTED)
-p('Reported figures are unverified. *Confirm the 66-parcel / 67-unit discrepancy against the declaration.',M,727,CW,size=7.7,lead=10.5,color=MUTED)
+logo('reference-0.svg',M,30,154)
+label('BOARD ADVISORY',412,34,size=7,space=1)
+p('September 25, 2026',412,48,156,size=8.5,lead=12,color=MUTED)
+label('LINCOLN PARK / CHICAGO',M,91,color=ACCENT)
+p('2629 North<br/>Hampden Court',M,107,450,size=43,lead=40,font='Cormorant')
+photo(M,204,CW,190,focus=.72)
+p('<link href="https://www.zillow.com/homedetails/2629-N-Hampden-Ct-APT-204-Chicago-IL-60614/3726053_zpid/" color="#696269">Property photo: Zillow</link>',M,400,230,size=6.8,lead=9,color=MUTED)
+p('Reported: 67 units* / 34 deeded parking spaces / built 1970. *Confirm the 66-parcel / 67-unit discrepancy.',M,411,CW,size=7.2,lead=9,color=MUTED)
+label('HOW I WORK',M,427,color=ACCENT)
+p('People First. Always.',M,443,CW,size=31,lead=33,font='Cormorant')
+p('A building sale is one transaction, but it affects every owner differently. I will work with the board on strategy and offer individual conversations about each owner\'s priorities.',M,489,246,size=10.5,lead=15)
+p('Expect clear comparisons, regular updates, and candid recommendations. I will explain which offers deserve consideration, where expectations exceed the evidence, and when the terms do not justify a sale.',M,578,246,size=10.5,lead=15)
+p('For residents, we can compare ownership costs with future housing expenses and explore a negotiated lease to stay. For investors, we can assess income, capital needs, and net proceeds, with tax advisors reviewing individual consequences.',322,489,246,size=10.5,lead=15)
+p('I plan to partner with a residential agent to help owners who need to move. My experience includes large-scale multifamily transactions and deals across the country; I will remain directly involved.',322,593,246,size=10.5,lead=15)
+rect(M,687,CW,44,PAPER)
+p('Know the value. Then decide.',M+13,696,273,size=18,lead=20,font='Cormorant')
+p('Complimentary valuation.<br/>No commitment to sell.',344,695,205,size=9.5,lead=13,color=MUTED)
 c.showPage()
 
 # OPTIONS: two sale choices, with two marketing methods under the full-building sale.
@@ -117,7 +122,7 @@ label('TWO MARKETING APPROACHES',M,266,color=ACCENT)
 p('Full public marketing',M,289,246,size=12,lead=16,font='Inter-Semi')
 p('List the property publicly, market it broadly, respond to inquiries, and arrange building showings.',M,315,246,size=10.5,lead=15,color=MUTED)
 p('Confidential targeted outreach',322,289,246,size=12,lead=16,font='Inter-Semi')
-p('Approach selected brokers, buyers, and institutions. Require every participant to sign an NDA/confidentiality agreement before receiving confidential materials. Arrange showings only after confirming serious interest and the buyer\'s ability to proceed.',322,315,246,size=10.5,lead=15,color=MUTED)
+p('Approach selected brokers, buyers, and institutions. Require every participant to sign an NDA/confidentiality agreement before receiving confidential materials. Arrange showings only after confirming serious interest and the buyer\'s financial ability to proceed.',322,315,246,size=10.5,lead=15,color=MUTED)
 for x,adv,trade in [
     (M,'Wider exposure and buyer competition.','More public exposure and showing activity.'),
     (322,'A quieter process with controlled access.','A smaller buyer pool may limit competition.')]:
@@ -133,61 +138,61 @@ p('<b>Marketing:</b> Participating sellers agree on public or targeted outreach.
 p('<b>Approval:</b> A full-building sale requires applicable owner approval. A group sale involves participating owners, with counsel reviewing restrictions.',M,718,CW,size=9,lead=12.5,color=MUTED)
 c.showPage()
 
-# VALUATION: two-column layout separates the short request from its purpose.
-base(3,'The valuation')
-heading('THE VALUATION','A clear place to start.','Send what you have. Approximate dates are fine; we can fill in gaps together.')
-# Quiet architectural inset, reused from the actual facade.
-photo(M,185,156,220,focus=.52)
-p('The building, in context.',M,412,156,size=7.7,lead=11,color=MUTED)
-p('Start with<br/>the valuation.',M,449,157,size=24,lead=25,font='Cormorant')
-p('I will prepare a Broker Opinion of Value to help the board assess the building\'s value and sale options.',M,511,157,size=10.3,lead=15)
-p('No listing agreement.<br/>No obligation to sell.',M,592,158,size=10.3,lead=15,font='Inter-Semi',color=ACCENT)
-items=[
-('Expenses','2025 operating expenses and, ideally, <nobr>Jan 1-Sept 1, 2026</nobr> expenses.'),
-('Capital improvements','Work completed in the last five years and anything planned or needed, with costs if available.'),
-('Building ages','Approximate ages of the roof, elevator, masonry, windows, and boiler.'),
-('Maintenance','Any sprinkler updates needed and when the driveway was last paved.'),
-('Current rents','Unit numbers and monthly rents from owners willing to share. No tenant names needed.')]
-t=185
-for i,(h,b) in enumerate(items,1):
-    label(f'0{i}',234,t+3,color=ACCENT,size=8,space=0)
-    p(h,262,t,306,size=11.7,lead=15.5,font='Inter-Semi')
-    y=p(b,262,t+23,306,size=10.5,lead=15,color=MUTED)
-    if i<5:line(y+17,234,334)
-    t=y+37
-rect(M,664,CW,69,PAPER)
-label('WHAT YOU WILL RECEIVE',M+18,678,color=ACCENT)
-p('A supported value range to guide the sale strategy, informed by market evidence and capital needs.',M+18,696,CW-36,size=10.6,lead=15)
+# VALUE AND FINANCING: concise decision context, with details available online.
+base(3,'Value, ownership costs & financing')
+heading('THE DECISION','Value, costs &amp; financing.','Start with the evidence, then consider what the options mean for you.')
+p('A supported valuation',M,184,246,size=12,lead=16,font='Inter-Semi')
+p('I will prepare a Broker Opinion of Value using income, expenses, condition, capital needs, and market evidence. You will receive a supported range and the assumptions behind it.',M,210,246,size=10.5,lead=15)
+p('Continued ownership',M,300,246,size=12,lead=16,font='Inter-Semi')
+p('Compare mortgage payments, taxes, insurance, dues, and potential assessments with estimated net proceeds and future housing costs. Separate confirmed obligations from estimates.',M,326,246,size=10.5,lead=15,color=MUTED)
+p('If you want to stay',322,184,246,size=12,lead=16,font='Inter-Semi')
+p('I can explore a lease with prospective buyers. Accessing equity while staying in familiar surroundings could provide flexibility and fewer direct building responsibilities.',322,210,246,size=10.5,lead=15)
+p('Rent, lease length, renewals, and protections must be negotiated. Staying is not guaranteed, renting may not cost less, and a sale gives up ownership and future appreciation. Building costs still influence rent.',322,300,246,size=10.3,lead=14.5,color=MUTED)
+line(419)
+p('Financing individual units',M,435,CW,size=25,lead=28,font='Cormorant')
+p('The lender assesses the building as well as the borrower. An appraisal alone does not establish project eligibility. A full-building buyer\'s financing is evaluated separately.',M,474,CW,size=10.5,lead=15)
+label('AUGUST 3, 2026',M,523,color=ACCENT)
+p('Fannie Mae Limited Review and Freddie Mac Streamlined Review retired for covered applications. Applicable exceptions remain.',M,541,246,size=10.3,lead=14.5)
+label('JANUARY 4, 2027',322,523,color=ACCENT)
+p('The standard reserve allocation rises from 10% to 15% of annual budgeted assessment income for covered applications. A qualifying reserve study may support an alternative.',322,541,246,size=10.3,lead=14.5)
+p('Unresolved critical repairs can prevent eligibility. Routine maintenance or an assessment alone does not automatically disqualify a project. We will seek a lender review; any alternative-financing comparison should use actual quotes.',M,623,CW,size=10.2,lead=14.5,color=MUTED)
+p('Sources: <link href="'+FANNIE+'" color="#8C554A">Fannie Mae LL-2026-03</link> / <link href="'+FREDDIE+'" color="#8C554A">Freddie Mac 2026-C</link> / <link href="'+ELIGIBILITY+'" color="#8C554A">Project eligibility</link>',M,685,CW,size=7.7,lead=10)
+p('Reviewed September 25, 2026. No building eligibility determination has been made. The reserve rule does not automatically mean a 15% increase in dues.',M,706,CW,size=8.4,lead=11.5,color=MUTED)
 c.showPage()
 
-# TERMS: give representation and advice equal weight; detailed lending notes live online.
-base(4,'Representation & next steps')
-heading('REPRESENTATION','Clear terms. A measured process.')
-rect(M,160,CW,113,PAPER)
-label('PROPOSED COMMISSION',M+18,176,color=ACCENT)
-p('1.25%',M+18,192,170,size=38,lead=40,font='Cormorant')
-p('of the final sale price',M+18,238,190,size=9.5,lead=13,font='Inter-Semi')
-p('Payable to my brokerage at closing. All brokerage compensation is negotiable and subject to written agreement.',286,181,260,size=11,lead=16)
-# Two side-by-side fee notes.
-p('Buyer-broker compensation',M,297,250,size=11.5,lead=15,font='Inter-Semi')
-p('Additional to my fee. Buyer brokers should state their requested compensation separately in the offer. The board can negotiate it with the other terms. Any seller-paid fee requires written agreement.',M,321,247,size=10.3,lead=14.5,color=MUTED)
-p('Other closing costs',322,297,246,size=11.5,lead=15,font='Inter-Semi')
-p('Separate from commission. Transfer taxes follow governing rates and transaction terms; title and legal fees require quotes. A title company may offer reduced pricing for a coordinated multi-unit transaction.',322,321,246,size=10.3,lead=14.5,color=MUTED)
-line(422)
-p('Before the board decides.',M,438,CW,size=24,lead=26,font='Cormorant')
-p('Approval & ownership',M,481,247,size=11.2,lead=15,font='Inter-Semi')
-p('Chicago requires at least 85% approval for a full-building sale unless the governing documents require more. Counsel must confirm voting interests, procedures, and owner protections, including the rights of dissenting owners.',M,504,247,size=10.1,lead=14.2,color=MUTED)
-p('Resolve the 66-parcel / 67-unit discrepancy before calculating votes or allocating proceeds.',M,600,247,size=9.9,lead=14,color=MUTED)
-p('Financing & verification',322,481,246,size=11.2,lead=15,font='Inter-Semi')
-p('A lender must assess this building\'s eligibility under applicable condominium lending standards. Fannie Mae issued changes in 2026 affecting project review, reserves, and insurance.',322,504,246,size=10.1,lead=14.2,color=MUTED)
-p('Building figures remain unverified. Individual unit sales do not establish the value of the entire building.',322,586,246,size=9.9,lead=14,color=MUTED)
-p('<link href="'+CHICAGO+'" color="#8C554A">Chicago Code 13-72-085</link>  /  <link href="'+FANNIE+'" color="#8C554A">Fannie Mae LL-2026-03</link>  /  <link href="'+SITE+'#governance" color="#8C554A">Full background online</link>',M,645,CW,size=7.5,lead=10)
-line(666)
-logo('reference-2.svg',M,689,219)
-p('Matthew Neistat',319,681,249,size=16.5,lead=19,font='Cormorant')
-p('Investment Sales',319,704,249,size=8,lead=11,color=MUTED)
-p('<link href="mailto:matt@theneistatgroup.com" color="#8C554A">matt@theneistatgroup.com</link>',319,720,249,size=9.3,lead=13)
-p('Board discussion only; not an appraisal or commitment to sell. Consult legal, tax, and lending advisors.',M,740,CW,size=6.6,lead=8,color=MUTED)
+# TERMS AND REQUEST: fees, five-item checklist, approvals and contact.
+base(4,'Commission, records & next steps')
+heading('GETTING STARTED','Clear terms. A measured process.')
+rect(M,156,CW,92,PAPER)
+label('PROPOSED COMMISSION',M+16,169,color=ACCENT)
+p('1.25%',M+16,185,165,size=34,lead=35,font='Cormorant')
+p('of the final sale price',M+16,223,190,size=9,lead=12)
+p('Payable to my brokerage at closing. The fee reflects the scale of the transaction and my interest in a lasting relationship. All compensation is negotiable and subject to written agreement.',277,171,275,size=10.2,lead=14)
+p('Buyer-broker compensation',M,270,246,size=11,lead=15,font='Inter-Semi')
+p('Any seller-paid buyer-broker fee is additional to my fee. Brokers should state it separately in the offer for negotiation and written agreement.',M,293,246,size=10,lead=14,color=MUTED)
+p('Other closing costs',322,270,246,size=11,lead=15,font='Inter-Semi')
+p('Transfer taxes, title charges, and legal fees are separate. Title pricing may be reduced for a coordinated multi-unit closing. Actual costs require confirmation.',322,293,246,size=10,lead=14,color=MUTED)
+line(365)
+p('What I need for the valuation',M,380,CW,size=24,lead=27,font='Cormorant')
+items=[
+('Expenses','2025 and, ideally, Jan 1-Sept 1, 2026 operating expenses.'),
+('Capital improvements','Work completed in the last five years and work planned or needed, with costs if available.'),
+('Building ages','Roof, elevator, masonry, windows, and boiler.'),
+('Maintenance','Sprinkler updates needed and when the driveway was last paved.'),
+('Current rents','Unit numbers and monthly rents from willing owners. No tenant names needed.')]
+t=422
+for i,(title,body) in enumerate(items,1):
+    label(f'0{i}',M,t+2,color=ACCENT,size=8,space=0)
+    y=p('<b>'+title+':</b> '+body,M+28,t,CW-28,size=10.2,lead=14)
+    t=y+9
+p('For lender review: budgets, reserve studies, insurance, minutes, assessment information, inspections, and ownership documents. Full checklist and lending background online.',M,588,CW,size=9.3,lead=13,color=MUTED)
+p('<b>Approval:</b> Chicago generally requires at least 85% approval for a full-building sale unless governing documents require more. A qualifying sale can bind dissenting owners. Counsel must confirm procedures and owner protections.',M,625,CW,size=9.2,lead=12.5,color=MUTED)
+line(675)
+logo('reference-2.svg',M,691,219)
+p('Matthew Neistat',319,687,249,size=16.5,lead=19,font='Cormorant')
+p('<link href="mailto:matt@theneistatgroup.com" color="#8C554A">matt@theneistatgroup.com</link>',319,713,249,size=9.3,lead=13)
+p('<link href="'+SITE+'" color="#8C554A">Full presentation &amp; sources online</link> / <link href="'+CHICAGO+'" color="#8C554A">Chicago Code 13-72-085</link>',M,738,285,size=7,lead=9)
+p('Board discussion; not an appraisal or commitment to sell.',339,738,229,size=6.5,lead=9,color=MUTED)
 c.showPage()
 c.save()
 for pn,txt,start,end in checks:
