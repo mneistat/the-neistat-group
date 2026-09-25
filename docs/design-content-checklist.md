@@ -31,6 +31,12 @@ Career sales totals remain excluded everywhere. Individual property prices are p
 
 Work stays on the preview branch. Production publication requires Matt's separate instruction. Browser verification and the final commit are recorded in PR #2.
 
+## Mobile homepage opening — September 25, 2026
+
+Matt approved the river-photo concept. The mobile homepage uses his second supplied Chicago river photograph, a three-line cream headline, the shorter supporting copy, a rectangular conversation button and an understated Selected Work link. Desktop retains its existing video and copy. The existing video controller skips autoplay on mobile and pauses when the viewport becomes mobile.
+
+`images/chicago-river-mobile.jpeg` is the supplied 359 × 740 JPEG, preserved without image alterations. CSS crops its screenshot edges. It is a temporary source pending a higher-resolution original; do not substitute the AI-generated concept photograph or invent a photographer credit. The bottom footnote identifies Matthew as the supplier. No additional stories or transaction claims are introduced.
+
 ## Source-credit standard — September 24, 2026
 
 Matt approved the small bottom-of-page footnote treatment for photography and information sources throughout the site. Use the shared `.footer-credits` block after the footer bar whenever a page needs attribution; keep source and license links, photo subjects, crop notes, and original verification dates. Do not add empty credit blocks or invent photographers. The neighborhood guides, hub, Selected Work, Seller Strategy and Affordability use this treatment. Generated transaction sources follow the same public-record gate as their assignments. Practical resource links, press/recognition features, illustrative-image labels, and explanations needed to interpret the numbers remain with the relevant content. Apply this standard to new pages and sources as they are added.
