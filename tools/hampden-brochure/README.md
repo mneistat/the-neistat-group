@@ -9,7 +9,7 @@ pip install -r tools/hampden-brochure/requirements.txt
 python3 tools/hampden-brochure/generate_brochure.py --output hampden-board-site/Hampden-Board-Brochure.pdf
 ```
 
-For a review PDF, append `--site-url <verified-preview-url>` so the online-background link stays with the reviewed website. The default links to production; regenerate with the default when publishing the approved version. The PDF committed on this draft branch links to its branch preview.
+For a review PDF, append `--site-url <verified-preview-url>` so the online-background link stays with the reviewed website. The default links to production; regenerate with the default when publishing the approved version. The committed PDF links to the public website.
 
 Page 1: personal approach and individual owner priorities. Page 2: two sale choices, including public or confidential full-building marketing. Page 3: valuation, continued ownership, negotiated leases, and lending context. Page 4: commission, five-item valuation checklist, supporting records, approvals, and contact.
 
@@ -17,4 +17,4 @@ The website retains detailed policy dates, primary-source links, unverified prop
 
 Validation: all four PDF pages were rendered and visually reviewed. Desktop website review confirmed image loading, no horizontal overflow, working section navigation and disclosure links, and no site-origin JavaScript errors. HTML checks confirmed unique IDs, valid internal anchors, required sale/commission content, and unchanged embedded artwork. Mobile media rules were preserved and the new two-column sections stack below 600px; a separate mobile-browser visual review remains pending.
 
-Review only: `codex/hampden-owner-advisory`, draft PR #3, based on `hampden-board-site` at `6ec7e16`. Do not merge or promote until the user approves this version.
+Approved by the user on September 25, 2026. Published through PR #3 into `hampden-board-site`, based on `6ec7e16`; the public website and PDF use https://hampden-board-site.vercel.app/.
