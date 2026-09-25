@@ -106,6 +106,7 @@ for (const [file, id] of [['index.html', 'ctaForm'], ['contact.html', 'contactFo
   test(file + ' / ' + id + ': invalid, duplicate, failure, retry and success flows', async () => {
     const dom = page(file), w = dom.window, d = w.document;
     const form = d.getElementById(id); assert.ok(form);
+    if (form.closest('details')) form.closest('details').open = true;
     assert.notEqual(form.getAttribute('role'), 'status', 'The whole form must not be a live region');
     let calls = 0, resolveRequest, events = 0;
     w.fetch = () => { calls++; return new Promise(resolve => { resolveRequest = resolve; }); };
@@ -142,6 +143,7 @@ test('guide inquiry context and recognized intent reach the contact form', () =>
 });
 test('invalid inquiry focuses the first field and centers its label without sending', () => {
   const dom = page('index.html'), w = dom.window, d = w.document;
+  d.getElementById('homeInquiry').open = true;
   const name = d.getElementById('homeName');
   let scrolled = false;
   name.closest('.cta-form-group').scrollIntoView = options => { scrolled = options.block === 'center'; };
@@ -240,32 +242,29 @@ test('sticky header offset follows the measured header height', () => {
   assert.equal(d.documentElement.style.getPropertyValue('--site-header-height'), '69px');
   dom.window.close();
 });
-test('a compact Selected Work selection reveals and focuses the matching assignment', () => {
-  const dom = page('index.html'), w = dom.window, d = w.document;
-  w.matchMedia = query => ({ matches: query.includes('max-width: 1100px'), addEventListener() {} });
-  w.eval(read('selected-work-data.js'));
-  let revealed = false;
-  d.getElementById('swFigure').scrollIntoView = options => { revealed = options.block === 'start'; };
-  const script = [...d.querySelectorAll('script:not([src])')].find(s => s.textContent.includes('Selected Work — render and switch'));
-  w.eval(script.textContent);
-  d.querySelector('[data-tx="lake"]').click();
-  assert.equal(d.getElementById('swAddress').textContent, '1035 W. Lake Street');
-  assert.equal(d.activeElement.id, 'swAddress');
-  assert.equal(revealed, true);
-  assert.equal(d.querySelector('.sw-frame.is-active').dataset.frame, 'lake');
-  assert.equal(d.querySelectorAll('.sw-item[aria-current="true"]').length, 1);
-  assert.equal(d.getElementById('swView').getAttribute('href'), 'selected-work.html#lake');
-  const story = d.getElementById('swStory');
-  assert.equal(story.hidden, false);
-  assert.deepEqual([...story.querySelectorAll('dt')].map(el => el.textContent), ['The challenge', 'The strategy', 'The outcome']);
-  assert.equal(story.querySelectorAll('dd').length, 3);
-  assert.match(story.textContent, /Under contract in two weeks/);
-  assert.equal(d.getElementById('swNote').textContent, 'Under contract in two weeks.');
-  d.querySelector('[data-tx="wellington"]').click();
-  assert.equal(story.hidden, true, 'Lake Street narrative must not leak onto another assignment');
-  assert.equal(story.textContent, '');
-  assert.equal(d.getElementById('swNote').textContent, '4-condo sellout.');
-  assert.equal(d.getElementById('swNote').classList.contains('sw-note--highlight'), false);
+test('homepage shows gated assignment proof and reachable inquiry paths without scripts', () => {
+  const dom = page('index.html'), d = dom.window.document;
+  const context = { window: {} }; vm.runInNewContext(read('selected-work-data.js'), context);
+  const publicRecords = context.window.SELECTED_WORK.filter(t => t.publishStatus === 'public' && t.needsVerification === false);
+  const feature = d.querySelector('.home-feature');
+  const record = publicRecords.find(t => t.id === feature.dataset.assignment);
+  assert.ok(record, 'The homepage feature must be a verified public record');
+  assert.equal(feature.querySelector('img').getAttribute('src'), record.image);
+  assert.equal(feature.querySelector('img').alt, record.imageAlt);
+  assert.equal(feature.querySelector('h3').textContent, record.address);
+  assert.ok(feature.textContent.includes(record.priceOrResult));
+  assert.ok(feature.textContent.includes(record.outcomeLine));
+  assert.equal(feature.querySelector('a').getAttribute('href'), 'selected-work.html#' + record.id);
+  const contactPage = page('contact.html'), contact = contactPage.window.document;
+  for (const a of d.querySelectorAll('.home-intents a')) {
+    const href = new URL(a.href);
+    const intent = href.searchParams.get('intent');
+    if (intent) assert.ok([...contact.querySelectorAll('option')].some(o => o.value === intent));
+  }
+  assert.ok(d.querySelector('.home-inquiry summary'));
+  assert.ok(d.querySelector('.home-inquiry #ctaForm [type="submit"]'));
+  assert.equal(d.querySelectorAll('.home-quotes blockquote').length, 3);
+  contactPage.window.close();
   dom.window.close();
 });
 test('mobile menu isolates the page, contains focus and restores focus on Escape', () => {

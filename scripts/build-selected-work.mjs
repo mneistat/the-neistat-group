@@ -36,6 +36,25 @@ function replace(file, marker, body) {
     if (before !== after) throw new Error('Generated content is stale: ' + file);
   } else fs.writeFileSync(filename, after);
 }
+// Homepage photography follows the same publication gate as the full collection.
+const featured = records.find(t => t.id === 'wellington') || records[0];
+const homeFeature = featured ? `<figure class="home-feature" data-assignment="${escape(featured.id)}">
+        <a class="home-feature-image${featured.imageFit === 'contain' ? ' home-feature-image--contain' : ''}" href="selected-work.html#${escape(featured.id)}" aria-label="Explore ${escape(featured.address)}">
+          <img src="${escape(featured.image)}" alt="${escape(featured.imageAlt)}" loading="lazy" decoding="async">
+        </a>
+        <figcaption class="home-feature-caption">
+          <h3><a href="selected-work.html#${escape(featured.id)}">${escape(featured.address)}</a></h3>
+          <div class="home-feature-facts">
+            <p class="home-feature-meta">${join([featured.neighborhood, featured.assetType])}</p>
+            ${paragraph('home-feature-rep', featured.representation)}
+            ${paragraph('home-feature-result', featured.resultHighlight || featured.outcomeLine)}
+            ${paragraph('home-feature-price', featured.priceOrResult)}
+            ${paragraph('home-feature-note', featured.imageCaption)}
+            <a class="home-text-link" href="selected-work.html">View Selected Work <span aria-hidden="true">→</span></a>
+          </div>
+        </figcaption>
+      </figure>` : '      <a class="home-text-link" href="contact.html">Discuss your property <span aria-hidden="true">→</span></a>';
+replace('index.html', 'home-feature', homeFeature);
 const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 0 ? 'swp-assignment--lead' : i % 2 ? 'swp-assignment--reverse' : ''}" id="${escape(t.id)}" aria-labelledby="heading-${escape(t.id)}">
     <div class="swp-assignment-inner">
       <figure class="swp-assignment-media${t.imageFit === 'contain' ? ' swp-assignment-media--contain' : ''}">

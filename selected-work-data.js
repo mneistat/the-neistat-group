@@ -1,8 +1,8 @@
 /* THE NEISTAT GROUP — Selected Work transaction data.
  *
- * Single source of truth for the portfolio. Only the homepage module renders from
- * it at runtime. Run node scripts/build-selected-work.mjs after approved edits
- * to update the static portfolio, seller proof, and nearby-work sections.
+ * Single source of truth for the portfolio. Run node scripts/build-selected-work.mjs
+ * after approved edits to update the static homepage feature, portfolio,
+ * seller proof, and nearby-work sections. No browser-side renderer is required.
  * Run the same command with --check to catch drift without writing files.
  * caseStudyUrl is empty everywhere because no case-study pages exist yet.
  *

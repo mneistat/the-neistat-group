@@ -37,6 +37,14 @@ Matt approved the river-photo concept. The mobile homepage uses his second suppl
 
 `images/chicago-river-mobile.jpeg` is the supplied 359 × 740 JPEG, preserved without image alterations. CSS crops its screenshot edges. It is a temporary source pending a higher-resolution original; do not substitute the AI-generated concept photograph or invent a photographer credit. The bottom footnote identifies Matthew as the supplier. No additional stories or transaction claims are introduced.
 
+## Complete homepage composition — September 25, 2026
+
+Matt said the site still felt generic, then approved the complete homepage mockup. This supersedes the incremental opening-only styling. Desktop now pairs the headline on paper with the actual river photograph. Mobile retains the immersive photograph opening, followed by the same streamlined page order: Selected Work, neighborhoods, Matthew, and contact. The generated mockup is a visual reference only; no AI-rendered architecture or portrait is used on the site.
+
+Wellington appears immediately after the opening as a large architectural feature, generated from the gated public records. The multi-property collection, prices and approved Lake Street narrative remain on Selected Work. The homepage no longer needs the JavaScript assignment switcher. The tested inquiry form remains available in a native disclosure, as do all three existing client quotes. Buying, Selling, Investing, and the shared navigation retain working destinations. Recognition and press links now sit at the bottom with the source notes. Lincoln Park's original photo and license attribution are included on the homepage.
+
+The homepage uses `homepage-editorial.css`; the older opening stylesheets are no longer loaded there. The shared header, other page designs, neighborhood housing text, publication holds, and transaction figures are preserved. This update is preview-only.
+
 ## Source-credit standard — September 24, 2026
 
 Matt approved the small bottom-of-page footnote treatment for photography and information sources throughout the site. Use the shared `.footer-credits` block after the footer bar whenever a page needs attribution; keep source and license links, photo subjects, crop notes, and original verification dates. Do not add empty credit blocks or invent photographers. The neighborhood guides, hub, Selected Work, Seller Strategy and Affordability use this treatment. Generated transaction sources follow the same public-record gate as their assignments. Practical resource links, press/recognition features, illustrative-image labels, and explanations needed to interpret the numbers remain with the relevant content. Apply this standard to new pages and sources as they are added.
