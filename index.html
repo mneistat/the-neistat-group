@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
   <title>The Neistat Group | Chicago Real Estate Advisory</title>
-  <meta name="description" content="Chicago real estate advisory from Matthew Neistat at Jameson Sotheby's International Realty. Selected work, neighborhood intelligence, and seller strategy.">
+  <meta name="description" content="Real estate decisions made better. Chicago real estate advisory from Matthew Neistat. Selected work, neighborhood guides, and seller strategy.">
   <link rel="canonical" href="https://www.theneistatgroup.com/">
   <meta property="og:url" content="https://www.theneistatgroup.com/">
   <meta property="og:title" content="The Neistat Group | Chicago Real Estate Advisory">
-  <meta property="og:description" content="Chicago real estate advisory from Matthew Neistat at Jameson Sotheby's International Realty. Selected work, neighborhood intelligence, and seller strategy.">
-    <link rel="stylesheet" href="styles.css?v=36">
+  <meta property="og:description" content="Real estate decisions made better. Chicago real estate advisory from Matthew Neistat. Selected work, neighborhood guides, and seller strategy.">
+    <link rel="stylesheet" href="styles.css?v=39">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,15 +29,13 @@
       "addressCountry": "US"
     },
     "areaServed": ["Chicago", "Lincoln Park", "West Loop", "South Loop", "Lakeview", "Winnetka", "Gold Coast"],
-    "description": "Chicago real estate strategy at Jameson Sotheby's International Realty. $130M+ in sales, 14+ years of experience, CAR Top 10% recognition, and Jameson Quarterly Best honors.",
+    "description": "Chicago real estate strategy at Jameson Sotheby's International Realty. 14+ years of experience, CAR Top 10% recognition, and Jameson Quarterly Best honors.",
     "sameAs": [
       "https://www.instagram.com/matt_neistat/",
       "https://www.linkedin.com/in/matthew-neistat/"
     ]
   }
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>
@@ -47,8 +45,7 @@
   gtag('config', 'G-MGNGVERDHQ');
 </script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
-<script src="selected-work-data.js?v=3"></script>
+<script src="nav.js?v=11" defer></script>
 <!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
@@ -63,394 +60,17 @@
 <meta property="og:image:width" content="828">
 <meta property="og:image:height" content="1792">
 
-<!-- ===== HOMEPAGE STRATEGIC SECTIONS — scoped overrides + new components ===== -->
-<style>
-  /* Hero pill eyebrow (replaces the line-style .hero-eyebrow on the homepage hero) */
-  .hero-pill-eyebrow {
-    display: inline-block;
-    border: 0.5px solid rgba(244,240,232,0.2);
-    border-radius: 999px;
-    padding: 8px 16px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.24em; text-transform: uppercase;
-    color: rgba(244,240,232,0.6);
-    margin-bottom: 28px;
-  }
-
-  /* Hero CTA pills */
-  .hero-actions .btn-pill-fill {
-    background: #F4F0E8; color: #0B0A07;
-    border-radius: 999px; padding: 14px 30px;
-  }
-  .hero-actions .btn-pill-fill:hover { background: #fff; }
-  .btn-bordered-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: transparent;
-    border: 0.5px solid #F4F0E8;
-    color: #F4F0E8;
-    border-radius: 999px;
-    padding: 14px 30px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    transition: background 0.25s ease, color 0.25s ease;
-  }
-  .btn-bordered-pill:hover { background: #F4F0E8; color: #0B0A07; }
-
-  /* ===== Section 2 — Method ===== */
-  .method-section {
-    background: #EDE8DE; padding: 80px 40px;
-    border-top: 0.5px solid rgba(11,10,7,0.08);
-    display: grid; grid-template-columns: 1fr 1.6fr;
-    gap: 48px; align-items: start;
-  }
-  .method-eyebrow {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.28em; text-transform: uppercase;
-    color: rgba(11,10,7,0.62); margin-bottom: 16px;
-  }
-  .method-h2 {
-    font-family: Georgia, serif; font-weight: 400;
-    font-size: 54px; color: #0B0A07;
-    line-height: 0.98; letter-spacing: -0.018em;
-  }
-  .method-h2 em { font-style: italic; }
-  .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-  .method-step {
-    padding: 0 18px;
-    border-left: 0.5px solid rgba(11,10,7,0.14);
-  }
-  .method-step:first-child { border-left: none; padding-left: 0; }
-  .method-step-num {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(11,10,7,0.62); margin-bottom: 8px;
-  }
-  .method-step-name {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: #0B0A07; margin-bottom: 14px;
-  }
-  .method-step-copy {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 13px; color: rgba(11,10,7,0.78);
-    line-height: 1.55; margin: 0;
-  }
-
-  /* ===== Section 4 — Start Here ===== */
-  .start-here {
-    background: #EDE8DE; padding: 80px 40px;
-    border-top: 0.5px solid rgba(11,10,7,0.08);
-    display: grid; grid-template-columns: 1fr 1.05fr;
-    gap: 48px; align-items: start;
-  }
-  .start-here-eyebrow {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.28em; text-transform: uppercase;
-    color: rgba(11,10,7,0.62); margin-bottom: 16px;
-  }
-  .start-here-h2 {
-    font-family: Georgia, serif; font-weight: 400;
-    font-size: 50px; color: #0B0A07;
-    line-height: 1.0; letter-spacing: -0.018em;
-    margin-bottom: 24px;
-  }
-  .start-here-h2 em { font-style: italic; }
-  .start-here-body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 13px; color: rgba(11,10,7,0.78);
-    line-height: 1.65; max-width: 340px; margin: 0;
-  }
-  .start-here-paths { display: flex; flex-direction: column; }
-  .start-here-path {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 26px;
-    border: 0.5px solid rgba(11,10,7,0.18);
-    border-radius: 50px;
-    margin-bottom: 12px;
-    text-decoration: none;
-    transition: border-color 0.25s ease, background 0.25s ease;
-  }
-  .start-here-path:last-child { margin-bottom: 0; }
-  .start-here-path-text {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px; font-weight: 500;
-    color: #0B0A07;
-  }
-  .start-here-path-arrow {
-    color: rgba(11,10,7,0.62);
-    font-family: Georgia, serif; font-size: 18px;
-    transition: transform 0.25s ease, color 0.25s ease;
-  }
-  .start-here-path:hover { border-color: rgba(11,10,7,0.45); background: rgba(11,10,7,0.03); }
-  .start-here-path:hover .start-here-path-arrow { transform: translateX(4px); color: rgba(11,10,7,0.9); }
-
-  /* ===== Section 5 — Family Legacy ===== */
-  .family-legacy {
-    background: #14120E; padding: 90px 40px;
-    border-top: 0.5px solid rgba(244,240,232,0.04);
-    text-align: center;
-  }
-  .family-legacy-inner { max-width: 760px; margin: 0 auto; }
-  .family-legacy-eyebrow {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.28em; text-transform: uppercase;
-    color: rgba(244,240,232,0.55); margin-bottom: 28px;
-  }
-  .family-legacy-quote {
-    font-family: Georgia, serif; font-style: italic; font-weight: 400;
-    font-size: 32px; color: #F4F0E8;
-    line-height: 1.32; margin-bottom: 28px;
-  }
-  .family-legacy-attribution {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(244,240,232,0.55);
-  }
-
-  /* ===== Fade-up reveal (IntersectionObserver only — no GSAP) ===== */
-  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .fade-up.in { opacity: 1; transform: translateY(0); }
-
-  /* ===== Responsive — below 768px ===== */
-  @media (max-width: 768px) {
-    .method-section,
-    .start-here,
-    .family-legacy { padding: 56px 24px; }
-
-    .method-h2,
-    .start-here-h2 { font-size: 36px; }
-    .family-legacy-quote { font-size: 24px; line-height: 1.35; }
-
-    /* Method: 2x2 grid */
-    .method-section { grid-template-columns: 1fr; gap: 32px; }
-    .method-grid { grid-template-columns: 1fr 1fr; gap: 24px 0; }
-    .method-step { padding: 0 14px; }
-    .method-step:first-child,
-    .method-step:nth-child(3) { padding-left: 0; border-left: none; }
-
-    /* Start Here: single column */
-    .start-here { grid-template-columns: 1fr; gap: 36px; }
-    .start-here-body { max-width: none; }
-  }
-
-
-  .sw-footer { margin-top: clamp(28px,3vw,40px); }
-  .sw-all { display: inline-flex; align-items: center; gap: 9px;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
-    letter-spacing: 0.16em; text-transform: uppercase; color: rgba(237,232,222,0.78);
-    border-bottom: 1px solid rgba(237,232,222,0.28); padding-bottom: 5px;
-    transition: color 0.25s ease, border-color 0.25s ease; }
-  .sw-all:hover { color: #EDE8DE; border-color: #EDE8DE; }
-  .sw-all:focus-visible { outline: 1px solid #EDE8DE; outline-offset: 5px; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .sw-card { transition: none; }
-  }
-
-  /* ===== SELECTED WORK — split editorial module =====
-     Information panel / dominant photograph / project index, read as one bordered
-     composition on warm cream. Every fact already existed in the repository. */
-  .sw { background: #F4F0E8; padding: clamp(64px,8vw,110px) clamp(24px,5vw,56px); }
-  .sw-inner { max-width: 1400px; margin: 0 auto; }
-  .sw-head { margin-bottom: clamp(32px,4vw,52px); max-width: 640px; }
-  .sw-eyebrow { display: block; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(11,10,7,0.62); margin-bottom: 18px; }
-  .sw-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(34px,4.4vw,56px);
-    line-height: 1.02; letter-spacing: -0.022em; color: #0B0A07; margin: 0 0 20px; }
-  .sw-rule { width: 42px; height: 1px; background: rgba(11,10,7,0.3); margin: 0 0 20px; }
-  .sw-intro { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px;
-    line-height: 1.75; color: rgba(11,10,7,0.78); max-width: 40ch; margin: 0; }
-
-  .sw-module { display: grid; grid-template-columns: 27% 48% 25%;
-    border: 1px solid rgba(11,10,7,0.16); background: #F4F0E8; align-items: stretch; }
-
-  /* Left — the featured transaction */
-  .sw-info { padding: clamp(30px,2.8vw,46px); display: flex; flex-direction: column;
-    background: #EDE8DE; border-right: 1px solid rgba(11,10,7,0.16); }
-  .sw-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
-    font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(11,10,7,0.62); margin: 0 0 20px; }
-  .sw-address { font-family: Georgia, serif; font-weight: 400; font-size: clamp(24px,2.4vw,34px);
-    line-height: 1.12; letter-spacing: -0.02em; color: #0B0A07; margin: 0 0 18px; }
-  .sw-rep { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
-    color: rgba(11,10,7,0.78); margin: 0 0 22px; }
-  .sw-divider { width: 32px; height: 1px; background: rgba(11,10,7,0.28); margin: 0 0 22px; }
-  .sw-price { font-family: Georgia, serif; font-size: clamp(18px,1.5vw,22px);
-    color: #0B0A07; margin: 0 0 20px; }
-  .sw-note { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
-    line-height: 1.7; color: rgba(11,10,7,0.78); margin: 0 0 30px; max-width: 32ch; }
-  .sw-press { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
-    font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-    color: rgba(11,10,7,0.62); margin: 0 0 26px; }
-  .sw-rep[hidden], .sw-note[hidden], .sw-press[hidden] { display: none; }
-  .sw-view { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 9px;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
-    letter-spacing: 0.16em; text-transform: uppercase; color: #0B0A07;
-    border-bottom: 1px solid rgba(11,10,7,0.3); padding-bottom: 5px;
-    transition: border-color 0.25s ease; }
-  .sw-view:hover { border-color: #0B0A07; }
-  .sw-view:focus-visible { outline: 1px solid #0B0A07; outline-offset: 5px; }
-
-  /* Centre — the photograph. Frames are stacked and crossfaded, so switching never
-     reflows. Height follows the module rather than a fixed ratio. */
-  .sw-figure { position: relative; overflow: hidden; min-height: 420px; background: #E4DFD5; }
-  .sw-figure img { position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; opacity: 0; transition: opacity 0.32s ease; }
-  .sw-figure img.is-active { opacity: 1; }
-
-  /* Right — an editorial index, not cards */
-  .sw-index { display: flex; flex-direction: column; overflow-y: auto;
-    border-left: 1px solid rgba(11,10,7,0.16); }
-  .sw-item { display: grid; grid-template-columns: 62px 1fr auto; gap: 15px;
-    align-items: center; width: 100%; text-align: left; background: none; border: 0;
-    border-bottom: 1px solid rgba(11,10,7,0.12); padding: 15px clamp(14px,1.2vw,18px);
-    cursor: pointer; font-family: inherit; color: #0B0A07; transition: background 0.2s ease; }
-  .sw-item:last-child { border-bottom: 0; }
-  .sw-item:hover { background: rgba(11,10,7,0.035); }
-  .sw-item:focus-visible { outline: 1px solid #0B0A07; outline-offset: -3px; }
-  .sw-item[aria-current="true"] { background: rgba(11,10,7,0.06); }
-  .sw-thumb { width: 62px; height: 46px; object-fit: cover; display: block; }
-  .sw-thumb-ph { width: 62px; height: 46px; background:
-      repeating-linear-gradient(135deg, rgba(11,10,7,0.05) 0 10px, transparent 10px 20px), #E4DFD5; }
-  .sw-item-address { font-family: Georgia, serif; font-size: 15px; line-height: 1.25;
-    color: #0B0A07; display: block; }
-  .sw-item-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px;
-    letter-spacing: 0.14em; text-transform: uppercase; color: rgba(11,10,7,0.62);
-    display: block; margin-top: 5px; }
-  .sw-item-price { font-family: Georgia, serif; font-size: 13px; color: rgba(11,10,7,0.78);
-    display: block; margin-top: 5px; }
-  .sw-item-arrow { font-family: Georgia, serif; font-size: 16px; color: rgba(11,10,7,0.62);
-    transition: transform 0.2s ease, color 0.2s ease; }
-  .sw-item:hover .sw-item-arrow { color: #0B0A07; transform: translateX(3px); }
-
-  .sw-footer { margin-top: clamp(28px,3vw,40px); }
-  .sw-all { display: inline-flex; align-items: center; gap: 9px;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
-    letter-spacing: 0.16em; text-transform: uppercase; color: #0B0A07;
-    border-bottom: 1px solid rgba(11,10,7,0.3); padding-bottom: 5px;
-    transition: border-color 0.25s ease; }
-  .sw-all:hover { border-color: #0B0A07; }
-  .sw-all:focus-visible { outline: 1px solid #0B0A07; outline-offset: 5px; }
-
-  /* Tablet — photograph spans the top, information and index beneath. */
-  @media (max-width: 1100px) {
-    .sw-module { grid-template-columns: 1fr 1fr; }
-    .sw-figure { grid-column: 1 / -1; min-height: 360px;
-      border-bottom: 1px solid rgba(11,10,7,0.16); }
-  }
-  /* Mobile — feature, then the rest stacked. Nothing depends on hover. */
-  @media (max-width: 768px) {
-    /* Spec order on mobile: photograph first, then the information, then the index. */
-    .sw-module { grid-template-columns: 1fr; }
-    .sw-figure { min-height: 260px; order: 1; }
-    .sw-info { order: 2; }
-    .sw-index { order: 3; }
-    .sw-info { border-right: 0; border-bottom: 1px solid rgba(11,10,7,0.16); }
-    .sw-index { border-left: 0; }
-    .sw-index::before { content: 'Other Selected Work'; display: block;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,10,7,0.62);
-      padding: 22px clamp(14px,1.2vw,18px) 12px; }
-    .sw-item { padding: 16px clamp(14px,1.2vw,18px); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .sw-figure img, .sw-item-arrow { transition: none; }
-  }
-    /* ===== Pillar sections (namespaced hp-). Every heading declares its colour:
-       styles.css sets h1, h2, h3 { color: #EDE8DE } globally, which would render
-       ivory-on-cream on the light sections. ===== */
-    .hp-wrap { max-width: 1240px; margin: 0 auto; }
-    .hp-eyebrow { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10.5px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 22px; }
-    .hp-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(28px, 3.8vw, 48px); line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 22px; text-wrap: balance; }
-    .hp-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15.5px; line-height: 1.78; margin: 0 0 30px; max-width: 52ch; }
-    .hp-link { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid currentColor; transition: opacity 0.35s; }
-    .hp-link:hover, .hp-link:focus-visible { opacity: 0.7; }
-    .hp-link:focus-visible, .hp-hood-now a:focus-visible, .hp-press a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
-    .hp-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-
-    /* Neighborhood Intelligence: dark, image-led, echoing the hub */
-    .hp-hood { background: #0B0A07; color: #EDE8DE; display: grid; grid-template-columns: 1fr 1fr; min-height: clamp(460px, 44vw, 640px); }
-    .hp-hood-media { position: relative; overflow: hidden; }
-    .hp-hood-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.55) contrast(1.05) brightness(0.7); }
-    .hp-hood-copy { padding: clamp(56px,7vw,110px) clamp(24px,5vw,72px); display: flex; flex-direction: column; justify-content: center; }
-    .hp-hood .hp-eyebrow { color: rgba(237,232,222,0.55); }
-    .hp-hood .hp-h2 { color: #EDE8DE; }
-    .hp-hood .hp-body { color: rgba(237,232,222,0.78); }
-    .hp-hood-now { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13.5px; color: rgba(237,232,222,0.78); margin: 0 0 30px; }
-    .hp-hood-now span { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-right: 12px; }
-    .hp-hood-now a { color: #EDE8DE; text-decoration: none; border-bottom: 1px solid rgba(237,232,222,0.35); }
-    .hp-hood-now a + a { margin-left: 22px; }
-    .hp-hood .hp-link { color: #EDE8DE; align-self: flex-start; }
-
-    /* Seller Strategy: cream, a tone apart from the bone Method section below it */
-    .hp-seller { background: #F4F0E8; color: #0B0A07; padding: clamp(72px,9vw,130px) clamp(24px,5vw,56px); }
-    .hp-seller .hp-eyebrow { color: rgba(11,10,7,0.62); }
-    .hp-seller .hp-h2 { color: #0B0A07; max-width: 24ch; }
-    .hp-pillars { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 1px solid rgba(11,10,7,0.18); margin: clamp(34px,4vw,52px) 0 clamp(34px,4vw,48px); }
-    .hp-pillars > div { padding: 26px 28px 8px 0; }
-    .hp-pillars > div + div { padding-left: 28px; border-left: 1px solid rgba(11,10,7,0.12); }
-    .hp-pillars h3 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(20px,1.9vw,26px); color: #0B0A07; margin: 0 0 10px; }
-    .hp-pillars p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14.5px; line-height: 1.7; color: rgba(11,10,7,0.74); margin: 0; }
-    .hp-seller .hp-link { color: #0B0A07; }
-    .hp-seller + .method-section { border-top: 1px solid rgba(11,10,7,0.10); }
-
-    /* People First: dark */
-    .hp-principle { background: #14120E; color: #EDE8DE; padding: clamp(80px,10vw,150px) clamp(24px,5vw,56px); text-align: center; }
-    .hp-principle-inner { max-width: 880px; }
-    .hp-principle .hp-eyebrow { color: rgba(237,232,222,0.55); }
-    .hp-principle-quote { font-family: Georgia, serif; font-style: italic; font-size: clamp(26px,3.6vw,46px); line-height: 1.34; letter-spacing: -0.012em; color: #EDE8DE; margin: 0 auto 22px; text-wrap: balance; }
-    .hp-principle-cite { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin: 0 0 40px; }
-    .hp-principle .hp-body { color: rgba(237,232,222,0.76); margin-left: auto; margin-right: auto; }
-    .hp-principle .hp-link { color: #EDE8DE; }
-
-    /* Recognition: dark */
-    .hp-recog { background: #0B0A07; color: #EDE8DE; padding: clamp(64px,8vw,110px) clamp(24px,5vw,56px); }
-    .hp-recog-label { color: rgba(237,232,222,0.55); }
-    .hp-stats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 1px solid rgba(237,232,222,0.16); margin-bottom: 30px; }
-    .hp-stats > div { padding: 30px 24px 30px 0; }
-    .hp-stats > div + div { padding-left: 24px; border-left: 1px solid rgba(237,232,222,0.10); }
-    .hp-stat-num { display: block; font-family: Georgia, serif; font-size: clamp(36px,4.4vw,60px); line-height: 1; letter-spacing: -0.02em; color: #EDE8DE; margin-bottom: 12px; font-variant-numeric: lining-nums; }
-    .hp-stat-label { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; line-height: 1.5; color: rgba(237,232,222,0.62); }
-    .hp-press { list-style: none; margin: 0; padding: 22px 0 0; border-top: 1px solid rgba(237,232,222,0.16); display: flex; flex-wrap: wrap; gap: 12px 34px; }
-    .hp-press li { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,222,0.72); }
-    .hp-press a { color: rgba(237,232,222,0.84); text-decoration: none; border-bottom: 1px solid rgba(237,232,222,0.25); transition: color 0.3s, border-color 0.3s; }
-    .hp-press a:hover, .hp-press a:focus-visible { color: #EDE8DE; border-bottom-color: #EDE8DE; }
-
-    /* Reveal: namespaced, because this page's .reveal and .fade-up handlers have no
-       reduced-motion path and no failsafe. */
-    .hp-reveal { opacity: 0; transform: translateY(22px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
-    .hp-reveal.is-in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .hp-reveal { opacity: 1; transform: none; transition: none; } .scroll-indicator-line { animation: none; } }
-
-    @media (max-width: 900px) {
-      .hp-hood { grid-template-columns: 1fr; }
-      .hp-hood-media { min-height: 280px; }
-      .hp-pillars, .hp-stats { grid-template-columns: 1fr; }
-      .hp-pillars > div, .hp-pillars > div + div { padding: 22px 0; border-left: 0; border-bottom: 1px solid rgba(11,10,7,0.12); }
-      .hp-stats > div, .hp-stats > div + div { padding: 24px 0; border-left: 0; border-bottom: 1px solid rgba(237,232,222,0.10); }
-    }
-  </style>
+  <link rel="stylesheet" href="/site-design.css?v=3">
+  <link rel="stylesheet" href="homepage-editorial.css?v=2">
+  <link rel="preload" as="image" href="images/chicago-river-mobile.jpeg" fetchpriority="high">
+  <script src="/forms.js?v=2" defer></script>
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
-
-  <!-- Custom Cursor -->
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
-
-  <!-- Nav -->
+<body class="home-page site-design page-index editorial-home">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link" aria-current="page">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
       <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
       <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
@@ -475,249 +95,120 @@
     </div>
   </div>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-video-wrap" id="heroVideoWrap">
-      <!-- Trimmed to 12s and transcoded by Cloudinary: 57.8 MB -> 2.2 MB. The poster
-           is a frame of the same clip, so the still always matches the video. -->
-      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="https://res.cloudinary.com/dpwcyrxkz/video/upload/so_2,f_auto,q_auto,w_1920/v1775872382/1826896-hd_1920_1080_24fps_1_z6l2tu.jpg">
-        <source src="https://res.cloudinary.com/dpwcyrxkz/video/upload/f_auto,q_auto,vc_auto,w_1920,so_0,eo_12/v1775872382/1826896-hd_1920_1080_24fps_1_z6l2tu.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content" id="heroContent">
-      <div class="hero-pill-eyebrow" id="heroEyebrow">Chicago Real Estate Advisory</div>
-      <h1 class="hero-headline">
-        <span id="heroPeople" style="display:block;">Make better real estate</span>
-        <span class="hero-headline-italic" id="heroAlways" style="display:block;">decisions.</span>
-      </h1>
-      <p class="hero-sub" id="heroSub">For homeowners, investors, and developers who want more than a broker — they want strategy.</p>
-      <div class="hero-actions" id="heroActions">
-        <a href="contact.html" class="btn-primary btn-pill-fill">Begin the Conversation</a>
-        <a href="#work" class="btn-bordered-pill">See the Work</a>
-      </div>
-    </div>
-    <div class="scroll-indicator" id="scrollIndicator">
-      <span class="scroll-indicator-text">Scroll</span>
-      <div class="scroll-indicator-line"></div>
-    </div>
-  </section>
 
-
-  <!-- ===== STRATEGIC HOMEPAGE SECTIONS ===== -->
-
-  <!-- Section 1: Pathways (merged Decision Studio + Start Here) -->
-  <section class="start-here fade-up" id="pathways">
-    <div>
-      <div class="start-here-eyebrow">Start Here</div>
-      <h2 class="start-here-h2">What are you trying to <em>figure out?</em></h2>
-      <p class="start-here-body">Choose the path that fits your situation. The goal is not to push a transaction. The goal is to understand the property, the market, and the best move.</p>
-    </div>
-    <div class="start-here-paths">
-      <a href="seller-strategy.html" class="start-here-path"><span class="start-here-path-text">Sell a property</span><span class="start-here-path-arrow">&rarr;</span></a>
-      <a href="contact.html?intent=buying-home" class="start-here-path"><span class="start-here-path-text">Buy a property</span><span class="start-here-path-arrow">&rarr;</span></a>
-      <a href="contact.html?intent=property-evaluation" class="start-here-path"><span class="start-here-path-text">Evaluate a property I own</span><span class="start-here-path-arrow">&rarr;</span></a>
-      <a href="contact.html?intent=investment-review" class="start-here-path"><span class="start-here-path-text">Buy or sell an investment property</span><span class="start-here-path-arrow">&rarr;</span></a>
-      <a href="seller-strategy.html" class="start-here-path"><span class="start-here-path-text">Renovate or reposition before selling</span><span class="start-here-path-arrow">&rarr;</span></a>
-      <a href="contact.html?intent=consultation" class="start-here-path"><span class="start-here-path-text">Talk strategy</span><span class="start-here-path-arrow">&rarr;</span></a>
-    </div>
-  </section>
-
-
-  <!-- Portfolio Scroll -->
-  <!-- ===== SELECTED WORK =====
-       Split editorial module: information panel, dominant photograph, project index.
-       Content is rendered from selected-work-data.js — no transaction facts are
-       hardcoded here. Entries marked publishStatus "internal" are never rendered, so
-       incomplete transactions cannot leak placeholder text to the public page. -->
-  <section class="sw" id="work" aria-labelledby="sw-heading">
-    <div class="sw-inner">
-      <div class="sw-head">
-        <span class="sw-eyebrow">Selected Work</span>
-        <h2 class="sw-h2" id="sw-heading">Recent transactions.</h2>
-        <div class="sw-rule"></div>
-        <p class="sw-intro">A curated collection of residential, investment, development, and commercial transactions across Chicago.</p>
-      </div>
-
-      <div class="sw-module">
-        <div class="sw-info" aria-live="polite">
-          <p class="sw-meta" id="swMeta"></p>
-          <h3 class="sw-address" id="swAddress"></h3>
-          <p class="sw-rep" id="swRep"></p>
-          <div class="sw-divider"></div>
-          <p class="sw-price" id="swPrice"></p>
-          <p class="sw-note" id="swNote"></p>
-          <p class="sw-press" id="swPress"></p>
-          <a class="sw-view" id="swView" href="selected-work.html">View the Work <span aria-hidden="true">&rarr;</span></a>
-        </div>
-        <div class="sw-figure" id="swFigure"></div>
-        <div class="sw-index" id="swIndex"></div>
-      </div>
-
-      <div class="sw-footer">
-        <a class="sw-all" href="selected-work.html">Explore All Selected Work <span aria-hidden="true">&rarr;</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== NEIGHBORHOOD INTELLIGENCE (preview) ===== -->
-  <section class="hp-hood" aria-labelledby="hp-hood-h">
-    <div class="hp-hood-media">
-      <img src="properties/3521-cortland-aerial.jpg" alt="Aerial view looking straight down on a Chicago residential block, showing rooftops, alleys, garages and tree-lined streets." width="5464" height="3640" loading="lazy">
-    </div>
-    <div class="hp-hood-copy hp-reveal">
-      <p class="hp-eyebrow">Neighborhood Intelligence</p>
-      <h2 class="hp-h2" id="hp-hood-h">Chicago, read block by block.</h2>
-      <p class="hp-body">Practical, block-by-block perspective on Chicago neighborhoods where architecture, lifestyle, access, and long-term real estate decisions intersect.</p>
-      <p class="hp-hood-now"><span>Now available</span><a href="neighborhoods/lincoln-park.html">Lincoln Park &rarr;</a><a href="neighborhoods/lakeview.html">Lakeview &rarr;</a></p>
-      <a class="hp-link" href="neighborhoods.html">Explore Neighborhood Intelligence &rarr;</a>
-    </div>
-  </section>
-
-  <!-- ===== SELLER STRATEGY (preview) ===== -->
-  <section class="hp-seller" aria-labelledby="hp-seller-h">
-    <div class="hp-wrap">
-      <div class="hp-reveal">
-        <p class="hp-eyebrow">Seller Strategy</p>
-        <h2 class="hp-h2" id="hp-seller-h">Before your home hits the market, it should already be in front of the right buyers.</h2>
-      </div>
-      <div class="hp-pillars hp-reveal">
-        <div><h3>Access</h3><p>The Top Agent Network and 400+ Jameson agents see it before launch.</p></div>
-        <div><h3>Presentation</h3><p>A pre-market walkthrough and editorial photography on every listing.</p></div>
-        <div><h3>Partnership</h3><p>Priced to create competition, and handled hands-on through closing.</p></div>
-      </div>
-      <a class="hp-link" href="seller-strategy.html">Explore Seller Strategy &rarr;</a>
-    </div>
-  </section>
-
-  <!-- The Neistat Method -->
-  <section class="method-section fade-up">
-    <div>
-      <div class="method-eyebrow">The Neistat Method</div>
-      <h2 class="method-h2">How decisions <em>are made.</em></h2>
-    </div>
-    <div class="method-grid">
-      <div class="method-step">
-        <div class="method-step-num">01</div>
-        <div class="method-step-name">Diagnose</div>
-        <p class="method-step-copy">Understand the asset, the numbers, and the goal.</p>
-      </div>
-      <div class="method-step">
-        <div class="method-step-num">02</div>
-        <div class="method-step-name">Position</div>
-        <p class="method-step-copy">Price, package, and present correctly.</p>
-      </div>
-      <div class="method-step">
-        <div class="method-step-num">03</div>
-        <div class="method-step-name">Execute</div>
-        <p class="method-step-copy">Market and negotiate with precision.</p>
-      </div>
-      <div class="method-step">
-        <div class="method-step-num">04</div>
-        <div class="method-step-name">Optimize</div>
-        <p class="method-step-copy">Sell, hold, lease, or reposition.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ===== ABOUT / PEOPLE FIRST ===== -->
-  <section class="hp-principle" aria-labelledby="hp-principle-h">
-    <div class="hp-wrap hp-principle-inner hp-reveal">
-      <p class="hp-eyebrow">A Family Operating Principle</p>
-      <h2 class="hp-sr" id="hp-principle-h">People first</h2>
-      <blockquote class="hp-principle-quote">&ldquo;Always put people first. Real estate isn&rsquo;t about closing deals &mdash; it&rsquo;s about building lives.&rdquo;</blockquote>
-      <p class="hp-principle-cite">Matthew&rsquo;s grandfather</p>
-      <p class="hp-body">Three generations in Chicago-area real estate and a background in hospitality shape an honest, one-on-one approach to every client relationship.</p>
-      <a class="hp-link" href="about.html">About Matthew &rarr;</a>
-    </div>
-  </section>
-
-
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2 class="testimonials-heading">Client <em>Words</em></h2>
-    <div class="testimonials-grid" style="grid-template-columns: 1fr 1fr 1fr;">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">KW</div><div><div class="testimonial-name">Kevin Werner</div><div class="testimonial-role">Personal 15-Building Portfolio</div></div></div>
-        <p class="testimonial-text">"Matt worked with me to market and sell all the properties faster than I expected. He did a great job solving problems and staying focused on getting the buildings sold. I would recommend Matt for this type of transaction all day long."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">NA</div><div><div class="testimonial-name">Nicole Alfred-Napper</div><div class="testimonial-role">COO, Plan Companies</div></div></div>
-        <p class="testimonial-text">"He did such a good job that we ended up having him sell a few more — every single one sold at, near, or above the price we were seeking. It was refreshing to have such a hands-on broker — that is certainly not the norm."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">NG</div><div><div class="testimonial-name">Nick & Marina Golemis</div><div class="testimonial-role">Bought & Sold, Chicago/Glenview</div></div></div>
-        <p class="testimonial-text">"Matt knows real estate. The review can start and end there. He was able to blend the lines between honesty, transparency, and friendliness. He knows how to negotiate, what the market dictates, and does his work with a great deal of integrity."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">CP</div><div><div class="testimonial-name">Christopher Paquette</div><div class="testimonial-role">2-Building Investment Purchase</div></div></div>
-        <p class="testimonial-text">"Matt has always been a terrific resource and truly a partner to me. He does much of the upfront legwork, is very responsive, is always on my side and looking out for me. I would absolutely refer him with very, very high marks."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">LS</div><div><div class="testimonial-name">Linda Schafer</div><div class="testimonial-role">Private Investor, Tri-Taylor Portfolio</div></div></div>
-        <p class="testimonial-text">"Matt sold four 3-flats in Tri-Taylor for me in two weeks. One broke a sales record. Matt's numbers are true-to-market and realistic. He took his time to get to the right price. I definitely would work with Matt again."</p>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-header"><div class="testimonial-avatar">KT</div><div><div class="testimonial-name">Kevin Tansey</div><div class="testimonial-role">First-Time Buyer, North Center Chicago</div></div></div>
-        <p class="testimonial-text">"My home buying experience was seamless, which I can credit to Matt's professionalism, honesty, and integrity. Even after the offer was accepted he remained extremely communicative and responsive during the closing process."</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ===== PRESS / RECOGNITION ===== -->
-  <section class="hp-recog" aria-labelledby="hp-recog-h">
-    <div class="hp-wrap">
-      <h2 class="hp-eyebrow hp-recog-label" id="hp-recog-h">Recognition</h2>
-      <div class="hp-stats hp-reveal">
-        <div><span class="hp-stat-num">$130M+</span><span class="hp-stat-label">Total sales volume</span></div>
-        <div><span class="hp-stat-num">14+</span><span class="hp-stat-label">Years of experience</span></div>
-        <div><span class="hp-stat-num">Top 10%</span><span class="hp-stat-label">CAR Producer &middot; Chicago Association of Realtors</span></div>
-      </div>
-      <ul class="hp-press hp-reveal" aria-label="Recognition and press">
-        <li>Jameson Quarterly Best</li>
-        <li><a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" rel="noopener">Crain&rsquo;s Chicago Business</a></li>
-        <li><a href="https://product.costar.com/home/news/710741247" target="_blank" rel="noopener">CoStar News</a></li>
-        <li><a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" rel="noopener">Chicago Agent Magazine</a></li>
-        <li><a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" rel="noopener">Chicago Real Producers</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact Form -->
-  <section class="cta-form-section">
-    <div class="cta-form-inner">
-      <div class="cta-form-left reveal">
-        <span class="cta-form-label">CONTACT</span>
-        <h2 class="cta-form-heading">Let's start a<br><em>conversation.</em></h2>
-        <p class="cta-form-sub">Whether you're buying, selling, investing, or simply curious about the market — reach out. No pressure, no scripts. Just an honest conversation.</p>
-        <div class="cta-form-details">
-          <div class="cta-form-detail"><span class="cta-form-detail-label">PHONE</span><a href="tel:+18477142913" class="cta-form-detail-value">847.714.2913</a></div>
-          <div class="cta-form-detail"><span class="cta-form-detail-label">EMAIL</span><a href="mailto:matt@theneistatgroup.com" class="cta-form-detail-value">matt@theneistatgroup.com</a></div>
-          <div class="cta-form-detail"><span class="cta-form-detail-label">OFFICE</span><span class="cta-form-detail-value">425 W. North Avenue, Chicago IL 60610</span></div>
+  <main class="home-main" id="main-content" tabindex="-1">
+    <section class="home-opening" aria-labelledby="home-heading">
+      <div class="home-opening-copy">
+        <p class="home-eyebrow">Chicago Real Estate</p>
+        <h1 id="home-heading"><span>Real estate</span> <span>decisions</span> <span>made better.</span></h1>
+        <p class="home-opening-sub">Residential. Multifamily. Investment.</p>
+        <div class="home-opening-actions">
+          <a class="home-button" href="contact.html">Start a Conversation</a>
+          <a class="home-text-link" href="#work">Explore the work <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-      <div class="cta-form-right reveal">
-        <form class="cta-form" id="ctaForm" name="contact" action="https://formspree.io/f/xeevjdyb" method="POST">
+      <div class="home-opening-media">
+        <img src="images/chicago-river-mobile.jpeg" width="359" height="740" fetchpriority="high" alt="Chicago River and skyline at dusk, with boats on the water.">
+      </div>
+    </section>
+
+    <section class="home-work" id="work" aria-labelledby="work-heading">
+      <header class="home-section-heading">
+        <p class="home-eyebrow">01 / Selected Work</p>
+        <h2 id="work-heading">The work behind the advice.</h2>
+      </header>
+      <!-- GENERATED: home-feature START -->
+<figure class="home-feature" data-assignment="wellington">
+        <a class="home-feature-image" href="selected-work.html#wellington" aria-label="Explore 702 W. Wellington Avenue">
+          <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" loading="lazy" decoding="async">
+        </a>
+        <figcaption class="home-feature-caption">
+          <h3><a href="selected-work.html#wellington">702 W. Wellington Avenue</a></h3>
+          <div class="home-feature-facts">
+            <p class="home-feature-meta">Lakeview · Development</p>
+            <p class="home-feature-rep">Represented Developer</p>
+            <p class="home-feature-result">4-condo sellout.</p>
+            <p class="home-feature-price">$709K – $985K</p>
+
+            <a class="home-text-link" href="selected-work.html">View Selected Work <span aria-hidden="true">→</span></a>
+          </div>
+        </figcaption>
+      </figure>
+  <!-- GENERATED: home-feature END -->
+    </section>
+
+    <section class="home-neighborhoods" aria-labelledby="neighborhood-heading">
+      <a class="home-neighborhood-image" href="neighborhoods/lincoln-park.html" aria-label="Explore the Lincoln Park neighborhood guide">
+        <img src="images/neighborhoods/lincoln-park.jpg" width="1920" height="1280" loading="lazy" decoding="async" alt="South Pond and the Nature Boardwalk in Lincoln Park, with the Chicago skyline beyond.">
+      </a>
+      <div class="home-neighborhood-copy hp-reveal">
+        <p class="home-eyebrow">02 / Neighborhoods</p>
+        <h2 id="neighborhood-heading">Chicago,<br> block by block.</h2>
+        <p>Parks, schools, and the places that shape everyday life.</p>
+        <div class="home-neighborhood-links">
+          <a href="neighborhoods/lincoln-park.html">Lincoln Park <span aria-hidden="true">→</span></a>
+          <a href="neighborhoods/lakeview.html">Lakeview <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-matthew" aria-labelledby="matthew-heading">
+      <div class="home-matthew-copy hp-reveal">
+        <p class="home-eyebrow">03 / Matthew Neistat</p>
+        <h2 id="matthew-heading">People First. Always.</h2>
+        <p>Three generations in Chicago-area real estate. A background in hospitality. An honest, one-on-one approach.</p>
+        <a class="home-text-link" href="about.html">Meet Matthew <span aria-hidden="true">→</span></a>
+        <details class="home-client-words">
+          <summary>Client words <span aria-hidden="true">+</span></summary>
+          <div class="home-quotes">
+            <figure>
+              <blockquote>“Matt worked with me to market and sell all the properties faster than I expected. He did a great job solving problems and staying focused on getting the buildings sold. I would recommend Matt for this type of transaction all day long.”</blockquote>
+              <figcaption>Kevin Werner <span>Personal 15-Building Portfolio</span></figcaption>
+            </figure>
+            <figure>
+              <blockquote>“He did such a good job that we ended up having him sell a few more — every single one sold at, near, or above the price we were seeking. It was refreshing to have such a hands-on broker — that is certainly not the norm.”</blockquote>
+              <figcaption>Nicole Alfred-Napper <span>COO, Plan Companies</span></figcaption>
+            </figure>
+            <figure>
+              <blockquote>“My home buying experience was seamless, which I can credit to Matt's professionalism, honesty, and integrity. Even after the offer was accepted he remained extremely communicative and responsive during the closing process.”</blockquote>
+              <figcaption>Kevin Tansey <span>First-Time Buyer, North Center Chicago</span></figcaption>
+            </figure>
+          </div>
+        </details>
+      </div>
+      <img class="home-portrait" src="matthew-portrait.jpg" width="1400" height="2100" loading="lazy" decoding="async" alt="Matthew Neistat">
+    </section>
+
+    <section class="home-contact" id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">What are you considering?</h2>
+      <div class="home-contact-actions">
+        <a class="home-button" href="contact.html">Start a Conversation</a>
+        <nav class="home-intents" aria-label="Explore your next move">
+          <a href="buying-process.html">Buying</a>
+          <a href="seller-strategy.html">Selling</a>
+          <a href="contact.html?intent=investment-review">Investing</a>
+        </nav>
+      </div>
+      <details class="home-inquiry" id="homeInquiry">
+        <summary>Send a message here <span aria-hidden="true">+</span></summary>
+        <div class="home-inquiry-content">
+          <p class="home-inquiry-intro">Tell me a little about what you’re considering. I’ll follow up personally.</p>
+        <form class="cta-form" id="ctaForm" data-success-id="ctaFormSuccess" data-error-id="ctaFormError" data-form-type="homepage" name="contact" action="https://formspree.io/f/xeevjdyb" method="POST">
           <input type="hidden" name="source_page" value="homepage">
           <input type="hidden" name="page_url" value="">
           <input type="hidden" name="visitor_intent" value="">
+          <div class="cta-form-group"><label class="cta-input-label" for="homeName">Full Name *</label><input id="homeName" type="text" name="name" required autocomplete="name" class="cta-input"></div>
           <div class="cta-form-row">
-            <div class="cta-form-group"><label class="cta-input-label">First Name</label><input type="text" name="first_name" placeholder="First name" required class="cta-input"></div>
-            <div class="cta-form-group"><label class="cta-input-label">Last Name</label><input type="text" name="last_name" placeholder="Last name" required class="cta-input"></div>
+            <div class="cta-form-group"><label class="cta-input-label" for="homeEmail">Email *</label><input type="email" id="homeEmail" autocomplete="email" name="email" placeholder="your@email.com" required class="cta-input"></div>
+            <div class="cta-form-group"><label class="cta-input-label" for="homePhone">Phone (optional)</label><input type="tel" id="homePhone" autocomplete="tel" name="phone" placeholder="(312) 555-0100" class="cta-input"></div>
           </div>
-          <div class="cta-form-row">
-            <div class="cta-form-group"><label class="cta-input-label">Email</label><input type="email" name="email" placeholder="your@email.com" required class="cta-input"></div>
-            <div class="cta-form-group"><label class="cta-input-label">Phone</label><input type="tel" name="phone" placeholder="(312) 555-0100" class="cta-input"></div>
-          </div>
-          <div class="cta-form-group"><label class="cta-input-label">I'm looking to</label><select name="intent" required class="cta-input cta-select"><option value="" disabled selected>Select one</option><option value="buy">Buy a home</option><option value="sell">Sell my home</option><option value="both">Buy and sell</option><option value="invest">Invest in real estate</option><option value="learn">Just exploring</option></select></div>
-          <div class="cta-form-group"><label class="cta-input-label">Message (optional)</label><textarea name="message" placeholder="Tell me a little about what you're looking for..." class="cta-input cta-textarea"></textarea></div>
+          <div class="cta-form-group"><label class="cta-input-label" for="homeIntent">I’m looking to (optional)</label><select id="homeIntent" name="intent" class="cta-input cta-select"><option value="" selected>No preference</option><option value="buy">Buy a home</option><option value="sell">Sell my home</option><option value="both">Buy and sell</option><option value="invest">Invest in real estate</option><option value="learn">Just exploring</option></select></div>
+          <div class="cta-form-group"><label class="cta-input-label" for="homeMessage">Message (optional)</label><textarea id="homeMessage" name="message" placeholder="Tell me a little about what you're looking for..." class="cta-input cta-textarea"></textarea></div>
           <button type="submit" class="cta-submit">Send Message →</button>
           <div class="form-error" id="ctaFormError" role="alert" aria-live="polite"></div>
           <p class="cta-form-privacy">Your information is never shared or sold.</p>
         </form>
-        <div class="cta-form-success" id="ctaFormSuccess">
+        <div class="cta-form-success" id="ctaFormSuccess" role="status" tabindex="-1">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>
           <h3>Message received.</h3>
           <p>Thanks for reaching out. I'll review the details and follow up personally, usually within one business day.</p>
@@ -726,389 +217,37 @@
             <a href="/" class="cta-form-success-action">Continue Exploring</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+        </div>
+      </details>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-grid">
-      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
-      <div class="footer-col"><div class="footer-col-label">Navigate</div>
-        <a href="index.html">Home</a>
+  <footer class="footer home-footer">
+    <div class="home-footer-top">
+      <a class="home-footer-brand" href="index.html">The Neistat Group</a>
+      <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
+      <a href="tel:+18477142913">847.714.2913</a>
+      <span class="home-footer-principle">People First. <em>Always.</em></span>
+    </div>
+    <div class="home-footer-bottom">
+      <p>425 W. North Avenue, Chicago, Illinois 60610<br>© 2026 The Neistat Group. All rights reserved.</p>
+      <nav class="home-footer-links" aria-label="Footer navigation">
         <a href="selected-work.html">Selected Work</a>
         <a href="neighborhoods.html">Neighborhoods</a>
         <a href="seller-strategy.html">Seller Strategy</a>
         <a href="calculator.html">Affordability</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-      </div>
-      <div class="footer-col"><div class="footer-col-label">Advisory</div>
-        <a href="contact.html?intent=selling-home">Sell a Property</a>
-        <a href="contact.html?intent=buying-home">Buy a Property</a>
-        <a href="contact.html?intent=property-evaluation">Evaluate a Property</a>
-        <a href="contact.html?intent=investment-review">Investment Property Strategy</a>
-      </div>
-      <div class="footer-col"><div class="footer-col-label">Connect</div>
-        <a href="tel:+18477142913">847.714.2913</a>
-        <a href="mailto:matt@theneistatgroup.com">matt@theneistatgroup.com</a>
         <a href="https://www.instagram.com/matt_neistat/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.linkedin.com/in/matthew-neistat/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
+      </nav>
     </div>
-    <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
+    <aside class="footer-credits" aria-label="Sources, photo credits and recognition">
+      <p class="footer-credits-label">Sources &amp; photo credits</p>
+      <p>Chicago River photograph supplied by Matthew Neistat. South Pond &amp; Nature Boardwalk · Photo: <a href="https://commons.wikimedia.org/wiki/File:View_at_Lincoln_Park_Zoo_Nature_Boardwalk_(15198500880).jpg">Daniel X. O’Neil from USA</a> / <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>. Display cropped to fit.</p>
+      <p>Recognition: 14+ years of experience · CAR Top 10% Producer, Chicago Association of Realtors · Jameson Quarterly Best.</p>
+      <p>Coverage: <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" rel="noopener">Crain’s · Winnetka sale</a> · <a href="https://product.costar.com/home/news/710741247" target="_blank" rel="noopener">CoStar · West Loop assignment</a> · <a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" rel="noopener">Chicago Agent · Matthew’s profile</a> · <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" rel="noopener">Real Producers · June 2020 profile</a>.</p>
+    </aside>
   </footer>
-
-  <script>
-    // Nav scroll
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    // Mobile menu toggle
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('mobileMenu');
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const open = menu.classList.toggle('active');
-        toggle.classList.toggle('active');
-        document.body.style.overflow = open ? 'hidden' : '';
-      });
-    }
-
-    // Magnetic Cursor + 3D Card Tilt
-    (function() {
-      if (window.innerWidth < 769) return;
-      const dot = document.getElementById('cursorDot');
-      const ring = document.getElementById('cursorRing');
-      if (!dot || !ring) return;
-      let mouseX = 0, mouseY = 0, dotX = 0, dotY = 0, ringX = 0, ringY = 0;
-      // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-      // background under the pointer and invert to carbon when it is light.
-      let lastEl = null;
-      const bgIsLight = (el) => {
-        while (el && el !== document.documentElement) {
-          const m = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-          if (m && (m[3] === undefined || +m[3] > 0.95))
-            return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-          el = el.parentElement;
-        }
-        return false;
-      };
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX; mouseY = e.clientY;
-        dot.classList.remove('hidden'); ring.classList.remove('hidden');
-        const el = document.elementFromPoint(mouseX, mouseY);
-        if (el !== lastEl) {
-          lastEl = el;
-          const light = bgIsLight(el);
-          dot.classList.toggle('on-light', light);
-          ring.classList.toggle('on-light', light);
-        }
-      });
-      document.addEventListener('mouseleave', () => { dot.classList.add('hidden'); ring.classList.add('hidden'); });
-      document.addEventListener('mouseenter', () => { dot.classList.remove('hidden'); ring.classList.remove('hidden'); });
-      function animateCursor() {
-        dotX += (mouseX - dotX) * 0.35; dotY += (mouseY - dotY) * 0.35;
-        ringX += (mouseX - ringX) * 0.18; ringY += (mouseY - ringY) * 0.18;
-        dot.style.left = dotX + 'px'; dot.style.top = dotY + 'px';
-        ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
-        requestAnimationFrame(animateCursor);
-      }
-      animateCursor();
-      document.querySelectorAll('a, button, .sw-item, .tool-card, .nav-cta-btn, .stat, .testimonial-card, .press-pub').forEach(el => {
-        el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
-        el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
-      });
-      // (3D card tilt removed with the Selected Work carousel.)
-    })();
-
-    // GSAP Animations
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Reduced motion: the hero stays still and fully visible, so none of the
-    // scroll-linked zoom, drift or fade below runs.
-    var heroReduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!heroReduceMotion) {
-    // Hero scroll effects — no pinning, smooth parallax
-    var heroST = { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true };
-
-    // Video zooms slightly as you scroll past
-    gsap.to('#heroVideoWrap', { scale: 1.15, ease: 'none', scrollTrigger: heroST });
-
-    // "People First." drifts left and fades
-    gsap.to('#heroPeople', { x: -80, opacity: 0, ease: 'none', scrollTrigger: heroST });
-
-    // "Always." drifts right and fades
-    gsap.to('#heroAlways', { x: 80, opacity: 0, ease: 'none', scrollTrigger: heroST });
-
-    // Eyebrow, subtext, buttons fade out
-    gsap.to('#heroEyebrow', { opacity: 0, ease: 'none', scrollTrigger: heroST });
-    gsap.to('#heroSub', { y: 20, opacity: 0, ease: 'none', scrollTrigger: heroST });
-    gsap.to('#heroActions', { y: 20, opacity: 0, ease: 'none', scrollTrigger: heroST });
-
-    // Scroll indicator disappears on first scroll
-    gsap.to('#scrollIndicator', {
-      opacity: 0, ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: '2% top', end: '10% top', scrub: true }
-    });
-    } // end reduced-motion guard
-
-    // (Portfolio drag-to-scroll removed with the Selected Work carousel.)
-
-    // Stats count-up
-    function initCounters() {
-      document.querySelectorAll('.stats-band .stat-number').forEach(stat => {
-        const target = parseInt(stat.dataset.target);
-        const prefix = stat.dataset.prefix || '';
-        const suffix = stat.dataset.suffix || '';
-        let counted = false;
-        function countUp() {
-          if (counted) return;
-          counted = true;
-          let obj = { val: 0 };
-          gsap.to(obj, {
-            val: target, duration: 1.8, ease: 'power2.out',
-            onUpdate: () => { stat.textContent = prefix + Math.round(obj.val) + suffix; }
-          });
-        }
-        ScrollTrigger.create({
-          trigger: '#statsBand',
-          start: 'top bottom',
-          onEnter: countUp
-        });
-      });
-    }
-    initCounters();
-
-  </script>
-
-  <script>
-  (function() {
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      observer.observe(el);
-    });
-  })();
-  </script>
-
-  <!-- Strategic sections fade-up (IntersectionObserver only, no GSAP ScrollTrigger) -->
-  <script>
-  (function() {
-    var fadeObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.fade-up').forEach(function(el) {
-      fadeObserver.observe(el);
-    });
-  })();
-  </script>
-
-  <!-- Homepage lead form (Formspree AJAX) -->
-  <script>
-  (function() {
-    var form = document.getElementById('ctaForm');
-    if (!form) return;
-    var success = document.getElementById('ctaFormSuccess');
-    var errorBox = document.getElementById('ctaFormError');
-    var submitBtn = form.querySelector('.cta-submit');
-    var intentField = form.querySelector('[name="visitor_intent"]');
-    var urlField = form.querySelector('[name="page_url"]');
-    var intentSelect = form.querySelector('[name="intent"]');
-    var sending = false;
-
-    urlField.value = window.location.href;
-    if (intentSelect) {
-      intentSelect.addEventListener('change', function() { intentField.value = intentSelect.value; });
-    }
-
-    function showError(msg) {
-      errorBox.textContent = msg;
-      errorBox.classList.add('show');
-    }
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (sending) return;
-
-      errorBox.classList.remove('show');
-      errorBox.textContent = '';
-      urlField.value = window.location.href;
-      if (intentSelect) intentField.value = intentSelect.value;
-
-      sending = true;
-      var originalLabel = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
-
-      function restore() {
-        sending = false;
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalLabel;
-      }
-
-      fetch(form.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      }).then(function(res) {
-        if (res.ok) {
-          form.style.display = 'none';
-          success.classList.add('show');
-          if (typeof gtag === 'function') gtag('event', 'lead_form_submit', { form_type: 'homepage', visitor_intent: intentField.value || '(none)', source_page: 'homepage' });
-          return;
-        }
-        return res.json().catch(function() { return null; }).then(function(data) {
-          var msg = 'Something went wrong. Please try again, or email matt@theneistatgroup.com directly.';
-          if (data && data.errors && data.errors.length) {
-            msg = data.errors.map(function(x) { return x.message; }).join(' ');
-          }
-          restore();
-          showError(msg);
-        });
-      }).catch(function() {
-        restore();
-        showError('Network error — your message was not sent. Please check your connection and try again, or email matt@theneistatgroup.com directly.');
-      });
-    });
-  })();
-  </script>
-
-
-  <script>
-  /* Selected Work — render and switch, driven entirely by selected-work-data.js.
-     Frames are pre-rendered and crossfaded so switching never reflows. Any field
-     left empty in the data file is hidden rather than printed. */
-  (function () {
-    var data = (window.SELECTED_WORK || []).filter(function (t) {
-      return t.publishStatus === 'public';
-    }).slice(0, 7);
-    if (!data.length) return;
-
-    var figure = document.getElementById('swFigure');
-    var index = document.getElementById('swIndex');
-    var panel = document.querySelector('.sw-info');
-    var view = document.getElementById('swView');
-    var el = {
-      meta: document.getElementById('swMeta'), addr: document.getElementById('swAddress'),
-      rep: document.getElementById('swRep'), price: document.getElementById('swPrice'),
-      note: document.getElementById('swNote'), press: document.getElementById('swPress')
-    };
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function metaLine(t) {
-      return [t.neighborhood, t.assetType].filter(Boolean).join(' \u00b7 ');
-    }
-    function setOptional(node, value) {
-      var v = (value || '').trim();
-      node.textContent = v;
-      node.hidden = !v;
-    }
-
-    // Frames
-    data.forEach(function (t, i) {
-      var img = document.createElement('img');
-      img.src = t.image; img.alt = t.imageAlt || '';
-      img.className = 'sw-frame' + (i === 0 ? ' is-active' : '');
-      img.setAttribute('data-frame', t.id);
-      figure.appendChild(img);
-    });
-
-    // Index rows
-    data.forEach(function (t, i) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'sw-item';
-      btn.setAttribute('data-tx', t.id);
-      btn.setAttribute('aria-current', i === 0 ? 'true' : 'false');
-      var thumb = document.createElement('img');
-      thumb.className = 'sw-thumb'; thumb.src = t.image; thumb.alt = ''; thumb.loading = 'lazy';
-      var body = document.createElement('span');
-      var a = document.createElement('span'); a.className = 'sw-item-address'; a.textContent = t.address;
-      var m = document.createElement('span'); m.className = 'sw-item-meta'; m.textContent = metaLine(t);
-      body.appendChild(a); body.appendChild(m);
-      if (t.priceOrResult) {
-        var pr = document.createElement('span'); pr.className = 'sw-item-price';
-        pr.textContent = t.priceOrResult; body.appendChild(pr);
-      }
-      var arrow = document.createElement('span');
-      arrow.className = 'sw-item-arrow'; arrow.setAttribute('aria-hidden', 'true');
-      arrow.innerHTML = '&rarr;';
-      btn.appendChild(thumb); btn.appendChild(body); btn.appendChild(arrow);
-      btn.addEventListener('click', function () { select(t, btn); });
-      index.appendChild(btn);
-    });
-
-    var frames = [].slice.call(figure.querySelectorAll('.sw-frame'));
-    var items = [].slice.call(index.querySelectorAll('.sw-item'));
-
-    function write(t) {
-      el.meta.textContent = metaLine(t);
-      el.addr.textContent = t.address;
-      el.price.textContent = t.priceOrResult || '';
-      setOptional(el.rep, t.representation);
-      setOptional(el.note, t.outcomeLine);
-      setOptional(el.press, t.pressMention);
-      // Deep-links to this deal's card on the Selected Work page. No case-study
-      // pages exist yet, so this is the deepest real destination, never a \"#\".
-      if (view) view.href = 'selected-work.html#' + t.id;
-    }
-
-    function select(t, btn) {
-      if (btn.getAttribute('aria-current') === 'true') return;
-      items.forEach(function (b) { b.setAttribute('aria-current', 'false'); });
-      btn.setAttribute('aria-current', 'true');
-      frames.forEach(function (f) { f.classList.toggle('is-active', f.getAttribute('data-frame') === t.id); });
-      if (reduce) { write(t); return; }
-      panel.style.transition = 'opacity 0.16s ease';
-      panel.style.opacity = '0';
-      setTimeout(function () { write(t); panel.style.opacity = '1'; }, 160);
-    }
-
-    write(data[0]);
-  })();
-  </script>
-
-  <script>
-  // Pillar-section reveals. Namespaced so they cannot collide with this page's
-  // .reveal / .fade-up handlers. Reduced motion and a missing observer both SHOW,
-  // and a load-time failsafe means the fold can never be left blank.
-  (function () {
-    var els = document.querySelectorAll('.hp-reveal');
-    if (!els.length) return;
-    function show(el) { el.classList.add('is-in'); }
-    var reduce = false;
-    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-    if (reduce || !('IntersectionObserver' in window)) { Array.prototype.forEach.call(els, show); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        if (document.querySelector('.hp-reveal.is-in')) return;
-        Array.prototype.forEach.call(els, function (el) { if (el.getBoundingClientRect().top < window.innerHeight) show(el); });
-      }, 1200);
-    });
-  })();
-  </script>
-  <noscript><style>.hp-reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <title>Affordability | The Neistat Group</title>
   <meta name="description" content="Estimate a monthly payment, understand debt-to-income and pre-approval, and request a buyer closing-cost or seller net-proceeds estimate.">
   <link rel="canonical" href="https://www.theneistatgroup.com/calculator">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=39">
 
   <script type="application/ld+json">
   {
@@ -45,17 +45,17 @@
     .calc-section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-bottom: 20px; display: block; }
     .calc-section-h { font-family: Georgia, serif; font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: #0B0A07; max-width: 720px; }
     .calc-section-h em { font-style: italic; }
-    .calc-section-sub { font-size: 15px; color: rgba(11,10,7,0.55); line-height: 1.7; max-width: 520px; margin-top: 18px; }
+    .calc-section-sub { font-size: 15px; color: #655f55; line-height: 1.7; max-width: 520px; margin-top: 18px; }
 
     .calc-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px); align-items: start; }
 
-    .calc-form-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 16px; padding: clamp(28px,3.5vw,44px); }
+    .calc-form-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 2px; padding: clamp(28px,3.5vw,44px); }
     .calc-group { margin-bottom: 26px; }
     .calc-group:last-child { margin-bottom: 0; }
     .calc-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
     .calc-label-text { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.62); }
     .calc-label-value { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; letter-spacing: -0.01em; }
-    .calc-input, .calc-select { width: 100%; font-family: inherit; font-size: 15px; font-weight: 500; color: #0B0A07; padding: 13px 16px; border: 1px solid rgba(11,10,7,0.12); border-radius: 8px; background: #F4F0E8; outline: none; transition: border-color 0.25s; -webkit-appearance: none; appearance: none; }
+    .calc-input, .calc-select { width: 100%; font-family: inherit; font-size: 15px; font-weight: 500; color: #0B0A07; padding: 13px 16px; border: 1px solid rgba(11,10,7,0.12); border-radius: 2px; background: #F4F0E8; outline: none; transition: border-color 0.25s; -webkit-appearance: none; appearance: none; }
     .calc-input:focus, .calc-select:focus { border-color: #0B0A07; }
     .calc-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230B0A07' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
     .calc-range { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: rgba(11,10,7,0.1); outline: none; margin-top: 10px; cursor: pointer; }
@@ -65,8 +65,8 @@
     .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
     .calc-results { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 16px; }
-    .calc-results-card { background: #0B0A07; color: #EDE8DE; border-radius: 16px; padding: clamp(28px,3.5vw,44px); }
-    .calc-results-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.5); margin-bottom: 10px; display: block; }
+    .calc-results-card { background: #0B0A07; color: #EDE8DE; border-radius: 2px; padding: clamp(28px,3.5vw,44px); }
+    .calc-results-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #bdb7ac; margin-bottom: 10px; display: block; }
     .calc-monthly { font-family: Georgia, serif; font-size: clamp(42px,5.5vw,64px); font-weight: 400; letter-spacing: -0.025em; line-height: 1; margin-bottom: 28px; }
     .calc-monthly small { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: rgba(237,232,222,0.55); margin-left: 4px; font-weight: 400; }
     .calc-breakdown { display: flex; flex-direction: column; gap: 0; }
@@ -77,7 +77,7 @@
     .calc-breakdown-value { font-weight: 500; font-size: 14px; color: #EDE8DE; font-variant-numeric: tabular-nums; }
 
     .calc-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .calc-summary-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; padding: 18px 20px; }
+    .calc-summary-card { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 2px; padding: 18px 20px; }
     .calc-summary-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,10,7,0.62); margin-bottom: 6px; display: block; }
     .calc-summary-value { font-family: Georgia, serif; font-size: 20px; font-weight: 400; color: #0B0A07; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
 
@@ -90,12 +90,12 @@
     .amort-wrap { display: none; margin-top: 28px; }
     .amort-wrap.show { display: block; }
     .amort-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
-    .amort-tab { font-family: inherit; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 20px; border-radius: 2px; border: 1px solid rgba(11,10,7,0.12); cursor: pointer; background: transparent; color: rgba(11,10,7,0.55); transition: all 0.25s; }
+    .amort-tab { font-family: inherit; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 20px; border-radius: 2px; border: 1px solid rgba(11,10,7,0.12); cursor: pointer; background: transparent; color: #655f55; transition: all 0.25s; }
     .amort-tab.active { background: #0B0A07; color: #EDE8DE; border-color: #0B0A07; }
-    .amort-table-wrap { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 12px; overflow: hidden; max-height: 540px; overflow-y: auto; }
-    .amort-table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+    .amort-table-wrap { background: #fff; border: 1px solid rgba(11,10,7,0.08); border-radius: 2px; overflow: auto; max-height: 540px; overscroll-behavior: contain; }
+    .amort-table { min-width: 600px; width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
     .amort-table thead { position: sticky; top: 0; z-index: 2; }
-    .amort-table th { background: #0B0A07; color: rgba(237,232,222,0.8); font-weight: 600; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 16px; text-align: right; white-space: nowrap; }
+    .amort-table thead th { background: #0B0A07; color: rgba(237,232,222,0.8); font-weight: 600; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 16px; text-align: right; white-space: nowrap; }
     .amort-table th:first-child { text-align: left; }
     .amort-table td { padding: 11px 16px; text-align: right; border-bottom: 1px solid rgba(11,10,7,0.05); color: rgba(11,10,7,0.75); }
     .amort-table td:first-child { text-align: left; font-weight: 600; color: #0B0A07; }
@@ -104,13 +104,13 @@
     .amort-year-row td:first-child { font-weight: 700; }
     .amort-month-rows { display: none; }
     .amort-month-rows.show { display: table-row-group; }
-    .amort-month-rows td { font-size: 12px; color: rgba(11,10,7,0.55); padding: 8px 16px; }
+    .amort-month-rows td { font-size: 12px; color: #655f55; padding: 8px 16px; }
     .amort-month-rows td:first-child { padding-left: 32px; font-weight: 400; }
 
     /* === PRE-APPROVAL EXPLAINER === */
     .explainer { background: #0B0A07; color: #EDE8DE; padding: clamp(80px,10vw,140px) clamp(28px,6vw,80px); }
     .explainer-head { max-width: 1200px; margin: 0 auto clamp(48px,6vw,80px); }
-    .explainer-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 20px; display: block; }
+    .explainer-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #bdb7ac; margin-bottom: 20px; display: block; }
     .explainer-h { font-family: Georgia, serif; font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: #EDE8DE; max-width: 720px; }
     .explainer-h em { font-style: italic; }
     .explainer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,5vw,72px) clamp(48px,6vw,96px); }
@@ -171,7 +171,7 @@
     .lead-form-note { font-size: 12px; letter-spacing: 0.04em; margin-top: 4px; }
     .cta-band-dark .lead-form-note { color: rgba(237,232,222,0.55); }
     .cta-band-bone .lead-form-note { color: rgba(11,10,7,0.62); }
-    .lead-form-success { display: none; padding: 28px 24px; border-radius: 8px; text-align: center; }
+    .lead-form-success { display: none; padding: 28px 24px; border-radius: 2px; text-align: center; }
     .lead-form-success.show { display: block; }
     .cta-band-dark .lead-form-success { background: rgba(237,232,222,0.06); border: 1px solid rgba(237,232,222,0.14); }
     .cta-band-bone .lead-form-success { background: #fff; border: 1px solid rgba(11,10,7,0.1); }
@@ -184,19 +184,28 @@
     .faq-section { background: #0B0A07; color: #EDE8DE; padding: clamp(80px,10vw,140px) clamp(28px,6vw,80px); border-top: 1px solid rgba(237,232,222,0.06); }
     .faq-inner { max-width: 860px; margin: 0 auto; }
     .faq-head { text-align: center; margin-bottom: clamp(48px,6vw,72px); }
-    .faq-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.4); margin-bottom: 18px; display: block; }
+    .faq-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,222,0.7); margin-bottom: 18px; display: block; }
     .faq-h { font-family: Georgia, serif; font-size: clamp(28px,3.6vw,44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
     .faq-h em { font-style: italic; }
     .faq-item { border-bottom: 1px solid rgba(237,232,222,0.1); }
     .faq-item:first-child { border-top: 1px solid rgba(237,232,222,0.1); }
     .faq-q { width: 100%; background: transparent; border: none; padding: 24px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; text-align: left; font-family: Georgia, serif; font-size: clamp(17px,1.6vw,21px); font-weight: 400; color: #EDE8DE; line-height: 1.3; letter-spacing: -0.005em; }
     .faq-q:hover { color: #fff; }
-    .faq-q-icon { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.3s ease; color: rgba(237,232,222,0.4); }
+    .faq-q-icon { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.3s ease; color: #bdb7ac; }
     .faq-item.open .faq-q-icon { transform: rotate(45deg); color: #EDE8DE; }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
     .faq-a-inner { padding: 0 0 24px; font-size: 15px; line-height: 1.75; color: rgba(237,232,222,0.6); max-width: 720px; }
-    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-item.open .faq-a { max-height: none; }
 
+    .calc-compact { display: none; }
+    #payment-breakdown { scroll-margin-top: 180px; }
+    @media (max-width: 1024px) {
+      .calc-compact { display: flex; justify-content: space-between; align-items: center; gap: 14px; position: sticky; top: var(--site-header-height, 94px); z-index: 4; background: #0B0A07; color: #EDE8DE; padding: 14px 18px; }
+      .calc-compact span { display: block; font-size: 11px; line-height: 1.5; max-width: 28ch; color: #d2ccc2; }
+      .calc-compact strong { display: block; font: 25px/1.3 Georgia, serif; margin-top: 4px; }
+      .calc-compact a { flex-shrink: 0; font-size: 12px; padding: 14px 0; text-decoration: underline; text-underline-offset: 4px; }
+      .calc-input, .calc-select { font-size: 16px; }
+    }
     /* === RESPONSIVE === */
     @media (max-width: 1024px) {
       .calc-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -249,7 +258,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
+<script src="nav.js?v=11" defer></script>
   <meta property="og:title" content="Affordability | The Neistat Group">
   <meta property="og:description" content="Estimate a monthly payment, understand debt-to-income and pre-approval, and request a buyer closing-cost or seller net-proceeds estimate.">
   <meta property="og:url" content="https://www.theneistatgroup.com/calculator">
@@ -262,15 +271,19 @@
   <meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
   <meta property="og:image:width" content="828">
   <meta property="og:image:height" content="1792">
+  <script src="/forms.js?v=2" defer></script>
+  <script src="/mortgage.js?v=1" defer></script>
+  <script src="/affordability.js?v=2" defer></script>
+  <noscript><style>.faq-a { max-height: none; }</style></noscript>
+  <link rel="stylesheet" href="/site-design.css?v=3">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
+<body class="site-design page-calculator">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
       <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
       <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
@@ -294,10 +307,12 @@
   </div>
 
   <!-- HERO -->
+  <main id="main-content" tabindex="-1">
   <section class="calc-hero">
     <div class="calc-hero-eyebrow reveal">Affordability</div>
     <h1 class="calc-hero-h1 reveal">What Can You <em>Actually</em> Afford?</h1>
     <p class="calc-hero-sub reveal">A mortgage calculator, debt-to-income and pre-approval guidance, and personalized closing cost estimates — built for Chicago buyers and sellers.</p>
+    <nav class="section-nav" aria-label="Affordability sections"><a href="#mortgage">Monthly payment</a><a href="#dti">Debt-to-income</a><a href="#buyer-estimate">Buyer estimate</a><a href="#seller-estimate">Seller estimate</a></nav>
   </section>
 
   <!-- MORTGAGE CALCULATOR -->
@@ -309,6 +324,10 @@
     </div>
 
     <div class="calc-grid">
+      <div class="calc-compact">
+        <div><span id="compactEstimateLabel">Estimated payment · excludes mortgage insurance</span><strong id="compactPayment"></strong></div>
+        <a href="#payment-breakdown">Breakdown ↓</a>
+      </div>
       <!-- Inputs -->
       <div class="calc-form-card reveal">
         <div class="calc-group">
@@ -316,7 +335,8 @@
             <span class="calc-label-text" id="calcLblPrice">Home Price</span>
             <span class="calc-label-value" id="priceDisplay">$500,000</span>
           </div>
-          <input type="range" class="calc-range" id="priceRange" aria-labelledby="calcLblPrice" aria-describedby="priceDisplay" min="100000" max="5000000" step="10000" value="500000">
+          <input class="calc-input calc-exact" type="number" id="priceInput" aria-labelledby="calcLblPrice" min="100000" max="5000000" step="0.01" value="500000" required>
+          <input type="range" class="calc-range" id="priceRange" aria-label="Home price slider" aria-describedby="priceDisplay" min="100000" max="5000000" step="1" value="500000">
         </div>
 
         <div class="calc-group">
@@ -324,7 +344,8 @@
             <span class="calc-label-text" id="calcLblDown">Down Payment</span>
             <span class="calc-label-value" id="downDisplay">20% · $100,000</span>
           </div>
-          <input type="range" class="calc-range" id="downRange" aria-labelledby="calcLblDown" aria-describedby="downDisplay" min="0" max="50" step="1" value="20">
+          <input class="calc-input calc-exact" type="number" id="downInput" aria-labelledby="calcLblDown" min="0" max="100" step="0.01" value="20" required>
+          <input type="range" class="calc-range" id="downRange" aria-label="Down payment slider" aria-describedby="downDisplay" min="0" max="100" step="0.01" value="20">
         </div>
 
         <div class="calc-row">
@@ -339,32 +360,35 @@
           </div>
           <div class="calc-group">
             <div class="calc-label"><span class="calc-label-text" id="calcLblRate">Interest Rate</span></div>
-            <input type="number" class="calc-input" id="rateInput" aria-labelledby="calcLblRate" value="6.75" step="0.05" min="0" max="15">
+            <input type="number" class="calc-input" id="rateInput" aria-labelledby="calcLblRate" value="6.75" step="any" min="0" max="15" required>
           </div>
         </div>
 
         <div class="calc-row">
           <div class="calc-group">
             <div class="calc-label"><span class="calc-label-text" id="calcLblTax">Property Tax / yr</span></div>
-            <input type="number" class="calc-input" id="taxInput" aria-labelledby="calcLblTax" value="6000" step="100" min="0">
+            <input type="number" class="calc-input" id="taxInput" aria-labelledby="calcLblTax" value="6000" step="any" min="0" required>
           </div>
           <div class="calc-group">
             <div class="calc-label"><span class="calc-label-text" id="calcLblIns">Insurance / yr</span></div>
-            <input type="number" class="calc-input" id="insuranceInput" aria-labelledby="calcLblIns" value="1800" step="100" min="0">
+            <input type="number" class="calc-input" id="insuranceInput" aria-labelledby="calcLblIns" value="1800" step="any" min="0" required>
           </div>
         </div>
 
         <div class="calc-group" style="margin-bottom:0;">
           <div class="calc-label"><span class="calc-label-text" id="calcLblHoa">HOA / month</span></div>
-          <input type="number" class="calc-input" id="hoaInput" aria-labelledby="calcLblHoa" value="0" step="25" min="0">
+          <input type="number" class="calc-input" id="hoaInput" aria-labelledby="calcLblHoa" value="0" step="any" min="0" required>
         </div>
       </div>
 
       <!-- Results -->
-      <div class="calc-results">
+      <div class="calc-results" id="payment-breakdown">
+        <p class="calc-validation" id="calcError" role="status"></p>
         <div class="calc-results-card reveal">
           <span class="calc-results-label">Estimated Monthly Payment</span>
-          <div class="calc-monthly" id="monthlyPayment">$3,244<small>/mo</small></div>
+          <div class="calc-monthly" id="monthlyPayment" aria-live="polite" aria-atomic="true">$3,244<small>/mo</small></div>
+          <p class="calc-scope">Illustrative fixed-rate estimate. Includes the taxes, insurance and HOA you enter. Excludes mortgage insurance, closing costs, maintenance and changes in expenses. This is not a loan offer.</p>
+          <p class="calc-scope" id="pmiNote" hidden>Mortgage insurance may add to the payment. Ask your lender for the cost for your loan.</p>
           <div class="calc-breakdown">
             <div class="calc-breakdown-row">
               <span class="calc-breakdown-label"><span class="calc-breakdown-dot" style="background:#EDE8DE"></span>Principal &amp; Interest</span>
@@ -400,18 +424,19 @@
 
     <!-- Amortization -->
     <div class="amort-section reveal">
-      <button class="amort-toggle" id="amortToggle" type="button">
+      <button class="amort-toggle" id="amortToggle" type="button" aria-expanded="false" aria-controls="amortWrap">
         <span>View Amortization Schedule</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="amort-wrap" id="amortWrap">
+      <div class="amort-wrap" id="amortWrap" hidden>
         <div class="amort-tabs">
-          <button class="amort-tab active" data-view="yearly" type="button">Yearly</button>
-          <button class="amort-tab" data-view="monthly" type="button">Monthly</button>
+          <button class="amort-tab active" data-view="yearly" type="button" aria-pressed="true">Yearly</button>
+          <button class="amort-tab" data-view="monthly" type="button" aria-pressed="false">Monthly</button>
         </div>
-        <div class="amort-table-wrap">
+        <p class="calc-scope">Amortization shows principal and interest only. Taxes, insurance and HOA are separate.</p>
+        <div class="amort-table-wrap" tabindex="0" role="region" aria-label="Amortization schedule">
           <table class="amort-table">
-            <thead><tr><th>Period</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+            <thead><tr><th>Period</th><th>Principal &amp; interest payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
             <tbody id="amortBody"></tbody>
           </table>
         </div>
@@ -430,13 +455,13 @@
         <span class="explainer-block-num">01</span>
         <h3>Pre-qualification <em>vs.</em> pre-approval</h3>
         <p>A pre-qualification is a conversation — a lender eyeballs what you tell them and offers a ballpark loan amount. Nothing is verified.</p>
-        <p>A pre-approval is a document. The lender has pulled your credit, verified your income and assets, and issued a letter committing to lend up to a specific amount. In Chicago's market, only one of these wins offers.</p>
+        <p>A pre-approval letter describes what a lender may be willing to lend based on its review. Ask what has been verified and which conditions remain. Final approval still depends on underwriting and the property.</p>
       </div>
 
       <div class="explainer-block reveal">
         <span class="explainer-block-num">02</span>
         <h3>What lenders <em>look for</em></h3>
-        <p>Four factors carry almost all of the weight. Strengthen any one of them and your rate improves.</p>
+        <p>Lenders consider these factors together. Ask how your income, debts, credit and reserves affect the programs available to you.</p>
         <div class="explainer-list">
           <span class="explainer-list-item"><a href="#dti">Debt-to-income ratio (DTI)</a></span>
           <span class="explainer-list-item">Credit score &amp; history</span>
@@ -448,7 +473,7 @@
       <div class="explainer-block reveal">
         <span class="explainer-block-num">03</span>
         <h3>Documents to <em>have ready</em></h3>
-        <p>Pull these together before your first call with a lender — it cuts the pre-approval timeline from weeks to days.</p>
+        <p>Gather these before your first call with a lender, then ask which additional documents your application needs.</p>
         <div class="explainer-list">
           <span class="explainer-list-item">W-2s (past two years)</span>
           <span class="explainer-list-item">Federal tax returns</span>
@@ -463,7 +488,7 @@
         <span class="explainer-block-num">04</span>
         <h3>Why pre-approval <em>wins</em> in Chicago</h3>
         <p>Chicago's strongest listings generate multiple offers — and when they do, sellers choose the cleanest one, not simply the highest.</p>
-        <p>A written pre-approval tells the seller your financing is real. Without it, your offer sits in the pile with every buyer who hasn't done the work.</p>
+        <p>A written pre-approval helps a seller assess your financing readiness. Ask your lender to explain the remaining conditions before you make an offer.</p>
       </div>
     </div>
   </section>
@@ -509,7 +534,7 @@
         <p class="cta-band-copy">Closing costs vary by municipality, title company, and loan type. Send me your details — I'll run a custom estimate and email it back within 24 hours.</p>
       </div>
       <div class="reveal">
-        <form class="lead-form" id="buyerForm" action="https://formspree.io/f/xeevjdyb" method="POST" novalidate>
+        <form class="lead-form" id="buyerForm" data-success-id="buyerSuccess" data-error-id="buyerError" data-form-type="buyer_estimate" action="https://formspree.io/f/xeevjdyb" method="POST">
           <input type="hidden" name="form_type" value="buyer_closing_cost_estimate">
           <input type="hidden" name="_subject" value="New Buyer Closing Cost Estimate Request">
           <input type="hidden" name="source_page" value="calculator-page">
@@ -525,13 +550,13 @@
               <input class="lead-form-input" type="email" id="buyerEmail" name="email" required autocomplete="email">
             </div>
             <div class="lead-form-group">
-              <label class="lead-form-label" for="buyerPhone">Phone *</label>
-              <input class="lead-form-input" type="tel" id="buyerPhone" name="phone" required autocomplete="tel">
+              <label class="lead-form-label" for="buyerPhone">Phone (optional)</label>
+              <input class="lead-form-input" type="tel" id="buyerPhone" name="phone" autocomplete="tel">
             </div>
           </div>
           <div class="lead-form-group">
             <label class="lead-form-label" for="buyerPrice">Purchase Price *</label>
-            <input class="lead-form-input" type="text" id="buyerPrice" name="purchase_price" required inputmode="numeric" placeholder="$750,000">
+            <input class="lead-form-input" type="number" min="1" step="0.01" id="buyerPrice" name="purchase_price" required inputmode="numeric" placeholder="750000">
           </div>
           <div class="lead-form-group">
             <label class="lead-form-label" for="buyerAddress">Property Address or Neighborhood *</label>
@@ -541,7 +566,7 @@
           <div class="lead-form-error" id="buyerError" role="alert" aria-live="polite"></div>
           <p class="lead-form-note">Sent directly to matt@theneistatgroup.com.</p>
         </form>
-        <div class="lead-form-success" id="buyerSuccess">
+        <div class="lead-form-success" id="buyerSuccess" role="status" tabindex="-1">
           <h4>Request Received</h4>
           <p>Thanks — I'll review your details and email a personalized estimate within 24 hours.</p>
         </div>
@@ -558,7 +583,7 @@
         <p class="cta-band-copy">Every sale is different — transfer taxes, title fees, and prorations all shift by location. Send me your details and I'll run the numbers for you.</p>
       </div>
       <div class="reveal">
-        <form class="lead-form" id="sellerForm" action="https://formspree.io/f/xeevjdyb" method="POST" novalidate>
+        <form class="lead-form" id="sellerForm" data-success-id="sellerSuccess" data-error-id="sellerError" data-form-type="seller_estimate" action="https://formspree.io/f/xeevjdyb" method="POST">
           <input type="hidden" name="form_type" value="seller_net_proceeds_estimate">
           <input type="hidden" name="_subject" value="New Seller Net Proceeds Estimate Request">
           <input type="hidden" name="source_page" value="calculator-page">
@@ -574,13 +599,13 @@
               <input class="lead-form-input" type="email" id="sellerEmail" name="email" required autocomplete="email">
             </div>
             <div class="lead-form-group">
-              <label class="lead-form-label" for="sellerPhone">Phone *</label>
-              <input class="lead-form-input" type="tel" id="sellerPhone" name="phone" required autocomplete="tel">
+              <label class="lead-form-label" for="sellerPhone">Phone (optional)</label>
+              <input class="lead-form-input" type="tel" id="sellerPhone" name="phone" autocomplete="tel">
             </div>
           </div>
           <div class="lead-form-group">
             <label class="lead-form-label" for="sellerPrice">Expected Sale Price *</label>
-            <input class="lead-form-input" type="text" id="sellerPrice" name="purchase_price" required inputmode="numeric" placeholder="$1,200,000">
+            <input class="lead-form-input" type="number" min="1" step="0.01" id="sellerPrice" name="expected_sale_price" required inputmode="numeric" placeholder="1200000">
           </div>
           <div class="lead-form-group">
             <label class="lead-form-label" for="sellerAddress">Property Address or Neighborhood *</label>
@@ -590,7 +615,7 @@
           <div class="lead-form-error" id="sellerError" role="alert" aria-live="polite"></div>
           <p class="lead-form-note">Sent directly to matt@theneistatgroup.com.</p>
         </form>
-        <div class="lead-form-success" id="sellerSuccess">
+        <div class="lead-form-success" id="sellerSuccess" role="status" tabindex="-1">
           <h4>Request Received</h4>
           <p>Thanks — I'll review your details and email a personalized estimate within 24 hours.</p>
         </div>
@@ -608,15 +633,15 @@
       <div class="faq-list">
         <div class="faq-item reveal">
           <button class="faq-q" type="button">How much do I need for a down payment?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-          <div class="faq-a"><div class="faq-a-inner">Conventional loans typically require 5%–20%, FHA loans allow as little as 3.5%, and some programs go lower with strong credit. In Chicago's luxury market, 20% is the cleanest path to a competitive offer and no private mortgage insurance — but plenty of strong buyers close with less.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">The amount depends on your loan program and eligibility. Ask lenders to compare your down-payment options alongside the interest rate, mortgage insurance, closing costs, and cash left in reserve.</div></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" type="button">What credit score do I need?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-          <div class="faq-a"><div class="faq-a-inner">620 is the usual floor for conventional financing; FHA loans can go to 580 or lower with a larger down payment. For the best rates — the ones that meaningfully lower your monthly payment — lenders look for 740+.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Credit requirements depend on the loan program and lender. Your income, debts, assets, and the property also matter. Ask a lender to review your full application and explain which options you qualify for.</div></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" type="button">How long does pre-approval take?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-          <div class="faq-a"><div class="faq-a-inner">With documents ready, most of my clients have a pre-approval letter in hand within 48–72 hours. Without them, expect one to two weeks. If you think you might buy in the next 90 days, start now.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Timing varies by lender and the documents required. Start by asking for a document checklist and an expected review timeline. A pre-approval is conditional, not a guaranteed loan offer.</div></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" type="button">Do I need a pre-approval to tour homes?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
@@ -624,11 +649,11 @@
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" type="button">What are typical Chicago closing costs?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-          <div class="faq-a"><div class="faq-a-inner">Plan on 2%–4% of the purchase price for a buyer in Cook County — title, survey, attorney, origination, escrows, and transfer taxes. Sellers see 6%–8% net of commission, driven largely by Chicago's city transfer tax ($3.75 per $500) plus Cook County and state transfer taxes. For an exact number on your specific property, request a personalized estimate above.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Closing costs depend on the loan, property, municipality and contract. Compare the lender’s Loan Estimate with the title company’s estimate, including fees, prepaid costs and prorations. Request a personalized estimate above to discuss your property.</div></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q" type="button">Who pays what at closing?<svg class="faq-q-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-          <div class="faq-a"><div class="faq-a-inner">In Illinois, buyers cover their own lender fees, title insurance (lender's policy), survey, attorney, inspection, and escrows. Sellers cover commission, owner's title policy, attorney, state and county transfer taxes, and — in Chicago — the city transfer tax. Property taxes are prorated at 105% through the closing date, credited to the buyer.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">In Chicago, the city’s $3.75 per $500 transfer-tax component is generally the buyer’s responsibility; the additional $1.50 per $500 CTA component is generally the seller’s. Exemptions can apply. Other fees and tax prorations depend on the transaction and contract. Confirm the allocation with your attorney and title company.</div></div>
         </div>
       </div>
     </div>
@@ -646,6 +671,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer class="footer">
     <div class="footer-grid">
@@ -673,313 +700,14 @@
       </div>
     </div>
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
+    <aside class="footer-credits" aria-label="Information sources">
+      <p class="footer-credits-label">Information sources</p>
+      <p>Down payments &amp; credit requirements · <a href="https://www.consumerfinance.gov/owning-a-home/explore/understand-the-different-kinds-of-loans-available/">Consumer Financial Protection Bureau: loan options</a>.</p>
+      <p>Pre-approval · <a href="https://www.consumerfinance.gov/owning-a-home/explore/get-a-preapproval-letter/">Consumer Financial Protection Bureau: pre-approval guide</a>.</p>
+      <p>Chicago transfer-tax allocation · <a href="https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2606576">Chicago Municipal Code: real property transfer tax</a>.</p>
+    </aside>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script>
-    // ===== Nav & mobile menu =====
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-    (function(){
-      const toggle = document.getElementById('navToggle');
-      const menu = document.getElementById('mobileMenu');
-      if (toggle && menu) {
-        toggle.addEventListener('click', () => {
-          const open = menu.classList.toggle('active');
-          toggle.classList.toggle('active');
-          document.body.style.overflow = open ? 'hidden' : '';
-        });
-      }
-    })();
-
-    // ===== Reveal animations (GSAP with IntersectionObserver fallback) =====
-    (function(){
-      const els = document.querySelectorAll('.reveal');
-      const calcReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (calcReduce) {
-        els.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
-      } else if (window.gsap && window.ScrollTrigger) {
-        gsap.registerPlugin(ScrollTrigger);
-        els.forEach(el => {
-          gsap.set(el, { opacity: 0, y: 24 });
-          gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
-        });
-      } else {
-        const io = new IntersectionObserver(entries => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              e.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-              e.target.style.opacity = '1';
-              e.target.style.transform = 'translateY(0)';
-              io.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        els.forEach(el => {
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(24px)';
-          io.observe(el);
-        });
-      }
-    })();
-
-    // ===== Mortgage calculator =====
-    (function(){
-      const fmt = n => '$' + Math.round(n).toLocaleString();
-      const $ = id => document.getElementById(id);
-
-      const els = {
-        price: $('priceRange'), down: $('downRange'), term: $('termSelect'),
-        rate: $('rateInput'), tax: $('taxInput'), insurance: $('insuranceInput'), hoa: $('hoaInput'),
-        priceD: $('priceDisplay'), downD: $('downDisplay'),
-        monthly: $('monthlyPayment'), pi: $('piDisplay'), taxD: $('taxDisplay'),
-        insD: $('insuranceDisplay'), hoaD: $('hoaDisplay'), hoaRow: $('hoaRow'),
-        loan: $('loanDisplay'), totalInt: $('totalInterestDisplay')
-      };
-
-      function compute() {
-        const price = +els.price.value;
-        const downPct = +els.down.value / 100;
-        const downAmt = price * downPct;
-        const loanAmt = price - downAmt;
-        const years = +els.term.value;
-        const mRate = (+els.rate.value / 100) / 12;
-        const n = years * 12;
-        const annualTax = +els.tax.value;
-        const annualIns = +els.insurance.value;
-        const monthlyHoa = +els.hoa.value;
-
-        let pi = 0;
-        if (mRate > 0 && loanAmt > 0) {
-          pi = loanAmt * (mRate * Math.pow(1 + mRate, n)) / (Math.pow(1 + mRate, n) - 1);
-        } else if (loanAmt > 0) {
-          pi = loanAmt / n;
-        }
-
-        const monthlyTax = annualTax / 12;
-        const monthlyIns = annualIns / 12;
-        const total = pi + monthlyTax + monthlyIns + monthlyHoa;
-        const totalInterest = (pi * n) - loanAmt;
-
-        els.priceD.textContent = fmt(price);
-        els.downD.textContent = Math.round(downPct * 100) + '% · ' + fmt(downAmt);
-        els.monthly.innerHTML = fmt(total) + '<small>/mo</small>';
-        els.pi.textContent = fmt(pi);
-        els.taxD.textContent = fmt(monthlyTax);
-        els.insD.textContent = fmt(monthlyIns);
-        els.hoaD.textContent = fmt(monthlyHoa);
-        els.hoaRow.style.display = monthlyHoa > 0 ? 'flex' : 'none';
-        els.loan.textContent = fmt(loanAmt);
-        els.totalInt.textContent = fmt(Math.max(0, totalInterest));
-      }
-
-      [els.price, els.down, els.term, els.rate, els.tax, els.insurance, els.hoa].forEach(el => {
-        el.addEventListener('input', () => {
-          compute();
-          if (amortWrap && amortWrap.classList.contains('show')) buildAmort();
-        });
-      });
-
-      // ===== Amortization =====
-      const amortToggle = document.getElementById('amortToggle');
-      const amortWrap = document.getElementById('amortWrap');
-      const amortBody = document.getElementById('amortBody');
-      let amortView = 'yearly';
-
-      amortToggle.addEventListener('click', () => {
-        const open = amortWrap.classList.toggle('show');
-        amortToggle.classList.toggle('open');
-        amortToggle.querySelector('span').textContent = open ? 'Hide Amortization Schedule' : 'View Amortization Schedule';
-        if (open) buildAmort();
-      });
-
-      document.querySelectorAll('.amort-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          document.querySelectorAll('.amort-tab').forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          amortView = tab.dataset.view;
-          buildAmort();
-        });
-      });
-
-      function buildAmort() {
-        const price = +els.price.value;
-        const downPct = +els.down.value / 100;
-        const loanAmt = price - (price * downPct);
-        const years = +els.term.value;
-        const mRate = (+els.rate.value / 100) / 12;
-        const n = years * 12;
-
-        let pi = 0;
-        if (mRate > 0 && loanAmt > 0) {
-          pi = loanAmt * (mRate * Math.pow(1 + mRate, n)) / (Math.pow(1 + mRate, n) - 1);
-        } else if (loanAmt > 0) {
-          pi = loanAmt / n;
-        }
-
-        let balance = loanAmt;
-        let html = '';
-
-        if (amortView === 'monthly') {
-          for (let m = 1; m <= n; m++) {
-            const interest = balance * mRate;
-            const principal = pi - interest;
-            balance = Math.max(0, balance - principal);
-            html += '<tr><td>Month ' + m + '</td><td>' + fmt(pi) + '</td><td>' + fmt(principal) + '</td><td>' + fmt(interest) + '</td><td>' + fmt(balance) + '</td></tr>';
-          }
-          amortBody.innerHTML = html;
-        } else {
-          // Yearly with expandable month rows — build as a fresh tbody
-          amortBody.innerHTML = '';
-          for (let y = 1; y <= years; y++) {
-            let yearPrincipal = 0, yearInterest = 0, yearPayment = 0;
-            let monthHtml = '';
-            for (let m = 1; m <= 12; m++) {
-              const month = (y - 1) * 12 + m;
-              if (month > n) break;
-              const interest = balance * mRate;
-              const principal = pi - interest;
-              balance = Math.max(0, balance - principal);
-              yearPrincipal += principal;
-              yearInterest += interest;
-              yearPayment += pi;
-              monthHtml += '<tr><td>Month ' + month + '</td><td>' + fmt(pi) + '</td><td>' + fmt(principal) + '</td><td>' + fmt(interest) + '</td><td>' + fmt(balance) + '</td></tr>';
-            }
-            const yearId = 'amort-year-' + y;
-            const yearRow = document.createElement('tr');
-            yearRow.className = 'amort-year-row';
-            yearRow.dataset.year = yearId;
-            yearRow.innerHTML = '<td>Year ' + y + ' ▸</td><td>' + fmt(yearPayment) + '</td><td>' + fmt(yearPrincipal) + '</td><td>' + fmt(yearInterest) + '</td><td>' + fmt(balance) + '</td>';
-            amortBody.appendChild(yearRow);
-
-            const monthWrap = document.createElement('tr');
-            monthWrap.className = 'amort-month-wrap';
-            monthWrap.style.display = 'none';
-            monthWrap.innerHTML = '<td colspan="5" style="padding:0;"><table class="amort-table" id="' + yearId + '" style="width:100%;"><tbody>' + monthHtml + '</tbody></table></td>';
-            amortBody.appendChild(monthWrap);
-
-            yearRow.addEventListener('click', () => {
-              const open = monthWrap.style.display !== '';
-              monthWrap.style.display = open ? '' : 'none';
-              const td = yearRow.querySelector('td');
-              td.textContent = open ? td.textContent.replace('▸', '▾') : td.textContent.replace('▾', '▸');
-            });
-          }
-        }
-      }
-
-      compute();
-    })();
-
-    // ===== FAQ accordion =====
-    document.querySelectorAll('.faq-item').forEach(item => {
-      const btn = item.querySelector('.faq-q');
-      btn.addEventListener('click', () => item.classList.toggle('open'));
-    });
-
-    // ===== Lead form handlers (Formspree AJAX) =====
-    (function(){
-      function wire(formId, successId, errorId){
-        const form = document.getElementById(formId);
-        const success = document.getElementById(successId);
-        const errorBox = document.getElementById(errorId);
-        if (!form || !success || !errorBox) return;
-        const submitBtn = form.querySelector('.lead-form-submit');
-        const btnLabel = submitBtn.querySelector('span');
-        const urlField = form.querySelector('[name="page_url"]');
-        let sending = false;
-
-        if (urlField) urlField.value = window.location.href;
-
-        function showError(msg) {
-          errorBox.textContent = msg;
-          errorBox.classList.add('show');
-        }
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          if (sending) return;
-
-          errorBox.classList.remove('show');
-          errorBox.textContent = '';
-          if (urlField) urlField.value = window.location.href;
-
-          sending = true;
-          const originalLabel = btnLabel.textContent;
-          submitBtn.disabled = true;
-          btnLabel.textContent = 'Sending…';
-
-          function restore() {
-            sending = false;
-            submitBtn.disabled = false;
-            btnLabel.textContent = originalLabel;
-          }
-
-          try {
-            const res = await fetch(form.action, {
-              method: 'POST',
-              headers: { 'Accept': 'application/json' },
-              body: new FormData(form)
-            });
-            if (res.ok) {
-              form.style.display = 'none';
-              success.classList.add('show');
-              if (typeof gtag === 'function') gtag('event', 'lead_form_submit', { form_type: form.querySelector('[name=form_type]').value, visitor_intent: (form.querySelector('[name="visitor_intent"]') || {}).value || '(none)', source_page: 'calculator-page' });
-            } else {
-              const data = await res.json().catch(() => null);
-              let msg = 'Something went wrong. Please try again, or email matt@theneistatgroup.com directly.';
-              if (data && data.errors && data.errors.length) msg = data.errors.map(x => x.message).join(' ');
-              restore();
-              showError(msg);
-            }
-          } catch {
-            restore();
-            showError('Network error — your request was not sent. Please check your connection and try again, or email matt@theneistatgroup.com directly.');
-          }
-        });
-      }
-      wire('buyerForm', 'buyerSuccess', 'buyerError');
-      wire('sellerForm', 'sellerSuccess', 'sellerError');
-    })();
-  </script>
-
-  <script>
-    // Magnetic Cursor
-    (function(){
-      if(window.innerWidth<769)return;
-      var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-      if(!dot||!ring)return;
-      var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-      // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-    // background under the pointer and invert to carbon when it is light.
-    var lastEl=null,lastLight=false;
-    function bgIsLight(el){
-      while(el && el!==document.documentElement){
-        var m=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-        if(m && (m[3]===undefined || +m[3]>0.95))
-          return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-        el=el.parentElement;
-      }
-      return false;
-    }
-    document.addEventListener('mousemove',function(e){
-      mx=e.clientX;my=e.clientY;
-      dot.classList.remove('hidden');ring.classList.remove('hidden');
-      var el=document.elementFromPoint(mx,my);
-      if(el!==lastEl){                       // only recompute when the element changes
-        lastEl=el; lastLight=bgIsLight(el);
-        dot.classList.toggle('on-light',lastLight);
-        ring.classList.toggle('on-light',lastLight);
-      }
-    });
-      document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-      function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
-      loop();
-      document.querySelectorAll('a,button,input,select,.faq-q,.amort-tab,.amort-year-row').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
-    })();
-  </script>
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </body>
 </html>

@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://www.theneistatgroup.com/seller-strategy">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.theneistatgroup.com/properties/2636-lincoln-listing.jpg">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=39">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,29 +20,10 @@
     gtag('config', 'G-MGNGVERDHQ');
   </script>
   <script src="analytics.js" defer></script>
-  <script src="nav.js?v=6" defer></script>
+  <script src="nav.js?v=11" defer></script>
 
   <style>
-    /* ==========================================================================
-       Seller Strategy
-       Namespaced `ss-`. styles.css defines a global `.reveal { opacity: 0 }` with
-       no paired visible state, so this page ships its own reveal class.
 
-       SOURCING. Every claim on this page traces to copy already published on the
-       site or to selected-work-data.js. Do not add figures without a source:
-         - Access layers ............ marketing.html (see git main), steps 08, 09 and 12
-         - Presentation practices ... marketing.html intro and steps 02-07
-         - Pricing line ............. marketing.html step 01
-         - 1035 W. Lake / 1183 Elm .. selected-work-data.js (public, verified)
-         - Tri-Taylor ............... Linda Schafer's attributed testimonial
-       Deliberately NOT carried over from the old 12-step page: the "3-5x return
-       on preparation" promise, "faster and for more than the market average",
-       and the unsourced "95%" and "8 seconds" statistics.
-
-       Proof is typographic on purpose. The 1183 Elm photographs show "1185"
-       painted on the house, and the 1035 W. Lake image is a leasing rendering
-       with placeholder signage. Neither belongs large on this page.
-       ========================================================================== */
 
     .ss-reveal { opacity: 0; transform: translateY(24px);
       transition: opacity 1s var(--ease), transform 1s var(--ease); }
@@ -82,7 +63,7 @@
     .ss-dark  .ss-body { color: rgba(237,232,222,0.78); }
     .ss-cream .ss-body { color: rgba(11,10,7,0.78); }
 
-    .ss-band { padding: clamp(76px, 10vw, 156px) 0; }
+    .ss-band { padding: clamp(64px, 8vw, 112px) 0; }
 
     /* ---------------- hero ---------------- */
     .ss-hero {
@@ -197,28 +178,6 @@
     .ss-cream .ss-list p { color: rgba(11,10,7,0.74); }
     .ss-pillar-foot { margin-top: 30px; }
 
-    /* ---------------- comparison ---------------- */
-    .ss-compare-head { margin-bottom: clamp(34px, 4vw, 52px); }
-    .ss-table { width: 100%; border-collapse: collapse; }
-    .ss-table th, .ss-table td {
-      text-align: left; vertical-align: top;
-      padding: clamp(18px, 2vw, 26px) clamp(14px, 2vw, 28px) clamp(18px, 2vw, 26px) 0;
-      border-bottom: 1px solid rgba(11,10,7,0.12);
-    }
-    .ss-table thead th {
-      font-family: var(--font); font-size: 10.5px; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(11,10,7,0.62);
-      border-bottom: 1px solid rgba(11,10,7,0.3);
-    }
-    .ss-table thead th.ss-col-us { color: var(--navy); }
-    .ss-table tbody th {
-      font-family: var(--serif); font-weight: 400; font-size: clamp(17px, 1.5vw, 21px);
-      color: var(--navy); width: 22%;
-    }
-    .ss-table td { font-family: var(--font); font-size: 15px; line-height: 1.62; width: 39%; }
-    .ss-table td.ss-them { color: rgba(11,10,7,0.62); }
-    .ss-table td.ss-us   { color: rgba(11,10,7,0.9); }
-
     /* ---------------- testimonials ---------------- */
     .ss-quotes { display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
       gap: clamp(40px, 5vw, 80px) clamp(30px, 5vw, 80px); }
@@ -279,14 +238,21 @@
         color: rgba(11,10,7,0.62);
       }
     }
+    .ss-presentation-image { margin-top: clamp(36px,5vw,64px); }
+    .ss-presentation-image img { width: 100%; max-width: 840px; height: auto; margin: 0 auto; }
+    .ss-presentation-image figcaption { max-width: 840px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font: 12px/1.6 var(--font); color: #655f55; padding-top: 16px; }
+    .ss-presentation-image a { text-decoration: underline; text-underline-offset: 4px; min-height: 32px; }
+    .ss-dark + .ss-dark { padding-top: 24px; }
   </style>
+  <link rel="stylesheet" href="/site-design.css?v=3">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
+<body class="site-design page-seller-strategy">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
       <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
       <a href="seller-strategy.html" class="nav-link" aria-current="page">Seller Strategy</a>
@@ -310,7 +276,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main-content" tabindex="-1">
 
     <!-- ============ 1. HERO ============ -->
     <header class="ss-hero">
@@ -322,32 +288,35 @@
           <p class="ss-hero-sub">A stronger sale starts before the public launch.</p>
           <a class="ss-textlink" href="contact.html?intent=selling-home">Talk Strategy &rarr;</a>
         </div>
+        <nav class="section-nav" aria-label="Seller strategy sections"><a href="#outcomes">Selected outcomes</a><a href="#access">Access</a><a href="#presentation">Presentation</a><a href="#partnership">Partnership</a></nav>
       </div>
     </header>
 
     <!-- ============ 2. PROOF FIRST ============ -->
-    <section class="ss-band ss-cream">
+    <section id="outcomes" class="ss-band ss-cream">
       <div class="ss-wrap">
         <div class="ss-proof-head">
           <p class="ss-label ss-reveal">Proof First</p>
-          <h2 class="ss-h2 ss-reveal">Three recent outcomes.</h2>
+          <h2 class="ss-h2 ss-reveal">Selected outcomes.</h2>
         </div>
 
         <div class="ss-proof-grid ss-reveal">
-          <article class="ss-deal">
-            <p class="ss-deal-type">Deconversion &middot; Chicago</p>
-            <h3>1035 W. Lake Street</h3>
+          <!-- GENERATED: seller-proof START -->
+<article class="ss-deal">
+            <p class="ss-deal-type">Commercial · West Loop</p>
+            <h3><a href="selected-work.html#lake">1035 W. Lake Street</a></h3>
             <p class="ss-deal-fig">$9,500,000</p>
-            <p class="ss-deal-out">Won against major brokerages. Under contract off-market in two weeks.</p>
-            <p class="ss-deal-src">Reported in CoStar News</p>
+            <p class="ss-deal-out">Won the listing against major brokerages and brought it under contract off-market in two weeks.</p>
+
           </article>
           <article class="ss-deal">
-            <p class="ss-deal-type">Residential &middot; Winnetka</p>
-            <h3>1183 Elm Street</h3>
-            <p class="ss-deal-fig">$1,265,000</p>
-            <p class="ss-deal-out">Off-market sale, 10% over asking.</p>
-            <p class="ss-deal-src">Reported in Crain&rsquo;s Chicago Business</p>
+            <p class="ss-deal-type">Development · Lakeview</p>
+            <h3><a href="selected-work.html#wellington">702 W. Wellington Avenue</a></h3>
+            <p class="ss-deal-fig">$709K – $985K</p>
+            <p class="ss-deal-out">4-condo sellout.</p>
+            <p class="ss-deal-src">Represented Developer</p>
           </article>
+  <!-- GENERATED: seller-proof END -->
           <article class="ss-deal">
             <p class="ss-deal-type">Multifamily &middot; Tri-Taylor</p>
             <h3>Tri-Taylor Portfolio</h3>
@@ -364,7 +333,7 @@
     </section>
 
     <!-- ============ 3. ACCESS ============ -->
-    <section class="ss-band ss-dark">
+    <section id="access" class="ss-band ss-dark">
       <div class="ss-wrap ss-pillar-grid">
         <div class="ss-reveal">
           <p class="ss-label">Access</p>
@@ -393,7 +362,7 @@
     </section>
 
     <!-- ============ 4. PRESENTATION ============ -->
-    <section class="ss-band ss-cream">
+    <section id="presentation" class="ss-band ss-cream">
       <div class="ss-wrap ss-pillar-grid">
         <div class="ss-reveal">
           <p class="ss-label">Presentation</p>
@@ -426,10 +395,14 @@
           </li>
         </ul>
       </div>
+      <figure class="ss-presentation-image ss-wrap ss-reveal">
+        <img src="properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, showing the building’s facade and its place on the block." width="840" height="560" loading="lazy">
+        <figcaption><span>702 W. Wellington Avenue · Listing photography</span><a href="selected-work.html#wellington">Explore the assignment ↗</a></figcaption>
+      </figure>
     </section>
 
     <!-- ============ 5. PARTNERSHIP ============ -->
-    <section class="ss-band ss-dark">
+    <section id="partnership" class="ss-band ss-dark">
       <div class="ss-wrap ss-pillar-grid">
         <div class="ss-reveal">
           <p class="ss-label">Partnership</p>
@@ -439,52 +412,6 @@
           <p class="ss-body">Pricing is set to generate competition, not just interest &mdash; grounded in what comparable homes sold for, and why. The right price on day one is the difference between multiple offers and a price reduction.</p>
           <p class="ss-body">From the first walkthrough through closing, the work is hands-on.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ 6. COMPARISON ============ -->
-    <section class="ss-band ss-cream">
-      <div class="ss-wrap">
-        <div class="ss-compare-head ss-reveal">
-          <p class="ss-label">The Difference</p>
-          <h2 class="ss-h2">A standard listing, and ours.</h2>
-        </div>
-        <table class="ss-table ss-reveal">
-          <thead>
-            <tr>
-              <th scope="col"><span class="ss-sr">Stage</span></th>
-              <th scope="col">A Standard Listing</th>
-              <th scope="col" class="ss-col-us">The Neistat Group</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">First exposure</th>
-              <td class="ss-them" data-label="A Standard Listing">Buyers first see it the day it goes public.</td>
-              <td class="ss-us" data-label="The Neistat Group">The Top Agent Network and 400+ Jameson agents see it before launch.</td>
-            </tr>
-            <tr>
-              <th scope="row">Pricing</th>
-              <td class="ss-them" data-label="A Standard Listing">Priced from recent comparable sales.</td>
-              <td class="ss-us" data-label="The Neistat Group">Priced to generate competition &mdash; what sold, and why.</td>
-            </tr>
-            <tr>
-              <th scope="row">Preparation</th>
-              <td class="ss-them" data-label="A Standard Listing">General preparation advice.</td>
-              <td class="ss-us" data-label="The Neistat Group">A walkthrough on what to fix, stage, and leave alone.</td>
-            </tr>
-            <tr>
-              <th scope="row">Presentation</th>
-              <td class="ss-them" data-label="A Standard Listing">Listing photography.</td>
-              <td class="ss-us" data-label="The Neistat Group">Editorial photography, film, aerial, and a 3D tour on every listing.</td>
-            </tr>
-            <tr>
-              <th scope="row">Buyer reach</th>
-              <td class="ss-them" data-label="A Standard Listing">Listed on the public portals.</td>
-              <td class="ss-us" data-label="The Neistat Group">The public portals, plus direct outreach to active buyers and brokers.</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </section>
 
@@ -557,60 +484,19 @@
       </div>
     </div>
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
+    <aside class="footer-credits" aria-label="Information sources">
+      <p class="footer-credits-label">Information sources</p>
+      <!-- GENERATED: seller-sources START -->
+      <p>1035 W. Lake Street · <a href="https://product.costar.com/home/news/710741247">CoStar News</a>.</p>
+  <!-- GENERATED: seller-sources END -->
+    </aside>
   </footer>
 
   <noscript>
     <style>.ss-reveal { opacity: 1 !important; transform: none !important; }</style>
   </noscript>
 
-  <script>
-    // Mobile menu. The open/close handler lives inline on every page by design;
-    // nav.js only keeps aria-expanded in step with it.
-    (function () {
-      var toggle = document.getElementById('navToggle');
-      var menu = document.getElementById('mobileMenu');
-      if (toggle && menu) {
-        toggle.addEventListener('click', function () {
-          var open = menu.classList.toggle('active');
-          toggle.classList.toggle('active');
-          document.body.style.overflow = open ? 'hidden' : '';
-        });
-      }
-    })();
 
-    // Reveals.
-    (function () {
-      var els = document.querySelectorAll('.ss-reveal');
-      if (!els.length) { return; }
-      function show(el) { el.classList.add('is-in'); }
-
-      var reduce = false;
-      try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-
-      // Must SHOW on this path. .ss-reveal starts at opacity 0.
-      if (reduce || !('IntersectionObserver' in window)) {
-        Array.prototype.forEach.call(els, show);
-        return;
-      }
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { show(entry.target); io.unobserve(entry.target); }
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-      Array.prototype.forEach.call(els, function (el) { io.observe(el); });
-
-      // Failsafe: if the observer never fires at all, never leave the fold blank.
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          if (document.querySelector('.ss-reveal.is-in')) { return; }
-          Array.prototype.forEach.call(els, function (el) {
-            if (el.getBoundingClientRect().top < window.innerHeight) { show(el); }
-          });
-        }, 1200);
-      });
-    })();
-  </script>
 
 </body>
 </html>

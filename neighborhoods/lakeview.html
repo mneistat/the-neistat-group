@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lakeview Neighborhood Guide | The Neistat Group</title>
-  <meta name="description" content="A practical guide to Lakeview real estate, housing stock, boundaries, parks, schools, and broker insight from The Neistat Group.">
+  <meta name="description" content="Explore Lakeview parks, schools, local amenities, libraries, and transit, with official resources and real estate context from The Neistat Group.">
   <link rel="canonical" href="https://www.theneistatgroup.com/neighborhoods/lakeview">
   <meta property="og:title" content="Lakeview Neighborhood Guide | The Neistat Group">
-  <meta property="og:description" content="A practical guide to Lakeview real estate, housing stock, boundaries, parks, schools, and broker insight from The Neistat Group.">
+  <meta property="og:description" content="Explore Lakeview parks, schools, local amenities, libraries, and transit, with official resources and real estate context from The Neistat Group.">
   <meta property="og:url" content="https://www.theneistatgroup.com/neighborhoods/lakeview">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://www.theneistatgroup.com/properties/702-wellington-listing.jpg">
-  <link rel="stylesheet" href="/styles.css?v=36">
+  <meta property="og:image" content="https://www.theneistatgroup.com/images/neighborhoods/lakeview.jpg">
+  <link rel="stylesheet" href="/styles.css?v=39">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,418 +20,20 @@
     gtag('config', 'G-MGNGVERDHQ');
   </script>
   <script src="/analytics.js" defer></script>
-  <script src="/nav.js?v=6" defer></script>
+  <script src="/nav.js?v=11" defer></script>
 
-  <style>
-    /* ==========================================================================
-       Lakeview — neighborhood guide (built on the Lincoln Park template)
-       Namespaced `np-`. See the note in neighborhoods.html: styles.css defines
-       a global `.reveal { opacity: 0 }` with no paired visible state, so this
-       page ships its own reveal class and its own reduced-motion override.
-       All asset and page links are root-relative because this file sits one
-       directory down; `../` would break if trailing-slash behaviour ever changed.
-       ========================================================================== */
-
-    .np-reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 1s var(--ease), transform 1s var(--ease);
-    }
-    .np-reveal.is-in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .np-reveal { opacity: 1; transform: none; transition: none; }
-    }
-
-    .np-wrap { max-width: 1360px; margin: 0 auto; padding: 0 clamp(22px, 5vw, 72px); }
-
-    .np-eyebrow {
-      font-family: var(--font);
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.3em; text-transform: uppercase;
-      margin: 0 0 24px;
-    }
-    .np-sect-label {
-      font-family: var(--font);
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.24em; text-transform: uppercase;
-      margin: 0 0 34px;
-      padding-top: 12px;
-    }
-
-    /* ---------------- hero ---------------- */
-    .np-hero {
-      position: relative;
-      min-height: 86vh;
-      display: flex; align-items: flex-end;
-      background: var(--navy);
-      overflow: hidden;
-      padding: 0 0 clamp(52px, 8vw, 104px);
-    }
-    .np-hero-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: grayscale(0.5) contrast(1.04) brightness(0.6);
-    }
-    .np-hero-veil {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(11,10,7,0.60) 0%, rgba(11,10,7,0.34) 40%, rgba(11,10,7,0.90) 100%),
-        linear-gradient(to right, rgba(11,10,7,0.68) 0%, rgba(11,10,7,0.08) 60%);
-    }
-    .np-hero-inner { position: relative; width: 100%; }
-    .np-hero .np-eyebrow { color: rgba(237,232,222,0.62); }
-    .np-hero h1 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(48px, 9vw, 120px);
-      line-height: 0.96; letter-spacing: -0.025em;
-      color: #EDE8DE; margin: 0 0 28px;
-    }
-    .np-hero-sub {
-      font-family: var(--font);
-      font-size: clamp(15px, 1.3vw, 18px);
-      line-height: 1.72;
-      color: rgba(237,232,222,0.78);
-      max-width: 54ch; margin: 0;
-    }
-    .np-back {
-      display: inline-block;
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(237,232,222,0.62);
-      text-decoration: none; margin: 0 0 30px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid transparent;
-      transition: color 0.35s var(--ease), border-color 0.35s var(--ease);
-    }
-    .np-back:hover, .np-back:focus-visible {
-      color: #EDE8DE; border-bottom-color: rgba(237,232,222,0.5);
-    }
-
-    /* ---------------- generic bands ---------------- */
-    .np-band { padding: clamp(56px, 7vw, 104px) 0; }
-    .np-band--cream { background: var(--cream); color: var(--navy); }
-    .np-band--dark  { background: var(--navy); color: #EDE8DE; }
-    .np-band--cream .np-sect-label { color: rgba(11,10,7,0.6); border-top: 1px solid rgba(11,10,7,0.18); }
-    .np-band--dark  .np-sect-label { color: rgba(237,232,222,0.55); border-top: 1px solid rgba(237,232,222,0.18); }
-
-    .np-h2 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(28px, 4vw, 54px);
-      line-height: 1.1; letter-spacing: -0.02em;
-      margin: 0 0 28px; text-wrap: balance;
-    }
-    .np-band--cream .np-h2 { color: var(--navy); }
-    .np-band--dark  .np-h2 { color: #EDE8DE; }
-
-    .np-body {
-      font-family: var(--font);
-      font-size: clamp(15px, 1.25vw, 17.5px);
-      line-height: 1.78;
-      max-width: 62ch; margin: 0;
-    }
-    .np-band--cream .np-body { color: rgba(11,10,7,0.78); }
-    .np-band--dark  .np-body { color: rgba(237,232,222,0.78); }
-
-    /* ---------------- essence ---------------- */
-    .np-essence-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-      gap: clamp(28px, 5vw, 90px);
-      align-items: start;
-    }
-
-    /* ---------------- at a glance ---------------- */
-    .np-glance {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0;
-      border-top: 1px solid rgba(11,10,7,0.16);
-    }
-    .np-glance > div {
-      padding: clamp(24px, 2.6vw, 38px) clamp(18px, 2vw, 30px) clamp(24px, 2.6vw, 38px) 0;
-      border-right: 1px solid rgba(11,10,7,0.12);
-    }
-    .np-glance > div:last-child { border-right: 0; }
-    .np-glance h3 {
-      font-family: var(--font); font-size: 11px; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin: 0 0 16px;
-    }
-    .np-glance p {
-      font-family: var(--serif);
-      font-size: clamp(16px, 1.4vw, 19px);
-      line-height: 1.58; color: rgba(11,10,7,0.86); margin: 0;
-    }
-    /* At a Glance as short lists: one item per line, hairline dash markers. */
-    .np-glance-list { list-style: none; margin: 0; padding: 0; }
-    .np-glance-list li {
-      position: relative; padding: 6px 0 6px 22px;
-      font-family: var(--serif); font-size: clamp(16px, 1.35vw, 18.5px);
-      line-height: 1.4; color: rgba(11,10,7,0.86);
-    }
-    .np-glance-list li::before {
-      content: ''; position: absolute; left: 0; top: calc(6px + 0.72em);
-      width: 11px; height: 1px; background: rgba(11,10,7,0.5);
-    }
-
-    /* ---------------- map ----------------
-       Static, hand-placed SVG: an approximate outline, the lake edge and a
-       street-grid texture. No tiles, no API calls, no runtime data. SVG text is
-       sized in viewBox units, so it scales with the map; the 620px query below
-       enlarges it to stay legible on phones. */
-    .np-band--map { padding: clamp(56px, 6.5vw, 96px) 0; }
-    .np-map-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-      gap: clamp(28px, 4vw, 64px);
-      align-items: center;
-    }
-    .np-map-lede {
-      font-family: var(--serif);
-      font-size: clamp(20px, 2vw, 27px);
-      line-height: 1.4; letter-spacing: -0.01em;
-      color: #EDE8DE; margin: 0 0 18px; max-width: 18ch;
-    }
-    .np-map-note {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(237,232,222,0.55); margin: 0;
-    }
-    .np-map { margin: 0; }
-    .np-map svg { display: block; width: 100%; height: auto; border: 1px solid rgba(237,232,222,0.12); }
-    .np-map-land { fill: #14120D; }
-    .np-map-gridline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
-    .np-map-gridline--lp { stroke: rgba(237,232,222,0.1); }
-    .np-map-lp { fill: #1D1A14; }
-    .np-map-park { fill: #2B2E1F; }
-    .np-map-street { fill: none; stroke: rgba(237,232,222,0.18); stroke-width: 1.2; }
-    .np-map-street--lp { stroke: rgba(237,232,222,0.36); }
-    .np-map-lake { fill: #0F1317; }
-    .np-map-waterline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
-    .np-map-shore { fill: none; stroke: rgba(237,232,222,0.3); stroke-width: 1.2; }
-    .np-map-edge { fill: none; stroke: #EDE8DE; stroke-width: 1.6; stroke-linejoin: round; }
-    .np-map-name {
-      font-family: var(--serif); font-size: 44px; letter-spacing: -0.01em;
-      fill: #EDE8DE; paint-order: stroke; stroke: #1D1A14; stroke-width: 6px;
-    }
-    .np-map-k {
-      font-family: var(--font); font-size: 13px; font-weight: 500;
-      letter-spacing: 0.24em; fill: rgba(237,232,222,0.55);
-    }
-    .np-map-v { font-family: var(--serif); font-style: italic; font-size: 22px; letter-spacing: 0; fill: rgba(237,232,222,0.88); }
-    .np-map-mark { fill: #EDE8DE; }
-    .np-map-ctx {
-      font-family: var(--font); font-size: 14px; font-weight: 500;
-      letter-spacing: 0.2em; fill: rgba(237,232,222,0.64);
-      paint-order: stroke; stroke: #1D1A14; stroke-width: 5px;
-    }
-
-    /* ---------------- housing stock ---------------- */
-    .np-stock {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: clamp(12px, 1.4vw, 20px);
-    }
-    .np-stock article { display: flex; flex-direction: column; }
-    .np-stock-fig {
-      position: relative; aspect-ratio: 3 / 4;
-      overflow: hidden; background: #E4DFD4;
-      margin-bottom: 20px;
-    }
-    .np-stock-fig img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: grayscale(0.28) brightness(0.96);
-    }
-    .np-stock-fig--plot {
-      background:
-        repeating-linear-gradient(0deg, rgba(11,10,7,0.05) 0 1px, transparent 1px 26px),
-        repeating-linear-gradient(90deg, rgba(11,10,7,0.05) 0 1px, transparent 1px 26px),
-        #E7E2D7;
-    }
-    .np-stock h3 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(18px, 1.6vw, 22px);
-      line-height: 1.2; color: var(--navy);
-      margin: 0 0 10px;
-    }
-    .np-stock p {
-      font-family: var(--font); font-size: 14px; line-height: 1.68;
-      color: rgba(11,10,7,0.72); margin: 0;
-    }
-
-    /* ---------------- places ---------------- */
-    .np-places { border-top: 1px solid rgba(237,232,222,0.16); }
-    .np-places > div {
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: 24px; padding: clamp(20px, 2.2vw, 30px) 0;
-      border-bottom: 1px solid rgba(237,232,222,0.16);
-    }
-    .np-places h3 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(20px, 2vw, 28px);
-      color: #EDE8DE; margin: 0;
-    }
-    .np-places span {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(237,232,222,0.55); flex: none;
-    }
-
-    /* ---------------- resource links ---------------- */
-    .np-links { display: flex; flex-wrap: wrap; gap: 14px 36px; margin: 34px 0 0; }
-    .np-link {
-      font-family: var(--font); font-size: 12px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      text-decoration: none; padding-bottom: 8px;
-      border-bottom: 1px solid rgba(11,10,7,0.28);
-      color: var(--navy);
-      transition: border-color 0.35s var(--ease);
-    }
-    .np-link:hover, .np-link:focus-visible { border-bottom-color: var(--navy); }
-
-    /* ---------------- broker note ---------------- */
-    .np-note { background: #100E0A; padding: clamp(74px, 10vw, 156px) 0; }
-    .np-note-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-      gap: clamp(32px, 6vw, 96px);
-      align-items: center;
-    }
-    .np-note-portrait {
-      position: relative; aspect-ratio: 3 / 4; overflow: hidden;
-      background: #1A1710;
-    }
-    .np-note-portrait img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: 50% 22%;
-      filter: grayscale(1) contrast(1.06) brightness(0.9);
-    }
-    .np-note blockquote {
-      margin: 0;
-      font-family: var(--serif); font-style: italic; font-weight: 400;
-      font-size: clamp(24px, 3.4vw, 46px);
-      line-height: 1.34; letter-spacing: -0.015em;
-      color: #EDE8DE; text-wrap: balance;
-    }
-    .np-note-attr {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(237,232,222,0.5);
-      margin: 34px 0 0; padding-top: 20px;
-      border-top: 1px solid rgba(237,232,222,0.18);
-      display: inline-block;
-    }
-
-    /* ---------------- selected work nearby ---------------- */
-    .np-work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2vw, 30px); }
-    .np-work figure { margin: 0; }
-    .np-work-fig { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #E4DFD4; margin-bottom: 20px; }
-    .np-work-fig img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.2); }
-    .np-work h3 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(20px, 2vw, 28px); line-height: 1.2;
-      color: var(--navy); margin: 0 0 12px;
-    }
-    .np-work-meta {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin: 0 0 8px;
-    }
-    .np-work-outcome { font-family: var(--serif); font-style: italic; font-size: 15px; color: rgba(11,10,7,0.72); margin: 6px 0 0; }
-    .np-work-price {
-      font-family: var(--serif); font-size: clamp(17px, 1.5vw, 21px);
-      color: rgba(11,10,7,0.86); margin: 0;
-    }
-
-    /* ---------------- advisory CTA ---------------- */
-    .np-cta {
-      position: relative; min-height: 62vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; background: #100E0A; overflow: hidden;
-      padding: clamp(72px, 10vw, 130px) clamp(22px, 5vw, 72px);
-    }
-    .np-cta-img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; filter: grayscale(0.7) brightness(0.4);
-    }
-    .np-cta-veil { position: absolute; inset: 0; background: rgba(11,10,7,0.6); }
-    .np-cta-inner { position: relative; max-width: 720px; }
-    .np-cta h2 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(30px, 4.6vw, 58px);
-      line-height: 1.1; letter-spacing: -0.02em;
-      color: #EDE8DE; margin: 0 0 26px; text-wrap: balance;
-    }
-    .np-cta p {
-      font-family: var(--font);
-      font-size: clamp(15px, 1.25vw, 17px);
-      line-height: 1.76; color: rgba(237,232,222,0.78);
-      margin: 0 auto 40px; max-width: 54ch;
-    }
-    .np-btn {
-      display: inline-block;
-      font-family: var(--font); font-size: 12px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: #EDE8DE; text-decoration: none;
-      padding: 17px 42px; border: 1px solid rgba(237,232,222,0.42);
-      transition: background 0.45s var(--ease), color 0.45s var(--ease), border-color 0.45s var(--ease);
-    }
-    .np-btn:hover, .np-btn:focus-visible { background: #EDE8DE; color: var(--navy); border-color: #EDE8DE; }
-
-    /* ---------------- return band ---------------- */
-    .np-return {
-      background: var(--cream);
-      border-top: 1px solid rgba(11,10,7,0.12);
-      padding: clamp(30px, 4vw, 52px) 0;
-    }
-    .np-return a {
-      font-family: var(--font); font-size: 11px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(11,10,7,0.7); text-decoration: none;
-      padding-bottom: 7px; border-bottom: 1px solid rgba(11,10,7,0.24);
-      transition: color 0.35s var(--ease), border-color 0.35s var(--ease);
-    }
-    .np-return a:hover, .np-return a:focus-visible { color: var(--navy); border-bottom-color: var(--navy); }
-
-    /* ---------------- focus ---------------- */
-    .np-btn:focus-visible, .np-link:focus-visible,
-    .np-back:focus-visible, .np-return a:focus-visible {
-      outline: 2px solid currentColor; outline-offset: 4px;
-    }
-
-    /* ---------------- responsive ---------------- */
-    @media (max-width: 1000px) {
-      .np-essence-grid, .np-map-grid, .np-note-grid { grid-template-columns: 1fr; }
-      .np-map-lede { max-width: 32ch; }
-      .np-glance { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .np-glance > div:nth-child(2n) { border-right: 0; }
-      .np-glance > div:nth-child(n+3) { border-top: 1px solid rgba(11,10,7,0.12); }
-      .np-stock { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .np-note-portrait { max-width: 320px; }
-    }
-    @media (max-width: 620px) {
-      .np-hero { min-height: 78vh; }
-      .np-glance { grid-template-columns: 1fr; }
-      .np-glance > div { border-right: 0; border-top: 1px solid rgba(11,10,7,0.12); padding-right: 0; }
-      .np-glance > div:first-child { border-top: 0; }
-      .np-stock { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .np-work { grid-template-columns: 1fr; }
-      .np-map-k, .np-map-ctx { font-size: 26px; }
-      .np-map-v { font-size: 34px; }
-      .np-map-name { font-size: 56px; }
-      .np-places > div { flex-direction: column; gap: 8px; }
-    }
-  </style>
+  <link rel="stylesheet" href="/neighborhoods/guide.css?v=7">
+  <link rel="stylesheet" href="/site-design.css?v=3">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
+<body class="site-design page-guide">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
     <a href="/index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="/index.html" class="nav-link">Home</a>
       <a href="/selected-work.html" class="nav-link">Selected Work</a>
-      <a href="/neighborhoods.html" class="nav-link">Neighborhoods</a>
+      <a href="/neighborhoods.html" class="nav-link" aria-current="location">Neighborhoods</a>
       <a href="/seller-strategy.html" class="nav-link">Seller Strategy</a>
       <a href="/calculator.html" class="nav-link">Affordability</a>
       <a href="/about.html" class="nav-link">About</a>
@@ -444,7 +46,7 @@
     <div class="mobile-menu-inner">
       <a href="/index.html" class="mobile-menu-link">Home</a>
       <a href="/selected-work.html" class="mobile-menu-link">Selected Work</a>
-      <a href="/neighborhoods.html" class="mobile-menu-link">Neighborhoods</a>
+      <a href="/neighborhoods.html" class="mobile-menu-link" aria-current="location">Neighborhoods</a>
       <a href="/seller-strategy.html" class="mobile-menu-link">Seller Strategy</a>
       <a href="/calculator.html" class="mobile-menu-link">Affordability</a>
       <a href="/about.html" class="mobile-menu-link">About</a>
@@ -453,29 +55,28 @@
     </div>
   </div>
 
-  <main>
+  <main id="main-content" tabindex="-1">
 
     <!-- ============ 1. HERO ============ -->
     <header class="np-hero">
-      <img class="np-hero-img" src="/properties/702-wellington-listing.jpg"
-           alt="A contemporary dark-brick condominium building between vintage brick apartment buildings on West Wellington Avenue."
-           width="840" height="561">
+      <img class="np-hero-img" src="/images/neighborhoods/lakeview.jpg" alt="Boats at Belmont Harbor beside Lakeview’s lakefront parkland." width="1920" height="1440" fetchpriority="high">
       <div class="np-hero-veil"></div>
       <div class="np-wrap np-hero-inner">
         <a class="np-back" href="/neighborhoods.html">&larr; All Neighborhoods</a>
         <p class="np-eyebrow">Neighborhood Intelligence</p>
         <h1>Lakeview</h1>
-        <p class="np-hero-sub">Three-flats, courtyard buildings, lakefront parkland, and Wrigley Field on Chicago&rsquo;s North Side.</p>
+        <p class="np-hero-sub">Belmont Harbor, neighborhood parks, schools, and local places from Southport Avenue to the lakefront.</p>
       </div>
     </header>
+    <nav class="section-nav np-section-nav" aria-label="Guide sections"><a href="#parks">Parks</a><a href="#resources">Schools</a><a href="#amenities">Local amenities</a><a href="#context">Boundaries</a><a href="#housing">Housing</a><a href="#market">Market notes</a><a href="#nearby-work">Selected work</a></nav>
 
     <!-- ============ 2. THE ESSENCE ============ -->
     <section class="np-band np-band--cream">
       <div class="np-wrap np-essence-grid">
         <p class="np-sect-label np-reveal">The Essence</p>
         <div class="np-reveal">
-          <h2 class="np-h2">Several neighborhoods under one name.</h2>
-          <p class="np-body">Lakeview is the everyday name for the Lake View community area, and it holds several distinct places: Wrigleyville around the ballpark, Northalsted along Halsted Street, and the blocks along the lake. Much of its housing was built between the 1880s and the 1920s &mdash; frame houses, greystones, and brick flats &mdash; while in East Lake View, apartment buildings from the late 1940s through the 1960s replaced smaller houses and flats or filled vacant lots.</p>
+          <h2 class="np-h2">The lakefront, the ballpark, and the blocks between.</h2>
+          <p class="np-body">Lakeview brings together the shoreline at Belmont Harbor, indoor recreation at Gill Park, and neighborhood playlots. Southport adds shops and a historic cinema; Wrigley Field anchors another part of the area. Start with these places, then explore the schools, libraries, and connections around a particular address.</p>
         </div>
       </div>
     </section>
@@ -485,12 +86,14 @@
          boundary (igwz-8jzy) and Chicago Park District park boundaries (ejsh-fztr), at the
          exact scale of the Lincoln Park map (fitted to within 0.8px of that map). Streets
          sit on the address grid. Nothing is fetched at runtime. -->
-    <section class="np-band np-band--dark np-band--map">
+    <section id="context" class="np-band np-band--dark np-band--map">
       <div class="np-wrap np-map-grid">
         <div class="np-reveal">
           <h2 class="np-sect-label">The Map</h2>
           <p class="np-map-lede">Diversey to Irving Park, Ravenswood to the lake &mdash; and north to Montrose west of Clark.</p>
           <p class="np-map-note">Boundaries approximate.</p>
+          <p class="np-map-source">Neighborhood usage can vary; school attendance areas are separate.</p>
+          <div class="np-map-key" aria-label="Map key"><span><i class="np-key-boundary"></i>Community area</span><span><i class="np-key-park"></i>Parkland</span><span><i class="np-key-water"></i>Lake Michigan</span></div>
         </div>
         <figure class="np-map np-reveal">
           <svg viewBox="0 0 1200 826" role="img" aria-labelledby="np-map-title np-map-desc">
@@ -554,130 +157,203 @@
       </div>
     </section>
 
+    <section id="parks" class="np-band np-band--cream">
+      <div class="np-wrap">
+        <p class="np-sect-label np-reveal">Parks &amp; Open Space</p>
+        <h2 class="np-h2 np-reveal">The shoreline, the pool, and the playlot.</h2>
+        <div class="np-place-editorial">
+          <figure class="np-place-photo np-reveal">
+            <img src="/images/neighborhoods/lakeview.jpg" alt="Boats at Belmont Harbor beside Lakeview&rsquo;s lakefront parkland." width="1920" height="1440" loading="lazy">
+            <figcaption>Belmont Harbor opens Lakeview to the broader lakefront park and trail system.</figcaption>
+          </figure>
+          <div class="np-places np-reveal">
+          <article>
+            <h3>Belmont Harbor</h3>
+            <span class="np-place-address">3600 N. Recreation Drive</span>
+            <p>The harbor sits within Lincoln Park&rsquo;s lakefront landscape. The Park District&rsquo;s harbor information is a starting point for understanding this stretch of shoreline.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/parks-facilities/belmont-harbor">Explore the harbor &rarr;</a>
+          </article>
+          <article>
+            <h3>Lakefront Trail</h3>
+            <span class="np-place-address">Along Lake Michigan</span>
+            <p>Separate pedestrian and bicycle trails follow the lake. Use the Park District&rsquo;s segment maps and current maintenance notices to plan the route from the neighborhood to the waterfront.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/lakefront-trail">Trail maps &amp; conditions &rarr;</a>
+          </article>
+          <article>
+            <h3>Gill Park</h3>
+            <span class="np-place-address">825 W. Sheridan Road</span>
+            <p>The fieldhouse contains an indoor pool, gymnasium, and fitness center. A playground and t-ball field sit outside; check the Park District for current programs and pool schedules.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/parks-facilities/gill-joseph-park">Programs &amp; pool schedules &rarr;</a>
+          </article>
+          <article>
+            <h3>Wendt Park</h3>
+            <span class="np-place-address">667 W. Roscoe Street</span>
+            <p>A neighborhood playlot on Roscoe Street, east of Halsted. Playground equipment provides a small outdoor destination; organized Park District programs are offered separately at nearby Gill Park.</p>
+            <a class="np-link" href="https://www.chicagoparkdistrict.com/parks-facilities/wendt-kenneth-park">Playlot details &rarr;</a>
+          </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="np-band np-band--bone">
+      <div class="np-wrap">
+        <p class="np-sect-label np-reveal">Schools</p>
+        <div class="np-local-intro np-reveal">
+          <h2 class="np-h2">Schools, by name and address.</h2>
+          <p class="np-body">A starting point for exploring local public and independent schools. Follow each official profile for programs, enrollment information, and school contacts.</p>
+        </div>
+        <aside class="np-school-note np-reveal" aria-label="School boundary resources">
+          <h3>Start with the exact address.</h3>
+          <div class="np-links"><a class="np-link" href="https://schoolinfo.cps.edu/schoollocator/">Check an address with CPS &rarr;</a><a class="np-link" href="https://www.cps.edu/gocps/">Explore CPS applications &rarr;</a></div>
+        </aside>
+        <ul class="np-school-list np-reveal" aria-label="Selected local schools">
+          <li>
+            <h3><a href="https://www.cps.edu/schools/profiles/school-overview/blaine">James G. Blaine Elementary</a></h3>
+            <p>Pre-K–8<span class="np-school-type">CPS public school</span></p>
+            <p>1420 W. Grace Street</p>
+          </li>
+          <li>
+            <h3><a href="https://www.cps.edu/schools/profiles/school-overview/hawthorne">Hawthorne Scholastic Academy</a></h3>
+            <p>K–8<span class="np-school-type">CPS magnet; application required</span></p>
+            <p>3319 N. Clifton Avenue</p>
+          </li>
+          <li>
+            <h3><a href="https://www.cps.edu/schools/profiles/school-overview/lake-view-hs">Lake View High School</a></h3>
+            <p>9–12<span class="np-school-type">CPS public high school</span></p>
+            <p>4015 N. Ashland Avenue</p>
+          </li>
+          <li>
+            <h3><a href="https://www.cps.edu/schools/profiles/school-overview/nettelhorst">The Nettelhorst School</a></h3>
+            <p>Pre-K–8<span class="np-school-type">CPS public school</span></p>
+            <p>3252 N. Broadway</p>
+          </li>
+          <li>
+            <h3><a href="https://www.chicagocitydayschool.org/">Chicago City Day School</a></h3>
+            <p>Junior Kindergarten–8<span class="np-school-type">Independent school</span></p>
+            <p>541 W. Hawthorne Place</p>
+          </li>
+        </ul>
+        <p class="np-source np-reveal">Selected examples, not a complete directory. A neighborhood name does not determine enrollment. Check the exact home address, grade, and program with CPS or the school. Magnet, preschool, and private-school admissions can follow separate processes.</p>
+      </div>
+    </section>
+
+    <section id="amenities" class="np-band np-band--cream">
+      <div class="np-wrap">
+        <p class="np-sect-label np-reveal">Local Amenities</p>
+        <div class="np-local-intro np-reveal">
+          <h2 class="np-h2">A ballpark, a cinema, and neighborhood routines.</h2>
+          <p class="np-body">Southport&rsquo;s shops, film screenings, and a seasonal market sit alongside the area&rsquo;s larger attractions. Follow the local calendars for what is happening now.</p>
+        </div>
+        <ul class="np-amenity-list np-reveal">
+          <li>
+            <h3>Wrigley Field</h3>
+            <span class="np-place-address">1060 W. Addison Street</span>
+            <p>Cubs baseball, ballpark tours, and concerts.</p>
+            <a class="np-link" href="https://www.mlb.com/cubs/ballpark">Ballpark information &rarr;</a>
+          </li>
+          <li>
+            <h3>Music Box Theatre</h3>
+            <span class="np-place-address">3733 N. Southport Avenue</span>
+            <p>A cinema dating to 1929, with independent and international films, repertory screenings, and special series. Check its calendar for current programming.</p>
+            <a class="np-link" href="https://musicboxtheatre.com/">Films &amp; events &rarr;</a>
+          </li>
+          <li>
+            <h3>Southport Corridor</h3>
+            <span class="np-place-address">North Southport Avenue</span>
+            <p>Shops, restaurants, salons, and daily services line this commercial corridor, with Brown Line access at Southport. The chamber guide introduces the area.</p>
+            <a class="np-link" href="https://www.lakeviewroscoevillage.org/explore-lakeview">Explore the corridor &rarr;</a>
+          </li>
+          <li>
+            <h3>Low-Line Market</h3>
+            <span class="np-place-address">Seasonal neighborhood market</span>
+            <p>Produce, baked goods, flowers, prepared foods, and other local products. Check the organizer&rsquo;s page for current dates, location, and vendors.</p>
+            <a class="np-link" href="https://www.lakeviewroscoevillage.org/low-line-market">Market information &rarr;</a>
+          </li>
+          <li class="np-amenity-library">
+            <h3>Libraries &amp; public programs</h3>
+            <p>Merlo Branch at 644 W. Belmont Avenue and Lincoln Belmont Branch at 1659 W. Melrose Street offer study rooms, computers, Wi-Fi, and public programs.</p>
+            <div class="np-resource-links"><a class="np-link" href="https://www.chipublib.org/locations/51/">Merlo Branch &rarr;</a><a class="np-link" href="https://www.chipublib.org/locations/43/">Lincoln Belmont Branch &rarr;</a></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ============ 4. AT A GLANCE ============ -->
     <section class="np-band np-band--cream">
       <div class="np-wrap">
         <h2 class="np-sect-label np-reveal">At a Glance</h2>
         <div class="np-glance np-reveal">
           <div>
-            <h3>Housing Stock</h3>
-            <ul class="np-glance-list">
-              <li>Two- and three-flats</li>
-              <li>Greystones</li>
-              <li>Frame houses</li>
-              <li>Courtyard buildings</li>
-              <li>Tall apartment buildings near the lake</li>
-            </ul>
-          </div>
-          <div>
             <h3>Transit &amp; Access</h3>
-            <ul class="np-glance-list">
-              <li>CTA Red, Brown &amp; Purple Line Express stations</li>
-              <li>Bus routes</li>
-              <li>DuSable Lake Shore Drive at Belmont &amp; Irving Park</li>
-            </ul>
+            <ul class="np-glance-list"><li><a href="https://www.transitchicago.com/station/belm/">Belmont</a> &mdash; Red, Brown &amp; Purple Line Express</li><li><a href="https://www.transitchicago.com/station/sprt/">Southport</a> &mdash; Brown Line</li><li>Purple Line Express runs during weekday rush periods. Station pages include bus connections and accessibility notices.</li></ul>
           </div>
           <div>
-            <h3>Parks</h3>
-            <ul class="np-glance-list">
-              <li>Lincoln Park&rsquo;s lakefront</li>
-              <li>Belmont Harbor</li>
-              <li>Marovitz Golf Course</li>
-              <li>Neighborhood parks, including Gill Park</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Landmark Districts</h3>
-            <ul class="np-glance-list">
-              <li>Alta Vista Terrace</li>
-              <li>Hawthorne Place</li>
-              <li>Newport Avenue</li>
-              <li>Oakdale Avenue</li>
-              <li>Surf-Pine Grove</li>
-              <li>Terra Cotta Row</li>
-            </ul>
+            <h3>Alta Vista Terrace</h3><p>On the 3800 block, townhouses built between 1900 and 1904 repeat their designs at diagonally opposite ends of the street. The compact scale gives this landmark district its distinctive composition.</p><a class="np-link" href="https://webapps1.chicago.gov/landmarksweb/web/districtdetails.htm?disId=1">Explore the landmark district &rarr;</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 5. HOUSING STOCK ============ -->
-    <section class="np-band np-band--cream">
+    <section id="housing" class="np-band np-band--cream">
       <div class="np-wrap">
         <h2 class="np-sect-label np-reveal">Housing Stock</h2>
+        <div class="np-housing-layout">
+          <figure class="np-housing-photo np-reveal">
+            <img src="/properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue" loading="lazy" width="840" height="560">
+            <figcaption>702 W. Wellington Avenue · A four-condominium development assignment in Lakeview.</figcaption>
+          </figure>
         <div class="np-stock np-reveal">
           <article>
-            <div class="np-stock-fig np-stock-fig--plot" aria-hidden="true"></div>
+
             <h3>Two- and Three-Flats</h3>
             <p>Brick and greystone flat buildings with one apartment per floor above a raised basement, many from the 1890s onward.</p>
           </article>
           <article>
-            <div class="np-stock-fig np-stock-fig--plot" aria-hidden="true"></div>
+
             <h3>Greystones</h3>
             <p>Buildings with front facades clad in gray limestone; Pine Grove Avenue has a landmark row of eight from 1891.</p>
           </article>
           <article>
-            <div class="np-stock-fig np-stock-fig--plot" aria-hidden="true"></div>
+
             <h3>Frame Houses</h3>
             <p>Wood-frame houses from before annexation, when Lake View was outside Chicago&rsquo;s post-Fire ban on frame construction.</p>
           </article>
           <article>
-            <div class="np-stock-fig np-stock-fig--plot" aria-hidden="true"></div>
+
             <h3>Courtyard Buildings</h3>
             <p>Corner and courtyard apartment buildings, alongside tall apartment buildings and apartment hotels near the lake.</p>
           </article>
           <article>
-            <div class="np-stock-fig">
-              <img src="/properties/702-wellington-listing.jpg"
-                   alt="A contemporary dark-brick condominium building on West Wellington Avenue."
-                   width="840" height="561" loading="lazy">
-            </div>
+
             <h3>New Construction</h3>
             <p>Small infill condominium buildings on individual lots, sometimes replacing older buildings.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ 6. PLACES I'D SEND YOU ============ -->
-    <!-- TODO: Matthew to provide approved Lakeview places. -->
-    <section class="np-band np-band--dark">
-      <div class="np-wrap">
-        <p class="np-sect-label np-reveal">Local Knowledge</p>
-        <h2 class="np-h2 np-reveal">Places I&rsquo;d Send You</h2>
-        <div class="np-places np-reveal">
-          <div><h3>Coffee</h3><span>Coming soon</span></div>
-          <div><h3>Lunch</h3><span>Coming soon</span></div>
-          <div><h3>Dinner</h3><span>Coming soon</span></div>
-          <div><h3>Shopping</h3><span>Coming soon</span></div>
-          <div><h3>Hidden Gem</h3><span>Coming soon</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 7. SCHOOLS & PUBLIC RESOURCES ============ -->
-    <section class="np-band np-band--cream">
-      <div class="np-wrap np-essence-grid">
-        <p class="np-sect-label np-reveal">Public Resources</p>
-        <div class="np-reveal">
-          <h2 class="np-h2">Schools &amp; Public Resources</h2>
-          <p class="np-body">School options, attendance boundaries, and programs can change. Use official district resources to verify current information.</p>
-          <div class="np-links">
-            <a class="np-link" href="https://www.cps.edu/" target="_blank" rel="noopener">Chicago Public Schools &rarr;</a>
-            <a class="np-link" href="https://schoolinfo.cps.edu/schoollocator/" target="_blank" rel="noopener">School Boundary Map &rarr;</a>
+    <section id="market" class="np-band np-band--dark">
+      <div class="np-wrap">
+        <p class="np-sect-label np-reveal">Market Notes</p>
+        <div class="np-market-grid">
+          <div class="np-reveal">
+            <p class="np-market-period">Calendar year 2025 · Lake View community area</p>
+            <h2 class="np-h2">A market led by condominium sales.</h2>
+            <p class="np-body">Condominiums represented most recorded residential sales in the Lake View community area in 2025. That broad category spans different building sizes and ownership costs. For a specific condo, narrow the comparison by building type, unit size, condition, and parking; review the association&rsquo;s finances separately.</p>
+          </div>
+          <div class="np-reveal">
+            <p class="np-market-total"><strong>1,731</strong>Recorded residential property sales in 2025</p>
+            <dl class="np-market-mix" aria-label="2025 recorded sales by property type">
+              <div><dt>Condominium units</dt><dd>1,375</dd></div>
+              <div><dt>Single-family properties</dt><dd>196</dd></div>
+              <div><dt>Buildings with 2–4 units</dt><dd>124</dd></div>
+              <div><dt>Buildings with 5+ units</dt><dd>36</dd></div>
+            </dl>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ 8. PARKS & OPEN SPACE ============ -->
-    <section class="np-band np-band--cream" style="padding-top: 0;">
-      <div class="np-wrap np-essence-grid">
-        <p class="np-sect-label np-reveal">Open Space</p>
-        <div class="np-reveal">
-          <h2 class="np-h2">Parks &amp; Open Space</h2>
-          <p class="np-body">Lake View&rsquo;s entire shoreline is Lincoln Park parkland, with Belmont Harbor, the Sydney R. Marovitz Golf Course, the Waveland tennis courts, and the Diversey Driving Range along it. Inland, the neighborhood parks are small &mdash; most under an acre &mdash; and Gill Park, on Sheridan Road, has a fieldhouse with an indoor pool and gymnasium.</p>
-        </div>
+        <p class="np-source np-reveal">Annual property-sale records; multifamily figures count building sales, not individual apartments. Historical context, not a current price estimate.</p>
       </div>
     </section>
 
@@ -687,35 +363,34 @@
     <!-- ============ 10. SELECTED WORK NEARBY ============ -->
     <!-- From selected-work-data.js (id 'wellington', publishStatus 'public', needsVerification
          false). 3801 N. Clark Street is also in Lake View but is 'internal' and must not appear. -->
-    <section class="np-band np-band--cream">
+    <!-- GENERATED: nearby-work START -->
+<section id="nearby-work" class="np-band np-band--cream">
       <div class="np-wrap">
         <h2 class="np-sect-label np-reveal">Selected Work Nearby</h2>
-        <div class="np-work np-reveal">
+        <div class="np-work np-work--single np-reveal">
           <figure>
-            <div class="np-work-fig">
-              <img src="/properties/702-wellington-listing.jpg"
-                   alt="702 W. Wellington Avenue, Lakeview — four-condo sellout"
-                   width="840" height="561" loading="lazy">
-            </div>
+            <div class="np-work-fig"><img src="/properties/702-wellington-listing.jpg" alt="702 W. Wellington Avenue, Lakeview — four-condo sellout" loading="lazy" width="840" height="560"></div>
             <figcaption>
-              <h3>702 W. Wellington Avenue</h3>
-              <p class="np-work-meta">Development &middot; Represented Developer</p>
-              <p class="np-work-price">$709K &ndash; $985K</p>
+              <h3><a href="/selected-work.html#wellington">702 W. Wellington Avenue ↗</a></h3>
+              <p class="np-work-meta">Development · Represented Developer</p>
+              <p class="np-work-price">$709K – $985K</p>
               <p class="np-work-outcome">4-condo sellout.</p>
             </figcaption>
           </figure>
         </div>
       </div>
     </section>
+  <!-- GENERATED: nearby-work END -->
 
     <!-- ============ 11. ADVISORY CTA ============ -->
     <!-- Replaces the Active Listings / IDX section. This site does not use IDX. -->
     <section class="np-cta">
       <div class="np-cta-veil"></div>
       <div class="np-cta-inner">
-        <h2 class="np-reveal">Explore the Market With Matthew</h2>
-        <p class="np-reveal">Inventory changes constantly. If you are thinking about buying, selling, or evaluating property in this neighborhood, start with a real conversation about timing, value, and strategy.</p>
-        <a class="np-btn np-reveal" href="/contact.html">Start the Conversation &rarr;</a>
+        <p class="np-eyebrow np-reveal">Explore the Market With Matthew</p>
+        <h2 class="np-reveal">Thinking about property in Lakeview?</h2>
+        <p class="np-reveal">Start with the address and your goals. We can discuss buying, selling, holding, or repositioning a property.</p>
+        <a class="np-btn np-reveal" href="/contact.html?neighborhood=lakeview">Start the Conversation &rarr;</a>
       </div>
     </section>
 
@@ -723,6 +398,7 @@
     <section class="np-return">
       <div class="np-wrap">
         <a href="/neighborhoods.html">&larr; All Neighborhoods</a>
+        <a href="/neighborhoods/lincoln-park.html">Continue to Lincoln Park &rarr;</a>
       </div>
     </section>
 
@@ -754,53 +430,20 @@
       </div>
     </div>
     <div class="footer-bar"><span>&copy; 2026 The Neistat Group. All rights reserved.</span><span>People First. <em>Always.</em></span></div>
+    <aside class="footer-credits" aria-label="Sources and photo credits">
+      <p class="footer-credits-label">Sources &amp; photo credits</p>
+      <p>Belmont Harbor · Photo: <a href="https://commons.wikimedia.org/wiki/File:Chicago_Skyline_viewed_from_Belmont_Harbor.jpg">TheWxResearcher</a> / <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>. Display cropped to fit.</p>
+      <p>Map boundaries · Based on <a href="https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas/igwz-8jzy">Chicago&rsquo;s community-area boundary</a>.</p>
+      <p>2025 market notes · <a href="https://www.housingstudies.org/data-portal/geography/lake-view/">DePaul Institute for Housing Studies, Lake View</a>. Source checked <time datetime="2026-09-21">September 21, 2026</time>.</p>
+      <p>Schools · Official school profiles and enrollment resources are linked in the school directory. School details checked <time datetime="2026-09-21">September 21, 2026</time>.</p>
+    </aside>
   </footer>
 
   <noscript>
     <style>.np-reveal { opacity: 1 !important; transform: none !important; }</style>
   </noscript>
 
-  <script>
-    (function () {
-      var els = document.querySelectorAll('.np-reveal');
-      if (!els.length) { return; }
 
-      function show(el) { el.classList.add('is-in'); }
-
-      var reduce = false;
-      try {
-        reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      } catch (e) { reduce = false; }
-
-      // Must SHOW on the reduced-motion / no-IO path. .np-reveal starts hidden.
-      if (reduce || !('IntersectionObserver' in window)) {
-        Array.prototype.forEach.call(els, show);
-        return;
-      }
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            show(entry.target);
-            io.unobserve(entry.target);
-          }
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-
-      Array.prototype.forEach.call(els, function (el) { io.observe(el); });
-
-      // Failsafe — see the matching note in neighborhoods.html. Only fires if the
-      // observer produced nothing at all, so scroll reveals are left alone.
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          if (document.querySelector('.np-reveal.is-in')) { return; }
-          Array.prototype.forEach.call(els, function (el) {
-            if (el.getBoundingClientRect().top < window.innerHeight) { show(el); }
-          });
-        }, 1200);
-      });
-    })();
-  </script>
 
   <script>
     // Mobile menu. The open/close handler lives inline on every page by design;
@@ -808,13 +451,6 @@
     (function () {
       var toggle = document.getElementById('navToggle');
       var menu = document.getElementById('mobileMenu');
-      if (toggle && menu) {
-        toggle.addEventListener('click', function () {
-          var open = menu.classList.toggle('active');
-          toggle.classList.toggle('active');
-          document.body.style.overflow = open ? 'hidden' : '';
-        });
-      }
     })();
   </script>
 </body>

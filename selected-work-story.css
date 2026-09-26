@@ -1,0 +1,31 @@
+/* Approved assignment narratives, shared by the homepage and portfolio. */
+.sw-story {
+  grid-column: 1 / -1;
+  order: 3;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 64px);
+  margin: 0;
+  padding: 32px clamp(28px, 3vw, 46px);
+  border-top: 1px solid rgba(11, 10, 7, .16);
+  color: #0B0A07;
+  background: #F4F0E8;
+}
+.sw-story[hidden] { display: none; }
+.sw-story > div { min-width: 0; }
+.sw-story dt {
+  margin-bottom: 12px;
+  font: 500 11px/1.5 var(--font);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #655e53;
+}
+.sw-story dd { margin: 0; font: 16px/1.65 var(--font); text-wrap: pretty; }
+.sw-story > div:last-child dd { font-family: Georgia, serif; font-size: 23px; line-height: 1.4; }
+.sw-story--portfolio { padding-inline: 0; }
+@media (max-width: 768px) {
+  .sw-story { grid-template-columns: minmax(0, 1fr); gap: 26px; padding: 28px; }
+  .sw-story--portfolio { padding-inline: 0; }
+  .sw-module .sw-index { order: 4; }
+  .sw-story dt { margin-bottom: 7px; }
+}

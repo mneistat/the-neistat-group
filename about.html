@@ -5,29 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0A07">
   <title>About Matthew Neistat | The Neistat Group</title>
-  <meta name="description" content="Meet Matthew Neistat — 14+ years, $130M+ in Chicago real estate. People First. Always.">
+  <meta name="description" content="Meet Matthew Neistat — 14+ years of experience in Chicago real estate. People First. Always.">
   <link rel="canonical" href="https://www.theneistatgroup.com/about">
-  <link rel="stylesheet" href="styles.css?v=36">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="styles.css?v=39">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
+<script src="nav.js?v=11" defer></script>
   <style>
-    /* Film fade-in overlay */
-    .film-fade { position: fixed; inset: 0; background: #0B0A07; z-index: 10000; pointer-events: none; animation: filmFadeOut 1.2s ease 0.3s forwards; }
-    @keyframes filmFadeOut { to { opacity: 0; visibility: hidden; } }
-
     /* Scene system */
     .scene { display: flex; align-items: center; position: relative; overflow: hidden; }
-    .scene-full { min-height: 100vh; }
+    .scene-full { min-height: 68vh; }
 
     /* Hero scene */
     .scene-hero {
       background-image: linear-gradient(rgba(11,10,7,0.6), rgba(11,10,7,0.75)),
         url('https://res.cloudinary.com/dpwcyrxkz/image/upload/f_auto,q_auto,w_1600,e_grayscale/v1775872291/patrick-lalonde-IqKYnIzrjh0-unsplash_mptxqj.jpg');
-      background-size: cover; background-position: center; background-attachment: fixed;
+      background-size: cover; background-position: center; background-attachment: scroll;
       align-items: flex-end;
     }
     .scene-hero-content { padding: 60px; width: 100%; }
@@ -38,8 +32,8 @@
     .hero-h1 .line-inner { display: block; }
 
     /* Portrait scene — split */
-    .scene-portrait { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
-    .scene-portrait-img { background: url('matthew-portrait.jpg') center/cover; filter: grayscale(100%); }
+    .scene-portrait { display: grid; grid-template-columns: 1fr 1fr; min-height: 68vh; }
+    .scene-portrait-img { background: url('matthew-portrait.jpg') center 20%/cover; filter: grayscale(100%); }
     .scene-portrait-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; background: #0B0A07; }
     .portrait-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-bottom: 28px; }
     .portrait-lead { font-family: Georgia, serif; font-size: clamp(22px,3vw,32px); font-weight: 400; color: #EDE8DE; line-height: 1.4; margin-bottom: 24px; }
@@ -47,10 +41,18 @@
 
     /* Quote scene */
     .scene-quote { background: #F4F0E8; justify-content: center; text-align: center;
-      min-height: 58vh; padding: clamp(72px,9vw,118px) 60px;
+      min-height: 0; padding: clamp(56px,7vw,88px) 60px;
       border-top: 1px solid rgba(11,10,7,0.10); border-bottom: 1px solid rgba(11,10,7,0.10); }
     .scene-quote blockquote { font-family: Georgia, serif; font-size: clamp(26px,4vw,44px); font-style: italic; color: #0B0A07; max-width: 700px; margin: 0 auto; line-height: 1.35; }
     .scene-quote cite { display: block; font-size: 12px; color: rgba(11,10,7,0.62); font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 24px; }
+
+    /* Family story — the original photograph, paired with the family principle. */
+    .scene-family { scroll-margin-top: 96px; }
+    .family-story-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); align-items: center; gap: clamp(40px, 7vw, 100px); width: 100%; max-width: 1040px; }
+    .family-story-label { margin: 0 0 28px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(11,10,7,0.62); }
+    .family-story-photo { margin: 0; width: 100%; }
+    .family-story-photo img { display: block; width: 100%; height: auto; }
+    .family-story-photo figcaption { margin-top: 14px; font-size: 13px; line-height: 1.6; color: rgba(11,10,7,0.72); text-align: left; }
 
     /* Story scene — dark */
     .scene-story { background: #0B0A07; padding: clamp(72px,8vw,104px) 60px; flex-direction: column; justify-content: center;
@@ -63,7 +65,7 @@
     /* Stats scene */
     .scene-stats { background: #15130C; justify-content: center; padding: 0;
       border-top: 1px solid rgba(237,232,222,0.10); border-bottom: 1px solid rgba(237,232,222,0.10); }
-    .stats-inner { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; width: 100%; }
+    .stats-inner { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; width: 100%; }
     .stat-block { text-align: center; padding: 52px 24px; border-right: 1px solid rgba(237,232,222,0.10); }
     .stat-block:last-child { border-right: none; }
     .stat-block-num { font-family: Georgia, serif; font-size: clamp(30px,3.8vw,46px); color: #EDE8DE; }
@@ -93,32 +95,32 @@
 
     @media (max-width: 768px) {
       .scene, .scene-full { min-height: 0; }
-      .scene-hero { min-height: 78vh; }
+      .scene-hero { min-height: 60vh; }
       .scene-quote { min-height: 0; padding: 56px 28px; }
+      .family-story-inner { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+      .family-story-photo { max-width: 340px; justify-self: center; }
       .scene-stats { padding: 0; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: 1fr; }
       .scene-portrait { grid-template-columns: 1fr; }
       .scene-portrait-img { min-height: 50vh; }
       .scene-portrait-text { padding: 48px 28px; }
       .scene-hero-content { padding: 28px; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
-      .stat-block { border-bottom: 1px solid rgba(237,232,222,0.06); }
-      .scene-story { padding: 0 28px; }
+      .stat-block { padding: 28px 24px; border-right: 0; border-bottom: 1px solid rgba(237,232,222,0.06); }
+      .scene-story { padding: 56px 28px; }
       .scene-press { padding: 60px 28px; }
       .press-scene-row { flex-direction: column; gap: 24px; }
     }
       /* Client voice scene (pillar reframe). Reuses .scene-quote; the higher
        specificity sizes it for a longer quote than the grandfather's. */
     .scene.scene-quote.scene-voice blockquote { font-size: clamp(20px, 2.4vw, 30px); line-height: 1.55; max-width: 36em; margin-left: auto; margin-right: auto; }
-    /* Reduced motion: no film fade, and reveals show immediately. !important beats
+    /* Reduced motion: reveals show immediately. !important beats
        the observer's inline opacity:0. */
     @media (prefers-reduced-motion: reduce) {
-      .film-fade { display: none; }
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
   </style>
 <meta property="og:title" content="About Matthew Neistat | The Neistat Group">
-<meta property="og:description" content="14+ years, $130M+ in Chicago real estate. People First. Always.">
+<meta property="og:description" content="14+ years of experience in Chicago real estate. People First. Always.">
 <meta property="og:url" content="https://www.theneistatgroup.com/about">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Neistat Group">
@@ -129,18 +131,15 @@
 <meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
 <meta property="og:image:width" content="828">
 <meta property="og:image:height" content="1792">
+  <link rel="stylesheet" href="/site-design.css?v=1">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
-  <!-- Film fade-in -->
-  <div class="film-fade" id="filmFade"></div>
-
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
+<body class="site-design page-about">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
       <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
       <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
@@ -164,27 +163,20 @@
   </div>
 
   <!-- SCENE 1: Hero -->
+  <main id="main-content" tabindex="-1">
   <section class="scene scene-full scene-hero">
     <div class="scene-hero-content">
       <div class="hero-eyebrow">About Matthew Neistat</div>
       <h1 class="hero-h1">
-        <span class="line"><span class="line-inner">14 Years. $130M+.</span></span>
-        <span class="line"><span class="line-inner"><em>People First.</em></span></span>
+        <span class="line"><span class="line-inner">People First.</span></span>
+        <span class="line"><span class="line-inner"><em>Always.</em></span></span>
       </h1>
     </div>
+    <img class="about-hero-portrait" src="matthew-portrait.jpg" width="1400" height="2100" fetchpriority="high" alt="Matthew Neistat">
   </section>
 
-  <!-- SCENE 2: Quote -->
-  <section class="scene scene-quote">
-    <div>
-      <blockquote class="reveal">"Always put people first. Real estate isn't about closing deals — it's about building lives."</blockquote>
-      <cite class="reveal">— Matthew's grandfather</cite>
-    </div>
-  </section>
-
-  <!-- SCENE 3: Portrait + Bio -->
+  <!-- Background and approach -->
   <section class="scene-portrait">
-    <div class="scene-portrait-img"></div>
     <div class="scene-portrait-text">
       <div class="portrait-label reveal">The Legacy</div>
       <p class="portrait-lead reveal">Real estate isn't what Matthew Neistat chose. It's what he was born into.</p>
@@ -193,10 +185,26 @@
     </div>
   </section>
 
+  <!-- Family story -->
+  <section class="scene scene-quote scene-family" id="family-story" aria-label="A family tradition">
+    <div class="family-story-inner">
+      <div>
+        <p class="family-story-label">A family tradition</p>
+        <blockquote class="reveal">&ldquo;Always put people first.&rdquo;</blockquote>
+        <cite class="reveal">— Matthew's grandfather</cite>
+      </div>
+      <figure class="family-story-photo">
+        <img src="images/mason-site-visit.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="Mason looking up as he walks through a home under construction.">
+        <figcaption>Matthew's son, Mason, on a site visit.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- SCENE 4: The Broker -->
   <section class="scene scene-story">
     <div class="story-label reveal">The Broker</div>
     <p class="story-text reveal" style="font-family:Georgia,serif;font-size:clamp(20px,2.5vw,28px);color:#EDE8DE;line-height:1.45;">After Le Cordon Bleu and nearly a decade in hospitality, Matthew entered real estate in 2012.</p>
+    <p class="story-text reveal">That hospitality background shapes the work: anticipating needs, paying attention to detail, and delivering service without ego.</p>
     <p class="story-range reveal">Today he works out of <strong>Jameson Sotheby's International Realty</strong>, across <strong>residential sales, multifamily, mixed-use, investment property, and development</strong> — representing both sellers and buyers throughout Chicago.</p>
     <p class="story-text reveal">When a competitor heard he'd won a competitive listing assignment in the West Loop — a $9.5M building he brought under contract off-market in two weeks — they said: "I didn't think Matt actually had the listing."</p>
     <p class="story-text reveal" style="color:#EDE8DE;font-family:Georgia,serif;font-size:20px;">He did. Fourteen years later he hasn't regretted the leap for a second.</p>
@@ -205,10 +213,9 @@
   <!-- SCENE 5: Stats -->
   <section class="scene scene-stats">
     <div class="stats-inner">
-      <div class="stat-block reveal"><div class="stat-block-num" data-target="130" data-prefix="$" data-suffix="M+">$130M+</div><div class="stat-block-label">Total Sales</div></div>
-      <div class="stat-block reveal"><div class="stat-block-num" data-target="14" data-prefix="" data-suffix="+">14+</div><div class="stat-block-label">Years Experience</div></div>
-      <div class="stat-block reveal"><div class="stat-block-num" data-target="10" data-prefix="Top " data-suffix="%">Top 10%</div><div class="stat-block-label">CAR Producer</div></div>
-      <div class="stat-block reveal"><div class="stat-block-num" data-target="4" data-prefix="" data-suffix=" Years">4 Years</div><div class="stat-block-label">Jameson Quarterly Best</div></div>
+      <div class="stat-block reveal"><div class="stat-block-num">14+</div><div class="stat-block-label">Years Experience</div></div>
+      <div class="stat-block reveal"><div class="stat-block-num">Top 10%</div><div class="stat-block-label">CAR Producer</div></div>
+      <div class="stat-block reveal"><div class="stat-block-num">4 Years</div><div class="stat-block-label">Jameson Quarterly Best</div></div>
     </div>
   </section>
 
@@ -216,10 +223,10 @@
   <section class="scene scene-press">
     <div class="press-scene-label reveal">As Seen In</div>
     <div class="press-scene-row">
-      <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" class="press-scene-item reveal">Crain's Chicago Business</a>
-      <a href="https://product.costar.com/home/news/710741247" target="_blank" class="press-scene-item reveal">CoStar News</a>
-      <a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" class="press-scene-item reveal">Chicago Agent Magazine</a>
-      <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" class="press-scene-item reveal">Chicago Real Producers</a>
+      <a href="https://www.chicagobusiness.com/residential-real-estate/advertising-veterans-sell-winnetka-house-126-million/" target="_blank" rel="noopener" class="press-scene-item reveal">Crain’s · Winnetka sale ↗</a>
+      <a href="https://product.costar.com/home/news/710741247" target="_blank" rel="noopener" class="press-scene-item reveal">CoStar · West Loop assignment ↗</a>
+      <a href="https://chicagoagentmagazine.com/whos-who-2022/matthew-neistat/" target="_blank" rel="noopener" class="press-scene-item reveal">Chicago Agent · Matthew’s profile ↗</a>
+      <a href="https://file.realproducersmagazine.com/issue/2020_Jun_Real_Producers_Chicago.pdf#page=31" target="_blank" rel="noopener" class="press-scene-item reveal">Real Producers · June 2020 profile ↗</a>
     </div>
   </section>
 
@@ -241,6 +248,8 @@
       <a href="contact.html" class="cta-scene-btn reveal">Begin the Conversation</a>
     </div>
   </section>
+
+  </main>
 
   <footer class="footer">
     <div class="footer-grid">
@@ -272,95 +281,11 @@
 
   <script>
     // Nav
-    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
-    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
 
-    // GSAP text reveal — line by line
-    // Motion is skipped for reduced-motion visitors, and if GSAP failed to load
-    // from the CDN: the hero lines then simply show, and the stats keep the final
-    // values already in the HTML.
-    const aboutReduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (window.gsap && window.ScrollTrigger && !aboutReduceMotion) {
-    gsap.registerPlugin(ScrollTrigger);
-    document.querySelectorAll('.hero-h1 .line-inner').forEach((line, i) => {
-      gsap.from(line, {
-        y: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: 1.4 + i * 0.15
-      });
-    });
-
-    // Stats count-up
-    document.querySelectorAll('.stat-block-num').forEach(stat => {
-      const target = parseInt(stat.dataset.target), prefix = stat.dataset.prefix || '', suffix = stat.dataset.suffix || '';
-      let counted = false;
-      ScrollTrigger.create({ trigger: stat, start: 'top 90%',
-        onEnter: () => { if (counted) return; counted = true; let obj = { val: 0 }; gsap.to(obj, { val: target, duration: 1.8, ease: 'power2.out', onUpdate: () => { stat.textContent = prefix + Math.round(obj.val) + suffix; } }); }
-      });
-    });
-
-    // Parallax on hero background
-    gsap.to('.scene-hero', {
-      backgroundPositionY: '30%', ease: 'none',
-      scrollTrigger: { trigger: '.scene-hero', start: 'top top', end: 'bottom top', scrub: true }
-    });
-    } // end motion guard
   </script>
 
   <!-- Reveal animations -->
-  <script>
-  (function(){
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(40px)';
-      observer.observe(el);
-    });
-  })();
-  </script>
 
-  <!-- Magnetic cursor -->
-  <script>
-  (function(){
-    if(window.innerWidth<769)return;
-    var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-    if(!dot||!ring)return;
-    var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-    // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-    // background under the pointer and invert to carbon when it is light.
-    var lastEl=null,lastLight=false;
-    function bgIsLight(el){
-      while(el && el!==document.documentElement){
-        var m=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-        if(m && (m[3]===undefined || +m[3]>0.95))
-          return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-        el=el.parentElement;
-      }
-      return false;
-    }
-    document.addEventListener('mousemove',function(e){
-      mx=e.clientX;my=e.clientY;
-      dot.classList.remove('hidden');ring.classList.remove('hidden');
-      var el=document.elementFromPoint(mx,my);
-      if(el!==lastEl){                       // only recompute when the element changes
-        lastEl=el; lastLight=bgIsLight(el);
-        dot.classList.toggle('on-light',lastLight);
-        ring.classList.toggle('on-light',lastLight);
-      }
-    });
-    document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-    function loop(){dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)}
-    loop();
-    document.querySelectorAll('a,button').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
-  })();
-  </script>
 </body>
 </html>

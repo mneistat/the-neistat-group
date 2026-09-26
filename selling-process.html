@@ -12,7 +12,7 @@
   <meta property="og:site_name" content="The Neistat Group">
   <meta property="og:title" content="Selling Process | The Neistat Group">
   <meta property="og:description" content="A clear guide to the home selling process with Matthew Neistat and The Neistat Group — from strategy and pricing through marketing, negotiation, and closing.">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=39">
   <!-- styles.css hides .reveal and depends on JS to show it. With scripting off,
        cancel the rule so the page is fully readable rather than blank. -->
   <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
@@ -214,16 +214,16 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
-<script src="nav.js?v=6" defer></script>
+<script src="nav.js?v=11" defer></script>
+  <link rel="stylesheet" href="/site-design.css?v=1">
+  <script src="/site-experience.js?v=1" defer></script>
 </head>
-<body>
-  <div class="cursor-dot hidden" id="cursorDot"></div>
-  <div class="cursor-ring hidden" id="cursorRing"></div>
+<body class="site-design page-selling-process">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-brand">The Neistat Group</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
       <a href="selected-work.html" class="nav-link">Selected Work</a>
       <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
       <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
@@ -248,6 +248,7 @@
   </div>
 
   <!-- ===== HERO ===== -->
+  <main id="main-content" tabindex="-1">
   <section class="sp-hero">
     <div class="sp-hero-inner">
       <div class="reveal">
@@ -627,6 +628,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="footer">
     <div class="footer-grid">
       <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
@@ -656,9 +659,7 @@
   </footer>
 
   <script>
-    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)},{passive:true});
     const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu');
-    if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');toggle.classList.toggle('active');document.body.style.overflow=menu.classList.contains('active')?'hidden':''});}
   </script>
 
   <script>
@@ -739,73 +740,6 @@
   })();
   </script>
 
-  <script>
-  /* Scroll reveal.
-     styles.css:325 already sets ".reveal { opacity: 0 }", so this script is what
-     makes revealed content visible. Under prefers-reduced-motion — or with no
-     IntersectionObserver — we must therefore SHOW everything immediately rather
-     than return early, or the whole page stays blank for those users. */
-  (function(){
-    var els = document.querySelectorAll('.reveal');
-    function show(el){ el.style.opacity = '1'; el.style.transform = 'none'; }
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduce || !('IntersectionObserver' in window)){
-      Array.prototype.forEach.call(els, show);
-      return;
-    }
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.style.transition='opacity 0.9s ease, transform 0.9s ease';
-          entry.target.style.opacity='1';
-          entry.target.style.transform='translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    },{threshold:0.1});
-    Array.prototype.forEach.call(els, function(el){ observer.observe(el); });
-  })();
-  </script>
 
-  <script>
-  (function(){
-    if(window.innerWidth<769)return;
-    var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
-    if(!dot||!ring)return;
-    var mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-    // Ivory cursor vanishes on the cream/bone sections. Read the actual painted
-    // background under the pointer and invert to carbon when it is light.
-    var lastEl=null,lastLight=false;
-    function bgIsLight(el){
-      while(el && el!==document.documentElement){
-        var m=getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
-        if(m && (m[3]===undefined || +m[3]>0.95))
-          return (0.2126*+m[0] + 0.7152*+m[1] + 0.0722*+m[2]) / 255 > 0.5;
-        el=el.parentElement;
-      }
-      return false;
-    }
-    document.addEventListener('mousemove',function(e){
-      mx=e.clientX;my=e.clientY;
-      dot.classList.remove('hidden');ring.classList.remove('hidden');
-      var el=document.elementFromPoint(mx,my);
-      if(el!==lastEl){                       // only recompute when the element changes
-        lastEl=el; lastLight=bgIsLight(el);
-        dot.classList.toggle('on-light',lastLight);
-        ring.classList.toggle('on-light',lastLight);
-      }
-    });
-    document.addEventListener('mouseleave',function(){dot.classList.add('hidden');ring.classList.add('hidden')});
-    // Only now is it safe to hide the native pointer: the loop is genuinely running.
-    function loop(){
-      if(!document.body.classList.contains('sp-cursor-live')) document.body.classList.add('sp-cursor-live');
-      dx+=(mx-dx)*.35;dy+=(my-dy)*.35;rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
-      dot.style.left=dx+'px';dot.style.top=dy+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';
-      requestAnimationFrame(loop);
-    }
-    loop();
-    document.querySelectorAll('a,button').forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',function(){dot.classList.remove('hover');ring.classList.remove('hover')})});
-  })();
-  </script>
 </body>
 </html>
