@@ -55,6 +55,11 @@ const homeFeature = featured ? `<figure class="home-feature" data-assignment="${
         </figcaption>
       </figure>` : '      <a class="home-text-link" href="contact.html">Discuss your property <span aria-hidden="true">→</span></a>';
 replace('index.html', 'home-feature', homeFeature);
+const assignmentDirectory = `<nav class="work-directory" aria-label="Selected assignments">
+    <div class="work-directory-inner">
+${records.map(t => `      <a href="#${escape(t.id)}">${escape(t.address)}<span>${join([t.neighborhood, t.assetType])}</span></a>`).join('\n')}
+    </div>
+  </nav>`;
 const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 0 ? 'swp-assignment--lead' : i % 2 ? 'swp-assignment--reverse' : ''}" id="${escape(t.id)}" data-work-number="${String(i + 1).padStart(2, '0')}" aria-labelledby="heading-${escape(t.id)}">
     <div class="swp-assignment-inner">
       <figure class="swp-assignment-media${t.imageFit === 'contain' ? ' swp-assignment-media--contain' : ''}">
@@ -66,17 +71,14 @@ const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 
         <p class="swp-feature-meta">${join([t.neighborhood, t.assetType])}</p>
         <h2 class="swp-feature-address" id="heading-${escape(t.id)}">${escape(t.address)}</h2>
         ${paragraph('swp-assignment-rep', t.representation)}
-        <p class="swp-feature-price">${escape(t.priceOrResult)}</p>
         ${paragraph('swp-feature-note', t.resultHighlight || t.outcomeLine)}
+        <p class="swp-feature-price">${escape(t.priceOrResult)}</p>
         ${paragraph('swp-feature-tenants', t.tenants)}
       </div>${story(t)}
     </div>
-  </section>`).join('\n\n');
+  </section>${i === 0 ? '\n\n' + assignmentDirectory : ''}`).join('\n\n');
 replace('selected-work.html', 'portfolio', portfolio);
 replace('selected-work.html', 'portfolio-sources', sourceNotes(records));
-replace('selected-work.html', 'portfolio-index', records.map(t =>
-  `      <a href="#${escape(t.id)}">${escape(t.address)}<span>${join([t.neighborhood, t.assetType])}</span></a>`
-).join('\n'));
 
 const proof = ['lake', 'wellington'].map(id => records.find(t => t.id === id)).filter(Boolean).map(t => `<article class="ss-deal">
             <p class="ss-deal-type">${join([t.assetType, t.neighborhood])}</p>

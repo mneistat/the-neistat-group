@@ -31,6 +31,10 @@ Career sales totals remain excluded everywhere. Individual property prices are p
 
 Work stays on the preview branch. Production publication requires Matt's separate instruction. Browser verification and the final commit are recorded in PR #2.
 
+## Selected Work opening correction — September 26, 2026
+
+Matt rejected the text-heavy opening as generic. Replace the oversized slogan and production-facing introductory section with a compact page title, the full Wellington photograph, and the existing role, result, and price range. The directory now follows the lead assignment and shares its publication gate. Preserve the photograph's 3:2 framing, keep results more prominent than price, and use the existing Lake Street narrative only. No missing stories are fabricated or advertised as forthcoming. The illustrative plan label remains visible beside the plan, with improved contrast; source credits remain at the bottom. This correction is preview-only.
+
 ## Mobile homepage opening — September 25, 2026
 
 Matt approved the river-photo concept. The mobile homepage uses his second supplied Chicago river photograph, a three-line cream headline, the shorter supporting copy, a rectangular conversation button and an understated Selected Work link. Desktop retains its existing video and copy. The existing video controller skips autoplay on mobile and pauses when the viewport becomes mobile.
