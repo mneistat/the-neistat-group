@@ -55,13 +55,14 @@ const homeFeature = featured ? `<figure class="home-feature" data-assignment="${
         </figcaption>
       </figure>` : '      <a class="home-text-link" href="contact.html">Discuss your property <span aria-hidden="true">→</span></a>';
 replace('index.html', 'home-feature', homeFeature);
-const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 0 ? 'swp-assignment--lead' : i % 2 ? 'swp-assignment--reverse' : ''}" id="${escape(t.id)}" aria-labelledby="heading-${escape(t.id)}">
+const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 0 ? 'swp-assignment--lead' : i % 2 ? 'swp-assignment--reverse' : ''}" id="${escape(t.id)}" data-work-number="${String(i + 1).padStart(2, '0')}" aria-labelledby="heading-${escape(t.id)}">
     <div class="swp-assignment-inner">
       <figure class="swp-assignment-media${t.imageFit === 'contain' ? ' swp-assignment-media--contain' : ''}">
         <img src="${escape(t.image)}" alt="${escape(t.imageAlt)}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}>
         ${t.imageCaption ? `<figcaption>${escape(t.imageCaption)}</figcaption>` : ''}
       </figure>
       <div class="swp-assignment-body">
+        <p class="swp-assignment-number" aria-hidden="true">${String(i + 1).padStart(2, '0')}</p>
         <p class="swp-feature-meta">${join([t.neighborhood, t.assetType])}</p>
         <h2 class="swp-feature-address" id="heading-${escape(t.id)}">${escape(t.address)}</h2>
         ${paragraph('swp-assignment-rep', t.representation)}
