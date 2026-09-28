@@ -88,3 +88,7 @@ The homepage uses `homepage-editorial.css`; the older opening stylesheets are no
 ## Source-credit standard — September 24, 2026
 
 Matt approved the small bottom-of-page footnote treatment for photography and information sources throughout the site. Use the shared `.footer-credits` block after the footer bar whenever a page needs attribution; keep source and license links, photo subjects, crop notes, and original verification dates. Do not add empty credit blocks or invent photographers. The neighborhood guides, hub, Selected Work, Seller Strategy and Affordability use this treatment. Generated transaction sources follow the same public-record gate as their assignments. Practical resource links, press/recognition features, illustrative-image labels, and explanations needed to interpret the numbers remain with the relevant content. Apply this standard to new pages and sources as they are added.
+
+
+### September 28 — Matt’s buyer consultation and offer education
+Reordered Buying Process around DTI, multiple lender introductions, daily-life priorities, and then search. Added a worked DTI example (3,000 / 8,000 = 37.5%), illustrative debt-payment list, official AnnualCreditReport.com link, lender comparison, personal transit-walk preferences, and buyer/seller offer-term explanations. Seller Strategy links to the shared explanations. No financial inputs collected; no underwriting threshold or waiver recommendation. Sources: CFPB DTI and Loan Estimates, FTC free credit reports, existing CFPB inspection guidance. Content phase; no production promotion.

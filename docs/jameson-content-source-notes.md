@@ -50,3 +50,7 @@ The page credits Jameson's supplied Buying Process and the public reference sour
 - No cumulative career sales totals, new success claims or invented case studies.
 - Brokerage tools support Matthew's personal approach; they do not replace it.
 - Styling and page behavior are unchanged in this content pass. Preview branch only.
+
+
+### September 28 — Matt’s buyer consultation and offer education
+Reordered Buying Process around DTI, multiple lender introductions, daily-life priorities, and then search. Added a worked DTI example (3,000 / 8,000 = 37.5%), illustrative debt-payment list, official AnnualCreditReport.com link, lender comparison, personal transit-walk preferences, and buyer/seller offer-term explanations. Seller Strategy links to the shared explanations. No financial inputs collected; no underwriting threshold or waiver recommendation. Sources: CFPB DTI and Loan Estimates, FTC free credit reports, existing CFPB inspection guidance. Content phase; no production promotion.
