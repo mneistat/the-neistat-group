@@ -9,6 +9,7 @@ vm.runInNewContext(fs.readFileSync(path.join(root, 'selected-work-data.js'), 'ut
 const records = context.window.SELECTED_WORK.filter(t => t.publishStatus === 'public' && t.needsVerification === false);
 const escape = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const join = values => values.filter(Boolean).map(escape).join(' · ');
+const inquiryIntent = t => t.assetType === 'Development' ? 'new-development' : /Investment/.test(t.assetType) ? 'investment-review' : 'property-evaluation';
 const paragraph = (className, value) => value ? `<p class="${className}">${escape(value)}</p>` : '';
 const sourceNotes = items => items.filter(t => t.pressMention && t.pressUrl)
   .map(t => `      <p>${escape(t.address)} · <a href="${escape(t.pressUrl)}">${escape(t.pressMention)}</a>.</p>`).join('\n');
@@ -57,14 +58,14 @@ const homeFeature = featured ? `<figure class="home-feature" data-assignment="${
 replace('index.html', 'home-feature', homeFeature);
 const assignmentDirectory = `<nav class="work-directory" aria-label="Selected assignments">
     <div class="work-directory-inner">
-${records.map(t => `      <a href="#${escape(t.id)}">${escape(t.address)}<span>${join([t.neighborhood, t.assetType])}</span></a>`).join('\n')}
+${records.map((t, i) => `      <a href="#${escape(t.id)}"><span class="work-directory-number" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span><span class="work-directory-address">${escape(t.address)}</span><span class="work-directory-meta">${join([t.neighborhood, t.assetType])}</span></a>`).join('\n')}
     </div>
   </nav>`;
 const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 0 ? 'swp-assignment--lead' : i % 2 ? 'swp-assignment--reverse' : ''}" id="${escape(t.id)}" data-work-number="${String(i + 1).padStart(2, '0')}" aria-labelledby="heading-${escape(t.id)}">
     <div class="swp-assignment-inner">
       <figure class="swp-assignment-media${t.imageFit === 'contain' ? ' swp-assignment-media--contain' : ''}">
         <img src="${escape(t.image)}" alt="${escape(t.imageAlt)}" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}>
-        ${t.imageCaption ? `<figcaption>${escape(t.imageCaption)}</figcaption>` : ''}
+        ${t.imageCaption ? `<figcaption>${escape(t.imageCaption)}${t.imageFit === 'contain' ? ` <a href="${escape(t.image)}" target="_blank" rel="noopener">View plan <span aria-hidden="true">↗</span><span class="swp-sr-only"> (opens in a new tab)</span></a>` : ''}</figcaption>` : ''}
       </figure>
       <div class="swp-assignment-body">
         <p class="swp-assignment-number" aria-hidden="true">${String(i + 1).padStart(2, '0')}</p>
@@ -74,6 +75,7 @@ const portfolio = records.map((t, i) => `<section class="swp-assignment ${i === 
         ${paragraph('swp-feature-note', t.resultHighlight || t.outcomeLine)}
         <p class="swp-feature-price">${escape(t.priceOrResult)}</p>
         ${paragraph('swp-feature-tenants', t.tenants)}
+        <a class="swp-text-link swp-assignment-inquiry" href="contact.html?intent=${inquiryIntent(t)}">Discuss a similar property <span aria-hidden="true">↗</span></a>
       </div>${story(t)}
     </div>
   </section>${i === 0 ? '\n\n' + assignmentDirectory : ''}`).join('\n\n');

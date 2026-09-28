@@ -13,83 +13,7 @@
   <meta property="og:title" content="Selected Work | The Neistat Group">
   <meta property="og:description" content="Selected residential, investment, development, and commercial transactions across Chicago and the North Shore.">
   <link rel="stylesheet" href="styles.css?v=39">
-  <link rel="stylesheet" href="selected-work.css?v=2">
-  <link rel="stylesheet" href="selected-work-story.css?v=1">
-  <style>
-    /* Page-scoped, swp- prefixed. Headings declare their own colour: the global
-       "h1, h2, h3 { color:#EDE8DE }" beats inherited colour and would otherwise
-       render these ivory-on-cream. */
-    .swp-hero { background: #0B0A07; padding: clamp(130px,17vw,190px) clamp(24px,5vw,56px) clamp(48px,6vw,72px); }
-    .swp-hero-inner { max-width: 1180px; margin: 0 auto; }
-    .swp-eyebrow { display: block; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(237,232,222,0.55); margin-bottom: 22px; }
-    .swp-h1 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(38px,6vw,68px);
-      line-height: 1.03; letter-spacing: -0.025em; color: #EDE8DE; margin: 0 0 22px; }
-    .swp-sub { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: clamp(15px,1.5vw,17px);
-      line-height: 1.72; color: rgba(237,232,222,0.78); max-width: 52ch; margin: 0; }
 
-    /* Genuinely hidden headings — the previous class had no rule at all, so the
-       "Transactions" heading rendered as visible stray text. */
-    .swp-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-
-    .swp-inner-wide { max-width: 1400px; margin: 0 auto; }
-    .swp-section-label { display: block; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin-bottom: clamp(24px,2.6vw,36px); }
-
-    /* ---------- Featured ---------- */
-    .swp-feature-section { background: #F4F0E8; padding: clamp(48px,6vw,84px) clamp(24px,5vw,56px) clamp(32px,4vw,52px); }
-    .swp-feature { display: grid; grid-template-columns: 1.35fr 1fr;
-      border: 1px solid rgba(11,10,7,0.16); background: #EDE8DE; align-items: stretch; }
-    .swp-feature-media { position: relative; overflow: hidden; min-height: 380px; background: #E4DFD5; }
-    .swp-feature-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .swp-feature-body { padding: clamp(28px,3vw,52px); display: flex; flex-direction: column; }
-    .swp-feature-meta { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
-      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin: 0 0 18px; }
-    .swp-feature-address { font-family: Georgia, serif; font-weight: 400;
-      font-size: clamp(26px,2.8vw,40px); line-height: 1.1; letter-spacing: -0.022em;
-      color: #0B0A07; margin: 0 0 16px; }
-    .swp-feature-rep { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
-      color: rgba(11,10,7,0.78); margin: 0 0 20px; }
-    .swp-feature-rule { width: 34px; height: 1px; background: rgba(11,10,7,0.28); margin: 0 0 20px; }
-    .swp-feature-price { font-family: Georgia, serif; font-size: clamp(20px,1.7vw,26px);
-      color: #0B0A07; margin: 0 0 18px; }
-    .swp-feature-note { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px;
-      line-height: 1.7; color: rgba(11,10,7,0.78); margin: 0 0 14px; max-width: 40ch; }
-    .swp-feature-tenants { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
-      line-height: 1.7; color: rgba(11,10,7,0.78); margin: 0 0 16px; max-width: 40ch; }
-    .swp-feature-press { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px;
-      font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(11,10,7,0.62); margin: 0 0 28px; }
-    .swp-feature-cta { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 9px;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase; color: #0B0A07;
-      border-bottom: 1px solid rgba(11,10,7,0.3); padding-bottom: 5px; transition: border-color 0.25s ease; }
-    .swp-feature-cta:hover { border-color: #0B0A07; }
-    .swp-feature-cta:focus-visible { outline: 2px solid #0B0A07; outline-offset: 4px; }
-
-    .swp-cta { background: #0B0A07; padding: clamp(56px,7vw,90px) clamp(24px,5vw,56px); text-align: center; }
-    .swp-cta-h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(26px,3.4vw,40px);
-      color: #EDE8DE; margin: 0 0 16px; }
-    .swp-cta-copy { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 15px;
-      line-height: 1.7; color: rgba(237,232,222,0.78); max-width: 46ch; margin: 0 auto 30px; }
-    .swp-btn { display: inline-flex; align-items: center; gap: 10px; background: #EDE8DE; color: #0B0A07;
-      border: 1px solid #EDE8DE; border-radius: 2px; padding: 15px 30px;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.25s ease, color 0.25s ease; }
-    .swp-btn:hover { background: transparent; color: #EDE8DE; }
-    .swp-btn:focus-visible { outline: 2px solid #EDE8DE; outline-offset: 4px; }
-    .swp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden;
-      clip: rect(0 0 0 0); white-space: nowrap; }
-
-    @media (max-width: 860px) {
-      .swp-row { grid-template-columns: 1fr; gap: 18px; }
-      .swp-price { white-space: normal; }
-    }
-  </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGNGVERDHQ');</script>
 <script src="analytics.js" defer></script>
@@ -97,7 +21,7 @@
 
   <link rel="stylesheet" href="/site-design.css?v=3">
   <script src="/site-experience.js?v=1" defer></script>
-  <link rel="stylesheet" href="/selected-work-editorial.css?v=2">
+  <link rel="stylesheet" href="/selected-work-editorial.css?v=3">
 </head>
 <body class="site-design page-selected-work">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -132,8 +56,9 @@
   <main id="main-content" tabindex="-1">
   <section class="swp-hero">
     <div class="swp-hero-inner">
-      <h1 class="swp-h1">Selected Work</h1>
-      <p class="swp-sub">Chicago &amp; the North Shore</p>
+      <div><p class="swp-eyebrow">Chicago &amp; the North Shore</p>
+      <h1 class="swp-h1">Selected Work</h1></div>
+      <p class="swp-sub">Residential · Development<br> Commercial · Investment</p>
     </div>
   </section>
 
@@ -152,16 +77,17 @@
         <p class="swp-feature-note">4-condo sellout.</p>
         <p class="swp-feature-price">$709K – $985K</p>
 
+        <a class="swp-text-link swp-assignment-inquiry" href="contact.html?intent=new-development">Discuss a similar property <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
 
 <nav class="work-directory" aria-label="Selected assignments">
     <div class="work-directory-inner">
-      <a href="#wellington">702 W. Wellington Avenue<span>Lakeview · Development</span></a>
-      <a href="#lake">1035 W. Lake Street<span>West Loop · Commercial</span></a>
-      <a href="#lincoln">2636 N. Lincoln Avenue<span>Lincoln Park · 4-Unit Investment</span></a>
-      <a href="#fullerton">1126 W. Fullerton Avenue<span>Lincoln Park · Condominium</span></a>
+      <a href="#wellington"><span class="work-directory-number" aria-hidden="true">01</span><span class="work-directory-address">702 W. Wellington Avenue</span><span class="work-directory-meta">Lakeview · Development</span></a>
+      <a href="#lake"><span class="work-directory-number" aria-hidden="true">02</span><span class="work-directory-address">1035 W. Lake Street</span><span class="work-directory-meta">West Loop · Commercial</span></a>
+      <a href="#lincoln"><span class="work-directory-number" aria-hidden="true">03</span><span class="work-directory-address">2636 N. Lincoln Avenue</span><span class="work-directory-meta">Lincoln Park · 4-Unit Investment</span></a>
+      <a href="#fullerton"><span class="work-directory-number" aria-hidden="true">04</span><span class="work-directory-address">1126 W. Fullerton Avenue</span><span class="work-directory-meta">Lincoln Park · Condominium</span></a>
     </div>
   </nav>
 
@@ -169,7 +95,7 @@
     <div class="swp-assignment-inner">
       <figure class="swp-assignment-media swp-assignment-media--contain">
         <img src="properties/1035-lake-layout.jpg" alt="Illustrative floor plan for 1035 W. Lake Street" loading="lazy">
-        <figcaption>Floor plan · illustrative</figcaption>
+        <figcaption>Floor plan · illustrative <a href="properties/1035-lake-layout.jpg" target="_blank" rel="noopener">View plan <span aria-hidden="true">↗</span><span class="swp-sr-only"> (opens in a new tab)</span></a></figcaption>
       </figure>
       <div class="swp-assignment-body">
         <p class="swp-assignment-number" aria-hidden="true">02</p>
@@ -179,6 +105,7 @@
         <p class="swp-feature-note">Under contract in two weeks.</p>
         <p class="swp-feature-price">$9,500,000</p>
         <p class="swp-feature-tenants">Now home to BODYBAR Pilates and The Athletic Club.</p>
+        <a class="swp-text-link swp-assignment-inquiry" href="contact.html?intent=property-evaluation">Discuss a similar property <span aria-hidden="true">↗</span></a>
       </div>
       <dl class="sw-story sw-story--portfolio" aria-label="The story behind 1035 W. Lake Street"><div><dt>The challenge</dt><dd>Win a West Loop commercial listing against major brokerages.</dd></div><div><dt>The strategy</dt><dd>An off-market approach.</dd></div><div><dt>The outcome</dt><dd>Listing secured. Under contract in two weeks.</dd></div></dl>
     </div>
@@ -198,6 +125,7 @@
 
         <p class="swp-feature-price">$2,300,000</p>
 
+        <a class="swp-text-link swp-assignment-inquiry" href="contact.html?intent=investment-review">Discuss a similar property <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
@@ -216,15 +144,22 @@
 
         <p class="swp-feature-price">$720,000</p>
 
+        <a class="swp-text-link swp-assignment-inquiry" href="contact.html?intent=property-evaluation">Discuss a similar property <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
   <!-- GENERATED: portfolio END -->
 
   <section class="swp-cta">
-    <h2 class="swp-cta-h2">Considering a move of your own?</h2>
-    <p class="swp-cta-copy">An honest conversation about the property, the market, and the strategy that gives you the strongest position.</p>
-    <a class="swp-btn" href="contact.html">Begin the Conversation</a>
+    <div class="swp-cta-inner">
+      <div><p class="swp-eyebrow">Your next decision</p>
+      <h2 class="swp-cta-h2">Let’s talk about<br> your property.</h2></div>
+      <div class="swp-cta-actions">
+        <p class="swp-cta-copy">Buying, selling, or weighing what to do with a property you own? Start with a conversation.</p>
+        <a class="swp-btn" href="contact.html?intent=property-evaluation">Discuss your property <span aria-hidden="true">↗</span></a>
+        <a class="swp-text-link" href="seller-strategy.html">Explore seller strategy <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
   </section>
 
   </main>
