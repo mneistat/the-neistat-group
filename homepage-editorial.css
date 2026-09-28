@@ -18,7 +18,7 @@
 .home-opening { position: relative; display: flex; align-items: flex-end; min-height: clamp(540px, calc(100svh - 200px), 760px); background: #242b29; color: var(--paper); isolation: isolate; }
 .home-opening-media { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
 .home-opening-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
-.home-opening-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 25%, rgba(0,0,0,.05) 37%, rgba(0,0,0,.72) 100%); }
+.home-opening-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.66) 0%, transparent 25%, rgba(0,0,0,.05) 37%, rgba(0,0,0,.72) 100%); }
 .home-opening-copy { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: end; gap: 40px; width: 100%; max-width: 1520px; margin: 0 auto; padding: 100px var(--page-gutter) 54px; }
 .home-opening .home-eyebrow { margin-bottom: 18px; }
 .home-opening h1 { font-size: clamp(44px, 5.1vw, 76px); line-height: 1.07; letter-spacing: -.04em; text-wrap: initial; }
@@ -113,7 +113,7 @@
 .home-inquiry-content { padding-top: 24px; }
 .home-inquiry .cta-form-row { grid-template-columns: 1fr 1fr; gap: 18px; }
 .home-inquiry .cta-input { background: transparent; border: 0; border-bottom: 1px solid #958d80; border-radius: 0; font-size: 16px; min-height: 44px; padding: 10px 0; color: var(--ink); }
-.home-inquiry .cta-select { padding-right: 30px; }
+.home-inquiry .cta-select { padding-right: 30px; appearance: auto; background-image: none; }
 .home-inquiry .cta-input:focus { outline: 2px solid var(--ink); outline-offset: 3px; }
 .home-inquiry .cta-input-label { font-size: 13px; letter-spacing: 0; text-transform: none; color: #514c43; }
 .home-inquiry .cta-textarea { min-height: 84px; }
@@ -156,7 +156,7 @@
 @media (max-width: 760px) {
   .home-opening { min-height: 610px; min-height: max(570px, calc(90svh - var(--site-header-height, 77px))); }
   .home-opening-media img { object-position: 47% center; }
-  .home-opening-media::after { background: linear-gradient(180deg, rgba(0,0,0,.35), transparent 25%, rgba(0,0,0,.2) 40%, rgba(0,0,0,.86)); }
+  .home-opening-media::after { background: linear-gradient(180deg, rgba(0,0,0,.66), transparent 25%, rgba(0,0,0,.2) 40%, rgba(0,0,0,.86)); }
   .home-opening-copy { grid-template-columns: 1fr; gap: 26px; padding: 220px 24px 32px; }
   .home-opening h1 { font-size: clamp(38px, 8.9vw, 62px); line-height: 1.12; }
   .home-opening .home-eyebrow { font-size: 12px; margin-bottom: 16px; }
