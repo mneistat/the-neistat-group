@@ -32,6 +32,10 @@ Matt supplied Jameson's Selling Process, Buying Process, and 2026 Listing & Mark
 
 Next content step: the Buying Process page using the supplied Jameson guide. The About page and property-advisory positioning follow using existing approved material. Do not invent an asset-management service or require new family stories before continuing.
 
+### Private marketing and coordinating a move
+
+Matt confirmed Jameson exclusives, Top Agent Network, and MRED's Private Listing Network as options for exploring interest before a public launch and coordinating a sale with a replacement-home search. Access now names each channel separately, preserves the broader public-launch option, and explains limited exposure and narrower feedback. Partnership includes discussing closing dates and other terms around the owner's next move, subject to agreement with the buyer. This is not a guaranteed leverage, price, privacy, availability, or no-commitment claim. Source notes record the current MRED/TAN verification. Carry the buyer-search context into the next Buying Process content pass; no listings feed is added.
+
 ## Optional content to collect
 
 | Location | What is still needed | Current treatment |

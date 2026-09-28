@@ -22,6 +22,17 @@ The packet is 19 pages of listing agreements and disclosures, not a public marke
 
 Both were supplied by Matt. Web retrieval could not access them and direct retrieval returned HTTP 403. Their content is not treated as reviewed. Do not claim current reach figures, channels, partner lists or program inclusions from these presentations without reading the actual material.
 
+## Private-marketing clarification from Matt
+
+On September 28, Matt explicitly identified Jameson exclusives, Top Agent Network (TAN), and MRED's Private Listing Network (PLN) as options. His stated use cases are exploring interest before public launch, allowing time to prepare, finding a replacement home, and negotiating timing or terms around a move. The website presents these as choices, with permissions and listing arrangements agreed before outreach. It does not promise that privacy or reduced exposure creates a higher price or stronger negotiating position.
+
+- Jameson exclusive: the service is confirmed by Matt. No agent counts, fixed audience, universal eligibility, or detailed program mechanics are inferred from the unread presentations.
+- MRED rules, revised May 14, 2026, Section 1(g), PDF p. 11: private listings require a listing agreement; standard IDX and syndication feeds exclude them. Broker-approved client sharing and seller-authorized VOW display are possible. Website copy therefore does not promise that only brokers can ever see the information or that it is entirely absent online. https://www.mredllc.com/comms/resources/MREDRulesAndRegulations.pdf
+- TAN's official site describes sharing off-market properties and buyer needs. This supports use on both sides of a move, without a claim of guaranteed inventory or results. https://www.topagentnetwork.com/
+- MRED's listing-exemption acknowledgment describes the reduced awareness that can result from excluding a property from the MLS. The website explains the exposure tradeoff; it does not equate PLN with an MLS exemption. https://www.mredllc.com/comms/resources/MREDListingExemptionForm.pdf
+
+Primary sources checked September 28, 2026. The consumer-facing footnotes link MRED and TAN; no contract forms are republished.
+
 ## Preserved constraints
 
 - Existing approved project proof, testimonials, individual prices and CoStar source remain unchanged.
