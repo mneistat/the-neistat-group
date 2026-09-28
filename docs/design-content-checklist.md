@@ -30,11 +30,19 @@ Seller Strategy now leads with the owner's timing, priorities, and next move. Ac
 
 Matt supplied Jameson's Selling Process, Buying Process, and 2026 Listing & Marketing Prepared Packet during this pass. The Selling Process supports the owner-first consultation, preparation, distribution/advertising options, feedback, and closing support. The listing packet is a set of agreements and disclosures used only as background; it is not published or offered as a marketing download. Network rankings and agent counts remain omitted. Media types are options to agree with the owner, not a universal package, and pricing copy does not promise multiple offers. Source credit for the Selling Process appears at the bottom of the page. See `jameson-content-source-notes.md` for source mapping and the two presentation links that could not be read.
 
-Next content step: the Buying Process page using the supplied Jameson guide. The About page and property-advisory positioning follow using existing approved material. Do not invent an asset-management service or require new family stories before continuing.
+Next content step after Buying Process: the About page and property-advisory positioning using existing approved material. Do not invent an asset-management service or require new family stories before continuing.
 
 ### Private marketing and coordinating a move
 
 Matt confirmed Jameson exclusives, Top Agent Network, and MRED's Private Listing Network as options for exploring interest before a public launch and coordinating a sale with a replacement-home search. Access now names each channel separately, preserves the broader public-launch option, and explains limited exposure and narrower feedback. Partnership includes discussing closing dates and other terms around the owner's next move, subject to agreement with the buyer. This is not a guaranteed leverage, price, privacy, availability, or no-commitment claim. Source notes record the current MRED/TAN verification. Carry the buyer-search context into the next Buying Process content pass; no listings feed is added.
+
+## Buying Process content — September 28, 2026
+
+Matt authorized continuing with the supplied Jameson guide and the off-market/search context. Buying Process now explains eight decisions: the move and buyer agreement; budget and financing; public/private search; purposeful tours; offers and tradeoffs; contract/property review; financing and valuation; and closing/moving. It replaces the blanket claims that every purchase follows the same sequence, that the contract only becomes real at inspection, and that the lender confirms the agreed purchase price. Pre-approval is explicitly conditional; legal deadlines depend on the contract.
+
+A separate Buying and Selling section explains planning the sequence, sale proceeds, overlap, closing/possession timing, and requested contingencies. No bridging-finance eligibility, guaranteed inventory, price, acceptance, or complete-privacy claim is added. Jameson exclusives, TAN, and PLN remain exploration channels rather than a listings feed. The primary call to action now goes to the existing Buying a Home inquiry, with Affordability and Seller Strategy alongside it. Source footnotes follow the approved sitewide treatment.
+
+This is a content pass using the existing page styles and scripts. Production remains unchanged. Next: About content and the connection between Matthew's experience, personal approach, and property advisory; further design follows the core content phase.
 
 ## Optional content to collect
 
