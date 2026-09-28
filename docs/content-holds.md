@@ -1,5 +1,7 @@
 # Content awaiting verification
 
+- September 28, 2026 Seller Strategy content pass: Matt supplied Jameson's Selling Process, Buying Process, and 2026 listing agreement/disclosure packet. Read-source mapping is in `jameson-content-source-notes.md`. The two online presentations remain unread because the retrieval tools could not access them. Do not infer their contents or publish network counts/rankings. Presentation options and costs are agreed per property; do not imply every channel or medium is included or brokerage-paid. Existing approved project proof and testimonials remain unchanged. Do not publish the agreement/disclosure packet as a marketing download.
+
 - Elm Street / Winnetka: $1,265,000 record withheld. Existing code used 1183 Elm while its comment cited MLS / Crain’s as 1185. The Master Brief requires the Crain’s article as the public source. Reconcile before restoring this record; do not choose an address from the old implementation.
 - Lake Street: replace the illustrative floor plan with an approved photograph when available. Existing renderings contain placeholder business logos and must not be displayed.
 - Lake Street is classified as Commercial, following Matthew's explicit correction. Its existing $9,500,000 figure is unchanged; do not expand the result or representation claim without reconciled records.

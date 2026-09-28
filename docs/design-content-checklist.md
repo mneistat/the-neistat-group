@@ -22,7 +22,17 @@ The page introduces Matthew before the portfolio, bounds Wellington's architectu
 
 The Lakeview photograph now illustrates neighborhood intelligence, with its source, author, license, and crop notice at the bottom. Distinctions remain footnotes. No stories, transaction claims, or career sales totals are added. Only the homepage composition and its own stylesheet change; supporting page designs and production remain unchanged. This complete page is the design benchmark to review before extending the direction to the rest of the site.
 
-## Content to collect after design review
+## Core content before the final design pass — September 28, 2026
+
+Matt has now chosen to settle core page content before a coordinated final design pass. Keep the approved homepage and Selected Work visual direction as the working foundation. Further layout experiments, new interactions, and optional stories do not block this content phase.
+
+Seller Strategy now leads with the owner's timing, priorities, and next move. Access explains choosing the launch and outreach approach; Presentation sets preparation priorities and a property-specific media scope; Partnership explains pricing, feedback, offer tradeoffs, and direct involvement through closing. Existing project proof, testimonials, individual prices, and source notes are unchanged. The page's styling is unchanged.
+
+Matt supplied Jameson's Selling Process, Buying Process, and 2026 Listing & Marketing Prepared Packet during this pass. The Selling Process supports the owner-first consultation, preparation, distribution/advertising options, feedback, and closing support. The listing packet is a set of agreements and disclosures used only as background; it is not published or offered as a marketing download. Network rankings and agent counts remain omitted. Media types are options to agree with the owner, not a universal package, and pricing copy does not promise multiple offers. Source credit for the Selling Process appears at the bottom of the page. See `jameson-content-source-notes.md` for source mapping and the two presentation links that could not be read.
+
+Next content step: the Buying Process page using the supplied Jameson guide. The About page and property-advisory positioning follow using existing approved material. Do not invent an asset-management service or require new family stories before continuing.
+
+## Optional content to collect
 
 | Location | What is still needed | Current treatment |
 | --- | --- | --- |
