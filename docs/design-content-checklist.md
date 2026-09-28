@@ -14,6 +14,14 @@ Matt directed a full design and functionality pass before collecting more storie
 - Affordability and supporting guides: consistent headings, visible form controls, readable explanations and larger touch targets.
 - Motion: one optional native animation system replaces the individual reveal scripts and third-party GSAP downloads. Content is visible with scripts disabled or reduced motion.
 
+## Homepage direction reset — September 28, 2026
+
+Matt asked for a coherent architectural direction that reflects his personal approach and creates a path into asset consulting, then authorized starting the complete homepage. The preview now opens with the existing licensed 1920px Lincoln Park photograph and the approved tagline. This replaces the enlarged, low-resolution river image for this design; its original remains in the repository.
+
+The page introduces Matthew before the portfolio, bounds Wellington's architectural photograph beside the existing gated facts, and adds a dedicated asset-consulting invitation linked to the existing Property Evaluation contact option. The consulting invitation is a starting conversation about an owner's property and goals; it does not claim an established asset-management service, scope, or outcome. Buying, seller strategy, investment review, neighborhood guides, and the working inquiry form remain reachable. The form disclosure starts open. The three approved testimonials remain available.
+
+The Lakeview photograph now illustrates neighborhood intelligence, with its source, author, license, and crop notice at the bottom. Distinctions remain footnotes. No stories, transaction claims, or career sales totals are added. Only the homepage composition and its own stylesheet change; supporting page designs and production remain unchanged. This complete page is the design benchmark to review before extending the direction to the rest of the site.
+
 ## Content to collect after design review
 
 | Location | What is still needed | Current treatment |

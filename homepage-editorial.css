@@ -1,106 +1,131 @@
-/* The complete homepage composition. Shared navigation remains in styles.css. */
+/* Homepage art direction: Chicago imagery, a personal introduction, precise proof.
+   Shared navigation and form behavior remain in their existing modules. */
 .editorial-home { background: var(--paper); color: var(--ink); }
-.home-main { padding-top: var(--site-header-height, 94px); }
-.home-main h1, .home-main h2, .home-main h3 {
-  font-family: var(--serif); font-weight: 400; letter-spacing: -.04em; color: inherit;
-}
-.home-main h2 { font-size: clamp(36px, 4.65vw, 68px); line-height: 1.06; }
-.home-eyebrow {
-  font-size: 11px; line-height: 1.6; font-weight: 500;
-  letter-spacing: .2em; text-transform: uppercase; margin-bottom: 24px;
-}
-.home-button {
-  display: inline-flex; justify-content: center; align-items: center;
-  min-height: 52px; padding: 14px 30px; background: var(--ink); color: var(--paper);
-  font-family: var(--serif); font-size: 20px; line-height: 1.25;
-  text-align: center; transition: background .2s ease;
-}
-.home-button:hover { background: #3a352d; }
-.home-text-link {
-  display: inline-flex; align-items: center; gap: 12px; min-height: 44px;
-  width: fit-content; font-size: 15px; text-decoration: underline;
-  text-decoration-thickness: 1px; text-underline-offset: 6px;
-}
-.home-text-link:hover { text-underline-offset: 9px; }
-.home-main a:focus-visible, .home-main summary:focus-visible,
-.home-footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+.home-main { padding-top: var(--site-header-height, 89px); }
+.home-main h1, .home-main h2, .home-main h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -.035em; color: inherit; }
+.home-main h2 { font-size: clamp(34px, 3.8vw, 56px); line-height: 1.12; text-wrap: initial; }
+.home-main p { text-wrap: pretty; }
+.home-eyebrow { font-size: 12px; line-height: 1.6; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px; }
+.home-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 52px; padding: 14px 24px; background: var(--ink); color: var(--paper); font-size: 15px; line-height: 1.4; transition: background .2s, color .2s; }
+.home-button:hover { background: #39372f; }
+.home-button--light { background: var(--paper); color: var(--ink); }
+.home-button--light:hover { background: #fff; color: var(--ink); }
+.home-text-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 44px; width: fit-content; font-size: 15px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+.home-text-link:hover { text-decoration-thickness: 2px; }
+.home-main a:focus-visible, .home-main summary:focus-visible, .home-footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
 
-/* Paper and photograph, composed as one opening. */
-.home-opening { display: grid; grid-template-columns: 1.5fr 1fr; min-height: min(780px, calc(100svh - var(--site-header-height, 94px))); }
-.home-opening-copy { padding: clamp(64px, 7vw, 104px) var(--page-gutter) 70px; align-self: center; }
-.home-opening h1 { font-size: clamp(60px, 7.05vw, 110px); line-height: .99; text-wrap: initial; }
-.home-opening h1 span { display: block; }
-.home-opening-sub { margin: 30px 0 28px; font-size: clamp(16px, 1.55vw, 22px); line-height: 1.5; }
-.home-opening-actions { display: flex; align-items: flex-start; flex-direction: column; gap: 16px; }
-.home-opening-media { position: relative; overflow: hidden; min-height: 640px; background: #213d50; }
-.home-opening-media img { position: absolute; left: -8px; top: -8px; width: calc(100% + 16px); max-width: none; height: calc(100% + 36px); object-fit: cover; object-position: center 28%; }
+/* A single photograph anchors the opening. Type stays below the skyline. */
+.home-opening { position: relative; display: flex; align-items: flex-end; min-height: clamp(540px, calc(100svh - 200px), 760px); background: #242b29; color: var(--paper); isolation: isolate; }
+.home-opening-media { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.home-opening-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+.home-opening-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 25%, rgba(0,0,0,.05) 37%, rgba(0,0,0,.72) 100%); }
+.home-opening-copy { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: end; gap: 40px; width: 100%; max-width: 1520px; margin: 0 auto; padding: 100px var(--page-gutter) 54px; }
+.home-opening .home-eyebrow { margin-bottom: 18px; }
+.home-opening h1 { font-size: clamp(44px, 5.1vw, 76px); line-height: 1.07; letter-spacing: -.04em; text-wrap: initial; }
+.home-opening h1 em { font-weight: inherit; }
+.home-opening-actions { padding-bottom: 3px; }
+.home-opening-actions p { font-size: 17px; line-height: 1.6; margin-bottom: 24px; }
+.home-opening-actions .home-button { width: 100%; }
+.home-place { position: absolute; top: 28px; left: var(--page-gutter); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.home-orientation { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 48px; padding: 18px var(--page-gutter); border-bottom: 1px solid var(--rule-ink); }
+.home-orientation p { font-size: 14px; }
+.home-orientation p span { padding-inline: 8px; }
+.home-orientation a { display: inline-flex; justify-content: space-between; align-items: center; gap: 36px; min-height: 44px; font-size: 14px; }
+.home-orientation a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
-/* A single public assignment leads. Its full collection remains one click away. */
-.home-work { padding: 62px 0 76px; }
-.home-section-heading { padding: 0 var(--page-gutter) 36px; }
-.home-section-heading .home-eyebrow { margin-bottom: 14px; }
-.home-feature { margin-inline: clamp(20px, 2.7vw, 48px); }
-.home-feature-image { display: block; overflow: hidden; background: var(--bone); aspect-ratio: 3 / 2; }
-.home-feature-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.home-feature-image--contain { max-height: 660px; }
-.home-feature-image--contain img { max-height: 660px; object-fit: contain; }
-.home-feature-caption { display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px 40px; padding: 28px 22px 0; }
-.home-feature-caption h3 { font-size: clamp(29px, 3.2vw, 46px); line-height: 1.12; }
-.home-feature-caption h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
-.home-feature-facts { border-left: 1px solid var(--rule-ink); padding-left: 32px; font-size: 15px; line-height: 1.7; }
-.home-feature-meta { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 6px; }
-.home-feature-result { margin-top: 2px; }
-.home-feature-price { color: var(--muted-ink); }
-.home-feature-note { font-size: 12px; color: var(--muted-ink); margin-top: 6px; }
-.home-feature-facts .home-text-link { margin-top: 8px; }
-
-/* Real neighborhood amenities, in their natural color. */
-.home-neighborhoods { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 5vw, 76px); background: var(--ink); color: var(--paper); padding: 32px clamp(20px, 2.7vw, 48px); }
-.home-neighborhood-image { display: block; min-height: 510px; position: relative; overflow: hidden; }
-.home-neighborhood-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.home-neighborhood-copy { align-self: center; padding: 40px clamp(12px, 2vw, 30px) 40px 0; }
-.home-neighborhood-copy .home-eyebrow { color: var(--muted-paper); }
-.home-neighborhood-copy h2 { margin-bottom: 24px; font-size: clamp(38px, 4.6vw, 66px); text-wrap: initial; }
-.home-neighborhood-copy > p:not(.home-eyebrow) { max-width: 30ch; font-size: 18px; line-height: 1.6; }
-.home-neighborhood-links { margin-top: 32px; }
-.home-neighborhood-links a { display: flex; justify-content: space-between; align-items: center; min-height: 56px; padding: 14px 0; border-bottom: 1px solid var(--rule-paper); font-size: 17px; }
-.home-neighborhood-links a:hover { border-color: var(--paper); }
-
-/* A personal introduction; existing client words are available on demand. */
-.home-matthew { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 96px); padding: 72px var(--page-gutter); align-items: start; }
-.home-matthew-copy { align-self: center; }
-.home-matthew h2 { font-size: clamp(36px, 4.1vw, 60px); margin-bottom: 26px; text-wrap: initial; }
-.home-matthew-copy > p:not(.home-eyebrow) { font-size: 18px; max-width: 42ch; line-height: 1.7; margin-bottom: 22px; }
-.home-portrait { width: 100%; height: clamp(440px, 43vw, 620px); object-fit: cover; object-position: center 21%; }
-.home-client-words { margin-top: 24px; max-width: 540px; }
-.home-client-words summary, .home-inquiry summary { width: fit-content; display: flex; align-items: center; gap: 18px; list-style: none; cursor: pointer; min-height: 44px; font-size: 14px; text-decoration: underline; text-underline-offset: 6px; }
+/* Matthew is present before the portfolio. The portrait has a human scale. */
+.home-matthew { display: grid; grid-template-columns: minmax(200px, 290px) minmax(0, 670px); justify-content: center; align-items: center; gap: clamp(40px, 7vw, 110px); max-width: 1480px; margin: auto; padding: 86px var(--page-gutter); }
+.home-matthew-copy { grid-column: 2; grid-row: 1; }
+.home-portrait { grid-column: 1; grid-row: 1; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 27%; }
+.home-matthew h2 { margin-bottom: 24px; }
+.home-matthew-copy > p:not(.home-eyebrow) { max-width: 52ch; font-size: 16px; line-height: 1.75; margin-bottom: 16px; }
+.home-matthew-copy > p.home-personal-statement { font-size: 19px; line-height: 1.6; color: #37342e; }
+.home-client-words { margin-top: 14px; max-width: 620px; }
+.home-client-words summary, .home-inquiry summary { display: flex; align-items: center; gap: 24px; list-style: none; cursor: pointer; min-height: 44px; font-size: 14px; }
+.home-client-words summary { width: fit-content; text-decoration: underline; text-underline-offset: 6px; }
 .home-client-words summary::-webkit-details-marker, .home-inquiry summary::-webkit-details-marker { display: none; }
 .home-client-words[open] summary span, .home-inquiry[open] summary span { transform: rotate(45deg); }
 .home-quotes { padding-top: 14px; }
 .home-quotes figure { padding: 24px 0; border-top: 1px solid var(--rule-ink); }
-.home-quotes blockquote { font-family: var(--serif); font-size: 23px; line-height: 1.5; }
+.home-quotes blockquote { font: 400 22px/1.55 var(--serif); }
 .home-quotes figcaption { margin-top: 16px; font-size: 14px; }
 .home-quotes figcaption span { display: block; color: var(--muted-ink); font-size: 12px; }
 
-/* One clear invitation, plus the existing tested form without a long closing wall. */
-.home-contact { margin: 0 var(--page-gutter); padding: 48px 0 58px; border-top: 1px solid var(--rule-ink); }
-.home-contact h2 { font-size: clamp(40px, 5.4vw, 80px); margin-bottom: 32px; text-wrap: initial; }
-.home-contact-actions { display: flex; align-items: center; gap: clamp(32px, 8vw, 140px); }
-.home-intents { display: flex; gap: clamp(28px, 5vw, 80px); }
-.home-intents a { display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; text-decoration: underline; text-underline-offset: 6px; }
-.home-inquiry { margin-top: 18px; }
-.home-inquiry-content { max-width: 760px; padding: 30px 0 8px; }
-.home-inquiry-intro { font-size: 17px; line-height: 1.6; margin-bottom: 26px; }
-.home-inquiry .cta-input { background: #faf8f4; border-color: #aaa396; border-radius: 0; font-size: 16px; min-height: 50px; }
-.home-inquiry .cta-input:focus { outline: 2px solid var(--ink); outline-offset: 3px; }
-.home-inquiry .cta-input-label { font-size: 12px; letter-spacing: .06em; color: var(--muted-ink); }
-.home-inquiry .cta-submit, .home-inquiry .cta-form-success-action { border-radius: 0; }
+/* The verified assignment reads as an architectural plate with a fact panel. */
+.home-work { padding: 0 var(--page-gutter) 88px; max-width: 1480px; margin: auto; }
+.home-section-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 32px 0; border-top: 1px solid var(--rule-ink); }
+.home-section-heading .home-eyebrow { margin-bottom: 12px; }
+.home-section-heading h2 { font-size: clamp(32px, 3vw, 44px); }
+.home-feature { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, .8fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.home-feature-image { display: block; background: var(--bone); overflow: hidden; aspect-ratio: 3 / 2; }
+.home-feature-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.home-feature-image--contain img { object-fit: contain; }
+.home-feature-caption h3 { font-size: clamp(27px, 2.7vw, 40px); line-height: 1.18; max-width: 16ch; margin-bottom: 26px; }
+.home-feature-caption h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+.home-feature-facts { font-size: 15px; line-height: 1.7; }
+.home-feature-meta { font-size: 12px; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 7px; }
+.home-feature-rep { color: #514c43; }
+.home-feature-result { margin-top: 22px; font: 400 clamp(26px, 2.4vw, 34px)/1.3 var(--serif); }
+.home-feature-price { margin-top: 5px; color: var(--muted-ink); }
+.home-feature-note { font-size: 12px; color: var(--muted-ink); margin-top: 6px; }
+.home-feature-facts .home-text-link { margin-top: 22px; }
 
-/* A compact footer, with source and recognition notes at the very bottom. */
+/* The owner conversation is explicit, without promising an undefined service. */
+.home-advisory { background: #1b1c19; color: var(--paper); padding: 72px var(--page-gutter) 48px; }
+.home-advisory-intro { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 64px; max-width: 1240px; margin: auto; }
+.home-advisory h2 { font-size: clamp(36px, 4.2vw, 62px); }
+.home-advisory .home-eyebrow { color: var(--muted-paper); }
+.home-advisory-copy { max-width: 43ch; justify-self: end; }
+.home-advisory-copy p { font-size: 18px; line-height: 1.75; margin-bottom: 22px; }
+.home-service-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1240px; margin: 60px auto 0; border-top: 1px solid var(--rule-paper); }
+.home-service-links > a { display: flex; flex-direction: column; gap: 12px; padding: 28px 24px 12px; border-left: 1px solid var(--rule-paper); }
+.home-service-links > a:first-child { padding-left: 0; border: 0; }
+.home-service-links > a:last-child { padding-right: 0; }
+.home-service-label { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted-paper); }
+.home-service-title { display: flex; justify-content: space-between; align-items: center; gap: 20px; font: 400 clamp(20px, 1.85vw, 28px)/1.4 var(--serif); }
+.home-service-title > span { font: 400 20px/1 var(--font); }
+.home-service-detail { font-size: 14px; color: var(--muted-paper); }
+.home-service-links > a:hover .home-service-title { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+
+/* The neighborhood image is distinct from the opening and leads to a real guide. */
+.home-neighborhoods { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(40px, 6vw, 90px); align-items: center; padding: 88px var(--page-gutter); max-width: 1480px; margin: auto; }
+.home-neighborhood-image { display: block; aspect-ratio: 5 / 4; overflow: hidden; }
+.home-neighborhood-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 70%; transition: transform .6s ease; }
+.home-neighborhood-copy h2 { margin-bottom: 22px; font-size: clamp(34px, 3.5vw, 50px); }
+.home-neighborhood-copy > p:not(.home-eyebrow) { max-width: 32ch; font-size: 17px; line-height: 1.7; }
+.home-neighborhood-links { margin-top: 28px; }
+.home-neighborhood-links a { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--rule-ink); font-size: 20px; font-family: var(--serif); }
+.home-neighborhood-links a:first-child { border-top: 1px solid var(--rule-ink); }
+.home-neighborhood-links a small { display: block; margin-top: 4px; font: 400 13px/1.5 var(--font); color: var(--muted-ink); }
+.home-neighborhood-links a:hover { border-color: var(--ink); }
+
+/* The working inquiry form is open by default. Phone and email stay visible. */
+.home-contact { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 8vw, 120px); max-width: 1480px; margin: 0 auto; padding: 56px var(--page-gutter) 80px; border-top: 1px solid var(--rule-ink); }
+.home-contact h2 { font-size: clamp(34px, 3.6vw, 54px); margin-bottom: 24px; }
+.home-contact-note { max-width: 35ch; font-size: 17px; margin-bottom: 24px; }
+.home-contact-actions { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
+.home-intents { display: flex; gap: 24px; flex-wrap: wrap; }
+.home-intents a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; text-decoration: underline; text-underline-offset: 6px; }
+.home-direct { display: block; width: fit-content; padding-block: 7px; font-size: 16px; overflow-wrap: anywhere; }
+.home-direct:hover { text-decoration: underline; text-underline-offset: 5px; }
+.home-inquiry { align-self: start; }
+.home-inquiry summary { justify-content: space-between; border-bottom: 1px solid var(--rule-ink); padding-bottom: 14px; font-size: 16px; }
+.home-inquiry-content { padding-top: 24px; }
+.home-inquiry .cta-form-row { grid-template-columns: 1fr 1fr; gap: 18px; }
+.home-inquiry .cta-input { background: transparent; border: 0; border-bottom: 1px solid #958d80; border-radius: 0; font-size: 16px; min-height: 44px; padding: 10px 0; color: var(--ink); }
+.home-inquiry .cta-select { padding-right: 30px; }
+.home-inquiry .cta-input:focus { outline: 2px solid var(--ink); outline-offset: 3px; }
+.home-inquiry .cta-input-label { font-size: 13px; letter-spacing: 0; text-transform: none; color: #514c43; }
+.home-inquiry .cta-textarea { min-height: 84px; }
+.home-inquiry .cta-submit { background: var(--ink); color: var(--paper); border-radius: 0; }
+.home-inquiry .cta-submit:hover { background: #39372f; }
+.home-inquiry .cta-form-success-action { border-radius: 0; }
+
+/* Credits and distinctions remain footnotes. */
 .home-footer { padding-top: 36px; background: var(--ink); color: var(--paper); }
 .home-footer-top { display: flex; justify-content: space-between; align-items: center; gap: 18px 28px; flex-wrap: wrap; max-width: var(--page-width); margin-inline: auto; }
 .home-footer-top a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
-.home-footer-top .home-footer-brand { font-family: var(--serif); letter-spacing: .17em; text-transform: uppercase; font-size: 18px; }
+.home-footer-top .home-footer-brand { font-family: var(--serif); letter-spacing: .13em; text-transform: uppercase; font-size: 18px; }
 .home-footer-principle { font-family: var(--serif); font-size: 19px; }
 .home-footer-bottom { display: flex; justify-content: space-between; gap: 24px 60px; max-width: var(--page-width); margin: 20px auto 0; font-size: 12px; color: var(--muted-paper); }
 .home-footer-bottom p { flex-shrink: 0; }
@@ -108,58 +133,70 @@
 .home-footer-links a { display: inline-flex; align-items: center; min-height: 36px; }
 .home-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .home-footer .footer-credits { margin-top: 20px; }
-
-@media (min-width: 1700px) {
-  .home-opening { grid-template-columns: 1.5fr 1fr; }
-  .home-opening-copy { padding-left: var(--page-gutter); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .home-feature-image:hover img, .home-neighborhood-image:hover img { transform: scale(1.025); }
 }
 @media (max-width: 1000px) {
-  .home-opening-copy { padding-inline: 32px; }
-  .home-opening h1 { font-size: 7.1vw; }
-  .home-opening-media { min-height: 590px; }
-  .home-neighborhoods { gap: 32px; }
-  .home-neighborhood-image { min-height: 450px; }
-  .home-neighborhood-copy { padding-right: 0; }
-  .home-matthew { gap: 32px; }
+  .home-opening-copy { grid-template-columns: minmax(0, 1fr) 230px; gap: 30px; }
+  .home-opening h1 { font-size: clamp(42px, 5.1vw, 54px); }
+  .home-opening-actions p { font-size: 16px; }
+  .home-orientation { gap: 28px; }
+  .home-orientation a { gap: 18px; }
+  .home-matthew { grid-template-columns: 230px minmax(0, 1fr); gap: 40px; padding-block: 64px; }
   .home-matthew h2 { font-size: 38px; }
+  .home-advisory-intro { gap: 40px; }
+  .home-advisory-copy p { font-size: 16px; }
+  .home-service-links > a { padding-inline: 20px; }
+  .home-neighborhoods { gap: 40px; }
+  .home-contact { gap: 40px; }
+  .home-inquiry .cta-form-row { grid-template-columns: 1fr; }
   .home-footer-bottom { flex-direction: column; gap: 12px; }
   .home-footer-links { justify-content: flex-start; }
 }
 @media (max-width: 760px) {
-  /* Retain the approved immersive photograph on phones, with the new page flow. */
-  .home-opening { display: flex; align-items: flex-end; position: relative; min-height: max(720px, calc(100svh - var(--site-header-height, 77px))); background: #13232f; color: var(--paper); overflow: hidden; }
-  .home-opening-copy { position: relative; z-index: 1; width: 100%; padding: max(360px, 48svh) 24px 28px; }
-  .home-opening .home-eyebrow { display: none; }
-  .home-opening h1 { font-size: clamp(46px, 12.4vw, 76px); line-height: .99; }
-  .home-opening-sub { font-size: 16px; margin: 24px 0; }
-  .home-opening-actions { gap: 8px; }
-  .home-opening .home-button { background: var(--paper); color: var(--ink); }
-  .home-opening .home-button:hover { background: #fff; }
-  .home-opening-media { position: absolute; inset: 0; min-height: 0; }
-  .home-opening-media img { object-position: center center; }
-  .home-opening-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 27%, rgba(6,15,22,.18) 45%, rgba(6,15,22,.78) 73%, rgba(6,15,22,.96)); }
-  .home-work { padding: 48px 0; }
-  .home-section-heading { padding: 0 24px 28px; }
-  .home-main h2 { font-size: clamp(34px, 8.4vw, 54px); }
-  .home-feature { margin-inline: 16px; }
-  .home-feature-caption { grid-template-columns: 1fr; gap: 18px; padding: 24px 8px 0; }
-  .home-feature-caption h3 { font-size: 32px; max-width: 19ch; }
-  .home-feature-facts { border-left: 0; padding-left: 0; }
-  .home-neighborhoods { grid-template-columns: 1fr; padding: 16px 16px 36px; gap: 0; }
-  .home-neighborhood-image { min-height: 0; aspect-ratio: 4 / 3; }
-  .home-neighborhood-copy { padding: 36px 8px 0; }
-  .home-neighborhood-copy h2 br { display: none; }
-  .home-neighborhood-copy > p:not(.home-eyebrow) { font-size: 17px; }
-  .home-neighborhood-links { margin-top: 22px; }
-  .home-matthew { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
-  .home-matthew h2 { font-size: clamp(36px, 9vw, 58px); }
-  .home-matthew-copy > p:not(.home-eyebrow) { font-size: 17px; }
-  .home-portrait { height: auto; max-height: 600px; aspect-ratio: 4 / 5; object-position: center 20%; }
-  .home-contact { margin-inline: 24px; padding-block: 36px 44px; }
-  .home-contact h2 { font-size: clamp(38px, 10vw, 60px); }
-  .home-contact-actions { align-items: flex-start; flex-direction: column; gap: 20px; }
-  .home-intents { justify-content: space-between; width: min(100%, 360px); gap: 20px; }
-  .home-inquiry .cta-form-row { grid-template-columns: 1fr; }
+  .home-opening { min-height: 610px; min-height: max(570px, calc(90svh - var(--site-header-height, 77px))); }
+  .home-opening-media img { object-position: 47% center; }
+  .home-opening-media::after { background: linear-gradient(180deg, rgba(0,0,0,.35), transparent 25%, rgba(0,0,0,.2) 40%, rgba(0,0,0,.86)); }
+  .home-opening-copy { grid-template-columns: 1fr; gap: 26px; padding: 220px 24px 32px; }
+  .home-opening h1 { font-size: clamp(38px, 8.9vw, 62px); line-height: 1.12; }
+  .home-opening .home-eyebrow { font-size: 12px; margin-bottom: 16px; }
+  .home-opening-actions p { display: none; }
+  .home-opening-actions .home-button { width: auto; min-width: 248px; }
+  .home-place { left: 24px; top: 24px; font-size: 12px; }
+  .home-orientation { grid-template-columns: 1fr 1fr; gap: 0 24px; padding: 16px 24px; }
+  .home-orientation p { grid-column: 1 / -1; font-size: 13px; margin-bottom: 8px; }
+  .home-orientation a { gap: 12px; font-size: 13px; }
+  .home-matthew { grid-template-columns: 1fr; gap: 24px; padding: 48px 24px; }
+  .home-portrait { grid-column: 1; grid-row: 1; width: 160px; aspect-ratio: 4 / 5; }
+  .home-matthew-copy { grid-column: 1; grid-row: 2; }
+  .home-matthew h2 { font-size: 38px; }
+  .home-matthew .home-eyebrow { margin-bottom: 12px; }
+  .home-matthew-copy > p.home-personal-statement { font-size: 18px; }
+  .home-work { padding: 0 24px 48px; }
+  .home-section-heading { display: block; padding-block: 28px 22px; }
+  .home-section-heading .home-eyebrow { font-size: 12px; }
+  .home-section-heading .home-text-link { margin-top: 12px; }
+  .home-feature { grid-template-columns: 1fr; gap: 24px; }
+  .home-feature-caption h3 { font-size: 32px; margin-bottom: 18px; }
+  .home-feature-result { margin-top: 16px; }
+  .home-feature-facts .home-text-link { margin-top: 14px; }
+  .home-advisory { padding: 44px 24px 28px; }
+  .home-advisory-intro { grid-template-columns: 1fr; gap: 26px; }
+  .home-advisory h2 { font-size: clamp(36px, 9vw, 48px); }
+  .home-advisory-copy { justify-self: start; }
+  .home-advisory-copy p { font-size: 17px; margin-bottom: 12px; }
+  .home-service-links { grid-template-columns: 1fr; margin-top: 32px; }
+  .home-service-links > a, .home-service-links > a:first-child { border: 0; border-bottom: 1px solid var(--rule-paper); padding: 24px 0; gap: 9px; }
+  .home-service-links > a:last-child { border: 0; }
+  .home-service-title { font-size: 25px; }
+  .home-neighborhoods { grid-template-columns: 1fr; padding: 48px 24px; gap: 28px; }
+  .home-neighborhood-image { aspect-ratio: 4 / 3; }
+  .home-neighborhood-copy h2 { font-size: 38px; }
+  .home-neighborhood-links { margin-top: 24px; }
+  .home-contact { grid-template-columns: 1fr; padding: 40px 24px 48px; gap: 30px; }
+  .home-contact h2 { font-size: 38px; }
+  .home-contact-actions { margin-bottom: 16px; }
+  .home-intents { gap: 24px; }
   .home-footer { padding-top: 28px; }
   .home-footer-top { flex-direction: column; align-items: flex-start; gap: 0; }
   .home-footer-top .home-footer-brand { margin-bottom: 12px; }
@@ -167,10 +204,11 @@
   .home-footer-bottom { margin-top: 20px; }
 }
 @media (max-width: 360px) {
+  .home-opening h1 { font-size: 35px; }
   .home-opening-copy { padding-inline: 20px; }
-  .home-opening-sub { font-size: 14px; }
-  .home-opening h1 { font-size: 44px; }
+  .home-orientation { padding-inline: 20px; gap: 0 18px; }
+  .home-orientation p span { padding-inline: 3px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-button { transition: none; }
+  .home-button, .home-feature-image img, .home-neighborhood-image img { transition: none; }
 }
