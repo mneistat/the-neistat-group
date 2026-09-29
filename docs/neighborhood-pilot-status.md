@@ -112,3 +112,8 @@ Matt said the Neighborhood Intelligence hub and guide pages had become too infor
 - Lakeview is intentionally unchanged until the Lincoln Park template is reviewed.
 
 This pass is preview-only. Do not merge or promote it to production without a new explicit instruction.
+
+
+### Lakeview rollout
+
+The approved compact reading pattern was extended to Lakeview after Lincoln Park review. All five selected Lakeview schools remain visible. Parks and local amenities are concise lists, the full boundary map remains, housing is shortened, and the visible 2025 market-statistics chapter is removed. The generated Wellington nearby-work block remains in source for build compatibility but is hidden in the compact guide. No personal Lakeview broker note was invented; that section remains intentionally absent until Matt supplies the observation.
