@@ -82,3 +82,18 @@ All 17 existing Node/jsdom regression checks pass, including local links and fra
 - Housing-stock language and markup are unchanged.
 
 Verification for this visual pass: all three HTML files parse cleanly; IDs remain unique; local links resolve; both guides retain four parks, five schools, four local destinations, and one school-resource callout; generated Selected Work proof and `git diff --check` pass. The full Node/jsdom suite could not be rerun in the fresh workspace because its temporary dependency was unavailable; the edited files do not alter forms, calculators, navigation JavaScript, generated proof, or publication gates.
+
+## September 29, 2026 — Neighborhood editorial refinement
+
+Built from dfba055 on the current preview branch, preserving the newer About and Buying Process work. This task remains preview-only; do not promote or merge it.
+
+- Separate guide titles from photography on paper; remove the dark image overlays. Hub retains both neighborhoods in its opening and puts guide descriptions beneath unobscured photographs.
+- Move the existing boundary maps after parks, schools, amenities and transit. Primary chapter order now matches the section navigation. Add standalone SVG versions of the same maps for closer viewing; geometry is unchanged.
+- Keep the school lookup guidance beside the factual school ledger on desktop and above it on narrower screens. Preserve every existing school entry and enrollment caveat.
+- Give amenities their own photographs: archive Conservatory entrance (public domain) and Music Box Theatre (CC BY-SA 4.0), with dates in captions and author/license footnotes. Original image bytes retained. Sources documented in images/neighborhoods/CREDITS.md.
+- Maintain a readable landscape park image, visible phone section-rail scrollbar, and single-column phone school/amenity layouts.
+- Byte comparison confirms housing, historical market notes, generated nearby work, school entries and amenity entries are unchanged. No personal recommendation or new property fact added.
+
+All 22 existing regression checks, generated proof and whitespace checks pass. Standalone map XML parses. Live preview visual review follows deployment; phone/tablet visual review is not claimed without a resizable browser.
+
+The Master Brief was recovered and read. The three other named canonical briefs were absent from the repository and were not recovered by filename search; current PR history and repository status/content-hold notes supplied the newer decisions. Latest user instructions supersede the older Master Brief's tagline and career-sales totals.

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 635" role="img" aria-labelledby="np-map-title np-map-desc"><style>
+    .np-map-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: clamp(28px, 4vw, 64px);
+      align-items: center;
+    }
+
+    .np-map-lede {
+      font-family: Georgia, serif;
+      font-size: clamp(20px, 2vw, 27px);
+      line-height: 1.4; letter-spacing: -0.01em;
+      color: #EDE8DE; margin: 0 0 18px; max-width: 18ch;
+    }
+
+    .np-map-note {
+      font-family: Arial, sans-serif; font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(237,232,222,0.55); margin: 0;
+    }
+
+    .np-map-land { fill: #14120D; }
+
+    .np-map-gridline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
+
+    .np-map-gridline--lp { stroke: rgba(237,232,222,0.1); }
+
+    .np-map-lp { fill: #1D1A14; }
+
+    .np-map-park { fill: #2B2E1F; }
+
+    .np-map-street { fill: none; stroke: rgba(237,232,222,0.18); stroke-width: 1.2; }
+
+    .np-map-street--lp { stroke: rgba(237,232,222,0.36); }
+
+    .np-map-lake { fill: #0F1317; }
+
+    .np-map-waterline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
+
+    .np-map-shore { fill: none; stroke: rgba(237,232,222,0.3); stroke-width: 1.2; }
+
+    .np-map-edge { fill: none; stroke: #EDE8DE; stroke-width: 1.6; stroke-linejoin: round; }
+
+    .np-map-name {
+      font-family: Georgia, serif; font-size: 44px; letter-spacing: -0.01em;
+      fill: #EDE8DE; paint-order: stroke; stroke: #1D1A14; stroke-width: 6px;
+    }
+
+    .np-map-k {
+      font-family: Arial, sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.24em; fill: rgba(237,232,222,0.55);
+    }
+
+    .np-map-v { font-family: Georgia, serif; font-style: italic; font-size: 22px; letter-spacing: 0; fill: rgba(237,232,222,0.88); }
+
+    .np-map-mark { fill: #EDE8DE; }
+
+    .np-map-ctx {
+      font-family: Arial, sans-serif; font-size: 14px; font-weight: 500;
+      letter-spacing: 0.2em; fill: rgba(237,232,222,0.64);
+      paint-order: stroke; stroke: #1D1A14; stroke-width: 5px;
+    }
+
+      .np-map-lede { max-width: 32ch; }
+ .np-map-ctx { font-size: 26px; }
+
+      .np-map-v { font-size: 34px; }
+
+      .np-map-name { font-size: 56px; }
+
+.np-map-source { font: 13px/1.7 Arial, sans-serif; color: #c8c2b8; margin: 18px 0 0; max-width: 38ch; }
+
+.np-map-key { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 16px 0 0; color: #c8c2b8; font: 11px/1.5 Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }</style>
+            <title id="np-map-title">Map of Lincoln Park</title>
+            <desc id="np-map-desc">Stylized map of Lincoln Park, bounded by Diversey to the north, North Avenue to the south, Lake Michigan to the east and the river corridor to the west. Fullerton and Armitage cross the neighborhood, the lakefront park runs along its eastern edge, and Oz Park sits near the center.</desc>
+            <defs>
+              <pattern id="np-map-grid" width="22" height="37" patternUnits="userSpaceOnUse"><path class="np-map-gridline" d="M22 0V37M0 37H22"/></pattern>
+              <pattern id="np-map-grid-lp" width="22" height="37" patternUnits="userSpaceOnUse"><path class="np-map-gridline np-map-gridline--lp" d="M22 0V37M0 37H22"/></pattern>
+              <pattern id="np-map-water" width="12" height="9" patternUnits="userSpaceOnUse"><path class="np-map-waterline" d="M0 8.5H12"/></pattern>
+              <clipPath id="np-map-lp-clip"><path d="M110,104 L862,89 907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1032,508 1008,530 976,536 513,546 494,484 482,465 444,435 415,449 404,445 392,403 337,314 274,298 242,265 232,218 207,199 158,181 141,136Z"/></clipPath>
+            </defs>
+            <rect class="np-map-land" width="1200" height="635"/>
+            <rect width="1200" height="635" fill="url(#np-map-grid)"/>
+            <path class="np-map-lp" d="M110,104 L862,89 907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1032,508 1008,530 976,536 513,546 494,484 482,465 444,435 415,449 404,445 392,403 337,314 274,298 242,265 232,218 207,199 158,181 141,136Z"/>
+            <rect width="1200" height="635" fill="url(#np-map-grid-lp)" clip-path="url(#np-map-lp-clip)"/>
+            <path class="np-map-park" d="M800,92 L862,89 907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1032,508 1008,530 976,536 897,532 862,470 836,400 830,300 832,244 815,170 800,120Z"/>
+            <rect class="np-map-park" x="672" y="326" width="26" height="36" rx="2"/>
+            <path class="np-map-street" d="M0,244H930 M0,397H836 M0,105H110 M0,547H513"/>
+            <path class="np-map-street np-map-street--lp" clip-path="url(#np-map-lp-clip)" d="M0,244H930 M0,397H836"/>
+            <path class="np-map-lake" d="M893,0 L907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1040,522 1012,560 997,600 992,635 L1200,635 1200,0Z"/>
+            <path d="M893,0 L907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1040,522 1012,560 997,600 992,635 L1200,635 1200,0Z" fill="url(#np-map-water)"/>
+            <path class="np-map-shore" d="M893,0 L907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1040,522 1012,560 997,600 992,635"/>
+            <path class="np-map-edge" d="M110,104 L862,89 907,95 913,112 910,165 916,195 928,222 924,280 938,302 944,336 952,366 962,398 972,430 1000,458 1030,484 1062,486 1074,470 1076,484 1068,496 1032,508 1008,530 976,536 513,546 494,484 482,465 444,435 415,449 404,445 392,403 337,314 274,298 242,265 232,218 207,199 158,181 141,136Z"/>
+
+            <text class="np-map-name" x="500" y="322" text-anchor="middle">Lincoln Park</text>
+            <text class="np-map-ctx" x="270" y="232">FULLERTON</text>
+            <text class="np-map-ctx" x="410" y="385">ARMITAGE</text>
+            <text class="np-map-ctx" x="708" y="350">OZ PARK</text>
+
+            <text x="486" y="38" text-anchor="middle"><tspan class="np-map-k">NORTH</tspan><tspan class="np-map-v" x="486" dy="1.3em">Diversey</tspan></text>
+            <text x="745" y="575" text-anchor="middle"><tspan class="np-map-k">SOUTH</tspan><tspan class="np-map-v" x="745" dy="1.3em">North Avenue</tspan></text>
+            <text x="28" y="318"><tspan class="np-map-k">WEST</tspan><tspan class="np-map-v" x="28" dy="1.3em">River corridor</tspan></text>
+            <text x="1176" y="290" text-anchor="end"><tspan class="np-map-k">EAST</tspan><tspan class="np-map-v" x="1176" dy="1.3em">Lake Michigan</tspan></text>
+          </svg>
