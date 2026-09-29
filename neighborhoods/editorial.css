@@ -207,3 +207,33 @@
   .compact-guide .np-stock--compact { grid-template-columns: 1fr; gap: 0; }
   .compact-guide .np-note-compact-inner { padding-top: 30px; }
 }
+
+
+/* Old Town expansion */
+.page-neighborhoods .ni-card--wide { grid-column: 1 / -1; margin-top: 30px; }
+.page-neighborhoods .ni-card--wide .ni-card-img { aspect-ratio: 16 / 7; object-position: center 48%; }
+.compact-guide .np-orientation { padding-block: clamp(72px,8vw,112px); }
+.compact-guide .np-orientation .np-compact-section-head { color: var(--bone); }
+.compact-guide .np-orientation .np-sect-label,
+.compact-guide .np-orientation .np-h2 { color: var(--bone); }
+.compact-guide .np-orientation .np-body { color: rgba(237,232,222,.76); }
+.compact-guide .np-orientation-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  margin-top: 42px;
+  border-top: 1px solid rgba(237,232,222,.2);
+}
+.compact-guide .np-orientation-grid article { padding: 28px 28px 0 0; }
+.compact-guide .np-orientation-grid article + article { border-left: 1px solid rgba(237,232,222,.2); padding-left: 28px; }
+.compact-guide .np-orientation-grid h3 { margin: 0 0 12px; color: var(--bone); font: 400 26px/1.2 var(--serif); }
+.compact-guide .np-orientation-grid p { margin: 0 0 18px; color: rgba(237,232,222,.7); font-size: 15px; line-height: 1.7; }
+.compact-guide .np-orientation-grid .np-link { color: var(--bone); }
+@media (max-width: 900px) {
+  .compact-guide .np-orientation-grid { grid-template-columns: 1fr; }
+  .compact-guide .np-orientation-grid article { padding: 24px 0 30px; }
+  .compact-guide .np-orientation-grid article + article { border-left: 0; border-top: 1px solid rgba(237,232,222,.2); padding-left: 0; }
+}
+@media (max-width: 620px) {
+  .page-neighborhoods .ni-card--wide { margin-top: 0; }
+  .page-neighborhoods .ni-card--wide .ni-card-img { aspect-ratio: 3 / 2; }
+}
