@@ -210,8 +210,8 @@
 
 
 /* Old Town expansion */
-.page-neighborhoods .ni-card--wide { grid-column: 1 / -1; margin-top: 30px; }
-.page-neighborhoods .ni-card--wide .ni-card-img { aspect-ratio: 16 / 7; object-position: center 48%; }
+.page-neighborhoods .ni-card--half { grid-column: 1 / -1; margin-top: 30px; }
+.page-neighborhoods .ni-card--half .ni-card-img { aspect-ratio: 16 / 7; object-position: center 48%; }
 .compact-guide .np-orientation { padding-block: clamp(72px,8vw,112px); }
 .compact-guide .np-orientation .np-compact-section-head { color: var(--bone); }
 .compact-guide .np-orientation .np-sect-label,
@@ -234,6 +234,25 @@
   .compact-guide .np-orientation-grid article + article { border-left: 0; border-top: 1px solid rgba(237,232,222,.2); padding-left: 0; }
 }
 @media (max-width: 620px) {
-  .page-neighborhoods .ni-card--wide { margin-top: 0; }
-  .page-neighborhoods .ni-card--wide .ni-card-img { aspect-ratio: 3 / 2; }
+  .page-neighborhoods .ni-card--half { margin-top: 0; }
+  .page-neighborhoods .ni-card--half .ni-card-img { aspect-ratio: 3 / 2; }
+}
+
+
+/* Text-only housing treatment used when a neighborhood-specific residential photo is not verified. */
+.compact-guide .np-housing-text {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 0 36px;
+  border-top: 1px solid var(--rule-ink);
+}
+.compact-guide .np-housing-text article { padding: 24px 0; border-bottom: 1px solid var(--rule-ink); }
+.compact-guide .np-housing-text h3 { margin: 0 0 10px; font: 400 24px/1.2 var(--serif); }
+.compact-guide .np-housing-text p { margin: 0; max-width: 48ch; font-size: 15px; line-height: 1.7; color: #514b42; }
+@media (min-width: 621px) {
+  .page-neighborhoods .ni-card--half { grid-column: span 6; }
+  .page-neighborhoods .ni-card--half .ni-card-img { aspect-ratio: 3 / 2; }
+}
+@media (max-width: 620px) {
+  .compact-guide .np-housing-text { grid-template-columns: 1fr; }
 }
