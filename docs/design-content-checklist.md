@@ -96,3 +96,11 @@ Reordered Buying Process around DTI, multiple lender introductions, daily-life p
 
 ### September 29 — Buying Process navigation
 Matt could not find Buying Process in the primary menu. Added it directly before Seller Strategy in the desktop menu, mobile menu, and footer on all twelve pages. Retained the existing responsive breakpoint. Updated the shared navigation expectation and made the keyboard focus test independent of menu length. Authorized as a live discoverability fix following the production release.
+
+### September 29 — About: the same care for every property decision
+
+Matt clarified that home purchases, investment work, and advice about an existing property are connected by the way he evaluates the opportunity and advocates for the client. He approved first-person copy about asking questions, investigating details, comparing alternatives, involving specialists, and understanding the opportunity, risks, and tradeoffs. The copy explicitly acknowledges that no property or deal is perfect; it does not promise exhaustive discovery, a best investment, or the elimination of risk.
+
+About now places this approach immediately after Matthew's portrait and People First opening. The existing family paragraphs sit beside the grandfather's quote and Mason photograph. Hospitality, the 2012 real-estate start, brokerage, and established property types support the approach, with a direct link to Selected Work and its approved Wellington and Lake Street examples. Removed the competitor anecdote from this page. Client and personal quotes are unchanged. Recognition and all four press links move to the shared bottom-footnote treatment. No new service scope, transaction result, story, or career-sales total is introduced.
+
+This remains the core-content phase. The existing page design is retained with small typography additions for the hero summary and relocated family paragraphs. Preview branch only; production remains the published Buying Process navigation release. Next: coordinate the visual treatment of Buying Process, Seller Strategy, and About with the approved homepage and Selected Work design.
