@@ -124,3 +124,15 @@ The approved compact reading pattern was extended to Lakeview after Lincoln Park
 Added Wrigleyville using the compact guide pattern. The page treats Wrigleyville as an informal district around Wrigley Field within Lakeview rather than inventing an official community-area boundary. It includes three nearby Park District resources, five selected schools with a CPS address-lookup link, four local-life anchors, an orientation section around Clark/Addison, Addison Red Line and Southport, and concise housing context. No market-statistics chapter or personal broker note was added. The hero uses a 2025 Wikimedia Commons photograph by Dough4872 under CC BY-SA 4.0 with attribution in the footer.
 
 The hub now presents Old Town and Wrigleyville side-by-side beneath Lincoln Park and Lakeview.
+
+
+### North Center and Roscoe Village expansion
+
+Added North Center and Roscoe Village using the compact guide pattern and added both to the hub as the fifth and sixth entries.
+
+- North Center distinguishes the official North Center community area from the smaller Northcenter business/neighborhood identity. It includes Hamlin, Revere and Clark parks; five schools; Town Square, the farmers market, Martyrs’ and Ribfest; concise orientation and housing.
+- Roscoe Village follows the Roscoe Village Neighbors boundary definition: Addison north, Belmont south, Ravenswood east and the Chicago River west. It includes Fellger Park, Park No. 544 and Clark Park; five selected schools; Roscoe Street and community-event context; concise housing informed by RVN land-use principles.
+- Neither page adds a market-statistics chapter or a personal broker note.
+- North Center uses the verified 2013 Audubon School Commons photograph. Roscoe Village uses Warren LeMay’s 2024 Lane Tech photograph under CC BY-SA 2.0, with attribution in the page footer.
+
+All six neighborhood guides now exist in the preview set: Lincoln Park, Lakeview, Old Town, Wrigleyville, North Center and Roscoe Village.
