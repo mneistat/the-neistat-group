@@ -208,12 +208,12 @@ test('neighborhood guides identify their parent in desktop and mobile navigation
 test('every page shares the refined header, with Home retained in the mobile menu', () => {
   const files = fs.readdirSync(root).filter(file => file.endsWith('.html'))
     .concat(['neighborhoods/lincoln-park.html', 'neighborhoods/lakeview.html']);
-  const labels = ['Selected Work', 'Neighborhoods', 'Seller Strategy', 'Affordability', 'About', 'Contact'];
+  const labels = ['Selected Work', 'Neighborhoods', 'Buying Process', 'Seller Strategy', 'Affordability', 'About', 'Contact'];
   for (const file of files) {
     const dom = page(file), d = dom.window.document;
     assert.deepEqual([...d.querySelectorAll('.nav-links a')].map(link => link.textContent.trim()), labels, file);
     assert.equal(d.querySelector('.nav-brand').getAttribute('href').replace(/^\//, ''), 'index.html', file);
-    assert.equal(d.querySelector('.mobile-menu-link').textContent.trim(), 'Home', file);
+    assert.deepEqual([...d.querySelectorAll('.mobile-menu-link')].map(link => link.textContent.trim()), ['Home', ...labels], file);
     assert.ok(d.querySelector('link[href$="styles.css?v=39"]'), file);
     assert.ok(d.querySelector('script[src$="nav.js?v=11"]'), file);
     dom.window.close();
@@ -275,7 +275,7 @@ test('mobile menu isolates the page, contains focus and restores focus on Escape
   assert.equal(menu.hidden, true); toggle.click();
   assert.equal(menu.hidden, false); assert.equal(toggle.getAttribute('aria-expanded'), 'true');
   assert.equal(d.querySelector('main').inert, true); assert.equal(d.activeElement, menu.querySelector('a'));
-  menu.querySelectorAll('a')[7].focus();
+  [...menu.querySelectorAll('a')].at(-1).focus();
   d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }));
   assert.equal(d.activeElement, toggle);
   d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
