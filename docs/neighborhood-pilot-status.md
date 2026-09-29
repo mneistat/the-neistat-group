@@ -117,3 +117,10 @@ This pass is preview-only. Do not merge or promote it to production without a ne
 ### Lakeview rollout
 
 The approved compact reading pattern was extended to Lakeview after Lincoln Park review. All five selected Lakeview schools remain visible. Parks and local amenities are concise lists, the full boundary map remains, housing is shortened, and the visible 2025 market-statistics chapter is removed. The generated Wellington nearby-work block remains in source for build compatibility but is hidden in the compact guide. No personal Lakeview broker note was invented; that section remains intentionally absent until Matt supplies the observation.
+
+
+### Wrigleyville expansion
+
+Added Wrigleyville using the compact guide pattern. The page treats Wrigleyville as an informal district around Wrigley Field within Lakeview rather than inventing an official community-area boundary. It includes three nearby Park District resources, five selected schools with a CPS address-lookup link, four local-life anchors, an orientation section around Clark/Addison, Addison Red Line and Southport, and concise housing context. No market-statistics chapter or personal broker note was added. The hero uses a 2025 Wikimedia Commons photograph by Dough4872 under CC BY-SA 4.0 with attribution in the footer.
+
+The hub now presents Old Town and Wrigleyville side-by-side beneath Lincoln Park and Lakeview.
