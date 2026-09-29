@@ -97,3 +97,18 @@ Built from dfba055 on the current preview branch, preserving the newer About and
 All 22 existing regression checks, generated proof and whitespace checks pass. Standalone map XML parses. Live preview visual review follows deployment; phone/tablet visual review is not claimed without a resizable browser.
 
 The Master Brief was recovered and read. The three other named canonical briefs were absent from the repository and were not recovered by filename search; current PR history and repository status/content-hold notes supplied the newer decisions. Latest user instructions supersede the older Master Brief's tagline and career-sales totals.
+
+
+## September 29, 2026 — simplify the reading path
+
+Matt said the Neighborhood Intelligence hub and guide pages had become too information-dense. The Lincoln Park pilot is now the shorter template.
+
+- Hub: removed the explanatory intro and deep-section link rows. It now functions primarily as a visual index into the guides.
+- Lincoln Park: collapsed the opening, parks, schools, amenities and transit material into one concise “What Matters Here” chapter built around three pillars: Parks, Schools, and Local Life.
+- Kept the full boundary map and a shorter housing section. Removed the visible 2025 market-statistics chapter from the reading path.
+- Reframed the approved broker note as “What changes block by block.” The two verified Lincoln Park assignments remain available as compact text links instead of another large visual section.
+- The generated nearby-work block remains in source for build compatibility but is hidden in this compact pilot; publication gates and generated data are untouched.
+- Existing official park, school and amenity sources are retained. School content remains a selected starting point rather than a ranking.
+- Lakeview is intentionally unchanged until the Lincoln Park template is reviewed.
+
+This pass is preview-only. Do not merge or promote it to production without a new explicit instruction.
