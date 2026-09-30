@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 826" role="img" aria-labelledby="np-map-title np-map-desc"><style>
+    .np-map-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: clamp(28px, 4vw, 64px);
+      align-items: center;
+    }
+
+    .np-map-lede {
+      font-family: Georgia, serif;
+      font-size: clamp(20px, 2vw, 27px);
+      line-height: 1.4; letter-spacing: -0.01em;
+      color: #EDE8DE; margin: 0 0 18px; max-width: 18ch;
+    }
+
+    .np-map-note {
+      font-family: Arial, sans-serif; font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(237,232,222,0.55); margin: 0;
+    }
+
+    .np-map-land { fill: #14120D; }
+
+    .np-map-gridline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
+
+    .np-map-gridline--lp { stroke: rgba(237,232,222,0.1); }
+
+    .np-map-lp { fill: #1D1A14; }
+
+    .np-map-park { fill: #2B2E1F; }
+
+    .np-map-street { fill: none; stroke: rgba(237,232,222,0.18); stroke-width: 1.2; }
+
+    .np-map-street--lp { stroke: rgba(237,232,222,0.36); }
+
+    .np-map-lake { fill: #0F1317; }
+
+    .np-map-waterline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
+
+    .np-map-shore { fill: none; stroke: rgba(237,232,222,0.3); stroke-width: 1.2; }
+
+    .np-map-edge { fill: none; stroke: #EDE8DE; stroke-width: 1.6; stroke-linejoin: round; }
+
+    .np-map-name {
+      font-family: Georgia, serif; font-size: 44px; letter-spacing: -0.01em;
+      fill: #EDE8DE; paint-order: stroke; stroke: #1D1A14; stroke-width: 6px;
+    }
+
+    .np-map-k {
+      font-family: Arial, sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.24em; fill: rgba(237,232,222,0.55);
+    }
+
+    .np-map-v { font-family: Georgia, serif; font-style: italic; font-size: 22px; letter-spacing: 0; fill: rgba(237,232,222,0.88); }
+
+    .np-map-mark { fill: #EDE8DE; }
+
+    .np-map-ctx {
+      font-family: Arial, sans-serif; font-size: 14px; font-weight: 500;
+      letter-spacing: 0.2em; fill: rgba(237,232,222,0.64);
+      paint-order: stroke; stroke: #1D1A14; stroke-width: 5px;
+    }
+
+      .np-map-lede { max-width: 32ch; }
+ .np-map-ctx { font-size: 26px; }
+
+      .np-map-v { font-size: 34px; }
+
+      .np-map-name { font-size: 56px; }
+
+.np-map-source { font: 13px/1.7 Arial, sans-serif; color: #c8c2b8; margin: 18px 0 0; max-width: 38ch; }
+
+.np-map-key { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 16px 0 0; color: #c8c2b8; font: 11px/1.5 Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }</style>
+            <title id="np-map-title">Map of Lakeview</title>
+            <desc id="np-map-desc">Map of the Lake View community area, bounded by Diversey Parkway to the south, Ravenswood Avenue to the west and Lake Michigan to the east. The northern boundary is Irving Park Road, except west of Clark Street, where it runs north to Montrose Avenue. Belmont and Addison cross the neighborhood, Wrigley Field sits just north of Addison, and lakefront parkland runs along its eastern edge around Belmont Harbor.</desc>
+            <defs>
+              <pattern id="np-map-grid" width="22" height="37" patternUnits="userSpaceOnUse"><path class="np-map-gridline" d="M22 0V37M0 37H22"/></pattern>
+              <pattern id="np-map-grid-area" width="22" height="37" patternUnits="userSpaceOnUse"><path class="np-map-gridline np-map-gridline--lp" d="M22 0V37M0 37H22"/></pattern>
+              <pattern id="np-map-water" width="12" height="9" patternUnits="userSpaceOnUse"><path class="np-map-waterline" d="M0 8.5H12"/></pattern>
+              <clipPath id="np-map-area-clip"><path d="M697,251 L704,276 L705,276 L725,338 L751,404 L771,438 L789,465 L820,503 L819,511 L815,513 L810,512 L804,497 L798,491 L792,492 L783,497 L776,496 L772,490 L760,456 L762,453 L753,438 L730,427 L718,426 L713,424 L713,425 L709,423 L711,419 L708,418 L696,400 L684,392 L681,392 L680,395 L688,407 L712,434 L710,443 L711,446 L706,450 L706,458 L719,483 L727,488 L733,497 L736,506 L738,531 L757,561 L758,561 L760,552 L763,553 L762,562 L777,562 L778,566 L783,563 L790,554 L793,543 L787,543 L787,540 L788,542 L793,542 L794,528 L798,525 L798,519 L805,524 L807,530 L807,550 L812,571 L821,597 L832,615 L829,616 L834,644 L845,665 L860,688 L860,695 L856,701 L857,712 L855,711 L856,701 L846,703 L845,709 L842,711 L829,711 L823,704 L806,704 L805,702 L794,706 L742,704 L199,716 L198,641 L200,640 L200,638 L194,414 L196,409 L190,112 L313,110 L336,186 L370,260 L651,254 L697,251 Z"/></clipPath>
+            </defs>
+            <rect class="np-map-land" width="1200" height="826"/>
+            <rect width="1200" height="826" fill="url(#np-map-grid)"/>
+            <path class="np-map-lp" d="M697,251 L704,276 L705,276 L725,338 L751,404 L771,438 L789,465 L820,503 L819,511 L815,513 L810,512 L804,497 L798,491 L792,492 L783,497 L776,496 L772,490 L760,456 L762,453 L753,438 L730,427 L718,426 L713,424 L713,425 L709,423 L711,419 L708,418 L696,400 L684,392 L681,392 L680,395 L688,407 L712,434 L710,443 L711,446 L706,450 L706,458 L719,483 L727,488 L733,497 L736,506 L738,531 L757,561 L758,561 L760,552 L763,553 L762,562 L777,562 L778,566 L783,563 L790,554 L793,543 L787,543 L787,540 L788,542 L793,542 L794,528 L798,525 L798,519 L805,524 L807,530 L807,550 L812,571 L821,597 L832,615 L829,616 L834,644 L845,665 L860,688 L860,695 L856,701 L857,712 L855,711 L856,701 L846,703 L845,709 L842,711 L829,711 L823,704 L806,704 L805,702 L794,706 L742,704 L199,716 L198,641 L200,640 L200,638 L194,414 L196,409 L190,112 L313,110 L336,186 L370,260 L651,254 L697,251 Z"/>
+            <rect width="1200" height="826" fill="url(#np-map-grid-area)" clip-path="url(#np-map-area-clip)"/>
+            <path class="np-map-park" d="M856,845 L850,845 L856,845 Z"/>
+            <path class="np-map-park" d="M839,821 L845,844 L839,845 L839,821 Z"/>
+            <path class="np-map-park" d="M850,842 L844,816 L855,841 L850,842 Z"/>
+            <path class="np-map-park" d="M835,766 L836,700 L831,672 L816,637 L791,607 L805,620 L817,638 L832,672 L836,699 L835,766 Z"/>
+            <path class="np-map-park" d="M727,846 L725,706 L767,706 L769,702 L760,674 L763,673 L763,671 L760,672 L757,628 L753,613 L746,594 L732,566 L729,551 L721,552 L721,523 L735,549 L732,550 L733,553 L737,551 L755,575 L736,559 L737,563 L758,579 L797,617 L816,642 L826,663 L833,696 L832,775 L837,812 L838,844 L836,846 L727,846 Z"/>
+            <path class="np-map-park" d="M646,271 L645,279 L644,256 L648,257 L646,271 Z"/>
+            <path class="np-map-park" d="M640,232 L648,253 L644,253 L640,232 Z"/>
+            <path class="np-map-park" d="M637,253 L633,252 L627,212 L634,234 L637,253 Z"/>
+            <path class="np-map-park" d="M628,228 L618,194 L611,159 L608,109 L617,172 L628,228 Z"/>
+            <path class="np-map-park" d="M612,105 L614,131 L610,106 L612,105 Z"/>
+            <path class="np-map-park" d="M627,103 L621,130 L619,104 L627,103 Z"/>
+            <path class="np-map-park" d="M607,77 L611,102 L608,101 L605,92 L607,77 Z"/>
+            <path class="np-map-park" d="M619,101 L614,76 L626,98 L619,101 Z"/>
+            <path class="np-map-park" d="M589,31 L597,41 L603,54 L606,75 L604,91 L587,58 L582,32 L589,31 Z"/>
+            <path class="np-map-park" d="M599,28 L603,49 L592,30 L599,28 Z"/>
+            <path class="np-map-park" d="M613,26 L610,49 L606,27 L613,26 Z"/>
+            <path class="np-map-park" d="M598,26 L591,26 L594,4 L598,26 Z"/>
+            <path class="np-map-park" d="M606,24 L602,3 L613,23 L606,24 Z"/>
+            <path class="np-map-park" d="M591,-17 L592,-12 L591,-17 Z"/>
+            <path class="np-map-park" d="M591,-17 L593,1 L591,19 L589,27 L582,28 L571,-20 L590,-20 L591,-17 Z"/>
+            <path class="np-map-park" d="M668,385 L725,522 L737,547 L724,523 L642,326 L640,248 L619,166 L615,105 L594,-20 L615,101 L620,165 L640,250 L642,321 L646,335 L668,385 Z"/>
+            <path class="np-map-park" d="M858,846 L857,841 L844,811 L840,795 L838,691 L829,653 L810,623 L758,569 L733,534 L672,384 L646,329 L644,300 L650,252 L627,188 L621,150 L623,128 L630,99 L622,90 L614,74 L611,47 L617,26 L603,2 L599,-20 L719,-20 L774,7 L796,14 L808,15 L837,10 L844,-13 L849,-20 L841,2 L837,25 L841,60 L851,74 L851,84 L846,92 L802,115 L779,141 L764,153 L741,157 L712,150 L708,161 L689,158 L687,177 L700,256 L715,307 L745,392 L771,439 L820,504 L818,512 L813,513 L808,510 L800,519 L800,521 L807,526 L808,548 L819,593 L832,616 L837,636 L845,657 L864,690 L864,699 L856,706 L856,712 L851,711 L848,715 L854,719 L857,727 L852,756 L853,776 L859,798 L875,827 L882,846 L858,846 Z"/>
+            <path class="np-map-park" d="M563,310 L563,316 L547,316 L547,313 L543,313 L543,295 L563,295 L563,301 L556,302 L556,310 L563,310 Z"/>
+            <path class="np-map-park" d="M453,327 L451,327 L450,259 L452,259 L453,262 L453,327 Z"/>
+            <path class="np-map-park" d="M201,714 L200,714 L200,686 L213,686 L213,706 L201,706 L201,714 Z"/>
+            <path class="np-map-street" d="M0,566H811 M0,417H759 M0,267H702 M0,716H200"/>
+            <path class="np-map-street np-map-street--lp" clip-path="url(#np-map-area-clip)" d="M0,566H811 M0,417H759 M0,267H702"/>
+            <path class="np-map-lake" d="M843,-7 L838,14 L837,33 L841,58 L848,67 L851,76 L851,83 L846,92 L801,116 L775,146 L762,155 L709,159 L708,161 L687,164 L686,176 L700,262 L745,391 L771,439 L821,506 L818,512 L737,517 L800,520 L807,526 L808,550 L812,571 L820,595 L832,615 L834,643 L844,664 L860,688 L859,698 L856,701 L857,712 L849,713 L856,728 L852,749 L852,769 L856,793 L861,804 L859,808 L869,823 L873,836 L1200,836 L1200,-10 Z"/>
+            <path d="M843,-7 L838,14 L837,33 L841,58 L848,67 L851,76 L851,83 L846,92 L801,116 L775,146 L762,155 L709,159 L708,161 L687,164 L686,176 L700,262 L745,391 L771,439 L821,506 L818,512 L737,517 L800,520 L807,526 L808,550 L812,571 L820,595 L832,615 L834,643 L844,664 L860,688 L859,698 L856,701 L857,712 L849,713 L856,728 L852,749 L852,769 L856,793 L861,804 L859,808 L869,823 L873,836 L1200,836 L1200,-10 Z" fill="url(#np-map-water)"/>
+            <path class="np-map-shore" d="M843,-7 L838,14 L837,33 L841,58 L848,67 L851,76 L851,83 L846,92 L801,116 L775,146 L762,155 L709,159 L708,161 L687,164 L686,176 L700,262 L745,391 L771,439 L821,506 L818,512 L737,517 L800,520 L807,526 L808,550 L812,571 L820,595 L832,615 L834,643 L844,664 L860,688 L859,698 L856,701 L857,712 L849,713 L856,728 L852,749 L852,769 L856,793 L861,804 L859,808 L869,823 L873,836"/>
+            <path class="np-map-edge" d="M697,251 L704,276 L705,276 L725,338 L751,404 L771,438 L789,465 L820,503 L819,511 L815,513 L810,512 L804,497 L798,491 L792,492 L783,497 L776,496 L772,490 L760,456 L762,453 L753,438 L730,427 L718,426 L713,424 L713,425 L709,423 L711,419 L708,418 L696,400 L684,392 L681,392 L680,395 L688,407 L712,434 L710,443 L711,446 L706,450 L706,458 L719,483 L727,488 L733,497 L736,506 L738,531 L757,561 L758,561 L760,552 L763,553 L762,562 L777,562 L778,566 L783,563 L790,554 L793,543 L787,543 L787,540 L788,542 L793,542 L794,528 L798,525 L798,519 L805,524 L807,530 L807,550 L812,571 L821,597 L832,615 L829,616 L834,644 L845,665 L860,688 L860,695 L856,701 L857,712 L855,711 L856,701 L846,703 L845,709 L842,711 L829,711 L823,704 L806,704 L805,702 L794,706 L742,704 L199,716 L198,641 L200,640 L200,638 L194,414 L196,409 L190,112 L313,110 L336,186 L370,260 L651,254 L697,251 Z"/>
+
+            <text class="np-map-name" x="470" y="506" text-anchor="middle">Lakeview</text>
+            <text class="np-map-ctx" x="236" y="556">BELMONT</text>
+            <text class="np-map-ctx" x="236" y="407">ADDISON</text>
+            <circle class="np-map-mark" cx="477" cy="384" r="5"/>
+            <text class="np-map-ctx" x="491" y="389">WRIGLEY FIELD</text>
+
+            <text x="252" y="40" text-anchor="middle"><tspan class="np-map-k">NORTH</tspan><tspan class="np-map-v" x="252" dy="1.3em">Montrose</tspan></text>
+            <text x="560" y="197" text-anchor="middle"><tspan class="np-map-k">NORTH</tspan><tspan class="np-map-v" x="560" dy="1.3em">Irving Park</tspan></text>
+            <text x="600" y="772" text-anchor="middle"><tspan class="np-map-k">SOUTH</tspan><tspan class="np-map-v" x="600" dy="1.3em">Diversey</tspan></text>
+            <text x="24" y="451"><tspan class="np-map-k">WEST</tspan><tspan class="np-map-v" x="24" dy="1.3em">Ravenswood</tspan></text>
+            <text x="1176" y="417" text-anchor="end"><tspan class="np-map-k">EAST</tspan><tspan class="np-map-v" x="1176" dy="1.3em">Lake Michigan</tspan></text>
+          </svg>

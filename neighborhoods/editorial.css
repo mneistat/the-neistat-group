@@ -1,0 +1,340 @@
+/* Neighborhood collection: place photography, open ledgers, clear chapter order. */
+.page-guide .np-hero {
+  display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  align-items: stretch; min-height: 0; padding: var(--site-header-height, 94px) 0 0;
+  background: var(--paper); color: var(--ink);
+}
+.page-guide .np-hero-inner { grid-column: 1; grid-row: 1; align-self: center; padding-block: 48px; }
+.page-guide .np-hero-img { position: static; grid-column: 2; grid-row: 1; height: 100%; min-height: 540px; object-position: center; }
+.page-guide .np-hero-veil { display: none; }
+.page-guide .np-hero h1 { color: var(--ink); font-size: clamp(54px, 6.8vw, 98px); }
+.page-guide .np-hero .np-eyebrow, .page-guide .np-back { color: var(--muted-ink); }
+.page-guide .np-hero-sub { color: #4d483f; font-size: 17px; max-width: 38ch; }
+.page-guide .np-back { margin-bottom: 44px; }
+.page-guide .np-back:hover { color: var(--ink); border-color: var(--ink); }
+.page-guide .np-essence { padding-block: 46px; }
+.page-guide .np-essence .np-sect-label { border: 0; padding: 0; }
+.page-guide .np-essence .np-h2 { font-size: clamp(30px, 3vw, 42px); margin-bottom: 16px; }
+.page-guide #parks { padding-top: 34px; }
+.page-guide .np-place-photo img { aspect-ratio: 3 / 2; }
+.page-guide .np-place-photo { overflow: visible; }
+.page-guide .np-places article { padding-bottom: 22px; }
+.page-guide .np-places p, .page-guide .np-amenity-list p { font-size: 16px; line-height: 1.75; }
+.page-guide .np-school-layout { display: grid; grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); gap: clamp(32px,5vw,80px); }
+.page-guide .np-school-intro { position: sticky; top: calc(var(--site-header-height, 94px) + 100px); align-self: start; }
+.page-guide .np-school-intro .np-local-intro, .page-guide .np-school-note { display: block; }
+.page-guide .np-school-intro .np-body { margin-top: 22px; font-size: 16px; }
+.page-guide .np-school-note { margin-top: 28px; border-bottom: 0; }
+.page-guide .np-school-note .np-links { justify-content: flex-start; gap: 8px; margin-top: 14px; flex-direction: column; align-items: flex-start; }
+.page-guide .np-school-list { margin-top: 0; }
+.page-guide .np-school-list li { grid-template-columns: 28px minmax(0,1fr) minmax(0,.85fr); gap: 8px 18px; align-items: start; }
+.page-guide .np-school-list li::before { grid-row: 1 / 3; }
+.page-guide .np-school-list li h3 { font-size: 25px; grid-column: 2 / -1; }
+.page-guide .np-school-list li > p:nth-of-type(1) { grid-column: 2; }
+.page-guide .np-school-list li > p:nth-of-type(2) { grid-column: 3; }
+.page-guide .np-amenity-editorial { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(32px,5vw,76px); margin-top: 38px; align-items: start; }
+.page-guide .np-amenity-photo { margin: 0; position: sticky; top: calc(var(--site-header-height, 94px) + 92px); }
+.page-guide .np-amenity-photo img { display: block; width: 100%; height: auto; }
+.page-guide .np-amenity-photo figcaption { padding-top: 14px; font: 13px/1.65 var(--font); color: var(--muted-ink); }
+.page-guide .np-amenity-list { display: block; margin: 0; }
+.page-guide .np-amenity-list > li:first-child { padding-top: 0; border-top: 0; }
+.page-guide .np-amenity-list > li:first-child::before { top: 7px; }
+.page-guide .np-amenity-library { padding-left: 0; }
+.page-guide .np-map svg { border: 0; }
+.page-guide .np-map-expand { display: inline-flex; align-items: center; min-height: 44px; color: var(--bone); text-underline-offset: 5px; margin-top: 20px; }
+
+/* Hub: the photographs carry color; captions stay on a solid surface. */
+.page-neighborhoods .ni-hero { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); min-height: 0; padding: var(--site-header-height, 94px) 0 0; background: var(--paper); }
+.page-neighborhoods .ni-hero-inner { grid-column: 1; grid-row: 1; padding-block: 54px; }
+.page-neighborhoods .ni-hero-media { position: static; grid-column: 2; grid-row: 1; min-height: 540px; grid-template-columns: 1fr 1fr; }
+.page-neighborhoods .ni-hero-img { filter: none; min-width: 0; }
+.page-neighborhoods .ni-hero-veil { display: none; }
+.page-neighborhoods .ni-hero h1 { color: var(--ink); font-size: clamp(46px,5.5vw,80px); overflow-wrap: normal; }
+.page-neighborhoods .ni-eyebrow, .page-neighborhoods .ni-hero-sub { color: #4d483f; }
+.page-neighborhoods .ni-hero-cta { color: var(--ink); border-color: var(--rule-ink); }
+.page-neighborhoods .ni-intro { padding-block: 42px; }
+.page-neighborhoods .ni-intro-copy { font-family: var(--font); font-size: 17px; max-width: 64ch; }
+.page-neighborhoods .ni-card { min-height: 0; background: transparent; overflow: visible; }
+.page-neighborhoods .ni-card-img { position: static; height: auto; aspect-ratio: 3 / 2; object-fit: cover; filter: none; transform: none; }
+.page-neighborhoods .ni-card:hover .ni-card-img, .page-neighborhoods .ni-card:focus-visible .ni-card-img { filter: none; transform: none; }
+.page-neighborhoods .ni-card-veil, .page-neighborhoods .ni-card-topics { display: none; }
+.page-neighborhoods .ni-card-body { height: auto; padding: 24px 0 0; }
+.page-neighborhoods .ni-card-index { position: static; margin-bottom: 16px; }
+.page-neighborhoods .ni-card-line { max-width: 48ch; font-size: 16px; }
+.page-neighborhoods .ni-guide-links { gap: 32px; }
+.page-neighborhoods .ni-hero-cta:focus-visible { outline-color: var(--ink); }
+@media (max-width: 1000px) {
+  .page-neighborhoods .ni-hero, .page-guide .np-hero { grid-template-columns: 1fr; }
+  .page-neighborhoods .ni-hero-inner, .page-guide .np-hero-inner { grid-column: 1; grid-row: 1; padding-block: 36px; }
+  .page-neighborhoods .ni-hero-media, .page-guide .np-hero-img { grid-column: 1; grid-row: 2; min-height: 0; height: 380px; }
+  .page-guide .np-hero h1 { font-size: clamp(54px,8vw,80px); }
+  .page-guide .np-back { margin-bottom: 20px; }
+  .page-guide .np-hero-sub { max-width: 60ch; }
+  .page-guide .np-school-layout { grid-template-columns: 1fr; }
+  .page-guide .np-school-intro { position: static; }
+  .page-guide .np-school-note .np-links { flex-direction: row; gap: 12px 28px; }
+  .page-guide .np-school-note { padding-bottom: 0; }
+  .page-guide .np-amenity-editorial { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 28px; }
+}
+@media (max-width: 620px) {
+  .page-guide .np-hero-img { height: auto; aspect-ratio: 3 / 2; }
+  .page-neighborhoods .ni-hero-media { height: 260px; }
+  .page-neighborhoods .ni-hero-img:first-child { display: block; }
+  .page-neighborhoods .ni-hero h1 { font-size: clamp(36px,9vw,54px); }
+  .page-neighborhoods .ni-hero-sub { margin-bottom: 20px; }
+  .page-guide .np-section-nav { gap: 22px; scrollbar-width: thin; }
+  .page-guide .np-section-nav::-webkit-scrollbar { display: block; height: 3px; }
+  .page-guide .np-section-nav::-webkit-scrollbar-thumb { background: #8b8376; }
+  .page-guide .np-amenity-editorial { grid-template-columns: 1fr; }
+  .page-guide .np-amenity-photo { position: static; max-width: 440px; }
+  .page-guide .np-school-list li { grid-template-columns: 24px minmax(0,1fr); }
+  .page-guide .np-school-list li > p:nth-of-type(2) { grid-column: 2; }
+  .page-guide .np-school-list li::before { grid-row: 1 / 4; }
+  .page-guide .np-school-list h3 { font-size: 23px; }
+  .page-guide .np-map-expand { font-size: 14px; }
+}
+
+
+/* September 29, 2026 — compact Neighborhood Intelligence pilot.
+   The hub is an index; Lincoln Park is the template for the shorter guide. */
+.page-neighborhoods .ni-featured { padding-top: clamp(58px, 6vw, 86px); }
+.page-neighborhoods .ni-sect-head { margin-bottom: clamp(26px, 3vw, 40px); }
+.page-neighborhoods .ni-card-line { margin-bottom: 14px; }
+.page-neighborhoods .ni-card-go { margin-top: 4px; }
+
+.compact-guide .np-section-nav { justify-content: center; }
+.compact-guide .np-essentials { padding-block: clamp(68px, 8vw, 112px); }
+.compact-guide .np-essentials-head {
+  display: grid;
+  grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr);
+  gap: 18px clamp(32px,5vw,76px);
+  align-items: start;
+  margin-bottom: clamp(42px,5vw,70px);
+}
+.compact-guide .np-essentials-head .np-sect-label { grid-column: 1; grid-row: 1 / span 2; }
+.compact-guide .np-essentials-head .np-h2,
+.compact-guide .np-essentials-head .np-body { grid-column: 2; }
+.compact-guide .np-essentials-head .np-body { max-width: 58ch; margin: 0; }
+.compact-guide .np-essentials-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  border-top: 1px solid var(--rule-ink);
+}
+.compact-guide .np-pillar { padding: 30px 30px 0 0; min-width: 0; }
+.compact-guide .np-pillar + .np-pillar { border-left: 1px solid var(--rule-ink); padding-left: 30px; }
+.compact-guide .np-pillar-index {
+  margin: 0 0 28px;
+  font: 500 11px/1.3 var(--font);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+}
+.compact-guide .np-pillar h3 {
+  margin: 0 0 14px;
+  font: 400 clamp(25px,2.4vw,34px)/1.18 var(--serif);
+  color: var(--ink);
+}
+.compact-guide .np-pillar > p:not(.np-pillar-index) {
+  margin: 0 0 26px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #514b42;
+}
+.compact-guide .np-compact-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-ink); }
+.compact-guide .np-compact-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--rule-ink);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.compact-guide .np-compact-list a { color: var(--ink); text-decoration: none; }
+.compact-guide .np-compact-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.compact-guide .np-compact-list span { color: var(--muted-ink); text-align: right; font-size: 12px; }
+.compact-guide .np-pillar-action {
+  display: inline-flex;
+  margin-top: 18px;
+  min-height: 44px;
+  align-items: center;
+  color: var(--ink);
+  font-size: 13px;
+  text-underline-offset: 4px;
+}
+.compact-guide #context { padding-block: clamp(68px,8vw,108px); }
+.compact-guide .np-housing-compact { padding-block: clamp(68px,8vw,108px); }
+.compact-guide .np-compact-section-head { max-width: 760px; margin-bottom: 40px; }
+.compact-guide .np-compact-section-head .np-h2 { margin-bottom: 16px; }
+.compact-guide .np-stock--compact { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; }
+.compact-guide .np-stock--compact article { padding: 22px 0; border-top: 1px solid var(--rule-ink); }
+.compact-guide .np-stock--compact h3 { font-size: 23px; margin-bottom: 9px; }
+.compact-guide .np-stock--compact p { font-size: 15px; line-height: 1.65; }
+.compact-guide .np-note--compact { padding-block: clamp(72px,9vw,124px); }
+.compact-guide .np-note--compact .np-sect-label {
+  color: rgba(237,232,222,.58);
+  border-top: 1px solid rgba(237,232,222,.18);
+}
+.compact-guide .np-note-compact-inner { max-width: 900px; margin: 0 auto; padding-top: 42px; }
+.compact-guide .np-note-compact-inner h2 {
+  margin: 0 0 28px;
+  color: var(--bone);
+  font: 400 clamp(34px,4.6vw,62px)/1.08 var(--serif);
+}
+.compact-guide .np-note-compact-inner blockquote {
+  margin: 0;
+  max-width: 28ch;
+  color: var(--bone);
+  font: 400 clamp(24px,3vw,40px)/1.35 var(--serif);
+}
+.compact-guide .np-note-attr { margin-top: 24px; }
+.compact-guide .np-note-links { margin: 38px 0 0; color: rgba(237,232,222,.68); font-size: 14px; line-height: 1.8; }
+.compact-guide .np-note-links a { color: var(--bone); text-underline-offset: 5px; }
+.compact-guide #nearby-work { display: none; }
+
+@media (max-width: 900px) {
+  .compact-guide .np-essentials-head { grid-template-columns: 1fr; }
+  .compact-guide .np-essentials-head .np-sect-label,
+  .compact-guide .np-essentials-head .np-h2,
+  .compact-guide .np-essentials-head .np-body { grid-column: 1; grid-row: auto; }
+  .compact-guide .np-essentials-grid { grid-template-columns: 1fr; }
+  .compact-guide .np-pillar { padding: 28px 0 36px; }
+  .compact-guide .np-pillar + .np-pillar { border-left: 0; border-top: 1px solid var(--rule-ink); padding-left: 0; }
+}
+@media (max-width: 620px) {
+  .page-neighborhoods .ni-featured { padding-top: 54px; }
+  .compact-guide .np-section-nav { justify-content: flex-start; }
+  .compact-guide .np-stock--compact { grid-template-columns: 1fr; gap: 0; }
+  .compact-guide .np-note-compact-inner { padding-top: 30px; }
+}
+
+
+/* Old Town expansion */
+.page-neighborhoods .ni-card--half { grid-column: 1 / -1; margin-top: 30px; }
+.page-neighborhoods .ni-card--half .ni-card-img { aspect-ratio: 16 / 7; object-position: center 48%; }
+.compact-guide .np-orientation { padding-block: clamp(72px,8vw,112px); }
+.compact-guide .np-orientation .np-compact-section-head { color: var(--bone); }
+.compact-guide .np-orientation .np-sect-label,
+.compact-guide .np-orientation .np-h2 { color: var(--bone); }
+.compact-guide .np-orientation .np-body { color: rgba(237,232,222,.76); }
+.compact-guide .np-orientation-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  margin-top: 42px;
+  border-top: 1px solid rgba(237,232,222,.2);
+}
+.compact-guide .np-orientation-grid article { padding: 28px 28px 0 0; }
+.compact-guide .np-orientation-grid article + article { border-left: 1px solid rgba(237,232,222,.2); padding-left: 28px; }
+.compact-guide .np-orientation-grid h3 { margin: 0 0 12px; color: var(--bone); font: 400 26px/1.2 var(--serif); }
+.compact-guide .np-orientation-grid p { margin: 0 0 18px; color: rgba(237,232,222,.7); font-size: 15px; line-height: 1.7; }
+.compact-guide .np-orientation-grid .np-link { color: var(--bone); }
+@media (max-width: 900px) {
+  .compact-guide .np-orientation-grid { grid-template-columns: 1fr; }
+  .compact-guide .np-orientation-grid article { padding: 24px 0 30px; }
+  .compact-guide .np-orientation-grid article + article { border-left: 0; border-top: 1px solid rgba(237,232,222,.2); padding-left: 0; }
+}
+@media (max-width: 620px) {
+  .page-neighborhoods .ni-card--half { margin-top: 0; }
+  .page-neighborhoods .ni-card--half .ni-card-img { aspect-ratio: 3 / 2; }
+}
+
+
+/* Text-only housing treatment used when a neighborhood-specific residential photo is not verified. */
+.compact-guide .np-housing-text {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 0 36px;
+  border-top: 1px solid var(--rule-ink);
+}
+.compact-guide .np-housing-text article { padding: 24px 0; border-bottom: 1px solid var(--rule-ink); }
+.compact-guide .np-housing-text h3 { margin: 0 0 10px; font: 400 24px/1.2 var(--serif); }
+.compact-guide .np-housing-text p { margin: 0; max-width: 48ch; font-size: 15px; line-height: 1.7; color: #514b42; }
+@media (min-width: 621px) {
+  .page-neighborhoods .ni-card--half { grid-column: span 6; }
+  .page-neighborhoods .ni-card--half .ni-card-img { aspect-ratio: 3 / 2; }
+}
+@media (max-width: 620px) {
+  .compact-guide .np-housing-text { grid-template-columns: 1fr; }
+}
+
+
+/* September 30, 2026 — Market Notes table */
+.page-guide .np-market-notes { padding-block: clamp(68px,8vw,112px); }
+.page-guide .np-market-head {
+  display: grid;
+  grid-template-columns: minmax(0,.65fr) minmax(0,1.35fr);
+  gap: 16px clamp(30px,5vw,72px);
+  align-items: start;
+  margin-bottom: 42px;
+}
+.page-guide .np-market-head .np-sect-label { grid-column: 1; grid-row: 1 / span 2; }
+.page-guide .np-market-head .np-h2,
+.page-guide .np-market-head .np-body { grid-column: 2; }
+.page-guide .np-market-head .np-h2 { margin-bottom: 10px; }
+.page-guide .np-market-head .np-body { max-width: 60ch; margin: 0; }
+.page-guide .np-market-table-wrap {
+  border-top: 1px solid var(--rule-ink);
+  overflow-x: auto;
+}
+.page-guide .np-market-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  color: var(--ink);
+  font-family: var(--font);
+}
+.page-guide .np-market-table caption {
+  caption-side: top;
+  padding: 18px 0 16px;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted-ink);
+  letter-spacing: .04em;
+}
+.page-guide .np-market-table th,
+.page-guide .np-market-table td {
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--rule-ink);
+  vertical-align: middle;
+}
+.page-guide .np-market-table thead th {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+  text-align: right;
+}
+.page-guide .np-market-table thead th:first-child,
+.page-guide .np-market-table tbody th { text-align: left; }
+.page-guide .np-market-table tbody th {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--ink);
+}
+.page-guide .np-market-table tbody td {
+  width: 22%;
+  text-align: right;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.page-guide .np-market-rule {
+  margin: 16px 0 0;
+  max-width: 62ch;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--muted-ink);
+}
+.page-guide .np-market-notes[data-status="pending"] .np-market-table td {
+  color: var(--muted-ink);
+}
+@media (max-width: 720px) {
+  .page-guide .np-market-head { grid-template-columns: 1fr; }
+  .page-guide .np-market-head .np-sect-label,
+  .page-guide .np-market-head .np-h2,
+  .page-guide .np-market-head .np-body { grid-column: 1; grid-row: auto; }
+  .page-guide .np-market-table th,
+  .page-guide .np-market-table td { padding-inline: 10px; }
+}
