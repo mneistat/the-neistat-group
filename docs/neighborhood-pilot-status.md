@@ -136,3 +136,48 @@ Added North Center and Roscoe Village using the compact guide pattern and added 
 - North Center uses the verified 2013 Audubon School Commons photograph. Roscoe Village uses Warren LeMay’s 2024 Lane Tech photograph under CC BY-SA 2.0, with attribution in the page footer.
 
 All six neighborhood guides now exist in the preview set: Lincoln Park, Lakeview, Old Town, Wrigleyville, North Center and Roscoe Village.
+
+
+## September 30, 2026 — boundaries first and MLS-backed Market Notes
+
+Matt approved a new guide order and removed three content categories from all six neighborhood pages.
+
+Visible order:
+1. Boundaries / orientation
+2. Parks · Schools · Local Life
+3. Market Notes
+4. Contact
+
+Removed from the visible guide pages:
+- Housing
+- Matthew's broker note
+- Selected Work
+
+Market Notes now uses one consistent table:
+- Condo · Studio
+- Condo · 1 BR
+- Condo · 2 BR
+- Condo · 3 BR
+- Condo · 4+ BR
+- Townhome
+- Single-family
+- 2–4 unit
+- 5+ unit / multifamily
+- Land
+
+Columns are Housing type, Closed sales, and Average sale price. The intended period is trailing 12 months inside each guide boundary. Values remain deliberately blank in the preview until a verified MRED closed-sales export is supplied. Average sale price will be suppressed when fewer than three closed sales fall within a row.
+
+Required MRED export fields, where available:
+- MLS number
+- street address
+- city / ZIP
+- closed date
+- closed price
+- property type / subtype
+- bedrooms
+- number of units
+- lot size / land designation
+
+Lincoln Park is the first data-validation pilot. Once the classification rules reconcile against its export, use the same methodology for Lakeview, Old Town, Wrigleyville, North Center, and Roscoe Village. Informal districts must use the guide boundary rather than a broader community-area substitute.
+
+This remains preview-only until separately approved for production.
