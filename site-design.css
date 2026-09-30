@@ -423,3 +423,220 @@ button, input, select, textarea { font: inherit; }
   .work-directory, .np-section-nav { display: none; }
   .sp-check { padding: 0; }
 }
+
+
+/* September 30, 2026 — coordinated advisory-page polish */
+/* Buying, Seller Strategy and About use the same editorial rhythm without changing their approved content. */
+
+/* Buying Process: chapters, not a manual. */
+.page-buying-process .bp-hero {
+  min-height: 0;
+  padding: calc(var(--site-header-height, 94px) + 58px) var(--page-gutter) 72px;
+}
+.page-buying-process .bp-hero-inner {
+  max-width: var(--page-width);
+  display: grid;
+  grid-template-columns: minmax(0,1.15fr) minmax(280px,.85fr);
+  gap: 24px 8%;
+  align-items: end;
+}
+.page-buying-process .bp-eyebrow { grid-column: 1 / -1; margin-bottom: 8px; font-size: 12px; }
+.page-buying-process .bp-h1 {
+  margin: 0;
+  max-width: 11ch;
+  font-family: var(--serif);
+  font-size: clamp(48px,6.4vw,92px);
+  line-height: 1.02;
+}
+.page-buying-process .bp-sub {
+  max-width: 42ch;
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.page-buying-process .bp-steps-section {
+  padding: var(--section-space) var(--page-gutter);
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 1px solid var(--rule-ink);
+}
+.page-buying-process .bp-inner { max-width: var(--page-width); }
+.page-buying-process .bp-section-eyebrow { font-size: 12px; margin-bottom: 18px; }
+.page-buying-process .bp-h2 {
+  font-family: var(--serif);
+  font-size: clamp(34px,4vw,58px);
+  line-height: 1.08;
+  max-width: 18ch;
+  margin-bottom: 18px;
+}
+.page-buying-process .bp-intro { font-size: 17px; max-width: 56ch; margin-bottom: 48px; }
+.page-buying-process .bp-steps {
+  column-gap: clamp(34px,5vw,76px);
+  border-bottom-color: var(--rule-ink);
+}
+.page-buying-process .bp-step {
+  padding: 30px 0 34px;
+  border-top-color: var(--rule-ink);
+}
+.page-buying-process .bp-step-num {
+  margin-bottom: 20px;
+  font: 500 12px/1 var(--font);
+  letter-spacing: .12em;
+  color: var(--muted-ink);
+}
+.page-buying-process .bp-step-title {
+  font-family: var(--serif);
+  font-size: clamp(22px,2.2vw,30px);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.page-buying-process .bp-step-copy { font-size: 16px; line-height: 1.75; color: #514b42; }
+.page-buying-process #financing-basics { background: var(--bone); }
+.page-buying-process #offer-terms { background: var(--ink); color: var(--bone); border-color: rgba(237,232,222,.14); }
+.page-buying-process #offer-terms .bp-section-eyebrow,
+.page-buying-process #offer-terms .bp-step-num { color: var(--muted-paper); }
+.page-buying-process #offer-terms .bp-h2,
+.page-buying-process #offer-terms .bp-step-title { color: var(--bone); }
+.page-buying-process #offer-terms .bp-intro,
+.page-buying-process #offer-terms .bp-step-copy { color: rgba(237,232,222,.76); }
+.page-buying-process #offer-terms .bp-steps,
+.page-buying-process #offer-terms .bp-step { border-color: rgba(237,232,222,.18); }
+.page-buying-process #offer-terms .bp-step-copy a { color: var(--bone); }
+.page-buying-process #move-plan { background: var(--paper); }
+.page-buying-process .bp-cta-inner {
+  max-width: var(--page-width);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 8%;
+  align-items: start;
+}
+.page-buying-process .bp-cta-h2 { margin: 0; max-width: 12ch; }
+.page-buying-process .bp-cta-copy { font-size: 17px; }
+
+/* Seller Strategy: make proof and decision pillars read as one system. */
+.page-seller-strategy .ss-hero {
+  min-height: 0;
+  padding: calc(var(--site-header-height, 94px) + 58px) 0 72px;
+}
+.page-seller-strategy .ss-hero-inner { max-width: var(--page-width); }
+.page-seller-strategy .ss-eyebrow { font-size: 12px; }
+.page-seller-strategy .ss-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(48px,6.1vw,88px);
+  line-height: 1.03;
+  margin-bottom: 30px;
+}
+.page-seller-strategy .ss-hero-foot {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 20px 40px;
+  align-items: end;
+  max-width: 760px;
+}
+.page-seller-strategy .ss-hero-sub { font-size: 17px; line-height: 1.7; }
+.page-seller-strategy .ss-band { padding-block: var(--section-space); }
+.page-seller-strategy .ss-wrap { max-width: var(--page-width); }
+.page-seller-strategy .ss-proof-head {
+  display: grid;
+  grid-template-columns: .65fr 1.35fr;
+  gap: 20px 7%;
+  align-items: start;
+  margin-bottom: 46px;
+}
+.page-seller-strategy .ss-proof-head .ss-label { margin: 0; }
+.page-seller-strategy .ss-proof-head .ss-h2 { margin: 0; }
+.page-seller-strategy .ss-proof-grid {
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule-ink);
+}
+.page-seller-strategy .ss-deal {
+  padding: 28px 28px 12px 0;
+  border: 0;
+  background: transparent;
+}
+.page-seller-strategy .ss-deal + .ss-deal {
+  border-left: 1px solid var(--rule-ink);
+  padding-left: 28px;
+}
+.page-seller-strategy .ss-deal h3 { font-size: 25px; }
+.page-seller-strategy .ss-deal-fig { font-size: clamp(28px,3vw,40px); }
+.page-seller-strategy .ss-pillar-grid {
+  grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr);
+  gap: clamp(44px,8vw,110px);
+  align-items: start;
+}
+.page-seller-strategy .ss-pillar-grid > :first-child { position: sticky; top: calc(var(--site-header-height, 94px) + 34px); }
+.page-seller-strategy .ss-list { border-top: 1px solid currentColor; }
+.page-seller-strategy .ss-list li { padding-block: 26px; }
+.page-seller-strategy .ss-list h3 { font-size: 25px; }
+.page-seller-strategy .ss-list p { max-width: 52ch; }
+.page-seller-strategy .ss-aside { padding: 42px var(--page-gutter); border-top: 1px solid var(--rule-ink); }
+.page-seller-strategy .ss-aside .ss-wrap { display: flex; justify-content: space-between; gap: 24px 48px; align-items: center; }
+
+/* About: editorial biography, not stacked full-screen scenes. */
+.page-about .scene-portrait-text {
+  padding-block: clamp(72px,8vw,112px);
+  border-bottom: 1px solid var(--rule-ink);
+}
+.page-about .portrait-label { font-size: 12px; margin-bottom: 34px; }
+.page-about .portrait-lead {
+  max-width: 16ch;
+  font-size: clamp(32px,3.6vw,52px);
+  line-height: 1.22;
+}
+.page-about .portrait-body { font-size: 17px; line-height: 1.78; }
+.page-about .scene-family { min-height: 0; }
+.page-about .family-story-inner {
+  max-width: var(--page-width);
+  grid-template-columns: minmax(0,1.15fr) minmax(260px,.85fr);
+  align-items: start;
+}
+.page-about .family-story-inner blockquote {
+  text-align: left;
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(38px,4.8vw,68px);
+  line-height: 1.08;
+}
+.page-about .family-story-inner cite { text-align: left; }
+.page-about .family-story-copy { margin-top: 40px; max-width: 54ch; }
+.page-about .scene-story {
+  min-height: 0;
+  padding-block: clamp(76px,9vw,124px);
+}
+.page-about .scene-story > * { width: min(100%, 820px); }
+.page-about .story-label { font-size: 12px; }
+.page-about .story-text,
+.page-about .story-range { font-size: 17px; line-height: 1.78; }
+.page-about .scene-voice { min-height: 0; padding-block: clamp(66px,8vw,104px); }
+.page-about .scene.scene-quote.scene-voice blockquote {
+  font-size: clamp(24px,2.6vw,36px);
+  max-width: 30em;
+}
+
+@media (max-width: 900px) {
+  .page-buying-process .bp-hero-inner,
+  .page-buying-process .bp-cta-inner { grid-template-columns: 1fr; }
+  .page-buying-process .bp-h1 { max-width: 13ch; }
+  .page-buying-process .bp-sub { max-width: 56ch; }
+  .page-seller-strategy .ss-pillar-grid { grid-template-columns: 1fr; gap: 40px; }
+  .page-seller-strategy .ss-pillar-grid > :first-child { position: static; }
+  .page-seller-strategy .ss-proof-grid { grid-template-columns: 1fr; }
+  .page-seller-strategy .ss-deal { padding: 26px 0; }
+  .page-seller-strategy .ss-deal + .ss-deal { border-left: 0; border-top: 1px solid var(--rule-ink); padding-left: 0; }
+  .page-about .family-story-inner { grid-template-columns: 1fr; }
+  .page-about .family-story-photo { max-width: 420px; }
+}
+@media (max-width: 640px) {
+  .page-buying-process .bp-hero,
+  .page-seller-strategy .ss-hero { padding-bottom: 54px; }
+  .page-buying-process .bp-h1,
+  .page-seller-strategy .ss-hero h1 { font-size: clamp(44px,12vw,66px); }
+  .page-buying-process .bp-steps { grid-template-columns: 1fr; }
+  .page-seller-strategy .ss-proof-head { grid-template-columns: 1fr; margin-bottom: 32px; }
+  .page-seller-strategy .ss-hero-foot { grid-template-columns: 1fr; }
+  .page-seller-strategy .ss-aside .ss-wrap { display: block; }
+  .page-about .scene-portrait-text { gap: 24px; }
+  .page-about .family-story-inner blockquote { font-size: 42px; }
+}
