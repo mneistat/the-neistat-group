@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hampden board brochure: editorial print edition, September 25, 2026.
+"""Hampden board brochure: editorial print edition, October 1, 2026.
 Run python3 generate.py --output path/to/brochure.pdf.
 Requires reportlab, svglib and Pillow. Assets and fonts are bundled.
 """
@@ -94,7 +94,7 @@ def heading(kicker,title,sub=None):
 base(1,'Board advisory')
 logo('reference-0.svg',M,30,154)
 label('BOARD ADVISORY',412,34,size=7,space=1)
-p('September 25, 2026',412,48,156,size=8.5,lead=12,color=MUTED)
+p('October 1, 2026',412,48,156,size=8.5,lead=12,color=MUTED)
 label('LINCOLN PARK / CHICAGO',M,91,color=ACCENT)
 p('2629 North<br/>Hampden Court',M,107,450,size=43,lead=40,font='Cormorant')
 photo(M,204,CW,190,focus=.72)
@@ -160,7 +160,7 @@ p('Sources: <link href="'+FANNIE+'" color="#8C554A">Fannie Mae LL-2026-03</link>
 p('Reviewed September 25, 2026. No building eligibility determination has been made. The reserve rule does not automatically mean a 15% increase in dues.',M,706,CW,size=8.4,lead=11.5,color=MUTED)
 c.showPage()
 
-# TERMS AND REQUEST: fees, five-item checklist, approvals and contact.
+# TERMS AND REQUEST: fees, seven-item checklist, approvals and advisor details.
 base(4,'Commission, records & next steps')
 heading('GETTING STARTED','Clear terms. A measured process.')
 rect(M,156,CW,92,PAPER)
@@ -179,18 +179,20 @@ items=[
 ('Capital improvements','Work completed in the last five years and work planned or needed, with costs if available.'),
 ('Building ages','Roof, elevator, masonry, windows, and boiler.'),
 ('Maintenance','Sprinkler updates needed and when the driveway was last paved.'),
-('Current rents','Unit numbers and monthly rents from willing owners. No tenant names needed.')]
-t=422
+('Current rents','Unit numbers and monthly rents from willing owners. No tenant names needed.'),
+('Current reserves','Reserve balance and date; latest statement if available.'),
+('Ownership / parcels','Unit and parking ownership, parcel numbers, and voting shares. Reconcile 66 parcels / 67 units against the declaration.')]
+t=419
 for i,(title,body) in enumerate(items,1):
     label(f'0{i}',M,t+2,color=ACCENT,size=8,space=0)
-    y=p('<b>'+title+':</b> '+body,M+28,t,CW-28,size=10.2,lead=14)
-    t=y+9
+    y=p('<b>'+title+':</b> '+body,M+28,t,CW-28,size=9.6,lead=12.8)
+    t=y+5
 p('For lender review: budgets, reserve studies, insurance, minutes, assessment information, inspections, and ownership documents. Full checklist and lending background online.',M,588,CW,size=9.3,lead=13,color=MUTED)
 p('<b>Before owner distribution:</b> Confirm the current reserve balance, assessment range, ownership and voting schedule, the 66-parcel / 67-unit discrepancy, and financing requirements. Chicago generally requires at least 85% approval for a full-building sale unless governing documents require more. Management, counsel, and a lender should verify the applicable requirements.',M,625,CW,size=8.8,lead=11.8,color=MUTED)
 line(675)
 logo('reference-2.svg',M,691,219)
 p('Matthew Neistat',319,687,249,size=16.5,lead=19,font='Cormorant')
-p('<link href="mailto:matt@theneistatgroup.com" color="#8C554A">matt@theneistatgroup.com</link>',319,713,249,size=9.3,lead=13)
+p('matt@theneistatgroup.com',319,713,249,size=9.3,lead=13,color=ACCENT)
 p('<link href="'+SITE+'" color="#8C554A">Full presentation &amp; sources online</link> / <link href="'+CHICAGO+'" color="#8C554A">Chicago Code 13-72-085</link>',M,738,285,size=7,lead=9)
 p('Board discussion; not an appraisal or commitment to sell.',339,738,229,size=6.5,lead=9,color=MUTED)
 c.showPage()
