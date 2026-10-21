@@ -423,3 +423,52 @@ button, input, select, textarea { font: inherit; }
   .work-directory, .np-section-nav { display: none; }
   .sp-check { padding: 0; }
 }
+
+/* Approved About page layout, isolated from other preview work. */
+.page-about .scene-portrait-text {
+  padding-block: clamp(72px,8vw,112px);
+  border-bottom: 1px solid var(--rule-ink);
+}
+.page-about .portrait-label { font-size: 12px; margin-bottom: 34px; }
+.page-about .portrait-lead {
+  max-width: 16ch;
+  font-size: clamp(32px,3.6vw,52px);
+  line-height: 1.22;
+}
+.page-about .portrait-body { font-size: 17px; line-height: 1.78; }
+.page-about .scene-family { min-height: 0; }
+.page-about .family-story-inner {
+  max-width: var(--page-width);
+  grid-template-columns: minmax(0,1.15fr) minmax(260px,.85fr);
+  align-items: start;
+}
+.page-about .family-story-inner blockquote {
+  text-align: left;
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(38px,4.8vw,68px);
+  line-height: 1.08;
+}
+.page-about .family-story-inner cite { text-align: left; }
+.page-about .family-story-copy { margin-top: 40px; max-width: 54ch; }
+.page-about .scene-story {
+  min-height: 0;
+  padding-block: clamp(76px,9vw,124px);
+}
+.page-about .scene-story > * { width: min(100%, 820px); }
+.page-about .story-label { font-size: 12px; }
+.page-about .story-text,
+.page-about .story-range { font-size: 17px; line-height: 1.78; }
+.page-about .scene-voice { min-height: 0; padding-block: clamp(66px,8vw,104px); }
+.page-about .scene.scene-quote.scene-voice blockquote {
+  font-size: clamp(24px,2.6vw,36px);
+  max-width: 30em;
+}
+@media (max-width: 900px) {
+.page-about .family-story-inner { grid-template-columns: 1fr; }
+.page-about .family-story-photo { max-width: 420px; }
+}
+@media (max-width: 640px) {
+.page-about .scene-portrait-text { gap: 24px; }
+.page-about .family-story-inner blockquote { font-size: 42px; }
+}
