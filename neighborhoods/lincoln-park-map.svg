@@ -10,55 +10,55 @@
       font-family: Georgia, serif;
       font-size: clamp(20px, 2vw, 27px);
       line-height: 1.4; letter-spacing: -0.01em;
-      color: #EDE8DE; margin: 0 0 18px; max-width: 18ch;
+      color: #FFFFFF; margin: 0 0 18px; max-width: 18ch;
     }
 
     .np-map-note {
       font-family: Arial, sans-serif; font-size: 11px;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(237,232,222,0.55); margin: 0;
+      color: rgba(255,255,255,0.55); margin: 0;
     }
 
-    .np-map-land { fill: #14120D; }
+    .np-map-land { fill: #181236; }
 
-    .np-map-gridline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
+    .np-map-gridline { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 1; }
 
-    .np-map-gridline--lp { stroke: rgba(237,232,222,0.1); }
+    .np-map-gridline--lp { stroke: rgba(255,255,255,0.1); }
 
-    .np-map-lp { fill: #1D1A14; }
+    .np-map-lp { fill: #232145; }
 
-    .np-map-park { fill: #2B2E1F; }
+    .np-map-park { fill: #2B303F; }
 
-    .np-map-street { fill: none; stroke: rgba(237,232,222,0.18); stroke-width: 1.2; }
+    .np-map-street { fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 1.2; }
 
-    .np-map-street--lp { stroke: rgba(237,232,222,0.36); }
+    .np-map-street--lp { stroke: rgba(255,255,255,0.36); }
 
-    .np-map-lake { fill: #0F1317; }
+    .np-map-lake { fill: #171A28; }
 
-    .np-map-waterline { fill: none; stroke: rgba(237,232,222,0.05); stroke-width: 1; }
+    .np-map-waterline { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 1; }
 
-    .np-map-shore { fill: none; stroke: rgba(237,232,222,0.3); stroke-width: 1.2; }
+    .np-map-shore { fill: none; stroke: rgba(255,255,255,0.3); stroke-width: 1.2; }
 
-    .np-map-edge { fill: none; stroke: #EDE8DE; stroke-width: 1.6; stroke-linejoin: round; }
+    .np-map-edge { fill: none; stroke: #FFFFFF; stroke-width: 1.6; stroke-linejoin: round; }
 
     .np-map-name {
       font-family: Georgia, serif; font-size: 44px; letter-spacing: -0.01em;
-      fill: #EDE8DE; paint-order: stroke; stroke: #1D1A14; stroke-width: 6px;
+      fill: #FFFFFF; paint-order: stroke; stroke: #232145; stroke-width: 6px;
     }
 
     .np-map-k {
       font-family: Arial, sans-serif; font-size: 13px; font-weight: 500;
-      letter-spacing: 0.24em; fill: rgba(237,232,222,0.55);
+      letter-spacing: 0.24em; fill: rgba(255,255,255,0.55);
     }
 
-    .np-map-v { font-family: Georgia, serif; font-style: italic; font-size: 22px; letter-spacing: 0; fill: rgba(237,232,222,0.88); }
+    .np-map-v { font-family: Georgia, serif; font-style: italic; font-size: 22px; letter-spacing: 0; fill: rgba(255,255,255,0.88); }
 
-    .np-map-mark { fill: #EDE8DE; }
+    .np-map-mark { fill: #FFFFFF; }
 
     .np-map-ctx {
       font-family: Arial, sans-serif; font-size: 14px; font-weight: 500;
-      letter-spacing: 0.2em; fill: rgba(237,232,222,0.64);
-      paint-order: stroke; stroke: #1D1A14; stroke-width: 5px;
+      letter-spacing: 0.2em; fill: rgba(255,255,255,0.64);
+      paint-order: stroke; stroke: #232145; stroke-width: 5px;
     }
 
       .np-map-lede { max-width: 32ch; }
@@ -68,9 +68,9 @@
 
       .np-map-name { font-size: 56px; }
 
-.np-map-source { font: 13px/1.7 Arial, sans-serif; color: #c8c2b8; margin: 18px 0 0; max-width: 38ch; }
+.np-map-source { font: 13px/1.7 Arial, sans-serif; color: #A9B0BF; margin: 18px 0 0; max-width: 38ch; }
 
-.np-map-key { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 16px 0 0; color: #c8c2b8; font: 11px/1.5 Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }</style>
+.np-map-key { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 16px 0 0; color: #A9B0BF; font: 11px/1.5 Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }</style>
             <title id="np-map-title">Map of Lincoln Park</title>
             <desc id="np-map-desc">Stylized map of Lincoln Park, bounded by Diversey to the north, North Avenue to the south, Lake Michigan to the east and the river corridor to the west. Fullerton and Armitage cross the neighborhood, the lakefront park runs along its eastern edge, and Oz Park sits near the center.</desc>
             <defs>

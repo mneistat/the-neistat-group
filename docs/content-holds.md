@@ -11,3 +11,6 @@
 - Both guides now include calendar-year 2025 recorded residential sales from DePaul's Institute for Housing Studies, with property types, geography, source links, and a September 21, 2026 verification date. These are historical community-area records, not current prices or MLS market-time figures. See `neighborhood-pilot-status.md` for sources and remaining personal content.
 - Old Town, Wrigleyville, North Center, and Roscoe Village remain unpublished until the two pilots are approved.
 - Do not display cumulative career sales volume anywhere on the site, including search/social descriptions and structured data. Matt removed this metric sitewide on September 22, 2026; this supersedes the older Master Brief. Individual transaction prices remain unchanged.
+
+- November 12, 2026 branding pass: the brief asked to keep "Real estate decisions, made better." with a comma. The site uses the no-comma wording Matt approved on September 22, 2026. The approved wording was left in place and the discrepancy raised rather than resolved inside a design pass. Confirm which is correct before any production publish.
+- November 12, 2026: Euclid Circular A and Sainte Colombe are not licensed or present. The site runs on a documented system fallback until the files are supplied. Do not publish typography claims about the brand fonts until they are installed.

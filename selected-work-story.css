@@ -7,9 +7,9 @@
   gap: clamp(28px, 4vw, 64px);
   margin: 0;
   padding: 32px clamp(28px, 3vw, 46px);
-  border-top: 1px solid rgba(11, 10, 7, .16);
-  color: #0B0A07;
-  background: #F4F0E8;
+  border-top: 1px solid rgba(16,11,37, .16);
+  color: #100B25;
+  background: #FFFFFF;
 }
 .sw-story[hidden] { display: none; }
 .sw-story > div { min-width: 0; }
@@ -18,10 +18,10 @@
   font: 500 11px/1.5 var(--font);
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: #655e53;
+  color: #50596C;
 }
 .sw-story dd { margin: 0; font: 16px/1.65 var(--font); text-wrap: pretty; }
-.sw-story > div:last-child dd { font-family: Georgia, serif; font-size: 23px; line-height: 1.4; }
+.sw-story > div:last-child dd { font-family: var(--serif); font-size: 23px; line-height: 1.4; }
 .sw-story--portfolio { padding-inline: 0; }
 @media (max-width: 768px) {
   .sw-story { grid-template-columns: minmax(0, 1fr); gap: 26px; padding: 28px; }

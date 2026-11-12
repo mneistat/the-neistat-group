@@ -104,3 +104,24 @@ Matt clarified that home purchases, investment work, and advice about an existin
 About now places this approach immediately after Matthew's portrait and People First opening. The existing family paragraphs sit beside the grandfather's quote and Mason photograph. Hospitality, the 2012 real-estate start, brokerage, and established property types support the approach, with a direct link to Selected Work and its approved Wellington and Lake Street examples. Removed the competitor anecdote from this page. Client and personal quotes are unchanged. Recognition and all four press links move to the shared bottom-footnote treatment. No new service scope, transaction result, story, or career-sales total is introduced.
 
 This remains the core-content phase. The existing page design is retained with small typography additions for the hero summary and relocated family paragraphs. Preview branch only; production remains the published Buying Process navigation release. Next: coordinate the visual treatment of Buying Process, Seller Strategy, and About with the approved homepage and Selected Work design.
+
+## Brand and visual direction implemented — November 12, 2026
+
+The indigo/slate brand system is now applied across all sixteen pages on this
+preview branch. Deep indigo `#100B25` and slate grounds replace every cream,
+parchment and beige interface value; crisp white text, fine divider lines and
+restrained outlined buttons throughout. The new stacked wordmark replaces the
+previous text brand in the header and footer.
+
+Shared design tokens live in `brand.css`, which loads last on every route.
+Colour and font values are no longer declared anywhere else.
+
+The Euclid Circular A / Sainte Colombe pairing is implemented but the licensed
+font files are not in the repository and were **not** silently substituted.
+See `FONTS_REQUIRED.md`.
+
+Full record, measured contrast, verification results and one open question
+about the tagline comma: `BRAND_IMPLEMENTATION.md`.
+
+This pass is preview-only. Do not merge or promote to production without a new
+explicit instruction.

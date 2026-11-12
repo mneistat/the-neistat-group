@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0B0A07">
+  <meta name="theme-color" content="#100B25">
   <title>Recommended Vendors | The Neistat Group</title>
   <meta name="description" content="Trusted vendor recommendations from The Neistat Group — mortgage lenders, attorneys, inspectors, contractors, and more.">
   <link rel="canonical" href="https://www.theneistatgroup.com/vendors">
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=40">
   <style>
-    .vendors-hero { background: #0B0A07; padding: 120px 60px 60px; }
-    .vendors-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,222,0.55); margin-bottom: 16px; display: block; }
-    .vendors-heading { font-family: Georgia, serif; font-size: clamp(36px,5vw,56px); font-weight: 400; color: #EDE8DE; line-height: 1.1; }
+    .vendors-hero { background: #100B25; padding: 120px 60px 60px; }
+    .vendors-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; display: block; }
+    .vendors-heading { font-family: var(--serif); font-size: clamp(36px,5vw,56px); font-weight: 400; color: #FFFFFF; line-height: 1.1; }
     .vendors-heading em { font-style: italic; }
-    .vendors-sub { font-size: 14px; color: rgba(237,232,222,0.78); margin-top: 16px; max-width: 700px; line-height: 1.7; }
+    .vendors-sub { font-size: 14px; color: rgba(255,255,255,0.78); margin-top: 16px; max-width: 700px; line-height: 1.7; }
 
     .vendor-category { max-width: 960px; margin: 0 auto 80px; padding: 0 40px; }
-    .vendor-category-header { border-bottom: 1px solid rgba(237,232,222,0.15); padding-bottom: 20px; margin-bottom: 32px; }
-    .vendor-category-header h2 { font-family: Georgia, serif; font-size: clamp(28px,4vw,42px); font-weight: 400; color: #EDE8DE; margin: 0; text-align: left; }
+    .vendor-category-header { border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 20px; margin-bottom: 32px; }
+    .vendor-category-header h2 { font-family: var(--serif); font-size: clamp(28px,4vw,42px); font-weight: 400; color: #FFFFFF; margin: 0; text-align: left; }
     .vendor-category-header h2 em { font-style: italic; }
     .vendor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-    .vendor-card { display: flex; flex-direction: column; background: rgba(237,232,222,0.04); border: 1px solid rgba(237,232,222,0.08); border-radius: 10px; padding: 24px 28px; transition: border-color 0.25s ease, background 0.25s ease; }
-    .vendor-card:hover { border-color: rgba(237,232,222,0.2); background: rgba(237,232,222,0.07); }
-    .vendor-specialty { order: 1; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: rgba(237,232,222,0.75); margin-bottom: 10px; line-height: 1.4; }
-    .vendor-name { order: 2; font-family: Georgia, serif; font-size: 17px; font-weight: 400; color: #EDE8DE; opacity: 1; margin-bottom: 0; }
-    .vendor-company { order: 3; font-size: 13px; color: rgba(237,232,222,0.6); line-height: 1.5; margin-top: 4px; margin-bottom: 0; }
+    .vendor-card { display: flex; flex-direction: column; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 24px 28px; transition: border-color 0.25s ease, background 0.25s ease; }
+    .vendor-card:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); }
+    .vendor-specialty { order: 1; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: rgba(255,255,255,0.75); margin-bottom: 10px; line-height: 1.4; }
+    .vendor-name { order: 2; font-family: var(--serif); font-size: 17px; font-weight: 400; color: #FFFFFF; opacity: 1; margin-bottom: 0; }
+    .vendor-company { order: 3; font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; margin-top: 4px; margin-bottom: 0; }
     .vendor-contacts { order: 4; display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
-    .vendor-contact { font-size: 13px; color: rgba(237,232,222,0.7); text-decoration: none; transition: color 0.2s; }
-    .vendor-contact:hover { color: #EDE8DE; }
-    .vendor-disclaimer { max-width: 960px; margin: 0 auto 80px; padding: 32px 40px; border-top: 1px solid rgba(237,232,222,0.1); font-size: 13px; color: rgba(237,232,222,0.78); line-height: 1.7; }
+    .vendor-contact { font-size: 13px; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .vendor-contact:hover { color: #FFFFFF; }
+    .vendor-disclaimer { max-width: 960px; margin: 0 auto 80px; padding: 32px 40px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.78); line-height: 1.7; }
     @media (max-width: 768px) { .vendor-category { padding: 0 24px; } .vendor-grid { grid-template-columns: 1fr; } .vendor-disclaimer { padding: 24px; } }
   </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGNGVERDHQ"></script>
@@ -51,21 +51,26 @@
 <meta property="og:image" content="https://res.cloudinary.com/dpwcyrxkz/image/upload/v1776176994/IMG_6224_bydco5.jpg">
 <meta property="og:image:width" content="828">
 <meta property="og:image:height" content="1792">
-  <link rel="stylesheet" href="/site-design.css?v=1">
+  <link rel="stylesheet" href="/site-design.css?v=4">
   <script src="/site-experience.js?v=1" defer></script>
+  <link rel="stylesheet" href="/brand.css?v=1">
 </head>
 <body class="site-design page-vendors">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <nav class="nav" id="nav">
-    <a href="index.html" class="nav-brand">The Neistat Group</a>
+    <a href="index.html" class="nav-brand" aria-label="The Neistat Group — home"><img class="wordmark" src="/neistat-wordmark-white.svg" alt="The Neistat Group" width="1000" height="395" decoding="async"></a>
     <div class="nav-links">
-      <a href="selected-work.html" class="nav-link">Selected Work</a>
-      <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
-      <a href="buying-process.html" class="nav-link">Buying Process</a>
-      <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
-      <a href="calculator.html" class="nav-link">Affordability</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="contact.html" class="nav-cta-btn">Contact</a>
+      <span class="nav-set nav-set--left">
+        <a href="selected-work.html" class="nav-link">Selected Work</a>
+        <a href="neighborhoods.html" class="nav-link">Neighborhoods</a>
+        <a href="buying-process.html" class="nav-link">Buying Process</a>
+      </span>
+      <span class="nav-set nav-set--right">
+        <a href="seller-strategy.html" class="nav-link">Seller Strategy</a>
+        <a href="calculator.html" class="nav-link">Affordability</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-cta-btn">Contact</a>
+      </span>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
@@ -200,7 +205,7 @@
 
   <footer class="footer">
     <div class="footer-grid">
-      <div><div class="footer-brand">The Neistat Group</div><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
+      <div><img class="footer-wordmark" src="/neistat-wordmark-white.svg" alt="The Neistat Group" width="1000" height="395" decoding="async"><div class="footer-address">425 W. North Avenue<br>Chicago, Illinois 60610</div></div>
       <div class="footer-col"><div class="footer-col-label">Navigate</div>
         <a href="index.html">Home</a>
         <a href="selected-work.html">Selected Work</a>

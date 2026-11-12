@@ -1,0 +1,175 @@
+# Brand and visual direction — November 12, 2026
+
+This records the indigo/slate brand implementation on `codex/website-audit-fixes`.
+It **supersedes** the earlier cream/parchment ("Carbon / Bone / Sand") palette,
+the previous text wordmark, and the previous Gelasio + Liberation Sans pairing.
+Preview only. Do not merge to production or publish without a separate
+instruction from Matt.
+
+## Direction
+
+Sophisticated, architectural, spacious, approachable. Deep indigo and neutral
+slate grounds, crisp white text, fine divider lines, restrained outlined
+buttons, strong architectural photography, comfortable reading sizes. Douglas
+Elliman is the typography and colour reference. The Neistat Group's identity,
+content and site functionality are unchanged.
+
+## Colour system
+
+Tokens live in **`brand.css`**, which loads last on every route so the system
+applies everywhere. `styles.css` and `site-design.css` no longer declare colours
+of their own; their old variable names are kept as aliases that point at brand
+tokens.
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--indigo` | `#100B25` | Primary ground |
+| `--slate` | `#323745` | Panels, raised surfaces |
+| `--slate-muted` | `#50596C` | Bands, rules, muted ink on white |
+| `--white` | `#FFFFFF` | Primary text on dark |
+
+Derived, only where the four cannot carry a role alone — each drawn from the
+same slate hue family:
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--indigo-deep` | `#0B0719` | Footers, overlay scrims |
+| `--indigo-raised` | `#232145` | Raised card on indigo |
+| `--slate-tint` | `#F2F3F6` | Lightest neutral surface on white |
+| `--slate-line` | `#DCDFE7` | Hairline rule on white |
+| `--slate-soft` | `#A9B0BF` | Muted text on indigo or slate |
+
+Cream, parchment and beige are gone from the interface: **947 colour values**
+across 22 files were mapped to the new ramps, including three inside
+URL-encoded SVG data URIs. Relative lightness within each ramp was preserved so
+existing layering still reads correctly. The only colours deliberately left
+alone are pure white, pure black, and the two form-error reds
+(`#8D2B2B`, `#E8A5A5`).
+
+The deep indigo is not an approximation: the supplied wordmark proof's dark
+panel samples to exactly `rgb(16, 11, 37)`, and the mockup's slate band samples
+to `#4B546A`, which `--slate-muted` matches.
+
+### Measured contrast (WCAG 2.1)
+
+| Pair | Ratio | Level |
+| --- | ---: | --- |
+| White on indigo | 19.15 | AAA |
+| White on slate | 11.88 | AAA |
+| White on muted slate | 7.03 | AAA |
+| Indigo on white | 19.15 | AAA |
+| Muted slate on white | 7.03 | AAA |
+| `--slate-soft` on indigo | 8.80 | AAA |
+| `--slate-soft` on slate | 5.46 | AA |
+
+## Typography
+
+Euclid Circular A (Light 300 for major sans headings and body; Regular 400 for
+navigation, labels and buttons) paired with Sainte Colombe (Regular 400 for
+selected editorial headings; italic for short supporting lines).
+
+**The licensed font files are not present and nothing was substituted for them
+silently.** See `FONTS_REQUIRED.md` for what to buy and how to drop it in —
+the real family names already lead every stack, so installation is a one-step
+change. Every hardcoded `Georgia, serif` and `-apple-system` stack in the
+codebase was routed through `--serif` and `--font`, so there is now exactly one
+place to change.
+
+Balance, as applied:
+
+- The homepage opening is spaced uppercase Euclid Light — not italic.
+- Section headings are upright Sainte Colombe, sentence case.
+- Eyebrows, labels and navigation are spaced uppercase Euclid Regular.
+- Italic serif is reserved for short supporting lines, including
+  **People First. Always.**
+- Not every heading is uppercase and not every headline is italic.
+
+## Wordmark
+
+`neistat-wordmark-white.svg`, `neistat-wordmark-indigo.svg` and
+`neistat-wordmark.svg` (inherits `currentColor`) were vectorised directly from
+the supplied proof, so the proportions and letterforms match it rather than
+approximating it with a font: small spaced uppercase THE, prominent uppercase
+serif NEISTAT, smaller spaced uppercase GROUP, all three optically centred.
+19 outlined subpaths, `viewBox 0 0 1000 394.89`, ~20 KB, resolution independent
+and font independent.
+
+The two-background proof image is **not** used as the site logo. White is used
+on dark grounds, indigo on white.
+
+Placement: centred in the desktop header between the two navigation sets;
+left-aligned beside the hamburger below 1251px; and in the footer of every
+interior page. Rendered height is 30–40px desktop, 28px mobile — checked in
+both.
+
+Jameson Sotheby's International Realty branding and the required attribution
+are unchanged. The Jameson mark stays pure white or pure black; recolouring it
+is a compliance risk.
+
+## Application
+
+`brand.css` is loaded last on all 16 pages: header, mobile navigation, footer,
+homepage, six neighborhood guides, the neighborhoods hub, Selected Work, Seller
+Strategy, Buying Process, Selling Process, Affordability, About, Contact and
+Vendors — plus forms, cards, buttons and interactive states.
+
+The header now centres the wordmark between two navigation sets. **Every
+existing navigation item, its order and its destination are unchanged**; the
+split is presentational, lives inside `.nav-links`, and collapses below the
+hamburger breakpoint, so `nav.js` and the mobile menu are untouched.
+
+The indigo → slate transition from the reference appears on the homepage: the
+asset-consulting section sits on charcoal slate and Neighborhood Intelligence on
+the slate band gradient. **No new section, link row or content was added to
+carry it** — the treatment was applied to sections that already existed, which
+keeps the September 29 decision to simplify the reading path intact.
+
+## Preserved
+
+Approved content, transaction facts, neighborhood structure (boundaries first;
+parks, schools and local amenities emphasised), verified data, calculators,
+forms, publication gates and generated proof are unchanged. No previously
+removed section was restored. No property fact, market statistic, testimonial
+or credential was invented.
+
+## Verification
+
+- **Contrast:** an automated WCAG AA pass over every rendered text node on all
+  16 pages — **0 failures**. Seven homepage elements failed on the first pass
+  (muted ink on the new dark ground) and were fixed at source.
+- **Layout:** desktop 1440×900 and phone 390×844 on all 16 pages — no
+  horizontal scroll, no clipped headings, no overlap.
+- **Wordmark:** loads on every page; centre offset 0px from the viewport centre
+  at desktop width.
+- **Images:** every local image loads on every page. Four remote Wikimedia
+  hotlinks on the neighborhoods hub could not be fetched from the build
+  container's network; they are pre-existing and unrelated to this pass.
+- **Mobile menu:** opens, shows all eight links, retains the wordmark.
+- **Regression suite:** 20 of 22 pass. Tests 3 and 21 also fail on the branch
+  **before** this work — they are pre-existing and were not introduced here.
+  See below.
+- `git diff --check` clean; all 16 pages parse cleanly.
+
+### Pre-existing failures, not addressed here
+
+1. **Test 3** — guide section indicator does not clear `aria-current` from the
+   first link on scroll (`site-experience.js`).
+2. **Test 21** — `scripts/build-selected-work.mjs --check` reports generated
+   content as stale. Regenerating it would rewrite gated transaction proof, so
+   it was deliberately left for Matt rather than changed inside a branding pass.
+
+Both reproduce on a clean checkout of this branch. Fixing them is a separate
+task.
+
+## Open question for Matt
+
+The brief asks to keep the message **"Real estate decisions, made better."**
+(with a comma). The site currently uses **"Real estate decisions made better."**
+(no comma), which `neighborhood-pilot-status.md` records as Matt's explicit
+approval on September 22, 2026, applied to the hero, the description and the
+social metadata.
+
+The wording was **left as approved** — a branding pass is not the place to
+change approved copy on an ambiguity. If the comma is wanted, it needs changing
+in four places: the homepage `<h1>`, `<meta name="description">`,
+`<meta property="og:description">`, and the Selected Work page description.

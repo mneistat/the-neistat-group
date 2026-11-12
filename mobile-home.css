@@ -5,7 +5,7 @@
   .home-page .hero {
     height: auto;
     min-height: max(780px, calc(100svh - 36px));
-    background: #0b151d;
+    background: #100B25;
   }
   .home-page .hero-video-wrap,
   .home-page .hero-desktop-copy,
@@ -20,8 +20,8 @@
   }
   .home-page .hero-overlay {
     background: linear-gradient(180deg,
-      transparent 38%, rgba(5, 14, 22, .1) 52%,
-      rgba(5, 14, 22, .62) 72%, rgba(5, 14, 22, .95) 100%);
+      transparent 38%, rgba(16,11,37, .1) 52%,
+      rgba(16,11,37, .62) 72%, rgba(16,11,37, .95) 100%);
   }
   .home-page .hero-content {
     padding: max(calc(var(--site-header-height, 77px) + 340px), 61svh) 24px 24px;
@@ -41,7 +41,7 @@
     font-size: 15px;
     line-height: 1.5;
     margin-bottom: 22px;
-    color: #f4f0e8;
+    color: #FFFFFF;
     text-wrap: initial;
   }
   .home-page .hero-actions { align-items: flex-start; gap: 6px; }
