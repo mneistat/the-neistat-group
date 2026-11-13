@@ -1,5 +1,10 @@
 # Licensed fonts still needed — November 12, 2026
 
+> **Status: deferred by Matt on November 12, 2026.** He reviewed this and chose
+> to ship on the documented fallback for now rather than license the two
+> families. Nothing here is an outstanding action item. Treat this file as the
+> instructions for *if and when* he buys them — not as a task list.
+
 The November 12 brand implementation targets Douglas Elliman's verified pairing:
 **Euclid Circular A** and **Sainte Colombe**.
 

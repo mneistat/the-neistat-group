@@ -161,15 +161,24 @@ or credential was invented.
 Both reproduce on a clean checkout of this branch. Fixing them is a separate
 task.
 
-## Open question for Matt
+## Decisions — settled November 12, 2026
 
-The brief asks to keep the message **"Real estate decisions, made better."**
-(with a comma). The site currently uses **"Real estate decisions made better."**
-(no comma), which `neighborhood-pilot-status.md` records as Matt's explicit
-approval on September 22, 2026, applied to the hero, the description and the
-social metadata.
+Both open questions from this pass were put to Matt and answered the same day.
 
-The wording was **left as approved** — a branding pass is not the place to
-change approved copy on an ambiguity. If the comma is wanted, it needs changing
-in four places: the homepage `<h1>`, `<meta name="description">`,
-`<meta property="og:description">`, and the Selected Work page description.
+**Tagline — no comma. Settled.** The brief asked to keep "Real estate
+decisions, made better." with a comma; the site uses "Real estate decisions
+made better." without one, per Matt's September 22, 2026 approval. Matt
+confirmed the **no-comma** wording stands. The brief's punctuation does not
+override it. No change was made and none is pending. Do not reopen this.
+
+**Fonts — ship on the fallback for now. Settled.** Matt chose not to license
+Euclid Circular A or Sainte Colombe at this time. The site runs on the
+documented system fallback stack in `brand.css`. This is a deliberate decision,
+not an outstanding task.
+
+The implementation is unchanged either way: the real family names still lead
+every stack and the commented `@font-face` hook is still in place, so whenever
+Matt does buy the files it remains a one-step change. See `FONTS_REQUIRED.md`.
+
+Because the brand fonts are not installed, do not make typography claims about
+them in any client-facing or marketing material until they are.
