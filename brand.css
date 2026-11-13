@@ -695,3 +695,28 @@ body.header-on-light .nav:not(.scrolled) .nav-toggle span {
   background: var(--indigo);
   box-shadow: none;
 }
+
+/* ===========================================================================
+   HERO PHOTOGRAPH FALLBACK
+   Four neighbourhood guides source their hero from a third-party host. If it
+   does not serve the file, site-experience.js removes the broken image and
+   sets this class, so the hero falls back to the brand gradient rather than
+   rendering alt text where a photograph should be.
+   ========================================================================= */
+/* The compact guide hero is a two-column grid: copy on white at left, the
+   photograph filling the right column. When that column cannot be filled, a
+   gradient panel takes its place so the layout holds its shape. */
+.page-guide .np-hero--no-photo .np-hero-img { display: none; }
+.page-guide .np-hero--no-photo::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 540px;
+  background: var(--grad-indigo-slate);
+}
+/* Single column below the guide breakpoint: no empty panel. */
+@media (max-width: 900px) {
+  .page-guide .np-hero--no-photo::after { display: none; }
+}
+/* Full-bleed heroes elsewhere fall back to the brand gradient directly. */
+.np-hero--no-photo:not(.page-guide .np-hero) { background: var(--grad-indigo-slate); }

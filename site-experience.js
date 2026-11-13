@@ -1,6 +1,26 @@
 /* Optional motion and guide orientation. All content and links work without it. */
 (function () {
   'use strict';
+
+  // Four guides take their hero photograph from a third-party host we do not
+  // control. If that host blocks, rate-limits or moves the file, the browser
+  // renders the alt text in place of the hero and the page looks broken.
+  // Fall back to the brand gradient instead: the heading and its veil already
+  // sit above the image, so the hero still reads correctly without it.
+  function heroFallback(img) {
+    if (!img || img.dataset.heroFallbackApplied) return;
+    img.dataset.heroFallbackApplied = '1';
+    var hero = img.closest ? img.closest('.np-hero') : null;
+    // The image stays in the DOM: it occupies a grid cell, and removing it
+    // would collapse the hero's second column. CSS hides it and fills the cell.
+    if (hero) hero.classList.add('np-hero--no-photo');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.np-hero-img'), function (img) {
+    // Already failed before this script ran.
+    if (img.complete && img.naturalWidth === 0) heroFallback(img);
+    else img.addEventListener('error', function () { heroFallback(img); });
+  });
+
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   var animations = new Set();
   var observer;
