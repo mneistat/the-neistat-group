@@ -1,9 +1,9 @@
 /* THE NEISTAT GROUP — Selected Work transaction data.
  *
- * Single source of truth for the portfolio. Only the homepage module renders from
- * it at runtime. selected-work.html, seller-strategy.html and
- * neighborhoods/lincoln-park.html carry the same facts as static HTML so they read
- * without JavaScript: any change here must be made on those pages by hand too.
+ * Single source of truth for the portfolio. Run node scripts/build-selected-work.mjs
+ * after approved edits to update the static homepage feature, portfolio,
+ * seller proof, and nearby-work sections. No browser-side renderer is required.
+ * Run the same command with --check to catch drift without writing files.
  * caseStudyUrl is empty everywhere because no case-study pages exist yet.
  *
  * RULES FOR EDITING
@@ -26,44 +26,48 @@
  */
 window.SELECTED_WORK = [
   {
-    id: 'lake',
-    address: '1035 W. Lake Street',
-    neighborhood: 'West Loop',
+    id: 'wellington',
+    address: '702 W. Wellington Avenue',
+    neighborhood: 'Lakeview',
     market: 'Chicago',
-    assetType: 'Deconversion',
-    representation: '',                     // not verified — deliberately blank
-    priceOrResult: '$9,500,000',
-    outcomeLine: 'Won the listing against major brokerages and brought it under contract off-market in two weeks.',
-    // Occupancy, not Matthew's work — he represented the seller on the sale.
-    // BODYBAR confirms 1035 W. Lake Suite 100A on its own site; The Athletic Club
-    // per Matthew, who transacted the building.
-    tenants: 'Now home to BODYBAR Pilates and The Athletic Club.',
-    pressMention: 'CoStar News',
-    // Cropped from the leasing rendering to remove the "1035 WEST LAKE" badge.
-    // The building still carries placeholder LOGO / COMPANY LOGO signage — a real
-    // photograph would replace this.
-    image: 'properties/1035-lake-feature.jpg',
-    imageAlt: '1035 W. Lake Street — three-storey brick building with ground-floor retail',
+    assetType: 'Development',
+    representation: 'Represented Developer',
+    priceOrResult: '$709K – $985K',
+    outcomeLine: '4-condo sellout.',
+    pressMention: '',
+    image: 'properties/702-wellington-listing.jpg',
+    imageAlt: '702 W. Wellington Avenue, Lakeview — four-condo sellout',
     caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false
   },
   {
-    id: 'elm',
-    address: '1183 Elm Street',
-    neighborhood: 'Winnetka',
-    market: 'North Shore',
-    assetType: 'Residential',
-    // Address per Matthew, who represented the seller. Note for the record: public
-    // MLS listings (11734843) and the Crain's piece index this sale under 1185 Elm.
-    // Matthew's instruction takes precedence — he transacted it.
-    representation: 'Represented Seller',
-    priceOrResult: '$1,265,000',
-    // Asked $1.15M, sold $1,265,000 — 10% over — and never reached the open market.
-    outcomeLine: 'Off-market sale, 10% over asking.',
-    pressMention: 'Crain’s Chicago Business',
-    image: 'properties/1185-elm-listing.jpg',
-    imageAlt: '1183 Elm Street, Winnetka — North Shore residence',
+    id: 'lake',
+    address: '1035 W. Lake Street',
+    neighborhood: 'West Loop',
+    market: 'Chicago',
+    assetType: 'Commercial',
+    representation: '',                     // not verified — deliberately blank
+    priceOrResult: '$9,500,000',
+    outcomeLine: 'Won the listing against major brokerages and brought it under contract off-market in two weeks.',
+    resultHighlight: 'Under contract in two weeks.',
+    // All three beats restate the approved outcome above. No client motivation,
+    // outreach tactics, pricing result, or completed-sale claim is inferred.
+    story: {
+      challenge: 'Win a West Loop commercial listing against major brokerages.',
+      strategy: 'An off-market approach.',
+      outcome: 'Listing secured. Under contract in two weeks.'
+    },
+    // Occupancy, not Matthew's work — he represented the seller on the sale.
+    // BODYBAR confirms 1035 W. Lake Suite 100A on its own site; The Athletic Club
+    // per Matthew, who transacted the building.
+    tenants: 'Now home to BODYBAR Pilates and The Athletic Club.',
+    pressMention: 'CoStar News',
+    pressUrl: 'https://product.costar.com/home/news/710741247',
+    image: 'properties/1035-lake-layout.jpg',
+    imageAlt: 'Illustrative floor plan for 1035 W. Lake Street',
+    imageFit: 'contain',
+    imageCaption: 'Floor plan · illustrative',
     caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false
@@ -80,22 +84,6 @@ window.SELECTED_WORK = [
     pressMention: '',
     image: 'properties/2636-lincoln-listing.jpg',
     imageAlt: '2636 N. Lincoln Avenue, Lincoln Park — four-unit investment property',
-    caseStudyUrl: '',
-    publishStatus: 'public',
-    needsVerification: false
-  },
-  {
-    id: 'wellington',
-    address: '702 W. Wellington Avenue',
-    neighborhood: 'Lakeview',
-    market: 'Chicago',
-    assetType: 'Development',
-    representation: 'Represented Developer',
-    priceOrResult: '$709K – $985K',
-    outcomeLine: '4-condo sellout.',
-    pressMention: '',
-    image: 'properties/702-wellington-listing.jpg',
-    imageAlt: '702 W. Wellington Avenue, Lakeview — four-condo sellout',
     caseStudyUrl: '',
     publishStatus: 'public',
     needsVerification: false

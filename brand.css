@@ -1,0 +1,722 @@
+/* ============================================================================
+   THE NEISTAT GROUP — BRAND TOKENS
+   Shared design tokens. Loaded FIRST on every route, before styles.css.
+   Implemented November 12, 2026. Supersedes the carbon/cream (bone/paper)
+   system and the previous Gelasio + Liberation Sans pairing.
+
+   Visual direction: sophisticated, architectural, spacious, approachable.
+   Deep indigo and neutral slate grounds, crisp white text, fine rules,
+   restrained outlined buttons. Typography and colour reference: Douglas
+   Elliman. Identity and site functionality remain The Neistat Group's.
+   ========================================================================= */
+
+:root {
+  /* ---- Core palette (implementation targets, locked) ------------------- */
+  --indigo:        #100B25;   /* deep indigo   — primary ground           */
+  --slate:         #323745;   /* charcoal slate— panels, raised surfaces  */
+  --slate-muted:   #50596C;   /* muted slate   — bands, rules, muted ink  */
+  --white:         #FFFFFF;   /* crisp white   — primary text on dark     */
+
+  /* ---- Derived tones ---------------------------------------------------
+     Only where the four core values cannot carry a role on their own.
+     Each is drawn from the slate hue family and contrast-checked below. */
+  --indigo-deep:   #0B0719;   /* below-ground: footers, overlay scrims    */
+  --indigo-raised: #232145;   /* raised card on indigo                    */
+  --slate-tint:    #F2F3F6;   /* lightest neutral surface on white        */
+  --slate-line:    #DCDFE7;   /* hairline rule on white                   */
+  --slate-soft:    #A9B0BF;   /* muted text on indigo/slate               */
+
+  /* ---- Semantic tokens (what the site actually consumes) --------------- */
+  --ink:           var(--indigo);        /* text on light ground          */
+  --paper:         var(--white);         /* light ground / text on dark   */
+  --bone:          var(--white);
+  --muted-ink:     var(--slate-muted);   /* muted text on white           */
+  --muted-paper:   var(--slate-soft);    /* muted text on indigo          */
+  --rule-ink:      rgba(16, 11, 37, .16);
+  --rule-paper:    rgba(255, 255, 255, .22);
+  --surface-dark:  var(--indigo);
+  --surface-slate: var(--slate-muted);
+  --surface-light: var(--white);
+
+  /* ---- Contrast record (WCAG 2.1, measured) ---------------------------
+     white on indigo        19.15 : 1   AAA
+     white on slate         11.88 : 1   AAA
+     white on muted slate    7.03 : 1   AAA
+     indigo on white        19.15 : 1   AAA
+     muted slate on white    7.03 : 1   AAA
+     slate-soft on indigo    8.80 : 1   AAA
+     slate-soft on slate     5.46 : 1   AA
+     ------------------------------------------------------------------- */
+
+  /* ---- Subtle indigo -> slate transitions ------------------------------ */
+  --grad-indigo-slate: linear-gradient(180deg, var(--indigo) 0%, #1B1B35 55%, var(--slate) 100%);
+  --grad-slate-indigo: linear-gradient(180deg, var(--slate) 0%, #1B1B35 45%, var(--indigo) 100%);
+  --grad-band:         linear-gradient(180deg, #4B546A 0%, var(--slate-muted) 100%);
+
+  /* ========================================================================
+     TYPOGRAPHY
+
+     Target pairing (Douglas Elliman's verified pairing):
+       Euclid Circular A  — Light 300 for major sans headings and body text;
+                            Regular 400 for navigation, labels and buttons.
+       Sainte Colombe     — Regular 400 for selected editorial headings;
+                            Italic for short supporting lines.
+
+     ---------------------------------------------------------------------
+     FONT FILES ARE NOT PRESENT IN THIS REPOSITORY.
+
+     Both families are commercially licensed and neither ships here, in the
+     brand asset set, nor in the previous build. No substitute has been put
+     in their place silently: the real family names lead every stack below,
+     so dropping licensed @font-face files (or a hosted kit) into
+     /fonts/ and uncommenting the block beneath switches the whole site over
+     with no other change.
+
+     Until then the stacks fall back to the nearest widely available faces,
+     and that fallback is visible, documented, and listed in
+     docs/FONTS_REQUIRED.md. See that file for exactly what to buy.
+     --------------------------------------------------------------------- */
+
+  /*  Geometric sans. Euclid Circular A is a geometric grotesque; the
+      fallbacks below are the closest geometric/neo-grotesque faces that are
+      already on the user's machine. No webfont is downloaded.            */
+  --font: "Euclid Circular A", "EuclidCircularA", ui-sans-serif, system-ui,
+          -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /*  High-contrast editorial serif. Sainte Colombe is a didone-adjacent
+      display serif; Didot / Bodoni are the nearest system equivalents,
+      with Georgia as the universal floor.                                */
+  --serif: "Sainte Colombe", "SainteColombe", Didot, "Didot LT STD",
+           "Bodoni 72", "Bodoni MT", "Hoefler Text", Garamond,
+           "Times New Roman", Georgia, serif;
+
+  /* ---- Weight tokens --------------------------------------------------- */
+  --w-light:   300;   /* major sans headings and body                      */
+  --w-regular: 400;   /* navigation, labels, buttons, editorial serif      */
+
+  /* ---- Spaced uppercase treatment (short headings and navigation) ------ */
+  --track-wide:  .18em;
+  --track-mid:   .12em;
+  --track-tight: -.01em;
+}
+
+/* ---------------------------------------------------------------------------
+   LICENSED FONT HOOK — uncomment once the .woff2 files are in /fonts/.
+   Nothing else needs to change; the stacks above already name these families.
+
+@font-face { font-family: "Euclid Circular A"; src: url("/fonts/EuclidCircularA-Light.woff2") format("woff2");   font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Euclid Circular A"; src: url("/fonts/EuclidCircularA-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Sainte Colombe";    src: url("/fonts/SainteColombe-Regular.woff2") format("woff2");   font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Sainte Colombe";    src: url("/fonts/SainteColombe-Italic.woff2") format("woff2");    font-weight: 400; font-style: italic; font-display: swap; }
+--------------------------------------------------------------------------- */
+
+/* ===========================================================================
+   BASE TYPOGRAPHIC BEHAVIOUR
+   Light 300 for major sans headings and body; sentence case and comfortable
+   spacing for body copy. Not every heading is uppercase and not every
+   headline is italic — the two families share the page.
+   ========================================================================= */
+
+body {
+  font-family: var(--font);
+  font-weight: var(--w-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navigation, labels and buttons sit at Regular 400. */
+:is(.nav-link, .nav-cta-btn, .nav-brand, .nav-group-trigger,
+    .mobile-menu-link, .mobile-menu-footer a,
+    .btn, .btn-primary, .btn-dark, .btn-pill-fill, .btn-bordered-pill,
+    .swp-btn, .ss-btn, .np-btn, .bp-btn, .sp-btn-light, .cta-scene-btn,
+    .aff-cta-btn, .cta-submit, .btn-submit, .lead-form-submit,
+    .footer-col-label, label, legend) {
+  font-weight: var(--w-regular);
+}
+
+/* Spaced uppercase lettering for short headings, eyebrows and navigation. */
+:is(.hero-pill-eyebrow, .start-here-eyebrow, .method-eyebrow, .sw-eyebrow,
+    .hp-eyebrow, .swp-eyebrow, .ss-eyebrow, .ss-label, .ni-eyebrow,
+    .ni-intro-label, .np-eyebrow, .np-sect-label, .portrait-label,
+    .story-label, .family-story-label, .press-scene-label,
+    .calc-hero-eyebrow, .calc-section-label, .bp-eyebrow, .sp-eyebrow,
+    .vendors-label, .footer-col-label) {
+  font-family: var(--font);
+  font-weight: var(--w-regular);
+  text-transform: uppercase;
+  letter-spacing: var(--track-wide);
+}
+
+/* Body copy: sentence case, comfortable measure and spacing. */
+body, p, li, dd, input, select, textarea, button {
+  font-family: var(--font);
+}
+p, li, dd { font-weight: var(--w-light); }
+
+/* Editorial serif headings stay Regular 400 and are never auto-italicised. */
+:is(h1, h2, h3, h4) { font-weight: var(--w-light); letter-spacing: var(--track-tight); }
+
+/* The brand principle and other short supporting lines use the serif italic.
+   Used selectively — this is not a sitewide heading treatment. */
+.brand-principle,
+.footer-bar span:last-child,
+.home-footer-principle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: var(--w-regular);
+  letter-spacing: 0;
+}
+
+/* ===========================================================================
+   WORDMARK
+   Scalable SVG asset traced from the approved wordmark proof: small spaced
+   uppercase THE, prominent uppercase serif NEISTAT, smaller spaced uppercase
+   GROUP, all three lines optically centred. White on dark, indigo on white.
+   The two-background proof image is never used as the site logo.
+   ========================================================================= */
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  flex-shrink: 0;
+  /* Any inherited text treatment is irrelevant now the mark is an image. */
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: 0;
+}
+.nav-brand .wordmark {
+  display: block;
+  width: auto;
+  height: clamp(30px, 3.1vw, 40px);
+}
+.nav.scrolled .nav-brand .wordmark { height: clamp(27px, 2.7vw, 34px); }
+
+.footer-wordmark { display: block; width: auto; height: 44px; margin-bottom: 24px; }
+
+/* ===========================================================================
+   SHARED SURFACES AND INTERACTIVE STATES
+   Restrained outlined buttons; fine divider lines; visible focus everywhere.
+   ========================================================================= */
+
+.surface-indigo { background: var(--indigo); color: var(--white); }
+.surface-slate  { background: var(--slate-muted); color: var(--white); }
+.surface-light  { background: var(--white); color: var(--ink); }
+.surface-gradient { background: var(--grad-indigo-slate); color: var(--white); }
+
+/* Outlined button — the default action treatment in the new system. */
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 50px; padding: 14px 30px;
+  border: 1px solid currentColor; border-radius: 999px;
+  background: transparent; color: inherit;
+  font-family: var(--font); font-weight: var(--w-regular); font-size: 14px;
+  letter-spacing: var(--track-mid); text-transform: uppercase;
+  transition: background-color .22s ease, color .22s ease;
+}
+.surface-indigo .btn-outline:hover,
+.surface-slate  .btn-outline:hover { background: var(--white); color: var(--indigo); }
+.surface-light  .btn-outline:hover { background: var(--indigo); color: var(--white); }
+
+/* Fine divider lines. */
+.rule-fine      { border: 0; border-top: 1px solid var(--rule-paper); }
+.surface-light .rule-fine { border-top-color: var(--rule-ink); }
+
+/* One visible focus treatment for every interactive element on every ground. */
+:is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ===========================================================================
+   JAMESON SOTHEBY'S INTERNATIONAL REALTY
+   Required brokerage attribution. The Jameson mark is reproduced in pure
+   white or pure black only — recolouring it is a brand-compliance risk.
+   ========================================================================= */
+.jsir-lockup { display: inline-flex; align-items: center; gap: 14px; }
+.jsir-lockup img { height: 34px; width: auto; }
+
+/* ===========================================================================
+   HEADER — centred wordmark between two navigation sets
+   Every existing navigation item is preserved. The split is presentational:
+   below the hamburger breakpoint the wrappers collapse and the mobile menu
+   behaves exactly as before.
+   ========================================================================= */
+
+.nav {
+  background: var(--indigo);
+  border-bottom: 1px solid var(--rule-paper);
+}
+.nav-set { display: inline-flex; align-items: center; gap: clamp(20px, 2vw, 34px); }
+
+@media (min-width: 1251px) {
+  .nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: clamp(20px, 3vw, 56px);
+  }
+  .nav-brand { grid-column: 2; grid-row: 1; justify-self: center; }
+  .nav-links { display: contents; }
+  .nav-set--left  { grid-column: 1; grid-row: 1; justify-self: start; }
+  .nav-set--right { grid-column: 3; grid-row: 1; justify-self: end; }
+}
+
+/* Spaced uppercase navigation, Regular 400, white on indigo. */
+.nav-link {
+  font-family: var(--font);
+  font-weight: var(--w-regular);
+  font-size: 12px;
+  letter-spacing: var(--track-mid);
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: .82;
+  transition: opacity .22s ease;
+}
+.nav-link:hover, .nav-link:focus-visible { opacity: 1; }
+
+/* Restrained outlined button. */
+.nav-cta-btn {
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font);
+  font-weight: var(--w-regular);
+  font-size: 12px;
+  letter-spacing: var(--track-mid);
+  text-transform: uppercase;
+  padding: 12px 24px;
+  transition: background-color .22s ease, color .22s ease, border-color .22s ease;
+}
+.nav-cta-btn:hover { background: var(--white); border-color: var(--white); color: var(--indigo); }
+
+.nav-toggle span { background: var(--white); }
+
+/* ---- Mobile navigation ---- */
+@media (max-width: 1250px) {
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand .wordmark { height: 28px; }
+  .nav.scrolled .nav-brand .wordmark { height: 25px; }
+}
+.mobile-menu { background: var(--indigo); }
+.mobile-menu-link {
+  font-family: var(--serif);
+  font-weight: var(--w-regular);
+  color: var(--white);
+  letter-spacing: var(--track-tight);
+}
+.mobile-menu-footer { border-top: 1px solid var(--rule-paper); }
+.mobile-menu-footer a { color: var(--slate-soft); }
+
+/* ===========================================================================
+   SITEWIDE SURFACES
+   Deep indigo and neutral slate grounds, crisp white text, no cream anywhere.
+   ========================================================================= */
+
+html, body { background: var(--indigo); color: var(--white); }
+
+/* Light sections become crisp white with indigo text, never parchment. */
+:is(.contact-intro, .testimonials, .credentials, .cta-light, .press-scene,
+    .aff-intro, .calc-intro, .sp-intro, .bp-intro-band, .vendors-intro) {
+  background: var(--white);
+  color: var(--ink);
+}
+
+/* Slate band — the mid-page intelligence strip from the reference. */
+.band-slate {
+  background: var(--grad-band);
+  color: var(--white);
+  padding: clamp(44px, 6vw, 72px) var(--page-gutter);
+  border-top: 1px solid rgba(255,255,255,.14);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.band-slate .band-label {
+  font-family: var(--font);
+  font-weight: var(--w-regular);
+  font-size: 12px;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: rgba(255,255,255,.78);
+  text-align: center;
+  margin: 0 0 22px;
+}
+.band-slate .band-items {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: clamp(20px, 4vw, 56px);
+  margin: 0; padding: 0; list-style: none;
+}
+.band-slate .band-items li {
+  font-family: var(--font);
+  font-weight: var(--w-light);
+  font-size: clamp(20px, 2.4vw, 30px);
+  letter-spacing: var(--track-mid);
+  text-transform: uppercase;
+}
+.band-slate .band-items li + li { border-left: 1px solid rgba(255,255,255,.3); padding-left: clamp(20px, 4vw, 56px); }
+@media (max-width: 640px) {
+  .band-slate .band-items { flex-direction: column; gap: 16px; }
+  .band-slate .band-items li + li { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,.3); padding-top: 16px; width: 100%; text-align: center; }
+}
+
+/* ===========================================================================
+   FOOTER
+   ========================================================================= */
+.footer, .home-footer { background: var(--indigo-deep); color: var(--white); }
+.footer { border-top: 1px solid var(--rule-paper); }
+.footer-address, .footer-bar span { color: var(--slate-soft); }
+.footer-col-label { color: var(--slate-soft); }
+.footer-col a { color: var(--white); opacity: .85; }
+.footer-col a:hover { opacity: 1; }
+.footer-credits { color: var(--slate-soft); border-top: 1px solid var(--rule-paper); }
+.footer-bar span:last-child { color: var(--white); }
+
+/* ===========================================================================
+   FORMS, CARDS AND INTERACTIVE STATES
+   ========================================================================= */
+.contact-form :is(input, textarea, select) {
+  background: transparent;
+  color: var(--white);
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  font-family: var(--font);
+  font-weight: var(--w-light);
+}
+.contact-form :is(input, textarea, select):focus {
+  border-bottom-color: var(--white);
+  outline: none;
+}
+.contact-form :is(input, textarea)::placeholder { color: rgba(255,255,255,.42); font-family: var(--font); }
+
+.surface-light :is(input, textarea, select) {
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule-ink);
+}
+
+/* Fine divider lines in place of heavy card borders. */
+:is(.hp-row, .home-service, .home-neighborhood-links a, .method-step) {
+  border-color: var(--rule-ink);
+}
+
+/* ===========================================================================
+   PHOTOGRAPHY
+   Strong architectural imagery, presented clean — no heavy tints over the
+   approved photographs. Only enough scrim to keep overlaid text legible.
+   ========================================================================= */
+.photo-frame { display: block; overflow: hidden; background: var(--slate); }
+.photo-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.photo-scrim { position: relative; }
+.photo-scrim::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(16,11,37,0) 38%, rgba(16,11,37,.62) 100%);
+}
+.photo-scrim > * { position: relative; z-index: 1; }
+
+/* ===========================================================================
+   MOTION
+   Content is visible with scripts disabled or reduced motion.
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===========================================================================
+   PAGE GROUNDS
+   The reference puts deep indigo under the whole page with white type, and
+   uses white only for deliberate contrast. Section structure, content and
+   functionality are unchanged — only the ground and type colour move.
+   ========================================================================= */
+
+.editorial-home,
+.page-selected-work,
+.np-page, .ni-page,
+.page-about, .page-contact, .page-vendors,
+.page-seller-strategy, .page-buying-process, .page-affordability {
+  background: var(--indigo);
+  color: var(--white);
+}
+
+/* Sections that were light parchment become deep indigo or slate, not cream. */
+:is(.home-decisions, .home-services, .home-neighborhoods, .home-quotes,
+    .home-feature, .home-intro, .home-work) {
+  background: transparent;
+  color: var(--white);
+}
+.home-advisory { background: var(--slate); color: var(--white); }
+.home-quotes   { background: var(--indigo-raised); color: var(--white); }
+
+/* Rules and dividers on the dark ground. */
+:is(.home-decisions, .home-services, .home-neighborhoods, .home-work) :is(.hp-row, .home-service, .home-neighborhood-links a) {
+  border-color: var(--rule-paper);
+}
+.home-neighborhood-links a, .home-service-title { color: var(--white); }
+
+/* Muted supporting copy on the dark ground. */
+:is(.home-service-copy, .home-intro p, .home-note, .hp-note, .np-note,
+    .ni-note, .swp-note, .footnote, .source-note) { color: var(--slate-soft); }
+
+/* Filled buttons invert to the outlined treatment on dark grounds. */
+.home-button {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 999px;
+  font-weight: var(--w-regular);
+  letter-spacing: var(--track-mid);
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.home-button:hover { background: var(--white); color: var(--indigo); }
+.home-button--light { background: transparent; color: var(--white); border-color: rgba(255,255,255,.55); }
+.home-button--light:hover { background: var(--white); color: var(--indigo); }
+
+/* Inquiry form on the dark ground. */
+.home-inquiry .cta-input { color: var(--white); border-bottom-color: rgba(255,255,255,.34); }
+.home-inquiry .cta-input::placeholder { color: rgba(255,255,255,.42); }
+.home-inquiry .cta-submit {
+  background: transparent; color: var(--white);
+  border: 1px solid rgba(255,255,255,.55); border-radius: 999px;
+}
+.home-inquiry .cta-submit:hover { background: var(--white); color: var(--indigo); }
+.home-inquiry option { background: var(--indigo); color: var(--white); }
+
+/* Images keep a slate placeholder rather than a cream one while loading. */
+.home-feature-image, .photo-frame { background: var(--slate); }
+
+/* ===========================================================================
+   HOMEPAGE OPENING
+   The reference sets the opening headline in spaced uppercase Euclid Light,
+   not italic. The editorial serif italic is reserved for short supporting
+   lines such as the brand principle, so neither family dominates the page.
+   ========================================================================= */
+
+.home-opening h1, .home-page .hero-headline {
+  font-family: var(--font);
+  font-weight: var(--w-light);
+  text-transform: uppercase;
+  letter-spacing: .055em;
+  line-height: 1.12;
+  font-size: clamp(34px, 4.6vw, 70px);
+  color: var(--white);
+}
+/* <em> keeps its emphasis meaning; it simply stops being italic here. */
+.home-opening h1 em, .home-page .hero-headline em,
+.home-opening h1 .hero-headline-italic, .hero-headline-italic {
+  font-style: normal;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+.home-eyebrow {
+  font-family: var(--font);
+  font-weight: var(--w-regular);
+  font-size: 12px;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: rgba(255,255,255,.8);
+}
+.home-opening-actions p { color: var(--white); font-weight: var(--w-light); }
+
+/* Section headings keep the editorial serif, upright, sentence case —
+   the counterweight to the uppercase opening. */
+.home-main :is(h2, h3) {
+  font-family: var(--serif);
+  font-weight: var(--w-regular);
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: var(--track-tight);
+  color: var(--white);
+}
+
+/* ---- Neighbourhood intelligence sits on the slate ground --------------
+   This is the indigo -> slate transition from the reference. The section's
+   existing content, links and photograph are unchanged. */
+.home-neighborhoods {
+  background: var(--grad-band);
+  color: var(--white);
+  border-top: 1px solid rgba(255,255,255,.14);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.home-neighborhoods .home-neighborhood-links a { border-color: rgba(255,255,255,.28); }
+.home-neighborhoods small { color: rgba(255,255,255,.72); }
+
+/* ---- The brand principle, in the editorial serif italic ---------------- */
+.home-footer-principle, .footer-bar span:last-child {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: var(--w-regular);
+  color: var(--white);
+}
+.home-footer-brand {
+  font-family: var(--font);
+  font-weight: var(--w-regular);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* ===========================================================================
+   MUTED COPY ON THE DARK GROUND
+   These elements carried a muted *ink* colour chosen for a light background.
+   On the indigo ground they need the muted *paper* tone instead. Each one
+   below was found by an automated WCAG AA pass over the rendered pages.
+   ========================================================================= */
+.home-personal-statement,
+.home-feature-rep,
+.home-feature-price,
+.home-feature-meta,
+.home-feature-caption,
+.home-contact-note,
+.home-advisory-intro,
+.cta-input-label,
+.cta-form-privacy,
+.home-neighborhood-links small,
+.home-neighborhoods small,
+.home-matthew span,
+.home-direct span,
+.home-client-words span {
+  color: var(--slate-soft);
+}
+
+/* Disclosure and helper text keeps its hierarchy without dropping below AA. */
+.cta-form-privacy, .home-contact-note { opacity: 1; }
+
+/* ===========================================================================
+   HEADER PROGRESSION
+   Replaces the permanent solid bar. Two states:
+
+     1. At rest  — no bar at all. The wordmark and the menu control sit
+                   directly on the hero photograph, nothing behind them.
+     2. Scrolled — a 50% indigo gradient fades in behind them, so the header
+                   stays legible over whatever is passing underneath without
+                   ever becoming a solid block.
+
+   nav.js already toggles .scrolled past 60px; no script change needed.
+   Navigation moves entirely into the menu panel at every width, so the
+   wordmark reads against the photograph instead of competing with a link row.
+   Every destination is still one tap away inside the menu.
+   ========================================================================= */
+
+.nav {
+  background: transparent;
+  border-bottom: 0;
+  padding-block: clamp(20px, 2.4vw, 30px);
+  transition: background-color .45s ease, padding .4s ease, backdrop-filter .45s ease;
+}
+
+/* State 2 — the 50% gradient, strongest at the very top edge. */
+.nav.scrolled {
+  background: linear-gradient(180deg,
+              rgba(16, 11, 37, .88) 0%,
+              rgba(16, 11, 37, .50) 68%,
+              rgba(16, 11, 37, 0) 100%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 0;
+}
+
+/* Menu control on the left, wordmark optically centred — at every width. */
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  column-gap: 16px;
+}
+.nav-toggle {
+  display: flex;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  margin-left: -8px;
+}
+.nav-brand {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+}
+.nav-links { display: none; }
+
+/* The wordmark sits on photography, so it carries its own soft shadow for
+   legibility rather than relying on a bar behind it. */
+.nav-brand .wordmark {
+  filter: drop-shadow(0 1px 14px rgba(0, 0, 0, .55));
+  transition: height .4s ease;
+}
+.nav-toggle span { box-shadow: 0 1px 10px rgba(0, 0, 0, .5); }
+
+/* The hero runs to the top of the viewport, under the header. */
+.home-opening { padding-top: 0; }
+
+/* The homepage hero now runs under the transparent header, to the very top of
+   the viewport, so the wordmark and menu sit on the photograph itself.
+   Interior pages keep their own header offset — their content is not a
+   full-bleed image and would collide with the header without it. */
+.home-main { padding-top: 0; }
+
+/* With the header overlaid rather than stacked above it, the hero reclaims
+   that height and fills more of the first screen. */
+.home-opening { min-height: clamp(560px, calc(100svh - 110px), 820px); }
+
+/* The location caption used to sit below a solid header bar. With the header
+   now transparent and overlaying the photograph, it would collide with the
+   menu control, so it drops clear of it. */
+.home-place {
+  top: clamp(96px, 11vh, 124px);
+  color: rgba(255, 255, 255, .88);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+}
+@media (max-width: 640px) {
+  .home-place { top: 88px; left: 24px; }
+}
+
+/* ===========================================================================
+   WORDMARK AGAINST WHAT IS BEHIND IT
+   The header is transparent at rest, so the mark has to suit its ground.
+   Ten pages open on a white section; the rest open on the homepage
+   photograph or on an indigo ground. Both marks are in the markup and CSS
+   chooses — no flash, no script. Once .scrolled brings the gradient in, the
+   ground is dark again everywhere and the white mark returns.
+   ========================================================================= */
+
+/* Specificity must match `.nav-brand .wordmark`, which sets display: block. */
+.nav-brand .wordmark--on-light { display: none; }
+
+body.header-on-light .nav:not(.scrolled) .nav-brand .wordmark--on-dark  { display: none; }
+body.header-on-light .nav:not(.scrolled) .nav-brand .wordmark--on-light { display: block; }
+
+/* On white, the mark needs no shadow and the menu bars go indigo. */
+body.header-on-light .nav:not(.scrolled) .wordmark { filter: none; }
+body.header-on-light .nav:not(.scrolled) .nav-toggle span {
+  background: var(--indigo);
+  box-shadow: none;
+}
+
+/* ===========================================================================
+   HERO PHOTOGRAPH FALLBACK
+   Four neighbourhood guides source their hero from a third-party host. If it
+   does not serve the file, site-experience.js removes the broken image and
+   sets this class, so the hero falls back to the brand gradient rather than
+   rendering alt text where a photograph should be.
+   ========================================================================= */
+/* The compact guide hero is a two-column grid: copy on white at left, the
+   photograph filling the right column. When that column cannot be filled, a
+   gradient panel takes its place so the layout holds its shape. */
+.page-guide .np-hero--no-photo .np-hero-img { display: none; }
+.page-guide .np-hero--no-photo::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 540px;
+  background: var(--grad-indigo-slate);
+}
+/* Single column below the guide breakpoint: no empty panel. */
+@media (max-width: 900px) {
+  .page-guide .np-hero--no-photo::after { display: none; }
+}
+/* Full-bleed heroes elsewhere fall back to the brand gradient directly. */
+.np-hero--no-photo:not(.page-guide .np-hero) { background: var(--grad-indigo-slate); }
