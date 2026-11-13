@@ -214,7 +214,7 @@ test('every page shares the refined header, with Home retained in the mobile men
     assert.deepEqual([...d.querySelectorAll('.nav-links a')].map(link => link.textContent.trim()), labels, file);
     assert.equal(d.querySelector('.nav-brand').getAttribute('href').replace(/^\//, ''), 'index.html', file);
     assert.deepEqual([...d.querySelectorAll('.mobile-menu-link')].map(link => link.textContent.trim()), ['Home', ...labels], file);
-    assert.ok(d.querySelector('link[href$="styles.css?v=39"]'), file);
+    assert.ok(d.querySelector('link[href$="styles.css?v=40"]'), file);
     assert.ok(d.querySelector('script[src$="nav.js?v=11"]'), file);
     dom.window.close();
   }

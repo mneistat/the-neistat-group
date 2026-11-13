@@ -182,3 +182,56 @@ Matt does buy the files it remains a one-step change. See `FONTS_REQUIRED.md`.
 
 Because the brand fonts are not installed, do not make typography claims about
 them in any client-facing or marketing material until they are.
+
+## Header progression — November 12, 2026 (second pass)
+
+Matt asked for the permanent solid bar to go, referencing Douglas Elliman:
+start with the wordmark and the menu control sitting on the hero photograph,
+then bring in a 50% gradient as the page scrolls.
+
+**Two states.** At rest the header has no background, no border and no blur —
+the wordmark and the three-line menu control sit directly on the photograph.
+Past 60px of scroll, a 50% indigo gradient fades in behind them
+(`.88` at the top edge → `.50` → transparent) with an 8px backdrop blur, so the
+header stays legible over whatever passes underneath without becoming a block.
+`nav.js` already toggled `.scrolled`; no script change was needed.
+
+**Navigation moved into the menu at every width.** The wordmark is optically
+centred with the menu control on the left, matching the reference. All eight
+destinations (Home plus the seven existing items) remain in the menu panel, and
+the `.nav-links` markup is unchanged, so the regression suite's navigation
+assertions still hold. The trade-off is real: desktop visitors no longer see
+the link row without opening the menu.
+
+**The homepage hero now runs to the top of the viewport.** `.home-main` carried
+a header-height offset that pushed the photograph below the bar; with the
+header overlaying, that offset is removed and the hero reclaims the height. The
+"Lincoln Park, Chicago" caption was moved down clear of the menu control, which
+it would otherwise collide with.
+
+**The wordmark follows its ground.** Ten of the sixteen pages open on a white
+section — measured, not assumed, by sampling what sits behind the header strip
+at scroll 0 on every page. Those pages carry a `header-on-light` body class and
+show the indigo wordmark with indigo menu bars at rest, exactly as the logo
+proof specifies; the other six show the white mark. Once the gradient fades in,
+the ground is dark everywhere and the white mark returns. Both marks are in the
+markup and CSS chooses between them, so there is no flash and no script.
+
+### Verification
+
+- Contrast: WCAG AA across every text node on all 16 pages — **0 failures**.
+- Both header states probed on desktop and mobile: background, border, nav
+  height, wordmark centring (0px offset at both widths), and which mark is
+  visible at rest and scrolled.
+- Exactly one wordmark renders in every state on every page checked.
+- The menu opens at desktop width with all eight links.
+- No horizontal scroll on any page at 1440×900 or 390×844.
+- Regression suite back to 20/22, the two known pre-existing failures.
+
+### Correction to the first pass
+
+The first branding commit was reported as 20/22. It was **19/22**: the
+stylesheet cache-bust bump from `v=39` to `v=40` happened after that commit's
+last test run, and test 17 pins the version string. The test now expects
+`v=40` and the suite is back to 20/22. The error was in the report, not in the
+shipped CSS.
