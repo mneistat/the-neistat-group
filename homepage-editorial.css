@@ -212,3 +212,16 @@
 @media (prefers-reduced-motion: reduce) {
   .home-button, .home-feature-image img, .home-neighborhood-image img { transition: none; }
 }
+
+/* Residential sales and asset consulting are separate lines of work, so they
+   sit in separate bands: buying and selling a home first, then investment and
+   development. Each band carries two entries. */
+.home-residential { background: var(--indigo-raised); color: var(--paper); padding: 64px var(--page-gutter) 44px; }
+.home-residential > .home-eyebrow { max-width: 1240px; margin: 0 auto; color: var(--muted-paper); }
+.home-residential .home-service-links { margin-top: 26px; }
+@media (min-width: 761px) {
+  .home-service-links--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .home-residential { padding: 40px 24px 20px; }
+}
