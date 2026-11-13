@@ -56,14 +56,17 @@ test('guide section indicator follows reading position without moving focus or h
   w.requestAnimationFrame = fn => fn();
   d.querySelector('.np-section-nav').getBoundingClientRect = () => ({ bottom: 150 });
   const links = [...d.querySelectorAll('.np-section-nav a')];
+  // Drive the sections the quick-links actually point at. The September 2026
+  // restructure put boundaries first and folded parks/schools/local life into
+  // #essentials, so #parks and #resources are no longer quick-link targets and
+  // moving them proves nothing about the indicator.
   links.forEach(link => { d.getElementById(link.hash.slice(1)).getBoundingClientRect = () => ({ top: 2000 }); });
-  d.getElementById('context').getBoundingClientRect = () => ({ top: -1000 });
-  d.getElementById('parks').getBoundingClientRect = () => ({ top: 120 });
+  d.getElementById('context').getBoundingClientRect = () => ({ top: 120 });
   links[0].focus();
   w.eval(read('site-experience.js'));
   assert.equal(links[0].getAttribute('aria-current'), 'location');
-  d.getElementById('parks').getBoundingClientRect = () => ({ top: -500 });
-  d.getElementById('resources').getBoundingClientRect = () => ({ top: 100 });
+  d.getElementById('context').getBoundingClientRect = () => ({ top: -500 });
+  d.getElementById('essentials').getBoundingClientRect = () => ({ top: 100 });
   w.dispatchEvent(new w.Event('scroll'));
   assert.equal(links[0].hasAttribute('aria-current'), false);
   assert.equal(links[1].getAttribute('aria-current'), 'location');

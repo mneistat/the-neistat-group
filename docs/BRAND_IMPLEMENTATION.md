@@ -235,3 +235,61 @@ stylesheet cache-bust bump from `v=39` to `v=40` happened after that commit's
 last test run, and test 17 pins the version string. The test now expects
 `v=40` and the suite is back to 20/22. The error was in the report, not in the
 shipped CSS.
+
+## The two pre-existing test failures — fixed November 12, 2026
+
+Both were investigated to root cause before anything was changed. Neither was
+caused by the branding work, and neither turned out to be a product bug.
+
+### Test 3 — guide section indicator
+
+**Not a bug. Stale test fixture.** The test drove `#parks` and `#resources`,
+which stopped being quick-link targets when the September 2026 restructure put
+boundaries first and folded parks, schools and local life into `#essentials`.
+Moving sections the nav no longer points at proves nothing, so the indicator
+never moved and the assertion failed.
+
+Verified in a real browser first: scrolling Lincoln Park moves the indicator
+`#context → #essentials → #market-notes → #contact-lincoln-park`, focus stays
+where it was, and `location.hash` stays empty. The behaviour is correct.
+
+`site-experience.js` is unchanged. The fixture now drives `#context` and
+`#essentials` — the sections the quick links actually point at — and keeps the
+test's original shape and intent.
+
+### Test 21 — publication gates and static portfolio
+
+**A real bug, but not the one it looked like.** `build-selected-work.mjs`
+failed outright with `Missing generation markers: neighborhoods/lincoln-park.html`.
+The `GENERATED: nearby-work` markers and their block had been deleted from
+`lincoln-park.html` and `lakeview.html`.
+
+That contradicts the recorded decision. `neighborhood-pilot-status.md` states
+twice that the generated nearby-work block "remains in source for build
+compatibility but is hidden in this compact pilot", and
+`neighborhoods/editorial.css` still carries the rule that hides it
+(`.compact-guide #nearby-work { display: none; }`). The block was removed from
+source anyway, which broke the generator.
+
+The markers were restored to both pages and the generator run. This is **not**
+a restored section in the content sense: it renders at `display: none` and 0px
+height on both guides, exactly as documented, and is invisible to visitors.
+
+The regeneration added 45 lines across those two guide pages and changed
+**nothing** in `index.html`, `selected-work.html` or `seller-strategy.html` —
+no transaction proof, price or publication gate was rewritten. Lincoln Park
+carries two nearby assignments and Lakeview one, matching the pilot record.
+
+The alternative fix — deleting the guide loop from the generator — was
+rejected because it would contradict the documented decision and discard the
+ability to re-enable the block.
+
+One leftover worth knowing: the generated block uses the class
+`np-band--cream`. The name is now a misnomer; it resolves to white through the
+`--cream: var(--white)` alias, and the block is hidden regardless. Renaming it
+was left alone as pure churn.
+
+### Result
+
+**Regression suite: 22 of 22 passing** — the first clean run. WCAG AA still
+0 failures across all 16 pages.
