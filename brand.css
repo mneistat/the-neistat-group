@@ -662,17 +662,6 @@ html, body { background: var(--indigo); color: var(--white); }
    that height and fills more of the first screen. */
 .home-opening { min-height: clamp(560px, calc(100svh - 110px), 820px); }
 
-/* The location caption used to sit below a solid header bar. With the header
-   now transparent and overlaying the photograph, it would collide with the
-   menu control, so it drops clear of it. */
-.home-place {
-  top: clamp(96px, 11vh, 124px);
-  color: rgba(255, 255, 255, .88);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, .5);
-}
-@media (max-width: 640px) {
-  .home-place { top: 88px; left: 24px; }
-}
 
 /* ===========================================================================
    WORDMARK AGAINST WHAT IS BEHIND IT
