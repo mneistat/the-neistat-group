@@ -26,15 +26,9 @@
 .home-opening-actions { padding-bottom: 3px; }
 .home-opening-actions p { font-size: 17px; line-height: 1.6; margin-bottom: 24px; }
 .home-opening-actions .home-button { width: 100%; }
-.home-place { position: absolute; top: 28px; left: var(--page-gutter); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
-.home-orientation { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 48px; padding: 18px var(--page-gutter); border-bottom: 1px solid var(--rule-ink); }
-.home-orientation p { font-size: 14px; }
-.home-orientation p span { padding-inline: 8px; }
-.home-orientation a { display: inline-flex; justify-content: space-between; align-items: center; gap: 36px; min-height: 44px; font-size: 14px; }
-.home-orientation a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
 /* Matthew is present before the portfolio. The portrait has a human scale. */
-.home-matthew { display: grid; grid-template-columns: minmax(200px, 290px) minmax(0, 670px); justify-content: center; align-items: center; gap: clamp(40px, 7vw, 110px); max-width: 1480px; margin: auto; padding: 86px var(--page-gutter); }
+.home-matthew { display: grid; grid-template-columns: minmax(260px, 420px) minmax(0, 620px); justify-content: center; align-items: center; gap: clamp(40px, 7vw, 110px); max-width: 1480px; margin: auto; padding: 86px var(--page-gutter); }
 .home-matthew-copy { grid-column: 2; grid-row: 1; }
 .home-portrait { grid-column: 1; grid-row: 1; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 27%; }
 .home-matthew h2 { margin-bottom: 24px; }
@@ -140,9 +134,7 @@
   .home-opening-copy { grid-template-columns: minmax(0, 1fr) 230px; gap: 30px; }
   .home-opening h1 { font-size: clamp(42px, 5.1vw, 54px); }
   .home-opening-actions p { font-size: 16px; }
-  .home-orientation { gap: 28px; }
-  .home-orientation a { gap: 18px; }
-  .home-matthew { grid-template-columns: 230px minmax(0, 1fr); gap: 40px; padding-block: 64px; }
+  .home-matthew { grid-template-columns: 300px minmax(0, 1fr); gap: 44px; padding-block: 64px; }
   .home-matthew h2 { font-size: 38px; }
   .home-advisory-intro { gap: 40px; }
   .home-advisory-copy p { font-size: 16px; }
@@ -162,12 +154,8 @@
   .home-opening .home-eyebrow { font-size: 12px; margin-bottom: 16px; }
   .home-opening-actions p { display: none; }
   .home-opening-actions .home-button { width: auto; min-width: 248px; }
-  .home-place { left: 24px; top: 24px; font-size: 12px; }
-  .home-orientation { grid-template-columns: 1fr 1fr; gap: 0 24px; padding: 16px 24px; }
-  .home-orientation p { grid-column: 1 / -1; font-size: 13px; margin-bottom: 8px; }
-  .home-orientation a { gap: 12px; font-size: 13px; }
   .home-matthew { grid-template-columns: 1fr; gap: 24px; padding: 48px 24px; }
-  .home-portrait { grid-column: 1; grid-row: 1; width: 160px; aspect-ratio: 4 / 5; }
+  .home-portrait { grid-column: 1; grid-row: 1; width: 100%; aspect-ratio: 4 / 5; }
   .home-matthew-copy { grid-column: 1; grid-row: 2; }
   .home-matthew h2 { font-size: 38px; }
   .home-matthew .home-eyebrow { margin-bottom: 12px; }
@@ -206,8 +194,6 @@
 @media (max-width: 360px) {
   .home-opening h1 { font-size: 35px; }
   .home-opening-copy { padding-inline: 20px; }
-  .home-orientation { padding-inline: 20px; gap: 0 18px; }
-  .home-orientation p span { padding-inline: 3px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-button, .home-feature-image img, .home-neighborhood-image img { transition: none; }
